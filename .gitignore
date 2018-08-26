@@ -1,0 +1,5 @@
+.DS_Store
+dev/*
+usr/*
+node_modules/*
+*.log

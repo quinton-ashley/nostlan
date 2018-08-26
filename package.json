@@ -6,10 +6,12 @@
 	"bugs": {
 		"url": "https://github.com/quinton-ashley/bottlenose/issues"
 	},
-	"contributors": [{
-		"name": "Quinton Ashley",
-		"email": "qashto@gmail.com"
-	}],
+	"contributors": [
+		{
+			"name": "Quinton Ashley",
+			"email": "qashto@gmail.com"
+		}
+	],
 	"dependencies": {},
 	"description": "Bottlenose is a companion app for the Dolphin Emulator, use it to download and auto-update texture packs!",
 	"devDependencies": {
@@ -21,10 +23,12 @@
 	],
 	"license": "MIT",
 	"main": "app.js",
-	"maintainers": [{
-		"name": "Quinton Ashley",
-		"email": "qashto@gmail.com"
-	}],
+	"maintainers": [
+		{
+			"name": "Quinton Ashley",
+			"email": "qashto@gmail.com"
+		}
+	],
 	"name": "bottlenose",
 	"repository": {
 		"type": "git",
@@ -33,10 +37,10 @@
 	"scripts": {
 		"start": "electron .",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m \"initial\" && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin/master --allow-unrelated-histories -q && git commit -m $npm_package_version && git push --set-upstream origin master && git push && git push --tags",
+		"premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
 		"up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
 		"version": "git add -A",
 		"postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
 	},
-	"version": "0.1.6"
+	"version": "0.1.7"
 }

@@ -1,0 +1,151 @@
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+@font-face {
+  font-family: Gamecuben;
+  src: local("Gamecuben"), local("Gamecuben"), url(../fonts/Gamecuben.ttf);
+  font-weight: bold;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+div.cover {
+  font-family: "Gamecuben", "Gamecuben", Gamecuben;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 30px;
+  background-color: #6a56b9;
+}
+
+div.endLabel {
+  position: absolute;
+  width: 1024px;
+  clip: rect(0px, 484px, 532px, 0px);
+  transform: rotate(-90deg);
+}
+
+div.coverText {
+  color: #56429c;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
+}
+
+#update {
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.hiddenRow {
+  padding: 0 !important;
+}
+
+.qma {
+  color: #8875d1;
+}
+
+.center {
+  text-align: center;
+}
+
+nav {
+  background-color: #transparent;
+}
+
+div.progress-bar.qma {
+  color: #8875d1;
+  background-color: #818c46;
+}
+
+a.qma:hover {
+  color: #fff;
+}
+
+a.qma {
+  color: #eee;
+}
+
+body.qma {
+  color: #eee;
+  background-color: #150900;
+}
+
+button.nav-link.btn.btn-secondary.qma.gray {
+  background-color: #d0d0d0;
+}
+
+button.nav-link.btn.btn-secondary.qma {
+  color: #eee;
+  background-color: transparent;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 50%;
+  padding: 0px;
+  margin: 0px;
+  box-shadow: none;
+  width: 80px;
+  height: 80px;
+}
+
+/* need to implement inner border
+https://stackoverflow.com/questions/4839613/how-to-make-round-corners-to-both-inside-of-a-box-and-its-border
+*/
+
+img.logoNav {
+  height: 32px;
+}
+
+button.nav-link.btn.btn-secondary.qma:hover {
+  color: #ffe8d1;
+}
+
+button.nav-link.btn.btn-secondary.qma.gray:active, button.nav-link.btn.btn-secondary.qma.gray:selected {
+  background-color: #c0c0c0;
+}
+
+button.nav-link.btn.btn-secondary.qma:active {
+  color: #ffe8d1;
+  background-color: #493c7a;
+}
+
+#openBtn {
+  background: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
+}
+
+.nav-link small {
+  display: block;
+  font-size: 10px;
+}
+
+nav.qma, form.qma {
+  background-color: #ffffff;
+}

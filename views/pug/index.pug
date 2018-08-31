@@ -1,0 +1,32 @@
+doctype html
+html
+
+head
+link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
+link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
+link(rel='stylesheet' type='text/css' href='../css/style.css')
+link(rel='stylesheet' type='text/css' href='../css/gcn_intro.css')
+link(rel='stylesheet' type='text/css' href='../css/gameLibViewer.css')
+title= title
+
+body.qma
+  include gcn_intro.pug
+  main
+    #carousel
+nav.navbar.fixed-top.p-0
+  .cover.p-2.m-0: ul.nav.justify-content-left
+    li.nav-item: button#powerBtn.nav-link.btn.btn-secondary.qma.gray.center
+      //- img.logoNav(src='../img/logo.png')
+    .coverText power
+nav.navbar.fixed-bottom.p-0
+  .cover.p-2.m-0: ul.nav.justify-content-left
+    li.nav-item: button#resetBtn.nav-link.btn.btn-secondary.qma.center
+      i#update.material-icons.md-light autorenew
+    .coverText reset
+  .cover.p-2.m-0: ul.nav.justify-content-right
+    .coverText open
+    li.nav-item: button#openBtn.nav-link.btn.btn-secondary.qma.center
+script.
+  console.log('opening index.pug');
+  console.log('#{node_modules}');
+  require('../js/renderer.js')();

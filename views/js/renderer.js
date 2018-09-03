@@ -6,6 +6,7 @@
 module.exports = async function(opt) {
 	const err = console.error;
 	const log = console.log;
+	global.__rootDir = opt.__rootDir;
 
 	const {
 		app,
@@ -29,7 +30,7 @@ module.exports = async function(opt) {
 	require('../js/gcn_intro.js')();
 
 	async function dl(url, file) {
-		if (!fs.existsSync(file)) {
+		if (!(await fs.exists(file))) {
 			log('loading image: ' + url);
 			let res = await req(url);
 			if (res.status == 404) {
@@ -45,21 +46,21 @@ module.exports = async function(opt) {
 
 	let gameDB = [];
 
-	function getGameDB(consoleName) {
-		let DBPath = path.join(__dirname, `../../usr/${consoleName}DB.json`);
-		return JSON.parse(fs.readFileSync(DBPath)).games;
+	async function getGameDB(consoleName) {
+		let DBPath = path.join(__rootDir, `/db/${consoleName}DB.json`);
+		return JSON.parse(await fs.readFile(DBPath)).games;
 	}
-	gameDB = gameDB.concat(getGameDB('wii'));
+	gameDB = gameDB.concat(await getGameDB('wii'));
 	log(gameDB);
 
 	// get the default prefrences
-	let prefsDefaultPath = path.join(__dirname, '../../usr/prefsDefault.json');
-	let prefsDefault = JSON.parse(fs.readFileSync(prefsDefaultPath));
-	let prefsPath = path.join(__dirname, '../../usr/prefs.json');
+	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
+	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
+	let prefsPath = path.join(__rootDir, '/usr/prefs.json');
 	let prefs;
-	// if they exit  load them if not copy the default prefs
-	if (fs.existsSync(prefsPath)) {
-		prefs = JSON.parse(fs.readFileSync(prefsPath));
+	// if prefs exist load them if not copy the default prefs
+	if (await fs.exists(prefsPath)) {
+		prefs = JSON.parse(await fs.readFile(prefsPath));
 	} else {
 		prefs = prefsDefault;
 	}
@@ -84,6 +85,7 @@ module.exports = async function(opt) {
 		let results = fuse.search(fileName);
 		for (let i = 0; i < results.length; i++) {
 			if (results[i].id[3] == 'E') {
+				$('#loadDialog0').text('loading ' + results[i].title);
 				games.push(results[i]);
 				return results[i];
 			}
@@ -111,8 +113,6 @@ module.exports = async function(opt) {
 		await dl(url, file);
 	}
 
-	$('#cvs').remove();
-
 	function addCover(game, cl) {
 		$('#carousel').append(`
 			<div class="${((cl)?cl:'hideRight')}">
@@ -134,6 +134,7 @@ module.exports = async function(opt) {
 	}
 
 	require('../js/gameLibViewer.js')(games);
+	$('#cvs').remove();
 
 	function openBtnClicked() {
 		prefs.gameLibs.push(dialog.showOpenDialog({

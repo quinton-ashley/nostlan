@@ -12,6 +12,7 @@ const path = require('path');
 const url = require('url');
 const locals = {
 	title: 'Bottlenose',
+	__rootDir: global.__rootDir,
 	node_modules: path.join(__dirname, 'node_modules')
 };
 log(locals);

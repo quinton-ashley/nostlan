@@ -1,0 +1,7 @@
+// format
+regex: \n([^ ]*) = ([^\n]*)
+replace: {\n"id": "$1", "title": "$2", "texp": []\n},
+
+// remove non-english results
+regex: \t\t\["\w\w\w[^e][^\n]*\n
+replace:

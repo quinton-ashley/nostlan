@@ -1,16 +1,16 @@
 {
-	"dolphinApp": {
-		"macOS": "/Applications/dolphin.app",
-		"linux": "",
-		"windows": ""
-	},
-	"dolphin": {
-		"macOS": "~/Library/Application Support/Dolphin",
-		"linux": "~/Documents/Dolphin",
-		"windows": "~/Documents/Dolphin"
-	},
-	"wiiLibs": [],
-	"wiiuLibs": [],
-	"3dsLibs": [],
-	"switchLibs": []
+  "dolphinApp": {
+    "macOS": "/Applications/dolphin.app",
+    "linux": "",
+    "windows": ""
+  },
+  "dolphin": {
+    "macOS": "~/Library/Application Support/Dolphin",
+    "linux": "",
+    "windows": ""
+  },
+  "wiiLibs": [],
+  "wiiuLibs": [],
+  "3dsLibs": [],
+  "switchLibs": []
 }

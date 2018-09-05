@@ -36,9 +36,10 @@ async function createWindow() {
   }
 
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600
-  })
+    width: 3840 / 2,
+    height: 1634 / 2,
+    frame: false
+  });
 
   mainWindow.loadURL(`file://${__dirname}/views/pug/index.pug`)
 

@@ -16,7 +16,7 @@ html, body, main {
 
 #carousel div {
   position: absolute;
-  transition: transform 1s, left 1s, scale 1s, opacity 1s, z-index 0s;
+  transition: transform 1s, scale 1s, left 1s, opacity 0s, z-index 0s;
   opacity: 1;
 }
 
@@ -24,29 +24,40 @@ html, body, main {
   height: 100vh;
 }
 
+#carousel div.superHideLeft {
+  left: 0% !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(.5) !important;
+}
+
 #carousel div.hideLeft {
   left: 0%;
   opacity: 0;
-  transform: translateX(-50%) scale(0.5);
+  transform: translateX(-50%) scale(.5);
 }
 
-#carousel div.hideRight {
-  left: 100%;
-  opacity: 0;
-  transform: translateX(-50%) scale(0.5);
+#carousel div.prevLeftFourth {
+  z-index: 2;
+  left: 0%;
+  transform: translateX(-50%) scale(.5);
 }
 
-#carousel div.prev {
-  z-index: 5;
-  left: 24%;
-  transform: translateX(-50%) scale(0.75);
+#carousel div.prevLeftThird {
+  z-index: 3;
+  left: 5%;
+  transform: translateX(-50%) scale(.5);
 }
 
 #carousel div.prevLeftSecond {
   z-index: 4;
-  left: 16%;
-  transform: translateX(-50%) scale(0.5);
-  opacity: 0.7;
+  left: 15%;
+  transform: translateX(-50%) scale(.5);
+}
+
+#carousel div.prev {
+  z-index: 5;
+  left: 25%;
+  transform: translateX(-50%) scale(.5);
 }
 
 #carousel div.selected {
@@ -57,27 +68,51 @@ html, body, main {
 
 #carousel div.next {
   z-index: 5;
-  left: 76%;
-  transform: translateX(-50%) scale(0.75);
+  left: 75%;
+  transform: translateX(-50%) scale(.5);
 }
 
 #carousel div.nextRightSecond {
   z-index: 4;
-  left: 84%;
-  transform: translateX(-50%) scale(0.5);
-  opacity: 0.7;
+  left: 85%;
+  transform: translateX(-50%) scale(.5);
 }
 
-#carousel div.superHideLeft {
-  left: 0% !important;
-  opacity: 0 !important;
-  transform: translateX(-50%) scale(0.5) !important;
+#carousel div.nextRightThird {
+  z-index: 3;
+  left: 95%;
+  transform: translateX(-50%) scale(.5);
+}
+
+#carousel div.nextRightFourth {
+  z-index: 2;
+  left: 100%;
+  transform: translateX(-50%) scale(.5);
+}
+
+#carousel div.hideRight {
+  left: 100%;
+  opacity: 0;
+  transform: translateX(-50%) scale(.5);
 }
 
 #carousel div.superHideRight {
   left: 100% !important;
   opacity: 0 !important;
-  transform: translateX(-50%) scale(0.5) !important;
+  transform: translateX(-50%) scale(.5) !important;
+}
+
+.front-cover-crop {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin-left: 26%;
+}
+
+.front-cover-crop img {
+  -webkit-transform: translate(-53%, 0%);
+  -ms-transform: translate(-53%, 0%);
+  transform: translate(-53%, 0%);
 }
 
 .buttons {

@@ -1,42 +1,42 @@
-module.exports = function(games) {
+module.exports = function() {
 
-  function moveToSelected(element) {
-
-    if (element == "next") {
-      var selected = $(".selected").next();
-    } else if (element == "prev") {
-      var selected = $(".selected").prev();
-    } else {
-      var selected = element;
-    }
-
+  function moveToSelected(selected) {
     var next = $(selected).next();
     var prev = $(selected).prev();
-    var prevSecond = $(prev).prev();
     var nextSecond = $(next).next();
+    var prevSecond = $(prev).prev();
+    var nextThird = $(nextSecond).next();
+    var prevThird = $(prevSecond).prev();
+    var nextFourth = $(nextThird).next();
+    var prevFourth = $(prevThird).prev();
 
     $(selected).removeClass().addClass("selected");
 
-    $(prev).removeClass().addClass("prev");
     $(next).removeClass().addClass("next");
+    $(prev).removeClass().addClass("prev");
 
     $(nextSecond).removeClass().addClass("nextRightSecond");
     $(prevSecond).removeClass().addClass("prevLeftSecond");
 
-    $(nextSecond).nextAll().removeClass().addClass('hideRight');
-    $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+    $(nextThird).removeClass().addClass("nextRightThird");
+    $(prevThird).removeClass().addClass("prevLeftThird");
+
+    $(nextFourth).removeClass().addClass("nextRightFourth");
+    $(prevFourth).removeClass().addClass("prevLeftFourth");
+
+    $(nextFourth).nextAll().removeClass().addClass('hideRight');
+    $(prevFourth).prevAll().removeClass().addClass('hideLeft');
 
   }
 
-  // Eventos teclado
   $(document).keydown(function(e) {
     switch (e.which) {
       case 37: // left
-        moveToSelected('prev');
+        moveToSelected($('.prev'));
         break;
 
       case 39: // right
-        moveToSelected('next');
+        moveToSelected($('.next'));
         break;
 
       default:
@@ -45,15 +45,9 @@ module.exports = function(games) {
     e.preventDefault();
   });
 
-  $('#carousel div').click(function() {
-    moveToSelected($(this));
-  });
-
-  $('#prev').click(function() {
-    moveToSelected('prev');
-  });
-
-  $('#next').click(function() {
-    moveToSelected('next');
+  $('#carousel div section').click(function() {
+    console.log('hello');
+    console.log($(this).parent());
+    moveToSelected($(this).parent());
   });
 }

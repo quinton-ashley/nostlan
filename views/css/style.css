@@ -46,7 +46,6 @@ div.cover {
 }
 
 div.endLabel {
-  position: absolute;
   width: 1024px;
   clip: rect(0px, 484px, 532px, 0px);
   transform: rotate(-90deg);

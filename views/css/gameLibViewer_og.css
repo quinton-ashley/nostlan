@@ -1,0 +1,86 @@
+html, body, main {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+#carousel {
+  position: relative;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+
+#carousel div {
+  position: absolute;
+  transition: transform 1s, left 1s, scale 1s, opacity 0s, z-index 0s;
+  opacity: 1;
+}
+
+#carousel div img {
+  height: 100vh;
+}
+
+#carousel div.hideLeft {
+  left: 0%;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.5);
+}
+
+#carousel div.hideRight {
+  left: 100%;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.5);
+}
+
+#carousel div.prev {
+  z-index: 5;
+  left: 24%;
+  transform: translateX(-50%) scale(0.75);
+}
+
+#carousel div.prevLeftSecond {
+  z-index: 4;
+  left: 16%;
+  transform: translateX(-50%) scale(0.5);
+}
+
+#carousel div.selected {
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+}
+
+#carousel div.next {
+  z-index: 5;
+  left: 76%;
+  transform: translateX(-50%) scale(0.75);
+}
+
+#carousel div.nextRightSecond {
+  z-index: 4;
+  left: 84%;
+  transform: translateX(-50%) scale(0.5);
+}
+
+#carousel div.superHideLeft {
+  left: 0% !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(0.5) !important;
+}
+
+#carousel div.superHideRight {
+  left: 100% !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(0.5) !important;
+}
+
+.buttons {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+}

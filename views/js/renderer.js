@@ -8,11 +8,12 @@ module.exports = async function(opt) {
   const log = console.log;
   global.__rootDir = opt.__rootDir;
 
+  const remote = require('electron').remote;
   const {
     app,
     dialog,
     Menu
-  } = require('electron').remote;
+  } = remote;
   const bot = require('./bot.js');
   const delay = require('delay');
   const fs = require('fs-extra');
@@ -28,9 +29,8 @@ module.exports = async function(opt) {
   window.Tether = require('tether');
   window.Bootstrap = require('bootstrap');
 
-  usrDir = '';
-
   require('../js/gcn_intro.js')();
+  await delay(4000);
 
   // make UI changes
   $('#update').hide();
@@ -40,6 +40,11 @@ module.exports = async function(opt) {
   let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
   let prefsPath = path.join(__rootDir, '/usr/prefs.json');
   let prefs = prefsDefault;
+  let gamesPaths = {
+    wii: path.join(__rootDir, '/usr/wiiGames.json')
+  };
+  let usrDir = '';
+  let games = [];
 
   function openLib(consoleName) {
     let dir = dialog.showOpenDialog({
@@ -59,94 +64,114 @@ module.exports = async function(opt) {
     return dir[0];
   }
 
-  // if prefs exist load them if not copy the default prefs
-  if (await fs.exists(prefsPath)) {
-    prefs = JSON.parse(await fs.readFile(prefsPath));
-  } else {
-    usrDir = chooseBottlenoseDir() + '/DATA/EMULATORS/Dolphin';
-    if (await fs.exists(usrDir)) {
-      prefs.wiiLibs.push(usrDir + '/GAMES');
-      usrDir += '/bottlenose';
-      await fs.ensureDir(usrDir);
-    } else {
-      prefs.wiiLibs.push(openLib('wii'));
+  function getEmuForConsole(consoleName) {
+    switch (consoleName) {
+      default: return 'Dolphin';
     }
   }
 
-  let gameDB = [];
+  async function reset(consoleName) {
 
-  async function getGameDB(consoleName) {
+    let gameDB = [];
     let DBPath = path.join(__rootDir, `/db/${consoleName}DB.json`);
-    return JSON.parse(await fs.readFile(DBPath)).games;
-  }
-  gameDB = await getGameDB('wii');
-  log(gameDB);
+    gameDB = JSON.parse(await fs.readFile(DBPath)).games;
+    log(gameDB);
 
-  let options = {
-    shouldSort: true,
-    threshold: 0.4,
-    location: 0,
-    distance: 100,
-    maxPatternLength: 32,
-    minMatchCharLength: 1,
-    keys: [
-      "id",
-      "title"
-    ]
-  };
-  let fuse = new Fuse(gameDB, options);
+    let options = {
+      shouldSort: true,
+      threshold: 0.4,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "id",
+        "title"
+      ]
+    };
+    let fuse = new Fuse(gameDB, options);
 
-  function addGame(searchTerm) {
-    let results = fuse.search(searchTerm);
-    for (let i = 0; i < results.length; i++) {
-      if (results[i].id[3] == 'E') {
-        $('#loadDialog0').text('loading ' + results[i].title);
-        return results[i];
+    function addGame(searchTerm) {
+      let results = fuse.search(searchTerm);
+      for (let i = 0; i < results.length; i++) {
+        if (results[i].id[3] == 'E') {
+          $('#loadDialog0').text('loading ' + results[i].title);
+          return results[i];
+        }
+      }
+      return false;
+    }
+
+    // TODO: cut strings to 32 characters max
+    let files = klawSync(prefs.wiiLibs[0], {
+      nodir: true
+    });
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i].path;
+      log(file);
+      let term = path.parse(file).name;
+      // eliminations
+      term = term.replace(/[\[\(]USA[\]\)]/gi, '');
+      term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
+      term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
+      term = term.replace(/[\[\(,](En|Ja|Eu)[\]\)]*/gi, '');
+      term = term.replace(/[\[\]]/g, '');
+      term = term.replace(/[\[\(]*v\d[^ ]*/gi, '');
+      // replacements
+      term = term.replace(/ -/g, ':');
+      term = term.replace(/ multi/gi, ' Multiplayer');
+      let temp = term.replace(/, The/gi, '');
+      if (term != temp) {
+        term = 'The ' + temp;
+      }
+      // special complete subs
+      term = term.replace(/mk(\d*)/gi, 'Mario Kart $1');
+
+      term = term.trim();
+      log(term);
+      let game = addGame(term);
+      if (game) {
+        log(game.title);
+        game.console = consoleName;
+        game.file = file;
+        games.push(game);
       }
     }
-    return false;
   }
 
-  let games = [];
-  // TODO: cut strings to 32 characters max
-  let files = klawSync(prefs.wiiLibs[0], {
-    nodir: true
-  });
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i].path;
-    log(file);
-    let term = path.parse(file).name;
-    // eliminations
-    term = term.replace(/[\[\(]USA[\]\)]/gi, '');
-    term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
-    term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
-    term = term.replace(/[\[\(,](En|Ja|Eu)[\]\)]*/gi, '');
-    term = term.replace(/[\[\]]/g, '');
-    term = term.replace(/[\[\(]*v\d[^ ]*/gi, '');
-    // replacements
-    term = term.replace(/ -/g, ':');
-    term = term.replace(/ multi/gi, ' Multiplayer');
-    let temp = term.replace(/, The/gi, '');
-    if (term != temp) {
-      term = 'The ' + temp;
-    }
-    // special complete subs
-    term = term.replace(/mk(\d*)/gi, 'Mario Kart $1');
-
-    term = term.trim();
-    log(term);
-    let game = addGame(term);
-    if (game) {
-      log(game.title);
-      game.file = file;
-      games.push(game);
+  async function load(consoleName) {
+    // if prefs exist load them if not copy the default prefs
+    if (await fs.exists(prefsPath)) {
+      games = JSON.parse(await fs.readFile(gamesPaths[consoleName]));
+      prefs = JSON.parse(await fs.readFile(prefsPath));
+      usrDir = prefs.usrDir;
+    } else {
+      usrDir = chooseBottlenoseDir();
+      let emu = getEmuForConsole(consoleName);
+      let gameDir = `${usrDir}/DATA/EMULATORS/${emu}/GAMES`;
+      if (await fs.exists(gameDir)) {
+        prefs.wiiLibs.push(gameDir);
+        usrDir += '/DATA/EMULATORS/bottlenose';
+        await fs.ensureDir(usrDir);
+        prefs.usrDir = usrDir;
+      } else {
+        log('choose the root folder of the WiiU_USB_Helper directory structure');
+        // prefs.wiiLibs.push(openLib(consoleName));
+      }
+      await reset(consoleName);
+      await fs.outputFile(gamesPaths[consoleName], JSON.stringify(games));
+      await fs.outputFile(prefsPath, JSON.stringify(prefs));
     }
   }
+
+  await load('wii');
+
   // await delay(1000000);
 
   async function dl(url, file) {
     if (!(await fs.exists(file))) {
       log('loading image: ' + url);
+      log('saving to: ' + file);
       let res = await req(url);
       if (res.status == 404) {
         return false;
@@ -156,187 +181,100 @@ module.exports = async function(opt) {
     return true;
   }
 
-  for (let i = 0; i < games.length; i++) {
-    let game = games[i];
-    let url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Game%20Cube/Scans/Full%20Size/Nintendo%20Game%20Cube%20${game.title.replace(/ /g, '%20')}%20Front%20Cover.jpg`;
-    let name = game.title.replace(/ /g, '_');
-    let dir = `${usrDir}/${game.id}/img`;
+  async function getFrontCover(game) {
+    let dir = `${usrDir}/${game.console}/${game.id}/img`;
     let file = `${dir}/front_cover.jpg`;
-    await dl(url, file);
-    url = `https://art.gametdb.com/wii/coverfullHQ/US/${game.id}.png`;
-    file = `${dir}/full_cover.png`;
-    await dl(url, file);
+    // if full cover already exists then don't check for high res
+    // more than once
+    if (!(await fs.exists(`${dir}/full_cover.jpg`))) {
+      return true;
+    }
+    let title = game.title.replace(/ /g, '%20').replace(/[\:]/g, '');
+    let url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Game%20Cube/Scans/Full%20Size/Nintendo%20Game%20Cube%20${title}%20Front%20Cover.jpg`;
+    let res = await dl(url, file);
+    if (res) {
+      return res;
+    }
+    url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Wii/Scans/Full%20Size/Nintendo%20Wii%20${title}%20Front%20Cover.jpg`;
+    res = await dl(url, file);
+    if (res) {
+      return res;
+    }
+    return false;
   }
 
-  function addCover(game, cl) {
+  async function getFullCover(game) {
+    let url = `https://art.gametdb.com/wii/coverfullHQ/US/${game.id}.png`;
+    let dir = `${usrDir}/${game.console}/${game.id}/img`;
+    let file = `${dir}/full_cover.png`;
+    let res = await dl(url, file);
+    if (res) {
+      return res;
+    }
+    return false;
+  }
+
+  for (let i = 0; i < games.length; i++) {
+    let game = games[i];
+    await getFrontCover(game);
+    await getFullCover(game);
+  }
+
+  games = games.sort((a, b) => a.title.localeCompare(b.title));
+
+  async function addCover(game, cl) {
+    let cl1 = '';
+    let file = `${usrDir}/${game.console}/${game.id}/img/Front_Cover.jpg`;
+    if (!(await fs.exists(file))) {
+      file = `${usrDir}/${game.console}/${game.id}/img/Full_Cover.png`;
+      if (!(await fs.exists(file))) {
+        throw `no images found for game: ${game.id} ${game.title}`;
+        return;
+      }
+      cl1 = 'front-cover-crop';
+    }
     $('#carousel').append(`
 			<div class="${((cl)?cl:'hideRight')}">
-	      <img src="${usrDir}/${game.id}/img/Front_Cover.jpg">
+				<section class="${cl1}">
+	      	<img src="${file}"/>
+				</section>
 	    </div>
 		`);
   }
 
-  for (let i = 0; i < games.length; i++) {
-    if (i >= 3) {
-      addCover(games[i]);
-    } else if (i == 0) {
-      addCover(games[i], 'selected');
-    } else if (i == 1) {
-      addCover(games[i], 'next');
-    } else if (i == 2) {
-      addCover(games[i], 'nextRightSecond');
+  for (let i = 0, j = 0; i < games.length; i++) {
+    try {
+      if (j >= 3) {
+        await addCover(games[i]);
+      } else if (j == 0) {
+        await addCover(games[i], 'selected');
+      } else if (j == 1) {
+        await addCover(games[i], 'next');
+      } else if (j == 2) {
+        await addCover(games[i], 'nextRightSecond');
+      }
+      j++;
+    } catch (ror) {
+      log(ror);
     }
   }
 
-  require('../js/gameLibViewer.js')(games);
+  require('../js/gameLibViewer.js')();
   $('#cvs').remove();
 
-  $('#openBtn').click(openLib);
+  // $('#openBtn').click(openLib);
 
-  const template = [{
-      label: 'File',
-      submenu: [{
-        label: 'Open',
-        click() {
-          open();
-        }
-      }]
-    }, {
-      label: 'Edit',
-      submenu: [{
-          role: 'undo'
-        },
-        {
-          role: 'redo'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          role: 'cut'
-        },
-        {
-          role: 'copy'
-        },
-        {
-          role: 'paste'
-        },
-        {
-          role: 'pasteandmatchstyle'
-        },
-        {
-          role: 'delete'
-        },
-        {
-          role: 'selectall'
-        }
-      ]
-    },
-    {
-      label: 'View',
-      submenu: [{
-          role: 'reload'
-        },
-        {
-          role: 'forcereload'
-        },
-        {
-          role: 'toggledevtools'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          role: 'resetzoom'
-        },
-        {
-          role: 'zoomin'
-        },
-        {
-          role: 'zoomout'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          role: 'togglefullscreen'
-        }
-      ]
-    },
-    {
-      role: 'window',
-      submenu: [{
-          role: 'minimize'
-        },
-        {
-          role: 'close'
-        }
-      ]
-    },
-    {
-      role: 'help',
-      submenu: [{
-        label: 'Learn More',
-        click() {
-          require('electron').shell.openExternal('https://electronjs.org')
-        }
-      }]
+  $(document).keydown(function(e) {
+    switch (e.which) {
+      case 13: // Enter
+        log('enter');
+        break;
+      case 27: // Escape
+        remote.getCurrentWindow().close();
+        break;
+      default:
+        return;
     }
-  ]
-
-  if (process.platform === 'darwin') {
-    template.unshift({
-      label: 'Qodemate',
-      submenu: [{
-          role: 'about'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          role: 'services',
-          submenu: []
-        },
-        {
-          type: 'separator'
-        },
-        {
-          role: 'hide'
-        },
-        {
-          role: 'hideothers'
-        },
-        {
-          role: 'unhide'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          role: 'quit'
-        }
-      ]
-    })
-
-    // Window menu
-    template[4].submenu = [{
-        role: 'close'
-      },
-      {
-        role: 'minimize'
-      },
-      {
-        role: 'zoom'
-      },
-      {
-        type: 'separator'
-      },
-      {
-        role: 'front'
-      }
-    ]
-  }
-
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
+    e.preventDefault();
+  });
 };

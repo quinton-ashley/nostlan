@@ -37,7 +37,8 @@ async function createWindow() {
 
   mainWindow = new BrowserWindow({
     width: 3840 / 2,
-    height: 1634 / 2,
+    // height: 1634 / 2,
+    height: 2160 / 2,
     frame: false
   });
 

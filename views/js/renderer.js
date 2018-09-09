@@ -28,9 +28,13 @@ module.exports = async function(opt) {
   window.$ = window.jQuery = $;
   window.Tether = require('tether');
   window.Bootstrap = require('bootstrap');
+  // var jQueryBridget = require('jquery-bridget');
+  // var Masonry = require('masonry-layout');
+  // // make Masonry a jQuery plugin
+  // jQueryBridget('masonry', Masonry, $);
 
   require('../js/gcn_intro.js')();
-  await delay(4000);
+  // await delay(4000);
 
   // make UI changes
   $('#update').hide();
@@ -222,7 +226,7 @@ module.exports = async function(opt) {
 
   games = games.sort((a, b) => a.title.localeCompare(b.title));
 
-  async function addCover(game, cl) {
+  async function addCover(game, reelNum) {
     let cl1 = '';
     let file = `${usrDir}/${game.console}/${game.id}/img/Front_Cover.jpg`;
     if (!(await fs.exists(file))) {
@@ -233,8 +237,8 @@ module.exports = async function(opt) {
       }
       cl1 = 'front-cover-crop';
     }
-    $('#carousel').append(`
-			<div class="${((cl)?cl:'hideRight')}">
+    $('.reel.r' + reelNum).append(`
+			<div class="panel ${game.id}">
 				<section class="${cl1}">
 	      	<img src="${file}"/>
 				</section>
@@ -244,14 +248,22 @@ module.exports = async function(opt) {
 
   for (let i = 0, j = 0; i < games.length; i++) {
     try {
-      if (j >= 3) {
-        await addCover(games[i]);
-      } else if (j == 0) {
-        await addCover(games[i], 'selected');
-      } else if (j == 1) {
-        await addCover(games[i], 'next');
-      } else if (j == 2) {
-        await addCover(games[i], 'nextRightSecond');
+      if (i < games.length * .125) {
+        await addCover(games[i], 0);
+      } else if (i < games.length * .25) {
+        await addCover(games[i], 1);
+      } else if (i < games.length * .375) {
+        await addCover(games[i], 2);
+      } else if (i < games.length * .50) {
+        await addCover(games[i], 3);
+      } else if (i < games.length * .625) {
+        await addCover(games[i], 4);
+      } else if (i < games.length * .75) {
+        await addCover(games[i], 5);
+      } else if (i < games.length * .875) {
+        await addCover(games[i], 6);
+      } else {
+        await addCover(games[i], 7);
       }
       j++;
     } catch (ror) {
@@ -259,10 +271,27 @@ module.exports = async function(opt) {
     }
   }
 
+  // $('.grid').masonry({
+  //   // options...
+  //   itemSelector: '.grid-item',
+  //   columnWidth: 200
+  // });
+
   require('../js/gameLibViewer.js')();
   $('#cvs').remove();
 
-  // $('#openBtn').click(openLib);
+  function test(game) {
+    let $cover = $('.GALE01');
+    let mod = 1;
+    if ($cover.parent().hasClass('reverse')) {
+      mod = -1;
+    }
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $cover.offset().top * mod
+    }, 1000);
+  }
+
+  $('#openBtn').click(test);
 
   $(document).keydown(function(e) {
     switch (e.which) {

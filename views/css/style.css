@@ -1,3 +1,17 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -67,34 +81,12 @@ div.coverText {
   padding: 0 !important;
 }
 
-.qma {
-  color: #8875d1;
-}
-
 .center {
   text-align: center;
 }
 
 nav {
   background-color: #transparent;
-}
-
-div.progress-bar.qma {
-  color: #8875d1;
-  background-color: #818c46;
-}
-
-a.qma:hover {
-  color: #fff;
-}
-
-a.qma {
-  color: #eee;
-}
-
-body.qma {
-  color: #eee;
-  background-color: #150900;
 }
 
 button.nav-link.btn.btn-secondary.qma.gray {
@@ -140,11 +132,11 @@ button.nav-link.btn.btn-secondary.qma:active {
   background: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
 }
 
+nav {
+  pointer-events: none;
+}
+
 .nav-link small {
   display: block;
   font-size: 10px;
-}
-
-nav.qma, form.qma {
-  background-color: #ffffff;
 }

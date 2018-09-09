@@ -1,112 +1,12 @@
-html, body, main {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #000;
-}
-
-#carousel {
-  position: relative;
-  height: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  overflow: hidden;
-}
-
-#carousel div {
-  position: absolute;
-  transition: transform 1s, scale 1s, left 1s, opacity 0s, z-index 0s;
-  opacity: 1;
-}
-
-#carousel div img {
-  height: 100vh;
-}
-
-#carousel div.superHideLeft {
-  left: 0% !important;
-  opacity: 0 !important;
-  transform: translateX(-50%) scale(.5) !important;
-}
-
-#carousel div.hideLeft {
-  left: 0%;
-  opacity: 0;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.prevLeftFourth {
-  z-index: 2;
-  left: 0%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.prevLeftThird {
-  z-index: 3;
-  left: 5%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.prevLeftSecond {
-  z-index: 4;
-  left: 15%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.prev {
-  z-index: 5;
-  left: 25%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.selected {
-  z-index: 10;
-  left: 50%;
-  transform: translateX(-50%) scale(1);
-}
-
-#carousel div.next {
-  z-index: 5;
-  left: 75%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.nextRightSecond {
-  z-index: 4;
-  left: 85%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.nextRightThird {
-  z-index: 3;
-  left: 95%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.nextRightFourth {
-  z-index: 2;
-  left: 100%;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.hideRight {
-  left: 100%;
-  opacity: 0;
-  transform: translateX(-50%) scale(.5);
-}
-
-#carousel div.superHideRight {
-  left: 100% !important;
-  opacity: 0 !important;
-  transform: translateX(-50%) scale(.5) !important;
+#gameLibViewer {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .front-cover-crop {
   height: 100%;
-  width: 100%;
+  width: 210%;
   overflow: hidden;
-  margin-left: 26%;
 }
 
 .front-cover-crop img {
@@ -115,9 +15,76 @@ html, body, main {
   transform: translate(-53%, 0%);
 }
 
-.buttons {
+img {
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.reel.reverse {
   position: fixed;
+  bottom: 0;
+}
+
+.reel {
+  position: absolute;
+  width: 12.5%;
+  z-index: 1;
+}
+
+.reel.r0 {
+  left: 0%;
+}
+
+.reel.r1 {
+  left: 12.5%;
+}
+
+.reel.r2 {
+  left: 25%;
+}
+
+.reel.r3 {
+  left: 37.5%;
+}
+
+.reel.r4 {
   left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
+}
+
+.reel.r5 {
+  left: 62.5%;
+}
+
+.reel.r6 {
+  left: 75%;
+}
+
+.reel.r7 {
+  left: 87.5%;
+}
+
+.panel.selected {
+  z-index: 10;
+  transform: translate(-250%, 0%) scale(3);
+  opacity: 1 !important;
+}
+
+.selected .panel:not(.selected) {
+  opacity: 0;
+}
+
+.panel {
+  height: auto;
+  width: 100%;
+  float: center;
+  z-index: 1;
+  left: 0%;
+  transform: scale(.96);
+}
+
+.reel, .panel {
+  transition: transform 2s, scale 2s, left 2s, opacity 0.2s, z-index 0s;
 }

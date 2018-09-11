@@ -277,33 +277,31 @@ module.exports = async function(opt) {
   //   columnWidth: 200
   // });
 
-  require('../js/gameLibViewer.js')();
+  require('../js/gameLibViewer.js')(games, prefs);
   $('#cvs').remove();
 
-  function test(game) {
-    let $cover = $('.GALE01');
-    let mod = 1;
-    if ($cover.parent().hasClass('reverse')) {
-      mod = -1;
-    }
-    $([document.documentElement, document.body]).animate({
-      scrollTop: $cover.offset().top * mod
-    }, 1000);
+  function resetBtn() {
+
   }
 
-  $('#openBtn').click(test);
+  function openBtn() {
 
-  $(document).keydown(function(e) {
-    switch (e.which) {
-      case 13: // Enter
-        log('enter');
-        break;
-      case 27: // Escape
-        remote.getCurrentWindow().close();
-        break;
-      default:
-        return;
-    }
-    e.preventDefault();
-  });
+  }
+
+  $('#openBtn').click(openBtn);
+  $('#resetBtn').click(resetBtn);
+
+  // $(document).keydown(function(e) {
+  //   switch (e.which) {
+  //     case 13: // Enter
+  //       log('enter');
+  //       break;
+  //     case 27: // Escape
+  //       remote.getCurrentWindow().close();
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  //   e.preventDefault();
+  // });
 };

@@ -12,5 +12,7 @@
   "wiiLibs": [],
   "wiiuLibs": [],
   "3dsLibs": [],
-  "switchLibs": []
+  "switchLibs": [],
+  "usrDir": "",
+  "region": "E"
 }

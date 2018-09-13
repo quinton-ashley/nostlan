@@ -7,12 +7,15 @@
   height: 100%;
   width: 210%;
   overflow: hidden;
+  position: absolute;
+  top: -0.9%;
+  left: 0.5%;
 }
 
 .front-cover-crop img {
-  -webkit-transform: translate(-53%, 0%);
-  -ms-transform: translate(-53%, 0%);
-  transform: translate(-53%, 0%) scale(.95);
+  -webkit-transform: translate(-51.5%, 0%) scale(.955);
+  -ms-transform: translate(-51.5%, 0%) scale(.955);
+  transform: translate(-51.5%, 0%) scale(.955);
 }
 
 img {
@@ -130,6 +133,18 @@ div.cover {
   text-align: center;
   margin-left: 30px;
   background-color: #6a56b9;
+}
+
+div.cover.power {
+  border-radius: 0 0 32px 0;
+}
+
+div.cover.reset {
+  border-radius: 0 32px 0 0;
+}
+
+div.cover.open {
+  border-radius: 32px 0 0 0;
 }
 
 div.endLabel {

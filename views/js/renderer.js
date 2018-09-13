@@ -14,15 +14,12 @@ module.exports = async function(opt) {
     dialog,
     Menu
   } = remote;
-  const bot = require('./bot.js');
   const delay = require('delay');
   const fs = require('fs-extra');
   const Fuse = require('fuse.js');
   const klawSync = require('klaw-sync');
-  const md = require('markdown-it')();
-  const os = require('os');
   const path = require('path');
-  const req = require('requisition');
+  const pug = require('pug');
   const $ = require('jquery');
 
   window.$ = window.jQuery = $;
@@ -32,8 +29,14 @@ module.exports = async function(opt) {
   // var Masonry = require('masonry-layout');
   // // make Masonry a jQuery plugin
   // jQueryBridget('masonry', Masonry, $);
+  const viewer = require('../js/gameLibViewer.js');
 
-  require('../js/gcn_intro.js')();
+  const gcnIntroHTML = pug.compileFile(path.join(__dirname, '../pug/gcnIntro.pug'));
+  const gcnIntro = function() {
+    $('body').prepend(gcnIntroHTML());
+    require('../js/gcnIntro.js')();
+  }
+  gcnIntro();
   // await delay(4000);
 
   // make UI changes
@@ -49,6 +52,10 @@ module.exports = async function(opt) {
   };
   let usrDir = '';
   let games = [];
+
+  String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+  }
 
   function openLib(consoleName) {
     let dir = dialog.showOpenDialog({
@@ -75,7 +82,7 @@ module.exports = async function(opt) {
   }
 
   async function reset(consoleName) {
-
+    games = [];
     let gameDB = [];
     let DBPath = path.join(__rootDir, `/db/${consoleName}DB.json`);
     gameDB = JSON.parse(await fs.readFile(DBPath)).games;
@@ -97,11 +104,24 @@ module.exports = async function(opt) {
 
     function addGame(searchTerm) {
       let results = fuse.search(searchTerm);
+      let region = prefs.region;
+      let game = results.find(x => x.id === x.id.replaceAt(3, region));
+      if (game) {
+        return game;
+      }
       for (let i = 0; i < results.length; i++) {
-        if (results[i].id[3] == 'E') {
-          $('#loadDialog0').text('loading ' + results[i].title);
-          return results[i];
+        let gRegion = results[i].id[3];
+        if (gRegion == 'E' && (region == 'P' || region == 'J')) {
+          continue;
         }
+        if (gRegion == 'P' && (region == 'E' || region == 'J')) {
+          continue;
+        }
+        if (gRegion == 'J' && (region == 'E' || region == 'P')) {
+          continue;
+        }
+        $('#loadDialog0').text('loading ' + results[i].title);
+        return results[i];
       }
       return false;
     }
@@ -119,17 +139,32 @@ module.exports = async function(opt) {
       term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
       term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
       term = term.replace(/[\[\(,](En|Ja|Eu)[\]\)]*/gi, '');
-      term = term.replace(/[\[\]]/g, '');
-      term = term.replace(/[\[\(]*v\d[^ ]*/gi, '');
       // replacements
       term = term.replace(/ -/g, ':');
-      term = term.replace(/ multi/gi, ' Multiplayer');
       let temp = term.replace(/, The/gi, '');
       if (term != temp) {
         term = 'The ' + temp;
       }
+      // eliminations part 2
+      term = term.replace(/,/g, '');
       // special complete subs
-      term = term.replace(/mk(\d*)/gi, 'Mario Kart $1');
+      term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
+      term = term.replace(/ 20XX.*/gi, ': 20XX Training Pack');
+      term = term.replace(/sm *64/gi, 'Super Mario 64')
+      term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
+      term = term.replace(/warioware,*/gi, 'Wario Ware');
+      term = term.replace(/ bros /gi, ' Bros. ');
+      term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
+      term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
+      term = term.replace(/lego/gi, 'lego');
+      // special check for ids
+      let id = term.match(/[A-Z1-9][A-Z1-9][A-Z1-9][A-Z]\d*/g);
+      if (id) {
+        term = id[0];
+      }
+      // eliminations part 3
+      term = term.replace(/[\[\(]*(v\d.|\d+\.).*/gi, '');
+      term = term.replace(/[\[.*\]]/g, '');
 
       term = term.trim();
       log(term);
@@ -141,6 +176,8 @@ module.exports = async function(opt) {
         games.push(game);
       }
     }
+    await fs.outputFile(gamesPaths[consoleName], JSON.stringify(games));
+    await fs.outputFile(prefsPath, JSON.stringify(prefs));
   }
 
   async function load(consoleName) {
@@ -152,142 +189,57 @@ module.exports = async function(opt) {
     } else {
       usrDir = chooseBottlenoseDir();
       let emu = getEmuForConsole(consoleName);
-      let gameDir = `${usrDir}/DATA/EMULATORS/${emu}/GAMES`;
+      let gameDir = `${usrDir}/${emu}/GAMES`;
       if (await fs.exists(gameDir)) {
         prefs.wiiLibs.push(gameDir);
-        usrDir += '/DATA/EMULATORS/bottlenose';
+        usrDir += '/bottlenose';
         await fs.ensureDir(usrDir);
         prefs.usrDir = usrDir;
       } else {
-        log('choose the root folder of the WiiU_USB_Helper directory structure');
+        log(`choose emulation folder with directory structure:
+{root folder can have any name}
+├─┬ Dolphin
+│ ├─┬ BIN
+│ │ ├── Languages
+│ │ ├── Sys
+│ │ ├── User
+│ │ ├── portable.txt
+│ │ ├── Dolphin.exe
+│ │ └── ...
+│ └─┬ GAMES
+│   └── ...
+├── Cemu
+└── Yuzu`);
         // prefs.wiiLibs.push(openLib(consoleName));
       }
       await reset(consoleName);
-      await fs.outputFile(gamesPaths[consoleName], JSON.stringify(games));
-      await fs.outputFile(prefsPath, JSON.stringify(prefs));
     }
   }
 
   await load('wii');
-
-  // await delay(1000000);
-
-  async function dl(url, file) {
-    if (!(await fs.exists(file))) {
-      log('loading image: ' + url);
-      log('saving to: ' + file);
-      let res = await req(url);
-      if (res.status == 404) {
-        return false;
-      }
-      return await res.saveTo(file);
-    }
-    return true;
-  }
-
-  async function getFrontCover(game) {
-    let dir = `${usrDir}/${game.console}/${game.id}/img`;
-    let file = `${dir}/front_cover.jpg`;
-    // if full cover already exists then don't check for high res
-    // more than once
-    if (!(await fs.exists(`${dir}/full_cover.jpg`))) {
-      return true;
-    }
-    let title = game.title.replace(/ /g, '%20').replace(/[\:]/g, '');
-    let url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Game%20Cube/Scans/Full%20Size/Nintendo%20Game%20Cube%20${title}%20Front%20Cover.jpg`;
-    let res = await dl(url, file);
-    if (res) {
-      return res;
-    }
-    url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Wii/Scans/Full%20Size/Nintendo%20Wii%20${title}%20Front%20Cover.jpg`;
-    res = await dl(url, file);
-    if (res) {
-      return res;
-    }
-    return false;
-  }
-
-  async function getFullCover(game) {
-    let url = `https://art.gametdb.com/wii/coverfullHQ/US/${game.id}.png`;
-    let dir = `${usrDir}/${game.console}/${game.id}/img`;
-    let file = `${dir}/full_cover.png`;
-    let res = await dl(url, file);
-    if (res) {
-      return res;
-    }
-    return false;
-  }
-
-  for (let i = 0; i < games.length; i++) {
-    let game = games[i];
-    await getFrontCover(game);
-    await getFullCover(game);
-  }
-
-  games = games.sort((a, b) => a.title.localeCompare(b.title));
-
-  async function addCover(game, reelNum) {
-    let cl1 = '';
-    let file = `${usrDir}/${game.console}/${game.id}/img/Front_Cover.jpg`;
-    if (!(await fs.exists(file))) {
-      file = `${usrDir}/${game.console}/${game.id}/img/Full_Cover.png`;
-      if (!(await fs.exists(file))) {
-        throw `no images found for game: ${game.id} ${game.title}`;
-        return;
-      }
-      cl1 = 'front-cover-crop';
-    }
-    $('.reel.r' + reelNum).append(`
-			<div class="panel ${game.id}">
-				<section class="${cl1}">
-	      	<img src="${file}"/>
-				</section>
-	    </div>
-		`);
-  }
-
-  for (let i = 0, j = 0; i < games.length; i++) {
-    try {
-      if (i < games.length * .125) {
-        await addCover(games[i], 0);
-      } else if (i < games.length * .25) {
-        await addCover(games[i], 1);
-      } else if (i < games.length * .375) {
-        await addCover(games[i], 2);
-      } else if (i < games.length * .50) {
-        await addCover(games[i], 3);
-      } else if (i < games.length * .625) {
-        await addCover(games[i], 4);
-      } else if (i < games.length * .75) {
-        await addCover(games[i], 5);
-      } else if (i < games.length * .875) {
-        await addCover(games[i], 6);
-      } else {
-        await addCover(games[i], 7);
-      }
-      j++;
-    } catch (ror) {
-      log(ror);
-    }
-  }
-
-  // $('.grid').masonry({
-  //   // options...
-  //   itemSelector: '.grid-item',
-  //   columnWidth: 200
-  // });
-
-  require('../js/gameLibViewer.js')(games, prefs);
+  await viewer.load(games, prefs);
   $('#cvs').remove();
 
-  function resetBtn() {
+  async function powerBtn() {
+    await viewer.powerBtn();
+    gcnIntro();
+    await viewer.load(games, prefs);
+    $('#cvs').remove();
+  }
+
+  async function resetBtn() {
+    viewer.remove();
+    gcnIntro();
+    await reset('wii');
+    await viewer.load(games, prefs);
+    $('#cvs').remove();
+  }
+
+  async function openBtn() {
 
   }
 
-  function openBtn() {
-
-  }
-
+  $('#powerBtn').click(powerBtn);
   $('#openBtn').click(openBtn);
   $('#resetBtn').click(resetBtn);
 

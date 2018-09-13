@@ -20,7 +20,6 @@ const Bot = function() {
   const mac = (osType == 'Darwin');
   const win = (osType == 'Windows_NT');
   // robot.setKeyboardDelay(10);
-  let qoapp;
 
   this.copy = async function(text) {
     await awaitCopy(text);

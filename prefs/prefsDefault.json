@@ -1,18 +1,32 @@
 {
-  "dolphinApp": {
-    "macOS": "/Applications/dolphin.app",
-    "linux": "",
-    "windows": ""
-  },
-  "dolphin": {
-    "macOS": "~/Library/Application Support/Dolphin",
-    "linux": "",
-    "windows": ""
-  },
-  "wiiLibs": [],
-  "wiiuLibs": [],
-  "3dsLibs": [],
-  "switchLibs": [],
-  "usrDir": "",
-  "region": "E"
+	"usrDir": "",
+	"region": "E",
+	"wii": {
+		"emu": "Dolphin",
+		"libs": [],
+		"defaultCover": {
+			"id": "GALE01",
+			"title": "Super Smash Bros. Melee"
+		}
+	},
+	"wiiu": {
+		"emu": "Cemu",
+		"libs": [],
+		"defaultCover": {
+			"id": "AMKE01",
+			"title": "Mario Kart 8"
+		}
+	},
+	"3ds": {
+		"emu": "Citra",
+		"libs": []
+	},
+	"switch": {
+		"emu": "Yuzu",
+		"libs": [],
+		"defaultCover": {
+			"id": "AAACA",
+			"title": "Super Mario Odyssey"
+		}
+	}
 }

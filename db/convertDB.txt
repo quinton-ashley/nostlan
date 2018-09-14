@@ -1,5 +1,5 @@
 // format
-regex: \n([^ ]*) = ([^\n]*)
+regex: \n\W*([^ ]*) = ([^\n]*)
 replace: {\n"id": "$1", "title": "$2", "texp": []\n},
 
 // remove non-english results

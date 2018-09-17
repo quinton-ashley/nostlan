@@ -1,12 +1,33 @@
 {
 	"games": [{
+		"id": "VGMOA",
+		"title": "spacenx",
+		"img": {
+			"coverfull": "https://camo.githubusercontent.com/c2abbf93fbf0bc199c06121b493318b85da0a250/687474703a2f2f76676d6f6f73652e636f6d2f706f7374732f32343236313230312532302d25323025354272656c65617365253544253230537061636525323047616d652125323028666f7225323057696925323055292e706f73742f67616d65706c61792e706e67"
+		}
+	}, {
+		"id": "",
+		"title": "Super Mario Party",
+		"img": {
+			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/81O3ChgymRL.jpg"
+		}
+	}, {
+		"id": "ROWEA",
+		"title": "Okami HD",
+		"img": {
+			"cover": "https://images-na.ssl-images-amazon.com/images/I/919I8yMJTUL.jpg"
+		}
+	}, {
 		"id": "AAAAA",
 		"title": "The Legend of Zelda: Breath of the Wild",
 		"texp": []
 	}, {
 		"id": "AAACA",
 		"title": "Super Mario Odyssey",
-		"texp": []
+		"texp": [],
+		"img": {
+			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91JZdTYcjFL.jpg"
+		}
 	}, {
 		"id": "AAB6A",
 		"title": "Splatoon 2",
@@ -89,6 +110,10 @@
 		"texp": []
 	}, {
 		"id": "ABM2A",
+		"title": "LEGO City Undercover",
+		"texp": []
+	}, {
+		"id": "ABM2B",
 		"title": "LEGO City Undercover",
 		"texp": []
 	}, {
@@ -320,6 +345,10 @@
 		"title": "Axiom Verge",
 		"texp": []
 	}, {
+		"id": "AEJQB",
+		"title": "Axiom Verge",
+		"texp": []
+	}, {
 		"id": "AEQKA",
 		"title": "Overcooked: Special Edition",
 		"texp": []
@@ -329,11 +358,11 @@
 		"texp": []
 	}, {
 		"id": "AESEA",
-		"title": "Farming Simulator: Nintendo Switch Edition",
+		"title": "Farming Simulator",
 		"texp": []
 	}, {
 		"id": "AESEB",
-		"title": "Farming Simulator: Nintendo Switch Edition",
+		"title": "Farming Simulator",
 		"texp": []
 	}, {
 		"id": "AEXYA",
@@ -456,6 +485,13 @@
 		"title": "3D MiniGolf",
 		"texp": []
 	}, {
+		"id": "AJH9A",
+		"title": "Captain Toad: Treasure Tracker",
+		"texp": [],
+		"img": {
+			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91mSluAuj7L.jpg"
+		}
+	}, {
 		"id": "AJJ7A",
 		"title": "Monster Energy Supercross: The Official Videogame",
 		"texp": []
@@ -465,8 +501,11 @@
 		"texp": []
 	}, {
 		"id": "AK6JA",
-		"title": "Street Fighter™ 30th Anniversary Collection",
-		"texp": []
+		"title": "Street Fighter: 30th Anniversary Collection",
+		"texp": [],
+		"img": {
+			"box": "https://art.gametdb.com/switch/box/EN/AK6JA.png"
+		}
 	}, {
 		"id": "AKUTA",
 		"title": "Zelda Musou: Hyrule All Stars DX",
@@ -482,7 +521,10 @@
 	}, {
 		"id": "ALERA",
 		"title": "Mario Tennis Aces",
-		"texp": []
+		"texp": [],
+		"img": {
+			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
+		}
 	}, {
 		"id": "ALXDA",
 		"title": "Happy Birthdays",

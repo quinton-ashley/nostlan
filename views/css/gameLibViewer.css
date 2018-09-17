@@ -3,7 +3,7 @@
   max-height: 100%;
 }
 
-.front-cover-crop {
+.front-cover-crop.wii {
   height: 100%;
   width: 210%;
   overflow: hidden;
@@ -12,10 +12,30 @@
   left: 0.5%;
 }
 
-.front-cover-crop img {
-  -webkit-transform: translate(-51.5%, 0%) scale(.955);
-  -ms-transform: translate(-51.5%, 0%) scale(.955);
+.front-cover-crop.switch {
+  height: 100%;
+  width: 200%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.6%;
+  left: 0.8%;
+}
+
+.front-cover.switch {
+  height: 100%;
+  width: 94.5%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.6%;
+  left: 0.8%;
+}
+
+.front-cover-crop.wii img {
   transform: translate(-51.5%, 0%) scale(.955);
+}
+
+.front-cover-crop.switch img {
+  transform: translate(-52.4%, 0%);
 }
 
 img {
@@ -117,6 +137,12 @@ nav.navbar {
   font-weight: bold;
 }
 
+@font-face {
+  font-family: theboldfont;
+  src: local("theboldfont"), local("theboldfont"), url(../fonts/theboldfont.ttf);
+  font-weight: bold;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -126,7 +152,7 @@ nav.navbar {
   }
 }
 
-div.cover {
+div.cover.gcn {
   font-family: "Gamecuben", "Gamecuben", Gamecuben;
   font-size: 16px;
   font-weight: bold;
@@ -135,16 +161,27 @@ div.cover {
   background-color: #6a56b9;
 }
 
+div.cover {
+  font-family: "theboldfont", "theboldfont", theboldfont;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 30px;
+}
+
 div.cover.power {
   border-radius: 0 0 32px 0;
+  background-color: rgb(130, 130, 130);
 }
 
 div.cover.reset {
   border-radius: 0 32px 0 0;
+  background-color: rgb(10, 185, 230);
 }
 
 div.cover.open {
   border-radius: 32px 0 0 0;
+  background-color: rgb(255, 60, 40);
 }
 
 div.endLabel {
@@ -153,8 +190,13 @@ div.endLabel {
   transform: rotate(-90deg);
 }
 
-div.coverText {
+div.coverText.gcn {
   color: #56429c;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
+}
+
+div.coverText {
+  color: rgb(70, 70, 70);
   text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
 }
 
@@ -216,8 +258,12 @@ button.nav-link.btn.btn-secondary.qma:active {
   background-color: #493c7a;
 }
 
-#openBtn {
+#openBtn.gcn {
   background: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
+}
+
+#powerBtn, #resetBtn, #openBtn {
+  background-color: rgb(70, 70, 70);
 }
 
 nav {

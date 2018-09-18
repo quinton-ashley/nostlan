@@ -1,50 +1,13 @@
+/*================Game Lib Viewer====================*/
+
 #gameLibViewer {
   max-width: 100%;
   max-height: 100%;
 }
 
-.wii .front-cover-crop {
-  height: 100%;
-  width: 200%;
-  overflow: hidden;
-  position: absolute;
-  top: 1.6%;
-  left: 0%;
-}
-
-.switch .front-cover-crop {
-  height: 100%;
-  width: 200%;
-  overflow: hidden;
-  position: absolute;
-  top: 2.6%;
-  left: 0.8%;
-}
-
-.switch .front-cover {
-  height: 100%;
-  width: 94.5%;
-  overflow: hidden;
-  position: absolute;
-  top: 2.6%;
-  left: 0.8%;
-}
-
-.wii .front-cover-crop img {
-  transform: translate(-51.2%, 0%);
-}
-
-.switch .front-cover-crop img {
-  transform: translate(-52.4%, 0%);
-}
-
 img {
   width: 100%;
   float: center;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .reel.reverse {
@@ -118,7 +81,92 @@ img {
   transition: transform 2s, scale 2s, left 1.5s, opacity 1s, z-index 2s;
 }
 
-/*================Gamecube Cover====================*/
+/*================Wii Game Lib Viewer====================*/
+
+.wii .front-cover-crop {
+  height: 100%;
+  width: 200.1%;
+  overflow: hidden;
+  position: absolute;
+  top: 1.4%;
+  left: 0%;
+}
+
+.wii .front-cover {
+  height: 100%;
+  width: 94.5%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.6%;
+  left: 0.8%;
+}
+
+.wii .front-cover-crop img {
+  transform: translate(-51.2%, 0%);
+}
+
+/*================Wii Game Lib Viewer====================*/
+
+.wiiu .front-cover-crop {
+  height: 100%;
+  width: 206%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.6%;
+  left: 0.2%;
+}
+
+.wiiu .front-cover {
+  height: 100%;
+  width: 97%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.2%;
+  left: 0.2%;
+}
+
+.wiiu .front-cover-crop img {
+  transform: translate(-52.9%, 0%);
+}
+
+/*================Switch Game Lib Viewer====================*/
+
+.switch .front-cover-crop {
+  height: 100%;
+  width: 200%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.6%;
+  left: 0.8%;
+}
+
+.switch .front-cover {
+  height: 100%;
+  width: 94.5%;
+  overflow: hidden;
+  position: absolute;
+  top: 2.6%;
+  left: 0.8%;
+}
+
+.switch .front-cover-crop img {
+  transform: translate(-52.4%, 0%);
+}
+
+/*================Cover====================*/
+
+@font-face {
+  font-family: Nintender;
+  src: local("Nintender"), local("Nintender"), url(../fonts/Nintender.ttf);
+  font-weight: bold;
+}
+
+.cover select {
+  font-family: "Nintender", "Nintender", Nintender;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
 
 nav {
   display: flex;
@@ -130,60 +178,12 @@ nav * {
   pointer-events: all;
 }
 
-@font-face {
-  font-family: Gamecuben;
-  src: local("Gamecuben"), local("Gamecuben"), url(../fonts/Gamecuben.ttf);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Nintender;
-  src: local("Nintender"), local("Nintender"), url(../fonts/Nintender.ttf);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: theboldfont;
-  src: local("theboldfont"), local("theboldfont"), url(../fonts/theboldfont.ttf);
-  font-weight: bold;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-div.cover {
-  margin-left: 30px;
-}
-
-.gcn {
-  font-family: "Gamecuben", "Gamecuben", Gamecuben;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.cover select {
-  font-family: "Nintender", "Nintender", Nintender;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.switch {
-  font-family: "theboldfont", "theboldfont", theboldfont;
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
-}
-
 .cover {
   width: 19%;
+  border-style: solid;
+  margin-left: 30px;
+  color: rgb(70, 70, 70);
+  background-color: rgb(130, 130, 130);
 }
 
 .cover * {
@@ -191,18 +191,8 @@ div.cover {
   margin-bottom: auto;
 }
 
-.gcn .cover {
-  color: #56429c;
-  background-color: #6a56b9;
-}
-
-.switch .cover {
-  color: rgb(70, 70, 70);
-  background-color: rgb(130, 130, 130);
-}
-
-.cover {
-  border-style: solid;
+.coverText, .cover select:not(.btn) {
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
 }
 
 .cover.power {
@@ -238,88 +228,8 @@ div.cover {
   margin-right: auto;
 }
 
-.switch .cover.reset {
-  background-color: rgb(10, 185, 230);
-  border-color: rgb(45, 210, 255);
-}
-
-.switch .cover.open {
-  background-color: rgb(255, 60, 40);
-  border-color: rgb(255, 90, 60);
-}
-
-div.endLabel {
-  width: 1024px;
-  clip: rect(0px, 484px, 532px, 0px);
-  transform: rotate(-90deg);
-}
-
-.gcn .coverText, .gcn .cover select:not(.btn) {
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
-}
-
-.gcn .cover select {
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
-}
-
-.switch .coverText {
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
-}
-
-#update {
-  animation-name: spin;
-  animation-duration: 2000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.hiddenRow {
-  padding: 0 !important;
-}
-
-.center {
-  text-align: center;
-}
-
-button.nav-link.btn.btn-secondary.gray {
-  background-color: #d0d0d0;
-}
-
-button.nav-link.btn.btn-secondary, .cover select.btn {
-  border-width: 4px;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 50%;
-  box-shadow: none;
-  padding: 0px;
-  margin: 0px;
-  width: 80px;
-  height: 80px;
-}
-
-.cover select {
-  border-width: 4px;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 20px;
-  box-shadow: none;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: auto;
-  padding-left: 4%;
-  padding-right: 4%;
-  width: fit-content;
-  height: 40px;
-}
-
-.switch .cover select {
-  background-color: rgb(70, 70, 70);
-}
-
-.gcn .cover select:not(.btn) {
-  border-color: #56429c;
-  color: #56429c;
+img.logoNav {
+  height: 32px;
 }
 
 .cover select {
@@ -335,40 +245,175 @@ button.nav-link.btn.btn-secondary, .cover select.btn {
   color: #000;
 }
 
-/* need to implement inner border
-https://stackoverflow.com/questions/4839613/how-to-make-round-corners-to-both-inside-of-a-box-and-its-border
-*/
-
-img.logoNav {
-  height: 32px;
+.cover button, .cover button:hover, .cover select.btn {
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+  width: 80px;
+  height: 80px;
 }
 
-button.nav-link.btn.btn-secondary:hover {
-  color: #ffe8d1;
+.cover button {
+  color: unset;
+  background-color: rgb(70, 70, 70);
 }
 
-button.nav-link.btn.btn-secondary.gray:active, button.nav-link.btn.btn-secondary.gray:selected {
-  background-color: #c0c0c0;
+.cover button:hover {
+  background-color: rgb(60, 60, 60);
 }
 
-button.nav-link.btn.btn-secondary:active {
-  color: #ffe8d1;
-  background-color: #493c7a;
+.cover select {
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(70, 70, 70);
+  color: rgb(70, 70, 70);
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: none;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: auto;
+  padding-left: 4%;
+  padding-right: 4%;
+  width: fit-content;
+  height: 40px;
+}
+
+.cover select:not(.btn) {
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
+}
+
+/*================Gamecube Cover====================*/
+
+@font-face {
+  font-family: Gamecuben;
+  src: local("Gamecuben"), local("Gamecuben"), url(../fonts/Gamecuben.ttf);
+  font-weight: bold;
+}
+
+.gcn {
+  font-family: "Gamecuben", "Gamecuben", Gamecuben;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.gcn .cover {
+  color: #56429c;
+  background-color: #6a56b9;
 }
 
 .gcn #openSel {
   background: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
 }
 
-.switch #powerBtn, .switch #resetBtn, .switch #openBtn, .switch #menuBtn {
-  background-color: rgb(70, 70, 70);
-}
-
-.gcn .cover button, .gcn .cover select:not(.btn) {
+.gcn .cover button {
   background-color: #6a56b9;
 }
 
-.nav-link small {
-  display: block;
-  font-size: 10px;
+.gcn button:hover {
+  color: #ffe8d1;
+}
+
+.gcn button.gray:active, .gcn button.gray:selected {
+  background-color: #c0c0c0;
+}
+
+.gcn .cover button:active {
+  color: #ffe8d1;
+  background-color: #493c7a;
+}
+
+.gcn .cover select:not(.btn) {
+  border-color: #56429c;
+  color: #56429c;
+}
+
+/*================Switch Cover====================*/
+
+@font-face {
+  font-family: theboldfont;
+  src: local("theboldfont"), local("theboldfont"), url(../fonts/theboldfont.ttf);
+  font-weight: bold;
+}
+
+.switch {
+  font-family: "theboldfont", "theboldfont", theboldfont;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.switch .cover.reset {
+  background-color: rgb(10, 185, 230);
+  border-color: rgb(45, 210, 255);
+}
+
+.switch .cover.open {
+  background-color: rgb(255, 60, 40);
+  border-color: rgb(255, 90, 60);
+}
+
+.switch .cover.open .coverText {
+  color: rgb(210, 50, 25);
+}
+
+.switch .cover.reset .coverText {
+  color: rgb(0, 125, 160);
+}
+
+.switch .cover select:not(.btn) {
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
+}
+
+.switch .cover select {
+  background-color: rgb(70, 70, 70);
+}
+
+.switch .cover select:not(.btn) {
+  border-color: rgb(70, 70, 70);
+  color: rgb(70, 70, 70);
+}
+
+.switch .cover select:not(.btn) {
+  background-color: rgb(130, 130, 130);
+}
+
+.switch #powerBtn, .switch #resetBtn {
+  background-color: rgb(70, 70, 70);
+}
+
+/*================Misc====================*/
+
+* {
+  box-sizing: border-box;
+}
+
+.hiddenRow {
+  padding: 0 !important;
+}
+
+.center {
+  text-align: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#update {
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }

@@ -25,7 +25,25 @@ Emulation (root folder can have any name)
 └── Yuzu
 ```
 
-# Fonts
+# Credits!
+
+## Loading Sequences
+
+Gamecube Loading Intro CSS by MarcMalignan
+MIT
+<https://codepen.io/MarcMalignan/pen/doCth>
+
+Switch Loading Intro Pure CSS by joshbader
+MIT
+<https://codepen.io/joshbader/pen/mjZzGM>
+
+## Controllers
+
+Wii U Gamepad SVG by Tokyoship from Wikimedia Commons
+Creative Commons Attribution 3.0 Unported
+<https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg>
+
+## Fonts
 
 nintender
 <http://www.fontspace.com/lyric-type/nintender>

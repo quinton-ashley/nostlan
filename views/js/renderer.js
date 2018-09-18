@@ -31,10 +31,11 @@ module.exports = async function(opt) {
 	// jQueryBridget('masonry', Masonry, $);
 	const viewer = require('../js/gameLibViewer.js');
 
-	const gcnIntroHTML = pug.compileFile(path.join(__dirname, '../pug/gcnIntro.pug'));
+	const gcnIntroHTML = pug.compileFile(path.join(__dirname,
+		'../pug/gcnLoad.pug'));
 	const gcnIntro = function() {
 		$('body').prepend(gcnIntroHTML());
-		require('../js/gcnIntro.js')();
+		require('../js/gcnLoad.js')();
 	}
 	gcnIntro();
 	// await delay(4000);
@@ -131,7 +132,7 @@ module.exports = async function(opt) {
 		}
 
 		let files = klawSync(prefs[sys].libs[0], {
-			depthLimit: true
+			depthLimit: 0
 		});
 		for (let i = 0; i < files.length; i++) {
 			let file = files[i].path;
@@ -210,7 +211,7 @@ module.exports = async function(opt) {
 				<option value="${sys}">${sys}</option>
 				`);
 		}
-		sys = 'wii';
+		sys = 'wiiu';
 		let gamesPath = `${__rootDir}/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {

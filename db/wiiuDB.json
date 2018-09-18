@@ -726,7 +726,10 @@
 	}, {
 		"id": "AMKE01",
 		"title": "Mario Kart 8",
-		"texp": []
+		"texp": [],
+		"img": {
+			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91LQiO6JrbL.jpg"
+		}
 	}, {
 		"id": "AMKJ01",
 		"title": "Mario Kart 8",
@@ -1274,7 +1277,11 @@
 	}, {
 		"id": "AVXE01",
 		"title": "Mario Tennis: Ultra Smash",
-		"texp": []
+		"texp": [],
+		"img": {
+			"coverfull": "",
+			"cover": "https://www.nintendomaine.com/wp-content/uploads/2015/10/Mario_Tennis_Ultra_Smash_1.jpg"
+		}
 	}, {
 		"id": "AVXJ01",
 		"title": "Mario Tennis: Ultra Smash",
@@ -10215,5 +10222,5 @@
 		"id": "HNQP",
 		"title": "Amazon Instant Video",
 		"texp": []
-	}, ]
+	}]
 }

@@ -16,6 +16,7 @@ const Viewer = function() {
 		remote
 	} = require('electron');
 
+	let recheckImgs = false;
 	let pos = 0;
 	let games;
 	let prefs;
@@ -129,9 +130,8 @@ const Viewer = function() {
 		let imgDir;
 		for (let i = 0; i < games.length; i++) {
 			let game = games[i];
-			let recheck = false;
 			imgDir = `${prefs.usrDir}/${sys}/${game.id}/img`;
-			if (recheck || !(await fs.exists(imgDir))) {
+			if (recheckImgs || !(await fs.exists(imgDir))) {
 				await getImg(game, 'boxHQ');
 				await getImg(game, 'coverfull');
 				if (sys != 'switch') {
@@ -145,6 +145,10 @@ const Viewer = function() {
 		defaultCoverImg = await imgExists(prefs[sys].defaultCover, 'boxHQ');
 		if (!defaultCoverImg) {
 			defaultCoverImg = await getImg(prefs[sys].defaultCover, 'box');
+		}
+		if (!defaultCoverImg) {
+			log('ERROR: No cover image found');
+			return false;
 		}
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));

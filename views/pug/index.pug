@@ -21,17 +21,22 @@ body
     .reel.r7.normal
 nav.navbar.fixed-top.p-0
   .cover.power.p-2.m-0: ul.nav.justify-content-left
-    li.nav-item: button#powerBtn.nav-link.btn.btn-secondary.qma.gray.center
-      //- img.logoNav(src='../img/logo.png')
     .coverText power
+    li.nav-item: button#powerBtn.nav-link.btn.btn-secondary.gray.center
+      //- img.logoNav(src='../img/logo.png')
+  .cover.view.p-2.m-0: ul.nav.justify-content-right
+    select#viewSel
+      option Cover
+    select#settingsSel
+      option Bottlenose
 nav.navbar.fixed-bottom.p-0
   .cover.reset.p-2.m-0: ul.nav.justify-content-left
-    li.nav-item: button#resetBtn.nav-link.btn.btn-secondary.qma.center
-      i#update.material-icons.md-light autorenew
     .coverText reset
+    li.nav-item: button#resetBtn.nav-link.btn.btn-secondary.center
+      i#update.material-icons.md-light autorenew
   .cover.open.p-2.m-0: ul.nav.justify-content-right
+    li.nav-item: select#openSel.btn
     .coverText open
-    li.nav-item: button#openBtn.nav-link.btn.btn-secondary.qma.center
 script.
   console.log('opening index.pug');
   console.log('#{node_modules}');

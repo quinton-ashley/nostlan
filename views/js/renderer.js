@@ -39,23 +39,24 @@ module.exports = async function(opt) {
 	gcnIntro();
 	// await delay(4000);
 
-	// make UI changes
-	$('#update').hide();
-
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 	let prefsPath = path.join(__rootDir, '/usr/prefs.json');
 	let prefs = prefsDefault;
-	let sys = 'switch';
+	let sys = '';
 	let usrDir = '';
 	let games = [];
+
+	// make UI changes
+	$('#update').hide();
+
 
 	String.prototype.replaceAt = function(index, replacement) {
 		return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 	}
 
-	function openLib(sys) {
+	function openLib() {
 		let dir = dialog.showOpenDialog({
 			properties: ['openDirectory'],
 			title: `open ${sys} game library`,
@@ -202,6 +203,14 @@ module.exports = async function(opt) {
 			prefs = JSON.parse(await fs.readFile(prefsPath));
 			usrDir = prefs.usrDir;
 		}
+		let systems = ['wii', 'wiiu', 'switch'];
+		for (let i = 0; i < systems.length; i++) {
+			sys = systems[i];
+			$('#openSel').append(`
+				<option value="${sys}">${sys}</option>
+				`);
+		}
+		sys = 'wii';
 		let gamesPath = `${__rootDir}/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {
@@ -270,12 +279,7 @@ module.exports = async function(opt) {
 		$('#cvs').remove();
 	}
 
-	async function openBtn() {
-
-	}
-
 	$('#powerBtn').click(powerBtn);
-	$('#openBtn').click(openBtn);
 	$('#resetBtn').click(resetBtn);
 
 	// $(document).keydown(function(e) {

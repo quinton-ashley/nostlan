@@ -3,16 +3,16 @@
   max-height: 100%;
 }
 
-.front-cover-crop.wii {
+.wii .front-cover-crop {
   height: 100%;
-  width: 210%;
+  width: 200%;
   overflow: hidden;
   position: absolute;
-  top: -0.9%;
-  left: 0.5%;
+  top: 1.6%;
+  left: 0%;
 }
 
-.front-cover-crop.switch {
+.switch .front-cover-crop {
   height: 100%;
   width: 200%;
   overflow: hidden;
@@ -21,7 +21,7 @@
   left: 0.8%;
 }
 
-.front-cover.switch {
+.switch .front-cover {
   height: 100%;
   width: 94.5%;
   overflow: hidden;
@@ -30,11 +30,11 @@
   left: 0.8%;
 }
 
-.front-cover-crop.wii img {
-  transform: translate(-51.5%, 0%) scale(.955);
+.wii .front-cover-crop img {
+  transform: translate(-51.2%, 0%);
 }
 
-.front-cover-crop.switch img {
+.switch .front-cover-crop img {
   transform: translate(-52.4%, 0%);
 }
 
@@ -120,20 +120,25 @@ img {
 
 /*================Gamecube Cover====================*/
 
-nav.navbar.gameView {
+nav {
   display: flex;
-  opacity: 1;
+  background-color: transparent;
+  pointer-events: none;
 }
 
-nav.navbar {
-  display: none;
-  opacity: 0;
-  transition: opacity 2s;
+nav * {
+  pointer-events: all;
 }
 
 @font-face {
   font-family: Gamecuben;
   src: local("Gamecuben"), local("Gamecuben"), url(../fonts/Gamecuben.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Nintender;
+  src: local("Nintender"), local("Nintender"), url(../fonts/Nintender.ttf);
   font-weight: bold;
 }
 
@@ -152,36 +157,95 @@ nav.navbar {
   }
 }
 
-div.cover.gcn {
+div.cover {
+  margin-left: 30px;
+}
+
+.gcn {
   font-family: "Gamecuben", "Gamecuben", Gamecuben;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
-  margin-left: 30px;
+}
+
+.cover select {
+  font-family: "Nintender", "Nintender", Nintender;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.switch {
+  font-family: "theboldfont", "theboldfont", theboldfont;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cover {
+  width: 19%;
+}
+
+.cover * {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.gcn .cover {
+  color: #56429c;
   background-color: #6a56b9;
 }
 
-div.cover {
-  font-family: "theboldfont", "theboldfont", theboldfont;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  margin-left: 30px;
-}
-
-div.cover.power {
-  border-radius: 0 0 32px 0;
+.switch .cover {
+  color: rgb(70, 70, 70);
   background-color: rgb(130, 130, 130);
 }
 
-div.cover.reset {
-  border-radius: 0 32px 0 0;
-  background-color: rgb(10, 185, 230);
+.cover {
+  border-style: solid;
 }
 
-div.cover.open {
+.cover.power {
+  border-radius: 0 0 32px 0;
+  border-width: 0 0 8px 0;
+}
+
+.cover.open * {
+  margin-left: 4%;
+}
+
+.cover.view {
+  border-radius: 0 0 0 32px;
+  border-width: 0 0 8px 0;
+}
+
+.cover.reset {
+  border-radius: 0 32px 0 0;
+  border-width: 8px 0 0 0;
+}
+
+.cover.open {
+  border-width: 8px 0 0 0;
   border-radius: 32px 0 0 0;
+}
+
+.cover.power *, .cover.reset * {
+  margin-left: auto;
+  margin-right: 4%;
+}
+
+.cover.view *, .cover.open * {
+  margin-right: auto;
+}
+
+.switch .cover.reset {
+  background-color: rgb(10, 185, 230);
+  border-color: rgb(45, 210, 255);
+}
+
+.switch .cover.open {
   background-color: rgb(255, 60, 40);
+  border-color: rgb(255, 90, 60);
 }
 
 div.endLabel {
@@ -190,13 +254,15 @@ div.endLabel {
   transform: rotate(-90deg);
 }
 
-div.coverText.gcn {
-  color: #56429c;
+.gcn .coverText, .gcn .cover select:not(.btn) {
   text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
 }
 
-div.coverText {
-  color: rgb(70, 70, 70);
+.gcn .cover select {
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
+}
+
+.switch .coverText {
   text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
 }
 
@@ -215,26 +281,58 @@ div.coverText {
   text-align: center;
 }
 
-nav {
-  background-color: #transparent;
-}
-
-button.nav-link.btn.btn-secondary.qma.gray {
+button.nav-link.btn.btn-secondary.gray {
   background-color: #d0d0d0;
 }
 
-button.nav-link.btn.btn-secondary.qma {
-  color: #eee;
-  background-color: transparent;
+button.nav-link.btn.btn-secondary, .cover select.btn {
   border-width: 4px;
   border-style: solid;
   border-color: #000;
   border-radius: 50%;
+  box-shadow: none;
   padding: 0px;
   margin: 0px;
-  box-shadow: none;
   width: 80px;
   height: 80px;
+}
+
+.cover select {
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 20px;
+  box-shadow: none;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: auto;
+  padding-left: 4%;
+  padding-right: 4%;
+  width: fit-content;
+  height: 40px;
+}
+
+.switch .cover select {
+  background-color: rgb(70, 70, 70);
+}
+
+.gcn .cover select:not(.btn) {
+  border-color: #56429c;
+  color: #56429c;
+}
+
+.cover select {
+  text-align-last: center;
+  -webkit-appearance: none;
+}
+
+.cover select.btn {
+  color: transparent;
+}
+
+.cover select.btn option {
+  color: #000;
 }
 
 /* need to implement inner border
@@ -245,29 +343,29 @@ img.logoNav {
   height: 32px;
 }
 
-button.nav-link.btn.btn-secondary.qma:hover {
+button.nav-link.btn.btn-secondary:hover {
   color: #ffe8d1;
 }
 
-button.nav-link.btn.btn-secondary.qma.gray:active, button.nav-link.btn.btn-secondary.qma.gray:selected {
+button.nav-link.btn.btn-secondary.gray:active, button.nav-link.btn.btn-secondary.gray:selected {
   background-color: #c0c0c0;
 }
 
-button.nav-link.btn.btn-secondary.qma:active {
+button.nav-link.btn.btn-secondary:active {
   color: #ffe8d1;
   background-color: #493c7a;
 }
 
-#openBtn.gcn {
+.gcn #openSel {
   background: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
 }
 
-#powerBtn, #resetBtn, #openBtn {
+.switch #powerBtn, .switch #resetBtn, .switch #openBtn, .switch #menuBtn {
   background-color: rgb(70, 70, 70);
 }
 
-nav {
-  pointer-events: visible;
+.gcn .cover button, .gcn .cover select:not(.btn) {
+  background-color: #6a56b9;
 }
 
 .nav-link small {

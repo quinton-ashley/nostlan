@@ -221,24 +221,40 @@ const Viewer = function() {
 	}
 
 	function getSelectedID() {
-		return $('.panel.selected').attr('class').split(' ')[1];
+		let $gamePanel = $('.panel.selected').attr('class');
+		if ($gamePanel) {
+			return $gamePanel.split(' ')[1];
+		}
+		return '';
 	}
 
 	this.powerBtn = async function() {
-		remote.BrowserWindow.getFocusedWindow().minimize();
+		remote.getCurrentWindow().minimize();
 		let emuExePath = path.join(prefs.usrDir, `../${prefs[sys].emu}/BIN/${prefs[sys].emu}.${((mac)?'app':'exe')}`);
-		let game = games.find(x => x.id === getSelectedID()).file;
+		let game = games.find(x => x.id === getSelectedID());
+		if (game) {
+			game = game.file;
+		}
 		this.remove();
-		await spawn(emuExePath, [game]);
+		let args;
+		if (game) {
+			args = [game];
+		}
+		await spawn(emuExePath, args);
+		remote.getCurrentWindow().focus();
+		remote.getCurrentWindow().setFullScreen(true);
 	}
 
 	function coverClicked() {
+		if (!$cover) {
+			return;
+		}
 		let $reel = $cover.parent();
 		scrollToGame($cover.attr('class').split(' ')[1], 1000);
 		$cover.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
-		$('nav').toggleClass('gameView');
+		// $('nav').toggleClass('gameView');
 		if ($cover.hasClass('selected')) {
 			$reel.css('left', `${$(window).width()*.5-$cover.width()*.5}px`);
 			$cover.css('transform', `scale(${$(window).height()/$cover.height()})`);
@@ -249,7 +265,7 @@ const Viewer = function() {
 		log($cover);
 	}
 
-	this.remove = function() {
+	this.remove = function(menu) {
 		coverClicked();
 		$('.reel').empty();
 	}
@@ -262,6 +278,7 @@ const Viewer = function() {
 		games = usrGames;
 		prefs = usrPrefs;
 		sys = usrSys;
+		$('body').addClass(sys + ' ' + prefs[sys].style);
 		await loadImages();
 		for (let i = 0, j = 0; i < games.length; i++) {
 			try {

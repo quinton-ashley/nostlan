@@ -1,0 +1,39 @@
+{
+	"gcn": {
+		"default": {
+			"id": "GALE01",
+			"title": "Super Smash Bros. Melee"
+		},
+		"template": {
+			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png"
+		}
+	},
+	"wii": {
+		"default": {
+			"id": "SB4E01",
+			"title": "Super Mario Galaxy 2"
+		},
+		"template": {
+			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png",
+			"openBox": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Wii-optical-case.png"
+		}
+	},
+	"wiiu": {
+		"default": {
+			"id": "AMKE01",
+			"title": "Mario Kart 8"
+		},
+		"template": {
+			"coverFull": "https://img00.deviantart.net/1865/i/2014/266/0/f/wii_u_cover_template_by_etschannel-d7sgkyf.png"
+		}
+	},
+	"switch": {
+		"default": {
+			"id": "AAACA",
+			"title": "Super Mario Odyssey"
+		},
+		"template": {
+			"boxHQ": "https://img00.deviantart.net/e372/i/2017/054/2/1/nintendo_switch_box_games_base_by_ponces245-db0674h.png"
+		}
+	}
+}

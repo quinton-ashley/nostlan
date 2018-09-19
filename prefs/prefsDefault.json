@@ -4,19 +4,11 @@
 	"wii": {
 		"emu": "Dolphin",
 		"libs": [],
-		"defaultCover": {
-			"id": "GALE01",
-			"title": "Super Smash Bros. Melee"
-		},
 		"style": "gcn"
 	},
 	"wiiu": {
 		"emu": "Cemu",
-		"libs": [],
-		"defaultCover": {
-			"id": "AMKE01",
-			"title": "Mario Kart 8"
-		}
+		"libs": []
 	},
 	"3ds": {
 		"emu": "Citra",
@@ -24,10 +16,17 @@
 	},
 	"switch": {
 		"emu": "Yuzu",
-		"libs": [],
-		"defaultCover": {
-			"id": "AAACA",
-			"title": "Super Mario Odyssey"
+		"libs": []
+	},
+	"ui": {
+		"mouse": {
+			"wheel": {
+				"multi": 1,
+				"smooth": false
+			}
 		}
+	},
+	"session": {
+		"sys": "wii"
 	}
 }

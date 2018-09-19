@@ -18,9 +18,14 @@ module.exports = async function(opt) {
 	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
 	const klawSync = require('klaw-sync');
+	const os = require('os');
 	const path = require('path');
 	const pug = require('pug');
 	const $ = require('jquery');
+	const osType = os.type();
+	const linux = (osType == 'Linux');
+	const mac = (osType == 'Darwin');
+	const win = (osType == 'Windows_NT');
 
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
@@ -45,6 +50,8 @@ module.exports = async function(opt) {
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 	let prefsPath = path.join(__rootDir, '/usr/prefs.json');
 	let prefs = prefsDefault;
+	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
+	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
 	let sys = '';
 	let usrDir = '';
 	let games = [];
@@ -211,7 +218,7 @@ module.exports = async function(opt) {
 				<option value="${sys}">${sys}</option>
 				`);
 		}
-		sys = 'wiiu';
+		sys = prefs.session.sys;
 		let gamesPath = `${__rootDir}/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {

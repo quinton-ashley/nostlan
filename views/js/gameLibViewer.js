@@ -1,6 +1,9 @@
 const Viewer = function() {
 	const log = console.log;
 
+	const {
+		remote
+	} = require('electron');
 	const spawn = require('await-spawn');
 	const delay = require('delay');
 	const fs = require('fs-extra');
@@ -12,15 +15,14 @@ const Viewer = function() {
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
 
-	const {
-		remote
-	} = require('electron');
-
+	let mouse;
 	let recheckImgs = false;
 	let pos = 0;
 	let games;
 	let prefs;
 	let sys;
+	let ui;
+	let theme;
 	let defaultCoverImg;
 	let $cover;
 
@@ -142,9 +144,9 @@ const Viewer = function() {
 			}
 			await fs.ensureDir(imgDir);
 		}
-		defaultCoverImg = await imgExists(prefs[sys].defaultCover, 'boxHQ');
+		defaultCoverImg = await imgExists(theme.default, 'boxHQ');
 		if (!defaultCoverImg) {
-			defaultCoverImg = await getImg(prefs[sys].defaultCover, 'box');
+			defaultCoverImg = await getImg(theme.default, 'box');
 		}
 		if (!defaultCoverImg) {
 			log('ERROR: No cover image found');
@@ -197,11 +199,11 @@ const Viewer = function() {
 
 	function goTo(position, time) {
 		pos = position;
-		if (!pos) {
+		if (isNaN(pos)) {
 			log("pos can't be: " + pos);
 			return;
 		}
-		time = time || 2000;
+		time = ((time == undefined) ? 2000 : time);
 		$('html').stop().animate({
 			scrollTop: pos
 		}, time);
@@ -254,7 +256,11 @@ const Viewer = function() {
 			return;
 		}
 		let $reel = $cover.parent();
-		scrollToGame($cover.attr('class').split(' ')[1], 1000);
+		let id = $cover.attr('class').split(' ')[1];
+		if (!id) {
+			return;
+		}
+		scrollToGame(id, 1000);
 		$cover.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
@@ -282,6 +288,12 @@ const Viewer = function() {
 		games = usrGames;
 		prefs = usrPrefs;
 		sys = usrSys;
+		let uiPath = path.join(global.__rootDir, '/views/img/ui.json');
+		ui = JSON.parse(await fs.readFile(uiPath));
+		theme = prefs[sys].style || sys;
+		theme = ui[theme];
+		mouse = prefs.ui.mouse;
+		mouse.wheel.delta = 100 * mouse.wheel.multi;
 		$('body').addClass(sys + ' ' + prefs[sys].style);
 		await loadImages();
 		for (let i = 0, j = 0; i < games.length; i++) {
@@ -323,14 +335,38 @@ const Viewer = function() {
 				if ($('.panel.selected').length) {
 					return;
 				}
-				if (event.originalEvent.wheelDelta < 0) {
-					pos += 100;
+				let scrollDelta = event.originalEvent.wheelDelta;
+				if (mouse.wheel.smooth) {
+					pos += scrollDelta * mouse.wheel.multi;
 				} else {
-					pos -= 100;
+					if (scrollDelta < 0) {
+						pos += mouse.wheel.delta;
+					} else {
+						pos -= mouse.wheel.delta;
+					}
 				}
-				goTo(pos);
+				goTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
 			});
 		}
 	}
+
+	function resizeUI() {
+		let $cv = $('.cover.view');
+		let $cvSel = $cv.find('select')
+		let cvHeight = $cv.height();
+		let cpHeight = $('.cover.power').height();
+		if (cvHeight < cpHeight) {
+			$cvSel.css('margin-top', '40px');
+			$cvSel.css('margin-bottom', '40px');
+		} else if (cvHeight > cpHeight) {
+			$cvSel.css('margin-top', '20px');
+			$cvSel.css('margin-bottom', '20px');
+		}
+		if (cvHeight != cpHeight) {
+			$cv.height(cpHeight);
+		}
+	}
+	resizeUI();
+	$(window).resize(resizeUI);
 }
 module.exports = new Viewer();

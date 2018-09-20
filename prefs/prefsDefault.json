@@ -24,7 +24,8 @@
 				"multi": 1,
 				"smooth": false
 			}
-		}
+		},
+		"getBackCoverHQ": false
 	},
 	"session": {
 		"sys": "wii"

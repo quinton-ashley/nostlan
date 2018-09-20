@@ -54,7 +54,17 @@ const Viewer = function() {
 		return false;
 	}
 
-	async function getImg(game, name) {
+	async function dlFromAndy(title, file, system) {
+		let url = `http://andydecarli.com/Video%20Games/Collection/${system}/Scans/Full%20Size/${system}%20${title}%20Front%20Cover.jpg`;
+		let res = await dl(url, file);
+		if (res && prefs.ui.getBackCoverHQ) {
+			url = `http://andydecarli.com/Video%20Games/Collection/${system}/Scans/Full%20Size/${system}%20${title}%20Back%20Cover.jpg`;
+			await dl(url, file);
+		}
+		return res;
+	}
+
+	async function getImg(game, name, skip) {
 		let dir = `${prefs.usrDir}/${sys}/${game.id}/img`;
 		let file, res, url;
 		// check if game img is specified in the gamesDB
@@ -68,24 +78,33 @@ const Viewer = function() {
 			}
 		}
 		// get high quality box for gamecube/wii
-		if (sys == 'wii' && name == 'boxHQ') {
+		if ((sys == 'wii' || sys == 'wiiu') && name == 'box') {
 			file = `${dir}/${name}.jpg`;
 			if (await fs.exists(file)) {
 				return file;
 			}
 			let title = game.title.replace(/ /g, '%20').replace(/[\:]/g, '');
-			url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Game%20Cube/Scans/Full%20Size/Nintendo%20Game%20Cube%20${title}%20Front%20Cover.jpg`;
-			res = await dl(url, file);
-			if (!res) {
-				url = `http://andydecarli.com/Video%20Games/Collection/Nintendo%20Wii/Scans/Full%20Size/Nintendo%20Wii%20${title}%20Front%20Cover.jpg`;
-				res = await dl(url, file);
+			if (sys == 'wiiu') {
+				res = await dlFromAndy(title, file, 'Nintendo%20Wii%20U');
+			} else if (game.id.length > 4) {
+				res = await dlFromAndy(title, file, 'Nintendo%20Game%20Cube');
+				if (!res) {
+					res = await dlFromAndy(title, file, 'Nintendo%20Wii');
+				}
+			} else {
+				res = await dlFromAndy(title, file, 'Nintendo%2064');
+				if (!res) {
+					res = await dlFromAndy(title, file, 'Super%20Nintendo');
+				}
+				if (!res) {
+					res = await dlFromAndy(title, file, 'Nintendo');
+				}
 			}
 			if (res) {
 				return res;
 			}
-			return false;
 		}
-		if (name == 'boxHQ') {
+		if (skip) {
 			return false;
 		}
 		// get image from gametdb
@@ -118,24 +137,24 @@ const Viewer = function() {
 				return res;
 			}
 		}
-		if (name == 'coverfull' && !(await imgExists(game, 'boxHQ'))) {
-			res = await getImg(game, 'box');
-			if (!res) {
-				res = await getImg(game, 'cover');
-			}
-			return res;
-		}
 		return false;
 	}
 
 	async function loadImages() {
 		let imgDir;
 		for (let i = 0; i < games.length; i++) {
+			let res;
 			let game = games[i];
 			imgDir = `${prefs.usrDir}/${sys}/${game.id}/img`;
 			if (recheckImgs || !(await fs.exists(imgDir))) {
-				await getImg(game, 'boxHQ');
-				await getImg(game, 'coverfull');
+				await getImg(game, 'box', true);
+				res = await getImg(game, 'coverfull');
+				if (!res && !(await imgExists(game, 'box'))) {
+					res = await getImg(game, 'box');
+					if (!res) {
+						await getImg(game, 'cover');
+					}
+				}
 				if (sys != 'switch') {
 					await getImg(game, 'disc');
 				} else {
@@ -144,10 +163,7 @@ const Viewer = function() {
 			}
 			await fs.ensureDir(imgDir);
 		}
-		defaultCoverImg = await imgExists(theme.default, 'boxHQ');
-		if (!defaultCoverImg) {
-			defaultCoverImg = await getImg(theme.default, 'box');
-		}
+		defaultCoverImg = await getImg(theme.default, 'box');
 		if (!defaultCoverImg) {
 			log('ERROR: No cover image found');
 			return false;
@@ -170,7 +186,7 @@ const Viewer = function() {
 
 	async function addCover(game, reelNum) {
 		let cl1 = '';
-		let file = await imgExists(game, 'boxHQ');
+		let file = await imgExists(game, 'box');
 		if (!file) {
 			file = await imgExists(game, 'coverfull');
 			cl1 = 'front-cover-crop ' + sys;
@@ -178,12 +194,8 @@ const Viewer = function() {
 				file = await imgExists(game, 'cover');
 				cl1 = 'front-cover ' + sys;
 				if (!file) {
-					file = await imgExists(game, 'box');
-					cl1 = '';
-					if (!file) {
-						log(`no images found for game: ${game.id} ${game.title}`);
-						return;
-					}
+					log(`no images found for game: ${game.id} ${game.title}`);
+					return;
 				}
 			}
 		}
@@ -296,24 +308,26 @@ const Viewer = function() {
 		mouse.wheel.delta = 100 * mouse.wheel.multi;
 		$('body').addClass(sys + ' ' + prefs[sys].style);
 		await loadImages();
+		let rows = 8;
+		if (games.length < 16) {
+			rows = 4;
+		}
+		if (games.length < 6) {
+			rows = 2;
+		}
+		let dynRowStyle = `<style>.reel {width: ${1 / rows * 100}%;}`
+		for (let i = 0; i < rows; i++) {
+			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
+		}
+		dynRowStyle += '</style>';
+		$('html').append(dynRowStyle);
 		for (let i = 0, j = 0; i < games.length; i++) {
 			try {
-				if (i < games.length * .125) {
-					await addCover(games[i], 0);
-				} else if (i < games.length * .25) {
-					await addCover(games[i], 1);
-				} else if (i < games.length * .375) {
-					await addCover(games[i], 2);
-				} else if (i < games.length * .50) {
-					await addCover(games[i], 3);
-				} else if (i < games.length * .625) {
-					await addCover(games[i], 4);
-				} else if (i < games.length * .75) {
-					await addCover(games[i], 5);
-				} else if (i < games.length * .875) {
-					await addCover(games[i], 6);
-				} else {
-					await addCover(games[i], 7);
+				for (let k = 0; k < rows; k++) {
+					if (i < games.length * (k + 1) / rows) {
+						await addCover(games[i], k);
+						break;
+					}
 				}
 				j++;
 			} catch (ror) {
@@ -347,6 +361,7 @@ const Viewer = function() {
 				}
 				goTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
 			});
+			remote.getCurrentWindow().setFullScreen(true);
 		}
 	}
 

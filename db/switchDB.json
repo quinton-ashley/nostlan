@@ -9,7 +9,7 @@
 		"id": "",
 		"title": "Super Mario Party",
 		"img": {
-			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/81O3ChgymRL.jpg"
+			"box": "https://images-na.ssl-images-amazon.com/images/I/81O3ChgymRL.jpg"
 		}
 	}, {
 		"id": "ROWEA",
@@ -26,7 +26,7 @@
 		"title": "Super Mario Odyssey",
 		"texp": [],
 		"img": {
-			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91JZdTYcjFL.jpg"
+			"box": "https://images-na.ssl-images-amazon.com/images/I/91JZdTYcjFL.jpg"
 		}
 	}, {
 		"id": "AAB6A",
@@ -489,7 +489,7 @@
 		"title": "Captain Toad: Treasure Tracker",
 		"texp": [],
 		"img": {
-			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91mSluAuj7L.jpg"
+			"box": "https://images-na.ssl-images-amazon.com/images/I/91mSluAuj7L.jpg"
 		}
 	}, {
 		"id": "AJJ7A",
@@ -523,7 +523,7 @@
 		"title": "Mario Tennis Aces",
 		"texp": [],
 		"img": {
-			"boxHQ": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
+			"box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
 		}
 	}, {
 		"id": "ALXDA",

@@ -21,38 +21,6 @@ img {
 	z-index: 1;
 }
 
-.reel.r0 {
-	left: 0%;
-}
-
-.reel.r1 {
-	left: 12.5%;
-}
-
-.reel.r2 {
-	left: 25%;
-}
-
-.reel.r3 {
-	left: 37.5%;
-}
-
-.reel.r4 {
-	left: 50%;
-}
-
-.reel.r5 {
-	left: 62.5%;
-}
-
-.reel.r6 {
-	left: 75%;
-}
-
-.reel.r7 {
-	left: 87.5%;
-}
-
 .panel.selected {
 	z-index: 10;
 	opacity: 1 !important;

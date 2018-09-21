@@ -16,7 +16,6 @@ const Viewer = function() {
 	const win = (osType == 'Windows_NT');
 
 	let mouse;
-	let recheckImgs = false;
 	let pos = 0;
 	let games;
 	let prefs;
@@ -32,9 +31,11 @@ const Viewer = function() {
 			if (res.status == 404) {
 				return false;
 			}
+			$('#loadDialog1').text('loading image: ' + url);
 			log('loading image: ' + url);
 			log('saving to: ' + file);
 			await res.saveTo(file);
+			$('#loadDialog1').text(' ');
 		}
 		return file;
 	}
@@ -65,7 +66,7 @@ const Viewer = function() {
 	}
 
 	async function getImg(game, name, skip) {
-		let dir = `${prefs.usrDir}/${sys}/${game.id}/img`;
+		let dir = `${prefs.emuDir}/${sys}/${game.id}/img`;
 		let file, res, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
@@ -77,6 +78,7 @@ const Viewer = function() {
 				return res;
 			}
 		}
+		$('#loadDialog0').html(`scraping for the <br>${name}<br> of <br>${game.title}`);
 		// get high quality box for gamecube/wii
 		if ((sys == 'wii' || sys == 'wiiu') && name == 'box') {
 			file = `${dir}/${name}.jpg`;
@@ -145,8 +147,8 @@ const Viewer = function() {
 		for (let i = 0; i < games.length; i++) {
 			let res;
 			let game = games[i];
-			imgDir = `${prefs.usrDir}/${sys}/${game.id}/img`;
-			if (recheckImgs || !(await fs.exists(imgDir))) {
+			imgDir = `${prefs.emuDir}/${sys}/${game.id}/img`;
+			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
 				await getImg(game, 'box', true);
 				res = await getImg(game, 'coverfull');
 				if (!res && !(await imgExists(game, 'box'))) {
@@ -173,7 +175,7 @@ const Viewer = function() {
 	}
 
 	async function imgExists(game, name) {
-		let file = `${prefs.usrDir}/${sys}/${game.id}/img/${name}.png`;
+		let file = `${prefs.emuDir}/${sys}/${game.id}/img/${name}.png`;
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
@@ -195,7 +197,7 @@ const Viewer = function() {
 				cl1 = 'front-cover ' + sys;
 				if (!file) {
 					log(`no images found for game: ${game.id} ${game.title}`);
-					return;
+					return false;
 				}
 			}
 		}
@@ -204,17 +206,18 @@ const Viewer = function() {
 				${((cl1)?`<img src="${defaultCoverImg}">`:'')}
 				<section class="${cl1}">
 	      	<img src="${file}"/>
+					${((cl1)?`<div class="shade p-0 m-0"></div>`:'')}
 				</section>
 	    </div>
 		`);
 	}
 
 	function goTo(position, time) {
-		pos = position;
-		if (isNaN(pos)) {
-			log("pos can't be: " + pos);
+		if (isNaN(position)) {
+			log("pos can't be: " + position);
 			return;
 		}
+		pos = position;
 		time = ((time == undefined) ? 2000 : time);
 		$('html').stop().animate({
 			scrollTop: pos
@@ -228,7 +231,11 @@ const Viewer = function() {
 	function scrollToGame(gameID, time) {
 		let $cover = $('.' + gameID).eq(0);
 		let $reel = $cover.parent();
-		let pos = $cover.height() * ($cover.index() + .5);
+		let pos = 0;
+		for (let i = 0; i < $cover.index(); i++) {
+			pos += $reel.children().eq(i).height();
+		}
+		pos += $cover.height() * .5;
 		if ($reel.hasClass('reverse')) {
 			pos += $(window).height() * .5;
 			pos = $reel.height() - pos;
@@ -248,7 +255,8 @@ const Viewer = function() {
 
 	this.powerBtn = async function() {
 		remote.getCurrentWindow().minimize();
-		let emuExePath = path.join(prefs.usrDir, `../${prefs[sys].emu}/BIN/${prefs[sys].emu}.${((mac)?'app':'exe')}`);
+		let emuExePath = path.join(prefs.emuDir,
+			`../${prefs[sys].emu}/BIN/${prefs[sys].emu}.${((mac)?'app':'exe')}`);
 		let game = games.find(x => x.id === getSelectedID());
 		if (game) {
 			game = game.file;
@@ -306,7 +314,8 @@ const Viewer = function() {
 		theme = ui[theme];
 		mouse = prefs.ui.mouse;
 		mouse.wheel.delta = 100 * mouse.wheel.multi;
-		$('body').addClass(sys + ' ' + prefs[sys].style);
+		$('body').removeClass();
+		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
 		await loadImages();
 		let rows = 8;
 		if (games.length < 16) {
@@ -342,7 +351,7 @@ const Viewer = function() {
 			$cover = $(this);
 			coverClicked();
 		});
-
+		$('#dialogs').hide();
 		if (!reload) {
 			$(window).bind('mousewheel', function(event) {
 				event.preventDefault();
@@ -361,7 +370,7 @@ const Viewer = function() {
 				}
 				goTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
 			});
-			remote.getCurrentWindow().setFullScreen(true);
+			// remote.getCurrentWindow().setFullScreen(true);
 		}
 	}
 

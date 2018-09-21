@@ -1,5 +1,5 @@
 {
-	"usrDir": "",
+	"emuDir": "",
 	"region": "E",
 	"wii": {
 		"emu": "Dolphin",
@@ -22,10 +22,12 @@
 		"mouse": {
 			"wheel": {
 				"multi": 1,
-				"smooth": false
+				"smooth": false,
+				"delta": 100
 			}
 		},
-		"getBackCoverHQ": false
+		"getBackCoverHQ": false,
+		"recheckImgs": false
 	},
 	"session": {
 		"sys": "wii"

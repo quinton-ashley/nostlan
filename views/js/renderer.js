@@ -26,6 +26,7 @@ module.exports = async function(opt) {
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
+	const botDir = os.homedir() + '/Documents/bottlenose';
 
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
@@ -48,12 +49,12 @@ module.exports = async function(opt) {
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
-	let prefsPath = path.join(__rootDir, '/usr/prefs.json');
+	let prefsPath = path.join(botDir, '/usr/prefs.json');
 	let prefs = prefsDefault;
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
 	let sys = '';
-	let usrDir = '';
+	let emuDir = '';
 	let games = [];
 
 	// make UI changes
@@ -118,8 +119,6 @@ module.exports = async function(opt) {
 					if (gRegion == 'J' && (region == 'E' || region == 'P')) {
 						continue;
 					}
-					$('#loadDialog0').text('loading ' + results[i].title);
-					return results[i];
 				} else if (sys == 'switch') {
 					let gRegion = results[i].id[4];
 					if (gRegion == 'A' && (region == 'P' || region == 'J')) {
@@ -131,9 +130,9 @@ module.exports = async function(opt) {
 					if (gRegion == 'C' && (region == 'E' || region == 'P')) {
 						continue;
 					}
-					$('#loadDialog0').text('loading ' + results[i].title);
-					return results[i];
 				}
+				$('#loadDialog0').text('loading ' + results[i].title);
+				return results[i];
 			}
 			return false;
 		}
@@ -200,53 +199,43 @@ module.exports = async function(opt) {
 				games.push(game);
 			}
 		}
-		await fs.outputFile(`${__rootDir}/usr/${sys}Games.json`, JSON.stringify({
+		let usrGamesPath = `${botDir}/usr/${sys}Games.json`;
+		await fs.outputFile(usrGamesPath, JSON.stringify({
 			games: games
 		}));
 		await fs.outputFile(prefsPath, JSON.stringify(prefs));
 	}
 
-	async function load() {
-		if (await fs.exists(prefsPath)) {
-			prefs = JSON.parse(await fs.readFile(prefsPath));
-			usrDir = prefs.usrDir;
-		}
-		let systems = ['wii', 'wiiu', 'switch'];
-		for (let i = 0; i < systems.length; i++) {
-			sys = systems[i];
-			$('#openSel').append(`
-				<option value="${sys}">${sys}</option>
-				`);
-		}
-		sys = prefs.session.sys;
-		let gamesPath = `${__rootDir}/usr/${sys}Games.json`;
+	async function reload() {
+		$('#dialog').show();
+		let gamesPath = `${botDir}/bottlenose/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
 		} else {
-			let usrDirExisted;
-			if (!usrDir) {
-				usrDir = chooseBottlenoseDir();
+			let emuDirExisted;
+			if (!emuDir) {
+				emuDir = chooseBottlenoseDir();
 			} else {
-				usrDirExisted = true;
+				emuDirExisted = true;
 			}
 			let emu = prefs[sys].emu;
-			let gameDir = path.join(usrDir, `../${emu}/GAMES`);
+			let gameDir = path.join(emuDir, `../${emu}/GAMES`);
 			if (!(await fs.exists(gameDir))) {
-				gameDir = path.join(usrDir, `../${emu.toLowerCase()}/GAMES`);
+				gameDir = path.join(emuDir, `../${emu.toLowerCase()}/GAMES`);
 			}
 			log(gameDir);
 			if (!(await fs.exists(gameDir))) {
-				gameDir = path.join(usrDir, `../${emu.toUpperCase()}/GAMES`);
+				gameDir = path.join(emuDir, `../${emu.toUpperCase()}/GAMES`);
 			}
 			log(gameDir);
 			if (await fs.exists(gameDir)) {
 				prefs[sys].libs.push(gameDir);
-				if (!usrDirExisted) {
-					usrDir += '/bottlenose';
+				if (!emuDirExisted) {
+					emuDir += '/bottlenose';
 				}
-				await fs.ensureDir(usrDir);
-				prefs.usrDir = usrDir;
+				await fs.ensureDir(emuDir);
+				prefs.emuDir = emuDir;
 			} else {
 				log(`choose emulation folder with directory structure:
 {root folder can have any name}
@@ -264,8 +253,25 @@ module.exports = async function(opt) {
 └── Yuzu`);
 				prefs[sys].libs.push(openLib(sys));
 			}
-			await reset(sys);
+			await reset();
+			prefs.session.sys = sys;
 		}
+	}
+
+	async function load() {
+		if (await fs.exists(prefsPath)) {
+			prefs = JSON.parse(await fs.readFile(prefsPath));
+			emuDir = prefs.emuDir;
+		}
+		let systems = ['wii', 'wiiu', 'switch'];
+		for (let i = 0; i < systems.length; i++) {
+			sys = systems[i];
+			$('#openSel').append(`
+				<option value="${sys}">${sys}</option>
+				`);
+		}
+		sys = prefs.session.sys;
+		await reload();
 	}
 
 	await load();
@@ -287,8 +293,18 @@ module.exports = async function(opt) {
 		$('#cvs').remove();
 	}
 
+	async function openSel() {
+		viewer.remove();
+		sys = $(this).val();
+		gcnIntro();
+		await reload();
+		await viewer.load(games, prefs, sys);
+		$('#cvs').remove();
+	}
+
 	$('#powerBtn').click(powerBtn);
 	$('#resetBtn').click(resetBtn);
+	$('#openSel').change(openSel);
 
 	// $(document).keydown(function(e) {
 	//   switch (e.which) {

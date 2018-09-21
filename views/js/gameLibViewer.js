@@ -80,7 +80,7 @@ const Viewer = function() {
 		}
 		$('#loadDialog0').html(`scraping for the <br>${name}<br> of <br>${game.title}`);
 		// get high quality box for gamecube/wii
-		if ((sys == 'wii' || sys == 'wiiu') && name == 'box') {
+		if ((sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') && name == 'box') {
 			file = `${dir}/${name}.jpg`;
 			if (await fs.exists(file)) {
 				return file;
@@ -88,6 +88,10 @@ const Viewer = function() {
 			let title = game.title.replace(/ /g, '%20').replace(/[\:]/g, '');
 			if (sys == 'wiiu') {
 				res = await dlFromAndy(title, file, 'Nintendo%20Wii%20U');
+			} else if (sys == '3ds') {
+				res = await dlFromAndy(title, file, 'Nintendo%203DS');
+			} else if (sys == 'ds') {
+				res = await dlFromAndy(title, file, 'Nintendo%20DS');
 			} else if (game.id.length > 4) {
 				res = await dlFromAndy(title, file, 'Nintendo%20Game%20Cube');
 				if (!res) {
@@ -152,12 +156,12 @@ const Viewer = function() {
 				await getImg(game, 'box', true);
 				res = await getImg(game, 'coverfull');
 				if (!res && !(await imgExists(game, 'box'))) {
-					res = await getImg(game, 'box');
+					res = await getImg(game, 'cover');
 					if (!res) {
-						await getImg(game, 'cover');
+						await getImg(game, 'box');
 					}
 				}
-				if (sys != 'switch') {
+				if (sys != 'switch' && sys != '3ds') {
 					await getImg(game, 'disc');
 				} else {
 					await getImg(game, 'cart');
@@ -225,7 +229,7 @@ const Viewer = function() {
 		$('.reel.reverse').stop().animate({
 			bottom: pos * -1
 		}, time);
-		log(pos);
+		// log(pos);
 	}
 
 	function scrollToGame(gameID, time) {
@@ -308,7 +312,7 @@ const Viewer = function() {
 		games = usrGames;
 		prefs = usrPrefs;
 		sys = usrSys;
-		let uiPath = path.join(global.__rootDir, '/views/img/ui.json');
+		let uiPath = path.join(global.__rootDir, '/prefs/ui.json');
 		ui = JSON.parse(await fs.readFile(uiPath));
 		theme = prefs[sys].style || sys;
 		theme = ui[theme];
@@ -318,10 +322,10 @@ const Viewer = function() {
 		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
 		await loadImages();
 		let rows = 8;
-		if (games.length < 16) {
+		if (games.length < 18) {
 			rows = 4;
 		}
-		if (games.length < 6) {
+		if (games.length < 12) {
 			rows = 2;
 		}
 		let dynRowStyle = `<style>.reel {width: ${1 / rows * 100}%;}`
@@ -381,10 +385,8 @@ const Viewer = function() {
 		let cpHeight = $('.cover.power').height();
 		if (cvHeight < cpHeight) {
 			$cvSel.css('margin-top', '40px');
-			$cvSel.css('margin-bottom', '40px');
 		} else if (cvHeight > cpHeight) {
 			$cvSel.css('margin-top', '20px');
-			$cvSel.css('margin-bottom', '20px');
 		}
 		if (cvHeight != cpHeight) {
 			$cv.height(cpHeight);

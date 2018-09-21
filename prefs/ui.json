@@ -8,6 +8,16 @@
 			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png"
 		}
 	},
+	"ds": {
+		"default": {
+			"id": "ASME",
+			"title": "Super Mario 64 DS"
+		},
+		"template": {
+			"coverFull": "",
+			"openBox": ""
+		}
+	},
 	"wii": {
 		"default": {
 			"id": "SB4E01",
@@ -27,6 +37,15 @@
 			"coverFull": "https://img00.deviantart.net/1865/i/2014/266/0/f/wii_u_cover_template_by_etschannel-d7sgkyf.png"
 		}
 	},
+	"n3ds": {
+		"default": {
+			"id": "AREE",
+			"title": "Super Mario 3D Land"
+		},
+		"template": {
+			"box": ""
+		}
+	},
 	"switch": {
 		"default": {
 			"id": "AAACA",
@@ -35,5 +54,9 @@
 		"template": {
 			"box": "https://img00.deviantart.net/e372/i/2017/054/2/1/nintendo_switch_box_games_base_by_ponces245-db0674h.png"
 		}
+	},
+	"ps3": {
+		"default": {},
+		"template": {}
 	}
 }

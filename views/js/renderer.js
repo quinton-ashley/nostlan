@@ -26,7 +26,8 @@ module.exports = async function(opt) {
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
-	const botDir = os.homedir() + '/Documents/bottlenose';
+	const botDir = path.join(os.homedir(), '/Documents/bottlenose');
+	log(botDir);
 
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
@@ -49,7 +50,7 @@ module.exports = async function(opt) {
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
-	let prefsPath = path.join(botDir, '/usr/prefs.json');
+	let prefsPath = botDir + '/usr/prefs.json';
 	let prefs = prefsDefault;
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
@@ -108,7 +109,10 @@ module.exports = async function(opt) {
 			let results = fuse.search(searchTerm);
 			let region = prefs.region;
 			for (let i = 0; i < results.length; i++) {
-				if (sys == 'wii' || sys == 'wiiu') {
+				if (results[i].title.length > searchTerm.length + 6) {
+					continue;
+				}
+				if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') {
 					let gRegion = results[i].id[3];
 					if (gRegion == 'E' && (region == 'P' || region == 'J')) {
 						continue;
@@ -117,6 +121,9 @@ module.exports = async function(opt) {
 						continue;
 					}
 					if (gRegion == 'J' && (region == 'E' || region == 'P')) {
+						continue;
+					}
+					if (gRegion == 'K' || gRegion == 'X') {
 						continue;
 					}
 				} else if (sys == 'switch') {
@@ -145,7 +152,6 @@ module.exports = async function(opt) {
 			log(file);
 			let term = path.parse(file).name;
 			if (term.includes('DS_Store')) {
-				log('hi');
 				continue;
 			}
 			// eliminations
@@ -181,7 +187,7 @@ module.exports = async function(opt) {
 			term = term.replace(/sm *64/gi, 'Super Mario 64')
 			term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 			term = term.replace(/warioware,*/gi, 'Wario Ware');
-			term = term.replace(/ bros /gi, ' Bros. ');
+			term = term.replace(/ bros/gi, ' Bros.');
 			term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
 			term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
 			term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
@@ -203,11 +209,11 @@ module.exports = async function(opt) {
 		await fs.outputFile(usrGamesPath, JSON.stringify({
 			games: games
 		}));
-		await fs.outputFile(prefsPath, JSON.stringify(prefs));
+		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 	}
 
 	async function reload() {
-		$('#dialog').show();
+		$('#dialogs').show();
 		let gamesPath = `${botDir}/bottlenose/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {
@@ -230,7 +236,12 @@ module.exports = async function(opt) {
 			}
 			log(gameDir);
 			if (await fs.exists(gameDir)) {
-				prefs[sys].libs.push(gameDir);
+				if (!prefs[sys].libs) {
+					prefs[sys].libs = [];
+				}
+				if (!prefs[sys].libs.includes(gameDir)) {
+					prefs[sys].libs.push(gameDir);
+				}
 				if (!emuDirExisted) {
 					emuDir += '/bottlenose';
 				}
@@ -263,7 +274,7 @@ module.exports = async function(opt) {
 			prefs = JSON.parse(await fs.readFile(prefsPath));
 			emuDir = prefs.emuDir;
 		}
-		let systems = ['wii', 'wiiu', 'switch'];
+		let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch'];
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
 			$('#openSel').append(`
@@ -294,6 +305,9 @@ module.exports = async function(opt) {
 	}
 
 	async function openSel() {
+		if (!viewer) {
+			return;
+		}
 		viewer.remove();
 		sys = $(this).val();
 		gcnIntro();

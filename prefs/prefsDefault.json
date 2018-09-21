@@ -1,22 +1,25 @@
 {
 	"emuDir": "",
 	"region": "E",
+	"ds": {
+		"emu": "DeSmuME"
+	},
 	"wii": {
 		"emu": "Dolphin",
-		"libs": [],
 		"style": "gcn"
 	},
 	"wiiu": {
-		"emu": "Cemu",
-		"libs": []
+		"emu": "Cemu"
 	},
 	"3ds": {
 		"emu": "Citra",
-		"libs": []
+		"style": "n3ds"
 	},
 	"switch": {
-		"emu": "Yuzu",
-		"libs": []
+		"emu": "Yuzu"
+	},
+	"ps3": {
+		"emu": "RCPS3"
 	},
 	"ui": {
 		"mouse": {

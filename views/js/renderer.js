@@ -14,6 +14,7 @@ module.exports = async function(opt) {
 		dialog,
 		Menu
 	} = remote;
+	const deepExtend = require('deep-extend');
 	const delay = require('delay');
 	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
@@ -75,11 +76,11 @@ module.exports = async function(opt) {
 		return dir[0];
 	}
 
-	function chooseBottlenoseDir() {
+	function chooseEmulatorsDir() {
 		let dir = dialog.showOpenDialog({
 			properties: ['openDirectory'],
-			title: 'choose bottlenose folder',
-			message: `choose the root dir for bottlenose`
+			title: 'choose emulators folder',
+			message: `choose the root emulators dir for bottlenose`
 		});
 		return dir[0];
 	}
@@ -109,11 +110,24 @@ module.exports = async function(opt) {
 			let results = fuse.search(searchTerm);
 			let region = prefs.region;
 			for (let i = 0; i < results.length; i++) {
+				if (searchTerm == "GVJE08") {
+					log('hi');
+				}
 				if (results[i].title.length > searchTerm.length + 6) {
+					continue;
+				}
+				// if the search term doesn't contain demo or trial
+				// skip the demo/trial version of the game
+				let demoRegex = /(Demo|Preview|Review|Trial)/i;
+				if (demoRegex.test(results[i].title) != demoRegex.test(searchTerm)) {
 					continue;
 				}
 				if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') {
 					let gRegion = results[i].id[3];
+					// TODO: this is a temporary region filter
+					if (/[KWXDZIFSHYVRAC]/.test(gRegion)) {
+						continue;
+					}
 					if (gRegion == 'E' && (region == 'P' || region == 'J')) {
 						continue;
 					}
@@ -121,9 +135,6 @@ module.exports = async function(opt) {
 						continue;
 					}
 					if (gRegion == 'J' && (region == 'E' || region == 'P')) {
-						continue;
-					}
-					if (gRegion == 'K' || gRegion == 'X') {
 						continue;
 					}
 				} else if (sys == 'switch') {
@@ -147,27 +158,35 @@ module.exports = async function(opt) {
 		let files = klawSync(prefs[sys].libs[0], {
 			depthLimit: 0
 		});
+		// a lot of pruning is required to get good search results
 		for (let i = 0; i < files.length; i++) {
 			let file = files[i].path;
 			log(file);
-			let term = path.parse(file).name;
-			if (term.includes('DS_Store')) {
+			let term = path.parse(file);
+			if (sys != 'wiiu' && sys != 'ps3') {
+				term = term.name;
+			} else {
+				term = term.base;
+			}
+			if (mac && term.includes('DS_Store')) {
 				continue;
 			}
-			// eliminations
+			// eliminations part 1
 			term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
 			term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
 			term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
 			term = term.replace(/[\[\(,](En|Ja|Eu)[^\]\)]*[\]\)]*/gi, '');
-			// special complete subs
+			// special complete subs part 1
 			term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
 			term = term.replace(/lego/gi, 'lego');
 			// special check for ids
-			let id = term.match(/[A-Z1-9][A-Z1-9][A-Z1-9][A-Z]([A-Z1-9][A-Z1-9])*/g);
+			log(term);
+			let id = term.match(/[\[\(][A-Z0-9][A-Z0-9][A-Z0-9][A-Z][A-Z0-9]*/g);
 			if (id) {
-				let game = gameDB.find(x => x.id === id[0]);
+				id = id[0].substr(1);
+				let game = gameDB.find(x => x.id === id);
 				if (game) {
-					log(id[0]);
+					log(id);
 					log(game.title);
 					games.push(game);
 					continue;
@@ -182,18 +201,24 @@ module.exports = async function(opt) {
 			}
 			// eliminations part 2
 			term = term.replace(/,/g, '');
+			term = term.replace(/[\[\(](E|J|P|U)[\]\)].*/g, '');
 			// special subs part 2
-			term = term.replace(/ 20XX.*/gi, ': 20XX Training Pack');
+			if (sys == 'wii') {
+				term = term.replace(/ 20XX.*/gi, ': 20XX Training Pack');
+				term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
+			} else if (sys == 'switch') {
+				term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
+			}
+			// special subs part 3
 			term = term.replace(/sm *64/gi, 'Super Mario 64')
 			term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 			term = term.replace(/warioware,*/gi, 'Wario Ware');
-			term = term.replace(/ bros/gi, ' Bros.');
-			term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
+			term = term.replace(/ bros( |$)/gi, ' Bros. ');
 			term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
-			term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
 			// eliminations part 3
-			term = term.replace(/[\[\(]*(v\d.|\d+\.|rev \d).*/gi, '');
+			term = term.replace(/[\[\(]*(v\d]\.|\d+\.|rev \d).*/gi, '');
 			term = term.replace(/\[[^\]]*\]/g, '');
+			term = term.replace(/ *decrypted */gi, '');
 
 			term = term.trim();
 			// TODO: strings must be less than 32 chars
@@ -209,19 +234,23 @@ module.exports = async function(opt) {
 		await fs.outputFile(usrGamesPath, JSON.stringify({
 			games: games
 		}));
+		prefs.session.sys = sys;
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 	}
 
 	async function reload() {
+		$('#openSel .' + sys).prop('selected');
+		$('body').removeClass();
+		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
 		$('#dialogs').show();
-		let gamesPath = `${botDir}/bottlenose/usr/${sys}Games.json`;
+		let gamesPath = `${botDir}/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
 		} else {
 			let emuDirExisted;
 			if (!emuDir) {
-				emuDir = chooseBottlenoseDir();
+				emuDir = chooseEmulatorsDir();
 			} else {
 				emuDirExisted = true;
 			}
@@ -271,14 +300,18 @@ module.exports = async function(opt) {
 
 	async function load() {
 		if (await fs.exists(prefsPath)) {
-			prefs = JSON.parse(await fs.readFile(prefsPath));
+			let prefs1 = JSON.parse(await fs.readFile(prefsPath));
+			log(prefs);
+			deepExtend(prefs, prefs1);
+			log(prefs);
 			emuDir = prefs.emuDir;
 		}
+		// currently supported systems
 		let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch'];
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
 			$('#openSel').append(`
-				<option value="${sys}">${sys}</option>
+				<option class="${sys}" value="${sys}">${sys}</option>
 				`);
 		}
 		sys = prefs.session.sys;

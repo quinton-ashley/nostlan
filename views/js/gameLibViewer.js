@@ -259,18 +259,23 @@ const Viewer = function() {
 
 	this.powerBtn = async function() {
 		remote.getCurrentWindow().minimize();
-		let emuExePath = path.join(prefs.emuDir,
-			`../${prefs[sys].emu}/BIN/${prefs[sys].emu}.${((mac)?'app':'exe')}`);
-		let game = games.find(x => x.id === getSelectedID());
-		if (game) {
-			game = game.file;
+		let emuDirPath = path.join(prefs.emuDir,
+			`../${prefs[sys].emu}/BIN/`);
+		let emuExePath = emuDirPath + prefs[sys].emu + '.exe';
+		let gameFile = games.find(x => x.id === getSelectedID());
+		if (gameFile) {
+			gameFile = gameFile.file;
 		}
 		this.remove();
 		let args;
-		if (game) {
-			args = [game];
+		if (gameFile) {
+			args = [gameFile];
 		}
-		await spawn(emuExePath, args);
+		let gameDir = path.parse(gameFile).dir;
+		await spawn(emuExePath, args, {
+			cwd: emuDirPath,
+			stdio: 'inherit'
+		});
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
 	}
@@ -318,8 +323,6 @@ const Viewer = function() {
 		theme = ui[theme];
 		mouse = prefs.ui.mouse;
 		mouse.wheel.delta = 100 * mouse.wheel.multi;
-		$('body').removeClass();
-		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
 		await loadImages();
 		let rows = 8;
 		if (games.length < 18) {
@@ -356,6 +359,10 @@ const Viewer = function() {
 			coverClicked();
 		});
 		$('#dialogs').hide();
+		$('.cover.view select').css('margin-top', '20px');
+		if ($('.reel.bg').length) {
+			coverClicked();
+		}
 		if (!reload) {
 			$(window).bind('mousewheel', function(event) {
 				event.preventDefault();
@@ -385,8 +392,10 @@ const Viewer = function() {
 		let cpHeight = $('.cover.power').height();
 		if (cvHeight < cpHeight) {
 			$cvSel.css('margin-top', '40px');
+			$cvSel.css('margin-bottom', '40px');
 		} else if (cvHeight > cpHeight) {
 			$cvSel.css('margin-top', '20px');
+			$cvSel.css('margin-bottom', '20px');
 		}
 		if (cvHeight != cpHeight) {
 			$cv.height(cpHeight);

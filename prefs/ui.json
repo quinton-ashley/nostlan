@@ -30,8 +30,8 @@
 	},
 	"wiiu": {
 		"default": {
-			"id": "AMKE01",
-			"title": "Mario Kart 8"
+			"id": "ARDE01",
+			"title": "Super Mario 3D World"
 		},
 		"template": {
 			"coverFull": "https://img00.deviantart.net/1865/i/2014/266/0/f/wii_u_cover_template_by_etschannel-d7sgkyf.png"

@@ -137,9 +137,16 @@ img {
 }
 
 .wiiu .front-cover {
-  width: 94.5%;
-  top: 2.2%;
-  left: 1.6%;
+  height: 100%;
+  width: 100%;
+  top: -0%;
+  left: -1.1%;
+}
+
+.wiiu .front-cover img {
+  height: 100%;
+  width: 100%;
+  transform: scale(.946, .954);
 }
 
 .wiiu .front-cover-crop img {
@@ -191,9 +198,16 @@ img {
 }
 
 .switch .front-cover {
-  width: 94.5%;
-  top: 2.6%;
-  left: 0.8%;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: -2%;
+}
+
+.switch .front-cover img {
+  width: 100%;
+  height: 100%;
+  transform: scale(.95);
 }
 
 .switch .front-cover-crop img {

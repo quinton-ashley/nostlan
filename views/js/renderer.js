@@ -110,9 +110,6 @@ module.exports = async function(opt) {
 			let results = fuse.search(searchTerm);
 			let region = prefs.region;
 			for (let i = 0; i < results.length; i++) {
-				if (searchTerm == "GVJE08") {
-					log('hi');
-				}
 				if (results[i].title.length > searchTerm.length + 6) {
 					continue;
 				}
@@ -158,9 +155,10 @@ module.exports = async function(opt) {
 		let files = klawSync(prefs[sys].libs[0], {
 			depthLimit: 0
 		});
+		let file;
 		// a lot of pruning is required to get good search results
 		for (let i = 0; i < files.length; i++) {
-			let file = files[i].path;
+			file = files[i].path;
 			log(file);
 			let term = path.parse(file);
 			if (sys != 'wiiu' && sys != 'ps3') {
@@ -188,6 +186,7 @@ module.exports = async function(opt) {
 				if (game) {
 					log(id);
 					log(game.title);
+					game.file = file;
 					games.push(game);
 					continue;
 				}
@@ -230,8 +229,8 @@ module.exports = async function(opt) {
 				games.push(game);
 			}
 		}
-		let usrGamesPath = `${botDir}/usr/${sys}Games.json`;
-		await fs.outputFile(usrGamesPath, JSON.stringify({
+		let gamesPath = `${botDir}/usr/${sys}Games.json`;
+		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
 		}));
 		prefs.session.sys = sys;

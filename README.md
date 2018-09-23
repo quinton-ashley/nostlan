@@ -14,10 +14,10 @@ Bottlenose is a simple, yet high quality front-end for video game emulators.  Un
 
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just an elegant front-end.
 
--   automated install/update texture packs for Dolphin
--   automated install/update graphics packs for Cemu
+-   batch install/update texture packs for Dolphin
+-   batch install/update graphics packs for Cemu
 -   game controller UI mode
--   automatic emulator updates with no retroarch requirement
+-   automatic emulator updates
 -   easy way to mix and swap texture packs for Dolphin
 -   Linux support
 
@@ -60,13 +60,13 @@ Paypal: <https://www.paypal.me/qashto/5>
 ## How is Bottlenose different form other front-ends?
 
 Emulation Station is a beautiful front end for Windows and Linux.  Like Bottlenose, it's open source!  I highly recommend it.  I was inspired by Emulation Station when I started working on Bottlenose.  Bottlenose however makes box art the primary, practically singular, focus of the UI, not metadata or descriptions:
-<https://emulationstation.org/assets/featurettes/full/theming_list.png>
+![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
 The most popular front end for Windows is Launchbox.  If Launchbox makes you barf rainbows then you might like the simplicity of Bottlenose!  Launchbox looks great for old arcade titles and seems to be made for custom arcade cabinets and PCs with older hardware.  Shoots for quantity over quality image wise.  A lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Bottlenose will mainly focus on post-Gamecube (2001) emulators.  This is the "Big Box" mode:
-<https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg>
+![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide:
-<http://openemu.org/img/intro-gb-grid.png>
+![](http://openemu.org/img/intro-gb-grid.png)
 
 ## Development Info
 
@@ -76,7 +76,31 @@ Bottlenose is open source and MIT licensed!  I loved using Electron to make Bott
 
 PRs are welcome!  Please follow my coding style though.  Line length should be ~80.  In general I prefer more verbose JS syntax.  End each line with a semicolon.  No if statements without brackets.  Wrap ternary ops in parens.  Absolutely no callback pyramids, use Async/Await whenever possible.  Comment your code but not too much.  Do not write plain JS novels for editing the DOM, just use jQuery please.  Make sure your console specific code is not console agnostic and vice versa.
 
-## Image Naming Convention
+## Contributing to Bottlenose
+
+Games Database JSON files can be found in the db folder.  Games entries are structured like this.
+
+```javascript
+{
+ "id": "G8ME01",
+ "title": "Paper Mario: The Thousand-Year Door",
+ "texp": [{
+	 "name": "HD",
+	 "authors": ["The Dolphin Community"],
+	 "rate": 10,
+	 "version": "1.7.0",
+	 "png": "https://drive.google.com/file/d/1QtgZFz2darznGNtViJVOep8UZ3xuaUkN/view?usp=sharing",
+	 "dds": "https://drive.google.com/file/d/1x6XJnQTW9SvbA6EmNHIKz9bGDXXweHAD/view?usp=sharing",
+	 "url": "https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018"
+ }]
+}
+```
+
+### Texture Packs
+
+The pack's `name` should be short, simple and should not include "Texture" or "Pack".  `png` and `dds` links must be direct download links or google drive links.  Mega links will never be supported.  `url` is the link to the relevant forum post or readme.  `version` must use semantic versioning.  `rate` is the pack's rating 1-10.  Packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  In the app's UI, users will only see the rating as either recommended or not recommended, not a 1-10 number.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.  If you would like to dispute a rating with me you must be a texture pack creator, the pack must have a "not recommended" rating, and you must file the dispute as an issue on this project's github.  Ultimately the rating is my decision though.
+
+### Image Naming Convention
 
 The following names can be used to specify images:
 
@@ -85,6 +109,19 @@ The following names can be used to specify images:
 -   "cover" the front facing portion of the cover sleeve, no box
 -   "disc" the front of the game's (first) disc
 -   "cart" the front of the game's (first) cartridge
+
+In a future version of bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
+
+```javascript
+{
+ "id": "ALERA",
+ "title": "Mario Tennis Aces",
+ "texp": [],
+ "img": {
+	 "box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
+ }
+}
+```
 
 ## Credits!
 

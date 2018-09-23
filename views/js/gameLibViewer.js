@@ -7,6 +7,7 @@ const Viewer = function() {
 	const spawn = require('await-spawn');
 	const delay = require('delay');
 	const fs = require('fs-extra');
+	const klawSync = require('klaw-sync');
 	const os = require('os');
 	const path = require('path');
 	const req = require('requisition');
@@ -260,22 +261,49 @@ const Viewer = function() {
 	this.powerBtn = async function() {
 		remote.getCurrentWindow().minimize();
 		let emuDirPath = path.join(prefs.emuDir,
-			`../${prefs[sys].emu}/BIN/`);
-		let emuExePath = emuDirPath + prefs[sys].emu + '.exe';
+			`../${prefs[sys].emu}/BIN`);
+		if (sys == '3ds') {
+			emuDirPath += '/nightly-mingw';
+		}
+		let emuExePath;
+		if (sys == '3ds') {
+			emuExePath = `${emuDirPath}/${prefs[sys].emu}-qt.exe`;
+		} else {
+			emuExePath = `${emuDirPath}/${prefs[sys].emu}.exe`;
+		}
 		let gameFile = games.find(x => x.id === getSelectedID());
 		if (gameFile) {
 			gameFile = gameFile.file;
+		} else {
+			return;
 		}
 		this.remove();
-		let args;
-		if (gameFile) {
-			args = [gameFile];
+		let args = [];
+		if (sys == 'wiiu') {
+			let files = klawSync(gameFile + '/code');
+			let ext, file;
+			for (let i = 0; i < files.length; i++) {
+				file = files[i].path;
+				ext = path.parse(file).ext;
+				if (ext == '.rpx') {
+					gameFile = file;
+					break;
+				}
+			}
+			args.push('-g');
 		}
-		let gameDir = path.parse(gameFile).dir;
-		await spawn(emuExePath, args, {
-			cwd: emuDirPath,
-			stdio: 'inherit'
-		});
+		args.push(gameFile);
+		if (sys == 'wiiu' || sys == '3ds') {
+			args.push('-f');
+		}
+		try {
+			await spawn(emuExePath, args, {
+				cwd: emuDirPath,
+				stdio: 'inherit'
+			});
+		} catch (ror) {
+			log(ror);
+		}
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
 	}

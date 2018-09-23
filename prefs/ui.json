@@ -14,8 +14,7 @@
 			"title": "Super Mario 64 DS"
 		},
 		"template": {
-			"coverFull": "",
-			"openBox": ""
+			"box": "http://vgboxart.com/process-download.php?id=385&type=resource"
 		}
 	},
 	"wii": {
@@ -43,7 +42,7 @@
 			"title": "Super Mario 3D Land"
 		},
 		"template": {
-			"box": ""
+			"cover": "http://img12.deviantart.net/e77f/i/2013/230/7/9/3ds_box_art_template_by_omegaaaronyt-d6inshw.png"
 		}
 	},
 	"switch": {
@@ -57,6 +56,8 @@
 	},
 	"ps3": {
 		"default": {},
-		"template": {}
+		"template": {
+			"coverFull": "https://img00.deviantart.net/bed6/i/2015/183/2/1/ps3_cover_template_by_the_prototype92-d5xwdlw.png"
+		}
 	}
 }

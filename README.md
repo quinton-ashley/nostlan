@@ -20,6 +20,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   automatic emulator updates
 -   easy way to mix and swap texture packs for Dolphin
 -   Linux support
+-   Xenia and RPCS3 support
 
 ## Supported emulators (as of now)
 
@@ -29,23 +30,25 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   Citra (3DS)
 -   Yuzu (Switch)
 
-## Required Directory Structure
+## Required Directory Structure Example
 
 ```javascript
 Emulation (root folder can have any name)
 ├─┬ Dolphin
-│ ├─┬ BIN
-│ │ ├── Languages
-│ │ ├── Sys
+│ ├─┬ BIN (must be in all caps)
 │ │ ├── User
 │ │ ├── portable.txt
-│ │ ├── Dolphin.exe
-│ │ └── ...
+│ │ └── Dolphin.exe
 │ └─┬ GAMES
-│   ├── Super Mario Sunshine.iso
+│   ├── Super Mario Sunshine.gcz
 │   ├── Super Smash Bros Melee.iso
-│   └── ...
-├── Cemu
+│   └── sm64.wad
+├─┬ Cemu
+│ ├── BIN
+│ └─┬ GAMES
+│   └─┬ Mario Kart 8 (game folder)
+│     └─┬ code
+│       └── Turbo.rpx (Bottlenose uses this file to launch game)
 └── Yuzu
 ```
 
@@ -59,10 +62,10 @@ Paypal: <https://www.paypal.me/qashto/5>
 
 ## How is Bottlenose different form other front-ends?
 
-Emulation Station is a beautiful front end for Windows and Linux.  Like Bottlenose, it's open source!  I highly recommend it.  I was inspired by Emulation Station when I started working on Bottlenose.  Bottlenose however makes box art the primary, practically singular, focus of the UI, not metadata or descriptions:
+Emulation Station is a beautiful front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  Bottlenose however makes box art the primary, practically singular, focus of the UI, not metadata or descriptions:
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
-The most popular front end for Windows is Launchbox.  If Launchbox makes you barf rainbows then you might like the simplicity of Bottlenose!  Launchbox looks great for old arcade titles and seems to be made for custom arcade cabinets and PCs with older hardware.  Shoots for quantity over quality image wise.  A lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Bottlenose will mainly focus on post-Gamecube (2001) emulators.  This is the "Big Box" mode:
+The most popular front end for Windows is Launchbox.  If Launchbox makes you barf rainbows then you might like the simplicity of Bottlenose!  Launchbox looks great for old arcade titles and seems to be ready to run in custom arcade cabinets and PCs with older hardware.  Shoots for quantity over quality image wise.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Bottlenose will mainly focus on post-Gamecube (2001) emulators.  This is the "Big Box" mode:
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide:
@@ -78,7 +81,7 @@ PRs are welcome!  Please follow my coding style though.  Line length should be ~
 
 ## Contributing to Bottlenose
 
-Games Database JSON files can be found in the db folder.  Games entries are structured like this.
+If you would like to update a game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
 
 ```javascript
 {
@@ -96,21 +99,32 @@ Games Database JSON files can be found in the db folder.  Games entries are stru
 }
 ```
 
+### Game Properties
+
+-   `id` is the official id of the game, if the game you're adding is a homebrew or mod then you must make a unique id for it with a valid region code
+-   `name` the official name of the game, subtitles should be delineated using a colon.
+-   `texp` the texture pack array, order is irrelevant
+-   `img` img array which contains an object with image names/image url key/data pairs that override the default scape location.
+
 ### Texture Packs
 
-The pack's `name` should be short, simple and should not include "Texture" or "Pack".  `png` and `dds` links must be direct download links or google drive links.  Mega links will never be supported.  `url` is the link to the relevant forum post or readme.  `version` must use semantic versioning.  `rate` is the pack's rating 1-10.  Packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  In the app's UI, users will only see the rating as either recommended or not recommended, not a 1-10 number.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.  If you would like to dispute a rating with me you must be a texture pack creator, the pack must have a "not recommended" rating, and you must file the dispute as an issue on this project's github.  Ultimately the rating is my decision though.
+-   `name` should be short, simple and should not include "Texture" or "Pack".
+-   `png` and `dds` links must be direct download links or google drive links.  Mega links will never be supported.
+-   `url` is the link to the relevant forum post or readme.
+-   `version` must use semantic versioning.
+-   `rate` is the pack's rating 1-10.
 
-### Image Naming Convention
+### Images
 
 The following names can be used to specify images:
 
--   "box" the front cover including box
+-   "box" the front cover including box ()
 -   "coverFull" the entire cover sleeve, no box
 -   "cover" the front facing portion of the cover sleeve, no box
 -   "disc" the front of the game's (first) disc
 -   "cart" the front of the game's (first) cartridge
 
-In a future version of bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
+Box art is prioritized in this order: box (super high quality), coverFull, cover, box (low quality).  In a future version of bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
 
 ```javascript
 {
@@ -123,9 +137,13 @@ In a future version of bottlenose users will be able to change images in the UI.
 }
 ```
 
+## Planned Features! (continued)
+
+Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
+
 ## Credits!
 
-Bottlenose uses publicly available image databases under Fair Use.  
+Bottlenose uses publicly available images under Fair Use.  
 
 ### Databases
 
@@ -144,18 +162,17 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 
 ### Template Art
 
-High quality gcn, wii, and wiiu templates by etschannel via deviantart
-
-Switch template by ponces245 via deviantart
+-   Gamecube, Wii, and Wii U templates by etschannel via deviantart
+-   Switch template by ponces245 via deviantart
+-   PS3 template by the_prototype92 via deviantart
+-   3DS template by omegaaaronyt via deviantart
 
 ### Loading Sequences
 
-Gamecube Loading Intro CSS by MarcMalignan
-MIT
+Gamecube Loading Intro CSS by MarcMalignan : MIT licensed
 <https://codepen.io/MarcMalignan/pen/doCth>
 
-Switch Loading Intro Pure CSS by joshbader
-MIT
+Switch Loading Intro Pure CSS by joshbader : MIT licensed
 <https://codepen.io/joshbader/pen/mjZzGM>
 
 ### Controllers
@@ -179,4 +196,4 @@ DS_BIOS
 
 ## Legal Disclaimer
 
-Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!) pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of Nintendo, Sony, or Microsoft.
+Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of texture packers, Nintendo, Sony, or Microsoft.  Anyone asking about or sharing information related to illegal activities on this project's Github page will be banned.

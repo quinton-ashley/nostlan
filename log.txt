@@ -1,6 +1,0 @@
-[18:36:00] ------- Init Cemu 1.13.1d -------
-[18:36:00] mlc01 path: D:\emu\DATA\EMULATORS\Cemu\BIN\mlc01\
-[18:36:00] CPU: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
-[18:36:00] RAM: 49051MB
-[18:36:00] Used CPU extensions: SSSE3, SSE4.1, AVX2, AES-NI
-[18:36:01] Cemuhook version: 0.5.6.5

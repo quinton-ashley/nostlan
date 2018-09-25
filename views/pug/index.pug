@@ -5,11 +5,10 @@ head
 link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
 link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
 link(rel='stylesheet' type='text/css' href='../css/style.css')
-link(rel='stylesheet' type='text/css' href='../css/gcnLoad.css')
-link(rel='stylesheet' type='text/css' href='../css/switchLoad.css')
 link(rel='stylesheet' type='text/css' href='../css/gameLibViewer.css')
 title= title
-
+each sys in systems
+	link(rel='stylesheet' type='text/css' href='../css/' + sys + 'Load.css')
 body
 	#dialogs
 		p#loadDialog0

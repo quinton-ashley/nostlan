@@ -23,6 +23,7 @@ module.exports = async function(opt) {
 	const path = require('path');
 	const pug = require('pug');
 	const $ = require('jquery');
+	var Mousetrap = require('mousetrap');
 	const osType = os.type();
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
@@ -91,13 +92,6 @@ module.exports = async function(opt) {
 			message: `choose the root emulators dir for bottlenose`
 		});
 		return dir[0];
-	}
-
-	async function getTheme() {
-		let uiPath = path.join(global.__rootDir, '/prefs/ui.json');
-		ui = JSON.parse(await fs.readFile(uiPath));
-		theme = prefs[sys].style || sys;
-		theme = ui[theme];
 	}
 
 	async function reset() {
@@ -271,10 +265,10 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		intro();
 		$('#openSel .' + sys).prop('selected');
 		$('body').removeClass();
 		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
+		intro();
 		$('#dialogs').show();
 		let gamesPath = `${botDir}/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
@@ -333,8 +327,6 @@ module.exports = async function(opt) {
 └── Yuzu`);
 				prefs[sys].libs.push(openLib(sys));
 			}
-			getTheme();
-			intro();
 			await reset();
 		}
 	}
@@ -361,13 +353,12 @@ module.exports = async function(opt) {
 
 	await load();
 	await viewer.load(games, prefs, sys);
-	$('#cvs').remove();
 
 	async function powerBtn() {
 		await viewer.powerBtn();
 		intro();
 		await viewer.load(games, prefs, sys);
-		$('#cvs').remove();
+		$('#intro').remove();
 	}
 
 	async function resetBtn() {
@@ -375,7 +366,7 @@ module.exports = async function(opt) {
 		intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
-		$('#cvs').remove();
+		$('#intro').remove();
 	}
 
 	async function openSel() {
@@ -387,24 +378,34 @@ module.exports = async function(opt) {
 		intro();
 		await reload();
 		await viewer.load(games, prefs, sys);
-		$('#cvs').remove();
+		$('#intro').remove();
 	}
 
 	$('#powerBtn').click(powerBtn);
 	$('#resetBtn').click(resetBtn);
 	$('#openSel').change(openSel);
 
+	Mousetrap.bind(['command+m', 'ctrl+m'], function() {
+		console.log('command m or control m');
+		$('nav').toggleClass('hide');
+		// return false to prevent default browser behavior
+		// and stop event from bubbling
+		return false;
+	});
+
 	// $(document).keydown(function(e) {
-	//   switch (e.which) {
-	//     case 13: // Enter
-	//       log('enter');
-	//       break;
-	//     case 27: // Escape
-	//       remote.getCurrentWindow().close();
-	//       break;
-	//     default:
-	//       return;
-	//   }
-	//   e.preventDefault();
+	// 	switch (e.which) {
+	// 		case 13: // Enter
+	// 			log('enter');
+	// 			break;
+	// 		case 27: // Escape
+	// 			remote.getCurrentWindow().close();
+	// 			break;
+	// 		default:
+	// 			return;
+	// 	}
+	// 	e.preventDefault();
 	// });
+
+	$('#intro').remove();
 };

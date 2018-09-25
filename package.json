@@ -29,6 +29,7 @@
 		"markdown-it": "^8.4.2",
 		"material-design-icons-iconfont": "^3.0.3",
 		"moment": "^2.22.2",
+		"mousetrap": "^1.6.2",
 		"opn": "^5.3.0",
 		"popper.js": "^1.14.4",
 		"pug": "^2.0.3",
@@ -66,5 +67,5 @@
 		"version": "git add -A",
 		"postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
 	},
-	"version": "0.0.27"
+	"version": "0.0.28"
 }

@@ -35,3 +35,7 @@ html, body {
 	/* Support for IE. */
 	font-feature-settings: 'liga';
 }
+
+.hide {
+	display: none !important;
+}

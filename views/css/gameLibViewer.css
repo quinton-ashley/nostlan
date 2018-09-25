@@ -584,8 +584,8 @@ img.logoNav {
   background-color: rgb(70, 70, 70);
 }
 
-.switch .cover button:hover {
-  background-color: rgb(60, 60, 60);
+.switch .cover button:hover, .switch .cover select.btn:hover {
+  background-color: rgb(60, 60, 60)!important;
 }
 
 .switch .cover select:not(.btn) {

@@ -5,7 +5,8 @@
 			"title": "Super Smash Bros. Melee"
 		},
 		"template": {
-			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png"
+			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png",
+			"disc": "http://vgboxart.com/process-download.php?id=434&type=resource \\ png"
 		}
 	},
 	"ds": {
@@ -14,7 +15,8 @@
 			"title": "Super Mario 64 DS"
 		},
 		"template": {
-			"box": "http://vgboxart.com/process-download.php?id=385&type=resource"
+			"box": "http://vgboxart.com/process-download.php?id=385&type=resource \\ png",
+			"cart": "http://i40.tinypic.com/1z2dq4x.png"
 		}
 	},
 	"wii": {
@@ -42,7 +44,11 @@
 			"title": "Super Mario 3D Land"
 		},
 		"template": {
-			"cover": "http://img12.deviantart.net/e77f/i/2013/230/7/9/3ds_box_art_template_by_omegaaaronyt-d6inshw.png"
+			"box": "http://vgboxart.com/resources/template/12048_new-nintendo-3ds-prev.png",
+			"cart": "https://vgboxart.com/process-download.php?id=1505&type=resource // png"
+		},
+		"ui": {
+			"system": "https://reedart.files.wordpress.com/2014/01/nintendo-3ds-xl-screen-template1.jpg"
 		}
 	},
 	"switch": {

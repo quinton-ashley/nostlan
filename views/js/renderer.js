@@ -39,14 +39,22 @@ module.exports = async function(opt) {
 	// jQueryBridget('masonry', Masonry, $);
 	const viewer = require('../js/gameLibViewer.js');
 
-	const gcnIntroHTML = pug.compileFile(path.join(__dirname,
-		'../pug/gcnLoad.pug'));
-	const gcnIntro = function() {
-		$('body').prepend(gcnIntroHTML());
-		require('../js/gcnLoad.js')();
+	const introHTML = {
+		gcn: pug.compileFile(path.join(__dirname,
+			'../pug/gcnLoad.pug')),
+		wiiu: await fs.readFile(path.join(__dirname,
+			'../html/wiiuLoad.html')),
+		switch: pug.compileFile(path.join(__dirname,
+			'../pug/switchLoad.pug'))
+	};
+	const intro = function() {
+		let style = (prefs[sys].style || sys);
+		$('body').prepend(introHTML[style]);
+		let hasJS = fs.existsSync(path.join(__dirname, `../js/${style}Load.js`));
+		if (hasJS) {
+			require(`../js/${style}Load.js`)();
+		}
 	}
-	gcnIntro();
-	// await delay(4000);
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -83,6 +91,13 @@ module.exports = async function(opt) {
 			message: `choose the root emulators dir for bottlenose`
 		});
 		return dir[0];
+	}
+
+	async function getTheme() {
+		let uiPath = path.join(global.__rootDir, '/prefs/ui.json');
+		ui = JSON.parse(await fs.readFile(uiPath));
+		theme = prefs[sys].style || sys;
+		theme = ui[theme];
 	}
 
 	async function reset() {
@@ -256,6 +271,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
+		intro();
 		$('#openSel .' + sys).prop('selected');
 		$('body').removeClass();
 		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
@@ -317,8 +333,9 @@ module.exports = async function(opt) {
 └── Yuzu`);
 				prefs[sys].libs.push(openLib(sys));
 			}
+			getTheme();
+			intro();
 			await reset();
-			prefs.session.sys = sys;
 		}
 	}
 
@@ -348,14 +365,14 @@ module.exports = async function(opt) {
 
 	async function powerBtn() {
 		await viewer.powerBtn();
-		gcnIntro();
+		intro();
 		await viewer.load(games, prefs, sys);
 		$('#cvs').remove();
 	}
 
 	async function resetBtn() {
 		viewer.remove();
-		gcnIntro();
+		intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
 		$('#cvs').remove();
@@ -367,7 +384,7 @@ module.exports = async function(opt) {
 		}
 		viewer.remove();
 		sys = $(this).val();
-		gcnIntro();
+		intro();
 		await reload();
 		await viewer.load(games, prefs, sys);
 		$('#cvs').remove();

@@ -104,28 +104,36 @@ img {
 /*================ds Game Lib Viewer====================*/
 
 .ds .front-cover-crop {
-  width: 203.9%;
-  top: 2.1%;
-  left: 0.1%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
 }
 
 .ds .front-cover {
-  width: 96.6%;
-  top: 2.1%;
-  left: 2.1%;
+  width: 100%;
+  top: -0.3%;
+  left: 0.4%;
+}
+
+.ds .front-cover img {
+  width: 100%;
+  height: 100%;
+  transform: scale(.948, .948);
 }
 
 .ds .front-cover-crop img {
-  transform: translate(-52.4%, 0%);
+  width: 100%;
+  height: 100%;
+  transform: translate(-54.6%, 0%) scale(2.04, .95);
 }
 
 .ds .front-cover-crop .shade {
   position: absolute;
-  width: 0.5%;
+  width: 1.3%;
   height: 100%;
   top: 0%;
   left: 0%;
-  background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(0.25turn, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
 }
 
 /*================PS3 Game Lib Viewer====================*/

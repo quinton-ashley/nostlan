@@ -72,8 +72,14 @@ const Viewer = function() {
 		let file, res, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
-			url = game.img[name];
-			ext = url.substr(-3);
+			url = game.img[name].split(/ \\ /);
+			if (url[1]) {
+				ext = url[1];
+				url = url[0];
+			} else {
+				url = url[0];
+				ext = url.substr(-3);
+			}
 			file = `${dir}/${name}.${ext}`;
 			res = await dl(url, file);
 			if (res) {
@@ -156,11 +162,25 @@ const Viewer = function() {
 		return false;
 	}
 
+	function getTemplate() {
+		if (!theme.template.box) {
+			theme.template.box = '';
+		}
+		return {
+			id: '_TEMPLATE',
+			title: 'Template',
+			img: theme.template
+		};
+	}
+
 	async function loadImages() {
 		let imgDir;
-		for (let i = 0; i < games.length; i++) {
+		for (let i = 0; i < games.length + 1; i++) {
 			let res;
 			let game = games[i];
+			if (i == games.length) {
+				game = getTemplate();
+			}
 			imgDir = `${prefs.emuDir}/${sys}/${game.id}/img`;
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
 				await getImg(game, 'box', true);
@@ -181,7 +201,7 @@ const Viewer = function() {
 		}
 		defaultCoverImg = await getImg(theme.default, 'box');
 		if (!defaultCoverImg) {
-			log('ERROR: No cover image found');
+			log('ERROR: No default cover image found');
 			return false;
 		}
 
@@ -259,10 +279,13 @@ const Viewer = function() {
 		goTo(pos, time);
 	}
 
-	function getSelectedID() {
-		let $gamePanel = $('.panel.selected').attr('class');
-		if ($gamePanel) {
-			return $gamePanel.split(' ')[1];
+	function getPanelID($panel) {
+		if (!$panel) {
+			return '';
+		}
+		$panel = $panel.attr('class');
+		if ($panel) {
+			return $panel.split(' ')[1];
 		}
 		return '';
 	}
@@ -280,7 +303,7 @@ const Viewer = function() {
 		} else {
 			emuExePath = `${emuDirPath}/${prefs[sys].emu}.exe`;
 		}
-		let gameFile = games.find(x => x.id === getSelectedID());
+		let gameFile = games.find(x => x.id === getPanelID($('.panel.selected')));
 		if (gameFile) {
 			gameFile = gameFile.file;
 		} else {
@@ -323,7 +346,7 @@ const Viewer = function() {
 		}
 		let $reel = $cover.parent();
 		let id = $cover.attr('class').split(' ')[1];
-		if (!id) {
+		if (!id || id == '_TEMPLATE') {
 			return;
 		}
 		scrollToGame(id, 1000);
@@ -338,12 +361,21 @@ const Viewer = function() {
 			$reel.css('left', '');
 			$cover.css('transform', '');
 		}
+		log('clicked: ')
 		log($cover);
 	}
 
 	this.remove = function(menu) {
 		coverClicked();
 		$('.reel').empty();
+	}
+
+	async function addTemplates(template, rows, num) {
+		for (let i = 0; i < rows; i++) {
+			for (let j = 0; j < num; j++) {
+				await addCover(template, i);
+			}
+		}
 	}
 
 	this.load = async function(usrGames, usrPrefs, usrSys) {
@@ -374,6 +406,9 @@ const Viewer = function() {
 		}
 		dynRowStyle += '</style>';
 		$('html').append(dynRowStyle);
+		let template = getTemplate();
+		let templateAmt = 4;
+		await addTemplates(template, rows, templateAmt);
 		for (let i = 0, j = 0; i < games.length; i++) {
 			try {
 				for (let k = 0; k < rows; k++) {
@@ -387,6 +422,7 @@ const Viewer = function() {
 				log(ror);
 			}
 		}
+		await addTemplates(template, rows, templateAmt);
 		// for (let i = 0; i < 8; i++) {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }
@@ -420,6 +456,12 @@ const Viewer = function() {
 			});
 			// remote.getCurrentWindow().setFullScreen(true);
 		}
+		await delay(100);
+		// scroll to game at center of reel 0
+		let $mid = $('.reel.r0').children();
+		log('mid: ' + Math.round($mid.length * .5) - 1)
+		$mid = $mid.eq(Math.round($mid.length * .5) - 1);
+		scrollToGame(getPanelID($mid), 10);
 	}
 
 	function resizeUI() {

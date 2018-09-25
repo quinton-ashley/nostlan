@@ -55,7 +55,10 @@
 		}
 	},
 	"ps3": {
-		"default": {},
+		"default": {
+			"id": "BCUS98154",
+			"title": "inFamous"
+		},
 		"template": {
 			"coverFull": "https://img00.deviantart.net/bed6/i/2015/183/2/1/ps3_cover_template_by_the_prototype92-d5xwdlw.png"
 		}

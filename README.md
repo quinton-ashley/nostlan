@@ -52,6 +52,8 @@ Emulation (root folder can have any name)
 └── Yuzu
 ```
 
+The default game library of each emulator will be its `GAMES` folder.  Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+
 ## Donation Required!
 
 Even though there is no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  If I don't receive any donations I will assume people are not interested in a high quality front-end for emulators and I won't be willing to dedicate a significant amount of time to this project.  I've already been working on it for a month!  If you want me to add updates and new features to Bottlenose please support me with a donation and share the app with your friends.  Thank you :)
@@ -77,7 +79,7 @@ Bottlenose is open source and MIT licensed!  I loved using Electron to make Bott
 
 ## Collaboration Guide
 
-PRs are welcome!  Please follow my coding style though.  Line length should be ~80.  In general I prefer more verbose JS syntax.  End each line with a semicolon.  No if statements without brackets.  Wrap ternary ops in parens.  Absolutely no callback pyramids, use Async/Await whenever possible.  Comment your code but not too much.  Do not write plain JS novels for editing the DOM, just use jQuery please.  Make sure your console specific code is not console agnostic and vice versa.
+PRs are welcome!  Please follow my coding style though.  Line length should be ~80.  In general I prefer more verbose JS syntax.  End each line with a semicolon.  No if statements without brackets.  No callback pyramids, use Async/Await whenever possible.  Comment your code but not too much.  Do not write plain JS novels for editing the DOM, just use jQuery please.  Pay attention to whether you need to write system/emu specific or general code.
 
 ## Contributing to Bottlenose
 

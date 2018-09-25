@@ -58,6 +58,7 @@ const Viewer = function() {
 
 	async function dlFromAndy(title, file, system) {
 		let url = `http://andydecarli.com/Video%20Games/Collection/${system}/Scans/Full%20Size/${system}%20${title}%20Front%20Cover.jpg`;
+		log(url);
 		let res = await dl(url, file);
 		if (res && prefs.ui.getBackCoverHQ) {
 			url = `http://andydecarli.com/Video%20Games/Collection/${system}/Scans/Full%20Size/${system}%20${title}%20Back%20Cover.jpg`;
@@ -81,7 +82,7 @@ const Viewer = function() {
 		}
 		$('#loadDialog0').html(`scraping for the <br>${name}<br> of <br>${game.title}`);
 		// get high quality box for gamecube/wii
-		if ((sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') && name == 'box') {
+		if (sys != 'switch' && name == 'box') {
 			file = `${dir}/${name}.jpg`;
 			if (await fs.exists(file)) {
 				return file;
@@ -93,6 +94,8 @@ const Viewer = function() {
 				res = await dlFromAndy(title, file, 'Nintendo%203DS');
 			} else if (sys == 'ds') {
 				res = await dlFromAndy(title, file, 'Nintendo%20DS');
+			} else if (sys == 'ps3') {
+				res = await dlFromAndy(title, file, 'Sony%20PlayStation%203');
 			} else if (game.id.length > 4) {
 				res = await dlFromAndy(title, file, 'Nintendo%20Game%20Cube');
 				if (!res) {
@@ -127,7 +130,13 @@ const Viewer = function() {
 			if (i == 2) {
 				id = id.substr(0, id.length - 1) + 'C';
 			}
-			url = `https://art.gametdb.com/${sys}/${name}HQ/US/${id}`;
+			let locale = 'US';
+			if (sys == 'ps3') {
+				if (id[2] == 'E') {
+					locale = 'EN';
+				}
+			}
+			url = `https://art.gametdb.com/${sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
 			log(url);
 			res = await dlNoExt(url, file);
 			if (res) {
@@ -155,7 +164,7 @@ const Viewer = function() {
 			imgDir = `${prefs.emuDir}/${sys}/${game.id}/img`;
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
 				await getImg(game, 'box', true);
-				res = await getImg(game, 'coverfull');
+				res = await getImg(game, 'coverFull');
 				if (!res && !(await imgExists(game, 'box'))) {
 					res = await getImg(game, 'cover');
 					if (!res) {
@@ -195,7 +204,7 @@ const Viewer = function() {
 		let cl1 = '';
 		let file = await imgExists(game, 'box');
 		if (!file) {
-			file = await imgExists(game, 'coverfull');
+			file = await imgExists(game, 'coverFull');
 			cl1 = 'front-cover-crop ' + sys;
 			if (!file) {
 				file = await imgExists(game, 'cover');

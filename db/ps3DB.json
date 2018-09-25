@@ -9898,7 +9898,8 @@
 },{
 "id": "NPUA80253", "title": "PixelJunk Shooter", "texp": []
 },{
-"id": "NPUA80275", "title": "Journey", "texp": []
+"id": "NPUA80275", "title": "Journey", "texp": [],
+"img": {"coverFull": "https://orig00.deviantart.net/1326/f/2013/363/a/9/journey_ps3_custom_cover_by_ropa_to-d6zuz48.png"}
 },{
 "id": "NPUA80319", "title": "NUMBLAST", "texp": []
 },{
@@ -10334,7 +10335,8 @@
 },{
 "id": "NPUB31445", "title": "Skullgirls Encore", "texp": []
 },{
-"id": "NPUB31448", "title": "FEZ", "texp": []
+"id": "NPUB31448", "title": "FEZ", "texp": [],
+"img": {"cover": "http://reviewanygame.com/content/images/products/fez-ps3.jpg"}
 },{
 "id": "NPUB31453", "title": "Ultratron", "texp": []
 },{
@@ -11136,7 +11138,8 @@
 },{
 "id": "NPEB00563", "title": "Castlevania: Harmony of Despair", "texp": []
 },{
-"id": "NPEB00564", "title": "LIMBO", "texp": []
+"id": "NPEB00564", "title": "LIMBO", "texp": [],
+"img": {"coverFull": "http://vgboxart.com/boxes/PS3/75167-limbo-full.png"}
 },{
 "id": "NPEB00566", "title": "SkyDrift", "texp": []
 },{
@@ -11537,6 +11540,9 @@
 "id": "NPEB01888", "title": "Pacific Rim: The Video Game", "texp": []
 },{
 "id": "NPEB01892", "title": "Pac-Man Museum", "texp": []
+},{
+"id": "NPEB01893", "title": "Fez", "texp": [],
+"img": {"cover": "http://reviewanygame.com/content/images/products/fez-ps3.jpg"}
 },{
 "id": "NPEB01894", "title": "Backgammon Blitz", "texp": []
 },{
@@ -12440,7 +12446,8 @@
 },{
 "id": "NPHB00369", "title": "Sonic Generations (Demo)", "texp": []
 },{
-"id": "NPHB00374", "title": "LIMBO", "texp": []
+"id": "NPHB00374", "title": "LIMBO", "texp": [],
+"img": {"coverFull": "http://vgboxart.com/boxes/PS3/75167-limbo-full.png"}
 },{
 "id": "NPHB00410", "title": "Rochard", "texp": []
 },{
@@ -12818,7 +12825,8 @@
 },{
 "id": "NPJB00154", "title": "Black Knight Sword", "texp": []
 },{
-"id": "NPJB00155", "title": "LIMBO", "texp": []
+"id": "NPJB00155", "title": "LIMBO", "texp": [],
+"img": {"coverFull": "http://vgboxart.com/boxes/PS3/75167-limbo-full.png"}
 },{
 "id": "NPJB00156", "title": "Metal Gear Solid 3: Snake Eater HD Edition", "texp": []
 },{
@@ -13722,7 +13730,8 @@
 },{
 "id": "NPUA30054", "title": "Qlione 2", "texp": []
 },{
-"id": "NPUA30373", "title": "LIMBO", "texp": []
+"id": "NPUA30373", "title": "LIMBO", "texp": [],
+"img": {"coverFull": "http://vgboxart.com/boxes/PS3/75167-limbo-full.png"}
 },{
 "id": "NPUA70060", "title": "SingStar Viewer", "texp": []
 },{
@@ -13954,7 +13963,8 @@
 },{
 "id": "NPUB30131", "title": "Bionic Commando Rearmed 2", "texp": []
 },{
-"id": "NPUB30133", "title": "Braid", "texp": []
+"id": "NPUB30133", "title": "Braid", "texp": [],
+"img": {"coverFull": "http://vgboxart.com/boxes/PS3/75162-braid-full.png"}
 },{
 "id": "NPUB30134", "title": "Madden NFL Arcade", "texp": []
 },{
@@ -14130,7 +14140,8 @@
 },{
 "id": "NPUB30372", "title": "Chime Super Deluxe", "texp": []
 },{
-"id": "NPUB30373", "title": "LIMBO", "texp": []
+"id": "NPUB30373", "title": "LIMBO", "texp": [],
+"img": {"coverFull": "http://vgboxart.com/boxes/PS3/75167-limbo-full.png"}
 },{
 "id": "NPUB30375", "title": "SEGA Rally Online Arcade", "texp": []
 },{

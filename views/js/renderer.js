@@ -161,13 +161,16 @@ module.exports = async function(opt) {
 			file = files[i].path;
 			log(file);
 			let term = path.parse(file);
+			if (term.base[0] == '.') {
+				continue;
+			}
+			if (sys == 'ps3') {
+				file += '/USRDIR/EBOOT.BIN';
+			}
 			if (sys != 'wiiu' && sys != 'ps3') {
 				term = term.name;
 			} else {
 				term = term.base;
-			}
-			if (mac && term.includes('DS_Store')) {
-				continue;
 			}
 			// eliminations part 1
 			term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
@@ -175,16 +178,32 @@ module.exports = async function(opt) {
 			term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
 			term = term.replace(/[\[\(,](En|Ja|Eu)[^\]\)]*[\]\)]*/gi, '');
 			// special complete subs part 1
-			term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
-			term = term.replace(/lego/gi, 'lego');
+			if (sys == 'wii') {
+				term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
+				term = term.replace(/sm *64/gi, 'Super Mario 64');
+			}
+			term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 			// special check for ids
 			log(term);
-			let id = term.match(/[\[\(][A-Z0-9][A-Z0-9][A-Z0-9][A-Z][A-Z0-9]*/g);
+			let id;
+			if (sys == 'switch') {
+				id = term.match(/(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/);
+			} else if (sys == 'ps3') {
+				id = term.match(/(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/);
+			} else {
+				id = term.match(/(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/);
+			}
 			if (id) {
-				id = id[0].substr(1);
+				id = id[1];
 				let game = gameDB.find(x => x.id === id);
 				if (game) {
-					log(id);
+					if (sys == 'ps3') {
+						let dup = games.find(x => x.title === game.title);
+						if (dup) {
+							continue;
+						}
+					}
+					log('id: ' + id);
 					log(game.title);
 					game.file = file;
 					games.push(game);
@@ -209,8 +228,7 @@ module.exports = async function(opt) {
 				term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
 			}
 			// special subs part 3
-			term = term.replace(/sm *64/gi, 'Super Mario 64')
-			term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
+			term = term.replace(/lego/gi, 'lego');
 			term = term.replace(/warioware,*/gi, 'Wario Ware');
 			term = term.replace(/ bros( |$)/gi, ' Bros. ');
 			term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
@@ -254,21 +272,28 @@ module.exports = async function(opt) {
 				emuDirExisted = true;
 			}
 			let emu = prefs[sys].emu;
-			let gameDir = path.join(emuDir, `../${emu}/GAMES`);
-			if (!(await fs.exists(gameDir))) {
-				gameDir = path.join(emuDir, `../${emu.toLowerCase()}/GAMES`);
+			let gameLibDir;
+			let libPath;
+			if (sys == 'ps3') {
+				libPath = 'BIN/dev_hdd0/game';
+			} else {
+				libPath = 'GAMES';
 			}
-			log(gameDir);
-			if (!(await fs.exists(gameDir))) {
-				gameDir = path.join(emuDir, `../${emu.toUpperCase()}/GAMES`);
+			gameLibDir = path.join(emuDir, `../${emu}/${libPath}`);
+			if (!(await fs.exists(gameLibDir))) {
+				gameLibDir = path.join(emuDir, `../${emu.toLowerCase()}`);
 			}
-			log(gameDir);
-			if (await fs.exists(gameDir)) {
+			log(gameLibDir);
+			if (!(await fs.exists(gameLibDir))) {
+				gameLibDir = path.join(emuDir, `../${emu.toUpperCase()}`);
+			}
+			log(gameLibDir);
+			if (await fs.exists(gameLibDir)) {
 				if (!prefs[sys].libs) {
 					prefs[sys].libs = [];
 				}
-				if (!prefs[sys].libs.includes(gameDir)) {
-					prefs[sys].libs.push(gameDir);
+				if (!prefs[sys].libs.includes(gameLibDir)) {
+					prefs[sys].libs.push(gameLibDir);
 				}
 				if (!emuDirExisted) {
 					emuDir += '/bottlenose';
@@ -306,7 +331,7 @@ module.exports = async function(opt) {
 			emuDir = prefs.emuDir;
 		}
 		// currently supported systems
-		let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch'];
+		let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
 			$('#openSel').append(`

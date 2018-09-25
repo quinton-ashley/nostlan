@@ -128,6 +128,43 @@ img {
   background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
 }
 
+/*================PS3 Game Lib Viewer====================*/
+
+.ps3 .front-cover-crop {
+  width: 100%;
+  height: 100%;
+  top: 3%;
+  left: 0%;
+}
+
+.ps3 .front-cover {
+  width: 100%;
+  height: 100%;
+  top: 2.8%;
+  left: 0%;
+}
+
+.ps3 .front-cover img {
+  height: 100%;
+  width: 100%;
+  transform: scale(.95, .885);
+}
+
+.ps3 .front-cover-crop img {
+  width: 100%;
+  height: 100%;
+  transform: translate(-52.5%, 0%) scale(2, .89);
+}
+
+.ps3 .front-cover-crop .shade {
+  position: absolute;
+  width: 1%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
 /*================Wii U Game Lib Viewer====================*/
 
 .wiiu .front-cover-crop {

@@ -95,7 +95,7 @@ module.exports = async function(opt) {
 		if (hasJS) {
 			require(`../js/${sysStyle}Load.js`)();
 		}
-		await delay(1000);
+		await delay(100000);
 	}
 
 
@@ -121,6 +121,52 @@ module.exports = async function(opt) {
 		return dir[0];
 	}
 
+	function addGame(searchTerm) {
+		let results = fuse.search(searchTerm);
+		let region = prefs.region;
+		for (let i = 0; i < results.length; i++) {
+			if (results[i].title.length > searchTerm.length + 6) {
+				continue;
+			}
+			// if the search term doesn't contain demo or trial
+			// skip the demo/trial version of the game
+			let demoRegex = /(Demo|Preview|Review|Trial)/i;
+			if (demoRegex.test(results[i].title) != demoRegex.test(searchTerm)) {
+				continue;
+			}
+			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') {
+				let gRegion = results[i].id[3];
+				// TODO: this is a temporary region filter
+				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) {
+					continue;
+				}
+				if (gRegion == 'E' && (region == 'P' || region == 'J')) {
+					continue;
+				}
+				if (gRegion == 'P' && (region == 'E' || region == 'J')) {
+					continue;
+				}
+				if (gRegion == 'J' && (region == 'E' || region == 'P')) {
+					continue;
+				}
+			} else if (sys == 'switch') {
+				let gRegion = results[i].id[4];
+				if (gRegion == 'A' && (region == 'P' || region == 'J')) {
+					continue;
+				}
+				if (gRegion == 'B' && (region == 'E' || region == 'J')) {
+					continue;
+				}
+				if (gRegion == 'C' && (region == 'E' || region == 'P')) {
+					continue;
+				}
+			}
+			$('#loadDialog0').text('loading ' + results[i].title);
+			return results[i];
+		}
+		return false;
+	}
+
 	async function reset() {
 		games = [];
 		let gameDB = [];
@@ -141,53 +187,6 @@ module.exports = async function(opt) {
 			]
 		};
 		let fuse = new Fuse(gameDB, options);
-
-		function addGame(searchTerm) {
-			let results = fuse.search(searchTerm);
-			let region = prefs.region;
-			for (let i = 0; i < results.length; i++) {
-				if (results[i].title.length > searchTerm.length + 6) {
-					continue;
-				}
-				// if the search term doesn't contain demo or trial
-				// skip the demo/trial version of the game
-				let demoRegex = /(Demo|Preview|Review|Trial)/i;
-				if (demoRegex.test(results[i].title) != demoRegex.test(searchTerm)) {
-					continue;
-				}
-				if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') {
-					let gRegion = results[i].id[3];
-					// TODO: this is a temporary region filter
-					if (/[KWXDZIFSHYVRAC]/.test(gRegion)) {
-						continue;
-					}
-					if (gRegion == 'E' && (region == 'P' || region == 'J')) {
-						continue;
-					}
-					if (gRegion == 'P' && (region == 'E' || region == 'J')) {
-						continue;
-					}
-					if (gRegion == 'J' && (region == 'E' || region == 'P')) {
-						continue;
-					}
-				} else if (sys == 'switch') {
-					let gRegion = results[i].id[4];
-					if (gRegion == 'A' && (region == 'P' || region == 'J')) {
-						continue;
-					}
-					if (gRegion == 'B' && (region == 'E' || region == 'J')) {
-						continue;
-					}
-					if (gRegion == 'C' && (region == 'E' || region == 'P')) {
-						continue;
-					}
-				}
-				$('#loadDialog0').text('loading ' + results[i].title);
-				return results[i];
-			}
-			return false;
-		}
-
 		let files = klawSync(prefs[sys].libs[0], {
 			depthLimit: 0
 		});
@@ -395,6 +394,7 @@ module.exports = async function(opt) {
 
 	async function resetBtn() {
 		viewer.remove();
+		await intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
 		removeIntro();

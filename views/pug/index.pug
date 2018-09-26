@@ -7,38 +7,36 @@ link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/b
 link(rel='stylesheet' type='text/css' href='../css/style.css')
 link(rel='stylesheet' type='text/css' href='../css/gameLibViewer.css')
 title= title
-each sys in systems
-	link(rel='stylesheet' type='text/css' href='../css/' + sys + 'Load.css')
 body
-	#dialogs
-		p#loadDialog0
-		p#loadDialog1
-	#gameLibViewer
-		.reel.r0.reverse
-		.reel.r1.normal
-		.reel.r2.reverse
-		.reel.r3.normal
-		.reel.r4.reverse
-		.reel.r5.normal
-		.reel.r6.reverse
-		.reel.r7.normal
+  #dialogs
+    p#loadDialog0
+    p#loadDialog1
+  #gameLibViewer
+    .reel.r0.reverse
+    .reel.r1.normal
+    .reel.r2.reverse
+    .reel.r3.normal
+    .reel.r4.reverse
+    .reel.r5.normal
+    .reel.r6.reverse
+    .reel.r7.normal
 nav.navbar.fixed-top.p-0
-	.cover.power.p-2.m-0: ul.nav.justify-content-left
-		.coverText Power
-		li.nav-item: button#powerBtn.nav-link.btn.btn-secondary.center
-			//- img.logoNav(src='../img/logo.png')
-	.cover.view.p-2.m-0: ul.nav.justify-content-right
-		select#settingsSel
-			option Bottlenose
+  .cover.power.p-2.m-0: ul.nav.justify-content-left
+    .coverText Power
+    li.nav-item: button#powerBtn.nav-link.btn.btn-secondary
+      //- img.logoNav(src='../img/logo.png')
+  .cover.view.p-2.m-0: ul.nav.justify-content-right
+    select#settingsSel
+      option Bottlenose
 nav.navbar.fixed-bottom.p-0
-	.cover.reset.p-2.m-0: ul.nav.justify-content-left
-		.coverText Reset
-		li.nav-item: button#resetBtn.nav-link.btn.btn-secondary.center
-			i#update.material-icons.md-light autorenew
-	.cover.open.p-2.m-0: ul.nav.justify-content-right
-		li.nav-item: select#openSel.btn
-		.coverText Open
+  .cover.reset.p-2.m-0: ul.nav.justify-content-left
+    .coverText Reset
+    li.nav-item: button#resetBtn.nav-link.btn.btn-secondary
+      i#update.material-icons.md-light autorenew
+  .cover.open.p-2.m-0: ul.nav.justify-content-right
+    li.nav-item: select#openSel.btn
+    .coverText Open
 script.
-	console.log('opening index.pug');
-	console.log('#{node_modules}');
-	require('../js/renderer.js')({__rootDir:'#{__rootDir}'});
+  console.log('opening index.pug');
+  console.log('#{node_modules}');
+  require('../js/renderer.js')({__rootDir:'#{__rootDir}'});

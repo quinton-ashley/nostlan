@@ -25,12 +25,12 @@
 		"fuse.js": "^3.2.1",
 		"gooder": "^1.0.4",
 		"jquery": "^3.3.1",
-		"klaw-sync": "^5.0.0",
+		"klaw-sync": "^6.0.0",
 		"markdown-it": "^8.4.2",
 		"material-design-icons-iconfont": "^3.0.3",
 		"moment": "^2.22.2",
 		"mousetrap": "^1.6.2",
-		"opn": "^5.3.0",
+		"opn": "^5.4.0",
 		"popper.js": "^1.14.4",
 		"pug": "^2.0.3",
 		"requisition": "^1.7.0",
@@ -67,5 +67,5 @@
 		"version": "git add -A",
 		"postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
 	},
-	"version": "0.0.28"
+	"version": "0.0.29"
 }

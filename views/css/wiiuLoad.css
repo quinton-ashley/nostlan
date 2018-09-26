@@ -1,12 +1,11 @@
-.wiiu #intro {
-	width: 100%;
-	height: 50vw;
-	margin-left: 50%;
-	background-color: #000;
+#intro {
+  width: 100%;
+  margin-left: 0%;
+  background-color: #000;
 }
 
-.wiiu #intro svg {
-	width: 600px;
-	height: 353px;
-	transform: translate(-50%, 0%) scale(1.5);
+#intro svg {
+  width: 600px;
+  height: 353px;
+  transform: translate(0%, 80%) scale(2);
 }

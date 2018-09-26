@@ -14,8 +14,7 @@ const url = require('url');
 const locals = {
 	title: 'Bottlenose',
 	__rootDir: __rootDir.replace(/\\/g, '/'),
-	node_modules: path.join(__rootDir, 'node_modules').replace(/\\/g, '/'),
-	systems: ['gcn', 'wiiu', 'switch']
+	node_modules: path.join(__rootDir, 'node_modules').replace(/\\/g, '/')
 };
 log(locals);
 const setupPug = require('electron-pug');

@@ -40,23 +40,6 @@ module.exports = async function(opt) {
 	// jQueryBridget('masonry', Masonry, $);
 	const viewer = require('../js/gameLibViewer.js');
 
-	const introHTML = {
-		gcn: pug.compileFile(path.join(__dirname,
-			'../pug/gcnLoad.pug')),
-		wiiu: await fs.readFile(path.join(__dirname,
-			'../html/wiiuLoad.html')),
-		switch: pug.compileFile(path.join(__dirname,
-			'../pug/switchLoad.pug'))
-	};
-	const intro = function() {
-		let style = (prefs[sys].style || sys);
-		$('body').prepend(introHTML[style]);
-		let hasJS = fs.existsSync(path.join(__dirname, `../js/${style}Load.js`));
-		if (hasJS) {
-			require(`../js/${style}Load.js`)();
-		}
-	}
-
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
@@ -65,11 +48,55 @@ module.exports = async function(opt) {
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
 	let sys = '';
+	let sysStyle = '';
 	let emuDir = '';
 	let games = [];
 
 	// make UI changes
 	$('#update').hide();
+
+	let introFiles = {
+		css: {},
+		html: {}
+	};
+
+	async function getIntroFile(type) {
+		let fType = ((type == 'css') ? 'css' : 'html');
+		if (!introFiles[fType][sysStyle]) {
+			let introFile = path.join(__dirname,
+				`../${type}/${sysStyle}Load.${type}`);
+			if (fs.existsSync(introFile)) {
+				if (type == 'css') {
+					introFiles[fType][sysStyle] = `
+					<link class="introStyle" rel="stylesheet" type="text/css" href="${introFile}">
+					`;
+				} else {
+					introFile = await fs.readFile(introFile, 'utf8');
+					if (type == 'pug') {
+						introFile = pug.compile(introFile);
+					}
+					introFiles[fType][sysStyle] = introFile;
+				}
+			} else {
+				if (type == 'pug') {
+					getIntroFile('html');
+				} else {
+					introFiles[fType][sysStyle] = '';
+				}
+			}
+		}
+		$('body').prepend(introFiles[fType][sysStyle]);
+	}
+
+	const intro = async function() {
+		await getIntroFile('pug');
+		await getIntroFile('css');
+		let hasJS = fs.existsSync(path.join(__dirname, `../js/${sysStyle}Load.js`));
+		if (hasJS) {
+			require(`../js/${sysStyle}Load.js`)();
+		}
+		await delay(1000);
+	}
 
 
 	String.prototype.replaceAt = function(index, replacement) {
@@ -260,15 +287,14 @@ module.exports = async function(opt) {
 		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
 		}));
-		prefs.session.sys = sys;
-		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 	}
 
 	async function reload() {
 		$('#openSel .' + sys).prop('selected');
 		$('body').removeClass();
-		$('body').addClass(sys + ' ' + (prefs[sys].style || sys));
-		intro();
+		sysStyle = (prefs[sys].style || sys);
+		$('body').addClass(sys + ' ' + sysStyle);
+		await intro();
 		$('#dialogs').show();
 		let gamesPath = `${botDir}/usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
@@ -329,14 +355,14 @@ module.exports = async function(opt) {
 			}
 			await reset();
 		}
+		prefs.session.sys = sys;
+		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 	}
 
 	async function load() {
 		if (await fs.exists(prefsPath)) {
 			let prefs1 = JSON.parse(await fs.readFile(prefsPath));
-			log(prefs);
 			deepExtend(prefs, prefs1);
-			log(prefs);
 			emuDir = prefs.emuDir;
 		}
 		// currently supported systems
@@ -354,19 +380,24 @@ module.exports = async function(opt) {
 	await load();
 	await viewer.load(games, prefs, sys);
 
+	function removeIntro() {
+		$('#intro').remove();
+		$('link.introStyle').prop('disabled', true);
+		$('link.introStyle').remove();
+	}
+
 	async function powerBtn() {
 		await viewer.powerBtn();
-		intro();
+		await intro();
 		await viewer.load(games, prefs, sys);
-		$('#intro').remove();
+		removeIntro();
 	}
 
 	async function resetBtn() {
 		viewer.remove();
-		intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
-		$('#intro').remove();
+		removeIntro();
 	}
 
 	async function openSel() {
@@ -375,18 +406,17 @@ module.exports = async function(opt) {
 		}
 		viewer.remove();
 		sys = $(this).val();
-		intro();
 		await reload();
 		await viewer.load(games, prefs, sys);
-		$('#intro').remove();
+		removeIntro();
 	}
 
 	$('#powerBtn').click(powerBtn);
 	$('#resetBtn').click(resetBtn);
 	$('#openSel').change(openSel);
 
-	Mousetrap.bind(['command+m', 'ctrl+m'], function() {
-		console.log('command m or control m');
+	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
+		console.log('command n or control n');
 		$('nav').toggleClass('hide');
 		// return false to prevent default browser behavior
 		// and stop event from bubbling
@@ -406,6 +436,5 @@ module.exports = async function(opt) {
 	// 	}
 	// 	e.preventDefault();
 	// });
-
-	$('#intro').remove();
+	removeIntro();
 };

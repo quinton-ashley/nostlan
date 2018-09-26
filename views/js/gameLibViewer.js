@@ -400,12 +400,13 @@ const Viewer = function() {
 		if (games.length < 12) {
 			rows = 2;
 		}
-		let dynRowStyle = `<style>.reel {width: ${1 / rows * 100}%;}`
+		$('style.gameViewerRowsStyle').remove();
+		let dynRowStyle = `<style class="gameViewerRowsStyle" type="text/css">.reel {width: ${1 / rows * 100}%;}`
 		for (let i = 0; i < rows; i++) {
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
 		dynRowStyle += '</style>';
-		$('html').append(dynRowStyle);
+		$('body').append(dynRowStyle);
 		let template = getTemplate();
 		let templateAmt = 4;
 		await addTemplates(template, rows, templateAmt);

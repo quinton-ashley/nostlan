@@ -449,7 +449,7 @@ img.logoNav {
   font-weight: bold;
 }
 
-.ds {
+.ds #gameLibViewer, .ds nav {
   font-family: "nDS", "nDS", nDS;
   font-size: 64px;
   font-weight: bold;
@@ -585,7 +585,7 @@ img.logoNav {
 }
 
 .switch .cover button:hover, .switch .cover select.btn:hover {
-  background-color: rgb(60, 60, 60)!important;
+  background-color: rgb(60, 60, 60) !important;
 }
 
 .switch .cover select:not(.btn) {
@@ -603,16 +603,8 @@ img.logoNav {
 
 /*================Misc====================*/
 
-* {
-  box-sizing: border-box;
-}
-
 .hiddenRow {
   padding: 0 !important;
-}
-
-.center {
-  text-align: center;
 }
 
 @keyframes spin {

@@ -1,8 +1,69 @@
-/*================Game Lib Viewer====================*/
+/*================Themes====================*/
+:root {
+	--cover-color: rgb(130, 130, 130);
+	--cover-text-color: rgb(70, 70, 70);
+	--button-color: rgb(70, 70, 70);
+	--button-text-color: rgba(0, 0, 0, .5);
+	--button-border-color: #000;
+}
 
+.gcn {
+	--cover-color: #6a56b9;
+	--cover-text-color: #56429c;
+	--button-color: #6a56b9;
+	--powerBtn-color: #c0c0c0;
+	--openBtn-color: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
+}
+
+.ds {
+	--cover-color: #d0d4d7;
+	--cover-text-color: #7a7e81;
+	--powerBtn-color: #515256;
+}
+
+.n3ds {
+	--cover-color: #3f4044;
+	--cover-text-color: #202125;
+	--powerBtn-color: #009a6d;
+	--resetBtn-color: #d1b140;
+	--openBtn-color: #ed6567;
+}
+
+.n3ds.blue {
+	--cover-color: #557eaa;
+	--cover-text-color: #3a465e;
+}
+
+.n3ds.white {
+	--cover-color: #ebebeb;
+	--cover-text-color: #949494;
+	--button-color: #ffa93a;
+}
+
+.wiiu {
+	--cover-color: #3f4044;
+	--cover-text-color: #202125;
+	--powerBtn-color: #9c333a;
+}
+
+.switch {
+	--reset-color: rgb(10, 185, 230);
+	--reset-text-color: rgb(45, 210, 255);
+	--open-color: rgb(255, 60, 40);
+	--open-text-color: rgb(255, 90, 60);
+}
+
+.ps3 {
+	--cover-color: #000;
+}
+/*================Game Lib Viewer====================*/
 #gameLibViewer {
-	max-width : 100%;
+	max-width: 100%;
 	max-height: 100%;
+}
+
+#intro {
+	z-index: 100;
 }
 
 nav {
@@ -16,13 +77,13 @@ img {
 
 .reel.reverse {
 	position: fixed;
-	bottom  : 0;
+	bottom: 0;
 }
 
 .reel {
 	position: absolute;
-	width   : 12.5%;
-	z-index : 1;
+	width: 12.5%;
+	z-index: 1;
 }
 
 .panel.selected {
@@ -31,9 +92,9 @@ img {
 }
 
 .reel.bg .panel:not(.selected) {
-	opacity       : 0;
+	opacity: 0;
 	pointer-events: none;
-	z-index       : -1;
+	z-index: -1;
 }
 
 .reel.bg:not(.selected) {
@@ -41,11 +102,11 @@ img {
 }
 
 .panel {
-	height   : auto;
-	width    : 100%;
-	float    : center;
-	z-index  : 1;
-	left     : 0;
+	height: auto;
+	width: 100%;
+	float: center;
+	z-index: 1;
+	left: 0;
 	transform: scale(.96);
 }
 
@@ -55,41 +116,40 @@ img {
 }
 
 #dialogs {
-	font-size : 22px;
+	font-size: 22px;
 	text-align: center;
-	color     : #ddd;
+	color: #ddd;
 }
 
 #loadDialog0 {
-	position      : absolute;
-	top           : 80%;
-	left          : 50%;
-	transform     : translate(-50%, -50%);
-	z-index       : 100;
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
 	pointer-events: none;
 }
 
 #loadDialog1 {
-	position      : absolute;
-	top           : 95%;
-	font-size     : 16px;
-	left          : 50%;
-	transform     : translate(-50%, -50%);
-	z-index       : 100;
+	position: absolute;
+	top: 95%;
+	font-size: 16px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
 	pointer-events: none;
 }
 /*================Wii Game Lib Viewer====================*/
-
 .wii .front-cover-crop {
 	width: 200.1%;
-	top  : 1.4%;
-	left : 0;
+	top: 1.4%;
+	left: 0;
 }
 
 .wii .front-cover {
 	width: 94.5%;
-	top  : 2.6%;
-	left : 0.8%;
+	top: 2.6%;
+	left: 0.8%;
 }
 
 .wii .front-cover-crop img {
@@ -97,101 +157,98 @@ img {
 }
 
 .wii .shade {
-	position  : absolute;
-	width     : 1.6%;
-	height    : 100%;
-	top       : 0;
-	left      : 0;
+	position: absolute;
+	width: 1.6%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
 }
 /*================ds Game Lib Viewer====================*/
-
 .ds .front-cover-crop {
 	width: 100%;
-	top  : 0;
-	left : 0;
+	top: 0;
+	left: 0;
 }
 
 .ds .front-cover {
 	width: 100%;
-	top  : -0.3%;
-	left : 0.4%;
+	top: -0.3%;
+	left: 0.4%;
 }
 
 .ds .front-cover img {
-	width    : 100%;
-	height   : 100%;
+	width: 100%;
+	height: 100%;
 	transform: scale(.948, .948);
 }
 
 .ds .front-cover-crop img {
-	width    : 100%;
-	height   : 100%;
+	width: 100%;
+	height: 100%;
 	transform: translate(-54.6%, 0%) scale(2.04, .95);
 }
 
 .ds .front-cover-crop .shade {
-	position  : absolute;
-	width     : 1.3%;
-	height    : 100%;
-	top       : 0;
-	left      : 0;
+	position: absolute;
+	width: 1.3%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
 }
 /*================PS3 Game Lib Viewer====================*/
-
 .ps3 .front-cover-crop {
-	width : 100%;
+	width: 100%;
 	height: 100%;
-	top   : 3%;
-	left  : 0;
+	top: 3%;
+	left: 0;
 }
 
 .ps3 .front-cover {
-	width : 100%;
+	width: 100%;
 	height: 100%;
-	top   : 2.8%;
-	left  : 0;
+	top: 2.8%;
+	left: 0;
 }
 
 .ps3 .front-cover img {
-	height   : 100%;
-	width    : 100%;
+	height: 100%;
+	width: 100%;
 	transform: scale(.95, .885);
 }
 
 .ps3 .front-cover-crop img {
-	width    : 100%;
-	height   : 100%;
+	width: 100%;
+	height: 100%;
 	transform: translate(-52.5%, 0%) scale(2, .89);
 }
 
 .ps3 .front-cover-crop .shade {
-	position  : absolute;
-	width     : 1%;
-	height    : 100%;
-	top       : 0;
-	left      : 0;
+	position: absolute;
+	width: 1%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Wii U Game Lib Viewer====================*/
-
 .wiiu .front-cover-crop {
 	width: 200%;
-	top  : 2.2%;
-	left : 0.2%;
+	top: 2.2%;
+	left: 0.2%;
 }
 
 .wiiu .front-cover {
 	height: 100%;
-	width : 100%;
-	top   : -0%;
-	left  : -1.1%;
+	width: 100%;
+	top: -0%;
+	left: -1.1%;
 }
 
 .wiiu .front-cover img {
-	height   : 100%;
-	width    : 100%;
+	height: 100%;
+	width: 100%;
 	transform: scale(.946, .954);
 }
 
@@ -200,25 +257,24 @@ img {
 }
 
 .wiiu .front-cover-crop .shade {
-	position  : absolute;
-	width     : 1%;
-	height    : 100%;
-	top       : 0;
-	left      : 0;
+	position: absolute;
+	width: 1%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================3ds Game Lib Viewer====================*/
-
 .n3ds .front-cover-crop {
 	width: 203.9%;
-	top  : 2.2%;
-	left : 0.1%;
+	top: 2.2%;
+	left: 0.1%;
 }
 
 .n3ds .front-cover {
 	width: 97%;
-	top  : 2.2%;
-	left : 0.1%;
+	top: 2.2%;
+	left: 0.1%;
 }
 
 .n3ds .front-cover-crop img {
@@ -226,31 +282,30 @@ img {
 }
 
 .n3ds .shade {
-	position  : absolute;
-	width     : 0.2%;
-	height    : 100%;
-	top       : 0;
-	left      : 0;
+	position: absolute;
+	width: 0.2%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Switch Game Lib Viewer====================*/
-
 .switch .front-cover-crop {
 	width: 200%;
-	top  : 2.6%;
-	left : 0.8%;
+	top: 2.6%;
+	left: 0.8%;
 }
 
 .switch .front-cover {
-	width : 100%;
+	width: 100%;
 	height: 100%;
-	top   : 0;
-	left  : -2%;
+	top: 0;
+	left: -2%;
 }
 
 .switch .front-cover img {
-	width    : 100%;
-	height   : 100%;
+	width: 100%;
+	height: 100%;
 	transform: scale(.95);
 }
 
@@ -258,43 +313,44 @@ img {
 	transform: translate(-52.4%, 0%);
 }
 /*================Game Lib Viewer====================*/
-
 .front-cover,
 .front-cover-crop {
-	height  : 100%;
+	height: 100%;
 	overflow: hidden;
 	position: absolute;
 }
 /*================Cover====================*/
 @font-face {
 	font-family: Nintender;
-	src        : local("Nintender"), local("Nintender"), url("../fonts/Nintender.ttf");
+	src: local("Nintender"), local("Nintender"), url("../fonts/Nintender.ttf");
 	font-weight: bold;
 }
 
 #view {
-	font-family       : "Nintender", "Nintender", Nintender;
-	font-size         : 24px;
-	font-weight       : bold;
-	text-align-last   : center;
+	font-family: "Nintender", "Nintender", Nintender;
+	font-size: 24px;
+	font-weight: bold;
+	text-align-last: center;
 	-webkit-appearance: none;
-	border-width      : 4px;
-	border-style      : solid;
-	border-color      : rgb(70, 70, 70);
-	color             : rgb(70, 70, 70);
-	background-color  : transparent;
-	border-radius     : 20px;
-	box-shadow        : none;
-	margin            : 20px auto auto;
-	padding           : auto 5% auto 7%;
-	width             : fit-content;
-	height            : 40px;
+	border-width: 4px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 20px;
+	box-shadow: none;
+	margin: 20px auto 0;
+	padding: 0 5% 0 7%;
+	width: fit-content;
+	height: 40px;
+	transform: translate(0%, -85%);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 nav {
-	display         : flex;
+	display: flex;
 	background-color: transparent;
-	pointer-events  : none;
+	pointer-events: none;
 }
 
 nav * {
@@ -302,15 +358,16 @@ nav * {
 }
 
 .cover {
-	width           : 19%;
-	border-style    : solid;
-	margin-left     : 30px;
-	color           : rgb(70, 70, 70);
-	background-color: rgb(130, 130, 130);
+	width: 19%;
+	border-style: solid;
+	margin-left: 30px;
+	background-color: var(--cover-color);
+	color: var(--cover-text-color);
+	border-color: var(--cover-text-color);
 }
 
 .cover * {
-	margin-top   : auto;
+	margin-top: auto;
 	margin-bottom: auto;
 }
 
@@ -319,36 +376,44 @@ nav * {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
-.cover.power {
-	border-radius: 0 0 32px 0;
-	border-width : 0 0 8px 0;
-}
-
 .cover.open * {
 	margin-left: 4%;
 }
 
+.cover.power {
+	background-color: var(--power-color, var(--cover-color));
+	border-color: var(--power-text-color, var(--cover-text-color));
+	border-radius: 0 0 32px 0;
+	border-width: 0 0 8px 0;
+}
+
 .cover.view {
-	height       : 100%;
+	background-color: var(--view-color, var(--cover-color));
+	border-color: var(--view-text-color, var(--cover-text-color));
+	height: 100%;
 	border-radius: 0 0 0 32px;
-	border-width : 0 0 8px 0;
+	border-width: 0 0 8px 0;
 }
 
 .cover.reset {
-	height       : 100%;
+	background-color: var(--reset-color, var(--cover-color));
+	border-color: var(--reset-text-color, var(--cover-text-color));
+	height: 100%;
 	border-radius: 0 32px 0 0;
-	border-width : 8px 0 0 0;
+	border-width: 8px 0 0 0;
 }
 
 .cover.open {
-	height       : 100%;
-	border-width : 8px 0 0 0;
+	background-color: var(--open-color, var(--cover-color));
+	border-color: var(--open-text-color, var(--cover-text-color));
+	height: 100%;
+	border-width: 8px 0 0 0;
 	border-radius: 32px 0 0 0;
 }
 
 .cover.power *,
 .cover.reset * {
-	margin-left : auto;
+	margin-left: auto;
 	margin-right: 4%;
 }
 
@@ -367,22 +432,15 @@ img.logoNav {
 }
 
 .cover button {
-	color           : rgba(0, 0, 0, .5);
-	background-color: transparent;
+	color: var(--button-text-color);
+	background: var(--button-color);
 }
 
-.cover .openBtnSel {
-	position: absolute;
-	top     : 0;
-	right   : 0;
-	opacity : 0;
-	color   : transparent;
-	width   : 19%;
-	height  : 100%;
-}
-
+.cover button.nav-link:active,
+.cover button.nav-link:focus,
 .cover button.nav-link:hover {
 	filter: brightness(0.8);
+	outline: none;
 }
 
 .cover select.btn option {
@@ -390,179 +448,82 @@ img.logoNav {
 }
 
 .cover button {
-	font-family  : "contb";
-	font-size    : 48px;
-	border-width : 4px;
-	border-style : solid;
-	border-color : #000;
+	font-family: "contb";
+	font-size: 48px;
+	border-width: 4px;
+	border-style: solid;
+	border-color: var(--button-border-color);
 	border-radius: 50%;
-	box-shadow   : none;
-	padding      : 0;
-	margin       : 0;
-	width        : 80px;
-	height       : 80px;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+	width: 80px;
+	height: 80px;
+}
+
+.cover .powerBtn {
+	background: var(--powerBtn-color, var(--button-color));
+}
+
+.cover .resetBtn {
+	background: var(--resetBtn-color, var(--button-color));
+}
+
+.cover .openBtn {
+	background: var(--openBtn-color, var(--button-color));
 }
 
 ul.nav {
 	height: 100%;
 }
-
-#view {
-	transform : translate(0%, -85%);
-	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-}
 /*================Gamecube Cover====================*/
 @font-face {
 	font-family: Gamecuben;
-	src        : local("Gamecuben"), local("Gamecuben"), url("../fonts/Gamecuben.ttf");
+	src: local("Gamecuben"), local("Gamecuben"), url("../fonts/Gamecuben.ttf");
 	font-weight: bold;
 }
 
 .gcn {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
-	font-size  : 28px;
+	font-size: 28px;
 	font-weight: bold;
-}
-
-.gcn .cover,
-.gcn .cover button {
-	color           : #56429c;
-	background-color: #6a56b9;
-}
-
-.gcn .cover.open button {
-	background: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
-}
-
-.gcn .cover .powerBtn:active,
-.gcn .cover .powerBtn:selected {
-	background-color: #c0c0c0;
-}
-
-.gcn .cover button:active {
-	color           : #ffe8d1;
-	background-color: #493c7a;
-}
-
-.gcn #view {
-	border-color: #56429c;
-	color       : #56429c;
 }
 /*================ds Cover====================*/
 @font-face {
 	font-family: nDS;
-	src        : local("nDS"), local("nDS"), url("../fonts/nDS.ttf");
+	src: local("nDS"), local("nDS"), url("../fonts/nDS.ttf");
 	font-weight: bold;
 }
 
 .ds #gameLibViewer,
 .ds nav {
 	font-family: "nDS", "nDS", nDS;
-	font-size  : 64px;
+	font-size: 64px;
 	font-weight: bold;
-}
-
-.ds .cover {
-	color           : #7a7e81;
-	background-color: #d0d4d7;
-}
-
-.ds #view {
-	color       : #7a7e81;
-	border-color: #7a7e81;
-}
-
-.ds .cover .powerBtn {
-	background-color: #515256;
-}
-
-.ds .cover button {
-	background-color: #7a7e81;
 }
 /*================wiiu Cover====================*/
 @font-face {
 	font-family: contb;
-	src        : local("contb"), local("contb"), url("../fonts/contb.ttf");
+	src: local("contb"), local("contb"), url("../fonts/contb.ttf");
 	font-weight: bold;
 }
 
 .wiiu {
 	font-family: "contb", "contb", contb;
-	font-size  : 48px;
+	font-size: 48px;
 	font-weight: bold;
-}
-
-.wiiu .cover .powerBtn {
-	color: #9c333a;
-}
-
-.wiiu .cover {
-	color           : #202125;
-	background-color: #3f4044;
-}
-
-.wiiu #view {
-	color       : #202125;
-	border-color: #202125;
-}
-/*================3ds Cover====================*/
-
-.n3ds .cover {
-	color           : #202125;
-	background-color: #3f4044;
-}
-
-.n3ds #view {
-	color       : #202125;
-	border-color: #202125;
-}
-
-.n3ds.blue .cover {
-	color           : #3a465e;
-	background-color: #557eaa;
-}
-
-.n3ds.white .cover {
-	color           : #949494;
-	background-color: #ebebeb;
-}
-
-.n3ds .cover .powerBtn {
-	background-color: #009a6d;
-}
-
-.n3ds .cover .resetBtn {
-	background-color: #d1b140;
-}
-
-.n3ds .cover .openBtn {
-	background-color: #ed6567;
-}
-
-.n3ds.white .cover button {
-	background-color: #ffa93a;
 }
 /*================Switch Cover====================*/
 @font-face {
 	font-family: theboldfont;
-	src        : local("theboldfont"), local("theboldfont"), url("../fonts/theboldfont.ttf");
+	src: local("theboldfont"), local("theboldfont"), url("../fonts/theboldfont.ttf");
 	font-weight: bold;
 }
 
 .switch {
 	font-family: "theboldfont", "theboldfont", theboldfont;
-	font-size  : 32px;
+	font-size: 32px;
 	font-weight: bold;
-}
-
-.switch .cover.reset {
-	background-color: rgb(10, 185, 230);
-	border-color    : rgb(45, 210, 255);
-}
-
-.switch .cover.open {
-	background-color: rgb(255, 60, 40);
-	border-color    : rgb(255, 90, 60);
 }
 
 .switch .cover.open .coverText {
@@ -572,19 +533,7 @@ ul.nav {
 .switch .cover.reset .coverText {
 	color: rgb(0, 125, 160);
 }
-
-.switch .cover button {
-	background-color: rgb(70, 70, 70);
-}
-
-.switch #view {
-	border-color    : rgb(70, 70, 70);
-	color           : rgb(70, 70, 70);
-	background-color: rgb(130, 130, 130);
-	box-shadow      : 0 1px 0 rgba(255, 255, 255, .5);
-}
 /*================Misc====================*/
-
 .hiddenRow {
 	padding: 0 !important;
 }
@@ -599,8 +548,8 @@ ul.nav {
 }
 
 #update {
-	animation-name           : spin;
-	animation-duration       : 2000ms;
+	animation-name: spin;
+	animation-duration: 2000ms;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }

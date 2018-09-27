@@ -296,7 +296,6 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		$('#openSel .' + sys).prop('selected');
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
@@ -382,12 +381,12 @@ module.exports = async function(opt) {
 		}
 		// currently supported systems
 		let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
-		for (let i = 0; i < systems.length; i++) {
-			sys = systems[i];
-			$('#openSel').append(`
-				<option class="${sys}" value="${sys}">${sys}</option>
-				`);
-		}
+		// for (let i = 0; i < systems.length; i++) {
+		// 	sys = systems[i];
+		// 	$('#openSel').append(`
+		// 		<option class="${sys}" value="${sys}">${sys}</option>
+		// 		`);
+		// }
 		sys = prefs.session.sys;
 		await reload();
 	}
@@ -421,58 +420,72 @@ module.exports = async function(opt) {
 			return;
 		}
 		viewer.remove();
-		sys = $(this).val();
 		await reload();
 		await viewer.load(games, prefs, sys);
 		removeIntro();
 	}
 
+	async function openBtn() {
+		sys = '3ds';
+		await open();
+	}
+
 	$('#power').click(powerBtn);
 	$('#reset').click(resetBtn);
-	$('#openSel').change(open);
+	$('#open').click(openBtn);
 
-	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
-		console.log('command n or control n');
+	function hideNav() {
 		$('nav').toggleClass('hide');
 		// return false to prevent default browser behavior
 		// and stop event from bubbling
 		return false;
+	}
+
+	Mousetrap.bind(['command+n', 'ctrl+n'], hideNav);
+	Mousetrap.bind(['up', 'down', 'left', 'right'], function() {
+		return false
 	});
 
-	$(document).keydown(function(e) {
-		switch (e.which) {
-			case 32: // Enter
-				log('space');
-				break;
-			case 27: // Escape
-				remote.getCurrentWindow().close();
-				break;
-			default:
-				return;
-		}
-		e.preventDefault();
-	});
+	let gamepad = new Gamepad();
+	let keyboard = new Keyboard();
+	let gamepadConnected = false;
 
-	var gamepad = new Gamepad();
-	var keyboard = new Keyboard();
-
-	var controls = {
-		power: or(gamepad.button('X'), keyboard.key('~')),
-		reset: or(gamepad.button('Y'), keyboard.key('~')),
-		open: or(gamepad.button('B'), keyboard.key('~'))
+	let controls = {
+		power: or(gamepad.button('X'), keyboard.key('ʘ')),
+		reset: or(gamepad.button('Y'), keyboard.key('ʘ')),
+		open: or(gamepad.button('B'), keyboard.key('ʘ'))
 	};
 
 
 	function loop() {
-		var _arr = ['power', 'reset', 'open'];
-		for (var _i = 0; _i < _arr.length; _i++) {
-			var letter = _arr[_i];
-			var $button = $('#' + letter);
-			var control = controls[letter];
-			if (control.label != '~') {
-				$button.text(control.label);
+		if (gamepad.isConnected()) {
+			if (!gamepadConnected) {
+				controls.stickLeft = gamepad.stick('left');
 			}
-			$button.toggleClass('hilow', control.query());
+			let uiLabeler = true;
+			for (let i in controls) {
+				let control = controls[i];
+				if (i == 'stickLeft') {
+					uiLabeler = false;
+				}
+				if (uiLabeler) {
+					let $button = $('#' + i);
+					if (control.label != 'ʘ') {
+						$button.text(control.label);
+					}
+				}
+				let query = control.query();
+				if (!query || (query && query.xAxis == 0 && query.yAxis == 0)) {
+					continue;
+				}
+				switch (i) {
+					case stickLeft:
+						viewer[i](query);
+						break;
+					default:
+
+				}
+			}
 		}
 		requestAnimationFrame(loop);
 	}

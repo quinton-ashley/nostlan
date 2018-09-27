@@ -28,6 +28,13 @@ module.exports = async function(opt) {
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
+	const {
+		Mouse,
+		Keyboard,
+		Gamepad,
+		or,
+		and
+	} = require('contro');
 	const botDir = path.join(os.homedir(), '/Documents/bottlenose');
 	log(botDir);
 
@@ -409,7 +416,7 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
-	async function openSel() {
+	async function open() {
 		if (!viewer) {
 			return;
 		}
@@ -420,9 +427,9 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
-	$('#powerBtn').click(powerBtn);
-	$('#resetBtn').click(resetBtn);
-	$('#openSel').change(openSel);
+	$('#power').click(powerBtn);
+	$('#reset').click(resetBtn);
+	$('#openSel').change(open);
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
 		console.log('command n or control n');
@@ -432,18 +439,45 @@ module.exports = async function(opt) {
 		return false;
 	});
 
-	// $(document).keydown(function(e) {
-	// 	switch (e.which) {
-	// 		case 13: // Enter
-	// 			log('enter');
-	// 			break;
-	// 		case 27: // Escape
-	// 			remote.getCurrentWindow().close();
-	// 			break;
-	// 		default:
-	// 			return;
-	// 	}
-	// 	e.preventDefault();
-	// });
+	$(document).keydown(function(e) {
+		switch (e.which) {
+			case 32: // Enter
+				log('space');
+				break;
+			case 27: // Escape
+				remote.getCurrentWindow().close();
+				break;
+			default:
+				return;
+		}
+		e.preventDefault();
+	});
+
+	var gamepad = new Gamepad();
+	var keyboard = new Keyboard();
+
+	var controls = {
+		power: or(gamepad.button('X'), keyboard.key('~')),
+		reset: or(gamepad.button('Y'), keyboard.key('~')),
+		open: or(gamepad.button('B'), keyboard.key('~'))
+	};
+
+
+	function loop() {
+		var _arr = ['power', 'reset', 'open'];
+		for (var _i = 0; _i < _arr.length; _i++) {
+			var letter = _arr[_i];
+			var $button = $('#' + letter);
+			var control = controls[letter];
+			if (control.label != '~') {
+				$button.text(control.label);
+			}
+			$button.toggleClass('hilow', control.query());
+		}
+		requestAnimationFrame(loop);
+	}
+
+	loop();
+
 	removeIntro();
 };

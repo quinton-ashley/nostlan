@@ -1,11 +1,12 @@
 # Bottlenose
 
-Bottlenose is a simple, yet high quality front-end for video game emulators.  Unlike other front-ends available today, Bottlenose was designed for **UHD** displays and projectors.  It scrapes multiple game database sites for the _highest quality_ box art available.  The UI prioritizes box art, not metadata.  Bottlenose is an open source node.js app powered by Electron!
+Bottlenose is a front-end, launcher, and companion app for video game emulators.  Browse through _high quality_ game boxes, launch games, and **in a future version** batch install/update texture packs/graphics packs.  Bottlenose has a simple user interface, similar to Kaleidescape, that prioritizes box art, not metadata.  Bottlenose was designed for _UHD_ displays and projectors.
 
 ## Features
 
+-   scrapes multiple database sites for the _highest quality_ box art
 -   _aesthetic_ UI themes for each supported console
--   the cover viewer has _eccentric_ alternating scroll direction rows
+-   reverse scroll effect on alternating rows in the cover view mode
 -   most Nintendo systems are supported
 -   covers are stored locally so it never redownloads images
 -   Windows and macOS supported
@@ -14,13 +15,14 @@ Bottlenose is a simple, yet high quality front-end for video game emulators.  Un
 
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just an elegant front-end.
 
+-   game controller UI mode
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
--   game controller UI mode
 -   automatic emulator updates
 -   easy way to mix and swap texture packs for Dolphin
 -   Linux support
 -   Xenia and RPCS3 support
+-   side of box view mode
 
 ## Supported emulators (as of now)
 
@@ -144,9 +146,23 @@ Box art is prioritized in this order: box (super high quality), coverFull, cover
 }
 ```
 
+## User Preferences
+
+`region` other regions not supported yet
+
+`ui.mouse.wheel.smoothScroll` = false on Windows by default, should be true if you have a mouse that supports smooth scrolling (like an Apple Macbook trackpad)
+
+`ui.mouse.wheel.multi` it's a multiplier that changes the scroll amount.
+
+`ui.getBackCoverHQ` get's the back of the box in high quality for games without available full covers
+
+`ui.recheckImgs` when true, on reset, images for all games in the given library, not just new games will be scraped for
+
+`session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
+
 ## Planned Features! (continued)
 
-Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
+Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley/qashto) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
 
 ## Credits!
 
@@ -154,15 +170,15 @@ Bottlenose uses publicly available images under Fair Use.
 
 ### Databases
 
-gametdb text files were converted to json by me (quinton-ashley)
+gametdb database text files  
 <https://www.gametdb.com/>
 
 ### Covers
 
-The highest quality box scans are from Andy Decarli!
+The highest quality box scans are from Andy Decarli!  
 <http://andydecarli.com/Video%20Games/Collection>
 
-Full covers, boxes, discs/carts are scraped from gametdb
+Full covers, boxes, discs/carts are scraped from gametdb  
 <https://www.gametdb.com/>
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
@@ -174,33 +190,43 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 -   PS3 template by the_prototype92 via deviantart
 -   3DS template by omegaaaronyt via deviantart
 
+### Themes
+
+All themes were currently made by me (quinton-ashley/qashto)
+
 ### Loading Sequences
 
-Gamecube Loading Intro CSS by MarcMalignan : MIT licensed
+Gamecube Intro by MarcMalignan : MIT licensed  
 <https://codepen.io/MarcMalignan/pen/doCth>
 
-Switch Loading Intro Pure CSS by joshbader : MIT licensed
+DS by Murat Khatypov  
+<https://codepen.io/AntonEssenetial/pen/LtBaK>
+
+Switch Pure CSS by joshbader : MIT licensed  
 <https://codepen.io/joshbader/pen/mjZzGM>
 
-### Controllers
-
-Wii U Gamepad SVG by Tokyoship from Wikimedia Commons
-Creative Commons Attribution 3.0 Unported
+Wii U Gamepad SVG by Tokyoship from Wikimedia Commons  
+Creative Commons Attribution 3.0 Unported  
 <https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg>
+
+3DS SVG by me (quinton-ashley/qashto)
+
+PS3 by Jan Machycek  
+<https://codepen.io/machyj/pen/ENvewe>
 
 ### Fonts
 
-nintender
-<http://www.fontspace.com/lyric-type/nintender>
-Gamecuben
-<https://www.dafont.com/gamecube.font>
-Continum
-<https://fontmeme.com/fonts/continuum-font/>
-theboldfont
-<https://www.dafont.com/the-bold-font.font>
-DS_BIOS
-<https://www.dafont.com/nintendo-ds-bios.font>
+nintender  
+<http://www.fontspace.com/lyric-type/nintender>  
+Gamecuben  
+<https://www.dafont.com/gamecube.font>  
+Continum  
+<https://fontmeme.com/fonts/continuum-font/>  
+theboldfont  
+<https://www.dafont.com/the-bold-font.font>  
+DS_BIOS  
+<https://www.dafont.com/nintendo-ds-bios.font>  
 
 ## Legal Disclaimer
 
-Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of texture packers, Nintendo, Sony, or Microsoft.  Anyone asking about or sharing information related to illegal activities on this project's Github page will be banned.
+Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of texture packers, Nintendo, Sony, or Microsoft.  Anyone asking for or sharing information related to illegal activities on this project's Github page will be banned.

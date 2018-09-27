@@ -23,18 +23,23 @@ body
 nav.navbar.fixed-top.p-0
   .cover.power.p-2.m-0: ul.nav.justify-content-left
     .coverText Power
-    li.nav-item: button#powerBtn.nav-link.btn.btn-secondary
+    li.nav-item
+      button#power.powerBtn.nav-link
       //- img.logoNav(src='../img/logo.png')
   .cover.view.p-2.m-0: ul.nav.justify-content-right
-    select#settingsSel
-      option Bottlenose
+    li.nav-item
+      select#view
+        option Bottlenose
 nav.navbar.fixed-bottom.p-0
   .cover.reset.p-2.m-0: ul.nav.justify-content-left
     .coverText Reset
-    li.nav-item: button#resetBtn.nav-link.btn.btn-secondary
+    li.nav-item
+      button#reset.resetBtn.nav-link
       i#update.material-icons.md-light autorenew
   .cover.open.p-2.m-0: ul.nav.justify-content-right
-    li.nav-item: select#openSel.btn
+    li.nav-item
+      button#open.openBtn.nav-link
+      select#openSel.btn
     .coverText Open
 script.
   console.log('opening index.pug');

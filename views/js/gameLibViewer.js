@@ -17,6 +17,7 @@ const Viewer = function() {
 	const win = (osType == 'Windows_NT');
 
 	let mouse;
+	let mouseWheelDeltaNSS;
 	let pos = 0;
 	let games;
 	let prefs;
@@ -403,7 +404,7 @@ const Viewer = function() {
 		theme = prefs[sys].style || sys;
 		theme = ui[theme];
 		mouse = prefs.ui.mouse;
-		mouse.wheel.delta = 100 * mouse.wheel.multi;
+		mouseWheelDeltaNSS = 100 * mouse.wheel.multi;
 		await loadImages();
 		let rows = 8;
 		if (games.length < 18) {
@@ -460,9 +461,9 @@ const Viewer = function() {
 					pos += scrollDelta * mouse.wheel.multi;
 				} else {
 					if (scrollDelta < 0) {
-						pos += mouse.wheel.delta;
+						pos += mouseWheelDeltaNSS;
 					} else {
-						pos -= mouse.wheel.delta;
+						pos -= mouseWheelDeltaNSS;
 					}
 				}
 				goTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));

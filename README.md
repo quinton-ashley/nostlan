@@ -25,10 +25,15 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 ## Supported emulators (as of now)
 
 -   Dolphin (Wii, Gamecube, Virtual Console)
+    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
 -   DeSmuME (DS)
+    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
 -   Cemu (Wii U)
+    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
 -   Citra (3DS)
+    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
 -   Yuzu (Switch)
+    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
 
 ## Required Directory Structure Example
 

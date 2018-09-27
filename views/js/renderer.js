@@ -95,7 +95,7 @@ module.exports = async function(opt) {
 		if (hasJS) {
 			require(`../js/${sysStyle}Load.js`)();
 		}
-		await delay(100000);
+		await delay(1000);
 	}
 
 
@@ -121,7 +121,7 @@ module.exports = async function(opt) {
 		return dir[0];
 	}
 
-	function addGame(searchTerm) {
+	function addGame(fuse, searchTerm) {
 		let results = fuse.search(searchTerm);
 		let region = prefs.region;
 		for (let i = 0; i < results.length; i++) {
@@ -275,7 +275,7 @@ module.exports = async function(opt) {
 			term = term.trim();
 			// TODO: strings must be less than 32 chars
 			log(term);
-			let game = addGame(term);
+			let game = addGame(fuse, term);
 			if (game) {
 				log(game.title);
 				game.file = file;
@@ -293,6 +293,15 @@ module.exports = async function(opt) {
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
+		if (sysStyle == 'gcn') {
+			$('.cover.power .coverText').text('power');
+			$('.cover.reset .coverText').text('reset');
+			$('.cover.open .coverText').text('open');
+		} else {
+			$('.cover.power .coverText').text('Power');
+			$('.cover.reset .coverText').text('Reset');
+			$('.cover.open .coverText').text('Open');
+		}
 		await intro();
 		$('#dialogs').show();
 		let gamesPath = `${botDir}/usr/${sys}Games.json`;

@@ -378,7 +378,19 @@ const Viewer = function() {
 		}
 	}
 
+	function resizeUI(adjust) {
+		let $cv = $('.cover.view');
+		let $cvSel = $cv.find('select')
+		let cvHeight = $cv.height();
+		let cpHeight = $('.cover.power').height();
+		if (adjust || cvHeight != cpHeight) {
+			$cvSel.css('margin-top', (cpHeight + 24) * .5);
+			$('nav').height(cpHeight + 24);
+		}
+	}
+
 	this.load = async function(usrGames, usrPrefs, usrSys) {
+		resizeUI(true);
 		let reload;
 		if (games) {
 			reload = true;
@@ -463,25 +475,9 @@ const Viewer = function() {
 		log('mid: ' + Math.round($mid.length * .5) - 1)
 		$mid = $mid.eq(Math.round($mid.length * .5) - 1);
 		scrollToGame(getPanelID($mid), 10);
+		resizeUI(true);
 	}
 
-	function resizeUI() {
-		let $cv = $('.cover.view');
-		let $cvSel = $cv.find('select')
-		let cvHeight = $cv.height();
-		let cpHeight = $('.cover.power').height();
-		if (cvHeight < cpHeight) {
-			$cvSel.css('margin-top', '40px');
-			$cvSel.css('margin-bottom', '40px');
-		} else if (cvHeight > cpHeight) {
-			$cvSel.css('margin-top', '20px');
-			$cvSel.css('margin-bottom', '20px');
-		}
-		if (cvHeight != cpHeight) {
-			$cv.height(cpHeight);
-		}
-	}
-	resizeUI();
 	$(window).resize(resizeUI);
 }
 module.exports = new Viewer();

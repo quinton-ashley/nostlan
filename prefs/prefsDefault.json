@@ -28,6 +28,12 @@
 				"smooth": false
 			}
 		},
+		"gamepad": {
+			"mapping": {
+				"from": "Xbox One",
+				"to": "Switch"
+			}
+		},
 		"getBackCoverHQ": false,
 		"recheckImgs": false
 	},

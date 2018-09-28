@@ -450,74 +450,71 @@ module.exports = async function(opt) {
 	});
 
 	let gamepad = new Gamepad();
-	let keyboard = new Keyboard();
 	let gamepadConnected = false;
 
-	let btns = {
-		A: or(gamepad.button('A'), keyboard.key('ʘ')),
-		B: or(gamepad.button('B'), keyboard.key('ʘ')),
-		X: or(gamepad.button('X'), keyboard.key('ʘ')),
-		Y: or(gamepad.button('Y'), keyboard.key('ʘ')),
-		Up: gamepad.button('Up'),
-		Down: gamepad.button('Down'),
-		Left: gamepad.button('Left'),
-		Right: gamepad.button('Right')
-	};
+	let btns = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right'];
 	let btnStates = {};
-	for (let i in btns) {
-		btnStates.i = false;
+	for (let i of btns) {
+		btnStates[i] = false;
+	}
+	let gvMainMenuLabels = {
+		X: 'power',
+		Y: 'reset',
+		B: 'open'
+	};
+
+	// Xbox One controller mapped to
+	// Nintendo Switch controller button layout
+	//  X A
+	// Y B
+	let map = {
+		A: 'B',
+		B: 'A',
+		X: 'Y',
+		Y: 'X'
+	};
+
+	async function buttonPressed(btn) {
+		switch (btn.label) {
+			case 'A':
+				break;
+			case 'B':
+				await openBtn();
+				break;
+			case 'X':
+				await powerBtn();
+				break;
+			case 'Y':
+				await resetBtn();
+				break;
+			default:
+
+		}
 	}
 
 	async function loop() {
 		if (gamepadConnected || gamepad.isConnected()) {
-			let uiLabeler = true;
-			for (let i in btns) {
-				// Xbox One controller mapped to
-				// Nintendo controller button layouts
-				let map = {
-					A: 'B',
-					B: 'A',
-					X: 'Y',
-					Y: 'X'
-				};
+			for (let i of btns) {
 				i = map[i] || i;
-				let control = btns[i];
-				if (i == 'Up') {
-					uiLabeler = false;
-				}
-				if (!gamepadConnected && uiLabeler) {
-					let gvMainMenuLabels = {
-						X: 'power',
-						Y: 'reset',
-						B: 'open'
-					};
+				let btn = gamepad.button[i];
+
+				if (!gamepadConnected) {
 					let $button = $('#' + gvMainMenuLabels[i]);
-					if (control.label != 'ʘ') {
-						$button.text(control.label);
-					}
+					$button.text(btn.label);
 				}
-				let query = control.query();
+				let query = btn.query();
+				// if button state is unchanged
 				if ((btnStates[i] && query) || (!btnStates[i] && !query)) {
 					continue;
 				}
 				btnStates[i] = query;
+				// if button state is false (unpressed)
 				if (!query) {
+					log(btn.label + 'button press end');
 					continue;
 				}
-				log(control.label);
-				switch (map[i]) {
-					case 'X':
-						await powerBtn();
-						break;
-					case 'Y':
-						await resetBtn();
-						break;
-					case 'B':
-						await openBtn();
-						break;
-					default:
-
-				}
+				log(btn.label + 'button press start');
+				await buttonPressed(btn);
 			}
 			gamepadConnected = true;
 		}

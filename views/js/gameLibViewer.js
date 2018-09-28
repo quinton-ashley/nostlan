@@ -341,6 +341,10 @@ const Viewer = function() {
 		remote.getCurrentWindow().setFullScreen(true);
 	}
 
+	this.openBtn = async function() {
+		$('#gameLibViewer').append();
+	}
+
 	function coverClicked() {
 		if (!$cover) {
 			return;
@@ -367,8 +371,7 @@ const Viewer = function() {
 	}
 
 	this.remove = function(menu) {
-		coverClicked();
-		$('.reel').empty();
+		$('#gameLibViewer').empty();
 	}
 
 	async function addTemplates(template, rows, num) {
@@ -414,8 +417,10 @@ const Viewer = function() {
 			rows = 2;
 		}
 		$('style.gameViewerRowsStyle').remove();
+		let $glv = $('#gameLibViewer');
 		let dynRowStyle = `<style class="gameViewerRowsStyle" type="text/css">.reel {width: ${1 / rows * 100}%;}`
 		for (let i = 0; i < rows; i++) {
+			$glv.append(`<div class="reel r${i} ${((i % 2 == 0)?'reverse':'normal')}"></div>`)
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
 		dynRowStyle += '</style>';

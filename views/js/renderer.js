@@ -380,11 +380,11 @@ module.exports = async function(opt) {
 			emuDir = prefs.emuDir;
 		}
 		// currently supported systems
-		let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
+		// let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
 		// for (let i = 0; i < systems.length; i++) {
 		// 	sys = systems[i];
-		// 	$('#openSel').append(`
-		// 		<option class="${sys}" value="${sys}">${sys}</option>
+		// 	$('#systemSel').append(`
+		// 		<button class="${sys}" value="${sys}">${sys}</button>
 		// 		`);
 		// }
 		sys = prefs.session.sys;
@@ -442,6 +442,9 @@ module.exports = async function(opt) {
 	}
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], hideNav);
+	Mousetrap.bind(['space'], function() {
+		return false
+	});
 	Mousetrap.bind(['up', 'down', 'left', 'right'], function() {
 		return false
 	});
@@ -450,42 +453,73 @@ module.exports = async function(opt) {
 	let keyboard = new Keyboard();
 	let gamepadConnected = false;
 
-	let controls = {
-		power: or(gamepad.button('X'), keyboard.key('ʘ')),
-		reset: or(gamepad.button('Y'), keyboard.key('ʘ')),
-		open: or(gamepad.button('B'), keyboard.key('ʘ'))
+	let btns = {
+		A: or(gamepad.button('A'), keyboard.key('ʘ')),
+		B: or(gamepad.button('B'), keyboard.key('ʘ')),
+		X: or(gamepad.button('X'), keyboard.key('ʘ')),
+		Y: or(gamepad.button('Y'), keyboard.key('ʘ')),
+		Up: gamepad.button('Up'),
+		Down: gamepad.button('Down'),
+		Left: gamepad.button('Left'),
+		Right: gamepad.button('Right')
 	};
+	let btnStates = {};
+	for (let i in btns) {
+		btnStates.i = false;
+	}
 
-
-	function loop() {
-		if (gamepad.isConnected()) {
-			if (!gamepadConnected) {
-				controls.stickLeft = gamepad.stick('left');
-			}
+	async function loop() {
+		if (gamepadConnected || gamepad.isConnected()) {
 			let uiLabeler = true;
-			for (let i in controls) {
-				let control = controls[i];
-				if (i == 'stickLeft') {
+			for (let i in btns) {
+				// Xbox One controller mapped to
+				// Nintendo controller button layouts
+				let map = {
+					A: 'B',
+					B: 'A',
+					X: 'Y',
+					Y: 'X'
+				};
+				i = map[i] || i;
+				let control = btns[i];
+				if (i == 'Up') {
 					uiLabeler = false;
 				}
-				if (uiLabeler) {
-					let $button = $('#' + i);
+				if (!gamepadConnected && uiLabeler) {
+					let gvMainMenuLabels = {
+						X: 'power',
+						Y: 'reset',
+						B: 'open'
+					};
+					let $button = $('#' + gvMainMenuLabels[i]);
 					if (control.label != 'ʘ') {
 						$button.text(control.label);
 					}
 				}
 				let query = control.query();
-				if (!query || (query && query.xAxis == 0 && query.yAxis == 0)) {
+				if ((btnStates[i] && query) || (!btnStates[i] && !query)) {
 					continue;
 				}
-				switch (i) {
-					case stickLeft:
-						viewer[i](query);
+				btnStates[i] = query;
+				if (!query) {
+					continue;
+				}
+				log(control.label);
+				switch (map[i]) {
+					case 'X':
+						await powerBtn();
+						break;
+					case 'Y':
+						await resetBtn();
+						break;
+					case 'B':
+						await openBtn();
 						break;
 					default:
 
 				}
 			}
+			gamepadConnected = true;
 		}
 		requestAnimationFrame(loop);
 	}

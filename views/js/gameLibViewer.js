@@ -23,9 +23,12 @@ const Viewer = function() {
 	let prefs;
 	let sys;
 	let ui;
+	let uiState = 'lib';
 	let theme;
 	let defaultCoverImg;
 	let $cover;
+	let $reel;
+	let templateAmt = 4;
 
 	async function dl(url, file) {
 		if (!(await fs.exists(file))) {
@@ -247,6 +250,12 @@ const Viewer = function() {
 		`);
 	}
 
+	function uiStateChange(state) {
+		uiState = state;
+		$('#gameLibViewer').removeClass();
+		$('#gameLibViewer').addClass(uiState);
+	}
+
 	function goTo(position, time) {
 		if (isNaN(position)) {
 			log("pos can't be: " + position);
@@ -264,8 +273,12 @@ const Viewer = function() {
 	}
 
 	function scrollToGame(gameID, time) {
-		let $cover = $('.' + gameID).eq(0);
-		let $reel = $cover.parent();
+		if (gameID) {
+			$cover = $('.' + gameID).eq(0);
+			$reel = $cover.parent();
+		}
+		$('#gameLibViewer .reel .cursor').removeClass('cursor');
+		$cover.addClass('cursor');
 		let pos = 0;
 		for (let i = 0; i < $cover.index(); i++) {
 			pos += $reel.children().eq(i).height();
@@ -304,7 +317,7 @@ const Viewer = function() {
 		} else {
 			emuExePath = `${emuDirPath}/${prefs[sys].emu}.exe`;
 		}
-		let gameFile = games.find(x => x.id === getPanelID($('.panel.selected')));
+		let gameFile = games.find(x => x.id === getPanelID($cover));
 		if (gameFile) {
 			gameFile = gameFile.file;
 		} else {
@@ -345,16 +358,18 @@ const Viewer = function() {
 		$('#gameLibViewer').append();
 	}
 
-	function coverClicked() {
+	function coverClicked(noScroll) {
 		if (!$cover) {
 			return;
 		}
-		let $reel = $cover.parent();
+		$reel = $cover.parent();
 		let id = $cover.attr('class').split(' ')[1];
 		if (!id || id == '_TEMPLATE') {
 			return;
 		}
-		scrollToGame(id, 1000);
+		if (!noScroll) {
+			scrollToGame(null, 1000);
+		}
 		$cover.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
@@ -362,7 +377,9 @@ const Viewer = function() {
 		if ($cover.hasClass('selected')) {
 			$reel.css('left', `${$(window).width()*.5-$cover.width()*.5}px`);
 			$cover.css('transform', `scale(${$(window).height()/$cover.height()})`);
+			uiStateChange('cover');
 		} else {
+			uiStateChange('lib');
 			$reel.css('left', '');
 			$cover.css('transform', '');
 		}
@@ -391,6 +408,85 @@ const Viewer = function() {
 			$cvSel.css('margin-top', (cpHeight + 24) * .5);
 			$('nav').height(cpHeight + 24);
 		}
+	}
+
+	function move(btn) {
+		if (uiState == 'cover') {
+			return false;
+		}
+		let $view = $reel.parent();
+		let curX = $reel.index();
+		let y = $cover.index();
+		let x = curX;
+		switch (btn.label) {
+			case 'Up':
+				y -= 1;
+				break;
+			case 'Down':
+				y += 1;
+				break;
+			case 'Left':
+				x -= 1;
+				break;
+			case 'Right':
+				x += 1;
+				break;
+			default:
+
+		}
+		if (x < 0) {
+			return false;
+		}
+		let $cover1, $reel1;
+		if (x == curX) {
+			$cover1 = $reel.children().eq(y);
+			$reel1 = $reel;
+		} else {
+			$reel1 = $view.children().eq(x);
+			if (!$reel1.length) {
+				return false;
+			}
+			let length = $reel.children().length;
+			if ($reel1.children().length < length) {
+				length = $reel1.children().length;
+			}
+			y = length - y;
+			$cover1 = $reel1.children().eq(y);
+		}
+		if (!$cover1.length) {
+			return false;
+		}
+		log('x ' + x);
+		log('y ' + y);
+		$cover = $cover1;
+		$reel = $reel1;
+		scrollToGame(null, 1000);
+		return true;
+	}
+
+	this.gamepad = async function(btn) {
+		switch (btn.label) {
+			case 'A':
+				if (uiState == 'cover') {
+					return false;
+				}
+				coverClicked('noScroll');
+				break;
+			case 'B':
+				if (uiState == 'lib') {
+					return false;
+				}
+				coverClicked('noScroll');
+				break;
+			case 'Up':
+			case 'Down':
+			case 'Left':
+			case 'Right':
+				return move(btn);
+			default:
+				return false;
+		}
+		return true;
 	}
 
 	this.load = async function(usrGames, usrPrefs, usrSys) {
@@ -423,10 +519,14 @@ const Viewer = function() {
 			$glv.append(`<div class="reel r${i} ${((i % 2 == 0)?'reverse':'normal')}"></div>`)
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
+		dynRowStyle += `#gameLibViewer.lib .reel .panel.cursor {
+	outline: 1px solid white;
+	outline-offset: ${12-rows}px;
+}`;
 		dynRowStyle += '</style>';
 		$('body').append(dynRowStyle);
+		uiStateChange('lib');
 		let template = getTemplate();
-		let templateAmt = 4;
 		await addTemplates(template, rows, templateAmt);
 		for (let i = 0, j = 0; i < games.length; i++) {
 			try {

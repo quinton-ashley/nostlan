@@ -452,9 +452,18 @@ module.exports = async function(opt) {
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
 
-	let btns = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right'];
+	let btns = {
+		A: gamepad.button('A'),
+		B: gamepad.button('B'),
+		X: gamepad.button('X'),
+		Y: gamepad.button('Y'),
+		Up: gamepad.button('Up'),
+		Down: gamepad.button('Down'),
+		Left: gamepad.button('Left'),
+		Right: gamepad.button('Right')
+	};
 	let btnStates = {};
-	for (let i of btns) {
+	for (let i in btns) {
 		btnStates[i] = false;
 	}
 	let gvMainMenuLabels = {
@@ -475,17 +484,26 @@ module.exports = async function(opt) {
 	};
 
 	async function buttonPressed(btn) {
+		let res = await viewer.gamepad(btn);
+		if (res) {
+			return res;
+		}
 		switch (btn.label) {
 			case 'A':
 				break;
 			case 'B':
 				await openBtn();
-				break;
+				return;
 			case 'X':
 				await powerBtn();
-				break;
+				return;
 			case 'Y':
 				await resetBtn();
+				return;
+			case 'Up':
+			case 'Down':
+			case 'Left':
+			case 'Right':
 				break;
 			default:
 
@@ -494,13 +512,15 @@ module.exports = async function(opt) {
 
 	async function loop() {
 		if (gamepadConnected || gamepad.isConnected()) {
-			for (let i of btns) {
+			for (let i in btns) {
+				let btn = btns[i];
+				// incomplete maps are okay
+				// no one to one mapping necessary
 				i = map[i] || i;
-				let btn = gamepad.button[i];
 
 				if (!gamepadConnected) {
 					let $button = $('#' + gvMainMenuLabels[i]);
-					$button.text(btn.label);
+					$button.text(i);
 				}
 				let query = btn.query();
 				// if button state is unchanged
@@ -510,11 +530,14 @@ module.exports = async function(opt) {
 				btnStates[i] = query;
 				// if button state is false (unpressed)
 				if (!query) {
-					log(btn.label + 'button press end');
+					log(i + ' button press end');
 					continue;
 				}
-				log(btn.label + 'button press start');
-				await buttonPressed(btn);
+				log(i + ' button press start');
+				await buttonPressed({
+					label: i,
+					query: query
+				});
 			}
 			gamepadConnected = true;
 		}

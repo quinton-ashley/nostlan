@@ -34,7 +34,7 @@ const Viewer = function() {
 		if (!(await fs.exists(file))) {
 			let res = await req(url);
 			if (res.status == 404) {
-				return false;
+				return;
 			}
 			$('#loadDialog1').text('loading image: ' + url);
 			log('loading image: ' + url);
@@ -57,7 +57,7 @@ const Viewer = function() {
 				return res;
 			}
 		}
-		return false;
+		return;
 	}
 
 	async function dlFromAndy(title, file, system) {
@@ -125,7 +125,7 @@ const Viewer = function() {
 			}
 		}
 		if (skip) {
-			return false;
+			return;
 		}
 		// get image from gametdb
 		file = `${dir}/${name}`;
@@ -163,7 +163,7 @@ const Viewer = function() {
 				return res;
 			}
 		}
-		return false;
+		return;
 	}
 
 	function getTemplate() {
@@ -206,7 +206,7 @@ const Viewer = function() {
 		defaultCoverImg = await getImg(theme.default, 'box');
 		if (!defaultCoverImg) {
 			log('ERROR: No default cover image found');
-			return false;
+			return;
 		}
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));
@@ -217,7 +217,7 @@ const Viewer = function() {
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
-				return false;
+				return;
 			}
 			return file;
 		}
@@ -235,7 +235,7 @@ const Viewer = function() {
 				cl1 = 'front-cover ' + sys;
 				if (!file) {
 					log(`no images found for game: ${game.id} ${game.title}`);
-					return false;
+					return;
 				}
 			}
 		}
@@ -412,7 +412,7 @@ const Viewer = function() {
 
 	function move(btn) {
 		if (uiState == 'cover') {
-			return false;
+			return;
 		}
 		let $view = $reel.parent();
 		let curX = $reel.index();
@@ -435,7 +435,7 @@ const Viewer = function() {
 
 		}
 		if (x < 0) {
-			return false;
+			return;
 		}
 		let $cover1, $reel1;
 		if (x == curX) {
@@ -444,7 +444,7 @@ const Viewer = function() {
 		} else {
 			$reel1 = $view.children().eq(x);
 			if (!$reel1.length) {
-				return false;
+				return;
 			}
 			let length = $reel.children().length;
 			if ($reel1.children().length < length) {
@@ -454,7 +454,7 @@ const Viewer = function() {
 			$cover1 = $reel1.children().eq(y);
 		}
 		if (!$cover1.length) {
-			return false;
+			return;
 		}
 		log('x ' + x);
 		log('y ' + y);
@@ -468,13 +468,13 @@ const Viewer = function() {
 		switch (btn.label) {
 			case 'A':
 				if (uiState == 'cover') {
-					return false;
+					return;
 				}
 				coverClicked('noScroll');
 				break;
 			case 'B':
 				if (uiState == 'lib') {
-					return false;
+					return;
 				}
 				coverClicked('noScroll');
 				break;
@@ -484,7 +484,7 @@ const Viewer = function() {
 			case 'Right':
 				return move(btn);
 			default:
-				return false;
+				return;
 		}
 		return true;
 	}

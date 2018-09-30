@@ -10,19 +10,19 @@ Bottlenose is a front-end, launcher, and companion app for video game emulators.
 -   most Nintendo systems are supported
 -   covers are stored locally so it never redownloads images
 -   Windows and macOS supported
+-   game controller UI mode
 
 ## Planned Features!
 
-I want to make Bottlenose a full companion app for Dolphin and other emulators, not just an elegant front-end.
+I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.
 
--   game controller UI mode
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
 -   automatic emulator updates
 -   easy way to mix and swap texture packs for Dolphin
 -   Linux support
 -   Xenia and RPCS3 support
--   side of box view mode
+-   list style view mode for browsing through box sides
 
 ## Supported emulators (as of now)
 
@@ -79,6 +79,11 @@ The most popular front end for Windows is Launchbox.  If Launchbox makes you bar
 
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide:
 ![](http://openemu.org/img/intro-gb-grid.png)
+
+Windows Explorer is also surprisingly popular for some reason.  People make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
+![](https://i.redd.it/z7zxgap037p11.png)
+
+Steam is ugly.  Not going to include a screen shot here.  You're welcome.
 
 ## Development Info
 
@@ -192,7 +197,7 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 
 ### Themes
 
-All themes were currently made by me (quinton-ashley/qashto)
+As of yet, all themes were made by me (quinton-ashley/qashto)
 
 ### Loading Sequences
 
@@ -209,9 +214,9 @@ Wii U Gamepad SVG by Tokyoship from Wikimedia Commons
 Creative Commons Attribution 3.0 Unported  
 <https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg>
 
-3DS SVG by me (quinton-ashley/qashto)
+3DS SVG by me (quinton-ashley/qashto)  
 
-PS3 by Jan Machycek  
+PS3 Icon Loader by Jan Machycek  
 <https://codepen.io/machyj/pen/ENvewe>
 
 ### Fonts

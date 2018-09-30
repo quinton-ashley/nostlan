@@ -171,7 +171,7 @@ module.exports = async function(opt) {
 			$('#loadDialog0').text('loading ' + results[i].title);
 			return results[i];
 		}
-		return false;
+		return;
 	}
 
 	async function reset() {
@@ -426,8 +426,16 @@ module.exports = async function(opt) {
 	}
 
 	async function openBtn() {
-		sys = '3ds';
+		// if (uiState == ) {
+		//
+		// }
+		sys = 'wii';
 		await open();
+	}
+
+	function changeSystem() {
+		let $openText = $('.cover.open .text');
+		systems.indexOf(sys);
 	}
 
 	$('#power').click(powerBtn);
@@ -436,34 +444,29 @@ module.exports = async function(opt) {
 
 	function hideNav() {
 		$('nav').toggleClass('hide');
-		// return false to prevent default browser behavior
+		// return to prevent default browser behavior
 		// and stop event from bubbling
-		return false;
+		return;
 	}
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], hideNav);
 	Mousetrap.bind(['space'], function() {
-		return false
+		return
 	});
 	Mousetrap.bind(['up', 'down', 'left', 'right'], function() {
-		return false
+		return
 	});
 
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
 
-	let btns = {
-		A: gamepad.button('A'),
-		B: gamepad.button('B'),
-		X: gamepad.button('X'),
-		Y: gamepad.button('Y'),
-		Up: gamepad.button('Up'),
-		Down: gamepad.button('Down'),
-		Left: gamepad.button('Left'),
-		Right: gamepad.button('Right')
-	};
+	let btnNames = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right', 'View', 'Start'];
+	let btns = {};
+	for (let i of btnNames) {
+		btns[i] = gamepad.button(i);
+	}
 	let btnStates = {};
-	for (let i in btns) {
+	for (let i of btnNames) {
 		btnStates[i] = false;
 	}
 	let gvMainMenuLabels = {
@@ -474,8 +477,8 @@ module.exports = async function(opt) {
 
 	// Xbox One controller mapped to
 	// Nintendo Switch controller button layout
-	//  X A
-	// Y B
+	//  Y B  ->  X A
+	// X A  ->  Y B
 	let map = {
 		A: 'B',
 		B: 'A',
@@ -490,9 +493,13 @@ module.exports = async function(opt) {
 		}
 		switch (btn.label) {
 			case 'A':
+				if (uiState == 'openMenu') {
+					await openBtn(btn.label);
+					return;
+				}
 				break;
 			case 'B':
-				await openBtn();
+				await openBtn(btn.label);
 				return;
 			case 'X':
 				await powerBtn();
@@ -505,9 +512,13 @@ module.exports = async function(opt) {
 			case 'Left':
 			case 'Right':
 				break;
+			case 'View':
+				hideNav();
+				break;
 			default:
 
 		}
+		return true;
 	}
 
 	async function loop() {
@@ -519,24 +530,33 @@ module.exports = async function(opt) {
 				i = map[i] || i;
 
 				if (!gamepadConnected) {
-					let $button = $('#' + gvMainMenuLabels[i]);
+					let $button;
+
+					$button = $('#' + gvMainMenuLabels[i]);
+
 					$button.text(i);
 				}
 				let query = btn.query();
-				// if button state is unchanged
-				if ((btnStates[i] && query) || (!btnStates[i] && !query)) {
+				// if button is not pressed, query is false and unchanged
+				if (!btnStates[i] && !query) {
 					continue;
 				}
+				// if button is held, query is true and unchanged
+				if (btnStates[i] && query) {
+					// log(i + ' button press held');
+					continue;
+				}
+				// save button state change
 				btnStates[i] = query;
-				// if button state is false (unpressed)
+				// if button press ended query is false
 				if (!query) {
-					log(i + ' button press end');
+					// log(i + ' button press end');
 					continue;
 				}
+				// if button press just started, query is true
 				log(i + ' button press start');
 				await buttonPressed({
-					label: i,
-					query: query
+					label: i
 				});
 			}
 			gamepadConnected = true;

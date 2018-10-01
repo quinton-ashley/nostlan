@@ -101,13 +101,14 @@ img {
 	z-index: -1;
 }
 
-.panel {
+.reel .panel {
 	height: auto;
 	width: 100%;
 	float: center;
 	z-index: 1;
 	left: 0;
 	transform: scale(.96);
+	line-height: 0;
 }
 
 .panel,
@@ -485,7 +486,7 @@ ul.nav {
 
 .gcn {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
-	font-size: 28px;
+	font-size: 28vw;
 	font-weight: bold;
 }
 /*================ds Cover====================*/

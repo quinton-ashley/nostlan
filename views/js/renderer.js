@@ -301,13 +301,13 @@ module.exports = async function(opt) {
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
 		if (sysStyle == 'gcn') {
-			$('.cover.power .coverText').text('power');
-			$('.cover.reset .coverText').text('reset');
-			$('.cover.open .coverText').text('open');
+			$('.cover.power .text').text('power');
+			$('.cover.reset .text').text('reset');
+			$('.cover.open .text').text('open');
 		} else {
-			$('.cover.power .coverText').text('Power');
-			$('.cover.reset .coverText').text('Reset');
-			$('.cover.open .coverText').text('Open');
+			$('.cover.power .text').text('Power');
+			$('.cover.reset .text').text('Reset');
+			$('.cover.open .text').text('Open');
 		}
 		await intro();
 		$('#dialogs').show();
@@ -452,10 +452,10 @@ module.exports = async function(opt) {
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], hideNav);
 	Mousetrap.bind(['space'], function() {
-		return;
+		return false;
 	});
 	Mousetrap.bind(['up', 'down', 'left', 'right'], function() {
-		return;
+		return false;
 	});
 
 	let gamepad = new Gamepad();

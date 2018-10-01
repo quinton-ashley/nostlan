@@ -58,6 +58,7 @@ module.exports = async function(opt) {
 	let sysStyle = '';
 	let emuDir = '';
 	let games = [];
+	let uiState = 'loadSeq';
 
 	// make UI changes
 	$('#update').hide();
@@ -425,10 +426,10 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
-	async function openBtn() {
-		// if (uiState == ) {
-		//
-		// }
+	async function openBtn(btnName) {
+		if (uiState == 'sysMenu') {
+
+		}
 		sys = 'wii';
 		await open();
 	}
@@ -451,10 +452,10 @@ module.exports = async function(opt) {
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], hideNav);
 	Mousetrap.bind(['space'], function() {
-		return
+		return;
 	});
 	Mousetrap.bind(['up', 'down', 'left', 'right'], function() {
-		return
+		return;
 	});
 
 	let gamepad = new Gamepad();
@@ -493,7 +494,7 @@ module.exports = async function(opt) {
 		}
 		switch (btn.label) {
 			case 'A':
-				if (uiState == 'openMenu') {
+				if (uiState == 'sysMenu') {
 					await openBtn(btn.label);
 					return;
 				}

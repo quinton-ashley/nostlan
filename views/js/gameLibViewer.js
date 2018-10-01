@@ -467,17 +467,17 @@ const Viewer = function() {
 	this.gamepad = async function(btn) {
 		switch (btn.label) {
 			case 'A':
-				if (uiState == 'cover') {
-					return;
-				}
-				coverClicked('noScroll');
-				break;
-			case 'B':
 				if (uiState == 'lib') {
-					return;
+					coverClicked('noScroll');
+					break;
 				}
-				coverClicked('noScroll');
-				break;
+				return;
+			case 'B':
+				if (uiState == 'cover') {
+					coverClicked('noScroll');
+					break;
+				}
+				return;
 			case 'Up':
 			case 'Down':
 			case 'Left':

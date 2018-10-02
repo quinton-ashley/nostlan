@@ -12,18 +12,6 @@ Bottlenose is a front-end, launcher, and companion app for video game emulators.
 -   Windows and macOS supported
 -   game controller UI mode
 
-## Planned Features!
-
-I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.
-
--   batch install/update texture packs for Dolphin
--   batch install/update graphics packs for Cemu
--   automatic emulator updates
--   easy way to mix and swap texture packs for Dolphin
--   Linux support
--   Xenia and RPCS3 support
--   list style view mode for browsing through box sides
-
 ## Supported emulators (as of now)
 
 -   Dolphin (Wii, Gamecube, Virtual Console)
@@ -36,6 +24,45 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
     ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
 -   Yuzu (Switch)
     ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
+
+## Please consider donating!
+
+Even though there's no free trial limit, Bottlenose is not free.  If I don't receive any donations it will indicate to me that I should work on other projects.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  Thank you!  
+
+Reoccurring Donations!  
+Patreon: <https://www.patreon.com/qashto>  
+
+Single Donation:  
+Paypal: <https://www.paypal.me/qashto/5>  
+Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea  
+
+## Planned Features!
+
+I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in bottlenose I want to implement these features!
+
+-   batch install/update texture packs for Dolphin
+-   batch install/update graphics packs for Cemu
+-   automatic emulator updates
+-   easy way to mix and swap texture packs for Dolphin
+-   Linux support
+-   Xenia and RPCS3 support
+-   list style view mode for browsing through box sides
+
+## How is Bottlenose different form other front-ends?
+
+Emulation Station is a beautiful front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  Bottlenose however makes box art the primary, practically singular, focus of the UI, not metadata or descriptions:
+![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
+
+The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like it.  Bottlenose will mainly focus on games and consoles released after the year 2000.  This is the "Big Box" mode:
+![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
+
+OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide:
+![](http://openemu.org/img/intro-gb-grid.png)
+
+Windows Explorer is also surprisingly popular for some reason.  People make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
+![](https://i.redd.it/z7zxgap037p11.png)
+
+Steam is ugly and if you're reading this you've probably used it already.  Not going to include a screen shot here.  You're welcome.
 
 ## Required Directory Structure Example
 
@@ -60,30 +87,6 @@ Emulation (root folder can have any name)
 ```
 
 The default game library of each emulator will be its `GAMES` folder.  Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
-
-## Please consider donating!
-
-Even though there's no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  If I don't receive any donations I will assume people are not interested in a high quality front-end for emulators and I won't be willing to dedicate a significant amount of time to this project.  I've already been working on it for a month!  If you want me to add updates and new features to Bottlenose please support me with a donation and share the app with your friends.  Thank you :)
-
-Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea  
-Patreon: <https://www.patreon.com/qashto>  
-Paypal: <https://www.paypal.me/qashto/5>
-
-## How is Bottlenose different form other front-ends?
-
-Emulation Station is a beautiful front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  Bottlenose however makes box art the primary, practically singular, focus of the UI, not metadata or descriptions:
-![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
-
-The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like it.  Bottlenose will mainly focus on post-Gamecube (2001) emulators.  This is the "Big Box" mode:
-![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
-
-OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide:
-![](http://openemu.org/img/intro-gb-grid.png)
-
-Windows Explorer is also surprisingly popular for some reason.  People make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
-![](https://i.redd.it/z7zxgap037p11.png)
-
-Steam is ugly.  Not going to include a screen shot here.  You're welcome.
 
 ## Development Info
 

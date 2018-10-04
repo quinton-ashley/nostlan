@@ -35,16 +35,20 @@ module.exports = async function(opt) {
 		or,
 		and
 	} = require('contro');
-	const botDir = path.join(os.homedir(), '/Documents/bottlenose');
-	log(botDir);
 
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
 	window.Bootstrap = require('bootstrap');
-	// var jQueryBridget = require('jquery-bridget');
-	// var Masonry = require('masonry-layout');
-	// // make Masonry a jQuery plugin
-	// jQueryBridget('masonry', Masonry, $);
+
+	String.prototype.replaceAt = function(index, replacement) {
+		return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+	}
+
+	// bottlenose dir location cannot be changed
+	// only used to store small files, no images
+	// the user's preferences and game libs json databases
+	const botDir = path.join(os.homedir(), '/Documents/bottlenose');
+	log(botDir);
 	const viewer = require('../js/gameLibViewer.js');
 
 	// get the default prefrences
@@ -52,8 +56,11 @@ module.exports = async function(opt) {
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 	let prefsPath = botDir + '/usr/prefs.json';
 	let prefs = prefsDefault;
+	// I assume the user is using a smooth scroll trackpad
+	// or apple mouse with their Mac
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
+	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
 	let sys = '';
 	let sysStyle = '';
 	let emuDir = '';
@@ -68,6 +75,7 @@ module.exports = async function(opt) {
 		html: {}
 	};
 
+	// retrieves the loading sequence files, some are pug not plain html
 	async function getIntroFile(type) {
 		let fType = ((type == 'css') ? 'css' : 'html');
 		if (!introFiles[fType][sysStyle]) {
@@ -104,11 +112,6 @@ module.exports = async function(opt) {
 			require(`../js/${sysStyle}Load.js`)();
 		}
 		await delay(1000);
-	}
-
-
-	String.prototype.replaceAt = function(index, replacement) {
-		return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 	}
 
 	function openLib() {
@@ -182,7 +185,7 @@ module.exports = async function(opt) {
 		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
 		log(gameDB);
 
-		let options = {
+		let searchOpt = {
 			shouldSort: true,
 			threshold: 0.4,
 			location: 0,
@@ -194,7 +197,7 @@ module.exports = async function(opt) {
 				"title"
 			]
 		};
-		let fuse = new Fuse(gameDB, options);
+		let fuse = new Fuse(gameDB, searchOpt);
 		let files = klawSync(prefs[sys].libs[0], {
 			depthLimit: 0
 		});
@@ -210,6 +213,8 @@ module.exports = async function(opt) {
 			if (sys == 'ps3') {
 				file += '/USRDIR/EBOOT.BIN';
 			}
+			// fixes an issue where folder names were split by periods
+			// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
 			if (sys != 'wiiu' && sys != 'ps3') {
 				term = term.name;
 			} else {
@@ -223,8 +228,8 @@ module.exports = async function(opt) {
 			// special complete subs part 1
 			if (sys == 'wii') {
 				term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
-				term = term.replace(/sm *64/gi, 'Super Mario 64');
 			}
+			term = term.replace(/sm *64/gi, 'Super Mario 64');
 			term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 			// special check for ids
 			log(term);
@@ -381,13 +386,12 @@ module.exports = async function(opt) {
 			emuDir = prefs.emuDir;
 		}
 		// currently supported systems
-		// let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
-		// for (let i = 0; i < systems.length; i++) {
-		// 	sys = systems[i];
-		// 	$('#systemSel').append(`
-		// 		<button class="${sys}" value="${sys}">${sys}</button>
-		// 		`);
-		// }
+		for (let i = 0; i < systems.length; i++) {
+			sys = systems[i];
+			$('#sysMenu').append(`
+				<button class="${sys}" value="${sys}">${sys}</button>
+			`);
+		}
 		sys = prefs.session.sys;
 		await reload();
 	}
@@ -428,15 +432,37 @@ module.exports = async function(opt) {
 
 	async function openBtn(btnName) {
 		if (uiState == 'sysMenu') {
-
+			sys = $('#sysMenu button.cursor').prop('value');
+			await open();
 		}
-		sys = 'wii';
-		await open();
 	}
 
 	function changeSystem() {
 		let $openText = $('.cover.open .text');
 		systems.indexOf(sys);
+	}
+
+	async function move(btn) {
+		let $cur = $(`#${uiState} .cursor`);
+		let x = 0;
+		let y = 0;
+		switch (btn.label) {
+			case 'Up':
+				y -= 1;
+				break;
+			case 'Down':
+				y += 1;
+				break;
+			case 'Left':
+				x -= 1;
+				break;
+			case 'Right':
+				x += 1;
+				break;
+			default:
+
+		}
+		if
 	}
 
 	$('#power').click(powerBtn);
@@ -512,7 +538,7 @@ module.exports = async function(opt) {
 			case 'Down':
 			case 'Left':
 			case 'Right':
-				break;
+				return move(btn);
 			case 'View':
 				hideNav();
 				break;

@@ -50,16 +50,16 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 
 ## How is Bottlenose different form other front-ends?
 
-Emulation Station is a beautiful front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  Bottlenose however makes box art the primary, practically singular, focus of the UI, not metadata or descriptions:
+Emulation Station is a nice front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  However, with Bottlenose I wanted to make box art the primary, practically singular, focus of the UI, not metadata or descriptions.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
-The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like it.  Bottlenose will mainly focus on games and consoles released after the year 2000.  This is the "Big Box" mode:
+The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like it.  Bottlenose will mainly focus on games and consoles released after the year 2000.  This is the "Big Box" mode.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
-OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide:
+OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide.
 ![](http://openemu.org/img/intro-gb-grid.png)
 
-Windows Explorer is also surprisingly popular for some reason.  People make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
+Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
 Steam is ugly and if you're reading this you've probably used it already.  Not going to include a screen shot here.  You're welcome.
@@ -94,7 +94,7 @@ Bottlenose is open source and MIT licensed!  I loved using Electron to make Bott
 
 ## Collaboration Guide
 
-PRs are welcome!  Please follow my coding style though.  Line length should be ~80.  In general I prefer more verbose JS syntax.  End each line with a semicolon.  No if statements without brackets.  No callback pyramids, use Async/Await whenever possible.  Comment your code but not too much.  Do not write plain JS novels for editing the DOM, just use jQuery please.  Pay attention to whether you need to write system/emu specific or general code.
+PRs are welcome!  Please follow my coding style though.  Line length should be ~80.  In general I prefer more verbose JS syntax.  End each line of code with a semicolon.  No if statements without brackets.  No callback pyramids, use Async/Await whenever possible.  Comment your code but not too much.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Pay attention to whether you need to write system/emu specific or general code.
 
 ## Contributing to Bottlenose
 
@@ -135,13 +135,13 @@ If you would like to update a game database, make a PR or email me <mailto:qasht
 
 The following names can be used to specify images:
 
--   "box" the front cover including box ()
--   "coverFull" the entire cover sleeve, no box
--   "cover" the front facing portion of the cover sleeve, no box
--   "disc" the front of the game's (first) disc
--   "cart" the front of the game's (first) cartridge
+-   `"box"` the front cover including box ()
+-   `"coverFull"` the entire cover sleeve, no box
+-   `"cover"` the front facing portion of the cover sleeve, no box
+-   `"disc"` the front of the game's (first) disc
+-   `"cart"` the front of the game's (first) cartridge
 
-Box art is prioritized in this order: box (super high quality), coverFull, cover, box (low quality).  In a future version of bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
+Box art is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
 
 ```javascript
 {

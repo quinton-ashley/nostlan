@@ -28,7 +28,7 @@ async function createWindow() {
 	try {
 		let pug = await setupPug({
 			pretty: true
-		}, locals)
+		}, locals);
 		// pug.on('error', err => console.error('electron-pug error', err))
 		pug.on('error', function() {});
 	} catch (err) {
@@ -42,7 +42,7 @@ async function createWindow() {
 		frame: false
 	});
 
-	mainWindow.loadURL(`file://${__dirname}/views/pug/index.pug`)
+	mainWindow.loadURL(`file://${__dirname}/views/pug/index.pug`);
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()

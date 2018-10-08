@@ -281,7 +281,7 @@ module.exports = async function(opt) {
 			term = term.replace(/ bros( |$)/gi, ' Bros. ');
 			term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
 			// eliminations part 3
-			term = term.replace(/[\[\(]*(v\d]\.|\d+\.|rev \d).*/gi, '');
+			term = term.replace(/[\[\(]*(v\d]\.|\d+\.|rev *\d).*/gi, '');
 			term = term.replace(/\[[^\]]*\]/g, '');
 			term = term.replace(/ *decrypted */gi, '');
 
@@ -302,6 +302,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
+		$('#sysMenu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
@@ -389,7 +390,7 @@ module.exports = async function(opt) {
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
 			$('#sysMenu').append(`
-				<button class="${sys}" value="${sys}">${sys}</button>
+				<button class="uie ${sys}" value="${sys}">${sys}</button>
 			`);
 		}
 		sys = prefs.session.sys;
@@ -420,20 +421,21 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
-	async function open() {
-		if (!viewer) {
-			return;
-		}
-		viewer.remove();
-		await reload();
-		await viewer.load(games, prefs, sys);
-		removeIntro();
-	}
-
 	async function openBtn(btnName) {
-		if (uiState == 'sysMenu') {
+		if (global.ui == 'sysMenu') {
 			sys = $('#sysMenu button.cursor').prop('value');
-			await open();
+			await reload();
+			await viewer.load(games, prefs, sys);
+			removeIntro();
+		} else {
+			if (!viewer) {
+				return;
+			}
+			viewer.remove();
+			global.ui = 'sysMenu';
+			$('#sysMenu').show();
+			global.$cur = $('#sysMenu').children().eq(0);
+			global.$cur.addClass('cursor');
 		}
 	}
 
@@ -443,9 +445,21 @@ module.exports = async function(opt) {
 	}
 
 	async function move(btn) {
-		let $cur = $(`#${uiState} .cursor`);
-		let x = 0;
-		let y = 0;
+		let $cur = global.$cur;
+		let $rowX = $cur.closest('.row-x');
+		let $rowY = $cur.closest('.row-y');
+		let curX, curY;
+		let inVerticalRow = $rowX.has($rowY.get(0)).length || !$rowX.length;
+		log(inVerticalRow);
+		if (inVerticalRow) {
+			curX = $rowY.index(); // index of rowY in rowX
+			curY = $cur.index();
+		} else {
+			curX = $cur.index();
+			curY = $rowX.index(); // index of rowX in rowY
+		}
+		let x = curX;
+		let y = curY;
 		switch (btn.label) {
 			case 'Up':
 				y -= 1;
@@ -462,7 +476,54 @@ module.exports = async function(opt) {
 			default:
 
 		}
-		if
+		let ret = {
+			$cur: $cur,
+			$rowX: $rowX,
+			$rowY: $rowY
+		};
+		if (x < 0 || y < 0) {
+			return;
+		}
+		if (inVerticalRow) {
+			if (x == curX) {
+				ret.$cur = $rowY.children().eq(y);
+			} else {
+				if (!$rowX.length) {
+					return;
+				}
+				ret.$rowY = $rowX.children().eq(x);
+				if (!ret.$rowY.length) {
+					return;
+				}
+				let curRect = $cur.get(0).getBoundingClientRect();
+				while (y < ret.$rowY.children().length && y >= 0) {
+					ret.$cur = ret.$rowY.children().eq(y);
+					let elmRect = ret.$cur.get(0).getBoundingClientRect();
+					let diff = curRect.top - elmRect.top;
+					let halfHeight = Math.max($cur.height(), ret.$cur.height()) * .6;
+					log('halfHeight' + halfHeight);
+					log('diff' + diff);
+					if (halfHeight < diff) {
+						y++;
+					} else if (-halfHeight > diff) {
+						y--;
+					} else {
+						break;
+					}
+				}
+			}
+			$rowY.find('.cursor').removeClass('cursor');
+		} else {
+
+		}
+		if (!ret.$cur.length) {
+			return;
+		}
+		log('x ' + x);
+		log('y ' + y);
+		ret.$cur.addClass('cursor');
+		global.$cur = ret.$cur;
+		return true;
 	}
 
 	$('#power').click(powerBtn);
@@ -514,36 +575,40 @@ module.exports = async function(opt) {
 	};
 
 	async function buttonPressed(btn) {
-		let res = await viewer.gamepad(btn);
-		if (res) {
-			return res;
+		if (global.ui == 'gameLibViewer') {
+			let res = await viewer.gamepad(btn);
+			if (res) {
+				return res;
+			}
 		}
 		switch (btn.label) {
 			case 'A':
-				if (uiState == 'sysMenu') {
+				if (global.ui == 'sysMenu') {
 					await openBtn(btn.label);
-					return;
+					break;
 				}
-				break;
+				return;
 			case 'B':
 				await openBtn(btn.label);
-				return;
+				break;
 			case 'X':
 				await powerBtn();
-				return;
+				break;
 			case 'Y':
 				await resetBtn();
-				return;
+				break;
 			case 'Up':
 			case 'Down':
 			case 'Left':
 			case 'Right':
-				return move(btn);
+				move(btn);
+				break;
 			case 'View':
 				hideNav();
 				break;
 			default:
-
+				log('button does nothing');
+				return;
 		}
 		return true;
 	}
@@ -594,4 +659,16 @@ module.exports = async function(opt) {
 	loop();
 
 	removeIntro();
+
+	function refreshUI() {
+		$('.uie').click(function() {
+			global.$cur.removeClass('cursor');
+			global.$cur = $(this);
+			global.$cur.addClass('cursor');
+			if (global.ui == 'gameLibViewer') {
+				viewer.uieClicked();
+			}
+		});
+	}
+	refreshUI();
 };

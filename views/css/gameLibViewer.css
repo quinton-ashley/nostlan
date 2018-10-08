@@ -104,11 +104,11 @@ img {
 .reel .panel {
 	height: auto;
 	width: 100%;
-	float: center;
 	z-index: 1;
 	left: 0;
 	transform: scale(.96);
 	line-height: 0;
+	font-size: 0;
 }
 
 .panel,

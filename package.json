@@ -38,12 +38,7 @@
 		"tether": "^1.4.5"
 	},
 	"description": "Bottlenose is a front-end for video game emulators, use it to install and auto-update texture packs!",
-	"devDependencies": {
-		"ajv": "^6.5.4",
-		"electron": "^3.0.2",
-		"electron-builder": "^20.28.4",
-		"electron-rebuild": "^1.7.3"
-	},
+	"devDependencies": {},
 	"keywords": [
 		"app"
 	],
@@ -70,5 +65,5 @@
 		"version": "git add -A",
 		"postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
 	},
-	"version": "0.0.42"
+	"version": "0.0.43"
 }

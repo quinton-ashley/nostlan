@@ -27,7 +27,6 @@ const Viewer = function() {
 	let theme;
 	let defaultCoverImg;
 	let $cover;
-	let $reel;
 	let templateAmt = 4;
 
 	async function dl(url, file) {
@@ -240,7 +239,7 @@ const Viewer = function() {
 			}
 		}
 		$('.reel.r' + reelNum).append(`
-			<div class="panel ${game.id}">
+			<div class="uie panel ${game.id}">
 				${((cl1)?`<img src="${defaultCoverImg}">`:'')}
 				<section class="${cl1}">
 	      	<img src="${file}"/>
@@ -253,6 +252,7 @@ const Viewer = function() {
 	function uiStateChange(state) {
 		uiState = state;
 		$('#gameLibViewer').removeClass();
+		$('#gameLibViewer').addClass('row-x');
 		$('#gameLibViewer').addClass(uiState);
 	}
 
@@ -274,11 +274,10 @@ const Viewer = function() {
 
 	function scrollToGame(gameID, time) {
 		if (gameID) {
-			$cover = $('.' + gameID).eq(0);
-			$reel = $cover.parent();
+			global.$cur = $('.' + gameID).eq(0);
 		}
-		$('#gameLibViewer .reel .cursor').removeClass('cursor');
-		$cover.addClass('cursor');
+		$cover = global.$cur;
+		let $reel = $cover.parent();
 		let pos = 0;
 		for (let i = 0; i < $cover.index(); i++) {
 			pos += $reel.children().eq(i).height();
@@ -291,6 +290,10 @@ const Viewer = function() {
 			pos -= $(window).height() * .5;
 		}
 		goTo(pos, time);
+	}
+
+	this.scrollToCursor = function() {
+		scrollToGame();
 	}
 
 	function getPanelID($panel) {
@@ -359,10 +362,8 @@ const Viewer = function() {
 	}
 
 	function coverClicked(noScroll) {
-		if (!$cover) {
-			return;
-		}
-		$reel = $cover.parent();
+		$cover = global.$cur;
+		let $reel = $cover.parent();
 		let id = $cover.attr('class').split(' ')[1];
 		if (!id || id == '_TEMPLATE') {
 			return;
@@ -385,6 +386,12 @@ const Viewer = function() {
 		}
 		log('clicked: ')
 		log($cover);
+	}
+
+	this.uieClicked = function() {
+		if (global.$cur.hasClass('panel')) {
+			coverClicked();
+		}
 	}
 
 	this.remove = function(menu) {
@@ -410,60 +417,6 @@ const Viewer = function() {
 		}
 	}
 
-	function move(btn) {
-		if (uiState == 'cover') {
-			return;
-		}
-		let $view = $reel.parent();
-		let curX = $reel.index();
-		let y = $cover.index();
-		let x = curX;
-		switch (btn.label) {
-			case 'Up':
-				y -= 1;
-				break;
-			case 'Down':
-				y += 1;
-				break;
-			case 'Left':
-				x -= 1;
-				break;
-			case 'Right':
-				x += 1;
-				break;
-			default:
-
-		}
-		if (x < 0) {
-			return;
-		}
-		let $cover1, $reel1;
-		if (x == curX) {
-			$cover1 = $reel.children().eq(y);
-			$reel1 = $reel;
-		} else {
-			$reel1 = $view.children().eq(x);
-			if (!$reel1.length) {
-				return;
-			}
-			let length = $reel.children().length;
-			if ($reel1.children().length < length) {
-				length = $reel1.children().length;
-			}
-			y = length - y;
-			$cover1 = $reel1.children().eq(y);
-		}
-		if (!$cover1.length) {
-			return;
-		}
-		log('x ' + x);
-		log('y ' + y);
-		$cover = $cover1;
-		$reel = $reel1;
-		scrollToGame(null, 1000);
-		return true;
-	}
-
 	this.gamepad = async function(btn) {
 		switch (btn.label) {
 			case 'A':
@@ -478,11 +431,6 @@ const Viewer = function() {
 					break;
 				}
 				return;
-			case 'Up':
-			case 'Down':
-			case 'Left':
-			case 'Right':
-				return move(btn);
 			default:
 				return;
 		}
@@ -516,7 +464,7 @@ const Viewer = function() {
 		let $glv = $('#gameLibViewer');
 		let dynRowStyle = `<style class="gameViewerRowsStyle" type="text/css">.reel {width: ${1 / rows * 100}%;}`
 		for (let i = 0; i < rows; i++) {
-			$glv.append(`<div class="reel r${i} ${((i % 2 == 0)?'reverse':'normal')}"></div>`)
+			$glv.append(`<div class="reel r${i} row-y ${((i % 2 == 0)?'reverse':'normal')}"></div>`)
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
 		dynRowStyle += `#gameLibViewer.lib .reel .panel.cursor {
@@ -546,10 +494,6 @@ const Viewer = function() {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }
 
-		$('.panel').click(function() {
-			$cover = $(this);
-			coverClicked();
-		});
 		$('#dialogs').hide();
 		$('.cover.view select').css('margin-top', '20px');
 		if ($('.reel.bg').length) {
@@ -575,12 +519,15 @@ const Viewer = function() {
 			});
 			// remote.getCurrentWindow().setFullScreen(true);
 		}
+		global.ui = 'gameLibViewer';
 		await delay(100);
 		// scroll to game at center of reel 0
 		let $mid = $('.reel.r0').children();
 		log('mid: ' + Math.round($mid.length * .5) - 1)
 		$mid = $mid.eq(Math.round($mid.length * .5) - 1);
-		scrollToGame(getPanelID($mid), 10);
+		$mid.addClass('cursor');
+		global.$cur = $mid
+		scrollToGame(null, 10);
 		resizeUI(true);
 	}
 

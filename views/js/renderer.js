@@ -61,7 +61,7 @@ module.exports = async function(opt) {
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
 	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
-	let sys = '';
+	let sys;
 	let sysStyle = '';
 	let emuDir = '';
 	let games = [];
@@ -281,7 +281,7 @@ module.exports = async function(opt) {
 			term = term.replace(/ bros( |$)/gi, ' Bros. ');
 			term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
 			// eliminations part 3
-			term = term.replace(/[\[\(]*(v\d]\.|\d+\.|rev *\d).*/gi, '');
+			term = term.replace(/[\[\(]*(v*\d+\.|rev *\d).*/gi, '');
 			term = term.replace(/\[[^\]]*\]/g, '');
 			term = term.replace(/ *decrypted */gi, '');
 
@@ -390,7 +390,7 @@ module.exports = async function(opt) {
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
 			$('#sysMenu').append(`
-				<button class="uie ${sys}" value="${sys}">${sys}</button>
+				<div class="uie ${(prefs[sys].style || sys)}" name="${sys}">${((prefs[sys].style || '') + ' ' + sys).trim()}</div>
 			`);
 		}
 		sys = prefs.session.sys;
@@ -400,10 +400,28 @@ module.exports = async function(opt) {
 	await load();
 	await viewer.load(games, prefs, sys);
 
+	async function uieClicked() {
+		global.$cur.removeClass('cursor');
+		global.$cur = $(this);
+		global.$cur.addClass('cursor');
+		if (global.ui == 'gameLibViewer') {
+			viewer.uieClicked();
+		} else if (global.ui == 'sysMenu') {
+			global.ui == 'loadSeq';
+			await openBtn();
+		}
+	}
+	$('.uie').click(uieClicked);
+
+	function refreshUI() {
+		$('#gameLibViewer .uie').click(uieClicked);
+	}
+
 	function removeIntro() {
 		$('#intro').remove();
 		$('link.introStyle').prop('disabled', true);
 		$('link.introStyle').remove();
+		refreshUI();
 	}
 
 	async function powerBtn() {
@@ -421,9 +439,10 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
-	async function openBtn(btnName) {
+	async function openBtn() {
 		if (global.ui == 'sysMenu') {
-			sys = $('#sysMenu button.cursor').prop('value');
+			sys = global.$cur.attr('name');
+			global.$cur.removeClass('cursor');
 			await reload();
 			await viewer.load(games, prefs, sys);
 			removeIntro();
@@ -437,11 +456,6 @@ module.exports = async function(opt) {
 			global.$cur = $('#sysMenu').children().eq(0);
 			global.$cur.addClass('cursor');
 		}
-	}
-
-	function changeSystem() {
-		let $openText = $('.cover.open .text');
-		systems.indexOf(sys);
 	}
 
 	async function move(btn) {
@@ -530,14 +544,12 @@ module.exports = async function(opt) {
 	$('#reset').click(resetBtn);
 	$('#open').click(openBtn);
 
-	function hideNav() {
+	function toggleNav() {
 		$('nav').toggleClass('hide');
-		// return to prevent default browser behavior
-		// and stop event from bubbling
-		return;
+		return false;
 	}
 
-	Mousetrap.bind(['command+n', 'ctrl+n'], hideNav);
+	Mousetrap.bind(['command+n', 'ctrl+n'], toggleNav);
 	Mousetrap.bind(['space'], function() {
 		return false;
 	});
@@ -584,13 +596,16 @@ module.exports = async function(opt) {
 		switch (btn.label) {
 			case 'A':
 				if (global.ui == 'sysMenu') {
-					await openBtn(btn.label);
+					await openBtn();
 					break;
 				}
 				return;
 			case 'B':
-				await openBtn(btn.label);
-				break;
+				if (global.ui != 'sysMenu') {
+					await openBtn();
+					break;
+				}
+				return;
 			case 'X':
 				await powerBtn();
 				break;
@@ -604,7 +619,7 @@ module.exports = async function(opt) {
 				move(btn);
 				break;
 			case 'View':
-				hideNav();
+				toggleNav();
 				break;
 			default:
 				log('button does nothing');
@@ -659,16 +674,4 @@ module.exports = async function(opt) {
 	loop();
 
 	removeIntro();
-
-	function refreshUI() {
-		$('.uie').click(function() {
-			global.$cur.removeClass('cursor');
-			global.$cur = $(this);
-			global.$cur.addClass('cursor');
-			if (global.ui == 'gameLibViewer') {
-				viewer.uieClicked();
-			}
-		});
-	}
-	refreshUI();
 };

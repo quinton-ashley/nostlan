@@ -496,6 +496,7 @@ ul.nav {
 	font-weight: bold;
 }
 
+#sysMenu .ds,
 .ds #gameLibViewer,
 .ds nav {
 	font-family: "nDS", "nDS", nDS;
@@ -509,6 +510,7 @@ ul.nav {
 	font-weight: bold;
 }
 
+.wii:not(.gcn),
 .wiiu {
 	font-family: "contb", "contb", contb;
 	font-size: 48px;

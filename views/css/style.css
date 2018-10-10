@@ -19,9 +19,10 @@ html {
 	height: 100%;
 }
 
-#sysMenu {
-	display: block;
-	font-size: 12px;
+#sysMenu div {
+	margin: 0.5vh;
+	height: 16.1vh;
+	font-size: 10vh!important;
 }
 
 #sysMenu .cursor {

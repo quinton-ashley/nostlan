@@ -43,6 +43,7 @@
 .wiiu {
 	--cover-color: #3f4044;
 	--cover-text-color: #202125;
+	--button-color: #3f4044;
 	--powerBtn-text-color: #9c333a;
 }
 
@@ -54,12 +55,33 @@
 }
 
 .ps3 {
-	--cover-color: #000;
+	--cover-color: #595a59;
+	--cover-text-color: #c62b27;
+	--button-color: #595a59;
 }
 /*================Game Lib Viewer====================*/
+
 #gameLibViewer {
 	max-width: 100%;
 	max-height: 100%;
+}
+
+.menu {
+	background-color: var(--cover-color);
+	color: var(--cover-text-color);
+	border-color: var(--cover-text-color);
+	border-radius: 32px;
+	border-width: 8px;
+	border-style: solid;
+}
+
+.menu * {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+.menu .cursor {
+	background-color: var(--cover-color);
+	filter: brightness(0.8);
 }
 
 #intro {
@@ -141,6 +163,7 @@ img {
 	pointer-events: none;
 }
 /*================Wii Game Lib Viewer====================*/
+
 .wii .front-cover-crop {
 	width: 200.1%;
 	top: 1.4%;
@@ -166,6 +189,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
 }
 /*================ds Game Lib Viewer====================*/
+
 .ds .front-cover-crop {
 	width: 100%;
 	top: 0;
@@ -199,6 +223,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
 }
 /*================PS3 Game Lib Viewer====================*/
+
 .ps3 .front-cover-crop {
 	width: 100%;
 	height: 100%;
@@ -234,6 +259,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Wii U Game Lib Viewer====================*/
+
 .wiiu .front-cover-crop {
 	width: 200%;
 	top: 2.2%;
@@ -266,6 +292,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================3ds Game Lib Viewer====================*/
+
 .n3ds .front-cover-crop {
 	width: 203.9%;
 	top: 2.2%;
@@ -291,6 +318,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Switch Game Lib Viewer====================*/
+
 .switch .front-cover-crop {
 	width: 200%;
 	top: 2.6%;
@@ -314,6 +342,7 @@ img {
 	transform: translate(-52.4%, 0%);
 }
 /*================Game Lib Viewer====================*/
+
 .front-cover,
 .front-cover-crop {
 	height: 100%;
@@ -444,10 +473,6 @@ img.logoNav {
 	outline: none;
 }
 
-.cover select.btn option {
-	color: #000;
-}
-
 .cover button {
 	font-family: "contb";
 	font-size: 48px;
@@ -537,6 +562,7 @@ ul.nav {
 	color: rgb(0, 125, 160);
 }
 /*================Misc====================*/
+
 .hiddenRow {
 	padding: 0 !important;
 }

@@ -263,6 +263,7 @@ module.exports = async function(opt) {
 			term = term.replace(/ -/g, ':');
 			let temp = term.replace(/, The/gi, '');
 			if (term != temp) {
+
 				term = 'The ' + temp;
 			}
 			// eliminations part 2
@@ -302,19 +303,20 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		$('#sysMenu').hide();
+		$('.menu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
+		let labels = ['Power', 'Reset', 'Open'];
 		if (sysStyle == 'gcn') {
-			$('.cover.power .text').text('power');
-			$('.cover.reset .text').text('reset');
-			$('.cover.open .text').text('open');
-		} else {
-			$('.cover.power .text').text('Power');
-			$('.cover.reset .text').text('Reset');
-			$('.cover.open .text').text('Open');
+			for (let i = 0; i < labels.length; i++) {
+				labels[i] = labels[i].toLowerCase();
+			}
 		}
+		$('.cover.power .text').text(labels[0]);
+		$('.cover.reset .text').text(labels[1]);
+		$('.cover.open .text').text(labels[2]);
+
 		await intro();
 		$('#dialogs').show();
 		let gamesPath = `${botDir}/usr/${sys}Games.json`;
@@ -390,7 +392,7 @@ module.exports = async function(opt) {
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
 			$('#sysMenu').append(`
-				<div class="uie ${(prefs[sys].style || sys)}" name="${sys}">${((prefs[sys].style || '') + ' ' + sys).trim()}</div>
+				<div class="uie" name="${sys}">${((prefs[sys].style || '') + ' ' + sys).trim()}</div>
 			`);
 		}
 		sys = prefs.session.sys;
@@ -400,18 +402,21 @@ module.exports = async function(opt) {
 	await load();
 	await viewer.load(games, prefs, sys);
 
-	async function uieClicked() {
+	function removeCursor() {
 		global.$cur.removeClass('cursor');
-		global.$cur = $(this);
-		global.$cur.addClass('cursor');
-		if (global.ui == 'gameLibViewer') {
-			viewer.uieClicked();
-		} else if (global.ui == 'sysMenu') {
-			global.ui == 'loadSeq';
-			await openBtn();
-		}
 	}
-	$('.uie').click(uieClicked);
+
+	function makeCursor($cur) {
+		removeCursor();
+		global.$cur = $cur;
+		global.$cur.addClass('cursor');
+	}
+
+	function uieClicked() {
+		makeCursor($(this));
+		buttonPressed('A');
+	}
+	$('#sysMenu .uie').click(uieClicked);
 
 	function refreshUI() {
 		$('#gameLibViewer .uie').click(uieClicked);
@@ -439,22 +444,28 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
-	async function openBtn() {
-		if (global.ui == 'sysMenu') {
-			sys = global.$cur.attr('name');
-			global.$cur.removeClass('cursor');
-			await reload();
-			await viewer.load(games, prefs, sys);
-			removeIntro();
-		} else {
-			if (!viewer) {
-				return;
-			}
-			viewer.remove();
-			global.ui = 'sysMenu';
-			$('#sysMenu').show();
-			global.$cur = $('#sysMenu').children().eq(0);
-			global.$cur.addClass('cursor');
+	async function doAction() {
+		switch (global.ui) {
+			case 'gameLibViewer':
+				if (!viewer) {
+					return;
+				}
+				viewer.remove();
+				sys = global.$cur.attr('name');
+				removeCursor();
+				await reload();
+				await viewer.load(games, prefs, sys);
+				removeIntro();
+				break;
+			default:
+				return false;
+		}
+		return true;
+	}
+
+	function scrollToCursor() {
+		if (global.ui == 'gameLibViewer') {
+			viewer.scrollToCursor();
 		}
 	}
 
@@ -464,7 +475,6 @@ module.exports = async function(opt) {
 		let $rowY = $cur.closest('.row-y');
 		let curX, curY;
 		let inVerticalRow = $rowX.has($rowY.get(0)).length || !$rowX.length;
-		log(inVerticalRow);
 		if (inVerticalRow) {
 			curX = $rowY.index(); // index of rowY in rowX
 			curY = $cur.index();
@@ -515,8 +525,6 @@ module.exports = async function(opt) {
 					let elmRect = ret.$cur.get(0).getBoundingClientRect();
 					let diff = curRect.top - elmRect.top;
 					let halfHeight = Math.max($cur.height(), ret.$cur.height()) * .6;
-					log('halfHeight' + halfHeight);
-					log('diff' + diff);
 					if (halfHeight < diff) {
 						y++;
 					} else if (-halfHeight > diff) {
@@ -533,16 +541,11 @@ module.exports = async function(opt) {
 		if (!ret.$cur.length) {
 			return;
 		}
-		log('x ' + x);
-		log('y ' + y);
 		ret.$cur.addClass('cursor');
 		global.$cur = ret.$cur;
+		scrollToCursor();
 		return true;
 	}
-
-	$('#power').click(powerBtn);
-	$('#reset').click(resetBtn);
-	$('#open').click(openBtn);
 
 	function toggleNav() {
 		$('nav').toggleClass('hide');
@@ -587,6 +590,11 @@ module.exports = async function(opt) {
 	};
 
 	async function buttonPressed(btn) {
+		if (typeof btn == 'string') {
+			btn = {
+				label: btn
+			};
+		}
 		if (global.ui == 'gameLibViewer') {
 			let res = await viewer.gamepad(btn);
 			if (res) {
@@ -595,16 +603,7 @@ module.exports = async function(opt) {
 		}
 		switch (btn.label) {
 			case 'A':
-				if (global.ui == 'sysMenu') {
-					await openBtn();
-					break;
-				}
-				return;
-			case 'B':
-				if (global.ui != 'sysMenu') {
-					await openBtn();
-					break;
-				}
+				await doAction();
 				return;
 			case 'X':
 				await powerBtn();
@@ -627,6 +626,16 @@ module.exports = async function(opt) {
 		}
 		return true;
 	}
+
+	$('#power').click(function() {
+		buttonPressed('X');
+	});
+	$('#reset').click(function() {
+		buttonPressed('Y');
+	});
+	$('#open').click(function() {
+		buttonPressed('B');
+	});
 
 	async function loop() {
 		if (gamepadConnected || gamepad.isConnected()) {
@@ -662,9 +671,7 @@ module.exports = async function(opt) {
 				}
 				// if button press just started, query is true
 				log(i + ' button press start');
-				await buttonPressed({
-					label: i
-				});
+				await buttonPressed(i);
 			}
 			gamepadConnected = true;
 		}

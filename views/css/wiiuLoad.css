@@ -1,20 +1,20 @@
 .wiiu #intro {
-  background-color: #000;
-  transform: scale(2);
+	background-color: #000;
+	transform: scale(2);
 }
 
 .wiiu #intro svg {
-  position: absolute;
-  width: 600px;
-  height: 353px;
-  top: 30%;
-  left: 20.4%;
+	position: absolute;
+	width: 600px;
+	height: 353px;
+	top: 30%;
+	left: 20.4%;
 }
 
 .wiiu #loadDialog0 {
-  top: 50%;
+	top: 50%;
 }
 
 .wiiu #loadDialog1 {
-  top: 60%;
+	top: 60%;
 }

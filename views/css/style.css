@@ -19,15 +19,20 @@ html {
 	height: 100%;
 }
 
-#sysMenu div {
-	margin: 0.5vh;
-	height: 16.1vh;
-	font-size: 10vh!important;
+.menu {
+	position: fixed;
+	z-index: 100;
+	width: 50vw;
+	height: 50vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	transform: translate(25vw, 25vh);
 }
 
-#sysMenu .cursor {
-	outline: 1px solid white;
-	outline-offset: 4px;
+.menu div {
+	margin: 0;
+	height: 25%;
+	font-size: 6vh!important;
 }
 
 .material-icons {

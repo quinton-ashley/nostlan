@@ -11,7 +11,12 @@ body
   #dialogs
     p#loadDialog0
     p#loadDialog1
-  #sysMenu.row-y
+  #pauseMenu.row-y.menu
+    .uie(name='exit') exit menu
+    .uie(name='fullscreen') fullscreen
+    .uie(name='prefs') preferences
+    .uie(name='quit') quit
+  #sysMenu.row-y.menu
   #gameLibViewer.row-x
 nav.navbar.fixed-top.p-0
   .cover.power.p-2.m-0: ul.nav.justify-content-left
@@ -21,8 +26,7 @@ nav.navbar.fixed-top.p-0
       //- img.logoNav(src='../img/logo.png')
   .cover.view.p-2.m-0: ul.nav.justify-content-right
     li.nav-item
-      select#view
-        option Bottlenose
+      button#view Bottlenose
 nav.navbar.fixed-bottom.p-0
   .cover.reset.p-2.m-0: ul.nav.justify-content-left
     .text Reset

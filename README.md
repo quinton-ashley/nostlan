@@ -1,18 +1,22 @@
 # Bottlenose
 
-Bottlenose is a front-end, launcher, and companion app for video game emulators.  Browse through _high quality_ game boxes, launch games, and **in a future version** batch install/update texture packs/graphics packs.  Bottlenose has a simple user interface, similar to Kaleidescape, that prioritizes box art, not metadata.  Bottlenose was designed for _UHD_ displays and projectors.
+Bottlenose is a _high quality_ front-end companion app for video game emulators.  
+
+## A what?
+
+A front-end or user interface (UI) is the presentation layer of an app/website.  It's what you look at and interact with.  Most modern emulators display game libraries in a list view UI that may include small thumbnail of the game's title or icon.  Bottlenose acts as a replacement for these emulator front-ends.  With Bottlenose your game libraries will be displayed as high quality boxes you can browse through with a mouse or game controller!  It has a simple, unified UI, similar to Kaleidescape, that prioritizes box art, not metadata.
 
 ## Features
 
+-   unified UI for mouse/game controller interaction
+-   designed for _UHD_ displays and projectors
 -   scrapes multiple database sites for the _highest quality_ box art
 -   _aesthetic_ UI themes for each supported console
--   reverse scroll effect on alternating rows in the cover view mode
--   most Nintendo systems are supported
--   covers are stored locally so it never redownloads images
+-   reverse scroll effect on alternating rows in cover view mode
+-   images only get downloaded once and are stored locally for future use
 -   Windows and macOS supported
--   game controller UI mode
 
-## Supported emulators (as of now)
+## Supported Emulators (as of now)
 
 -   Dolphin (Wii, Gamecube, Virtual Console)
     ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
@@ -27,9 +31,9 @@ Bottlenose is a front-end, launcher, and companion app for video game emulators.
 
 ## Please consider donating!
 
-Even though there's no free trial limit, Bottlenose is not free.  If I don't receive any donations it will indicate to me that I should work on other projects.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  Thank you!  
+Even though there's no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  The more you donate the more time I'll dedicate to improving Bottlenose!
 
-Reoccurring Donations!  
+Monthly Donations:  
 Patreon: <https://www.patreon.com/qashto>  
 
 Single Donation:  
@@ -38,14 +42,13 @@ Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea
 
 ## Planned Features!
 
-I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in bottlenose I want to implement these features!
+I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose I want to implement these features!
 
+-   automatic emulator updates for emus that lack this feature (planned for v1.1)
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
--   automatic emulator updates
 -   easy way to mix and swap texture packs for Dolphin
 -   Linux support
--   Xenia and RPCS3 support
 -   list style view mode for browsing through box sides
 
 ## How is Bottlenose different form other front-ends?
@@ -62,7 +65,7 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Steam is ugly and if you're reading this you've probably used it already.  Not going to include a screen shot here.  You're welcome.
+Steam is an ugly mess and if you're reading this you've probably used it already.  Not going to include a screen shot here.  You're welcome.
 
 ## Required Directory Structure Example
 
@@ -86,11 +89,11 @@ Emulation (root folder can have any name)
 └── Yuzu
 ```
 
-The default game library of each emulator will be its `GAMES` folder.  Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Bottlenose was designed to use the same directory structure as WiiUSBHelper, for compatibility.  Although sadly WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure.  The default game library of each emulator will be its `GAMES` folder.  Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
 ## Development Info
 
-Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in plain old, no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Google's Material Design Icons.
+Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in plain old, no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, Contro, and Google's Material Design Icons.
 
 ## Collaboration Guide
 

@@ -404,8 +404,8 @@ module.exports = async function(opt) {
 		}
 		sysMenuHTML += '</div>';
 		$('#sysMenu').append(sysMenuHTML);
-		$('#sysMenu .uie, #pauseMenu .uie').click(uieClicked);
-		$('#sysMenu .uie, #pauseMenu .uie').hover(uieHovered);
+		$('.menu .uie').click(uieClicked);
+		$('.menu .uie').hover(uieHovered);
 		sys = prefs.session.sys;
 		await reload();
 	}

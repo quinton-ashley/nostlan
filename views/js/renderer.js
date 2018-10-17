@@ -19,7 +19,9 @@ module.exports = async function(opt) {
 	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
 	const klawSync = require('klaw-sync');
+	const md = require('markdown-it')();
 	const os = require('os');
+	const opn = require('opn');
 	const path = require('path');
 	const pug = require('pug');
 	const $ = require('jquery');
@@ -65,10 +67,6 @@ module.exports = async function(opt) {
 	let sysStyle = '';
 	let emuDir = '';
 	let games = [];
-	let uiState = 'loadSeq';
-
-	// make UI changes
-	$('#update').hide();
 
 	let introFiles = {
 		css: {},
@@ -127,7 +125,7 @@ module.exports = async function(opt) {
 		let dir = dialog.showOpenDialog({
 			properties: ['openDirectory'],
 			title: 'choose emulators folder',
-			message: `choose the root emulators dir for bottlenose`
+			message: `choose the root folder for bottlenose`
 		});
 		return dir[0];
 	}
@@ -383,24 +381,34 @@ module.exports = async function(opt) {
 	}
 
 	async function load() {
+		$('#update').hide();
+		$('.menu').hide();
+		let files = klawSync(path.join(__rootDir, '/views/md'));
+		for (let file of files) {
+			file = file.path;
+			let html = await fs.readFile(file, 'utf8');
+			html = md.render(html);
+			file = path.parse(file);
+			$('#' + file.name + 'MD').prepend(html);
+		}
 		if (await fs.exists(prefsPath)) {
 			let prefs1 = JSON.parse(await fs.readFile(prefsPath));
 			deepExtend(prefs, prefs1);
 			emuDir = prefs.emuDir;
 		}
 		// currently supported systems
+		let sysMenuHTML = '<div class="row-y">';
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
-			$('#sysMenu').append(`
-				<div class="uie" name="${sys}">${((prefs[sys].style || '') + ' ' + sys).trim()}</div>
-			`);
+			sysMenuHTML += `<div class="uie" name="${sys}">${((prefs[sys].style || '') + ' ' + sys).trim()}</div>`;
 		}
+		sysMenuHTML += '</div>';
+		$('#sysMenu').append(sysMenuHTML);
+		$('#sysMenu .uie, #pauseMenu .uie').click(uieClicked);
+		$('#sysMenu .uie, #pauseMenu .uie').hover(uieHovered);
 		sys = prefs.session.sys;
 		await reload();
 	}
-
-	await load();
-	await viewer.load(games, prefs, sys);
 
 	function removeCursor() {
 		global.$cur.removeClass('cursor');
@@ -416,7 +424,10 @@ module.exports = async function(opt) {
 		makeCursor($(this));
 		buttonPressed('A');
 	}
-	$('#sysMenu .uie').click(uieClicked);
+
+	function uieHovered() {
+		makeCursor($(this));
+	}
 
 	function refreshUI() {
 		$('#gameLibViewer .uie').click(uieClicked);
@@ -446,7 +457,7 @@ module.exports = async function(opt) {
 
 	async function doAction() {
 		switch (global.ui) {
-			case 'gameLibViewer':
+			case 'sysMenu':
 				if (!viewer) {
 					return;
 				}
@@ -457,6 +468,15 @@ module.exports = async function(opt) {
 				await viewer.load(games, prefs, sys);
 				removeIntro();
 				break;
+			case 'pauseMenu':
+				switch (global.$cur.attr('name')) {
+					case 'prefs':
+						opn(prefsPath);
+						break;
+					default:
+						return false;
+				}
+				break;
 			default:
 				return false;
 		}
@@ -464,9 +484,7 @@ module.exports = async function(opt) {
 	}
 
 	function scrollToCursor() {
-		if (global.ui == 'gameLibViewer') {
-			viewer.scrollToCursor();
-		}
+		viewer.scrollToCursor();
 	}
 
 	async function move(btn) {
@@ -552,7 +570,9 @@ module.exports = async function(opt) {
 		return false;
 	}
 
-	Mousetrap.bind(['command+n', 'ctrl+n'], toggleNav);
+	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
+		buttonPressed('View');
+	});
 	Mousetrap.bind(['space'], function() {
 		return false;
 	});
@@ -595,11 +615,9 @@ module.exports = async function(opt) {
 				label: btn
 			};
 		}
-		if (global.ui == 'gameLibViewer') {
-			let res = await viewer.gamepad(btn);
-			if (res) {
-				return res;
-			}
+		let res = await viewer.gamepad(btn);
+		if (res) {
+			return res;
 		}
 		switch (btn.label) {
 			case 'A':
@@ -629,6 +647,9 @@ module.exports = async function(opt) {
 
 	$('#power').click(function() {
 		buttonPressed('X');
+	});
+	$('#view').click(function() {
+		buttonPressed('Start');
 	});
 	$('#reset').click(function() {
 		buttonPressed('Y');
@@ -677,6 +698,9 @@ module.exports = async function(opt) {
 		}
 		requestAnimationFrame(loop);
 	}
+
+	await load();
+	await viewer.load(games, prefs, sys);
 
 	loop();
 

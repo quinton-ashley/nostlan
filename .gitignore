@@ -2,4 +2,5 @@
 dev/*
 usr/*
 node_modules/*
+package-lock.json
 *.log

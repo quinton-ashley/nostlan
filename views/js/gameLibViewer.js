@@ -4,6 +4,9 @@ const Viewer = function() {
 	const {
 		remote
 	} = require('electron');
+	const {
+		app
+	} = remote;
 	const spawn = require('await-spawn');
 	const delay = require('delay');
 	const fs = require('fs-extra');
@@ -23,7 +26,6 @@ const Viewer = function() {
 	let prefs;
 	let sys;
 	let ui;
-	let uiState = 'loading';
 	let theme;
 	let defaultCoverImg;
 	let $cover;
@@ -262,7 +264,7 @@ const Viewer = function() {
 	}
 
 	function uiStateChange(state) {
-		if (state == uiState) {
+		if (state == global.ui) {
 			buttonPressed('B');
 			return;
 		}
@@ -272,12 +274,17 @@ const Viewer = function() {
 		let labels = ['Power', 'Reset', 'Open'];
 		switch (state) {
 			case 'cover':
-				labels = ['Power', 'Flip', 'Back'];
+				labels = ['Play', 'Flip', 'Back'];
+				break;
+			case 'sysMenu':
+				labels = ['', '', 'Back'];
+				break;
+			case 'pauseMenu':
+				labels = ['', '', 'Back'];
 				break;
 			case 'lib':
 				$('.menu').hide();
-				if (global.ui != 'gameLibViewer' || (/menu/gi).test(uiState)) {
-					global.ui = 'gameLibViewer';
+				if (global.ui != 'cover' || (/menu/gi).test(global.ui)) {
 					let $mid = $('.reel.r0').children();
 					$mid = $mid.eq(Math.round($mid.length * .5) - 1);
 					makeCursor($mid);
@@ -289,7 +296,7 @@ const Viewer = function() {
 		}
 		if ((/menu/gi).test(state)) {
 			$('#' + state).show();
-			makeCursor($('#' + state).children().eq(0));
+			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0));
 		}
 		if ((prefs[sys].style || sys) == 'gcn') {
 			for (let i = 0; i < labels.length; i++) {
@@ -299,7 +306,8 @@ const Viewer = function() {
 		$('.cover.power .text').text(labels[0]);
 		$('.cover.reset .text').text(labels[1]);
 		$('.cover.open .text').text(labels[2]);
-		uiState = state;
+		resizeUI(true);
+		global.ui = state;
 	}
 
 	function goTo(position, time) {
@@ -427,9 +435,6 @@ const Viewer = function() {
 		$cover = global.$cur;
 		let $reel = $cover.parent();
 		let id = $cover.attr('class').split(' ')[2];
-		if (!id || id == '_TEMPLATE') {
-			return;
-		}
 		scrollToGame(null, 1000);
 		$cover.toggleClass('selected');
 		$reel.toggleClass('selected');
@@ -480,17 +485,20 @@ const Viewer = function() {
 	}
 
 	async function doAction() {
-		switch (uiState) {
+		switch (global.ui) {
 			case 'lib':
 				coverClicked();
 				break;
 			case 'pauseMenu':
 				switch (global.$cur.attr('name')) {
-					case 'exit':
-						buttonPressed('B');
+					case 'fullscreen':
+						remote.getCurrentWindow().focus();
+						remote.getCurrentWindow().setFullScreen(true);
 						break;
+					case 'quit':
+						app.quit();
 					default:
-
+						return false;
 				}
 				break;
 			default:
@@ -509,13 +517,13 @@ const Viewer = function() {
 			case 'A':
 				return await doAction();
 			case 'B':
-				if (uiState == 'cover') {
+				if (global.ui == 'cover') {
 					coverClicked();
 					break;
-				} else if (uiState == 'lib') {
+				} else if (global.ui == 'lib') {
 					uiStateChange('sysMenu');
 					break;
-				} else if ((/menu/gi).test(uiState)) {
+				} else if ((/menu/gi).test(global.ui)) {
 					log('hi');
 					uiStateChange('lib');
 					break;
@@ -523,7 +531,7 @@ const Viewer = function() {
 				log('woah');
 				return;
 			case 'Y':
-				if (uiState == 'cover') {
+				if (global.ui == 'cover') {
 					flipCover();
 					break;
 				}
@@ -558,7 +566,7 @@ const Viewer = function() {
 		if (games.length < 18) {
 			rows = 4;
 		}
-		if (games.length < 12) {
+		if (games.length < 8) {
 			rows = 2;
 		}
 		$('style.gameViewerRowsStyle').remove();
@@ -590,6 +598,7 @@ const Viewer = function() {
 			}
 		}
 		await addTemplates(template, rows, templateAmt);
+		$('#gameLibViewer ._TEMPLATE').removeClass('uie');
 		// for (let i = 0; i < 8; i++) {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }

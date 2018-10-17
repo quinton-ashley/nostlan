@@ -23,13 +23,21 @@ html {
 	position: fixed;
 	z-index: 100;
 	width: 50vw;
-	height: 50vh;
 	padding-top: 2vh;
 	padding-bottom: 2vh;
 	transform: translate(25vw, 25vh);
 }
 
-.menu div {
+.md {
+	margin-left:5%;
+	margin-right:5%;
+}
+
+pre, code {
+	text-align:left;
+}
+
+.menu .uie {
 	margin: 0;
 	height: 25%;
 	font-size: 6vh!important;

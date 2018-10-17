@@ -60,7 +60,6 @@
 	--button-color: #595a59;
 }
 /*================Game Lib Viewer====================*/
-
 #gameLibViewer {
 	max-width: 100%;
 	max-height: 100%;
@@ -71,7 +70,7 @@
 	color: var(--cover-text-color);
 	border-color: var(--cover-text-color);
 	border-radius: 32px;
-	border-width: 8px;
+	border-width: 8px 0 8px 0;
 	border-style: solid;
 }
 
@@ -79,9 +78,16 @@
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
+.menu .uie {
+	margin: 5px 10px 5px 10px;
+	border: 3px solid var(--cover-text-color);
+	border-radius:10px;
+	box-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, .5);
+}
+
 .menu .cursor {
 	background-color: var(--cover-color);
-	filter: brightness(0.8);
+	filter: brightness(1.2);
 }
 
 #intro {
@@ -149,7 +155,7 @@ img {
 	top: 80%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 100;
+	z-index: 150;
 	pointer-events: none;
 }
 
@@ -159,11 +165,10 @@ img {
 	font-size: 16px;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 100;
+	z-index: 150;
 	pointer-events: none;
 }
 /*================Wii Game Lib Viewer====================*/
-
 .wii .front-cover-crop {
 	width: 200.1%;
 	top: 1.4%;
@@ -189,7 +194,6 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
 }
 /*================ds Game Lib Viewer====================*/
-
 .ds .front-cover-crop {
 	width: 100%;
 	top: 0;
@@ -223,7 +227,6 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
 }
 /*================PS3 Game Lib Viewer====================*/
-
 .ps3 .front-cover-crop {
 	width: 100%;
 	height: 100%;
@@ -259,7 +262,6 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Wii U Game Lib Viewer====================*/
-
 .wiiu .front-cover-crop {
 	width: 200%;
 	top: 2.2%;
@@ -292,7 +294,6 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================3ds Game Lib Viewer====================*/
-
 .n3ds .front-cover-crop {
 	width: 203.9%;
 	top: 2.2%;
@@ -318,7 +319,6 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Switch Game Lib Viewer====================*/
-
 .switch .front-cover-crop {
 	width: 200%;
 	top: 2.6%;
@@ -342,7 +342,6 @@ img {
 	transform: translate(-52.4%, 0%);
 }
 /*================Game Lib Viewer====================*/
-
 .front-cover,
 .front-cover-crop {
 	height: 100%;
@@ -406,10 +405,6 @@ nav * {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
-.cover.open * {
-	margin-left: 4%;
-}
-
 .cover.power {
 	background-color: var(--power-color, var(--cover-color));
 	border-color: var(--power-text-color, var(--cover-text-color));
@@ -444,12 +439,20 @@ nav * {
 .cover.power *,
 .cover.reset * {
 	margin-left: auto;
+}
+
+.cover.power .nav-item,
+.cover.reset .nav-item {
 	margin-right: 4%;
 }
 
 .cover.open *,
 .cover.view * {
 	margin-right: auto;
+}
+
+.cover.open .nav-item {
+	margin-left: 4%;
 }
 
 img.logoNav {
@@ -466,8 +469,11 @@ img.logoNav {
 	background: var(--button-color);
 }
 
-.cover button.nav-link:active,
-.cover button.nav-link:focus,
+button:active,
+button:focus {
+	outline: none;
+}
+
 .cover button.nav-link:hover {
 	filter: brightness(0.8);
 	outline: none;
@@ -509,10 +515,15 @@ ul.nav {
 	font-weight: bold;
 }
 
-.gcn {
+.gcn nav {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
-	font-size: 28vw;
+	font-size: 40px;
 	font-weight: bold;
+	letter-spacing: -3px;
+}
+
+.gcn .cover.power .text {
+	letter-spacing: -5px;
 }
 /*================ds Cover====================*/
 @font-face {
@@ -521,8 +532,6 @@ ul.nav {
 	font-weight: bold;
 }
 
-#sysMenu .ds,
-.ds #gameLibViewer,
 .ds nav {
 	font-family: "nDS", "nDS", nDS;
 	font-size: 64px;
@@ -535,8 +544,8 @@ ul.nav {
 	font-weight: bold;
 }
 
-.wii:not(.gcn),
-.wiiu {
+.wii:not(.gcn) nav,
+.wiiu nav {
 	font-family: "contb", "contb", contb;
 	font-size: 48px;
 	font-weight: bold;
@@ -548,9 +557,9 @@ ul.nav {
 	font-weight: bold;
 }
 
-.switch {
+.switch nav {
 	font-family: "theboldfont", "theboldfont", theboldfont;
-	font-size: 32px;
+	font-size: 40px;
 	font-weight: bold;
 }
 
@@ -562,7 +571,6 @@ ul.nav {
 	color: rgb(0, 125, 160);
 }
 /*================Misc====================*/
-
 .hiddenRow {
 	padding: 0 !important;
 }

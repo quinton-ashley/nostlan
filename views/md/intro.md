@@ -1,29 +1,22 @@
-### Bottlenose Setup
+# Bottlenose Setup
 
-Don't have any games but want to check out Bottlenose?  In demo mode you can browse through sample game box art.  Pick "demo mode" and choose a folder for the demo folder.
+Click "demo mode" to browse through sample game box art.
 
-Bottlenose requires your game libraries to be organized a certain way.  'BIN' stores the emulator and 'GAMES' stores the games.
+To use the full version of Bottlenose, your game libraries and emulator folders must be organized like this:
 
 ```javascript
-Emulation (root folder can have any name)
-├─┬ Dolphin
-│ ├─┬ BIN (must be in all caps)
-│ │ ├── User
-│ │ ├── portable.txt
-│ │ └── Dolphin.exe
-│ └─┬ GAMES
-│   ├── Super Mario Sunshine.gcz
-│   ├── Super Smash Bros Melee.iso
-│   └── sm64.wad
-├─┬ Cemu
-│ ├── BIN
-│ └─┬ GAMES
-│   └─┬ Mario Kart 8 (game folder)
-│     └─┬ code
-│       └── Turbo.rpx (Bottlenose uses this file to launch game)
-└── Yuzu
+emu (root folder can have any name)
+└─┬ Dolphin
+  ├─┬ BIN
+  │ ├── User/...
+  │ ├── portable.txt
+  │ └── Dolphin.exe
+  └─┬ GAMES
+    ├── Super Mario Sunshine.gcz
+    ├── Super Smash Bros Melee.iso
+    └── sm64.wad
 ```
 
-If you want to fill in a template with your existing emulator folders and game libraries click "create template" then choose the directory you want the template to go in.
+Click "create template" and Bottlenose will generate a template file structure for you to move your game libraries and emulators to.
 
-When you're ready to start, click "select emu root" and select your root emulation folder.
+When you're ready click "full version" and select your root folder.  In the example it's named "emu" but you can give it any name.

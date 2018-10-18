@@ -282,6 +282,9 @@ const Viewer = function() {
 			case 'pauseMenu':
 				labels = ['', '', 'Back'];
 				break;
+			case 'introMenu':
+				labels = ['', '', ''];
+				break;
 			case 'lib':
 				$('.menu').hide();
 				if (global.ui != 'cover' || (/menu/gi).test(global.ui)) {
@@ -298,7 +301,7 @@ const Viewer = function() {
 			$('#' + state).show();
 			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0));
 		}
-		if ((prefs[sys].style || sys) == 'gcn') {
+		if (prefs && (prefs[sys].style || sys) == 'gcn') {
 			for (let i = 0; i < labels.length; i++) {
 				labels[i] = labels[i].toLowerCase();
 			}
@@ -309,6 +312,7 @@ const Viewer = function() {
 		resizeUI(true);
 		global.ui = state;
 	}
+	this.uiStateChange = uiStateChange;
 
 	function goTo(position, time) {
 		if (isNaN(position)) {
@@ -524,7 +528,6 @@ const Viewer = function() {
 					uiStateChange('sysMenu');
 					break;
 				} else if ((/menu/gi).test(global.ui)) {
-					log('hi');
 					uiStateChange('lib');
 					break;
 				}

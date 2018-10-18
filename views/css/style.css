@@ -26,21 +26,33 @@ html {
 	padding-top: 2vh;
 	padding-bottom: 2vh;
 	transform: translate(25vw, 25vh);
+	text-align: left;
+}
+
+#introMenu {
+	transform: translate(25vw, 6vh);
+}
+
+.md code,
+.md pre {
+	font-size: 1.5vh;
 }
 
 .md {
-	margin-left:5%;
-	margin-right:5%;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 2vh;
 }
 
-pre, code {
-	text-align:left;
+.menu h1 {
+	text-align: center;
+	font-size: 4vh;
 }
 
 .menu .uie {
 	margin: 0;
-	height: 25%;
-	font-size: 6vh!important;
+	font-size: 4vh;
+	text-align: center;
 }
 
 .material-icons {

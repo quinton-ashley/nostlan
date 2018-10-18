@@ -4,8 +4,11 @@
  * copyright 2018
  */
 module.exports = async function(opt) {
-	const err = console.error;
 	const log = console.log;
+	const err = (msg) => {
+		log(msg);
+		alert(msg);
+	};
 	global.__rootDir = opt.__rootDir;
 
 	const remote = require('electron').remote;
@@ -112,20 +115,20 @@ module.exports = async function(opt) {
 		await delay(1000);
 	}
 
-	function openLib() {
-		let dir = dialog.showOpenDialog({
-			properties: ['openDirectory'],
-			title: `open ${sys} game library`,
-			message: `choose the ${sys} game library`
-		});
-		return dir[0];
-	}
+	// function openLib() {
+	// 	let dir = dialog.showOpenDialog({
+	// 		properties: ['openDirectory'],
+	// 		title: `open ${sys} game library`,
+	// 		message: `choose the ${sys} game library`
+	// 	});
+	// 	return dir[0];
+	// }
 
-	function chooseEmulatorsDir() {
+	function selectDir(msg) {
 		let dir = dialog.showOpenDialog({
 			properties: ['openDirectory'],
-			title: 'choose emulators folder',
-			message: `choose the root folder for bottlenose`
+			title: 'choose folder',
+			message: msg
 		});
 		return dir[0];
 	}
@@ -301,6 +304,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
+		global.ui = 'loading';
 		$('.menu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
@@ -324,7 +328,9 @@ module.exports = async function(opt) {
 		} else {
 			let emuDirExisted;
 			if (!emuDir) {
-				emuDir = chooseEmulatorsDir();
+				viewer.uiStateChange('introMenu');
+				removeIntro();
+				return;
 			} else {
 				emuDirExisted = true;
 			}
@@ -358,26 +364,33 @@ module.exports = async function(opt) {
 				await fs.ensureDir(emuDir);
 				prefs.emuDir = emuDir;
 			} else {
-				log(`choose emulation folder with directory structure:
-{root folder can have any name}
-├─┬ Dolphin
-│ ├─┬ BIN
-│ │ ├── Languages
-│ │ ├── Sys
-│ │ ├── User
-│ │ ├── portable.txt
-│ │ ├── Dolphin.exe
-│ │ └── ...
-│ └─┬ GAMES
-│   └── ...
-├── Cemu
-└── Yuzu`);
-				prefs[sys].libs.push(openLib(sys));
+				err(`
+Error!
+choose emulation folder with directory structure:
+
+emu (root folder can have any name)
+└─┬ Dolphin
+  ├─┬ BIN
+  │ ├── User/...
+  │ ├── portable.txt
+  │ └── Dolphin.exe
+  └─┬ GAMES
+    ├── Super Mario Sunshine.gcz
+    ├── Super Smash Bros Melee.iso
+    └── sm64.wad
+				`);
+				emuDir = '';
+				viewer.uiStateChange('introMenu');
+				removeIntro();
+				return;
+				// prefs[sys].libs.push(openLib(sys));
 			}
 			await reset();
 		}
 		prefs.session.sys = sys;
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
+		await viewer.load(games, prefs, sys);
+		removeIntro();
 	}
 
 	async function load() {
@@ -411,6 +424,9 @@ module.exports = async function(opt) {
 	}
 
 	function removeCursor() {
+		if (!global.$cur) {
+			return;
+		}
 		global.$cur.removeClass('cursor');
 	}
 
@@ -455,6 +471,14 @@ module.exports = async function(opt) {
 		removeIntro();
 	}
 
+	async function createTemplate(emuDir) {
+		for (let i = 0; i < systems.length; i++) {
+			let emu = prefs[systems[i]].emu;
+			await fs.ensureDir(`${emuDir}/${emu}/BIN`);
+			await fs.ensureDir(`${emuDir}/${emu}/GAMES`);
+		}
+	}
+
 	async function doAction() {
 		switch (global.ui) {
 			case 'sysMenu':
@@ -465,13 +489,42 @@ module.exports = async function(opt) {
 				sys = global.$cur.attr('name');
 				removeCursor();
 				await reload();
-				await viewer.load(games, prefs, sys);
-				removeIntro();
 				break;
 			case 'pauseMenu':
 				switch (global.$cur.attr('name')) {
 					case 'prefs':
 						opn(prefsPath);
+						break;
+					default:
+						return false;
+				}
+				break;
+			case 'introMenu':
+				switch (global.$cur.attr('name')) {
+					case 'demo':
+						emuDir = selectDir(`
+							choose the directory you want the demo folder to go in
+							`);
+						let templatePath = path.join(__rootDir, '/demo');
+						await fs.copy(templatePath, emuDir);
+						emuDir += '/emu';
+						await createTemplate(emuDir);
+						emuDir += '/bottlenose';
+						// await reload();
+						break;
+					case 'template':
+						emuDir = selectDir(`
+							choose the directory you want to template to go in
+							`);
+						emuDir += '/emu';
+						await createTemplate(emuDir);
+						opn(emuDir);
+						break;
+					case 'full':
+						emuDir = selectDir('choose the root folder for bottlenose');
+						await createTemplate(emuDir);
+						emuDir += '/bottlenose';
+						await reload();
 						break;
 					default:
 						return false;
@@ -698,11 +751,6 @@ module.exports = async function(opt) {
 		}
 		requestAnimationFrame(loop);
 	}
-
 	await load();
-	await viewer.load(games, prefs, sys);
-
 	loop();
-
-	removeIntro();
 };

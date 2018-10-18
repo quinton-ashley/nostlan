@@ -67,29 +67,33 @@ Windows Explorer, despite not having gamepad support, is also surprisingly popul
 
 Steam is an ugly mess and if you're reading this you've probably used it already.  Not going to include a screen shot here.  You're welcome.
 
-## Required Directory Structure Example
+## Required File Structure
 
 ```javascript
-Emulation (root folder can have any name)
+emu (root folder can have any name)
 ├─┬ Dolphin
-│ ├─┬ BIN (must be in all caps)
-│ │ ├── User
+│ ├─┬ BIN
+│ │ ├── User/...
 │ │ ├── portable.txt
-│ │ └── Dolphin.exe
+│ │ ├── Dolphin.exe
+│ │ └── ...
 │ └─┬ GAMES
 │   ├── Super Mario Sunshine.gcz
 │   ├── Super Smash Bros Melee.iso
 │   └── sm64.wad
-├─┬ Cemu
-│ ├── BIN
-│ └─┬ GAMES
-│   └─┬ Mario Kart 8 (game folder)
-│     └─┬ code
-│       └── Turbo.rpx (Bottlenose uses this file to launch game)
-└── Yuzu
+└─┬ Cemu
+  ├─┬ BIN
+	│ ├── Cemu.exe
+  │ └── ...
+  └─┬ GAMES
+    └─┬ Mario Kart 8 (game folder)
+      └─┬ code
+        └── Turbo.rpx
 ```
 
-Bottlenose was designed to use the same directory structure as WiiUSBHelper, for compatibility.  Although sadly WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure.  The default game library of each emulator will be its `GAMES` folder.  Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Bottlenose was designed to use the same directory structure as WiiUSBHelper, for compatibility.  Although sadly WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+
+Update: The yuzu devs just released an auto-updater that doesn't let you pick the install location for yuzu.  For now you can just put shortcuts to yuzu and yuzu-cmd in Yuzu's BIN folder.
 
 ## Development Info
 

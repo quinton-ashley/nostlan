@@ -31,13 +31,13 @@ A front-end or user interface (UI) is the presentation layer of an app/website. 
 
 ## Please consider donating!
 
-Even though there's no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  The more you donate the more time I'll dedicate to improving Bottlenose!
+Even though there's no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  Your donations will support my development of new features!
 
 Monthly Donations:  
 Patreon: <https://www.patreon.com/qashto>  
 
 Single Donation:  
-Paypal: <https://www.paypal.me/qashto/5>  
+Paypal: <https://www.paypal.me/qashto/25>  
 Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea  
 
 ## Planned Features!

@@ -532,7 +532,7 @@ ul.nav {
 
 .gcn nav {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
-	font-size: 40px;
+	font-size: 3vw;
 	font-weight: bold;
 	letter-spacing: -3px;
 }
@@ -549,7 +549,7 @@ ul.nav {
 
 .ds nav {
 	font-family: "nDS", "nDS", nDS;
-	font-size: 64px;
+	font-size: 5vw;
 	font-weight: bold;
 }
 /*================wiiu Cover====================*/
@@ -562,7 +562,7 @@ ul.nav {
 .wii:not(.gcn) nav,
 .wiiu nav {
 	font-family: "contb", "contb", contb;
-	font-size: 48px;
+	font-size: 3.4vw;
 	font-weight: bold;
 }
 /*================Switch Cover====================*/
@@ -574,7 +574,7 @@ ul.nav {
 
 .switch nav {
 	font-family: "theboldfont", "theboldfont", theboldfont;
-	font-size: 40px;
+	font-size: 3.2vw;
 	font-weight: bold;
 }
 

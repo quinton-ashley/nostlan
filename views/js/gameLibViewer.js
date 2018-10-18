@@ -25,7 +25,7 @@ const Viewer = function() {
 	let games;
 	let prefs;
 	let sys;
-	let ui;
+	let themes;
 	let theme;
 	let defaultCoverImg;
 	let $cover;
@@ -265,37 +265,29 @@ const Viewer = function() {
 
 	function uiStateChange(state) {
 		if (state == global.ui) {
-			buttonPressed('B');
+			doAction('b');
 			return;
 		}
 		$('#gameLibViewer').removeClass();
 		$('#gameLibViewer').addClass('row-x');
 		$('#gameLibViewer').addClass(state);
 		let labels = ['Power', 'Reset', 'Open'];
-		switch (state) {
-			case 'cover':
-				labels = ['Play', 'Flip', 'Back'];
-				break;
-			case 'sysMenu':
-				labels = ['', '', 'Back'];
-				break;
-			case 'pauseMenu':
-				labels = ['', '', 'Back'];
-				break;
-			case 'introMenu':
-				labels = ['', '', ''];
-				break;
-			case 'lib':
-				$('.menu').hide();
-				if (global.ui != 'cover' || (/menu/gi).test(global.ui)) {
-					let $mid = $('.reel.r0').children();
-					$mid = $mid.eq(Math.round($mid.length * .5) - 1);
-					makeCursor($mid);
-					scrollToGame(null, 10);
-				}
-				break;
-			default:
-
+		if (state == 'cover') {
+			labels = ['Play', 'Flip', 'Back'];
+		} else if (state == 'sysMenu') {
+			labels = ['', '', 'Back'];
+		} else if (state == 'pauseMenu') {
+			labels = ['', '', 'Back'];
+		} else if (state == 'introMenu') {
+			labels = ['', '', ''];
+		} else if (state == 'lib') {
+			$('.menu').hide();
+			if (global.ui != 'cover' || (/menu/gi).test(global.ui)) {
+				let $mid = $('.reel.r0').children();
+				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
+				makeCursor($mid);
+				scrollToGame(null, 10);
+			}
 		}
 		if ((/menu/gi).test(state)) {
 			$('#' + state).show();
@@ -454,6 +446,7 @@ const Viewer = function() {
 			uiStateChange('lib');
 		}
 	}
+	this.coverClicked = coverClicked;
 
 	function flipCover() {
 		log('flip cover not enabled yet');
@@ -488,66 +481,40 @@ const Viewer = function() {
 		}
 	}
 
-	async function doAction() {
-		switch (global.ui) {
-			case 'lib':
+	async function doAction(act) {
+		let ui = global.ui;
+		if (ui == 'lib') {
+			if (act == 'a') {
 				coverClicked();
-				break;
-			case 'pauseMenu':
-				switch (global.$cur.attr('name')) {
-					case 'fullscreen':
-						remote.getCurrentWindow().focus();
-						remote.getCurrentWindow().setFullScreen(true);
-						break;
-					case 'quit':
-						app.quit();
-					default:
-						return false;
-				}
-				break;
-			default:
+			} else if (act == 'b') {
+				uiStateChange('sysMenu');
+			} else {
 				return false;
+			}
+		} else if (ui == 'cover') {
+			if (act == 'b') {
+				coverClicked();
+			} else if (act == 'y') {
+				flipCover();
+			} else {
+				return false;
+			}
+		} else if (ui == 'pauseMenu') {
+			if (act == 'fullscreen' || act == 'x') {
+				remote.getCurrentWindow().focus();
+				remote.getCurrentWindow().setFullScreen(true);
+			} else if (act == 'quit') {
+				app.quit();
+			} else {
+				return false;
+			}
+		} else {
+			return false;
 		}
 		return true;
 	}
 
-	async function buttonPressed(btn) {
-		if (typeof btn == 'string') {
-			btn = {
-				label: btn
-			};
-		}
-		switch (btn.label) {
-			case 'A':
-				return await doAction();
-			case 'B':
-				if (global.ui == 'cover') {
-					coverClicked();
-					break;
-				} else if (global.ui == 'lib') {
-					uiStateChange('sysMenu');
-					break;
-				} else if ((/menu/gi).test(global.ui)) {
-					uiStateChange('lib');
-					break;
-				}
-				log('woah');
-				return;
-			case 'Y':
-				if (global.ui == 'cover') {
-					flipCover();
-					break;
-				}
-				return;
-			case 'Start':
-				uiStateChange('pauseMenu');
-			default:
-				return;
-		}
-		return true;
-	}
-
-	this.gamepad = buttonPressed;
+	this.doAction = doAction;
 
 	this.load = async function(usrGames, usrPrefs, usrSys) {
 		resizeUI(true);
@@ -558,10 +525,11 @@ const Viewer = function() {
 		games = usrGames;
 		prefs = usrPrefs;
 		sys = usrSys;
-		let uiPath = path.join(global.__rootDir, '/prefs/ui.json');
-		ui = JSON.parse(await fs.readFile(uiPath));
-		theme = prefs[sys].style || sys;
-		theme = ui[theme];
+		if (!themes) {
+			let themesPath = path.join(global.__rootDir, '/prefs/themes.json');
+			themes = JSON.parse(await fs.readFile(themesPath));
+		}
+		theme = themes[prefs[sys].style || sys];
 		mouse = prefs.ui.mouse;
 		mouseWheelDeltaNSS = 100 * mouse.wheel.multi;
 		await loadImages();

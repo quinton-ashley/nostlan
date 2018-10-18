@@ -27,9 +27,10 @@ html {
 	padding-bottom: 2vh;
 	transform: translate(25vw, 25vh);
 	text-align: left;
+	display: none;
 }
 
-#introMenu {
+#setupMenu {
 	transform: translate(25vw, 6vh);
 }
 

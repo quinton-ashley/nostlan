@@ -328,7 +328,7 @@ module.exports = async function(opt) {
 		} else {
 			let emuDirExisted;
 			if (!emuDir) {
-				viewer.uiStateChange('introMenu');
+				viewer.uiStateChange('setupMenu');
 				removeIntro();
 				return;
 			} else {
@@ -380,7 +380,7 @@ emu (root folder can have any name)
     └── sm64.wad
 				`);
 				emuDir = '';
-				viewer.uiStateChange('introMenu');
+				viewer.uiStateChange('setupMenu');
 				removeIntro();
 				return;
 				// prefs[sys].libs.push(openLib(sys));
@@ -400,9 +400,9 @@ emu (root folder can have any name)
 		for (let file of files) {
 			file = file.path;
 			let html = await fs.readFile(file, 'utf8');
-			html = md.render(html);
+			html = '<div class="md">' + md.render(html) + '</div>';
 			file = path.parse(file);
-			$('#' + file.name + 'MD').prepend(html);
+			$('#' + file.name + 'Menu').prepend(html);
 		}
 		if (await fs.exists(prefsPath)) {
 			let prefs1 = JSON.parse(await fs.readFile(prefsPath));
@@ -420,7 +420,6 @@ emu (root folder can have any name)
 		$('.menu .uie').click(uieClicked);
 		$('.menu .uie').hover(uieHovered);
 		sys = prefs.session.sys;
-		await reload();
 	}
 
 	function removeCursor() {
@@ -438,7 +437,7 @@ emu (root folder can have any name)
 
 	function uieClicked() {
 		makeCursor($(this));
-		buttonPressed('A');
+		buttonPressed('a');
 	}
 
 	function uieHovered() {
@@ -479,59 +478,83 @@ emu (root folder can have any name)
 		}
 	}
 
-	async function doAction() {
-		switch (global.ui) {
-			case 'sysMenu':
-				if (!viewer) {
-					return;
-				}
-				viewer.remove();
-				sys = global.$cur.attr('name');
-				removeCursor();
+	async function doAction(act) {
+		if (act == 'start') {
+			uiStateChange('pauseMenu');
+			return true;
+		} else if (act == 'b' && (/menu/gi).test(global.ui)) {
+			uiStateChange('lib');
+			return true;
+		}
+		let ui = global.ui;
+		if (ui == 'lib') {
+			if (act == 'x') {
+				await powerBtn();
+			} else if (act == 'y') {
+				await resetBtn();
+			} else {
+				return false;
+			}
+		} else if (ui == 'cover') {
+			if (act == 'x') {
+				await powerBtn();
+			} else if (act == 'y') {
+				await resetBtn();
+			} else {
+				return false;
+			}
+		} else if (ui == 'sysMenu') {
+			if (!viewer) {
+				return;
+			}
+			viewer.remove();
+			sys = act;
+			removeCursor();
+			await reload();
+		} else if (ui == 'pauseMenu') {
+			if (act == 'prefs') {
+				opn(prefsPath);
+			} else {
+				return false;
+			}
+		} else if (ui == 'donateMenu') {
+			if (act == 'donate-monthly') {
+				opn('https://www.patreon.com/qashto');
+			} else if (act == 'donate-single') {
+				opn('https://www.paypal.me/qashto/25');
+			} else if (act == 'donated' || act == 'donate-later') {
 				await reload();
-				break;
-			case 'pauseMenu':
-				switch (global.$cur.attr('name')) {
-					case 'prefs':
-						opn(prefsPath);
-						break;
-					default:
-						return false;
-				}
-				break;
-			case 'introMenu':
-				switch (global.$cur.attr('name')) {
-					case 'demo':
-						emuDir = selectDir(`
+			} else {
+				return false;
+			}
+		} else if (ui == 'setupMenu') {
+			if (act == 'demo') {
+				emuDir = selectDir(`
 							choose the directory you want the demo folder to go in
 							`);
-						let templatePath = path.join(__rootDir, '/demo');
-						await fs.copy(templatePath, emuDir);
-						emuDir += '/emu';
-						await createTemplate(emuDir);
-						emuDir += '/bottlenose';
-						// await reload();
-						break;
-					case 'template':
-						emuDir = selectDir(`
+				let templatePath = path.join(__rootDir, '/demo');
+				await fs.copy(templatePath, emuDir);
+				emuDir += '/emu';
+				await createTemplate(emuDir);
+				emuDir += '/bottlenose';
+				// await reload();
+			} else if (act == 'template') {
+				emuDir = selectDir(`
 							choose the directory you want to template to go in
 							`);
-						emuDir += '/emu';
-						await createTemplate(emuDir);
-						opn(emuDir);
-						break;
-					case 'full':
-						emuDir = selectDir('choose the root folder for bottlenose');
-						await createTemplate(emuDir);
-						emuDir += '/bottlenose';
-						await reload();
-						break;
-					default:
-						return false;
-				}
-				break;
-			default:
+				emuDir += '/emu';
+				await createTemplate(emuDir);
+				opn(emuDir);
+			} else if (act == 'full') {
+				emuDir = selectDir('choose the root folder for bottlenose');
+				await createTemplate(emuDir);
+				emuDir += '/bottlenose';
+				await reload();
+			} else {
 				return false;
+			}
+		} else {
+			return false;
 		}
 		return true;
 	}
@@ -555,17 +578,17 @@ emu (root folder can have any name)
 		}
 		let x = curX;
 		let y = curY;
-		switch (btn.label) {
-			case 'Up':
+		switch (btn.label.toLowerCase()) {
+			case 'up':
 				y -= 1;
 				break;
-			case 'Down':
+			case 'down':
 				y += 1;
 				break;
-			case 'Left':
+			case 'left':
 				x -= 1;
 				break;
-			case 'Right':
+			case 'right':
 				x += 1;
 				break;
 			default:
@@ -624,7 +647,7 @@ emu (root folder can have any name)
 	}
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
-		buttonPressed('View');
+		buttonPressed('view');
 	});
 	Mousetrap.bind(['space'], function() {
 		return false;
@@ -668,29 +691,29 @@ emu (root folder can have any name)
 				label: btn
 			};
 		}
-		let res = await viewer.gamepad(btn);
+		let lbl = btn.label.toLowerCase();
+		let res = await viewer.doAction(lbl);
 		if (res) {
 			return res;
 		}
-		switch (btn.label) {
-			case 'A':
-				await doAction();
-				return;
-			case 'X':
-				await powerBtn();
-				break;
-			case 'Y':
-				await resetBtn();
-				break;
-			case 'Up':
-			case 'Down':
-			case 'Left':
-			case 'Right':
+		switch (lbl) {
+			case 'up':
+			case 'down':
+			case 'left':
+			case 'right':
 				move(btn);
 				break;
-			case 'View':
-				toggleNav();
-				break;
+			case 'a':
+				if (await doAction(global.$cur.attr('name') || 'a')) {
+					break;
+				}
+			case 'b':
+			case 'x':
+			case 'y':
+			case 'view':
+				if (await doAction(lbl)) {
+					break;
+				}
 			default:
 				log('button does nothing');
 				return;
@@ -699,16 +722,16 @@ emu (root folder can have any name)
 	}
 
 	$('#power').click(function() {
-		buttonPressed('X');
+		buttonPressed('x');
 	});
 	$('#view').click(function() {
-		buttonPressed('Start');
+		buttonPressed('start');
 	});
 	$('#reset').click(function() {
-		buttonPressed('Y');
+		buttonPressed('y');
 	});
 	$('#open').click(function() {
-		buttonPressed('B');
+		buttonPressed('b');
 	});
 
 	async function loop() {
@@ -752,5 +775,6 @@ emu (root folder can have any name)
 		requestAnimationFrame(loop);
 	}
 	await load();
+	viewer.uiStateChange('donateMenu');
 	loop();
 };

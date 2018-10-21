@@ -241,7 +241,7 @@ const Viewer = function() {
 			}
 		}
 		$('.reel.r' + reelNum).append(`
-			<div class="uie panel ${game.id}">
+			<div id="${game.id}" class="uie panel ${game.id}">
 				${((cl1)?`<img src="${defaultCoverImg}">`:'')}
 				<section class="${cl1}">
 	      	<img src="${file}"/>
@@ -273,7 +273,7 @@ const Viewer = function() {
 		$('#gameLibViewer').addClass(state);
 		let labels = ['Power', 'Reset', 'Open'];
 		if (state == 'cover') {
-			labels = ['Play', 'Flip', 'Back'];
+			labels = ['Play', '', 'Back'];
 		} else if (state == 'sysMenu') {
 			labels = ['', '', 'Back'];
 		} else if (state == 'pauseMenu') {
@@ -282,11 +282,13 @@ const Viewer = function() {
 			labels = ['', '', ''];
 		} else if (state == 'lib') {
 			$('.menu').hide();
-			if (global.ui != 'cover' || (/menu/gi).test(global.ui)) {
+			if (global.ui != 'cover' && !(/menu/gi).test(global.ui)) {
 				let $mid = $('.reel.r0').children();
 				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
 				makeCursor($mid);
 				scrollToGame(null, 10);
+			} else {
+				makeCursor($cover);
 			}
 		}
 		if ((/menu/gi).test(state)) {
@@ -303,6 +305,7 @@ const Viewer = function() {
 		$('.cover.open .text').text(labels[2]);
 		resizeUI(true);
 		global.ui = state;
+		log(state);
 	}
 	this.uiStateChange = uiStateChange;
 
@@ -327,6 +330,7 @@ const Viewer = function() {
 			global.$cur = $('.' + gameID).eq(0);
 		}
 		$cover = global.$cur;
+		log($cover);
 		let $reel = $cover.parent();
 		let position = 0;
 		for (let i = 0; i < $cover.index(); i++) {
@@ -350,37 +354,53 @@ const Viewer = function() {
 	}
 
 	this.scrollToCursor = function() {
-		scrollToGame(null, ($(window).height() * 2 - $cover.height()) / 5, true);
-	}
-
-	function getPanelID($panel) {
-		if (!$panel) {
-			return '';
+		if (global.ui == 'lib') {
+			scrollToGame(null, ($(window).height() * 2 - $cover.height()) / 5, true);
 		}
-		$panel = $panel.attr('class');
-		if ($panel) {
-			return $panel.split(' ')[2];
-		}
-		return '';
 	}
 
 	this.powerBtn = async function() {
-		let id = getPanelID($cover);
+		let id = $cover.attr('id');
 		if (!id) {
-			log('game not found: ' + id);
+			log('game not found:\n' + $cover);
 			return;
 		}
 		remote.getCurrentWindow().minimize();
-		let emuDirPath = path.join(prefs.emuDir,
-			`../${prefs[sys].emu}/BIN`);
-		if (sys == '3ds') {
-			emuDirPath += '/nightly-mingw';
+		let emuDirPath;
+		if (win) {
+			emuDirPath = path.join(prefs.emuDir,
+				`../${prefs[sys].emu}/BIN`);
+			if (sys == '3ds') {
+				emuDirPath += '/nightly-mingw';
+			}
+		} else if (mac) {
+			emuDirPath = '/Applications';
 		}
-		let emuExePath;
-		if (sys == '3ds') {
-			emuExePath = `${emuDirPath}/${prefs[sys].emu}-qt.exe`;
-		} else {
-			emuExePath = `${emuDirPath}/${prefs[sys].emu}.exe`;
+		let emuNameCases = [
+			prefs[sys].emu,
+			prefs[sys].emu.toLowerCase(),
+			prefs[sys].emu.toUpperCase()
+		];
+		let emuAppPath;
+		for (let i = 0; i < emuNameCases.length; i++) {
+			emuAppPath = `${emuDirPath}/${emuNameCases[i]}`;
+			if (win) {
+				if (sys == '3ds') {
+					emuAppPath += '-qt';
+				}
+				emuAppPath += '.exe';
+			} else if (mac) {
+				if (sys == '3ds') {
+					emuAppPath += `/nightly/${emuNameCases[1]}-qt`;
+				}
+				emuAppPath += '.app/Contents/MacOS/' + emuNameCases[0];
+				if (sys == '3ds') {
+					emuAppPath += '-qt-bin';
+				}
+			}
+			if (await fs.exists(emuAppPath)) {
+				break;
+			}
 		}
 		let gameFile = games.find(x => x.id === id);
 		if (gameFile) {
@@ -389,7 +409,6 @@ const Viewer = function() {
 			log('game not found: ' + id);
 			return;
 		}
-		this.remove();
 		let args = [];
 		if (sys == 'wiiu') {
 			let files = klawSync(gameFile + '/code');
@@ -407,24 +426,29 @@ const Viewer = function() {
 		args.push(gameFile);
 		if (sys == 'wiiu' || sys == '3ds') {
 			args.push('-f');
+		} else if (sys == 'wii') {
+			args.push('-b');
 		}
-		log(emuExePath);
+		log(emuAppPath);
 		log(args);
 		log(emuDirPath);
+		this.remove();
 		try {
-			await spawn(emuExePath, args, {
+			await spawn(emuAppPath, args, {
 				cwd: emuDirPath,
 				stdio: 'inherit'
 			});
+			uiStateChange('played');
 		} catch (ror) {
-			log(ror);
+			err(`Error!\n
+				The emulator was unable to start the game.
+				This is probably not an issue with Bottlenose.
+				Setup ${prefs[sys].emu} if you haven't already,
+				make sure it will boot a game, and try again.\n
+				${ror}`);
 		}
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
-	}
-
-	this.openBtn = async function() {
-		$('#gameLibViewer').append();
 	}
 
 	function coverClicked() {
@@ -453,7 +477,7 @@ const Viewer = function() {
 	}
 
 	this.uieClicked = function() {
-		if (global.$cur.hasClass('panel')) {
+		if (global.$cur.hasClass('panel') && !(/menu/gi).test(global.ui)) {
 			coverClicked();
 		}
 	}
@@ -496,15 +520,6 @@ const Viewer = function() {
 				coverClicked();
 			} else if (act == 'y') {
 				flipCover();
-			} else {
-				return false;
-			}
-		} else if (ui == 'pauseMenu') {
-			if (act == 'fullscreen' || act == 'x') {
-				remote.getCurrentWindow().focus();
-				remote.getCurrentWindow().setFullScreen(true);
-			} else if (act == 'quit') {
-				app.quit();
 			} else {
 				return false;
 			}
@@ -599,8 +614,6 @@ const Viewer = function() {
 			});
 			// remote.getCurrentWindow().setFullScreen(true);
 		}
-		await delay(100);
-		uiStateChange('lib');
 		resizeUI(true);
 	}
 

@@ -19,6 +19,10 @@ html {
 	height: 100%;
 }
 
+#intro {
+	z-index: 90;
+}
+
 .menu {
 	position: fixed;
 	z-index: 100;

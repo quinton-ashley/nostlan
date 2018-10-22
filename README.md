@@ -1,10 +1,10 @@
 # Bottlenose
 
-Bottlenose is a _high quality_ front-end companion app for video game emulators.  
+Bottlenose is a _high quality_ front-end companion app for video game emulators!
 
 ## A what?
 
-A front-end or user interface (UI) is the presentation layer of an app/website.  It's what you look at and interact with.  Most modern emulators display game libraries in a list view UI that may include small thumbnail of the game's title or icon.  Bottlenose acts as a replacement for these emulator front-ends.  With Bottlenose your game libraries will be displayed as high quality boxes you can browse through with a mouse or game controller!  It has a simple, unified UI, similar to Kaleidescape, that prioritizes box art, not metadata.
+A front-end or user interface (UI) is the presentation layer of an app/website.  It's what you look at and interact with.  Most emulators display game libraries in a list view UI that you can only interact with using a mouse and keyboard.  These UIs may include a small thumbnail of the game's title or icon. Bottlenose serves as a replacement for many emulator UIs.  Bottlenose uses high quality box art you can browse through with a mouse or game controller!  It has a simple, unified UI, that prioritizes box art, not metadata.  It's like a Netflix/AppleTV/Kaleidescape media viewer for your game libraries!
 
 ## Features
 
@@ -31,7 +31,7 @@ A front-end or user interface (UI) is the presentation layer of an app/website. 
 
 ## Please consider donating!
 
-Even though there's no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please donate any amount to support this project!  Your donations will support my development of new features!
+Even though there's no free trial limit, Bottlenose is not free.  If you appreciate my work so far and will continue to use the app please pay for Bottlenose by donating an amount of your choosing.  Your donations will support my development of new features!
 
 Monthly Donations:  
 Patreon: <https://www.patreon.com/qashto>  
@@ -42,7 +42,7 @@ Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea
 
 ## Planned Features!
 
-I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose I want to implement these features!
+I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
 
 -   automatic emulator updates for emus that lack this feature (planned for v1.1)
 -   batch install/update texture packs for Dolphin
@@ -133,7 +133,7 @@ If you would like to update a game database, make a PR or email me <mailto:qasht
 ### Texture Packs
 
 -   `name` should be short, simple and should not include "Texture" or "Pack".
--   `png` and `dds` links must be direct download links or google drive links.  Mega links will never be supported.
+-   `png` and `dds` links must be direct download links or google drive links.  No Mega links, they will never be supported by Bottlenose.
 -   `url` is the link to the relevant forum post or readme.
 -   `version` must use semantic versioning.
 -   `rate` is the pack's rating 1-10.

@@ -1,4 +1,5 @@
-const Viewer = function() {
+const Viewer = function(opt) {
+	opt = opt || {};
 	const log = console.log;
 
 	const {
@@ -28,7 +29,7 @@ const Viewer = function() {
 	let themes;
 	let theme;
 	let defaultCoverImg;
-	let $cover;
+	let cuis = {};
 	let templateAmt = 4;
 
 	async function dl(url, file) {
@@ -241,7 +242,7 @@ const Viewer = function() {
 			}
 		}
 		$('.reel.r' + reelNum).append(`
-			<div id="${game.id}" class="uie panel ${game.id}">
+			<div id="${game.id}" class="uie ${((game.id != '_TEMPLATE')?'':'uie-disabled')}">
 				${((cl1)?`<img src="${defaultCoverImg}">`:'')}
 				<section class="${cl1}">
 	      	<img src="${file}"/>
@@ -252,25 +253,32 @@ const Viewer = function() {
 	}
 
 	function removeCursor() {
-		if (global.$cur) {
-			global.$cur.removeClass('cursor');
+		if (!global.$cur) {
+			return;
 		}
+		global.$cur.removeClass('cursor');
 	}
+	this.removeCursor = removeCursor;
 
-	function makeCursor($cur) {
+	function makeCursor($cur, state) {
 		removeCursor();
 		global.$cur = $cur;
 		global.$cur.addClass('cursor');
+		if (!cuis[state || global.ui]) {
+			cuis[state || global.ui] = {};
+		}
+		cuis[state || global.ui].$cur = global.$cur;
 	}
+	this.makeCursor = makeCursor;
 
 	function uiStateChange(state) {
 		if (state == global.ui) {
 			doAction('b');
 			return;
 		}
-		$('#gameLibViewer').removeClass();
-		$('#gameLibViewer').addClass('row-x');
-		$('#gameLibViewer').addClass(state);
+		$('#lib').removeClass();
+		$('#lib').addClass('row-x');
+		$('#lib').addClass(state);
 		let labels = ['Power', 'Reset', 'Open'];
 		if (state == 'cover') {
 			labels = ['Play', '', 'Back'];
@@ -285,15 +293,15 @@ const Viewer = function() {
 			if (global.ui != 'cover' && !(/menu/gi).test(global.ui)) {
 				let $mid = $('.reel.r0').children();
 				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
-				makeCursor($mid);
+				makeCursor($mid, 'lib');
 				scrollToGame(null, 10);
 			} else {
-				makeCursor($cover);
+				makeCursor(cuis.lib.$cur, 'lib');
 			}
 		}
 		if ((/menu/gi).test(state)) {
 			$('#' + state).show();
-			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0));
+			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
 		}
 		if (prefs && (prefs[sys].style || sys) == 'gcn') {
 			for (let i = 0; i < labels.length; i++) {
@@ -305,11 +313,13 @@ const Viewer = function() {
 		$('.cover.open .text').text(labels[2]);
 		resizeUI(true);
 		global.ui = state;
-		log(state);
+		if (opt.v) {
+			log('ui state: ' + state);
+		}
 	}
 	this.uiStateChange = uiStateChange;
 
-	function goTo(position, time) {
+	function scrollTo(position, time) {
 		if (isNaN(position)) {
 			log("pos can't be: " + position);
 			return;
@@ -329,14 +339,15 @@ const Viewer = function() {
 		if (gameID) {
 			global.$cur = $('.' + gameID).eq(0);
 		}
-		$cover = global.$cur;
-		log($cover);
-		let $reel = $cover.parent();
+		if (opt.v) {
+			log(global.$cur);
+		}
+		let $reel = global.$cur.parent();
 		let position = 0;
-		for (let i = 0; i < $cover.index(); i++) {
+		for (let i = 0; i < global.$cur.index(); i++) {
 			position += $reel.children().eq(i).height();
 		}
-		position += $cover.height() * .5;
+		position += global.$cur.height() * .5;
 		if ($reel.hasClass('reverse')) {
 			position += $(window).height() * .5;
 			position = $reel.height() - position;
@@ -347,22 +358,22 @@ const Viewer = function() {
 		if (noSmallDistScrolling && scrollDist < $(window).height() * .4) {
 			return;
 		}
-		if (noSmallDistScrolling && scrollDist > $cover.height() * 1.1) {
+		if (noSmallDistScrolling && scrollDist > global.$cur.height() * 1.1) {
 			time += scrollDist;
 		}
-		goTo(position, time);
+		scrollTo(position, time);
 	}
 
 	this.scrollToCursor = function() {
 		if (global.ui == 'lib') {
-			scrollToGame(null, ($(window).height() * 2 - $cover.height()) / 5, true);
+			scrollToGame(null, ($(window).height() * 2 - global.$cur.height()) / 5, true);
 		}
 	}
 
 	this.powerBtn = async function() {
-		let id = $cover.attr('id');
+		let id = cuis.lib.$cur.attr('id');
 		if (!id) {
-			log('game not found:\n' + $cover);
+			log('game not found:\n' + cuis.lib.$cur);
 			return;
 		}
 		remote.getCurrentWindow().minimize();
@@ -452,38 +463,30 @@ const Viewer = function() {
 	}
 
 	function coverClicked() {
-		$cover = global.$cur;
-		let $reel = $cover.parent();
-		let id = $cover.attr('class').split(' ')[2];
+		let $reel = global.$cur.parent();
+		let id = global.$cur.attr('id');
 		scrollToGame(null, 1000);
-		$cover.toggleClass('selected');
+		global.$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
 		// $('nav').toggleClass('gameView');
-		if ($cover.hasClass('selected')) {
-			$reel.css('left', `${$(window).width()*.5-$cover.width()*.5}px`);
-			$cover.css('transform', `scale(${$(window).height()/$cover.height()})`);
+		if (global.$cur.hasClass('selected')) {
+			$reel.css('left', `${$(window).width()*.5-global.$cur.width()*.5}px`);
+			global.$cur.css('transform', `scale(${$(window).height()/global.$cur.height()})`);
 			uiStateChange('cover');
 		} else {
 			$reel.css('left', '');
-			$cover.css('transform', '');
+			global.$cur.css('transform', '');
 			uiStateChange('lib');
 		}
 	}
-	this.coverClicked = coverClicked;
 
 	function flipCover() {
 		log('flip cover not enabled yet');
 	}
 
-	this.uieClicked = function() {
-		if (global.$cur.hasClass('panel') && !(/menu/gi).test(global.ui)) {
-			coverClicked();
-		}
-	}
-
 	this.remove = function(menu) {
-		$('#gameLibViewer').empty();
+		$('#lib').empty();
 	}
 
 	async function addTemplates(template, rows, num) {
@@ -507,10 +510,11 @@ const Viewer = function() {
 
 	async function doAction(act) {
 		let ui = global.ui;
+		let onMenu = (/menu/gi).test(ui);
 		if (ui == 'lib') {
 			if (act == 'a') {
 				coverClicked();
-			} else if (act == 'b') {
+			} else if (act == 'b' && !onMenu) {
 				uiStateChange('sysMenu');
 			} else {
 				return false;
@@ -556,13 +560,13 @@ const Viewer = function() {
 			rows = 2;
 		}
 		$('style.gameViewerRowsStyle').remove();
-		let $glv = $('#gameLibViewer');
+		let $glv = $('#lib');
 		let dynRowStyle = `<style class="gameViewerRowsStyle" type="text/css">.reel {width: ${1 / rows * 100}%;}`
 		for (let i = 0; i < rows; i++) {
 			$glv.append(`<div class="reel r${i} row-y ${((i % 2 == 0)?'reverse':'normal')}"></div>`)
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
-		dynRowStyle += `#gameLibViewer.lib .reel .panel.cursor {
+		dynRowStyle += `#lib.lib .reel .uie.cursor {
 	outline: ${Math.abs(7-rows)}px dashed white;
 	outline-offset: ${ 9-rows}px;
 }`;
@@ -584,7 +588,6 @@ const Viewer = function() {
 			}
 		}
 		await addTemplates(template, rows, templateAmt);
-		$('#gameLibViewer ._TEMPLATE').removeClass('uie');
 		// for (let i = 0; i < 8; i++) {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }
@@ -597,7 +600,7 @@ const Viewer = function() {
 		if (!reload) {
 			$(window).bind('mousewheel', function(event) {
 				event.preventDefault();
-				if ($('.panel.selected').length) {
+				if ($('.uie.selected').length) {
 					return;
 				}
 				let scrollDelta = event.originalEvent.wheelDelta;
@@ -610,7 +613,7 @@ const Viewer = function() {
 						pos -= mouseWheelDeltaNSS;
 					}
 				}
-				goTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
+				scrollTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
 			});
 			// remote.getCurrentWindow().setFullScreen(true);
 		}

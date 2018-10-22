@@ -308,7 +308,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		global.ui = 'loading';
+		uiStateChange('loading');
 		$('.menu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
@@ -428,31 +428,22 @@ emu (root folder can have any name)
 
 	async function uiStateChange(state) {
 		if (state == 'lib') {
-			$('#gameLibViewer .uie').click(uieClicked);
+			$('#lib .uie').click(uieClicked);
 		}
 		await viewer.uiStateChange(state);
 	}
 
-	function removeCursor() {
-		if (!global.$cur) {
+	function uieClicked() {
+		let classes = $(this).attr('class').split(' ');
+		if (classes.includes('uie-disabled')) {
 			return;
 		}
-		global.$cur.removeClass('cursor');
-	}
-
-	function makeCursor($cur) {
-		removeCursor();
-		global.$cur = $cur;
-		global.$cur.addClass('cursor');
-	}
-
-	function uieClicked() {
-		makeCursor($(this));
+		viewer.makeCursor($(this));
 		buttonPressed('a');
 	}
 
 	function uieHovered() {
-		makeCursor($(this));
+		viewer.makeCursor($(this));
 	}
 
 	async function removeIntro(time) {
@@ -495,7 +486,8 @@ emu (root folder can have any name)
 		if (act == 'start' && !onMenu) {
 			uiStateChange('pauseMenu');
 			return true;
-		} else if (act == 'b' && onMenu) {
+		} else if (act == 'b' && onMenu &&
+			ui != 'donateMenu' && ui != 'setupMenu') {
 			uiStateChange('lib');
 			return true;
 		} else if (act == 'view') {
@@ -524,7 +516,7 @@ emu (root folder can have any name)
 			}
 			viewer.remove();
 			sys = act;
-			removeCursor();
+			viewer.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu') {
 			if (act == 'fullscreen' || act == 'x') {
@@ -579,11 +571,7 @@ emu (root folder can have any name)
 		return true;
 	}
 
-	function scrollToCursor() {
-		viewer.scrollToCursor();
-	}
-
-	async function move(btn) {
+	async function move(direction) {
 		let $cur = global.$cur;
 		let $rowX = $cur.closest('.row-x');
 		let $rowY = $cur.closest('.row-y');
@@ -598,7 +586,7 @@ emu (root folder can have any name)
 		}
 		let x = curX;
 		let y = curY;
-		switch (btn.label.toLowerCase()) {
+		switch (direction.toLowerCase()) {
 			case 'up':
 				y -= 1;
 				break;
@@ -655,9 +643,8 @@ emu (root folder can have any name)
 		if (!ret.$cur.length) {
 			return;
 		}
-		ret.$cur.addClass('cursor');
-		global.$cur = ret.$cur;
-		scrollToCursor();
+		viewer.makeCursor(ret.$cur);
+		viewer.scrollToCursor();
 		return true;
 	}
 
@@ -680,6 +667,10 @@ emu (root folder can have any name)
 	for (let i of btnNames) {
 		btns[i] = gamepad.button(i);
 	}
+	let stickNue = {
+		x: true,
+		y: true
+	};
 	let btnStates = {};
 	for (let i of btnNames) {
 		btnStates[i] = false;
@@ -717,7 +708,7 @@ emu (root folder can have any name)
 			case 'down':
 			case 'left':
 			case 'right':
-				move(btn);
+				move(lbl);
 				break;
 			case 'a':
 				if (await doAction(global.$cur.attr('name') || 'a')) {
@@ -732,7 +723,9 @@ emu (root folder can have any name)
 					break;
 				}
 			default:
-				log('button does nothing');
+				if (opt.v) {
+					log('button does nothing');
+				}
 				return;
 		}
 		return true;
@@ -784,8 +777,35 @@ emu (root folder can have any name)
 					continue;
 				}
 				// if button press just started, query is true
-				log(i + ' button press start');
+				if (opt.v) {
+					log(i + ' button press start');
+				}
 				await buttonPressed(i);
+			}
+			let vect = gamepad.stick('left').query();
+			if (vect.y < -.5) {
+				if (stickNue.y) move('up');
+				stickNue.y = false;
+			}
+			if (vect.y > .5) {
+				if (stickNue.y) move('down');
+				stickNue.y = false;
+			}
+			if (vect.x < -.5) {
+				if (stickNue.x) move('left');
+				stickNue.x = false;
+			}
+			if (vect.x > .5) {
+				if (stickNue.x) move('right');
+				stickNue.x = false;
+			}
+			if (vect.x < .5 &&
+				vect.x > -.5) {
+				stickNue.x = true;
+			}
+			if (vect.y < .5 &&
+				vect.y > -.5) {
+				stickNue.y = true;
 			}
 			gamepadConnected = true;
 		}

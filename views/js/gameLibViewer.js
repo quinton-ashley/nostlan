@@ -321,7 +321,7 @@ const Viewer = function(opt) {
 		log(emuAppPath);
 		log(args);
 		log(emuDirPath);
-		this.remove();
+		global.cui.removeView('lib');
 		try {
 			await spawn(emuAppPath, args, {
 				cwd: emuDirPath,
@@ -342,10 +342,6 @@ const Viewer = function(opt) {
 
 	function flipCover() {
 		log('flip cover not enabled yet');
-	}
-
-	this.remove = function(menu) {
-		$('#lib').empty();
 	}
 
 	async function addTemplates(template, rows, num) {
@@ -449,7 +445,7 @@ const Viewer = function(opt) {
 		// for (let i = 0; i < 8; i++) {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }
-
+		global.cui.addView('lib');
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
 		if ($('.reel.bg').length) {

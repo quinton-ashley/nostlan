@@ -33,13 +33,6 @@ module.exports = async function(opt) {
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
-	const {
-		Mouse,
-		Keyboard,
-		Gamepad,
-		or,
-		and
-	} = require('contro');
 
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
@@ -55,6 +48,7 @@ module.exports = async function(opt) {
 	const botDir = path.join(os.homedir(), '/Documents/bottlenose');
 	log(botDir);
 	const viewer = require('../js/gameLibViewer.js');
+	global.cui = require('../js/contro-ui.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -308,7 +302,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		uiStateChange('loading');
+		global.cui.uiStateChange('loading');
 		$('.menu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
@@ -331,7 +325,7 @@ module.exports = async function(opt) {
 		} else {
 			let emuDirExisted;
 			if (!emuDir) {
-				uiStateChange('setupMenu');
+				global.cui.uiStateChange('setupMenu');
 				await removeIntro(0);
 				return;
 			} else {
@@ -384,7 +378,7 @@ emu (root folder can have any name)
 				`);
 				emuDir = '';
 				await removeIntro(0);
-				uiStateChange('setupMenu');
+				global.cui.uiStateChange('setupMenu');
 				return;
 				// prefs[sys].libs.push(openLib(sys));
 			}
@@ -394,7 +388,7 @@ emu (root folder can have any name)
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		await uiStateChange('lib');
+		global.cui.uiStateChange('lib');
 	}
 
 	async function load() {
@@ -421,29 +415,7 @@ emu (root folder can have any name)
 		}
 		sysMenuHTML += '</div>';
 		$('#sysMenu').append(sysMenuHTML);
-		$('.menu .uie').click(uieClicked);
-		$('.menu .uie').hover(uieHovered);
 		sys = prefs.session.sys;
-	}
-
-	async function uiStateChange(state) {
-		if (state == 'lib') {
-			$('#lib .uie').click(uieClicked);
-		}
-		await viewer.uiStateChange(state);
-	}
-
-	function uieClicked() {
-		let classes = $(this).attr('class').split(' ');
-		if (classes.includes('uie-disabled')) {
-			return;
-		}
-		viewer.makeCursor($(this));
-		buttonPressed('a');
-	}
-
-	function uieHovered() {
-		viewer.makeCursor($(this));
 	}
 
 	async function removeIntro(time) {
@@ -459,17 +431,17 @@ emu (root folder can have any name)
 		await intro();
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		await uiStateChange('lib');
+		global.cui.uiStateChange('lib');
 	}
 
 	async function resetBtn() {
 		viewer.remove();
-		await uiStateChange('resetting');
+		global.cui.uiStateChange('resetting');
 		await intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		await uiStateChange('lib');
+		global.cui.uiStateChange('lib');
 	}
 
 	async function createTemplate(emuDir) {
@@ -481,14 +453,15 @@ emu (root folder can have any name)
 	}
 
 	async function doAction(act) {
+		log(act);
 		let ui = global.ui;
 		let onMenu = (/menu/gi).test(ui);
 		if (act == 'start' && !onMenu) {
-			uiStateChange('pauseMenu');
+			global.cui.uiStateChange('pauseMenu');
 			return true;
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
-			uiStateChange('lib');
+			global.cui.uiStateChange('lib');
 			return true;
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
@@ -516,7 +489,7 @@ emu (root folder can have any name)
 			}
 			viewer.remove();
 			sys = act;
-			viewer.removeCursor();
+			global.cui.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu') {
 			if (act == 'fullscreen' || act == 'x') {
@@ -570,83 +543,8 @@ emu (root folder can have any name)
 		}
 		return true;
 	}
-
-	async function move(direction) {
-		let $cur = global.$cur;
-		let $rowX = $cur.closest('.row-x');
-		let $rowY = $cur.closest('.row-y');
-		let curX, curY;
-		let inVerticalRow = $rowX.has($rowY.get(0)).length || !$rowX.length;
-		if (inVerticalRow) {
-			curX = $rowY.index(); // index of rowY in rowX
-			curY = $cur.index();
-		} else {
-			curX = $cur.index();
-			curY = $rowX.index(); // index of rowX in rowY
-		}
-		let x = curX;
-		let y = curY;
-		switch (direction.toLowerCase()) {
-			case 'up':
-				y -= 1;
-				break;
-			case 'down':
-				y += 1;
-				break;
-			case 'left':
-				x -= 1;
-				break;
-			case 'right':
-				x += 1;
-				break;
-			default:
-
-		}
-		let ret = {
-			$cur: $cur,
-			$rowX: $rowX,
-			$rowY: $rowY
-		};
-		if (x < 0 || y < 0) {
-			return;
-		}
-		if (inVerticalRow) {
-			if (x == curX) {
-				ret.$cur = $rowY.children().eq(y);
-			} else {
-				if (!$rowX.length) {
-					return;
-				}
-				ret.$rowY = $rowX.children().eq(x);
-				if (!ret.$rowY.length) {
-					return;
-				}
-				let curRect = $cur.get(0).getBoundingClientRect();
-				while (y < ret.$rowY.children().length && y >= 0) {
-					ret.$cur = ret.$rowY.children().eq(y);
-					let elmRect = ret.$cur.get(0).getBoundingClientRect();
-					let diff = curRect.top - elmRect.top;
-					let halfHeight = Math.max($cur.height(), ret.$cur.height()) * .6;
-					if (halfHeight < diff) {
-						y++;
-					} else if (-halfHeight > diff) {
-						y--;
-					} else {
-						break;
-					}
-				}
-			}
-			$rowY.find('.cursor').removeClass('cursor');
-		} else {
-
-		}
-		if (!ret.$cur.length) {
-			return;
-		}
-		viewer.makeCursor(ret.$cur);
-		viewer.scrollToCursor();
-		return true;
-	}
+	global.cui.setAction(doAction);
+	// global.cui.setActionCB(doAction);
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
 		buttonPressed('view');
@@ -659,159 +557,20 @@ emu (root folder can have any name)
 		return false;
 	});
 
-	let gamepad = new Gamepad();
-	let gamepadConnected = false;
-
-	let btnNames = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right', 'View', 'Start'];
-	let btns = {};
-	for (let i of btnNames) {
-		btns[i] = gamepad.button(i);
-	}
-	let stickNue = {
-		x: true,
-		y: true
-	};
-	let btnStates = {};
-	for (let i of btnNames) {
-		btnStates[i] = false;
-	}
-	let gvMainMenuLabels = {
-		X: 'power',
-		Y: 'reset',
-		B: 'open'
-	};
-
-	// Xbox One controller mapped to
-	// Nintendo Switch controller button layout
-	//  Y B  ->  X A
-	// X A  ->  Y B
-	let map = {
-		A: 'B',
-		B: 'A',
-		X: 'Y',
-		Y: 'X'
-	};
-
-	async function buttonPressed(btn) {
-		if (typeof btn == 'string') {
-			btn = {
-				label: btn
-			};
-		}
-		let lbl = btn.label.toLowerCase();
-		let res = await viewer.doAction(lbl);
-		if (res) {
-			return res;
-		}
-		switch (lbl) {
-			case 'up':
-			case 'down':
-			case 'left':
-			case 'right':
-				move(lbl);
-				break;
-			case 'a':
-				if (await doAction(global.$cur.attr('name') || 'a')) {
-					break;
-				}
-			case 'b':
-			case 'x':
-			case 'y':
-			case 'view':
-			case 'start':
-				if (await doAction(lbl)) {
-					break;
-				}
-			default:
-				if (opt.v) {
-					log('button does nothing');
-				}
-				return;
-		}
-		return true;
-	}
-
 	$('#power').click(function() {
-		buttonPressed('x');
+		global.cui.buttonPressed('x');
 	});
 	$('#view').click(function() {
-		buttonPressed('start');
+		global.cui.buttonPressed('start');
 	});
 	$('#reset').click(function() {
-		buttonPressed('y');
+		global.cui.buttonPressed('y');
 	});
 	$('#open').click(function() {
-		buttonPressed('b');
+		global.cui.buttonPressed('b');
 	});
 
-	async function loop() {
-		if (gamepadConnected || gamepad.isConnected()) {
-			for (let i in btns) {
-				let btn = btns[i];
-				// incomplete maps are okay
-				// no one to one mapping necessary
-				i = map[i] || i;
-
-				if (!gamepadConnected) {
-					let $button;
-
-					$button = $('#' + gvMainMenuLabels[i]);
-
-					$button.text(i);
-				}
-				let query = btn.query();
-				// if button is not pressed, query is false and unchanged
-				if (!btnStates[i] && !query) {
-					continue;
-				}
-				// if button is held, query is true and unchanged
-				if (btnStates[i] && query) {
-					// log(i + ' button press held');
-					continue;
-				}
-				// save button state change
-				btnStates[i] = query;
-				// if button press ended query is false
-				if (!query) {
-					// log(i + ' button press end');
-					continue;
-				}
-				// if button press just started, query is true
-				if (opt.v) {
-					log(i + ' button press start');
-				}
-				await buttonPressed(i);
-			}
-			let vect = gamepad.stick('left').query();
-			if (vect.y < -.5) {
-				if (stickNue.y) move('up');
-				stickNue.y = false;
-			}
-			if (vect.y > .5) {
-				if (stickNue.y) move('down');
-				stickNue.y = false;
-			}
-			if (vect.x < -.5) {
-				if (stickNue.x) move('left');
-				stickNue.x = false;
-			}
-			if (vect.x > .5) {
-				if (stickNue.x) move('right');
-				stickNue.x = false;
-			}
-			if (vect.x < .5 &&
-				vect.x > -.5) {
-				stickNue.x = true;
-			}
-			if (vect.y < .5 &&
-				vect.y > -.5) {
-				stickNue.y = true;
-			}
-			gamepadConnected = true;
-		}
-		requestAnimationFrame(loop);
-	}
 	await load();
-	uiStateChange('donateMenu');
-	loop();
+	global.cui.uiStateChange('donateMenu');
+	global.cui.start();
 };

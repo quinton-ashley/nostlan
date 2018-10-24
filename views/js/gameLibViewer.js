@@ -20,16 +20,12 @@ const Viewer = function(opt) {
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
 
-	let mouse;
-	let mouseWheelDeltaNSS;
-	let pos = 0;
 	let games;
 	let prefs;
 	let sys;
 	let themes;
 	let theme;
 	let defaultCoverImg;
-	let cuis = {};
 	let templateAmt = 4;
 
 	async function dl(url, file) {
@@ -252,128 +248,10 @@ const Viewer = function(opt) {
 		`);
 	}
 
-	function removeCursor() {
-		if (!global.$cur) {
-			return;
-		}
-		global.$cur.removeClass('cursor');
-	}
-	this.removeCursor = removeCursor;
-
-	function makeCursor($cur, state) {
-		removeCursor();
-		global.$cur = $cur;
-		global.$cur.addClass('cursor');
-		if (!cuis[state || global.ui]) {
-			cuis[state || global.ui] = {};
-		}
-		cuis[state || global.ui].$cur = global.$cur;
-	}
-	this.makeCursor = makeCursor;
-
-	function uiStateChange(state) {
-		if (state == global.ui) {
-			doAction('b');
-			return;
-		}
-		$('#lib').removeClass();
-		$('#lib').addClass('row-x');
-		$('#lib').addClass(state);
-		let labels = ['Power', 'Reset', 'Open'];
-		if (state == 'cover') {
-			labels = ['Play', '', 'Back'];
-		} else if (state == 'sysMenu') {
-			labels = ['', '', 'Back'];
-		} else if (state == 'pauseMenu') {
-			labels = ['', '', 'Back'];
-		} else if (state == 'introMenu') {
-			labels = ['', '', ''];
-		} else if (state == 'lib') {
-			$('.menu').hide();
-			if (global.ui != 'cover' && !(/menu/gi).test(global.ui)) {
-				let $mid = $('.reel.r0').children();
-				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
-				makeCursor($mid, 'lib');
-				scrollToGame(null, 10);
-			} else {
-				makeCursor(cuis.lib.$cur, 'lib');
-			}
-		}
-		if ((/menu/gi).test(state)) {
-			$('#' + state).show();
-			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
-		}
-		if (prefs && (prefs[sys].style || sys) == 'gcn') {
-			for (let i = 0; i < labels.length; i++) {
-				labels[i] = labels[i].toLowerCase();
-			}
-		}
-		$('.cover.power .text').text(labels[0]);
-		$('.cover.reset .text').text(labels[1]);
-		$('.cover.open .text').text(labels[2]);
-		resizeUI(true);
-		global.ui = state;
-		if (opt.v) {
-			log('ui state: ' + state);
-		}
-	}
-	this.uiStateChange = uiStateChange;
-
-	function scrollTo(position, time) {
-		if (isNaN(position)) {
-			log("pos can't be: " + position);
-			return;
-		}
-		pos = position;
-		time = ((time == undefined) ? 2000 : time);
-		$('html').stop().animate({
-			scrollTop: pos
-		}, time);
-		$('.reel.reverse').stop().animate({
-			bottom: pos * -1
-		}, time);
-		// log(pos);
-	}
-
-	function scrollToGame(gameID, time, noSmallDistScrolling) {
-		if (gameID) {
-			global.$cur = $('.' + gameID).eq(0);
-		}
-		if (opt.v) {
-			log(global.$cur);
-		}
-		let $reel = global.$cur.parent();
-		let position = 0;
-		for (let i = 0; i < global.$cur.index(); i++) {
-			position += $reel.children().eq(i).height();
-		}
-		position += global.$cur.height() * .5;
-		if ($reel.hasClass('reverse')) {
-			position += $(window).height() * .5;
-			position = $reel.height() - position;
-		} else {
-			position -= $(window).height() * .5;
-		}
-		let scrollDist = Math.abs(pos - position);
-		if (noSmallDistScrolling && scrollDist < $(window).height() * .4) {
-			return;
-		}
-		if (noSmallDistScrolling && scrollDist > global.$cur.height() * 1.1) {
-			time += scrollDist;
-		}
-		scrollTo(position, time);
-	}
-
-	this.scrollToCursor = function() {
-		if (global.ui == 'lib') {
-			scrollToGame(null, ($(window).height() * 2 - global.$cur.height()) / 5, true);
-		}
-	}
-
 	this.powerBtn = async function() {
-		let id = cuis.lib.$cur.attr('id');
+		let id = global.cuis.lib.$cur.attr('id');
 		if (!id) {
-			log('game not found:\n' + cuis.lib.$cur);
+			log('game not found:\n' + global.cuis.lib.$cur);
 			return;
 		}
 		remote.getCurrentWindow().minimize();
@@ -462,25 +340,6 @@ const Viewer = function(opt) {
 		remote.getCurrentWindow().setFullScreen(true);
 	}
 
-	function coverClicked() {
-		let $reel = global.$cur.parent();
-		let id = global.$cur.attr('id');
-		scrollToGame(null, 1000);
-		global.$cur.toggleClass('selected');
-		$reel.toggleClass('selected');
-		$('.reel').toggleClass('bg');
-		// $('nav').toggleClass('gameView');
-		if (global.$cur.hasClass('selected')) {
-			$reel.css('left', `${$(window).width()*.5-global.$cur.width()*.5}px`);
-			global.$cur.css('transform', `scale(${$(window).height()/global.$cur.height()})`);
-			uiStateChange('cover');
-		} else {
-			$reel.css('left', '');
-			global.$cur.css('transform', '');
-			uiStateChange('lib');
-		}
-	}
-
 	function flipCover() {
 		log('flip cover not enabled yet');
 	}
@@ -513,15 +372,15 @@ const Viewer = function(opt) {
 		let onMenu = (/menu/gi).test(ui);
 		if (ui == 'lib') {
 			if (act == 'a') {
-				coverClicked();
+				global.cui.coverClicked();
 			} else if (act == 'b' && !onMenu) {
-				uiStateChange('sysMenu');
+				global.cui.uiStateChange('sysMenu');
 			} else {
 				return false;
 			}
 		} else if (ui == 'cover') {
 			if (act == 'b') {
-				coverClicked();
+				global.cui.coverClicked();
 			} else if (act == 'y') {
 				flipCover();
 			} else {
@@ -549,8 +408,7 @@ const Viewer = function(opt) {
 			themes = JSON.parse(await fs.readFile(themesPath));
 		}
 		theme = themes[prefs[sys].style || sys];
-		mouse = prefs.ui.mouse;
-		mouseWheelDeltaNSS = 100 * mouse.wheel.multi;
+		global.cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		await loadImages();
 		let rows = 8;
 		if (games.length < 18) {
@@ -598,23 +456,7 @@ const Viewer = function(opt) {
 			coverClicked();
 		}
 		if (!reload) {
-			$(window).bind('mousewheel', function(event) {
-				event.preventDefault();
-				if ($('.uie.selected').length) {
-					return;
-				}
-				let scrollDelta = event.originalEvent.wheelDelta;
-				if (mouse.wheel.smooth) {
-					pos += scrollDelta * mouse.wheel.multi;
-				} else {
-					if (scrollDelta < 0) {
-						pos += mouseWheelDeltaNSS;
-					} else {
-						pos -= mouseWheelDeltaNSS;
-					}
-				}
-				scrollTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
-			});
+			global.cui.rebind('mouse');
 			// remote.getCurrentWindow().setFullScreen(true);
 		}
 		resizeUI(true);

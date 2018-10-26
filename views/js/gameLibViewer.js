@@ -1,6 +1,10 @@
 const Viewer = function(opt) {
 	opt = opt || {};
 	const log = console.log;
+	const err = (msg) => {
+		log(msg);
+		alert(msg);
+	};
 
 	const {
 		remote
@@ -249,18 +253,22 @@ const Viewer = function(opt) {
 	}
 
 	this.powerBtn = async function() {
-		let id = global.cuis.lib.$cur.attr('id');
+		let id = global.cui.getCur('lib').attr('id');
 		if (!id) {
-			log('game not found:\n' + global.cuis.lib.$cur);
+			log('game not found:\n' + global.cui.getCur('lib'));
 			return;
 		}
 		remote.getCurrentWindow().minimize();
 		let emuDirPath;
 		if (win) {
 			emuDirPath = path.join(prefs.emuDir,
-				`../${prefs[sys].emu}/BIN`);
+				`../${emuNameCases[0]}/BIN`);
 			if (sys == '3ds') {
-				emuDirPath += '/nightly-mingw';
+				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
+					emuDirPath += '/nightly-mingw';
+				} else {
+					emuDirPath += '/canary-mingw';
+				}
 			}
 		} else if (mac) {
 			emuDirPath = '/Applications';
@@ -327,7 +335,7 @@ const Viewer = function(opt) {
 				cwd: emuDirPath,
 				stdio: 'inherit'
 			});
-			uiStateChange('played');
+			global.cui.uiStateChange('played');
 		} catch (ror) {
 			err(`Error!\n
 				The emulator was unable to start the game.

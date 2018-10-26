@@ -54,6 +54,10 @@ const controUI = function() {
 		doAction = actionFunc;
 	};
 
+	this.getCur = function(state) {
+		return cuis[state].$cur;
+	}
+
 	this.setMouse = function(mouseInfo, delta) {
 		mouse = mouseInfo;
 		mouseWheelDeltaNSS = delta;

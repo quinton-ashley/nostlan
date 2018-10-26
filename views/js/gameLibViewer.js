@@ -239,7 +239,7 @@ const Viewer = function(opt) {
 		}
 		$('.reel.r' + reelNum).append(`
 			<div id="${game.id}" class="uie ${((game.id != '_TEMPLATE')?'':'uie-disabled')}">
-				${((cl1)?`<img src="${defaultCoverImg}">`:'')}
+				${((cl1)?`<img src="${defaultCoverImg}"/>`:'')}
 				<section class="${cl1}">
 	      	<img src="${file}"/>
 					${((cl1)?`<div class="shade p-0 m-0"></div>`:'')}

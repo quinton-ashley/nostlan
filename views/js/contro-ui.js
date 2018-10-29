@@ -12,7 +12,7 @@ const controUI = function() {
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
 
-	let btnNames = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right', 'View', 'Start'];
+	let btnNames = ['a', 'b', 'x', 'y', 'up', 'down', 'left', 'right', 'view', 'start'];
 	let btns = {};
 	for (let i of btnNames) {
 		btns[i] = gamepad.button(i);
@@ -30,9 +30,9 @@ const controUI = function() {
 		btnStates[i] = false;
 	}
 	let gvMainMenuLabels = {
-		X: 'power',
-		Y: 'reset',
-		B: 'open'
+		x: 'power',
+		y: 'reset',
+		b: 'open'
 	};
 
 	// Xbox One controller mapped to
@@ -40,10 +40,10 @@ const controUI = function() {
 	//  Y B  ->  X A
 	// X A  ->  Y B
 	let map = {
-		A: 'B',
-		B: 'A',
-		X: 'Y',
-		Y: 'X'
+		a: 'b',
+		b: 'a',
+		x: 'y',
+		y: 'x'
 	};
 
 	let doAction = () => {
@@ -367,7 +367,7 @@ const controUI = function() {
 					// log(i + ' button press held');
 					continue;
 				}
-				// save button view change
+				// save button change
 				btnStates[i] = query;
 				// if button press ended query is false
 				if (!query) {

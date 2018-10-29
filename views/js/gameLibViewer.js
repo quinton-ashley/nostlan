@@ -259,6 +259,11 @@ const Viewer = function(opt) {
 			return;
 		}
 		remote.getCurrentWindow().minimize();
+		let emuNameCases = [
+			prefs[sys].emu,
+			prefs[sys].emu.toLowerCase(),
+			prefs[sys].emu.toUpperCase()
+		];
 		let emuDirPath;
 		if (win) {
 			emuDirPath = path.join(prefs.emuDir,
@@ -273,11 +278,6 @@ const Viewer = function(opt) {
 		} else if (mac) {
 			emuDirPath = '/Applications';
 		}
-		let emuNameCases = [
-			prefs[sys].emu,
-			prefs[sys].emu.toLowerCase(),
-			prefs[sys].emu.toUpperCase()
-		];
 		let emuAppPath;
 		for (let i = 0; i < emuNameCases.length; i++) {
 			emuAppPath = `${emuDirPath}/${emuNameCases[i]}`;

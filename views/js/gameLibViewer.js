@@ -1,5 +1,5 @@
-const Viewer = function(opt) {
-	opt = opt || {};
+const Viewer = function() {
+	let opt = {};
 	const log = console.log;
 	const err = (msg) => {
 		log(msg);
@@ -252,17 +252,21 @@ const Viewer = function(opt) {
 		`);
 	}
 
+	async function animatePlay() {
+		await delay(10000);
+		remote.getCurrentWindow().minimize();
+	}
+
 	this.powerBtn = async function() {
-		let id = global.cui.getCur('lib').attr('id');
+		let id = cui.getCur('lib').attr('id');
 		if (!id) {
-			log('game not found:\n' + global.cui.getCur('lib'));
+			log('game not found:\n' + cui.getCur('lib'));
 			return;
 		}
-		remote.getCurrentWindow().minimize();
 		let emuDirPath;
 		if (win) {
 			emuDirPath = path.join(prefs.emuDir,
-				`../${emuNameCases[0]}/BIN`);
+				`../${prefs[sys].emu}/BIN`);
 			if (sys == '3ds') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
 					emuDirPath += '/nightly-mingw';
@@ -329,13 +333,14 @@ const Viewer = function(opt) {
 		log(emuAppPath);
 		log(args);
 		log(emuDirPath);
-		global.cui.removeView('lib');
+		cui.removeView('lib');
 		try {
+			// animatePlay();
 			await spawn(emuAppPath, args, {
 				cwd: emuDirPath,
 				stdio: 'inherit'
 			});
-			global.cui.uiStateChange('played');
+			cui.uiStateChange('played');
 		} catch (ror) {
 			err(`Error!\n
 				The emulator was unable to start the game.
@@ -360,31 +365,20 @@ const Viewer = function(opt) {
 		}
 	}
 
-	function resizeUI(adjust) {
-		let $cv = $('.cover.view');
-		let $cvSel = $cv.find('#view');
-		let cvHeight = $cv.height();
-		let cpHeight = $('.cover.power').height();
-		if (adjust || cvHeight != cpHeight) {
-			$cvSel.css('margin-top', (cpHeight + 24) * .5);
-			$('nav').height(cpHeight + 24);
-		}
-	}
-
-	async function doAction(act) {
-		let ui = global.ui;
+	this.doAction = async function(act) {
+		let ui = cui.ui;
 		let onMenu = (/menu/gi).test(ui);
 		if (ui == 'lib') {
 			if (act == 'a') {
-				global.cui.coverClicked();
+				cui.coverClicked();
 			} else if (act == 'b' && !onMenu) {
-				global.cui.uiStateChange('sysMenu');
+				cui.uiStateChange('sysMenu');
 			} else {
 				return false;
 			}
 		} else if (ui == 'cover') {
 			if (act == 'b') {
-				global.cui.coverClicked();
+				cui.coverClicked();
 			} else if (act == 'y') {
 				flipCover();
 			} else {
@@ -396,10 +390,8 @@ const Viewer = function(opt) {
 		return true;
 	}
 
-	this.doAction = doAction;
-
 	this.load = async function(usrGames, usrPrefs, usrSys) {
-		resizeUI(true);
+		cui.resize(true);
 		let reload;
 		if (games) {
 			reload = true;
@@ -412,7 +404,8 @@ const Viewer = function(opt) {
 			themes = JSON.parse(await fs.readFile(themesPath));
 		}
 		theme = themes[prefs[sys].style || sys];
-		global.cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
+		theme.style = prefs[sys].style || sys;
+		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		await loadImages();
 		let rows = 8;
 		if (games.length < 18) {
@@ -453,19 +446,16 @@ const Viewer = function(opt) {
 		// for (let i = 0; i < 8; i++) {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }
-		global.cui.addView('lib');
+		cui.addView('lib');
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
 		if ($('.reel.bg').length) {
 			coverClicked();
 		}
 		if (!reload) {
-			global.cui.rebind('mouse');
+			cui.rebind('mouse');
 			// remote.getCurrentWindow().setFullScreen(true);
 		}
-		resizeUI(true);
 	}
-
-	$(window).resize(resizeUI);
-}
+};
 module.exports = new Viewer();

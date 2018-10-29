@@ -1,6 +1,10 @@
-const controUI = function() {
+const CUI = function() {
 	let opt = {};
 	const log = console.log;
+	const err = (msg) => {
+		log(msg);
+		alert(msg);
+	};
 	const {
 		Mouse,
 		Keyboard,
@@ -12,7 +16,7 @@ const controUI = function() {
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
 
-	let btnNames = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right', 'View', 'Start'];
+	let btnNames = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right', 'view', 'Start'];
 	let btns = {};
 	for (let i of btnNames) {
 		btns[i] = gamepad.button(i);
@@ -26,6 +30,9 @@ const controUI = function() {
 	let mouse;
 	let mouseWheelDeltaNSS;
 	let pos = 0;
+	let ui;
+	let uiSub;
+	let $cur;
 	for (let i of btnNames) {
 		btnStates[i] = false;
 	}
@@ -47,12 +54,25 @@ const controUI = function() {
 	};
 
 	let doAction = () => {
-		log('set up custom actions with the setAction method');
+		log('set custom actions with the setAction method');
 	};
 
-	this.setAction = function(actionFunc) {
-		doAction = actionFunc;
+	let resize = () => {
+		log('set custom resize with the setResize method');
 	};
+
+	this.setAction = function(func) {
+		doAction = func;
+	};
+
+	this.setResize = function(func) {
+		resize = func;
+		$(window).resize(resize);
+	};
+
+	this.resize = function(adjust) {
+		resize(adjust);
+	}
 
 	this.getCur = function(state) {
 		return cuis[state].$cur;
@@ -82,17 +102,17 @@ const controUI = function() {
 
 	function scrollToGame(gameID, time, noSmallDistScrolling) {
 		if (gameID) {
-			global.$cur = $('.' + gameID).eq(0);
+			$cur = $('.' + gameID).eq(0);
 		}
 		if (opt.v) {
-			log(global.$cur);
+			log($cur);
 		}
-		let $reel = global.$cur.parent();
+		let $reel = $cur.parent();
 		let position = 0;
-		for (let i = 0; i < global.$cur.index(); i++) {
+		for (let i = 0; i < $cur.index(); i++) {
 			position += $reel.children().eq(i).height();
 		}
-		position += global.$cur.height() * .5;
+		position += $cur.height() * .5;
 		if ($reel.hasClass('reverse')) {
 			position += $(window).height() * .5;
 			position = $reel.height() - position;
@@ -103,92 +123,93 @@ const controUI = function() {
 		if (noSmallDistScrolling && scrollDist < $(window).height() * .4) {
 			return;
 		}
-		if (noSmallDistScrolling && scrollDist > global.$cur.height() * 1.1) {
+		if (noSmallDistScrolling && scrollDist > $cur.height() * 1.1) {
 			time += scrollDist;
 		}
-		cui.scrollTo(position, time);
+		scrollTo(position, time);
 	}
 	this.scrollToGame = scrollToGame;
 
 	function scrollToCursor() {
-		if (global.ui == 'lib') {
-			scrollToGame(null, ($(window).height() * 2 - global.$cur.height()) / 5, true);
+		if (ui == 'lib') {
+			scrollToGame(null, ($(window).height() * 2 - $cur.height()) / 5, true);
 		}
 	}
 	this.scrollToCursor = scrollToCursor;
 
 
 	function coverClicked() {
-		let $reel = global.$cur.parent();
-		let id = global.$cur.attr('id');
+		let $reel = $cur.parent();
+		let id = $cur.attr('id');
 		scrollToGame(null, 1000);
-		global.$cur.toggleClass('selected');
+		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
-		// $('nav').toggleClass('gameView');
-		if (global.$cur.hasClass('selected')) {
-			$reel.css('left', `${$(window).width()*.5-global.$cur.width()*.5}px`);
-			global.$cur.css('transform', `scale(${$(window).height()/global.$cur.height()})`);
+		// $('nav').toggleClass('gamestate');
+		if ($cur.hasClass('selected')) {
+			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 			uiStateChange('cover');
 		} else {
 			$reel.css('left', '');
-			global.$cur.css('transform', '');
+			$cur.css('transform', '');
 			uiStateChange('lib');
 		}
 	}
 	this.coverClicked = coverClicked;
 
 	function removeCursor() {
-		if (!global.$cur) {
+		if (!$cur) {
 			return;
 		}
-		global.$cur.removeClass('cursor');
+		$cur.removeClass('cursor');
 	}
 	this.removeCursor = removeCursor;
 
-	function makeCursor($cur, view) {
+	function makeCursor($cursor, state) {
 		removeCursor();
-		global.$cur = $cur;
-		global.$cur.addClass('cursor');
-		if (!cuis[view || global.ui]) {
-			cuis[view || global.ui] = {};
+		$cur = $cursor;
+		$cur.addClass('cursor');
+		if (!cuis[state || ui]) {
+			cuis[state || ui] = {};
 		}
-		cuis[view || global.ui].$cur = global.$cur;
+		cuis[state || ui].$cur = $cur;
 	}
 	this.makeCursor = makeCursor;
 
-	function addView(view) {
+	function addView(state) {
 		if ('lib') {
 			$('#lib .uie').click(uieClicked);
 		}
 	}
 	this.addView = addView;
 
-	function removeView(view) {
-		$('#' + view).empty();
+	function removeView(state) {
+		$('#' + state).empty();
 	}
 	this.removeView = removeView;
 
-	function uiStateChange(view, subState) {
-		if (view == global.ui) {
+	function uiStateChange(state, subState) {
+		uiSub = subState || uiSub;
+		if (state == ui) {
 			doAction('b');
 			return;
 		}
 		$('#lib').removeClass();
 		$('#lib').addClass('row-x');
-		$('#lib').addClass(view);
+		$('#lib').addClass(state);
 		let labels = ['Power', 'Reset', 'Open'];
-		if (view == 'cover') {
+		if (state == 'cover') {
 			labels = ['Play', '', 'Back'];
-		} else if (view == 'sysMenu') {
+		} else if (state == 'sysMenu') {
 			labels = ['', '', 'Back'];
-		} else if (view == 'pauseMenu') {
+		} else if (state == 'pauseMenu') {
 			labels = ['', '', 'Back'];
-		} else if (view == 'introMenu') {
+		} else if (state == 'introMenu') {
 			labels = ['', '', ''];
-		} else if (view == 'lib') {
+		} else if (state == 'lib') {
 			$('.menu').hide();
-			if (global.ui != 'cover' && !(/menu/gi).test(global.ui)) {
+			if (ui != 'cover' && !(/menu/gi).test(ui)) {
 				let $mid = $('.reel.r0').children();
 				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
 				makeCursor($mid, 'lib');
@@ -197,21 +218,23 @@ const controUI = function() {
 				makeCursor(cuis.lib.$cur, 'lib');
 			}
 		}
-		if ((/menu/gi).test(view)) {
-			$('#' + view).show();
-			makeCursor($('#' + view).find('.row-y').eq(0).children().eq(0), view);
+		if ((/menu/gi).test(state)) {
+			$('#' + state).show();
+			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
 		}
-		// if (subState == 'gcn') {
-		// 	for (let i = 0; i < labels.length; i++) {
-		// 		labels[i] = labels[i].toLowerCase();
-		// 	}
-		// }
+		if (uiSub == 'gcn') {
+			for (let i = 0; i < labels.length; i++) {
+				labels[i] = labels[i].toLowerCase();
+			}
+		}
 		$('.cover.power .text').text(labels[0]);
 		$('.cover.reset .text').text(labels[1]);
 		$('.cover.open .text').text(labels[2]);
-		global.ui = view;
+		resize(true);
+		ui = state;
+		this.ui = state;
 		if (opt.v) {
-			log('ui view: ' + view);
+			log('ui state: ' + state);
 		}
 	}
 	this.uiStateChange = uiStateChange;
@@ -232,7 +255,7 @@ const controUI = function() {
 	this.uieHovered = uieHovered;
 
 	async function move(direction) {
-		let $cur = global.$cur;
+		let $cur = $cur;
 		let $rowX = $cur.closest('.row-x');
 		let $rowY = $cur.closest('.row-y');
 		let curX, curY;
@@ -324,12 +347,12 @@ const controUI = function() {
 				move(lbl);
 				break;
 			case 'a':
-				await doAction(global.$cur.attr('name') || 'a');
+				await doAction($cur.attr('name') || 'a');
 				break;
 			case 'b':
 			case 'x':
 			case 'y':
-			case 'view':
+			case 'state':
 			case 'start':
 				await doAction(lbl);
 				break;
@@ -367,7 +390,7 @@ const controUI = function() {
 					// log(i + ' button press held');
 					continue;
 				}
-				// save button view change
+				// save button state change
 				btnStates[i] = query;
 				// if button press ended query is false
 				if (!query) {
@@ -432,9 +455,9 @@ const controUI = function() {
 					pos -= mouseWheelDeltaNSS;
 				}
 			}
-			cui.scrollTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
+			scrollTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
 		});
 	}
 
 };
-module.exports = new controUI();
+module.exports = new CUI();

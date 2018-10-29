@@ -47,8 +47,8 @@ module.exports = async function(opt) {
 	// the user's preferences and game libs json databases
 	const botDir = path.join(os.homedir(), '/Documents/bottlenose');
 	log(botDir);
-	const viewer = require('../js/gameLibViewer.js');
 	global.cui = require('../js/contro-ui.js');
+	const viewer = require('../js/gameLibViewer.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -308,20 +308,11 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		global.cui.uiStateChange('loading');
+		cui.uiStateChange('loading');
 		$('.menu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
-		let labels = ['Power', 'Reset', 'Open'];
-		if (sysStyle == 'gcn') {
-			for (let i = 0; i < labels.length; i++) {
-				labels[i] = labels[i].toLowerCase();
-			}
-		}
-		$('.cover.power .text').text(labels[0]);
-		$('.cover.reset .text').text(labels[1]);
-		$('.cover.open .text').text(labels[2]);
 
 		await intro();
 		let gamesPath = `${botDir}/usr/${sys}Games.json`;
@@ -331,7 +322,7 @@ module.exports = async function(opt) {
 		} else {
 			let emuDirExisted;
 			if (!emuDir) {
-				global.cui.uiStateChange('setupMenu');
+				cui.uiStateChange('setupMenu');
 				await removeIntro(0);
 				return;
 			} else {
@@ -384,7 +375,7 @@ emu (root folder can have any name)
 				`);
 				emuDir = '';
 				await removeIntro(0);
-				global.cui.uiStateChange('setupMenu');
+				cui.uiStateChange('setupMenu');
 				return;
 				// prefs[sys].libs.push(openLib(sys));
 			}
@@ -394,7 +385,7 @@ emu (root folder can have any name)
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		global.cui.uiStateChange('lib');
+		cui.uiStateChange('lib', sysStyle);
 	}
 
 	async function load() {
@@ -424,8 +415,19 @@ emu (root folder can have any name)
 		sys = prefs.session.sys;
 	}
 
+	cui.setResize((adjust) => {
+		let $cv = $('.cover.view');
+		let $cvSel = $cv.find('#view');
+		let cvHeight = $cv.height();
+		let cpHeight = $('.cover.power').height();
+		if (adjust || cvHeight != cpHeight) {
+			$cvSel.css('margin-top', (cpHeight + 24) * .5);
+			$('nav').height(cpHeight + 24);
+		}
+	});
+
 	async function removeIntro(time) {
-		await delay(time || 1000);
+		await delay(time || 2000);
 		$('#intro').remove();
 		$('link.introStyle').prop('disabled', true);
 		$('link.introStyle').remove();
@@ -437,17 +439,17 @@ emu (root folder can have any name)
 		await intro();
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		global.cui.uiStateChange('lib');
+		cui.uiStateChange('lib');
 	}
 
 	async function resetBtn() {
-		global.cui.removeView('lib');
-		global.cui.uiStateChange('resetting');
+		cui.removeView('lib');
+		cui.uiStateChange('resetting');
 		await intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		global.cui.uiStateChange('lib');
+		cui.uiStateChange('lib');
 	}
 
 	async function createTemplate(emuDir) {
@@ -460,18 +462,18 @@ emu (root folder can have any name)
 
 	async function doAction(act) {
 		log(act);
-		let ui = global.ui;
+		let ui = cui.ui;
 		let onMenu = (/menu/gi).test(ui);
 		let res = await viewer.doAction(act);
 		if (res) {
 			return res;
 		}
 		if (act == 'start' && !onMenu) {
-			global.cui.uiStateChange('pauseMenu');
+			cui.uiStateChange('pauseMenu');
 			return true;
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
-			global.cui.uiStateChange('lib');
+			cui.uiStateChange('lib');
 			return true;
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
@@ -497,9 +499,9 @@ emu (root folder can have any name)
 			if (!viewer) {
 				return;
 			}
-			global.cui.removeView('lib');
+			cui.removeView('lib');
 			sys = act;
-			global.cui.removeCursor();
+			cui.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu') {
 			if (act == 'fullscreen' || act == 'x') {
@@ -562,8 +564,7 @@ emu (root folder can have any name)
 		}
 		return true;
 	}
-	global.cui.setAction(doAction);
-	// global.cui.setActionCB(doAction);
+	cui.setAction(doAction);
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
 		buttonPressed('view');
@@ -577,21 +578,21 @@ emu (root folder can have any name)
 	});
 
 	$('#power').click(function() {
-		global.cui.buttonPressed('x');
+		cui.buttonPressed('x');
 	});
 	$('#view').click(function() {
-		global.cui.buttonPressed('start');
+		cui.buttonPressed('start');
 	});
 	$('#reset').click(function() {
-		global.cui.buttonPressed('y');
+		cui.buttonPressed('y');
 	});
 	$('#open').click(function() {
-		global.cui.buttonPressed('b');
+		cui.buttonPressed('b');
 	});
 
 	await load();
-	global.cui.uiStateChange('donateMenu');
-	global.cui.start({
+	cui.uiStateChange('donateMenu');
+	cui.start({
 		v: true
 	});
 };

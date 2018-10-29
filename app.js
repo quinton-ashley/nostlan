@@ -2,7 +2,6 @@
 
 const log = console.log;
 
-console.log('starting Bottlenose!');
 global.__rootDir = __dirname;
 const {
 	app,
@@ -11,12 +10,6 @@ const {
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const locals = {
-	title: 'Bottlenose',
-	__rootDir: __rootDir.replace(/\\/g, '/'),
-	node_modules: path.join(__rootDir, 'node_modules').replace(/\\/g, '/')
-};
-log(locals);
 const setupPug = require('electron-pug');
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -24,8 +17,18 @@ const setupPug = require('electron-pug');
 let mainWindow;
 
 async function createWindow() {
-	// and load the index.html of the app.
+	let pkgPath = path.join(__rootDir, 'package.json');
+	log(pkgPath);
+	let package = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+	log('starting ' + package.name);
+
 	try {
+		const locals = {
+			title: package.name,
+			__rootDir: __rootDir.replace(/\\/g, '/'),
+			node_modules: path.join(__rootDir, 'node_modules').replace(/\\/g, '/')
+		};
+		log(locals);
 		let pug = await setupPug({
 			pretty: true
 		}, locals);
@@ -33,11 +36,11 @@ async function createWindow() {
 		pug.on('error', function() {});
 	} catch (err) {
 		// Could not initiate 'electron-pug'
+		log(err);
 	}
 
 	mainWindow = new BrowserWindow({
 		width: 3840 / 2,
-		// height: 1634 / 2,
 		height: 2160 / 2,
 		frame: false
 	});

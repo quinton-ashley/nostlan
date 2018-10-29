@@ -1,5 +1,5 @@
 /*
- * renderer.js handles responses to user interactions with the menu and app UI
+ * index.js handles responses to user interactions with the menu and app UI
  * authors: quinton-ashley
  * copyright 2018
  */
@@ -27,13 +27,13 @@ module.exports = async function(opt) {
 	const opn = require('opn');
 	const path = require('path');
 	const pug = require('pug');
-	const $ = require('jquery');
 	var Mousetrap = require('mousetrap');
 	const osType = os.type();
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
 
+	const $ = require('jquery');
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
 	window.Bootstrap = require('bootstrap');
@@ -397,7 +397,7 @@ emu (root folder can have any name)
 			let html = await fs.readFile(file, 'utf8');
 			html = '<div class="md">' + md.render(html) + '</div>';
 			file = path.parse(file);
-			$('#' + file.name + 'Menu').prepend(html);
+			$('#' + file.name).prepend(html);
 		}
 		if (await fs.exists(prefsPath)) {
 			let prefs1 = JSON.parse(await fs.readFile(prefsPath));

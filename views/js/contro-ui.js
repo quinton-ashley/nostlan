@@ -16,7 +16,11 @@ const CUI = function() {
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
 
-	let btnNames = ['A', 'B', 'X', 'Y', 'Up', 'Down', 'Left', 'Right', 'view', 'Start'];
+	let btnNames = [
+		'a', 'b', 'x', 'y',
+		'up', 'down', 'left', 'right',
+		'view', 'start'
+	];
 	let btns = {};
 	for (let i of btnNames) {
 		btns[i] = gamepad.button(i);
@@ -37,9 +41,9 @@ const CUI = function() {
 		btnStates[i] = false;
 	}
 	let gvMainMenuLabels = {
-		X: 'power',
-		Y: 'reset',
-		B: 'open'
+		x: 'power',
+		y: 'reset',
+		b: 'open'
 	};
 
 	// Xbox One controller mapped to
@@ -47,10 +51,10 @@ const CUI = function() {
 	//  Y B  ->  X A
 	// X A  ->  Y B
 	let map = {
-		A: 'B',
-		B: 'A',
-		X: 'Y',
-		Y: 'X'
+		a: 'b',
+		b: 'a',
+		x: 'y',
+		y: 'x'
 	};
 
 	let doAction = () => {

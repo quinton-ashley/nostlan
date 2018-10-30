@@ -260,7 +260,6 @@ const CUI = function() {
 	this.uieHovered = uieHovered;
 
 	async function move(direction) {
-		let $cur = $cur;
 		let $rowX = $cur.closest('.row-x');
 		let $rowY = $cur.closest('.row-y');
 		let curX, curY;

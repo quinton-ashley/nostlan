@@ -78,7 +78,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --runtime=electron --target=3.0.2 --disturl=https://atom.io/download/atom-shell --abi=64",
+    "rebuild": "npm rebuild --runtime=electron --target=3.0.6 --disturl=https://atom.io/download/atom-shell --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
@@ -86,5 +86,5 @@
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "0.1.2"
+  "version": "0.1.3"
 }

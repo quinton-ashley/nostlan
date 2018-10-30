@@ -274,6 +274,14 @@ const Viewer = function() {
 					emuDirPath += '/canary-mingw';
 				}
 			}
+			if (sys == 'switch') {
+				emuDirPath = os.homedir() + '/AppData/Local/yuzu'
+				if (await fs.exists(emuDirPath + '/canary')) {
+					emuDirPath += '/canary';
+				} else {
+					emuDirPath += '/nightly';
+				}
+			}
 		} else if (mac) {
 			emuDirPath = '/Applications';
 		}
@@ -334,6 +342,7 @@ const Viewer = function() {
 		log(args);
 		log(emuDirPath);
 		cui.removeView('lib');
+		cui.uiStateChange('playing');
 		try {
 			// animatePlay();
 			await spawn(emuAppPath, args, {

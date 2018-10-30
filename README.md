@@ -1,6 +1,9 @@
 # Bottlenose
 
-Bottlenose is a _high quality_ front-end companion app for video game emulators!
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/build/icon.png)
+
+Bottlenose is a _high quality_ front-end companion app for video game emulators!  
+[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)
 
 ## A what?
 

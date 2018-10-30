@@ -470,16 +470,12 @@ emu (root folder can have any name)
 		}
 		if (act == 'start' && !onMenu) {
 			cui.uiStateChange('pauseMenu');
-			return true;
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
 			cui.uiStateChange('lib');
-			return true;
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
-			return true;
-		}
-		if (ui == 'lib') {
+		} else if (ui == 'lib') {
 			if (act == 'x') {
 				await powerBtn();
 			} else if (act == 'y') {

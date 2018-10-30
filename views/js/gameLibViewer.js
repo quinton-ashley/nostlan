@@ -371,6 +371,7 @@ const Viewer = function() {
 		if (ui == 'lib') {
 			if (act == 'a') {
 				cui.coverClicked();
+				cui.uiStateChange('cover');
 			} else if (act == 'b' && !onMenu) {
 				cui.uiStateChange('sysMenu');
 			} else {
@@ -379,6 +380,7 @@ const Viewer = function() {
 		} else if (ui == 'cover') {
 			if (act == 'b') {
 				cui.coverClicked();
+				cui.uiStateChange('lib');
 			} else if (act == 'y') {
 				flipCover();
 			} else {
@@ -449,9 +451,6 @@ const Viewer = function() {
 		cui.addView('lib');
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
-		if ($('.reel.bg').length) {
-			coverClicked();
-		}
 		if (!reload) {
 			cui.rebind('mouse');
 			// remote.getCurrentWindow().setFullScreen(true);

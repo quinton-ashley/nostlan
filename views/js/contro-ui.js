@@ -1,5 +1,7 @@
 const CUI = function() {
-	let opt = {};
+	let opt = {
+		v: true
+	};
 	const log = console.log;
 	const err = (msg) => {
 		log(msg);
@@ -144,7 +146,6 @@ const CUI = function() {
 
 	function coverClicked() {
 		let $reel = $cur.parent();
-		let id = $cur.attr('id');
 		scrollToGame(null, 1000);
 		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
@@ -153,11 +154,9 @@ const CUI = function() {
 		if ($cur.hasClass('selected')) {
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
-			uiStateChange('cover');
 		} else {
 			$reel.css('left', '');
 			$cur.css('transform', '');
-			uiStateChange('lib');
 		}
 	}
 	this.coverClicked = coverClicked;
@@ -196,6 +195,7 @@ const CUI = function() {
 	function uiStateChange(state, subState) {
 		uiSub = subState || uiSub;
 		if (state == ui) {
+			log('b' + state);
 			doAction('b');
 			return;
 		}
@@ -205,11 +205,12 @@ const CUI = function() {
 		let labels = ['Power', 'Reset', 'Open'];
 		if (state == 'cover') {
 			labels = ['Play', '', 'Back'];
+			makeCursor(cuis.lib.$cur, state);
 		} else if (state == 'sysMenu') {
 			labels = ['', '', 'Back'];
 		} else if (state == 'pauseMenu') {
 			labels = ['', '', 'Back'];
-		} else if (state == 'introMenu') {
+		} else if (state == 'donateMenu' || state == 'setupMenu') {
 			labels = ['', '', ''];
 		} else if (state == 'lib') {
 			$('.menu').hide();
@@ -219,7 +220,7 @@ const CUI = function() {
 				makeCursor($mid, 'lib');
 				scrollToGame(null, 10);
 			} else {
-				makeCursor(cuis.lib.$cur, 'lib');
+				makeCursor(cuis.lib.$cur, state);
 			}
 		}
 		if ((/menu/gi).test(state)) {

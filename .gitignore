@@ -1,4 +1,6 @@
 .DS_Store
+build/*
+dist/*
 dev/*
 usr/*
 node_modules/*

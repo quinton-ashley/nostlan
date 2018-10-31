@@ -1,13 +1,14 @@
 # Bottlenose
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/build/icon-sm.png)
-
 Bottlenose is a _high quality_ front-end companion app for video game emulators!  
 [Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/build/icon.png)
 
 ## A what?
 
-A front-end or user interface (UI) is the presentation layer of an app/website.  It's what you look at and interact with.  Most emulators display game libraries in a list view UI that you can only interact with using a mouse and keyboard.  These UIs may include a small thumbnail of the game's title or icon. Bottlenose serves as a replacement for many emulator UIs.  Bottlenose uses high quality box art you can browse through with a mouse or game controller!  It has a simple, unified UI, that prioritizes box art, not metadata.  It's like a Netflix/AppleTV/Kaleidescape media viewer for your game libraries!
+A front-end or user interface (UI) is the presentation/interaction layer of an app/website.  Most modern emulators have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
+
+Bottlenose looks similar to media viewer like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
 
 ## Features
 
@@ -15,22 +16,37 @@ A front-end or user interface (UI) is the presentation layer of an app/website. 
 -   designed for _UHD_ displays and projectors
 -   scrapes multiple database sites for the _highest quality_ box art
 -   _aesthetic_ UI themes for each supported console
+-   launch games in fullscreen
 -   reverse scroll effect on alternating rows in cover view mode
 -   images only get downloaded once and are stored locally for future use
+-   demo mode you can browse if don't have any games on your computer
 -   Windows and macOS supported
 
-## Supported Emulators (as of now)
+## Supported Emulators
 
--   Dolphin (Wii, Gamecube, Virtual Console)
-    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
--   DeSmuME (DS)
-    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
--   Cemu (Wii U)
-    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
--   Citra (3DS)
-    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
--   Yuzu (Switch)
-    ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
+#### Dolphin (Wii, Gamecube, Virtual Console)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
+
+#### DeSmuME (DS)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
+
+#### Cemu (Wii U)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
+
+#### Citra (3DS)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
+
+#### Yuzu (Switch)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
+
+#### RPCS3 (PS3)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.PNG)
 
 ## Please consider donating!
 
@@ -68,7 +84,7 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Steam is an ugly mess and if you're reading this you've probably used it already.  Not going to include a screen shot here.  You're welcome.
+Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
 
 ## Required File Structure
 

@@ -1,8 +1,7 @@
 .DS_Store
-build/*
-dist/*
-dev/*
-usr/*
-node_modules/*
+dist
+dev
+usr
+node_modules
 package-lock.json
 *.log

@@ -81,7 +81,7 @@ const Viewer = function() {
 	}
 
 	async function getImg(game, name, skip) {
-		let dir = `${prefs.emuDir}/${sys}/${game.id}/img`;
+		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 		let file, res, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
@@ -194,7 +194,7 @@ const Viewer = function() {
 			if (i == games.length) {
 				game = getTemplate();
 			}
-			imgDir = `${prefs.emuDir}/${sys}/${game.id}/img`;
+			imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
 				await getImg(game, 'box', true);
 				res = await getImg(game, 'coverFull');
@@ -222,7 +222,7 @@ const Viewer = function() {
 	}
 
 	async function imgExists(game, name) {
-		let file = `${prefs.emuDir}/${sys}/${game.id}/img/${name}.png`;
+		let file = `${prefs.btlDir}/${sys}/${game.id}/img/${name}.png`;
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
@@ -293,7 +293,7 @@ const Viewer = function() {
 		}
 		let emuDirPath;
 		if (win) {
-			emuDirPath = path.join(prefs.emuDir,
+			emuDirPath = path.join(prefs.btlDir,
 				`../${prefs[sys].emu}/BIN`);
 			if (sys == '3ds') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {

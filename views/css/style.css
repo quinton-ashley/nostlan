@@ -34,8 +34,9 @@ html {
 	display: none;
 }
 
-#setupMenu {
-	transform: translate(25vw, 6vh);
+#setupMenu,
+#welcomeMenu {
+	transform: translate(25vw, 2vh);
 }
 
 .md code,

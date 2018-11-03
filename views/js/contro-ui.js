@@ -236,12 +236,8 @@ const CUI = function() {
 		if (state == 'cover') {
 			labels = ['Play', '', 'Back'];
 			makeCursor(cuis.lib.$cur, state);
-		} else if (state == 'sysMenu') {
+		} else if (state == 'sysMenu' || state == 'pauseMenu') {
 			labels = ['', '', 'Back'];
-		} else if (state == 'pauseMenu') {
-			labels = ['', '', 'Back'];
-		} else if (state == 'donateMenu' || state == 'setupMenu') {
-			labels = ['', '', ''];
 		} else if (state == 'lib') {
 			$('.menu').hide();
 			if (ui != 'cover' && !(/menu/gi).test(ui)) {
@@ -252,6 +248,8 @@ const CUI = function() {
 			} else {
 				makeCursor(cuis.lib.$cur, state);
 			}
+		} else {
+			labels = ['', '', ''];
 		}
 		if ((/menu/gi).test(state)) {
 			$('#' + state).show();

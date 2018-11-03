@@ -51,15 +51,15 @@ module.exports = async function(opt) {
 	// bottlenose dir location cannot be changed
 	// only used to store small files, no images
 	// the user's preferences and game libs json databases
-	const botDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
-	log(botDir);
+	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
+	log(usrDir);
 	global.cui = require('../js/contro-ui.js');
 	const viewer = require('../js/gameLibViewer.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
-	let prefsPath = botDir + '/_usr/prefs.json';
+	let prefsPath = usrDir + '/_usr/prefs.json';
 	let prefs = prefsDefault;
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac
@@ -72,6 +72,7 @@ module.exports = async function(opt) {
 	let sys;
 	let sysStyle = '';
 	let emuDir = '';
+	let btlDir = '';
 	let games = [];
 
 	let introFiles = {
@@ -294,7 +295,7 @@ module.exports = async function(opt) {
 				}
 			}
 		}
-		let gamesPath = `${botDir}/_usr/${sys}Games.json`;
+		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
 		}));
@@ -308,7 +309,7 @@ module.exports = async function(opt) {
 		$('body').addClass(sys + ' ' + sysStyle);
 
 		await intro();
-		let gamesPath = `${botDir}/_usr/${sys}Games.json`;
+		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
@@ -322,7 +323,7 @@ module.exports = async function(opt) {
 			if (sys == 'ps3') {
 				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/dev_hdd0/game`;
 			}
-			if (await fs.exists(gameLibDir)) {
+			if (!(await fs.exists(gameLibDir))) {
 				gameLibDir = cui.selectDir(`select ${sys} game directory`);
 			}
 			if (await fs.exists(gameLibDir)) {
@@ -332,33 +333,17 @@ module.exports = async function(opt) {
 				if (!prefs[sys].libs.includes(gameLibDir)) {
 					prefs[sys].libs.push(gameLibDir);
 				}
-				emuDir += '/bottlenose';
-				await fs.ensureDir(emuDir);
-				prefs.emuDir = emuDir;
 			} else {
-				err(`
-Error!
-choose emulation folder with directory structure:
-
-emu (root folder can have any name)
-└─┬ Dolphin
-  ├─┬ BIN
-  │ ├── User/...
-  │ ├── portable.txt
-  │ └── Dolphin.exe
-  └─┬ GAMES
-    ├── Super Mario Sunshine.gcz
-    ├── Super Smash Bros Melee.iso
-    └── sm64.wad
-				`);
-				emuDir = '';
-				await removeIntro(0);
-				cui.uiStateChange('setupMenu');
+				err(`Couldn't load game library`);
+				await reload();
 				return;
-				// prefs[sys].libs.push(openLib(sys));
 			}
 			await reset();
 		}
+		btlDir = emuDir + '/bottlenose';
+		await fs.ensureDir(btlDir);
+		prefs.btlDir = btlDir;
+		log(prefs.btlDir);
 		prefs.session.sys = sys;
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
@@ -376,31 +361,39 @@ emu (root folder can have any name)
 			if (path.parse(file).name == 'setupMenu') {
 				if (win) {
 					html += `
-					\`\`\`javascript
-					emu (root folder can have any name)
-					└─┬ Dolphin
-						├─┬ BIN
-						│ ├── User/...
-						│ ├── portable.txt
-						│ └── Dolphin.exe
-						└─┬ GAMES
-							├── Super Mario Sunshine.gcz
-							├── Super Smash Bros Melee.iso
-							└── sm64.wad
-					\`\`\`
-					`;
+Windows users should not store emulator apps or games in \`Program Files\` or any other folder that Bottlenose will not have read/write access to.  On Windows Bottlenose will look for emulator executables in the \`BIN\` folder or the default install location of that emulator.
+\`\`\`
+	emu (root folder can have any name)
+	└─┬ Dolphin
+		├─┬ BIN
+		│ ├── User/...
+		│ ├── portable.txt
+		│ └── Dolphin.exe
+		└─┬ GAMES
+			├── Super Mario Sunshine.gcz
+			├── Super Smash Bros Melee.iso
+			└── sm64.wad
+\`\`\`
+`;
 				} else {
+					if (mac) {
+						html += 'On macOS, Bottlenose will look for emulator apps in `/Applications/`';
+					} else {
+						html += 'On Linux, Bottlenose will look for emulator apps in their default install locations.';
+					}
 					html += `
-					\`\`\`javascript
-					emu (root folder can have any name)
-					└─┬ Dolphin
-						└─┬ GAMES
-							├── Super Mario Sunshine.gcz
-							├── Super Smash Bros Melee.iso
-							└── sm64.wad
-					\`\`\`
-					`;
+\`\`\`
+	emu (root folder can have any name)
+	└─┬ Dolphin
+		└─┬ GAMES
+			├── Super Mario Sunshine.gcz
+			├── Super Smash Bros Melee.iso
+			└── sm64.wad
+\`\`\`
+`;
 				}
+				html += 'Choose "continue" when you\'re ready.';
+				html = html.replace(/\t/g, '  ');
 			}
 			html = '<div class="md">' + md.render(html) + '</div>';
 			file = path.parse(file);
@@ -409,7 +402,7 @@ emu (root folder can have any name)
 		if (await fs.exists(prefsPath)) {
 			let prefs1 = JSON.parse(await fs.readFile(prefsPath));
 			deepExtend(prefs, prefs1);
-			emuDir = prefs.emuDir;
+			emuDir = path.join(prefs.btlDir, '..');
 		}
 		// currently supported systems
 		let sysMenuHTML = '<div class="row-y">';
@@ -529,7 +522,7 @@ emu (root folder can have any name)
 			} else {
 				return false;
 			}
-		} else if (ui == 'setupMenu') {
+		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
 				emuDir = cui.selectDir(`
 							choose the folder you want the demo folder to go in
@@ -543,12 +536,23 @@ emu (root folder can have any name)
 				await createTemplate(emuDir);
 				emuDir += '/bottlenose';
 				await reload();
-			} else if (act == 'template' || act == 'usb') {
+			} else if (act == 'full') {
+				$('.menu').hide();
+				cui.uiStateChange('setupMenu');
+			} else {
+				return false;
+			}
+		} else if (ui == 'setupMenu') {
+			if (act == 'new' || act == 'new-in-docs' || act == 'old') {
 				let msg = `choose the folder you want to template to go in`;
-				if (act == 'usb') {
+				if (act == 'old') {
 					msg = `choose the folder EMULATORS from your WiiUSBHelper file structure`;
 				}
-				emuDir = cui.selectDir(msg);
+				if (act == 'new-in-docs') {
+					emuDir = os.homedir() + '/Documents';
+				} else {
+					emuDir = cui.selectDir(msg);
+				}
 				if (!emuDir) {
 					return false;
 				}
@@ -557,12 +561,11 @@ emu (root folder can have any name)
 				}
 				await createTemplate(emuDir);
 				opn(emuDir);
-			} else if (act == 'full') {
+			} else if (act == 'continue') {
 				if (!(await fs.exists(emuDir))) {
-					emuDir = path.join(os.homedir(), '/Documents/emu');
+					emuDir = os.homedir() + '/Documents/emu';
 				}
 				await createTemplate(emuDir);
-				emuDir += '/bottlenose';
 				await reload();
 			} else {
 				return false;
@@ -599,7 +602,11 @@ emu (root folder can have any name)
 	});
 
 	await load();
-	cui.uiStateChange('donateMenu');
+	if (await fs.exists(prefsPath)) {
+		cui.uiStateChange('donateMenu');
+	} else {
+		cui.uiStateChange('welcomeMenu');
+	}
 	cui.start({
 		v: true
 	});

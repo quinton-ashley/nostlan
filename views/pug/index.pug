@@ -17,12 +17,16 @@ body
 			.uie(name='donate-monthly') donate monthly
 			.uie(name='donate-single') donate one-time
 			.uie(name='donate-later') remind me later
+	#welcomeMenu.menu
+		.row-y
+			.uie(name='full') setup full version
+			.uie(name='demo') use demo mode
 	#setupMenu.menu
 		.row-y
-			.uie(name='demo') demo mode
-			.uie(name='usb') use WiiUSBHelper template
-			.uie(name='template') create new template
-			.uie(name='full') full version
+			.uie(name='old') use existing WiiUSBHelper template
+			.uie(name='new-in-docs') create new template in ~/Documents
+			.uie(name='new') create new template
+			.uie(name='continue') continue
 	#pauseMenu.menu
 		h1 Pause Menu
 		.row-y

@@ -14,6 +14,12 @@ const CUI = function() {
 		or,
 		and
 	} = require('contro');
+	const remote = require('electron').remote;
+	const {
+		app,
+		dialog,
+		Menu
+	} = remote;
 
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
@@ -58,6 +64,30 @@ const CUI = function() {
 		x: 'y',
 		y: 'x'
 	};
+
+	this.selectDir = function(msg) {
+		let dir = [''];
+		try {
+			dir = dialog.showOpenDialog({
+				properties: ['openDirectory'],
+				title: 'choose folder',
+				message: msg
+			});
+		} catch (ror) {}
+		return dir[0];
+	}
+
+	this.selectFile = function(msg) {
+		let file = '';
+		try {
+			file = dialog.showOpenDialog({
+				properties: ['openFile'],
+				title: 'choose file',
+				message: msg
+			});
+		} catch (ror) {}
+		return file;
+	}
 
 	let doAction = () => {
 		log('set custom actions with the setAction method');

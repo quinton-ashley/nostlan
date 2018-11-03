@@ -19,10 +19,17 @@ const Viewer = function() {
 	const os = require('os');
 	const path = require('path');
 	const req = require('requisition');
-	const osType = os.type();
+	let osType = os.type();
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
 	const win = (osType == 'Windows_NT');
+	if (win) {
+		osType = 'win';
+	} else if (mac) {
+		osType = 'mac';
+	} else if (linux) {
+		osType = 'linux';
+	}
 
 	let games;
 	let prefs;
@@ -257,11 +264,32 @@ const Viewer = function() {
 		remote.getCurrentWindow().minimize();
 	}
 
-	this.powerBtn = async function() {
-		let id = cui.getCur('lib').attr('id');
-		if (!id) {
-			log('game not found:\n' + cui.getCur('lib'));
-			return;
+	function getAbsolutePath(file) {
+		let lib = file.match(/\$\d+/g);
+		if (lib) {
+			lib = lib[0].substr(1);
+			log(lib);
+			file = file.replace(/\$\d+/g, prefs[sys].libs[lib]);
+		}
+		let tags = file.match(/\$[a-zA-Z]+/g);
+		if (!tags) {
+			return file;
+		}
+		let replacement = '';
+		for (tag of tags) {
+			tag = tag.substr(1);
+			if (tag == 'home') {
+				replacement = os.homedir();
+			}
+			file = file.replace('$' + tag, replacement);
+		}
+		return file;
+	}
+
+	async function getEmuAppPath() {
+		let emuAppPath = getAbsolutePath(prefs[sys].app[osType]);
+		if (emuAppPath && await fs.exists(emuAppPath)) {
+			return emuAppPath;
 		}
 		let emuDirPath;
 		if (win) {
@@ -275,7 +303,7 @@ const Viewer = function() {
 				}
 			}
 			if (sys == 'switch') {
-				emuDirPath = os.homedir() + '/AppData/Local/yuzu'
+				emuDirPath = os.homedir() + '/AppData/Local/yuzu';
 				if (await fs.exists(emuDirPath + '/canary')) {
 					emuDirPath += '/canary';
 				} else {
@@ -290,7 +318,6 @@ const Viewer = function() {
 			prefs[sys].emu.toLowerCase(),
 			prefs[sys].emu.toUpperCase()
 		];
-		let emuAppPath;
 		for (let i = 0; i < emuNameCases.length; i++) {
 			emuAppPath = `${emuDirPath}/${emuNameCases[i]}`;
 			if (win) {
@@ -301,22 +328,60 @@ const Viewer = function() {
 			} else if (mac) {
 				if (sys == '3ds') {
 					emuAppPath += `/nightly/${emuNameCases[1]}-qt`;
+				} else if (sys == 'switch') {
+					emuAppPath += '/' + emuNameCases[1];
 				}
-				emuAppPath += '.app/Contents/MacOS/' + emuNameCases[0];
+				emuAppPath += '.app/Contents/MacOS';
+				if (sys == 'ds') {
+					emuAppPath += '/' + emuNameCases[0];
+				} else {
+					emuAppPath += '/' + emuNameCases[1];
+				}
 				if (sys == '3ds') {
 					emuAppPath += '-qt-bin';
+				} else if (sys == 'switch') {
+					emuAppPath += '-bin';
 				}
 			}
 			if (await fs.exists(emuAppPath)) {
 				break;
 			}
 		}
+		if (!(await fs.exists(emuAppPath))) {
+			emuAppPath = cui.selectFile('select emulator app');
+			if (mac) {
+				emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
+				if (sys == '3ds') {
+					emuAppPath += '-qt-bin';
+				} else if (sys == 'switch') {
+					emuAppPath += '-bin';
+				}
+			}
+		}
+		if (!(await fs.exists(emuAppPath))) {
+			err('app path not valid');
+			return;
+		}
+		prefs[sys].app[osType] = emuAppPath;
+		return emuAppPath;
+	}
+
+	this.powerBtn = async function() {
+		let id = cui.getCur('lib').attr('id');
+		if (!id) {
+			log('game not found:\n' + cui.getCur('lib'));
+			return;
+		}
+		let emuAppPath = await getEmuAppPath();
 		let gameFile = games.find(x => x.id === id);
 		if (gameFile) {
-			gameFile = gameFile.file;
+			gameFile = getAbsolutePath(gameFile.file);
 		} else {
 			log('game not found: ' + id);
 			return;
+		}
+		if (sys == 'ps3') {
+			gameFile += '/USRDIR/EBOOT.BIN';
 		}
 		let args = [];
 		if (sys == 'wiiu') {
@@ -338,6 +403,7 @@ const Viewer = function() {
 		} else if (sys == 'wii') {
 			args.push('-b');
 		}
+		emuDirPath = path.join(emuAppPath, '..');
 		log(emuAppPath);
 		log(args);
 		log(emuDirPath);

@@ -6,9 +6,9 @@ Bottlenose is a _high quality_ front-end companion app for video game emulators!
 
 ## A what?
 
-A front-end or user interface (UI) is the presentation/interaction layer of an app/website.  Most modern emulators have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
+A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulators have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
 
-Bottlenose looks similar to media viewer like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
+Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
 
 ## Features
 
@@ -70,7 +70,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   Linux support
 -   list style view mode for browsing through box sides
 
-## How is Bottlenose different form other front-ends?
+## How is Bottlenose different from other front-ends?
 
 Emulation Station is a nice front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  However, with Bottlenose I wanted to make box art the primary, practically singular, focus of the UI, not metadata or descriptions.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
@@ -86,7 +86,7 @@ Windows Explorer, despite not having gamepad support, is also surprisingly popul
 
 Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
 
-## Required File Structure
+## Template File Structure
 
 ```javascript
 emu (root folder can have any name)
@@ -110,17 +110,17 @@ emu (root folder can have any name)
         └── Turbo.rpx
 ```
 
-Bottlenose was designed to use the same directory structure as WiiUSBHelper, for compatibility.  Although sadly WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Bottlenose was designed to optionally use the same directory structure as WiiUSBHelper, for compatibility.  Although sadly WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
-Update: The yuzu devs just released an auto-updater that doesn't let you pick the install location for yuzu.  For now you can just put shortcuts to yuzu and yuzu-cmd in Yuzu's BIN folder.
+On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
 
 ## Development Info
 
-Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in plain old, no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, Contro, and Google's Material Design Icons.
+Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in plain old, no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
 
 ## Collaboration Guide
 
-PRs are welcome!  Please follow my coding style though.  Line length should be ~80.  In general I prefer more verbose JS syntax.  End each line of code with a semicolon.  No if statements without brackets.  No callback pyramids, use Async/Await whenever possible.  Comment your code but not too much.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Pay attention to whether you need to write system/emu specific or general code.
+PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.
 
 ## Contributing to Bottlenose
 
@@ -263,4 +263,4 @@ DS_BIOS
 
 ## Legal Disclaimer
 
-Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of texture packers, Nintendo, Sony, or Microsoft.  Anyone asking for or sharing information related to illegal activities on this project's Github page will be banned.
+Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of texture packers, developers, or publishers.  Bottlenose is not affiliated with Nintendo, Sony, or Microsoft.  Anyone asking for or sharing information related to digital piracy on this project's Github issues will have their comments removed and flagged.

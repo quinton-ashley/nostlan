@@ -8,49 +8,50 @@ link(rel='stylesheet' type='text/css' href='../css/style.css')
 link(rel='stylesheet' type='text/css' href='../css/gameLibViewer.css')
 title= title
 body
-  #dialogs
-    p#loadDialog0
-    p#loadDialog1
-  #donateMenu.menu
-    .row-y
-      .uie(name='donated') already donated
-      .uie(name='donate-monthly') donate monthly
-      .uie(name='donate-single') donate one-time
-      .uie(name='donate-later') remind me later
-  #setupMenu.menu
-    .row-y
-      .uie(name='demo') demo mode
-      .uie(name='template') create template
-      .uie(name='full') full version
-  #pauseMenu.menu
-    h1 Pause Menu
-    .row-y
-      .uie(name='fullscreen') fullscreen
-      .uie(name='prefs') preferences
-      .uie(name='quit') quit
-  #sysMenu.row-y.menu
-    h1 Select System
-  #lib.row-x
+	#dialogs
+		p#loadDialog0
+		p#loadDialog1
+	#donateMenu.menu
+		.row-y
+			.uie(name='donated') already donated
+			.uie(name='donate-monthly') donate monthly
+			.uie(name='donate-single') donate one-time
+			.uie(name='donate-later') remind me later
+	#setupMenu.menu
+		.row-y
+			.uie(name='demo') demo mode
+			.uie(name='usb') use WiiUSBHelper template
+			.uie(name='template') create new template
+			.uie(name='full') full version
+	#pauseMenu.menu
+		h1 Pause Menu
+		.row-y
+			.uie(name='fullscreen') fullscreen
+			.uie(name='prefs') preferences
+			.uie(name='quit') quit
+	#sysMenu.row-y.menu
+		h1 Select System
+	#lib.row-x
 nav.navbar.fixed-top.p-0
-  .cover.power.p-2.m-0: ul.nav.justify-content-left.m-0
-    .text Power
-    li.nav-item
-      button#power.powerBtn.nav-link
-      //- img.logoNav(src='../img/logo.png')
-  .cover.view.p-2.m-0: ul.nav.justify-content-right.m-0
-    li.nav-item
-      button#view Bottlenose
+	.cover.power.p-2.m-0: ul.nav.justify-content-left.m-0
+		.text Power
+		li.nav-item
+			button#power.powerBtn.nav-link
+			//- img.logoNav(src='../img/logo.png')
+	.cover.view.p-2.m-0: ul.nav.justify-content-right.m-0
+		li.nav-item
+			button#view Bottlenose
 nav.navbar.fixed-bottom.p-0
-  .cover.reset.p-2.m-0: ul.nav.justify-content-left.m-0
-    .text Reset
-    li.nav-item
-      button#reset.resetBtn.nav-link
-      i#update.material-icons.md-light autorenew
-  .cover.open.p-2.m-0: ul.nav.justify-content-right.m-0
-    li.nav-item
-      button#open.openBtn.nav-link
-    .text Open
+	.cover.reset.p-2.m-0: ul.nav.justify-content-left.m-0
+		.text Reset
+		li.nav-item
+			button#reset.resetBtn.nav-link
+			i#update.material-icons.md-light autorenew
+	.cover.open.p-2.m-0: ul.nav.justify-content-right.m-0
+		li.nav-item
+			button#open.openBtn.nav-link
+		.text Open
 script.
-  console.log('opening index.pug');
-  console.log('#{node_modules}');
-  require('../js/index.js')({__rootDir:'#{__rootDir}'});
+	console.log('opening index.pug');
+	console.log('#{node_modules}');
+	require('../js/index.js')({__rootDir:'#{__rootDir}'});

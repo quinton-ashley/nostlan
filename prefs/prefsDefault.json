@@ -2,23 +2,38 @@
 	"emuDir": "",
 	"region": "E",
 	"ds": {
+		"app": {},
 		"emu": "DeSmuME"
 	},
 	"wii": {
+		"app": {},
 		"emu": "Dolphin",
-		"style": "gcn"
+		"style": "gcn",
+		"usr": {
+			"mac": "$home/Library/Application Support/Dolphin",
+			"linux": "$home/.local/share/dolphin-emu"
+		}
 	},
 	"wiiu": {
+		"app": {},
 		"emu": "Cemu"
 	},
 	"3ds": {
+		"app": {
+			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
+		},
 		"emu": "Citra",
 		"style": "n3ds"
 	},
 	"switch": {
+		"app": {
+			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
+			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
+		},
 		"emu": "Yuzu"
 	},
 	"ps3": {
+		"app": {},
 		"emu": "RPCS3"
 	},
 	"ui": {

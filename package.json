@@ -86,5 +86,5 @@
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "0.1.7"
+  "version": "0.1.8"
 }

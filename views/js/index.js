@@ -5,10 +5,6 @@
  */
 module.exports = async function(opt) {
 	const log = console.log;
-	const err = (msg) => {
-		log(msg);
-		alert(msg);
-	};
 	global.__rootDir = opt.__rootDir;
 
 	const remote = require('electron').remote;
@@ -21,11 +17,9 @@ module.exports = async function(opt) {
 	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
 	const klawSync = require('klaw-sync');
-	const md = require('markdown-it')();
 	const os = require('os');
 	const opn = require('opn');
 	const path = require('path');
-	const pug = require('pug');
 	var Mousetrap = require('mousetrap');
 	let osType = os.type();
 	const linux = (osType == 'Linux');
@@ -43,10 +37,24 @@ module.exports = async function(opt) {
 	window.$ = window.jQuery = $;
 	window.Tether = require('tether');
 	window.Bootstrap = require('bootstrap');
-
-	String.prototype.replaceAt = function(index, replacement) {
-		return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+	String.prototype.insert = function(insert, index) {
+		return this.substr(0, index) + insert + this.substr(index);
 	}
+
+	const markdown = require('markdown-it')();
+	global.md = (str) => {
+		return markdown.render(str);
+	};
+	log(md('# hello'));
+	const pDog = require('pug');
+	global.pug = (str, insert) => {
+		str = pDog.compile(str)();
+		if (insert) {
+			str = str.insert(insert, str.lastIndexOf('<'));
+		}
+		return str;
+	};
+	log(pug('.hello hello'));
 
 	// bottlenose dir location cannot be changed
 	// only used to store small files, no images
@@ -94,7 +102,7 @@ module.exports = async function(opt) {
 				} else {
 					introFile = await fs.readFile(introFile, 'utf8');
 					if (type == 'pug') {
-						introFile = pug.compile(introFile);
+						introFile = pug(introFile);
 					}
 					introFiles[fType][sysStyle] = introFile;
 				}
@@ -334,7 +342,7 @@ module.exports = async function(opt) {
 					prefs[sys].libs.push(gameLibDir);
 				}
 			} else {
-				err(`Couldn't load game library`);
+				cui.err(`Couldn't load game library`);
 				await reload();
 				return;
 			}
@@ -348,7 +356,7 @@ module.exports = async function(opt) {
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		cui.uiStateChange('lib', sysStyle);
+		cui.uiStateChange('libMain', sysStyle);
 	}
 
 	async function load() {
@@ -395,7 +403,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				html += 'Choose "continue" when you\'re ready.';
 				html = html.replace(/\t/g, '  ');
 			}
-			html = '<div class="md">' + md.render(html) + '</div>';
+			html = pug('.md', md(html));
 			file = path.parse(file);
 			$('#' + file.name).prepend(html);
 		}
@@ -405,13 +413,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			emuDir = path.join(prefs.btlDir, '..');
 		}
 		// currently supported systems
-		let sysMenuHTML = '<div class="row-y">';
+		let sysMenuHTML = '.row-y\n';
 		for (let i = 0; i < systems.length; i++) {
 			sys = systems[i];
-			sysMenuHTML += `<div class="uie" name="${sys}">${((prefs[sys].style || '') + ' ' + sys).trim()}</div>`;
+			let text = ((prefs[sys].style || '') + ' ' + sys).trim();
+			sysMenuHTML += `\t.uie(name="${sys}") ${text}\n`;
 		}
-		sysMenuHTML += '</div>';
-		$('#sysMenu').append(sysMenuHTML);
+		$('#sysMenu').append(pug(sysMenuHTML));
 		sys = prefs.session.sys;
 	}
 
@@ -424,6 +432,25 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			$cvSel.css('margin-top', (cpHeight + 24) * .5);
 			$('nav').height(cpHeight + 24);
 		}
+	});
+
+	cui.setUIOnChange((state, subState) => {
+		let labels = ['', '', ''];
+		if (state == 'cover') {
+			labels = ['Play', '', 'Back'];
+		} else if (state == 'libMain') {
+			labels = ['Power', 'Reset', 'Open'];
+		} else if (state == 'sysMenu' || state == 'pauseMenu') {
+			labels = ['', '', 'Back'];
+		}
+		if (subState == 'gcn') {
+			for (let i = 0; i < labels.length; i++) {
+				labels[i] = labels[i].toLowerCase();
+			}
+		}
+		$('.cover.power .text').text(labels[0]);
+		$('.cover.reset .text').text(labels[1]);
+		$('.cover.open .text').text(labels[2]);
 	});
 
 	async function removeIntro(time) {
@@ -439,17 +466,17 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		await intro();
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		cui.uiStateChange('lib');
+		cui.uiStateChange('libMain');
 	}
 
 	async function resetBtn() {
-		cui.removeView('lib');
+		cui.removeView('libMain');
 		cui.uiStateChange('resetting');
 		await intro();
 		await reset();
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
-		cui.uiStateChange('lib');
+		cui.uiStateChange('libMain');
 	}
 
 	async function createTemplate(emuDir) {
@@ -474,10 +501,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.uiStateChange('pauseMenu');
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
-			cui.uiStateChange('lib');
+			cui.uiStateChange('libMain');
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
-		} else if (ui == 'lib') {
+		} else if (ui == 'libMain') {
 			if (act == 'x') {
 				await powerBtn();
 			} else if (act == 'y') {
@@ -497,7 +524,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (!viewer) {
 				return;
 			}
-			cui.removeView('lib');
+			cui.removeView('libMain');
 			sys = act;
 			cui.removeCursor();
 			await reload();
@@ -524,9 +551,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
-				emuDir = cui.selectDir(`
-							choose the folder you want the demo folder to go in
-							`);
+				emuDir = cui.selectDir(`choose the folder you want the demo folder to go in`);
 				if (!emuDir) {
 					return false;
 				}

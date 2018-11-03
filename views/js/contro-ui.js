@@ -3,10 +3,6 @@ const CUI = function() {
 		v: true
 	};
 	const log = console.log;
-	const err = (msg) => {
-		log(msg);
-		alert(msg);
-	};
 	const {
 		Mouse,
 		Keyboard,
@@ -14,15 +10,16 @@ const CUI = function() {
 		or,
 		and
 	} = require('contro');
-	const remote = require('electron').remote;
-	const {
-		app,
-		dialog,
-		Menu
-	} = remote;
-
 	let gamepad = new Gamepad();
 	let gamepadConnected = false;
+
+	// electron support
+	let remote = {};
+	let dialog = {};
+	try {
+		remote = require('electron').remote;
+		dialog = remote.dialog;
+	} catch (e) {}
 
 	let btnNames = [
 		'a', 'b', 'x', 'y',
@@ -136,9 +133,9 @@ const CUI = function() {
 	}
 	this.scrollTo = scrollTo;
 
-	function scrollToGame(gameID, time, noSmallDistScrolling) {
-		if (gameID) {
-			$cur = $('.' + gameID).eq(0);
+	function scrollToCursor(time, minDistance) {
+		if ((/menu/gi).test(ui)) {
+			return;
 		}
 		if (opt.v) {
 			log($cur);
@@ -156,27 +153,22 @@ const CUI = function() {
 			position -= $(window).height() * .5;
 		}
 		let scrollDist = Math.abs(pos - position);
-		if (noSmallDistScrolling && scrollDist < $(window).height() * .4) {
+		minDistance = minDistance || .6;
+		if (scrollDist < $(window).height() * minDistance) {
 			return;
 		}
-		if (noSmallDistScrolling && scrollDist > $cur.height() * 1.1) {
-			time += scrollDist;
+		let sTime = time || ($(window).height() * 2 - $cur.height()) / 5;
+		if (!time && scrollDist > $cur.height() * (.5 + minDistance)) {
+			sTime += scrollDist;
 		}
-		scrollTo(position, time);
-	}
-	this.scrollToGame = scrollToGame;
-
-	function scrollToCursor() {
-		if (ui == 'lib') {
-			scrollToGame(null, ($(window).height() * 2 - $cur.height()) / 5, true);
-		}
+		log('scroll' + sTime);
+		scrollTo(position, sTime);
 	}
 	this.scrollToCursor = scrollToCursor;
 
-
 	function coverClicked() {
 		let $reel = $cur.parent();
-		scrollToGame(null, 1000);
+		scrollToCursor(1000);
 		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
@@ -200,6 +192,9 @@ const CUI = function() {
 	this.removeCursor = removeCursor;
 
 	function makeCursor($cursor, state) {
+		if (!$cursor) {
+			return;
+		}
 		removeCursor();
 		$cur = $cursor;
 		$cur.addClass('cursor');
@@ -211,9 +206,7 @@ const CUI = function() {
 	this.makeCursor = makeCursor;
 
 	function addView(state) {
-		if ('lib') {
-			$('#lib .uie').click(uieClicked);
-		}
+		$(`#${state} .uie`).click(uieClicked);
 	}
 	this.addView = addView;
 
@@ -222,49 +215,47 @@ const CUI = function() {
 	}
 	this.removeView = removeView;
 
+	let uiOnChange = () => {
+		log('set custom ui state change with the setUIStateChange method');
+	};
+
+	this.setUIOnChange = function(func) {
+		uiOnChange = func;
+	};
+
 	function uiStateChange(state, subState) {
-		uiSub = subState || uiSub;
 		if (state == ui) {
 			log('b' + state);
 			doAction('b');
 			return;
 		}
-		$('#lib').removeClass();
-		$('#lib').addClass('row-x');
-		$('#lib').addClass(state);
-		let labels = ['Power', 'Reset', 'Open'];
-		if (state == 'cover') {
-			labels = ['Play', '', 'Back'];
-			makeCursor(cuis.lib.$cur, state);
+		uiOnChange(state, subState || uiSub);
+		if (subState) {
+			$('#' + state).removeClass(uiSub || 'XXXXX');
+			$('#' + state).addClass(subState);
+		}
+		if ((/cover/gi).test(state)) {
+			makeCursor(cuis[ui].$cur, state);
 		} else if (state == 'sysMenu' || state == 'pauseMenu') {
 			labels = ['', '', 'Back'];
-		} else if (state == 'lib') {
+		} else if ((/main/gi).test(state)) {
 			$('.menu').hide();
-			if (ui != 'cover' && !(/menu/gi).test(ui)) {
+			if (!(/cover/gi).test(ui) && !(/menu/gi).test(ui)) {
 				let $mid = $('.reel.r0').children();
 				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
-				makeCursor($mid, 'lib');
-				scrollToGame(null, 10);
+				makeCursor($mid, state);
+				scrollToCursor(10);
 			} else {
-				makeCursor(cuis.lib.$cur, state);
+				makeCursor(cuis[state].$cur, state);
 			}
-		} else {
-			labels = ['', '', ''];
 		}
 		if ((/menu/gi).test(state)) {
 			$('#' + state).show();
 			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
 		}
-		if (uiSub == 'gcn') {
-			for (let i = 0; i < labels.length; i++) {
-				labels[i] = labels[i].toLowerCase();
-			}
-		}
-		$('.cover.power .text').text(labels[0]);
-		$('.cover.reset .text').text(labels[1]);
-		$('.cover.open .text').text(labels[2]);
 		resize(true);
 		ui = state;
+		uiSub = subState || uiSub;
 		this.ui = state;
 		if (opt.v) {
 			log('ui state: ' + state);
@@ -490,6 +481,18 @@ const CUI = function() {
 			scrollTo(pos, ((!mouse.wheel.smooth) ? 2000 : 0));
 		});
 	}
+
+	function err(msg) {
+		log(msg);
+		let $errMenu = $('#errMenu');
+		if (!$errMenu.length) {
+			$('body').append(pug('#errMenu.menu: .md'));
+			$errMenu = $('#errMenu');
+		}
+		$errMenu.prepend(md('# Error  ' + msg));
+		alert(msg);
+	}
+	this.err = err;
 
 };
 module.exports = new CUI();

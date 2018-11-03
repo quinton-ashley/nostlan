@@ -1,10 +1,6 @@
 const Viewer = function() {
 	let opt = {};
 	const log = console.log;
-	const err = (msg) => {
-		log(msg);
-		alert(msg);
-	};
 
 	const {
 		remote
@@ -99,7 +95,7 @@ const Viewer = function() {
 				return res;
 			}
 		}
-		$('#loadDialog0').html(`scraping for the <br>${name}<br> of <br>${game.title}`);
+		$('#loadDialog0').html(md(`scraping for the  ${name}  of  ${game.title}`));
 		// get high quality box for gamecube/wii
 		if (sys != 'switch' && name == 'box') {
 			file = `${dir}/${name}.jpg`;
@@ -248,15 +244,13 @@ const Viewer = function() {
 				}
 			}
 		}
-		$('.reel.r' + reelNum).append(`
-			<div id="${game.id}" class="uie ${((game.id != '_TEMPLATE')?'':'uie-disabled')}">
-				${((cl1)?`<img src="${defaultCoverImg}"/>`:'')}
-				<section class="${cl1}">
-	      	<img src="${file}"/>
-					${((cl1)?`<div class="shade p-0 m-0"></div>`:'')}
-				</section>
-	    </div>
-		`);
+		$('.reel.r' + reelNum).append(pug(`
+#${game.id}.uie${((game.id != '_TEMPLATE')?'':'.uie-disabled')}
+	${((cl1)?`img(src="${defaultCoverImg}")`:'')}
+	section${((cl1)?'.'+cl1: '')}
+		img(src="${file}")
+		${((cl1)?'.shade.p-0.m-0':'')}
+		`));
 	}
 
 	async function animatePlay() {
@@ -359,7 +353,7 @@ const Viewer = function() {
 			}
 		}
 		if (!(await fs.exists(emuAppPath))) {
-			err('app path not valid');
+			cui.err('app path not valid');
 			return;
 		}
 		prefs[sys].app[osType] = emuAppPath;
@@ -367,9 +361,9 @@ const Viewer = function() {
 	}
 
 	this.powerBtn = async function() {
-		let id = cui.getCur('lib').attr('id');
+		let id = cui.getCur('libMain').attr('id');
 		if (!id) {
-			log('game not found:\n' + cui.getCur('lib'));
+			cui.err('cursor was not on a game');
 			return;
 		}
 		let emuAppPath = await getEmuAppPath();
@@ -377,7 +371,7 @@ const Viewer = function() {
 		if (gameFile) {
 			gameFile = getAbsolutePath(gameFile.file);
 		} else {
-			log('game not found: ' + id);
+			cui.err('game not found: ' + id);
 			return;
 		}
 		if (sys == 'ps3') {
@@ -407,7 +401,7 @@ const Viewer = function() {
 		log(emuAppPath);
 		log(args);
 		log(emuDirPath);
-		cui.removeView('lib');
+		cui.removeView('libMain');
 		cui.uiStateChange('playing');
 		try {
 			// animatePlay();
@@ -417,12 +411,7 @@ const Viewer = function() {
 			});
 			cui.uiStateChange('played');
 		} catch (ror) {
-			err(`Error!\n
-				The emulator was unable to start the game.
-				This is probably not an issue with Bottlenose.
-				Setup ${prefs[sys].emu} if you haven't already,
-				make sure it will boot a game, and try again.\n
-				${ror}`);
+			cui.err(`The emulator was unable to start the game.  This is probably not an issue with Bottlenose.  Setup ${prefs[sys].emu} if you haven't already, make sure it will boot a game, and try again.  ${ror}`);
 		}
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
@@ -443,7 +432,7 @@ const Viewer = function() {
 	this.doAction = async function(act) {
 		let ui = cui.ui;
 		let onMenu = (/menu/gi).test(ui);
-		if (ui == 'lib') {
+		if (ui == 'libMain') {
 			if (act == 'a') {
 				cui.coverClicked();
 				cui.uiStateChange('cover');
@@ -455,7 +444,7 @@ const Viewer = function() {
 		} else if (ui == 'cover') {
 			if (act == 'b') {
 				cui.coverClicked();
-				cui.uiStateChange('lib');
+				cui.uiStateChange('libMain');
 			} else if (act == 'y') {
 				flipCover();
 			} else {
@@ -492,13 +481,13 @@ const Viewer = function() {
 			rows = 2;
 		}
 		$('style.gameViewerRowsStyle').remove();
-		let $glv = $('#lib');
+		let $glv = $('#libMain');
 		let dynRowStyle = `<style class="gameViewerRowsStyle" type="text/css">.reel {width: ${1 / rows * 100}%;}`
 		for (let i = 0; i < rows; i++) {
-			$glv.append(`<div class="reel r${i} row-y ${((i % 2 == 0)?'reverse':'normal')}"></div>`)
+			$glv.append(pug(`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`));
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
-		dynRowStyle += `#lib.lib .reel .uie.cursor {
+		dynRowStyle += `#libMain .reel .uie.cursor {
 	outline: ${Math.abs(7-rows)}px dashed white;
 	outline-offset: ${ 9-rows}px;
 }`;
@@ -523,7 +512,7 @@ const Viewer = function() {
 		// for (let i = 0; i < 8; i++) {
 		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
 		// }
-		cui.addView('lib');
+		cui.addView('libMain');
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
 		if (!reload) {

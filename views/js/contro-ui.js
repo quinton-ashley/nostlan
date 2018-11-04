@@ -30,12 +30,12 @@ const CUI = function() {
 	for (let i of btnNames) {
 		btns[i] = gamepad.button(i);
 	}
+	let btnStates = {};
 	let stickNue = {
 		x: true,
 		y: true
 	};
 	let cuis = {};
-	let btnStates = {};
 	let mouse;
 	let mouseWheelDeltaNSS;
 	let pos = 0;

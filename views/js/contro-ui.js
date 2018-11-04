@@ -70,6 +70,7 @@ const CUI = function() {
 				title: 'choose folder',
 				message: msg
 			});
+			file = replace(/\\/g, '/');
 		} catch (ror) {}
 		return dir[0];
 	}
@@ -82,20 +83,28 @@ const CUI = function() {
 				title: 'choose file',
 				message: msg
 			});
+			file = replace(/\\/g, '/');
 		} catch (ror) {}
 		return file;
 	}
 
-	let doAction = () => {
-		log('set custom actions with the setAction method');
+	let customActions = () => {
+		log('set custom actions with the setCustomActions method');
+	};
+	let doAction = (act) => {
+		if (ui == 'errMenu') {
+			$('#errMenu').hide();
+		} else {
+			customActions(act);
+		}
 	};
 
 	let resize = () => {
 		log('set custom resize with the setResize method');
 	};
 
-	this.setAction = function(func) {
-		doAction = func;
+	this.setCustomActions = function(func) {
+		customActions = func;
 	};
 
 	this.setResize = function(func) {
@@ -153,22 +162,23 @@ const CUI = function() {
 			position -= $(window).height() * .5;
 		}
 		let scrollDist = Math.abs(pos - position);
-		minDistance = minDistance || .6;
+		if (minDistance == null) {
+			minDistance = .4;
+		}
 		if (scrollDist < $(window).height() * minDistance) {
 			return;
 		}
 		let sTime = time || ($(window).height() * 2 - $cur.height()) / 5;
-		if (!time && scrollDist > $cur.height() * (.5 + minDistance)) {
+		if (!time && scrollDist > $cur.height() * 1.1) {
 			sTime += scrollDist;
 		}
-		log('scroll' + sTime);
 		scrollTo(position, sTime);
 	}
 	this.scrollToCursor = scrollToCursor;
 
 	function coverClicked() {
 		let $reel = $cur.parent();
-		scrollToCursor(1000);
+		scrollToCursor(1000, 0);
 		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
@@ -244,7 +254,7 @@ const CUI = function() {
 				let $mid = $('.reel.r0').children();
 				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
 				makeCursor($mid, state);
-				scrollToCursor(10);
+				scrollToCursor(10, 0);
 			} else {
 				makeCursor(cuis[state].$cur, state);
 			}
@@ -375,7 +385,7 @@ const CUI = function() {
 			case 'b':
 			case 'x':
 			case 'y':
-			case 'state':
+			case 'view':
 			case 'start':
 				await doAction(lbl);
 				break;
@@ -401,7 +411,7 @@ const CUI = function() {
 
 					$button = $('#' + gvMainMenuLabels[i]);
 
-					$button.text(i);
+					$button.text(i.toUpperCase());
 				}
 				let query = btn.query();
 				// if button is not pressed, query is false and unchanged
@@ -486,11 +496,12 @@ const CUI = function() {
 		log(msg);
 		let $errMenu = $('#errMenu');
 		if (!$errMenu.length) {
-			$('body').append(pug('#errMenu.menu: .md'));
+			$('body').append(pug('#errMenu.menu: .row-y: .uie(name="okay") Okay'));
 			$errMenu = $('#errMenu');
 		}
-		$errMenu.prepend(md('# Error  ' + msg));
-		alert(msg);
+		$errMenu.prepend(md('# Error  \n' + msg));
+		$errMenu.show();
+		makeCursor($errMenu.find('.row-y').eq(0).children().eq(0), 'errMenu');
 	}
 	this.err = err;
 

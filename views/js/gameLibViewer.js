@@ -1,5 +1,6 @@
 const Viewer = function() {
 	let opt = {};
+	opt.v = false;
 	const log = console.log;
 
 	const {
@@ -273,7 +274,7 @@ const Viewer = function() {
 		for (tag of tags) {
 			tag = tag.substr(1);
 			if (tag == 'home') {
-				replacement = os.homedir();
+				replacement = os.homedir().replace(/\\/g, '/');;
 			}
 			file = file.replace('$' + tag, replacement);
 		}

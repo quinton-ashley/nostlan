@@ -6,6 +6,7 @@
 module.exports = async function(opt) {
 	const log = console.log;
 	global.__rootDir = opt.__rootDir;
+	opt.v = false;
 
 	const remote = require('electron').remote;
 	const {
@@ -45,7 +46,6 @@ module.exports = async function(opt) {
 	global.md = (str) => {
 		return markdown.render(str);
 	};
-	log(md('# hello'));
 	const pDog = require('pug');
 	global.pug = (str, insert) => {
 		str = pDog.compile(str)();
@@ -54,7 +54,6 @@ module.exports = async function(opt) {
 		}
 		return str;
 	};
-	log(pug('.hello hello'));
 
 	// bottlenose dir location cannot be changed
 	// only used to store small files, no images
@@ -191,7 +190,9 @@ module.exports = async function(opt) {
 		let gameDB = [];
 		let DBPath = path.join(__rootDir, `/db/${sys}DB.json`);
 		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
-		log(gameDB);
+		if (opt.v) {
+			log(gameDB);
+		}
 
 		let searchOpt = {
 			shouldSort: true,
@@ -349,9 +350,9 @@ module.exports = async function(opt) {
 			await reset();
 		}
 		btlDir = emuDir + '/bottlenose';
+		btlDir = btlDir.replace(/\\/g, '/');
 		await fs.ensureDir(btlDir);
 		prefs.btlDir = btlDir;
-		log(prefs.btlDir);
 		prefs.session.sys = sys;
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
@@ -366,10 +367,11 @@ module.exports = async function(opt) {
 		for (let file of files) {
 			file = file.path;
 			let html = await fs.readFile(file, 'utf8');
-			if (path.parse(file).name == 'setupMenu') {
+			let fileName = path.parse(file).name;
+			if (fileName == 'setupMenu') {
 				if (win) {
 					html += `
-Windows users should not store emulator apps or games in \`Program Files\` or any other folder that Bottlenose will not have read/write access to.  On Windows Bottlenose will look for emulator executables in the \`BIN\` folder or the default install location of that emulator.
+Windows users should not store emulator apps or games in \`Program Files\` or any other folder that Bottlenose will not have read/write access to.  On Windows, Bottlenose will look for emulator executables in the \`BIN\` folder or the default install location of that emulator.
 \`\`\`
 	emu (root folder can have any name)
 	└─┬ Dolphin
@@ -403,7 +405,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				html += 'Choose "continue" when you\'re ready.';
 				html = html.replace(/\t/g, '  ');
 			}
-			html = pug('.md', md(html));
+			if (fileName == 'welcomeMenu') {
+				html = pug('.md', md(html) + pug('img(src="https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/build/icon.png")'));
+			} else {
+				html = pug('.md', md(html));
+			}
 			file = path.parse(file);
 			$('#' + file.name).prepend(html);
 		}
@@ -585,22 +591,23 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					emuDir += '/emu';
 				}
 				await createTemplate(emuDir);
-				opn(emuDir);
-			} else if (act == 'continue') {
+				if (act != 'old') {
+					opn(emuDir);
+				}
+			}
+			if (act == 'continue' || act == 'old') {
 				if (!(await fs.exists(emuDir))) {
 					emuDir = os.homedir() + '/Documents/emu';
 				}
 				await createTemplate(emuDir);
 				await reload();
-			} else {
-				return false;
 			}
 		} else {
 			return false;
 		}
 		return true;
 	}
-	cui.setAction(doAction);
+	cui.setCustomActions(doAction);
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
 		buttonPressed('view');

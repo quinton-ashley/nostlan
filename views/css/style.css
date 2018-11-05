@@ -23,20 +23,25 @@ html {
 	z-index: 90;
 }
 
+.uie.no-outline {
+	outline: none!important;
+}
+
+#welcomeMenu img {
+	margin-top: -25%;
+	margin-bottom: -15%;
+}
+
 .menu {
 	position: fixed;
 	z-index: 100;
 	width: 50vw;
 	padding-top: 2vh;
 	padding-bottom: 2vh;
-	transform: translate(25vw, 25vh);
+	margin-left: 25vw;
+	margin-top: 5vh;
 	text-align: left;
 	display: none;
-}
-
-#setupMenu,
-#welcomeMenu {
-	transform: translate(25vw, 2vh);
 }
 
 .menu code,

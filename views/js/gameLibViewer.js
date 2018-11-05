@@ -247,9 +247,9 @@ const Viewer = function() {
 		}
 		$('.reel.r' + reelNum).append(pug(`
 #${game.id}.uie${((game.id != '_TEMPLATE')?'':'.uie-disabled')}
-	${((cl1)?`img(src="${defaultCoverImg}")`:'')}
+	${((cl1)?`img.box(src="${defaultCoverImg}")`:'')}
 	section${((cl1)?'.'+cl1: '')}
-		img(src="${file}")
+		img${((cl1)?'.cov': '.box')}(src="${file}")
 		${((cl1)?'.shade.p-0.m-0':'')}
 		`));
 	}
@@ -488,7 +488,7 @@ const Viewer = function() {
 			$glv.append(pug(`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`));
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
-		dynRowStyle += `#libMain .reel .uie.cursor {
+		dynRowStyle += `.gamepadConnected .reel .uie.cursor {
 	outline: ${Math.abs(7-rows)}px dashed white;
 	outline-offset: ${ 9-rows}px;
 }`;

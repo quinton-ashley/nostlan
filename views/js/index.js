@@ -444,8 +444,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		let labels = ['', '', ''];
 		if (state == 'cover') {
 			labels = ['Play', '', 'Back'];
+			cui.getCur().toggleClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
+			cui.getCur().removeClass('no-outline');
 		} else if (state == 'sysMenu' || state == 'pauseMenu') {
 			labels = ['', '', 'Back'];
 		}
@@ -495,7 +497,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	}
 
-	async function doAction(act) {
+	async function doAction(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
 		let onMenu = (/menu/gi).test(ui);
@@ -526,7 +528,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			} else {
 				return false;
 			}
-		} else if (ui == 'sysMenu') {
+		} else if (ui == 'sysMenu' && !isBtn) {
 			if (!viewer) {
 				return;
 			}
@@ -534,7 +536,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			sys = act;
 			cui.removeCursor();
 			await reload();
-		} else if (ui == 'pauseMenu') {
+		} else if (ui == 'pauseMenu' && !isBtn) {
 			if (act == 'fullscreen' || act == 'x') {
 				remote.getCurrentWindow().focus();
 				remote.getCurrentWindow().setFullScreen(true);
@@ -550,10 +552,22 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				opn('https://www.patreon.com/qashto');
 			} else if (act == 'donate-single') {
 				opn('https://www.paypal.me/qashto/25');
-			} else if (act == 'donated' || act == 'donate-later') {
+			} else if (act == 'donate-later') {
 				await reload();
+			} else if (act == 'donated') {
+				cui.uiStateChange('checkDonationMenu');
 			} else {
 				return false;
+			}
+		} else if (ui == 'checkDonationMenu') {
+			let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
+			let usrDonorPass = $('#donorPassword').val();
+			if (usrDonorPass == unicodeToChar(password)) {
+				prefs.donor = true;
+				await reload();
+			} else {
+				cui.uiStateChange('donateMenu');
+				cui.err('incorrect donor password');
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
@@ -568,7 +582,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				emuDir += '/bottlenose';
 				await reload();
 			} else if (act == 'full') {
-				$('.menu').hide();
 				cui.uiStateChange('setupMenu');
 			} else {
 				return false;
@@ -609,6 +622,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	}
 	cui.setCustomActions(doAction);
 
+	function unicodeToChar(text) {
+		return text.replace(/\\u[\dA-F]{4}/gi,
+			function(match) {
+				return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
+			});
+	}
+
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
 		buttonPressed('view');
 		return false;
@@ -634,7 +654,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	});
 
 	await load();
-	if (await fs.exists(prefsPath)) {
+	if (prefs.donor) {
+		await reload();
+	} else if (await fs.exists(prefsPath) && !prefs.donor) {
 		cui.uiStateChange('donateMenu');
 	} else {
 		cui.uiStateChange('welcomeMenu');

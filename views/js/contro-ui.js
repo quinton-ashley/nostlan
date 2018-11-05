@@ -26,6 +26,7 @@ const CUI = function() {
 		'up', 'down', 'left', 'right',
 		'view', 'start'
 	];
+	this.btns = btnNames;
 	let btns = {};
 	for (let i of btnNames) {
 		btns[i] = gamepad.button(i);
@@ -39,6 +40,7 @@ const CUI = function() {
 	let mouse;
 	let mouseWheelDeltaNSS;
 	let pos = 0;
+	let uiPrev;
 	let ui;
 	let uiSub;
 	let $cur;
@@ -92,10 +94,10 @@ const CUI = function() {
 		log('set custom actions with the setCustomActions method');
 	};
 	let doAction = (act) => {
-		if (ui == 'errMenu') {
-			$('#errMenu').hide();
+		if (act == 'error-okay') {
+			uiStateChange(uiPrev);
 		} else {
-			customActions(act);
+			customActions(act, cui.btns.includes(act));
 		}
 	};
 
@@ -117,7 +119,7 @@ const CUI = function() {
 	}
 
 	this.getCur = function(state) {
-		return cuis[state].$cur;
+		return (cuis[state || ui] || {}).$cur || $('');
 	}
 
 	this.setMouse = function(mouseInfo, delta) {
@@ -235,7 +237,7 @@ const CUI = function() {
 
 	function uiStateChange(state, subState) {
 		if (state == ui) {
-			log('b' + state);
+			log('b ' + state);
 			doAction('b');
 			return;
 		}
@@ -260,10 +262,14 @@ const CUI = function() {
 			}
 		}
 		if ((/menu/gi).test(state)) {
-			$('#' + state).show();
+			$('.menu').hide();
+			let $menu = $('#' + state);
+			$menu.show();
+			$menu.css('margin-top', $(window).height() * .5 - $menu.height() * .5);
 			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
 		}
 		resize(true);
+		uiPrev = ui;
 		ui = state;
 		uiSub = subState || uiSub;
 		this.ui = state;
@@ -462,6 +468,7 @@ const CUI = function() {
 				stickNue.y = true;
 			}
 			gamepadConnected = true;
+			$('body').toggleClass('cui-gamepadConnected');
 		}
 		requestAnimationFrame(loop);
 	}
@@ -496,14 +503,19 @@ const CUI = function() {
 		log(msg);
 		let $errMenu = $('#errMenu');
 		if (!$errMenu.length) {
-			$('body').append(pug('#errMenu.menu: .row-y: .uie(name="okay") Okay'));
+			$('body').append(pug('#errMenu.menu: .row-y: .uie(name="error-okay") Okay'));
 			$errMenu = $('#errMenu');
+			$errMenu.prepend(md('# Error  \n' + 'unknown error'));
+			$('#errMenu .uie').click(uieClicked);
+			$('#errMenu .uie').hover(uieHovered);
 		}
-		$errMenu.prepend(md('# Error  \n' + msg));
-		$errMenu.show();
-		makeCursor($errMenu.find('.row-y').eq(0).children().eq(0), 'errMenu');
+		$('#errMenu p').text(msg);
+		uiStateChange('errMenu');
 	}
 	this.err = err;
 
+	require('process').on('uncaughtException', function(msg) {
+		err(msg)
+	});
 };
 module.exports = new CUI();

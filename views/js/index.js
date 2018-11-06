@@ -654,13 +654,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	});
 
 	await load();
-	if (prefs.donor) {
-		await reload();
-	} else if (await fs.exists(prefsPath) && !prefs.donor) {
-		cui.uiStateChange('donateMenu');
-	} else {
-		cui.uiStateChange('welcomeMenu');
-	}
+	// if (prefs.donor) {
+	// 	await reload();
+	// } else if (await fs.exists(prefsPath) && !prefs.donor) {
+	// 	cui.uiStateChange('donateMenu');
+	// } else {
+	cui.uiStateChange('welcomeMenu');
+	// }
 	cui.start({
 		v: true
 	});

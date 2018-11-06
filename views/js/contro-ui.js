@@ -262,8 +262,8 @@ const CUI = function() {
 			}
 		}
 		if ((/menu/gi).test(state)) {
-			$('.menu').hide();
 			let $menu = $('#' + state);
+			$('.menu').hide();
 			$menu.show();
 			$menu.css('margin-top', $(window).height() * .5 - $menu.height() * .5);
 			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);

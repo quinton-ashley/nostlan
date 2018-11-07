@@ -67,8 +67,9 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
 -   easy way to mix and swap texture packs for Dolphin
--   Linux support
--   list style view mode for browsing through box sides
+-   full Linux support
+-   list style view mode for browsing through box sides, useful for very large game libraries
+-   instant search
 
 ## How is Bottlenose different from other front-ends?
 
@@ -116,11 +117,11 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 ## Development Info
 
-Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in plain old, no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
+Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
 
 ## Collaboration Guide
 
-PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.
+PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package shortly.
 
 ## Contributing to Bottlenose
 

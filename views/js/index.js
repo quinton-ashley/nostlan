@@ -335,6 +335,7 @@ module.exports = async function(opt) {
 			if (!(await fs.exists(gameLibDir))) {
 				gameLibDir = cui.selectDir(`select ${sys} game directory`);
 			}
+			gameLibDir = gameLibDir.replace(/\\/g, '/');
 			if (await fs.exists(gameLibDir)) {
 				if (!prefs[sys].libs) {
 					prefs[sys].libs = [];

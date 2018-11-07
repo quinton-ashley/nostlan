@@ -262,8 +262,8 @@ const CUI = function() {
 			}
 		}
 		if ((/menu/gi).test(state)) {
-			$('.menu').hide();
 			let $menu = $('#' + state);
+			$('.menu').hide();
 			$menu.show();
 			$menu.css('margin-top', $(window).height() * .5 - $menu.height() * .5);
 			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
@@ -418,6 +418,7 @@ const CUI = function() {
 					$button = $('#' + gvMainMenuLabels[i]);
 
 					$button.text(i.toUpperCase());
+					$('body').addClass('cui-gamepadConnected');
 				}
 				let query = btn.query();
 				// if button is not pressed, query is false and unchanged
@@ -468,7 +469,6 @@ const CUI = function() {
 				stickNue.y = true;
 			}
 			gamepadConnected = true;
-			$('body').toggleClass('cui-gamepadConnected');
 		}
 		requestAnimationFrame(loop);
 	}

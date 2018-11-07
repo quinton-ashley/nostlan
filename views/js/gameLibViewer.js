@@ -488,7 +488,7 @@ const Viewer = function() {
 			$glv.append(pug(`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`));
 			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
 		}
-		dynRowStyle += `.gamepadConnected .reel .uie.cursor {
+		dynRowStyle += `.cui-gamepadConnected .reel .uie.cursor {
 	outline: ${Math.abs(7-rows)}px dashed white;
 	outline-offset: ${ 9-rows}px;
 }`;

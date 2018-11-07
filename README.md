@@ -28,21 +28,21 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
 
-#### DeSmuME (DS)
-
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
-
 #### Cemu (Wii U)
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
+
+#### Yuzu (Switch)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
 
 #### Citra (3DS)
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
 
-#### Yuzu (Switch)
+#### DeSmuME (DS)
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
 
 #### RPCS3 (PS3)
 

@@ -363,11 +363,14 @@ const CUI = function() {
 					}
 				}
 			}
-			$rowY.find('.cursor').removeClass('cursor');
 		} else {
 
 		}
 		if (!ret.$cur.length) {
+			return;
+		}
+		let classes = ret.$cur.attr('class').split(' ');
+		if (classes.includes('uie-disabled')) {
 			return;
 		}
 		makeCursor(ret.$cur);

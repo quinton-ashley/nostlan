@@ -507,6 +507,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	async function doAction(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
+		if (ui == 'playingBack') {
+			return;
+		}
 		let onMenu = (/menu/gi).test(ui);
 		let res = await viewer.doAction(act);
 		if (res) {
@@ -519,6 +522,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.uiStateChange('libMain');
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
+			cui.resize(true);
 		} else if (ui == 'libMain') {
 			if (act == 'x') {
 				await powerBtn();
@@ -544,9 +548,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu' && !isBtn) {
-			if (act == 'fullscreen' || act == 'x') {
+			if (act == 'fullscreen') {
 				remote.getCurrentWindow().focus();
 				remote.getCurrentWindow().setFullScreen(true);
+			} else if (act == 'toggleCover') {
+				$('nav').toggleClass('hide');
+				cui.resize(true);
 			} else if (act == 'prefs') {
 				opn(prefsPath);
 			} else if (act == 'quit') {

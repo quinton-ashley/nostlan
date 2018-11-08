@@ -404,27 +404,30 @@ const Viewer = function() {
 			}
 			args.push('-g');
 		}
-		args.push(gameFile);
-		if (emu == 'cemu' || emu == 'citra') {
-			args.push('-f');
-		} else if (emu == 'dolphin') {
-			args.push('-b');
+		if (cui.ui == 'cover') {
+			args.push(gameFile);
+			if (emu == 'cemu' || emu == 'citra') {
+				args.push('-f');
+			} else if (emu == 'dolphin') {
+				args.push('-b');
+			}
+			cui.removeView('libMain');
+			cui.uiStateChange('playingBack');
+		} else {
+			args = [];
 		}
 		emuDirPath = path.join(emuAppPath, '..');
 		log(emuAppPath);
 		log(args);
 		log(emuDirPath);
-		cui.removeView('libMain');
-		cui.uiStateChange('playing');
 		try {
 			// animatePlay();
 			await spawn(emuAppPath, args, {
 				cwd: emuDirPath,
 				stdio: 'inherit'
 			});
-			cui.uiStateChange('played');
 		} catch (ror) {
-			cui.err(`The emulator was unable to start the game.  This is probably not an issue with Bottlenose.  Setup ${prefs[sys].emu} if you haven't already, make sure it will boot a game, and try again.  ${ror}`);
+			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${ror}`);
 		}
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
@@ -444,6 +447,7 @@ const Viewer = function() {
 
 	this.doAction = async function(act) {
 		let ui = cui.ui;
+		log(ui);
 		let onMenu = (/menu/gi).test(ui);
 		if (ui == 'libMain') {
 			if (act == 'a') {

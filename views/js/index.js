@@ -463,7 +463,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	});
 
 	async function removeIntro(time) {
-		await delay(time || 2000);
+		if (cui.ui != 'errMenu') {
+			await delay(time || 2000);
+		}
 		$('#intro').remove();
 		$('link.introStyle').prop('disabled', true);
 		$('link.introStyle').remove();
@@ -472,10 +474,14 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function powerBtn() {
 		await viewer.powerBtn();
-		await intro();
-		await viewer.load(games, prefs, sys);
-		await removeIntro();
-		cui.uiStateChange('libMain');
+		if (cui.ui != 'libMain') {
+			await intro();
+			await viewer.load(games, prefs, sys);
+			await removeIntro();
+			if (cui.ui == 'playingBack') {
+				cui.uiStateChange('libMain');
+			}
+		}
 	}
 
 	async function resetBtn() {

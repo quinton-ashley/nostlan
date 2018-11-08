@@ -95,9 +95,14 @@ const CUI = function() {
 	};
 	let doAction = (act) => {
 		if (act == 'error-okay') {
-			uiStateChange(uiPrev);
+			if ((/back/gi).test(uiPrev)) {
+				this.uiStateChange('libMain');
+			} else {
+				this.uiStateChange(uiPrev);
+			}
+			scrollToCursor(10, 0);
 		} else {
-			customActions(act, cui.btns.includes(act));
+			customActions(act, this.btns.includes(act));
 		}
 	};
 
@@ -252,8 +257,8 @@ const CUI = function() {
 			labels = ['', '', 'Back'];
 		} else if ((/main/gi).test(state)) {
 			$('.menu').hide();
-			if (!(/cover/gi).test(ui) && !(/menu/gi).test(ui)) {
-				let $mid = $('.reel.r0').children();
+			if (ui == 'errMenu' || (!(/cover/gi).test(ui) && !(/menu/gi).test(ui))) {
+				let $mid = $('#' + state + ' .reel.r0').children();
 				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
 				makeCursor($mid, state);
 				scrollToCursor(10, 0);
@@ -378,6 +383,7 @@ const CUI = function() {
 			};
 		}
 		let lbl = btn.label.toLowerCase();
+		log(ui);
 		switch (lbl) {
 			case 'up':
 			case 'down':
@@ -510,7 +516,7 @@ const CUI = function() {
 			$('#errMenu .uie').hover(uieHovered);
 		}
 		$('#errMenu p').text(msg);
-		uiStateChange('errMenu');
+		this.uiStateChange('errMenu');
 	}
 	this.err = err;
 

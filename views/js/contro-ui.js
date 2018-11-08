@@ -418,7 +418,7 @@ const CUI = function() {
 					$button = $('#' + gvMainMenuLabels[i]);
 
 					$button.text(i.toUpperCase());
-					$('body').addClass('cui-gamepadConnected');
+					$('html').addClass('cui-gamepadConnected');
 				}
 				let query = btn.query();
 				// if button is not pressed, query is false and unchanged

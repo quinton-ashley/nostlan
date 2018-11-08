@@ -31,6 +31,7 @@ const Viewer = function() {
 	let games;
 	let prefs;
 	let sys;
+	let emu;
 	let themes;
 	let theme;
 	let defaultCoverImg;
@@ -260,6 +261,9 @@ const Viewer = function() {
 	}
 
 	function getAbsolutePath(file) {
+		if (!file) {
+			return '';
+		}
 		let lib = file.match(/\$\d+/g);
 		if (lib) {
 			lib = lib[0].substr(1);
@@ -286,18 +290,19 @@ const Viewer = function() {
 		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
 		}
-		let emuDirPath;
+		emuAppPath = '';
+		let emuDirPath = '';
 		if (win) {
 			emuDirPath = path.join(prefs.btlDir,
 				`../${prefs[sys].emu}/BIN`);
-			if (sys == '3ds') {
+			if (emu == '3ds') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
 					emuDirPath += '/nightly-mingw';
 				} else {
 					emuDirPath += '/canary-mingw';
 				}
 			}
-			if (sys == 'switch') {
+			if (emu == 'switch') {
 				emuDirPath = os.homedir() + '/AppData/Local/yuzu';
 				if (await fs.exists(emuDirPath + '/canary')) {
 					emuDirPath += '/canary';
@@ -314,28 +319,35 @@ const Viewer = function() {
 			prefs[sys].emu.toUpperCase()
 		];
 		for (let i = 0; i < emuNameCases.length; i++) {
-			emuAppPath = `${emuDirPath}/${emuNameCases[i]}`;
+			if (emuDirPath) {
+				emuAppPath = emuDirPath + '/';
+			}
+			emuAppPath += emuNameCases[i];
 			if (win) {
-				if (sys == '3ds') {
+				if (emu == '3ds') {
 					emuAppPath += '-qt';
 				}
 				emuAppPath += '.exe';
 			} else if (mac) {
-				if (sys == '3ds') {
+				if (emu == 'citra') {
 					emuAppPath += `/nightly/${emuNameCases[1]}-qt`;
-				} else if (sys == 'switch') {
+				} else if (emu == 'yuzu') {
 					emuAppPath += '/' + emuNameCases[1];
 				}
 				emuAppPath += '.app/Contents/MacOS';
-				if (sys == 'ds') {
+				if (emu == 'desmume') {
 					emuAppPath += '/' + emuNameCases[0];
 				} else {
 					emuAppPath += '/' + emuNameCases[1];
 				}
-				if (sys == '3ds') {
+				if (emu == 'citra') {
 					emuAppPath += '-qt-bin';
-				} else if (sys == 'switch') {
+				} else if (emu == 'yuzu') {
 					emuAppPath += '-bin';
+				}
+			} else if (linux) {
+				if (emu == 'dolphin') {
+					emuAppPath += '-emu';
 				}
 			}
 			if (await fs.exists(emuAppPath)) {
@@ -346,9 +358,9 @@ const Viewer = function() {
 			emuAppPath = cui.selectFile('select emulator app');
 			if (mac) {
 				emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
-				if (sys == '3ds') {
+				if (emu == 'citra') {
 					emuAppPath += '-qt-bin';
-				} else if (sys == 'switch') {
+				} else if (emu == 'switch') {
 					emuAppPath += '-bin';
 				}
 			}
@@ -375,11 +387,11 @@ const Viewer = function() {
 			cui.err('game not found: ' + id);
 			return;
 		}
-		if (sys == 'ps3') {
+		if (emu == 'rpcs3') {
 			gameFile += '/USRDIR/EBOOT.BIN';
 		}
 		let args = [];
-		if (sys == 'wiiu') {
+		if (emu == 'cemu') {
 			let files = klawSync(gameFile + '/code');
 			let ext, file;
 			for (let i = 0; i < files.length; i++) {
@@ -393,9 +405,9 @@ const Viewer = function() {
 			args.push('-g');
 		}
 		args.push(gameFile);
-		if (sys == 'wiiu' || sys == '3ds') {
+		if (emu == 'cemu' || emu == 'citra') {
 			args.push('-f');
-		} else if (sys == 'wii') {
+		} else if (emu == 'dolphin') {
 			args.push('-b');
 		}
 		emuDirPath = path.join(emuAppPath, '..');
@@ -466,6 +478,7 @@ const Viewer = function() {
 		games = usrGames;
 		prefs = usrPrefs;
 		sys = usrSys;
+		emu = prefs[sys].emu.toLowerCase();
 		if (!themes) {
 			let themesPath = path.join(global.__rootDir, '/prefs/themes.json');
 			themes = JSON.parse(await fs.readFile(themesPath));

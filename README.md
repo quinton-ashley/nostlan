@@ -70,6 +70,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   full Linux support
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
+-   custom theming
 
 ## How is Bottlenose different from other front-ends?
 

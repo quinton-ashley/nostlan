@@ -1,5 +1,5 @@
 .ds #intro {
-	transform: scale(1);
+	transform: translate(0%, -30vh) scale(1);
 	text-align: left;
 }
 
@@ -40,7 +40,7 @@
 	height: 54px;
 	border-radius: 30px 30px 30px 30px / 140px 140px 140px 140px;
 	background-image: linear-gradient(#FFFFFF 30%, rgba(183, 186, 191, 0.93)93%, rgba(31, 32, 34, 0.36) 104%);
-	box-shadow: 0 -1px 1px white, 1px 0 0px #A3A6A7, -1px 0 0px #A3A6A7, inset 1px 0 0px rgba(255, 255, 255, 0.61), inset -1px 0 0px rgba(255, 255, 255, 0.61), inset 0 -1px 0 rgba(0, 0, 0, 0), inset 0 -15px 14px -15px rgba(0, 0, 0, 0.95), 0 7px 11px -10px black;
+	box-shadow: 0 -1px 1px white, 1px 0 0 #A3A6A7, -1px 0 0 #A3A6A7, inset 1px 0 0 rgba(255, 255, 255, 0.61), inset -1px 0 0 rgba(255, 255, 255, 0.61), inset 0 -1px 0 rgba(0, 0, 0, 0), inset 0 -15px 14px -15px rgba(0, 0, 0, 0.95), 0 7px 11px -10px black;
 }
 
 .ds .middle::after {
@@ -62,7 +62,7 @@
 	height: 199px;
 	border-radius: 0 0 28px 28px / 0 0 13px 13px;
 	background-image: linear-gradient(#FBFBFB, #FFFFFF);
-	box-shadow: 3px 0 1px #A3A6AB, inset -2px 0 0px #BFC2C5, -3px 0 1px #B0B2B5, inset 2px 0 1px #D4D6D9, inset 3px 0 1px #D8DBDC, inset 0 -4px 1px rgba(195, 198, 199, 0.82), 0 1px 0px rgba(142, 148, 153, 0.83), 0 3px 2px #D6D9DE, inset 0 5px 6px -6px rgba(0, 0, 0, 0.72);
+	box-shadow: 3px 0 1px #A3A6AB, inset -2px 0 0 #BFC2C5, -3px 0 1px #B0B2B5, inset 2px 0 1px #D4D6D9, inset 3px 0 1px #D8DBDC, inset 0 -4px 1px rgba(195, 198, 199, 0.82), 0 1px 0 rgba(142, 148, 153, 0.83), 0 3px 2px #D6D9DE, inset 0 5px 6px -6px rgba(0, 0, 0, 0.72);
 	transform: rotateX(38deg);
 }
 
@@ -77,7 +77,7 @@
 	border-left: 2px solid #C1C1C3;
 	border-radius: 0 0 25px 25px;
 	background: #CCCED1;
-	box-shadow: inset 9px 0px 0px #D8DBDE, inset 12px 0 15px #E9ECED;
+	box-shadow: inset 9px 0 0 #D8DBDE, inset 12px 0 15px #E9ECED;
 	transform: rotateX(-18deg);
 }
 
@@ -89,7 +89,7 @@
 	width: 348px;
 	height: 256px;
 	border-radius: 5px;
-	box-shadow: inset 2px 0 2px #AAADB0, inset 0 -1px 1px #C7C9CC, inset -1px 0 2px #B6B8BB, inset 0 1px 1px rgba(0, 0, 0, 0.42), inset 0 2px 5px rgba(135, 138, 141, 0.34), 0 1px 1px rgba(255, 255, 255, 0.71), 1px 0px 1px rgba(255, 255, 255, 0.71);
+	box-shadow: inset 2px 0 2px #AAADB0, inset 0 -1px 1px #C7C9CC, inset -1px 0 2px #B6B8BB, inset 0 1px 1px rgba(0, 0, 0, 0.42), inset 0 2px 5px rgba(135, 138, 141, 0.34), 0 1px 1px rgba(255, 255, 255, 0.71), 1px 0 1px rgba(255, 255, 255, 0.71);
 	/*	border: 1px solid #AAADB0;*/
 	overflow: hidden;
 }
@@ -104,7 +104,8 @@
 	cursor: pointer;
 }
 
-.ds .speaker-1 div, .ds .speaker-2 div {
+.ds .speaker-1 div,
+.ds .speaker-2 div {
 	float: left;
 	margin: 10px;
 	width: 6px;
@@ -138,7 +139,7 @@
 	height: 22px;
 	border-radius: 4px;
 	background-image: linear-gradient(90deg, #C7CACE, #D9DBDE);
-	box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0), inset 0 2px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
+	box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0), inset 0 2px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
 }
 
 .ds .square-2 {
@@ -149,8 +150,8 @@
 	height: 22px;
 	border-radius: 4px;
 	background-image: linear-gradient(90deg, #C7CACE, #D9DBDE);
-	box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0), inset 0 2px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
-	opacity: .8;
+	box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0), inset 0 2px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
+	opacity: 0.8;
 }
 
 .ds .square-3 {
@@ -161,7 +162,7 @@
 	height: 22px;
 	border-radius: 4px;
 	background-image: linear-gradient(90deg, rgba(199, 202, 206, 0.19), #D9DBDE);
-	box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0), inset 0 1px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
+	box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0), inset 0 1px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
 }
 
 .ds .square-4 {
@@ -172,7 +173,7 @@
 	height: 22px;
 	border-radius: 4px;
 	background-image: linear-gradient(90deg, rgba(199, 202, 206, 0.19), #D9DBDE);
-	box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0), inset 0 1px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
+	box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0), inset 0 1px 2px rgba(162, 162, 162, 0.74), inset 1px 0 1px rgba(0, 0, 0, 0.12), inset 2px 0 1px rgba(174, 177, 180, 0.01);
 }
 
 .ds .pipka-1 {
@@ -195,7 +196,7 @@
 	height: 49px;
 	border-radius: 5px 2px 2px 3px;
 	background-image: linear-gradient(-90deg, #D0D2D3, #FFFFFF);
-	box-shadow: inset 0 -2px 0px #BFC2C3, 0 -1px 0px #B5B9BA, -1px 0 0 #B5B9BA, inset 2px 0 2px white, inset 0 1px 1px white;
+	box-shadow: inset 0 -2px 0 #BFC2C3, 0 -1px 0 #B5B9BA, -1px 0 0 #B5B9BA, inset 2px 0 2px white, inset 0 1px 1px white;
 }
 
 .ds .l-1 {
@@ -206,7 +207,7 @@
 	height: 5px;
 	border: none;
 	background: #DADCDD;
-	box-shadow: 2px 0 0px rgb(226, 226, 226);
+	box-shadow: 2px 0 0 rgb(226, 226, 226);
 	transform: skew(-39deg);
 }
 
@@ -218,7 +219,7 @@
 	height: 5px;
 	border: none;
 	background: #DADCDD;
-	box-shadow: -2px 0 0px rgb(226, 226, 226);
+	box-shadow: -2px 0 0 rgb(226, 226, 226);
 	transform: skew(39deg);
 }
 
@@ -231,7 +232,7 @@
 	width: 382px;
 	height: 144px;
 	border-radius: 4px;
-	box-shadow: inset 2px 0 0px rgba(170, 173, 176, 0.36), inset 0 -4px 5px rgba(0, 0, 0, 0.11), 0 2px 2px white, inset 0 1px 0px rgba(129, 138, 141, 0.55), inset -3px 0px 8px rgba(0, 0, 0, 0.09), 15px 0 20px rgba(220, 223, 224, 0.58), 18px 15px 15px rgba(227, 230, 231, 0.73), -8px 13px 14px rgba(238, 238, 238, 0.72);
+	box-shadow: inset 2px 0 0 rgba(170, 173, 176, 0.36), inset 0 -4px 5px rgba(0, 0, 0, 0.11), 0 2px 2px white, inset 0 1px 0 rgba(129, 138, 141, 0.55), inset -3px 0 8px rgba(0, 0, 0, 0.09), 15px 0 20px rgba(220, 223, 224, 0.58), 18px 15px 15px rgba(227, 230, 231, 0.73), -8px 13px 14px rgba(238, 238, 238, 0.72);
 }
 
 .ds .b-display {
@@ -265,9 +266,9 @@
 	left: 3px;
 	width: 86px;
 	height: 52px;
-	border-radius: 29px 0px 0 25px / 25px 0 0 11px;
+	border-radius: 29px 0 0 25px / 25px 0 0 11px;
 	background-image: linear-gradient(#FFFFFF 30%, rgba(183, 186, 191, 0.93)93%);
-	box-shadow: -2px 0 0 rgba(190, 191, 192, 0.37), inset 10px 0 17px rgba(250, 251, 253, 0.72), inset 0 -2px 0px rgb(131, 131, 131), inset 0 -3px 2px rgba(153, 153, 153, 0.54), inset 24px 0 7px -18px #C9CCD1;
+	box-shadow: -2px 0 0 rgba(190, 191, 192, 0.37), inset 10px 0 17px rgba(250, 251, 253, 0.72), inset 0 -2px 0 rgb(131, 131, 131), inset 0 -3px 2px rgba(153, 153, 153, 0.54), inset 24px 0 7px -18px #C9CCD1;
 }
 
 .ds .right {
@@ -284,7 +285,7 @@
 
 .ds .diod-1 {
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 36px;
 	width: 6px;
 	height: 14px;
@@ -294,7 +295,7 @@
 
 .ds .diod-2 {
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 48px;
 	width: 6px;
 	height: 14px;
@@ -319,32 +320,32 @@
 	height: 27px;
 	border-radius: 120px 120px 120px 120px / 72px 72px 72px 72px;
 	background: #fff;
-	box-shadow: 0px 3px 2px rgba(255, 255, 255, 1), 2px 1px 0px rgba(41, 42, 43, 0.42), inset -5px 1px 6px -4px rgba(151, 154, 157, 0.25), inset -4px -7px 10px -5px rgba(190, 190, 190, 0.85), -1px 3px 0 rgba(0, 0, 0, 0.33), 1px 3px 0px rgba(0, 0, 0, 0.2), 6px 5px 6px rgba(196, 199, 204, 0.6);
+	box-shadow: 0 3px 2px rgba(255, 255, 255, 1), 2px 1px 0 rgba(41, 42, 43, 0.42), inset -5px 1px 6px -4px rgba(151, 154, 157, 0.25), inset -4px -7px 10px -5px rgba(190, 190, 190, 0.85), -1px 3px 0 rgba(0, 0, 0, 0.33), 1px 3px 0 rgba(0, 0, 0, 0.2), 6px 5px 6px rgba(196, 199, 204, 0.6);
 }
 
 .ds .x {
-	top: 0px;
+	top: 0;
 	left: 45px;
 }
 
 .ds .y {
 	top: 20px;
-	left: 0px;
+	left: 0;
 }
 
 .ds .b {
-	bottom: 0px;
+	bottom: 0;
 	left: 45px;
 }
 
 .ds .a {
 	top: 20px;
-	right: 0px;
+	right: 0;
 }
 
 .ds .buttons div span {
 	position: relative;
-	top: 0px;
+	top: 0;
 	left: 16px;
 	display: block;
 	color: #CACAC9;
@@ -367,7 +368,7 @@
 	height: 10px;
 	border-radius: 120px 120px 120px 120px / 72px 72px 72px 72px;
 	background: #fff;
-	box-shadow: 0px 3px 2px rgba(255, 255, 255, 1), 2px 1px 0px rgba(41, 42, 43, 0.42), inset -5px 1px 6px -4px rgba(151, 154, 157, 0.25), inset -4px -7px 10px -5px rgba(190, 190, 190, 0.24), -1px 3px 0 rgba(0, 0, 0, 0.33), 1px 3px 0px rgba(0, 0, 0, 0.2), 3px 4px 6px rgba(196, 199, 204, 0.6);
+	box-shadow: 0 3px 2px rgba(255, 255, 255, 1), 2px 1px 0 rgba(41, 42, 43, 0.42), inset -5px 1px 6px -4px rgba(151, 154, 157, 0.25), inset -4px -7px 10px -5px rgba(190, 190, 190, 0.24), -1px 3px 0 rgba(0, 0, 0, 0.33), 1px 3px 0 rgba(0, 0, 0, 0.2), 3px 4px 6px rgba(196, 199, 204, 0.6);
 }
 
 .ds .buttons-2 span {
@@ -408,7 +409,7 @@
 	height: 26px;
 	border-radius: 0 2px 2px 0;
 	background: white;
-	box-shadow: inset -2px 3px 1px -2px rgb(243, 243, 243), inset 0px -11px 4px -2px rgba(223, 223, 223, 1), 2px 0px 0px white, 7px 4px 1px -3px #919191, 0 2px 1px -1px #525252;
+	box-shadow: inset -2px 3px 1px -2px rgb(243, 243, 243), inset 0 -11px 4px -2px rgba(223, 223, 223, 1), 2px 0 0 white, 7px 4px 1px -3px #919191, 0 2px 1px -1px #525252;
 }
 
 .ds .bkwrd {
@@ -420,7 +421,7 @@
 	height: 25px;
 	border-radius: 0 0 2px 2px;
 	background: white;
-	box-shadow: inset 0 -2px 1px #818080, inset 0px -12px 15px -7px #A2A6AA, inset 2px 0 1px white, inset 0px -15px 2px 0px #EBE8E7, 3px 0px 1px -1px #AFAFAF, -3px 1px 1px -1px rgba(218, 218, 218, 0.67);
+	box-shadow: inset 0 -2px 1px #818080, inset 0 -12px 15px -7px #A2A6AA, inset 2px 0 1px white, inset 0 -15px 2px 0 #EBE8E7, 3px 0 1px -1px #AFAFAF, -3px 1px 1px -1px rgba(218, 218, 218, 0.67);
 }
 
 .ds .right-2 {
@@ -431,7 +432,7 @@
 	height: 25px;
 	border-radius: 2px 0 0 2px;
 	background: white;
-	box-shadow: inset 1px 0 1px white, -6px 6px 1px -4px rgba(204, 204, 204, 1), 0px 3px 0px rgba(209, 209, 209, 1), inset 0px -11px 2px -1px #E6E6E6, inset 0 -1px 0 #A9ACAF, inset 0 -19px 13px -13px #BFC2C7;
+	box-shadow: inset 1px 0 1px white, -6px 6px 1px -4px rgba(204, 204, 204, 1), 0 3px 0 rgba(209, 209, 209, 1), inset 0 -11px 2px -1px #E6E6E6, inset 0 -1px 0 #A9ACAF, inset 0 -19px 13px -13px #BFC2C7;
 }
 
 .ds .center {
@@ -493,7 +494,7 @@
 	border-top: 2px solid #D4D7DA;
 	border-left: 2px solid #B6B6B6;
 	border-radius: 3px 3px 0 0;
-	box-shadow: 0 -2px 1px #B5B8BB, 0 -3px 11px #ECECEC, 4px 0 2px -2px #BFC2C5, -4px 0 2px -2px #BFC2C5, 4px -2px 2px #B6B6B6, -4px -2px 2px #B6B6B6, inset -2px 0 7px -2px rgba(92, 92, 92, 0.59), inset 5px 0 7px -2px rgba(241, 241, 241, 0.53), 7px 0 0px -2px rgba(247, 247, 247, 0.89), -7px 0 0px -2px rgba(247, 247, 247, 0.50), 0 -1px 1px #CDCFD2, inset 0 5px 3px #BFC2C5, inset 0 8px 3px #D4D7DA;
+	box-shadow: 0 -2px 1px #B5B8BB, 0 -3px 11px #ECECEC, 4px 0 2px -2px #BFC2C5, -4px 0 2px -2px #BFC2C5, 4px -2px 2px #B6B6B6, -4px -2px 2px #B6B6B6, inset -2px 0 7px -2px rgba(92, 92, 92, 0.59), inset 5px 0 7px -2px rgba(241, 241, 241, 0.53), 7px 0 0 -2px rgba(247, 247, 247, 0.89), -7px 0 0 -2px rgba(247, 247, 247, 0.50), 0 -1px 1px #CDCFD2, inset 0 5px 3px #BFC2C5, inset 0 8px 3px #D4D7DA;
 }
 
 .ds .mic {
@@ -532,7 +533,7 @@
 	border-left: 3px solid #8B8B8B;
 	border-radius: 4px 0 0 4px;
 	background: #131613;
-	box-shadow: -2px 0 2px #7A7D80, -3px -1px 0px #747474, inset -9px -4px 5px 1px #3F3C3C;
+	box-shadow: -2px 0 2px #7A7D80, -3px -1px 0 #747474, inset -9px -4px 5px 1px #3F3C3C;
 }
 
 .ds .headphones-2 {
@@ -547,7 +548,7 @@
 	border-bottom: 5px solid #D2D5D8;
 	border-radius: 100%;
 	background: #131613;
-	box-shadow: 2px 0 0px #858585, 3px -1px 2px #F6F3F3, inset -3px -2px 2px rgba(255, 255, 255, 0.27), inset 3px -4px 3px #3F3C3C;
+	box-shadow: 2px 0 0 #858585, 3px -1px 2px #F6F3F3, inset -3px -2px 2px rgba(255, 255, 255, 0.27), inset 3px -4px 3px #3F3C3C;
 }
 
 .ds .headphones-2::after {
@@ -569,7 +570,7 @@
 	border-bottom: 3px solid #C7C2C2;
 	border-radius: 5px;
 	background-image: linear-gradient(#BDBEBE, #858585);
-	box-shadow: inset 0 -1px 0 #8D8F91, inset 0 -3px 0 rgba(164, 169, 173, 0.97), 0 -1px 2px rgba(240, 240, 240, 1), inset 0 2px 0 rgba(177, 177, 177, 0.82), inset 0 3px 0 rgba(219, 219, 219, 0.93), 0 2px 1px rgba(255, 255, 255, 0.72), 0 4px 2px #BABDC0, inset -3px 0 2px rgba(190, 193, 196, 0.81), inset -4px 0 0px #797979, 2px 0 0 rgb(143, 143, 143);
+	box-shadow: inset 0 -1px 0 #8D8F91, inset 0 -3px 0 rgba(164, 169, 173, 0.97), 0 -1px 2px rgba(240, 240, 240, 1), inset 0 2px 0 rgba(177, 177, 177, 0.82), inset 0 3px 0 rgba(219, 219, 219, 0.93), 0 2px 1px rgba(255, 255, 255, 0.72), 0 4px 2px #BABDC0, inset -3px 0 2px rgba(190, 193, 196, 0.81), inset -4px 0 0 #797979, 2px 0 0 rgb(143, 143, 143);
 }
 
 .ds .vol .slider {
@@ -582,7 +583,7 @@
 	border-top: 3px solid rgb(172, 172, 172);
 	border-radius: 4px;
 	background: #BABDC2;
-	box-shadow: inset 0px 2px 1px 2px #D5D8DB, 0 -3px 8px -2px rgb(20, 20, 20);
+	box-shadow: inset 0 2px 1px 2px #D5D8DB, 0 -3px 8px -2px rgb(20, 20, 20);
 	cursor: pointer;
 }
 
@@ -616,7 +617,7 @@
 
 .ds .vol span {
 	position: relative;
-	left: 0px;
+	left: 0;
 	display: inline-block;
 	padding: 5px 0;
 	color: #A7A69F;
@@ -697,7 +698,7 @@
 	border-left: 4px solid #34B9B9;
 	border-radius: 0 0 0 50px;
 	background-image: linear-gradient(19deg, #B1B4B9, #9C9FA4 85%);
-	box-shadow: 0 10px 0 #E0E3E4, 0 11px 2px #C9C9C9, 0 20px 0 #E0E3E4, 2px 17px 2px rgb(233, 233, 233), inset 1px -1px 3px rgba(122, 122, 122, 0.55), 0 20px 4px white, 0px -1px 0 transparent;
+	box-shadow: 0 10px 0 #E0E3E4, 0 11px 2px #C9C9C9, 0 20px 0 #E0E3E4, 2px 17px 2px rgb(233, 233, 233), inset 1px -1px 3px rgba(122, 122, 122, 0.55), 0 20px 4px white, 0 -1px 0 transparent;
 	animation: light-2 linear 5s infinite;
 }
 
@@ -711,7 +712,7 @@
 	border-radius: 0 350px 350px / 0 20px 20px 0;
 	background-image: linear-gradient(-90deg, rgba(226, 226, 226, 0.46), rgba(0, 0, 0, 0.54) 1%);
 	box-shadow: 0 0 15px black;
-	opacity: .140;
+	opacity: 0.140;
 	transform: rotate(162deg);
 }
 
@@ -727,26 +728,28 @@
 	box-shadow: inset 0 -1px 8px rgb(148, 148, 148);
 	transform: rotateX(-38deg);
 }
-
 @keyframes light {
 	0% {
 		background: #5B6064;
 	}
+
 	50% {
 		background: #95CA3C;
 	}
+
 	100% {
 		background: #5B6064;
 	}
 }
-
 @keyframes light-2 {
 	0% {
 		border-left: 4px solid #5B6064;
 	}
+
 	50% {
 		border-left: 4px solid #07ECEC;
 	}
+
 	100% {
 		border-left: 4px solid #5B6064;
 	}

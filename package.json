@@ -11,13 +11,39 @@
     "copyright": "Copyright © 2018 Quinton Ashley",
     "mac": {
       "category": "public.app-category.game",
-      "target": "zip",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "publish": [
         "github"
       ]
     },
     "win": {
-      "target": "zip",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "publish": [
         "github"
       ]
@@ -82,10 +108,11 @@
     "rebuild": "npm rebuild --runtime=electron --target=3.0.6 --disturl=https://atom.io/download/atom-shell --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
+    "gh-publish": "electron-builder -p always",
     "postinstall": "electron-builder install-app-deps",
     "v": "npm version patch --force",
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.11"
+  "version": "1.0.12"
 }

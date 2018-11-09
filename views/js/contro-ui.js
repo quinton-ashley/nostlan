@@ -121,7 +121,15 @@ const CUI = function() {
 		$(window).resize(resize);
 	};
 
-	this.resize = function(adjust) {
+	this.resize = function(adjust, state) {
+		state = state || ui;
+		if ((/menu/gi).test(state)) {
+			let $menu = $('#' + state);
+			$('.menu').hide();
+			$menu.show();
+			$menu.css('margin-top', $(window).height() * .5 - $menu.height() * .5);
+			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
+		}
 		resize(adjust);
 	}
 
@@ -273,14 +281,7 @@ const CUI = function() {
 				makeCursor(cuis[state].$cur, state);
 			}
 		}
-		if ((/menu/gi).test(state)) {
-			let $menu = $('#' + state);
-			$('.menu').hide();
-			$menu.show();
-			$menu.css('margin-top', $(window).height() * .5 - $menu.height() * .5);
-			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
-		}
-		resize(true);
+		resize(true, state);
 		uiPrev = ui;
 		ui = state;
 		uiSub = subState || uiSub;

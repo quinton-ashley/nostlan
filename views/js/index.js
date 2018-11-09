@@ -403,7 +403,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				html = html.replace(/\t/g, '  ');
 			}
 			if (fileName == 'welcomeMenu') {
-				html = pug('.md', md(html) + pug('img(src="https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/build/icon.png")'));
+				html = pug('.md', md(html) + pug(`img(src="file://${__rootDir}/build/icon.png")`));
 			} else {
 				html = pug('.md', md(html));
 			}
@@ -677,4 +677,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	cui.start({
 		v: true
 	});
+	await delay(1000);
+	cui.resize(true);
 };

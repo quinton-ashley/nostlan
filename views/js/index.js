@@ -329,10 +329,7 @@ module.exports = async function(opt) {
 				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/dev_hdd0/game`;
 			}
 
-			if (!(await fs.exists(gameLibDir)) || !klawSync(gameLibDir).length ||
-				(klawSync(gameLibDir).length == 1 &&
-					klawSync(gameLibDir)[0].path == '.DS_Store')) {
-
+			if (!(await fs.exists(gameLibDir))) {
 				gameLibDir = cui.selectDir(`select ${sys} game directory`);
 			}
 			let files = klawSync(gameLibDir);

@@ -114,5 +114,5 @@
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.14"
+  "version": "1.0.15"
 }

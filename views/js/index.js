@@ -80,6 +80,7 @@ module.exports = async function(opt) {
 	let sysStyle = '';
 	let emuDir = '';
 	let btlDir = '';
+	let outLog = '';
 	let games = [];
 
 	let introFiles = {
@@ -124,17 +125,7 @@ module.exports = async function(opt) {
 			require(`../js/${sysStyle}Load.js`)();
 		}
 		$('#dialogs').show();
-		// await delay(1000);
 	}
-
-	// function openLib() {
-	// 	let dir = dialog.showOpenDialog({
-	// 		properties: ['openDirectory'],
-	// 		title: `open ${sys} game library`,
-	// 		message: `choose the ${sys} game library`
-	// 	});
-	// 	return dir[0];
-	// }
 
 	function addGame(fuse, searchTerm) {
 		let results = fuse.search(searchTerm.substr(0, 32));
@@ -261,6 +252,7 @@ module.exports = async function(opt) {
 						}
 						log('id: ' + id);
 						log(game.title);
+						outLog += term + '\r\n' + game.title + '\r\n\r\n';
 						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
@@ -299,12 +291,16 @@ module.exports = async function(opt) {
 				let game = addGame(fuse, term);
 				if (game) {
 					log(game.title);
+					outLog += term + '\r\n' + game.title + '\r\n\r\n';
 					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 					games.push(game);
 				}
 			}
 		}
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
+		let outLogPath = `${usrDir}/_usr/${sys}Log.log`;
+		await fs.outputFile(outLogPath, outLog);
+		outLog = '';
 		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
 		}));
@@ -554,6 +550,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			} else if (act == 'toggleCover') {
 				$('nav').toggleClass('hide');
 				cui.resize(true);
+			} else if (act == 'openLog') {
+				opn(`${usrDir}/_usr/${sys}Log.log`);
 			} else if (act == 'prefs') {
 				opn(prefsPath);
 			} else if (act == 'quit') {

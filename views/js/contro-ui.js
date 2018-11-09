@@ -72,9 +72,10 @@ const CUI = function() {
 				title: 'choose folder',
 				message: msg
 			});
-			file = replace(/\\/g, '/');
-		} catch (ror) {}
-		return dir[0];
+		} catch (ror) {
+			err(ror);
+		}
+		return dir[0].replace(/\\/g, '/');
 	}
 
 	this.selectFile = function(msg) {
@@ -85,9 +86,10 @@ const CUI = function() {
 				title: 'choose file',
 				message: msg
 			});
-			file = replace(/\\/g, '/');
-		} catch (ror) {}
-		return file;
+		} catch (ror) {
+			err(ror);
+		}
+		return file[0].replace(/\\/g, '/');
 	}
 
 	let customActions = () => {
@@ -184,6 +186,10 @@ const CUI = function() {
 	this.scrollToCursor = scrollToCursor;
 
 	function coverClicked() {
+		let classes = $cur.attr('class').split(' ');
+		if (classes.includes('uie-disabled')) {
+			return false;
+		}
 		let $reel = $cur.parent();
 		scrollToCursor(1000, 0);
 		$cur.toggleClass('selected');
@@ -197,6 +203,7 @@ const CUI = function() {
 			$reel.css('left', '');
 			$cur.css('transform', '');
 		}
+		return true;
 	}
 	this.coverClicked = coverClicked;
 
@@ -367,10 +374,6 @@ const CUI = function() {
 
 		}
 		if (!ret.$cur.length) {
-			return;
-		}
-		let classes = ret.$cur.attr('class').split(' ');
-		if (classes.includes('uie-disabled')) {
 			return;
 		}
 		makeCursor(ret.$cur);

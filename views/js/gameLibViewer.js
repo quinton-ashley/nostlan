@@ -295,7 +295,7 @@ const Viewer = function() {
 		if (win) {
 			emuDirPath = path.join(prefs.btlDir,
 				`../${prefs[sys].emu}/BIN`);
-			if (emu == '3ds') {
+			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
 					emuDirPath += '/nightly-mingw';
 				} else {
@@ -324,7 +324,7 @@ const Viewer = function() {
 			}
 			emuAppPath += emuNameCases[i];
 			if (win) {
-				if (emu == '3ds') {
+				if (emu == 'citra') {
 					emuAppPath += '-qt';
 				}
 				emuAppPath += '.exe';
@@ -351,23 +351,22 @@ const Viewer = function() {
 				}
 			}
 			if (await fs.exists(emuAppPath)) {
-				break;
+				prefs[sys].app[osType] = emuAppPath;
+				return emuAppPath;
+			}
+		}
+		emuAppPath = cui.selectFile('select emulator app');
+		if (mac) {
+			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
+			if (emu == 'citra') {
+				emuAppPath += '-qt-bin';
+			} else if (emu == 'switch') {
+				emuAppPath += '-bin';
 			}
 		}
 		if (!(await fs.exists(emuAppPath))) {
-			emuAppPath = cui.selectFile('select emulator app');
-			if (mac) {
-				emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
-				if (emu == 'citra') {
-					emuAppPath += '-qt-bin';
-				} else if (emu == 'switch') {
-					emuAppPath += '-bin';
-				}
-			}
-		}
-		if (!(await fs.exists(emuAppPath))) {
-			cui.err('app path not valid');
-			return;
+			cui.err('app path not valid: ' + emuAppPath);
+			return '';
 		}
 		prefs[sys].app[osType] = emuAppPath;
 		return emuAppPath;
@@ -380,6 +379,9 @@ const Viewer = function() {
 			return;
 		}
 		let emuAppPath = await getEmuAppPath();
+		if (!emuAppPath) {
+			return;
+		}
 		let gameFile = games.find(x => x.id === id);
 		if (gameFile) {
 			gameFile = getAbsolutePath(gameFile.file);
@@ -451,8 +453,9 @@ const Viewer = function() {
 		let onMenu = (/menu/gi).test(ui);
 		if (ui == 'libMain') {
 			if (act == 'a') {
-				cui.coverClicked();
-				cui.uiStateChange('cover');
+				if (cui.coverClicked()) {
+					cui.uiStateChange('cover');
+				}
 			} else if (act == 'b' && !onMenu) {
 				cui.uiStateChange('sysMenu');
 			} else {

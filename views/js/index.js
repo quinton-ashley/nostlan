@@ -344,6 +344,7 @@ module.exports = async function(opt) {
 				await reload();
 				return;
 			}
+			$('#loadDialog2').text('this may take a few minutes, sit back and relax!');
 			await reset();
 		}
 		btlDir = emuDir + '/bottlenose';
@@ -424,17 +425,30 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			sysMenuHTML += `\t.uie(name="${sys}") ${text}\n`;
 		}
 		$('#sysMenu').append(pug(sysMenuHTML));
+		if (prefs.ui.autoHideCover) {
+			$('nav').toggleClass('hide');
+		}
+		$('nav').hover(function() {
+			if (prefs.ui.autoHideCover) {
+				$('nav').toggleClass('hide');
+				if (!$('nav').hasClass('hide')) {
+					cui.resize(true);
+				}
+			}
+		});
 		sys = prefs.session.sys;
 	}
 
 	cui.setResize((adjust) => {
-		let $cv = $('.cover.view');
-		let $cvSel = $cv.find('#view');
-		let cvHeight = $cv.height();
-		let cpHeight = $('.cover.power').height();
-		if (adjust || cvHeight != cpHeight) {
-			$cvSel.css('margin-top', (cpHeight + 24) * .5);
-			$('nav').height(cpHeight + 24);
+		if (!$('nav').hasClass('hide')) {
+			let $cv = $('.cover.view');
+			let $cvSel = $cv.find('#view');
+			let cvHeight = $cv.height();
+			let cpHeight = $('.cover.power').height();
+			if (adjust || cvHeight != cpHeight) {
+				$cvSel.css('margin-top', (cpHeight + 24) * .5);
+				$('nav').height(cpHeight + 24);
+			}
 		}
 	});
 
@@ -467,6 +481,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		$('link.introStyle').prop('disabled', true);
 		$('link.introStyle').remove();
 		$('#dialogs').hide();
+		$('#loadDialog2').text('');
 	}
 
 	async function powerBtn() {
@@ -519,7 +534,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.uiStateChange('libMain');
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
-			cui.resize(true);
+			prefs.ui.autoHideCover = $('nav').hasClass('hide');
+			if (!prefs.ui.autoHideCover) {
+				cui.resize(true);
+			}
 		} else if (ui == 'libMain') {
 			if (act == 'x') {
 				await powerBtn();
@@ -545,12 +563,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu' && !isBtn) {
-			if (act == 'fullscreen') {
+			if (act == 'back') {
+				cui.uiStateChange('pauseMenu');
+			} else if (act == 'fullscreen') {
 				remote.getCurrentWindow().focus();
 				remote.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'toggleCover') {
-				$('nav').toggleClass('hide');
-				cui.resize(true);
+				cui.buttonPressed('view');
 			} else if (act == 'openLog') {
 				opn(`${usrDir}/_usr/${sys}Log.log`);
 			} else if (act == 'prefs') {
@@ -584,15 +603,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
-				emuDir = cui.selectDir(`choose the folder you want the demo folder to go in`);
-				if (!emuDir) {
-					return false;
-				}
+				emuDir = os.homedir() + '/Documents/emu';
 				let templatePath = path.join(__rootDir, '/demo');
 				await fs.copy(templatePath, emuDir);
-				emuDir += '/emu';
 				await createTemplate(emuDir);
-				emuDir += '/bottlenose';
 				await reload();
 			} else if (act == 'full') {
 				cui.uiStateChange('setupMenu');
@@ -643,7 +657,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	}
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
-		buttonPressed('view');
+		cui.buttonPressed('view');
 		return false;
 	});
 	Mousetrap.bind(['space'], function() {

@@ -89,6 +89,7 @@ html {
 	font-feature-settings: 'liga';
 }
 
-.hide {
-	display: none !important;
+.hide,
+.hide * {
+	filter: opacity(0) !important;
 }

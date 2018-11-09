@@ -127,7 +127,9 @@ const CUI = function() {
 			$('.menu').hide();
 			$menu.show();
 			$menu.css('margin-top', $(window).height() * .5 - $menu.outerHeight() * .5);
-			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
+			if (state != ui) {
+				makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
+			}
 		}
 		resize(adjust);
 	}

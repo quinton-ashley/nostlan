@@ -50,7 +50,8 @@
 			}
 		},
 		"getBackCoverHQ": false,
-		"recheckImgs": false
+		"recheckImgs": false,
+		"autoHideCover": false
 	},
 	"session": {
 		"sys": "wii"

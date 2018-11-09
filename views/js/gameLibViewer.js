@@ -43,7 +43,7 @@ const Viewer = function() {
 			if (res.status == 404) {
 				return;
 			}
-			$('#loadDialog1').text('loading image: ' + url);
+			$('#loadDialog1').text(url.replace(/\%20/g, ' '));
 			log('loading image: ' + url);
 			log('saving to: ' + file);
 			await res.saveTo(file);
@@ -97,7 +97,7 @@ const Viewer = function() {
 				return res;
 			}
 		}
-		$('#loadDialog0').html(md(`scraping for the  ${name}  of  ${game.title}`));
+		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
 		// get high quality box for gamecube/wii
 		if (sys != 'switch' && name == 'box') {
 			file = `${dir}/${name}.jpg`;

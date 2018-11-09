@@ -118,7 +118,6 @@ const CUI = function() {
 
 	this.setResize = function(func) {
 		resize = func;
-		$(window).resize(resize);
 	};
 
 	this.resize = function(adjust, state) {
@@ -127,7 +126,7 @@ const CUI = function() {
 			let $menu = $('#' + state);
 			$('.menu').hide();
 			$menu.show();
-			$menu.css('margin-top', $(window).height() * .5 - $menu.height() * .5);
+			$menu.css('margin-top', $(window).height() * .5 - $menu.outerHeight() * .5);
 			makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
 		}
 		resize(adjust);
@@ -281,7 +280,7 @@ const CUI = function() {
 				makeCursor(cuis[state].$cur, state);
 			}
 		}
-		resize(true, state);
+		this.resize(true, state);
 		uiPrev = ui;
 		ui = state;
 		uiSub = subState || uiSub;
@@ -490,6 +489,7 @@ const CUI = function() {
 		$('.menu .uie').click(uieClicked);
 		$('.menu .uie').hover(uieHovered);
 		loop();
+		$(window).resize(this.resize);
 	};
 
 	this.rebind = function() {

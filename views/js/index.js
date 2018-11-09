@@ -363,6 +363,7 @@ module.exports = async function(opt) {
 		let files = klawSync(path.join(__rootDir, '/views/md'));
 		for (let file of files) {
 			file = file.path;
+			log(file);
 			let html = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
 			if (fileName == 'setupMenu') {
@@ -403,7 +404,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				html = html.replace(/\t/g, '  ');
 			}
 			if (fileName == 'welcomeMenu') {
-				html = pug('.md', md(html) + pug(`img(src="file://${__rootDir}/build/icon.png")`));
+				html = pug('.md', md(html) + pug(`img(src="../img/icon.png")`));
 			} else {
 				html = pug('.md', md(html));
 			}
@@ -612,7 +613,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				if (!emuDir) {
 					return false;
 				}
-				if (path.parse(emuDir).name != 'EMULATORS') {
+				if (act != 'old') {
 					emuDir += '/emu';
 				}
 				await createTemplate(emuDir);

@@ -63,6 +63,7 @@ Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea
 
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
 
+-   Xenia support
 -   automatic emulator updates for emus that lack this feature (planned for v1.1)
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
@@ -77,7 +78,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 Emulation Station is a nice front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  However, with Bottlenose I wanted to make box art the primary, practically singular, focus of the UI, not metadata or descriptions.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
-The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like it.  Bottlenose will mainly focus on games and consoles released after the year 2000.  This is the "Big Box" mode.
+The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like it.  Bottlenose will mainly focus on games and consoles released after the year 2000.  Screenshot is of the "Big Box" mode of Launchbox.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide.

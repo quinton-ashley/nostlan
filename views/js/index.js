@@ -328,7 +328,16 @@ module.exports = async function(opt) {
 			if (sys == 'ps3') {
 				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/dev_hdd0/game`;
 			}
-			if (!(await fs.exists(gameLibDir))) {
+
+			if (!(await fs.exists(gameLibDir)) || !klawSync(gameLibDir).length ||
+				(klawSync(gameLibDir).length == 1 &&
+					klawSync(gameLibDir)[0].path == '.DS_Store')) {
+
+				gameLibDir = cui.selectDir(`select ${sys} game directory`);
+			}
+			let files = klawSync(gameLibDir);
+			if (!files.length || (files.length == 1 &&
+					path.parse(files[0].path).base == '.DS_Store')) {
 				gameLibDir = cui.selectDir(`select ${sys} game directory`);
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');

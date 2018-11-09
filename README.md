@@ -20,7 +20,8 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   reverse scroll effect on alternating rows in cover view mode
 -   images only get downloaded once and are stored locally for future use
 -   demo mode you can browse if don't have any games on your computer
--   Windows and macOS supported
+-   Windows and macOS supported!
+-   Linux is also supported but no pre-built binaries are available yet (sorry I still need to figure it out).  Clone the repo and build on your own if you'd like to start using Bottlenose now.
 
 ## Supported Emulators
 
@@ -68,7 +69,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
 -   easy way to mix and swap texture packs for Dolphin
--   full Linux support
+-   Linux pre-built binaries
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
 -   custom theming

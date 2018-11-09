@@ -87,6 +87,14 @@ Windows Explorer, despite not having gamepad support, is also surprisingly popul
 
 Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
 
+## Settings
+
+Push the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  Push "Select" to show/hide the cover overlay or access this option from the settings menu.
+
+## Error Reporting
+
+If Bottlenose has trouble matching your game file names and you see a bunch of covers of mismatched games in your library view, please [send me](mailto:qashto@gmail.com) your log file and I'll try to sort it out.  Send me a description of any other errors or report an issue with the code on this project's Github.
+
 ## Template File Structure
 
 ```javascript
@@ -183,7 +191,7 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 
 ## User Preferences
 
-`region` other regions not supported yet
+`region` game files without game IDs in their game file name, for example "Super Smash Bros Melee.iso", will be auto assigned to a default region.  Use E for North and South America, P for European PAL, J for Japan.
 
 `ui.mouse.wheel.smoothScroll` = false on Windows by default, should be true if you have a mouse that supports smooth scrolling (like an Apple Macbook trackpad)
 

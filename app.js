@@ -11,12 +11,16 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const setupPug = require('electron-pug');
+const {
+	autoUpdater
+} = require("electron-updater");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 async function createWindow() {
+	autoUpdater.checkForUpdatesAndNotify();
 	let pkgPath = path.join(__rootDir, 'package.json');
 	log(pkgPath);
 	let package = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));

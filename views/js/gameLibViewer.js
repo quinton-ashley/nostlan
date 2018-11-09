@@ -527,15 +527,11 @@ const Viewer = function() {
 			}
 		}
 		await addTemplates(template, rows, templateAmt);
-		// for (let i = 0; i < 8; i++) {
-		//   $('.reel.r' + i).clone().children().appendTo('.reel.r' + i);
-		// }
 		cui.addView('libMain');
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
 		if (!reload) {
 			cui.rebind('mouse');
-			// remote.getCurrentWindow().setFullScreen(true);
 		}
 	}
 };

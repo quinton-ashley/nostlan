@@ -665,6 +665,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		cui.buttonPressed('b');
 	});
 
+	remote.getCurrentWindow().setFullScreen(true);
 	await load();
 	if (prefs.donor) {
 		await reload();

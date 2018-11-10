@@ -214,6 +214,11 @@ Texture packs with a rating of 7 and above will be considered recommended.  In a
 
 Bottlenose uses publicly available images under Fair Use.  
 
+### Logo
+
+The logo is a variation on MayImilae's Dolphin logo
+https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg
+
 ### Databases
 
 gametdb database text files  

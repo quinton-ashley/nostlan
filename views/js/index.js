@@ -73,6 +73,7 @@ module.exports = async function(opt) {
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
 	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
+	// 'ps2', 'xbox360',
 	if (mac) {
 		systems = ['wii', 'ds', '3ds', 'switch'];
 	}

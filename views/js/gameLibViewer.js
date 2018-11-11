@@ -68,12 +68,12 @@ const Viewer = function() {
 	}
 
 	async function dlFromAndy(title, file, system) {
-		let url = `http://andydecarli.com/Video%20Games/Collection/${system}/Scans/Full%20Size/${system}%20${title}%20Front%20Cover.jpg`;
+		let url = `http://andydecarli.com/Video Games/Collection/${system}/Scans/Full Size/${system} ${title}`;
+		url = url.replace(/ /g, '%20');
 		log(url);
-		let res = await dl(url, file);
+		let res = await dl(url + `%20Front%20Cover.jpg`, file);
 		if (res && prefs.ui.getBackCoverHQ) {
-			url = `http://andydecarli.com/Video%20Games/Collection/${system}/Scans/Full%20Size/${system}%20${title}%20Back%20Cover.jpg`;
-			await dl(url, file);
+			await dl(url + `%20Back%20Cover.jpg`, file);
 		}
 		return res;
 	}
@@ -104,24 +104,28 @@ const Viewer = function() {
 			if (await fs.exists(file)) {
 				return file;
 			}
-			let title = game.title.replace(/ /g, '%20').replace(/[\:]/g, '');
+			let title = game.title.replace(/[\:]/g, '');
 			if (sys == 'wiiu') {
-				res = await dlFromAndy(title, file, 'Nintendo%20Wii%20U');
+				res = await dlFromAndy(title, file, 'Nintendo Wii U');
 			} else if (sys == '3ds') {
-				res = await dlFromAndy(title, file, 'Nintendo%203DS');
+				res = await dlFromAndy(title, file, 'Nintendo 3DS');
 			} else if (sys == 'ds') {
-				res = await dlFromAndy(title, file, 'Nintendo%20DS');
+				res = await dlFromAndy(title, file, 'Nintendo DS');
 			} else if (sys == 'ps3') {
-				res = await dlFromAndy(title, file, 'Sony%20PlayStation%203');
+				res = await dlFromAndy(title, file, 'Sony PlayStation 3');
+			} else if (sys == 'ps2') {
+				res = await dlFromAndy(title, file, 'Sony PlayStation 2');
+			} else if (sys == 'xbox360') {
+				res = await dlFromAndy(title, file, 'Xbox 360');
 			} else if (game.id.length > 4) {
-				res = await dlFromAndy(title, file, 'Nintendo%20Game%20Cube');
+				res = await dlFromAndy(title, file, 'Nintendo Game Cube');
 				if (!res) {
-					res = await dlFromAndy(title, file, 'Nintendo%20Wii');
+					res = await dlFromAndy(title, file, 'Nintendo Wii');
 				}
 			} else {
-				res = await dlFromAndy(title, file, 'Nintendo%2064');
+				res = await dlFromAndy(title, file, 'Nintendo 64');
 				if (!res) {
-					res = await dlFromAndy(title, file, 'Super%20Nintendo');
+					res = await dlFromAndy(title, file, 'Super Nintendo');
 				}
 				if (!res) {
 					res = await dlFromAndy(title, file, 'Nintendo');

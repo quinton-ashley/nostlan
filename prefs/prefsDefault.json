@@ -32,6 +32,14 @@
 		},
 		"emu": "Yuzu"
 	},
+	"xbox360": {
+		"app": {},
+		"emu": "Xenia"
+	},
+	"ps2": {
+		"app": {},
+		"emu": "PCSX2"
+	},
 	"ps3": {
 		"app": {},
 		"emu": "RPCS3"

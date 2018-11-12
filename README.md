@@ -20,8 +20,7 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   reverse scroll effect on alternating rows in cover view mode
 -   images only get downloaded once and are stored locally for future use
 -   demo mode you can browse if don't have any games on your computer
--   Windows and macOS supported!
--   Linux is also supported but no pre-built binaries are available yet (sorry I still need to figure it out).  Clone the repo and build on your own if you'd like to start using Bottlenose now.
+-   Windows, macOS, and Linux support!
 
 ## Supported Emulators
 
@@ -65,11 +64,10 @@ Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
 
 -   Xenia support
--   automatic emulator updates for emus that lack this feature (planned for v1.1)
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
+-   automatic emulator updates for emus that lack this feature
 -   easy way to mix and swap texture packs for Dolphin
--   Linux pre-built binaries
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
 -   custom theming
@@ -88,11 +86,18 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
+Retroarch is not really comparable to Bottlenose.  It uses seperate cores instead of individual emulator apps.  Game art is low res and the interface is barebones.  Good for small devices but I would never use it.
+![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
+
 Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
 
-## Settings
+## Using Bottlenose
 
-Push the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  Push "Select" to show/hide the cover overlay or access this option from the settings menu.
+Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup required.  Button input is mapped from Xbox One and PS4 button layouts to the Switch button layout.  Although this may be confusing to some I decided to do this because I like playing games on Nintendo consoles with the button layout intended by the developers.
+
+The console themed cover overlay shows your basic options.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload you game library.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
+
+Select a game from your game library to view it's cover.  You'll see the cover overlay change.  Clicking "Play" will play the game.
 
 ## Error Reporting
 
@@ -130,13 +135,16 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
 
-## Collaboration Guide
+## Contributing to Bottlenose (code)
 
 PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package shortly.
 
 ## Contributing to Bottlenose
 
-If you would like to update a game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
+
+I need a database file for Xenia and PCSX2.  Using gametdb database files was easy but they do not have a database of xbox 360 or PS2 games. If someone could scrape a database site for me and give me a database file then I could support these emulators.
+
+If you would like to update an existing game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
 
 ```javascript
 {
@@ -216,7 +224,7 @@ Bottlenose uses publicly available images under Fair Use.
 
 ### Logo
 
-The logo is a variation on MayImilae's Dolphin logo
+The logo is a vaporwave style variation on MayImilae's Dolphin logo
 https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg
 
 ### Databases
@@ -260,7 +268,7 @@ Wii U Gamepad SVG by Tokyoship from Wikimedia Commons
 Creative Commons Attribution 3.0 Unported  
 <https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg>
 
-3DS SVG by me (quinton-ashley/qashto)  
+3DS SVG image trace by me (quinton-ashley/qashto)  
 
 PS3 Icon Loader by Jan Machycek  
 <https://codepen.io/machyj/pen/ENvewe>

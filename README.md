@@ -18,12 +18,11 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   _aesthetic_ UI themes for each supported console
 -   launch games in fullscreen
 -   reverse scroll effect on alternating rows in cover view mode
--   images only get downloaded once and are stored locally for future use
 -   uses individual emulators: no cores and no controller input lag
 -   controllers connect automatically, no setup
 -   auto maps Xbox One and PS4 controllers to Switch button layout
--   demo mode you can browse if don't have any games on your computer
--   Windows, macOS, and Linux support!
+-   browse demo mode if don't have any games on your computer
+-   the only high quality front end to support Windows, macOS, and Linux!
 
 ## Supported Emulators
 
@@ -66,7 +65,6 @@ Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea
 
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
 
--   Xenia support
 -   batch install/update texture packs for Dolphin
 -   batch install/update graphics packs for Cemu
 -   automatic emulator updates for emus that lack this feature
@@ -74,6 +72,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
 -   custom theming
+-   Xenia support
 
 ## How is Bottlenose different from other front-ends?
 
@@ -96,17 +95,21 @@ Steam is an ugly mess on UHD displays and if you're reading this you've probably
 
 ## Using Bottlenose
 
-Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup required.  Button input is mapped from Xbox One and PS4 button layouts to the Switch button layout.  Although this may be confusing to some I decided to do this because I like playing games on Nintendo consoles with the button layout intended by the developers.
+Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup required.  Button input is mapped from Xbox One and PS4 button layouts to the Switch button layout.  Although this may be confusing to some I decided to do this because I like playing games made for Nintendo consoles with the button layout intended by the developers.
 
 The console themed cover overlay shows your basic options.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload you game library.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
 
 Select a game from your game library to view it's cover.  You'll see the cover overlay change.  Clicking "Play" will play the game.
 
+## System Requirements
+
+Bottlnose will probably not perform well on low-end systems.  Utlra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 just fine.
+
 ## Error Reporting
 
-If Bottlenose has trouble matching your game file names and you see a bunch of covers of mismatched games in your library view, please [send me](mailto:qashto@gmail.com) your log file and I'll try to sort it out.  Send me a description of any other errors or report an issue with the code on this project's Github.
+If Bottlenose has trouble matching your game file names and you see a bunch of covers of mismatched games or you are missing games in your library view, please [send me](mailto:qashto@gmail.com) your error log file and I'll try to sort it out.  Send me a description of any other errors or report an issue with the code on this project's Github.
 
-## Template File Structure
+## Optional Template File Structure
 
 ```javascript
 emu (root folder can have any name)
@@ -130,7 +133,7 @@ emu (root folder can have any name)
         └── Turbo.rpx
 ```
 
-Bottlenose was designed to optionally use the same directory structure as WiiUSBHelper, for compatibility.  Although sadly WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Bottlenose was designed to optionally use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
 On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
 
@@ -144,8 +147,7 @@ PRs are welcome!  Please follow my coding style though.  No callback pyramids, u
 
 ## Contributing to Bottlenose
 
-
-I need a database file for Xenia and PCSX2.  Using gametdb database files was easy but they do not have a database of xbox 360 or PS2 games. If someone could scrape a database site for me and give me a database file then I could support these emulators.
+I need a database file for Xenia and PCSX2.  gametdb does not have xbox 360 or PS2 game database files availabe. If someone could scrape a database site for me and give me a database file then I could support these emulators.
 
 If you would like to update an existing game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
 

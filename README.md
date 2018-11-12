@@ -19,6 +19,9 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   launch games in fullscreen
 -   reverse scroll effect on alternating rows in cover view mode
 -   images only get downloaded once and are stored locally for future use
+-   uses individual emulators: no cores and no controller input lag
+-   controllers connect automatically, no setup
+-   auto maps Xbox One and PS4 controllers to Switch button layout
 -   demo mode you can browse if don't have any games on your computer
 -   Windows, macOS, and Linux support!
 

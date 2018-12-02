@@ -9,6 +9,7 @@ const Viewer = function() {
 	const {
 		app
 	} = remote;
+	const elec = require('./electronWrap.js');
 	const spawn = require('await-spawn');
 	const delay = require('delay');
 	const fs = require('fs-extra');
@@ -359,7 +360,7 @@ const Viewer = function() {
 				return emuAppPath;
 			}
 		}
-		emuAppPath = cui.selectFile('select emulator app');
+		emuAppPath = elec.selectFile('select emulator app');
 		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {

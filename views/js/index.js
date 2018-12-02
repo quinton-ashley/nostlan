@@ -60,8 +60,9 @@ module.exports = async function(opt) {
 	// the user's preferences and game libs json databases
 	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
 	log(usrDir);
-	global.cui = require('../js/contro-ui.js');
-	const viewer = require('../js/gameLibViewer.js');
+	global.cui = require('./js/contro-ui.js');
+	const elec = require('./electronWrap.js');
+	const viewer = require('./js/gameLibViewer.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -331,12 +332,12 @@ module.exports = async function(opt) {
 			}
 
 			if (!(await fs.exists(gameLibDir))) {
-				gameLibDir = cui.selectDir(`select ${sys} game directory`);
+				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
 			let files = klawSync(gameLibDir);
 			if (!files.length || (files.length == 1 &&
 					path.parse(files[0].path).base == '.DS_Store')) {
-				gameLibDir = cui.selectDir(`select ${sys} game directory`);
+				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');
 			if (await fs.exists(gameLibDir)) {
@@ -629,7 +630,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				if (act == 'new-in-docs') {
 					emuDir = os.homedir() + '/Documents';
 				} else {
-					emuDir = cui.selectDir(msg);
+					emuDir = elec.selectDir(msg);
 				}
 				if (!emuDir) {
 					return false;

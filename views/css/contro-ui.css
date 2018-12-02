@@ -1,0 +1,45 @@
+.uie.no-outline {
+	outline: none!important;
+}
+
+.menu {
+	position: fixed;
+	z-index: 100;
+	width: 50vw;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	margin-left: 25vw;
+	margin-top: 5vh;
+	text-align: left;
+	display: none;
+}
+
+.menu code,
+.menu pre {
+	font-size: 1.5vh;
+}
+
+.menu p {
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 2vh;
+}
+
+.menu h1 {
+	text-align: center;
+	font-size: 4vh;
+}
+
+.menu .uie {
+	margin: 0;
+	font-size: 4vh;
+	text-align: center;
+	border: 3px solid var(--cover-text-color);
+	border-radius: 10px;
+	box-shadow: 0.5px 0.5px 0 rgba(255, 255, 255, .5);
+}
+
+.menu .cursor {
+	background-color: var(--cover-color);
+	filter: brightness(1.2);
+}

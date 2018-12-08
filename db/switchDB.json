@@ -19,583 +19,441 @@
 		}
 	}, {
 		"id": "AAAAA",
-		"title": "The Legend of Zelda: Breath of the Wild",
-		"texp": []
+		"title": "The Legend of Zelda: Breath of the Wild"
 	}, {
 		"id": "AAACA",
 		"title": "Super Mario Odyssey",
-		"texp": [],
 		"img": {
 			"box": "https://images-na.ssl-images-amazon.com/images/I/91JZdTYcjFL.jpg"
 		}
 	}, {
 		"id": "AAB6A",
-		"title": "Splatoon 2",
-		"texp": []
+		"title": "Splatoon 2"
 	}, {
 		"id": "AAB6B",
-		"title": "Splatoon 2",
-		"texp": []
+		"title": "Splatoon 2"
 	}, {
 		"id": "AAB6C",
-		"title": "Splatoon 2",
-		"texp": []
+		"title": "Splatoon 2"
 	}, {
 		"id": "AAB7A",
-		"title": "Monster Hunter XX: Double Cross Nintendo Switch Ver.",
-		"texp": []
+		"title": "Monster Hunter XX: Double Cross Nintendo Switch Ver."
 	}, {
 		"id": "AAB8A",
-		"title": "Super Bomberman R",
-		"texp": []
+		"title": "Super Bomberman R"
 	}, {
 		"id": "AABPA",
-		"title": "Mario Kart 8 Deluxe",
-		"texp": []
+		"title": "Mario Kart 8 Deluxe"
 	}, {
 		"id": "AABQA",
-		"title": "ARMS",
-		"texp": []
+		"title": "ARMS"
 	}, {
 		"id": "AACAC",
-		"title": "Disgaea 5 Complete",
-		"texp": []
+		"title": "Disgaea 5 Complete"
 	}, {
 		"id": "AACCA",
-		"title": "1-2-Switch",
-		"texp": []
+		"title": "1-2-Switch"
 	}, {
 		"id": "AB36A",
-		"title": "Troll and I",
-		"texp": []
+		"title": "Troll and I"
 	}, {
 		"id": "AB38A",
-		"title": "NBA 2K18",
-		"texp": []
+		"title": "NBA 2K18"
 	}, {
 		"id": "AB39A",
-		"title": "RiME",
-		"texp": []
+		"title": "RiME"
 	}, {
 		"id": "AB4JA",
-		"title": "The LEGO NINJAGO Movie Video Game",
-		"texp": []
+		"title": "The LEGO NINJAGO Movie Video Game"
 	}, {
 		"id": "AB4JB",
-		"title": "The LEGO NINJAGO Movie Video Game",
-		"texp": []
+		"title": "The LEGO NINJAGO Movie Video Game"
 	}, {
 		"id": "AB4JC",
-		"title": "The LEGO NINJAGO Movie Video Game",
-		"texp": []
+		"title": "The LEGO NINJAGO Movie Video Game"
 	}, {
 		"id": "AB5JB",
-		"title": "Soldam: Drop, Connect, Erase",
-		"texp": []
+		"title": "Soldam: Drop, Connect, Erase"
 	}, {
 		"id": "AB92A",
-		"title": "Cave Story+",
-		"texp": []
+		"title": "Cave Story+"
 	}, {
 		"id": "AB93A",
-		"title": "Ittle Dew 2+",
-		"texp": []
+		"title": "Ittle Dew 2+"
 	}, {
 		"id": "AB96A",
-		"title": "Tiny Barbarian DX",
-		"texp": []
+		"title": "Tiny Barbarian DX"
 	}, {
 		"id": "ABD7C",
-		"title": "Sonic Mania Plus",
-		"texp": []
+		"title": "Sonic Mania Plus"
 	}, {
 		"id": "ABM2A",
-		"title": "LEGO City Undercover",
-		"texp": []
+		"title": "LEGO City Undercover"
 	}, {
 		"id": "ABM2B",
-		"title": "LEGO City Undercover",
-		"texp": []
+		"title": "LEGO City Undercover"
 	}, {
 		"id": "ABMKA",
-		"title": "Has Been Heroes",
-		"texp": []
+		"title": "Has Been Heroes"
 	}, {
 		"id": "ABQLA",
-		"title": "Sonic Forces",
-		"texp": []
+		"title": "Sonic Forces"
 	}, {
 		"id": "ABQLB",
-		"title": "Sonic Forces",
-		"texp": []
+		"title": "Sonic Forces"
 	}, {
 		"id": "ABQLC",
-		"title": "Sonic Forces",
-		"texp": []
+		"title": "Sonic Forces"
 	}, {
 		"id": "ABTCB",
-		"title": "Wonder Boy: The Dragon's Trap",
-		"texp": []
+		"title": "Wonder Boy: The Dragon's Trap"
 	}, {
 		"id": "ABTDA",
-		"title": "Cars 3: Driven to Win",
-		"texp": []
+		"title": "Cars 3: Driven to Win"
 	}, {
 		"id": "ABTDB",
-		"title": "Cars 3: Driven to Win",
-		"texp": []
+		"title": "Cars 3: Driven to Win"
 	}, {
 		"id": "ABTDC",
-		"title": "Cars 3: Driven to Win",
-		"texp": []
+		"title": "Cars 3: Driven to Win"
 	}, {
 		"id": "ABWUA",
-		"title": "Nobunaga no Yabou: Souzou with Power Up Kit",
-		"texp": []
+		"title": "Nobunaga no Yabou: Souzou with Power Up Kit"
 	}, {
 		"id": "ABYBA",
-		"title": "Dragon Ball Xenoverse 2",
-		"texp": []
+		"title": "Dragon Ball Xenoverse 2"
 	}, {
 		"id": "AC8QA",
-		"title": "Fate/Extella: The Umbral Star",
-		"texp": []
+		"title": "Fate/Extella: The Umbral Star"
 	}, {
 		"id": "ACC2A",
-		"title": "Resident Evil: Revelations Collection",
-		"texp": []
+		"title": "Resident Evil: Revelations Collection"
 	}, {
 		"id": "ACD3A",
-		"title": "VOEZ",
-		"texp": []
+		"title": "VOEZ"
 	}, {
 		"id": "ACL4A",
-		"title": "LEGO Worlds",
-		"texp": []
+		"title": "LEGO Worlds"
 	}, {
 		"id": "ACL9A",
-		"title": "One Piece: Unlimited World R Deluxe Edition",
-		"texp": []
+		"title": "One Piece: Unlimited World R Deluxe Edition"
 	}, {
 		"id": "ACNGB",
-		"title": "Runner3",
-		"texp": []
+		"title": "Runner3"
 	}, {
 		"id": "ACS3A",
-		"title": "Minecraft: Story Mode - The Complete Adventure",
-		"texp": []
+		"title": "Minecraft: Story Mode - The Complete Adventure"
 	}, {
 		"id": "ACVKA",
-		"title": "Rayman Legends: Definitive Edition",
-		"texp": []
+		"title": "Rayman Legends: Definitive Edition"
 	}, {
 		"id": "ACVKB",
-		"title": "Rayman Origins: Definitive Edition",
-		"texp": []
+		"title": "Rayman Origins: Definitive Edition"
 	}, {
 		"id": "ACXPA",
-		"title": "Dragon Quest Builders",
-		"texp": []
+		"title": "Dragon Quest Builders"
 	}, {
 		"id": "AD2DA",
-		"title": "Nobunaga no Yabou: Taishi",
-		"texp": []
+		"title": "Nobunaga no Yabou: Taishi"
 	}, {
 		"id": "AD6QA",
-		"title": "Harvest Moon: Light of Hope - Special Edition",
-		"texp": []
+		"title": "Harvest Moon: Light of Hope - Special Edition"
 	}, {
 		"id": "AD6QB",
-		"title": "Harvest Moon: Light of Hope - Special Edition",
-		"texp": []
+		"title": "Harvest Moon: Light of Hope - Special Edition"
 	}, {
 		"id": "AD77A",
-		"title": "Syberia",
-		"texp": []
+		"title": "Syberia"
 	}, {
 		"id": "AD78A",
-		"title": "Syberia 2",
-		"texp": []
+		"title": "Syberia 2"
 	}, {
 		"id": "AD79B",
-		"title": "Gear.Club Unlimited",
-		"texp": []
+		"title": "Gear.Club Unlimited"
 	}, {
 		"id": "AD7TA",
-		"title": "Armed Blue Gunvolt Striker Pack",
-		"texp": []
+		"title": "Armed Blue Gunvolt Striker Pack"
 	}, {
 		"id": "AD9BA",
-		"title": "Touhou Kobuto V: Burst Battle",
-		"texp": []
+		"title": "Touhou Kobuto V: Burst Battle"
 	}, {
 		"id": "ADAVA",
-		"title": "Seiken Densetsu Collection",
-		"texp": []
+		"title": "Seiken Densetsu Collection"
 	}, {
 		"id": "ADCEA",
-		"title": "FIFA 18",
-		"texp": []
+		"title": "FIFA 18"
 	}, {
 		"id": "ADEBA",
-		"title": "Just Dance 2018",
-		"texp": []
+		"title": "Just Dance 2018"
 	}, {
 		"id": "ADENA",
-		"title": "Xenoblade 2",
-		"texp": []
+		"title": "Xenoblade 2"
 	}, {
 		"id": "ADENB",
-		"title": "Xenoblade Chronicles 2",
-		"texp": []
+		"title": "Xenoblade Chronicles 2"
 	}, {
 		"id": "ADFUA",
-		"title": "Nintendo Labo - Toy-Con 01: Variety Kit",
-		"texp": []
+		"title": "Nintendo Labo - Toy-Con 01: Variety Kit"
 	}, {
 		"id": "ADFVA",
-		"title": "Nintendo Labo - Toy-Con 02: Robot Kit",
-		"texp": []
+		"title": "Nintendo Labo - Toy-Con 02: Robot Kit"
 	}, {
 		"id": "ADK7A",
-		"title": "Monster Jam: Crush It!",
-		"texp": []
+		"title": "Monster Jam: Crush It!"
 	}, {
 		"id": "ADLRA",
-		"title": "Sine Mora EX",
-		"texp": []
+		"title": "Sine Mora EX"
 	}, {
 		"id": "ADMMA",
-		"title": "Rocket League",
-		"texp": []
+		"title": "Rocket League"
 	}, {
 		"id": "ADQPA",
-		"title": "Monopoly for Nintendo Switch",
-		"texp": []
+		"title": "Monopoly for Nintendo Switch"
 	}, {
 		"id": "ADWFA",
-		"title": "Nights of Azure 2: Bride of the New Moon",
-		"texp": []
+		"title": "Nights of Azure 2: Bride of the New Moon"
 	}, {
 		"id": "ADWFB",
-		"title": "Nights of Azure 2: Bride of the New Moon",
-		"texp": []
+		"title": "Nights of Azure 2: Bride of the New Moon"
 	}, {
 		"id": "ADWYA",
-		"title": "Lost Sphear",
-		"texp": []
+		"title": "Lost Sphear"
 	}, {
 		"id": "ADXHA",
-		"title": "Fire Emblem Warriors",
-		"texp": []
+		"title": "Fire Emblem Warriors"
 	}, {
 		"id": "ADXHB",
-		"title": "Fire Emblem Warriors",
-		"texp": []
+		"title": "Fire Emblem Warriors"
 	}, {
 		"id": "ADYFA",
-		"title": "Winning Post 8 2017",
-		"texp": []
+		"title": "Winning Post 8 2017"
 	}, {
 		"id": "AE98A",
-		"title": "Bayonetta 2",
-		"texp": []
+		"title": "Bayonetta 2"
 	}, {
 		"id": "AEABB",
-		"title": "Poi: Explorer Edition",
-		"texp": []
+		"title": "Poi: Explorer Edition"
 	}, {
 		"id": "AEANA",
-		"title": "LEGO Marvel Super Heroes 2",
-		"texp": []
+		"title": "LEGO Marvel Super Heroes 2"
 	}, {
 		"id": "AEANB",
-		"title": "LEGO Marvel Super Heroes 2",
-		"texp": []
+		"title": "LEGO Marvel Super Heroes 2"
 	}, {
 		"id": "AEANC",
-		"title": "LEGO Marvel Super Heroes 2",
-		"texp": []
+		"title": "LEGO Marvel Super Heroes 2"
 	}, {
 		"id": "AECNA",
-		"title": "Shingeki no Kyojin 2",
-		"texp": []
+		"title": "Shingeki no Kyojin 2"
 	}, {
 		"id": "AECRA",
-		"title": "Retro City Rampage DX",
-		"texp": []
+		"title": "Retro City Rampage DX"
 	}, {
 		"id": "AECYA",
-		"title": "Portal Knights",
-		"texp": []
+		"title": "Portal Knights"
 	}, {
 		"id": "AEDXA",
-		"title": "Scribblenauts Showdown",
-		"texp": []
+		"title": "Scribblenauts Showdown"
 	}, {
 		"id": "AEESA",
-		"title": "Champion Jockey Special",
-		"texp": []
+		"title": "Champion Jockey Special"
 	}, {
 		"id": "AEG7A",
-		"title": "R.B.I. Baseball 17",
-		"texp": []
+		"title": "R.B.I. Baseball 17"
 	}, {
 		"id": "AEJQA",
-		"title": "Axiom Verge",
-		"texp": []
+		"title": "Axiom Verge"
 	}, {
 		"id": "AEJQB",
-		"title": "Axiom Verge",
-		"texp": []
+		"title": "Axiom Verge"
 	}, {
 		"id": "AEQKA",
-		"title": "Overcooked: Special Edition",
-		"texp": []
+		"title": "Overcooked: Special Edition"
 	}, {
 		"id": "AES8A",
-		"title": "Ben 10",
-		"texp": []
+		"title": "Ben 10"
 	}, {
 		"id": "AESEA",
-		"title": "Farming Simulator",
-		"texp": []
+		"title": "Farming Simulator"
 	}, {
 		"id": "AESEB",
-		"title": "Farming Simulator",
-		"texp": []
+		"title": "Farming Simulator"
 	}, {
 		"id": "AEXYA",
-		"title": "Snipperclips Plus: Cut It Out, Together!",
-		"texp": []
+		"title": "Snipperclips Plus: Cut It Out, Together!"
 	}, {
 		"id": "AF3BA",
-		"title": "DOOM",
-		"texp": []
+		"title": "DOOM"
 	}, {
 		"id": "AF3CA",
-		"title": "The Elder Scrolls V: Skyrim",
-		"texp": []
+		"title": "The Elder Scrolls V: Skyrim"
 	}, {
 		"id": "AF49A",
-		"title": "Atelier Lydie & Soeur: Fushigi na Kaiga no Renkinjutsu Samurai",
-		"texp": []
+		"title": "Atelier Lydie & Soeur: Fushigi na Kaiga no Renkinjutsu Samurai"
 	}, {
 		"id": "AFCAA",
-		"title": "Sumikko Gurashi: Sumikko Park e Youkoso",
-		"texp": []
+		"title": "Sumikko Gurashi: Sumikko Park e Youkoso"
 	}, {
 		"id": "AFHRA",
-		"title": "This is the Police",
-		"texp": []
+		"title": "This is the Police"
 	}, {
 		"id": "AFLHA",
-		"title": "Lumo",
-		"texp": []
+		"title": "Lumo"
 	}, {
 		"id": "AFLJA",
-		"title": "88 Heroes: 98 Heroes Edition",
-		"texp": []
+		"title": "88 Heroes: 98 Heroes Edition"
 	}, {
 		"id": "AFLSA",
-		"title": "The Longest Five Minutes",
-		"texp": []
+		"title": "The Longest Five Minutes"
 	}, {
 		"id": "AFQMA",
-		"title": "L.A. Noire",
-		"texp": []
+		"title": "L.A. Noire"
 	}, {
 		"id": "AFQMC",
-		"title": "L.A. Noire",
-		"texp": []
+		"title": "L.A. Noire"
 	}, {
 		"id": "AFVHA",
-		"title": "South Park: The Fractured But Whole",
-		"texp": []
+		"title": "South Park: The Fractured But Whole"
 	}, {
 		"id": "AFVPA",
-		"title": "Unbox: Newbie's Adventure",
-		"texp": []
+		"title": "Unbox: Newbie's Adventure"
 	}, {
 		"id": "AFVWA",
-		"title": "Snow Moto Racing Freedom",
-		"texp": []
+		"title": "Snow Moto Racing Freedom"
 	}, {
 		"id": "AFWTA",
-		"title": "Donkey Kong Country: Tropical Freeze",
-		"texp": []
+		"title": "Donkey Kong Country: Tropical Freeze"
 	}, {
 		"id": "AGCYA",
-		"title": "Asonde Shogi ga Tsuyokunaru! Ginsei Shogi DX",
-		"texp": []
+		"title": "Asonde Shogi ga Tsuyokunaru! Ginsei Shogi DX"
 	}, {
 		"id": "AGK2A",
-		"title": "Super Putty Squad",
-		"texp": []
+		"title": "Super Putty Squad"
 	}, {
 		"id": "AGLQA",
-		"title": "Stern Pinball Arcade",
-		"texp": []
+		"title": "Stern Pinball Arcade"
 	}, {
 		"id": "AGV2A",
-		"title": "Sengoku Musou: Sanada Maru",
-		"texp": []
+		"title": "Sengoku Musou: Sanada Maru"
 	}, {
 		"id": "AGVVA",
-		"title": "Musou Orochi 2 Ultimate",
-		"texp": []
+		"title": "Musou Orochi 2 Ultimate"
 	}, {
 		"id": "AGVYA",
-		"title": "Shin Sangoku Musou 7 Empires",
-		"texp": []
+		"title": "Shin Sangoku Musou 7 Empires"
 	}, {
 		"id": "AGW3A",
-		"title": "Batman: The Telltale Series",
-		"texp": []
+		"title": "Batman: The Telltale Series"
 	}, {
 		"id": "AGXWA",
-		"title": "MXGP3: The Official Motocross Videogame",
-		"texp": []
+		"title": "MXGP3: The Official Motocross Videogame"
 	}, {
 		"id": "AGY7B",
-		"title": "Octopath Traveler",
-		"texp": []
+		"title": "Octopath Traveler"
 	}, {
 		"id": "AH26A",
-		"title": "Kirby Star Allies",
-		"texp": []
+		"title": "Kirby Star Allies"
 	}, {
 		"id": "AH3EA",
-		"title": "LEGO The Incredibles",
-		"texp": []
+		"title": "LEGO The Incredibles"
 	}, {
 		"id": "AHABA",
-		"title": "Party Planet",
-		"texp": []
+		"title": "Party Planet"
 	}, {
 		"id": "AJ6HA",
-		"title": "Anata no Shikihime Kyouikutan",
-		"texp": []
+		"title": "Anata no Shikihime Kyouikutan"
 	}, {
 		"id": "AJA8A",
-		"title": "One Piece: Kaizoku Musou 3 - Deluxe Edition",
-		"texp": []
+		"title": "One Piece: Kaizoku Musou 3 - Deluxe Edition"
 	}, {
 		"id": "AJAMA",
-		"title": "3D MiniGolf",
-		"texp": []
+		"title": "3D MiniGolf"
 	}, {
 		"id": "AJH9A",
 		"title": "Captain Toad: Treasure Tracker",
-		"texp": [],
 		"img": {
 			"box": "https://images-na.ssl-images-amazon.com/images/I/91mSluAuj7L.jpg"
 		}
 	}, {
 		"id": "AJJ7A",
-		"title": "Monster Energy Supercross: The Official Videogame",
-		"texp": []
+		"title": "Monster Energy Supercross: The Official Videogame"
 	}, {
 		"id": "AJMUA",
-		"title": "The Snack World: Trejarers Gold",
-		"texp": []
+		"title": "The Snack World: Trejarers Gold"
 	}, {
 		"id": "AK6JA",
 		"title": "Street Fighter: 30th Anniversary Collection",
-		"texp": [],
 		"img": {
 			"box": "https://art.gametdb.com/switch/box/EN/AK6JA.png"
 		}
 	}, {
 		"id": "AKUTA",
-		"title": "Zelda Musou: Hyrule All Stars DX",
-		"texp": []
+		"title": "Zelda Musou: Hyrule All Stars DX"
 	}, {
 		"id": "AKUTB",
-		"title": "Hyrule Warriors: Definitive Edition",
-		"texp": []
+		"title": "Hyrule Warriors: Definitive Edition"
 	}, {
 		"id": "ALECA",
-		"title": "Winning Post 8 2018",
-		"texp": []
+		"title": "Winning Post 8 2018"
 	}, {
 		"id": "ALERA",
 		"title": "Mario Tennis Aces",
-		"texp": [],
 		"img": {
 			"box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
 		}
 	}, {
 		"id": "ALXDA",
-		"title": "Happy Birthdays",
-		"texp": []
+		"title": "Happy Birthdays"
 	}, {
 		"id": "ALXDC",
-		"title": "Happy Birthdays",
-		"texp": []
+		"title": "Happy Birthdays"
 	}, {
 		"id": "AMSGA",
-		"title": "Shantae: Half-Genie Hero Ultimate Edition",
-		"texp": []
+		"title": "Shantae: Half-Genie Hero Ultimate Edition"
 	}, {
 		"id": "AMSGB",
-		"title": "Shantae: Half-Genie Hero Ultimate Edition",
-		"texp": []
+		"title": "Shantae: Half-Genie Hero Ultimate Edition"
 	}, {
 		"id": "AN33A",
-		"title": "Owlboy",
-		"texp": []
+		"title": "Owlboy"
 	}, {
 		"id": "APMBA",
-		"title": "All-Star Fruit Racing",
-		"texp": []
+		"title": "All-Star Fruit Racing"
 	}, {
 		"id": "BAAAA",
-		"title": "Just Dance 2017",
-		"texp": []
+		"title": "Just Dance 2017"
 	}, {
 		"id": "BAACA",
-		"title": "Puyo Puyo Tetris",
-		"texp": []
+		"title": "Puyo Puyo Tetris"
 	}, {
 		"id": "BAACB",
-		"title": "Puyo Puyo Tetris",
-		"texp": []
+		"title": "Puyo Puyo Tetris"
 	}, {
 		"id": "BAACC",
-		"title": "Puyo Puyo Tetris",
-		"texp": []
+		"title": "Puyo Puyo Tetris"
 	}, {
 		"id": "BAANA",
-		"title": "Mario + Rabbids: Kingdom Battle",
-		"texp": []
+		"title": "Mario + Rabbids: Kingdom Battle"
 	}, {
 		"id": "BAAVA",
-		"title": "Minna de Waiwai! Spelunker",
-		"texp": []
+		"title": "Minna de Waiwai! Spelunker"
 	}, {
 		"id": "BAAYA",
-		"title": "Pokken Tournament DX",
-		"texp": []
+		"title": "Pokken Tournament DX"
 	}, {
 		"id": "BAAZA",
-		"title": "The Binding of Isaac: Afterbirth+",
-		"texp": []
+		"title": "The Binding of Isaac: Afterbirth+"
 	}, {
 		"id": "BABBD",
-		"title": "Ultra Street Fighter II: The Final Challengers",
-		"texp": []
+		"title": "Ultra Street Fighter II: The Final Challengers"
 	}, {
 		"id": "BABBE",
-		"title": "Ultra Street Fighter II: The Final Challengers",
-		"texp": []
+		"title": "Ultra Street Fighter II: The Final Challengers"
 	}, {
 		"id": "BABJA",
-		"title": "Ikenie to Yuki no Setsuna",
-		"texp": []
+		"title": "Ikenie to Yuki no Setsuna"
 	}, {
 		"id": "BABKA",
-		"title": "Dragon Quest Heroes I・II for Nintendo Switch",
-		"texp": []
+		"title": "Dragon Quest Heroes I・II for Nintendo Switch"
 	}]
 }

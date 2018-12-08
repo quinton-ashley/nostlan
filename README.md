@@ -230,7 +230,7 @@ Bottlenose uses publicly available images under Fair Use.
 ### Logo
 
 The logo is a vaporwave style variation on MayImilae's Dolphin logo
-https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg
+<https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg>
 
 ### Databases
 
@@ -253,6 +253,7 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 -   Switch template by ponces245 via deviantart
 -   PS3 template by the_prototype92 via deviantart
 -   3DS template by omegaaaronyt via deviantart
+-   Xbox 360 template by georgiajedward via deviantart
 
 ### Themes
 

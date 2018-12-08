@@ -31807,9 +31807,9 @@
 				"name": "HD",
 				"authors": ["The Dolphin Community"],
 				"rate": 10,
-				"version": "1.7.0",
-				"png": "https://drive.google.com/file/d/1QtgZFz2darznGNtViJVOep8UZ3xuaUkN/view?usp=sharing",
-				"dds": "https://drive.google.com/file/d/1x6XJnQTW9SvbA6EmNHIKz9bGDXXweHAD/view?usp=sharing",
+				"version": "1.8.0",
+				"dds": "https://drive.google.com/file/d/1_sihdonrLpO9YxQLFfdubdS6ccktKHfu/view",
+				"png": "https://drive.google.com/file/d/1ml_a7-o_ZB5ZbG3LIqdJA_8VSu8msIh6/view",
 				"url": "https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018"
 			}]
 		}, {
@@ -34340,7 +34340,7 @@
 				"authors": ["qashto"],
 				"rate": 10,
 				"version": "1.0.0",
-				"dds": "https://drive.google.com/open?id=1V6xVTxKk3sOQd4cDSeTDUVQCgXZa6oW2",
+				"dds": "https://drive.google.com/open?id=1wZgDAMmJIt71PZsPzKnBFJ28rpnka3GE",
 				"png": "https://github.com/quinton-ashley/Kirby_Air_Ride_UHD_Texture_Pack.git",
 				"url": "https://forums.dolphin-emu.org/Thread-kirby-air-ride-uhd-texture-pack"
 			}]
@@ -34484,9 +34484,9 @@
 				"authors": ["qashto"],
 				"rate": 10,
 				"version": "1.0.0",
-				"dds": "",
-				"png": "",
-				"url": ""
+				"dds": "https://drive.google.com/open?id=1sR921rV6jlRSKlBX84oHzmVe9peZLohN",
+				"png": "https://github.com/quinton-ashley/Luigis_Mansion_UHD_Pack.git",
+				"url": "https://forums.dolphin-emu.org/Thread-luigi-s-mansion-uhd-pack"
 				}]
 		}, {
 			"id": "GLMJ01",
@@ -34859,7 +34859,7 @@
 				"authors": ["qashto"],
 				"rate": 7,
 				"version": "1.3.9",
-				"dds": "https://drive.google.com/drive/u/1/folders/183ptyXZvE27mZfo0LvxuqTJzYOcqPdkb",
+				"dds": "https://drive.google.com/open?id=1vLL8Q2ttwWEMeBWmQQ5GjLlCxidJC8sj",
 				"png": "https://github.com/quinton-ashley/Super_Mario_Sunshine_UHD_Texture_Pack.git",
 				"url": "https://forums.dolphin-emu.org/Thread-super-mario-sunshine-uhd-texture-pack"
 			}, {

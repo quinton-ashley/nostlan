@@ -5,3 +5,8 @@ replace: {\n"id": "$1", "title": "$2", "texp": []\n},
 // remove non-english results
 regex: \t\t\["\w\w\w[^e][^\n]*\n
 replace:
+
+xbox360
+
+regex: ([^\|]*)\|([^\|]*)\|[^\|]*\|[^\|]*\|[^\|\n]*\n
+replace: \t"id": "$1",\n\t"title": "$2",\n\t"texp": []\n}, {\n

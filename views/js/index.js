@@ -60,9 +60,9 @@ module.exports = async function(opt) {
 	// the user's preferences and game libs json databases
 	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
 	log(usrDir);
-	global.cui = require('./js/contro-ui.js');
+	global.cui = require('./contro-ui.js');
 	const elec = require('./electronWrap.js');
-	const viewer = require('./js/gameLibViewer.js');
+	const viewer = require('./gameLibViewer.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -73,8 +73,8 @@ module.exports = async function(opt) {
 	// or apple mouse with their Mac
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
-	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3'];
-	// 'ps2', 'xbox360',
+	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'xbox360', 'ps3'];
+	// 'ps2',
 	if (mac) {
 		systems = ['wii', 'ds', '3ds', 'switch'];
 	}
@@ -224,7 +224,11 @@ module.exports = async function(opt) {
 				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
 				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
 				term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
-				term = term.replace(/[\[\(,](En|Ja|Eu)[^\]\)]*[\]\)]*/gi, '');
+				if ((/Disc *[^1A ]/gi).test(term)) {
+					log('additional disc: ' + term);
+					continue;
+				}
+				term = term.replace(/[\[\(,](En|Ja|Eu|Disc)[^\]\)]*[\]\)]*/gi, '');
 				// special complete subs part 1
 				if (sys == 'wii') {
 					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');

@@ -17,7 +17,21 @@ module.exports = async function(opt) {
 	const delay = require('delay');
 	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
-	const klawSync = require('klaw-sync');
+	const klaw = function(dir) {
+		return new Promise((resolve, reject) => {
+			let items = [];
+			let i = 0;
+			require('klaw')(dir)
+				.on('data', item => {
+					if (i > 0) {
+						items.push(item.path);
+					}
+					i++;
+				})
+				.on('end', () => resolve(items))
+				.on('error', (err, item) => reject(err, item));
+		});
+	};
 	const os = require('os');
 	const opn = require('opn');
 	const path = require('path');
@@ -96,7 +110,7 @@ module.exports = async function(opt) {
 		if (!introFiles[fType][sysStyle]) {
 			let introFile = path.join(__dirname,
 				`../${type}/${sysStyle}Load.${type}`);
-			if (fs.existsSync(introFile)) {
+			if (await fs.exists(introFile)) {
 				if (type == 'css') {
 					introFiles[fType][sysStyle] = `
 					<link class="introStyle" rel="stylesheet" type="text/css" href="${introFile}">
@@ -122,7 +136,7 @@ module.exports = async function(opt) {
 	async function intro() {
 		await getIntroFile('pug');
 		await getIntroFile('css');
-		let hasJS = fs.existsSync(path.join(__dirname, `../js/${sysStyle}Load.js`));
+		let hasJS = await fs.exists(path.join(__dirname, `../js/${sysStyle}Load.js`));
 		if (hasJS) {
 			require(`../js/${sysStyle}Load.js`)();
 		}
@@ -201,13 +215,13 @@ module.exports = async function(opt) {
 		};
 		let fuse = new Fuse(gameDB, searchOpt);
 		for (let h = 0; h < prefs[sys].libs.length; h++) {
-			let files = klawSync(prefs[sys].libs[h], {
+			let files = await klaw(prefs[sys].libs[h], {
 				depthLimit: 0
 			});
 			let file;
 			// a lot of pruning is required to get good search results
 			for (let i = 0; i < files.length; i++) {
-				file = files[i].path;
+				file = files[i];
 				log(file);
 				let term = path.parse(file);
 				if (term.base[0] == '.') {
@@ -338,9 +352,9 @@ module.exports = async function(opt) {
 			if (!(await fs.exists(gameLibDir))) {
 				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
-			let files = klawSync(gameLibDir);
+			let files = await klaw(gameLibDir);
 			if (!files.length || (files.length == 1 &&
-					path.parse(files[0].path).base == '.DS_Store')) {
+					path.parse(files[0]).base == '.DS_Store')) {
 				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');
@@ -373,9 +387,10 @@ module.exports = async function(opt) {
 	async function load() {
 		$('#update').hide();
 		$('.menu').hide();
-		let files = klawSync(path.join(__rootDir, '/views/md'));
+		let files = await klaw(path.join(__rootDir, '/views/md'));
+		log(files);
 		for (let file of files) {
-			file = file.path;
+			file = file;
 			log(file);
 			let html = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;

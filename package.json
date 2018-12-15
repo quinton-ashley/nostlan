@@ -89,7 +89,7 @@
     "fuse.js": "^3.2.1",
     "gooder": "^1.0.4",
     "jquery": "^3.3.1",
-    "klaw-sync": "^6.0.0",
+    "klaw": "^3.0.0",
     "markdown-it": "^8.4.2",
     "material-design-icons-iconfont": "^3.0.3",
     "moment": "^2.22.2",
@@ -133,5 +133,5 @@
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.19"
+  "version": "1.0.20"
 }

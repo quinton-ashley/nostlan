@@ -13,7 +13,22 @@ const Viewer = function() {
 	const spawn = require('await-spawn');
 	const delay = require('delay');
 	const fs = require('fs-extra');
-	const klawSync = require('klaw-sync');
+	const klawAsync = require('klaw');
+	const klaw = function(dir) {
+		return new Promise((resolve, reject) => {
+			let items = [];
+			let i = 0;
+			require('klaw')(dir)
+				.on('data', item => {
+					if (i > 0) {
+						items.push(item.path);
+					}
+					i++;
+				})
+				.on('end', () => resolve(items))
+				.on('error', (err, item) => reject(err, item));
+		});
+	};
 	const os = require('os');
 	const path = require('path');
 	const req = require('requisition');
@@ -399,7 +414,7 @@ const Viewer = function() {
 		}
 		let args = [];
 		if (emu == 'cemu') {
-			let files = klawSync(gameFile + '/code');
+			let files = await klaw(gameFile + '/code');
 			let ext, file;
 			for (let i = 0; i < files.length; i++) {
 				file = files[i].path;
@@ -417,6 +432,9 @@ const Viewer = function() {
 				args.push('-f');
 			} else if (emu == 'dolphin') {
 				args.push('-b');
+			} else if (emu == 'xenia') {
+				args.push('--d3d12_resolution_scale=2');
+				args.push('--fullscreen');
 			}
 			cui.removeView('libMain');
 			cui.uiStateChange('playingBack');

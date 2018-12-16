@@ -349,8 +349,8 @@ module.exports = async function(opt) {
 				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/dev_hdd0/game`;
 			}
 
-			for (let i=0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
-				if (i>=1) {
+			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
+				if (i >= 1) {
 					cui.uiStateChange('setupMenu');
 					await removeIntro(0);
 					cui.err(`Game library does not exist`);
@@ -359,9 +359,9 @@ module.exports = async function(opt) {
 				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
 			let files = await klaw(gameLibDir);
-			for (let i=0; !files.length || (files.length == 1 &&
-				path.parse(files[0]).base == '.DS_Store'); i++) {
-				if (i>=1) {
+			for (let i = 0; !files.length || (files.length == 1 &&
+					path.parse(files[0]).base == '.DS_Store'); i++) {
+				if (i >= 1) {
 					await removeIntro(0);
 					cui.uiStateChange('setupMenu');
 					cui.err(`Game library has no game files`);
@@ -604,6 +604,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (ui == 'pauseMenu' && !isBtn) {
 			if (act == 'back') {
 				cui.uiStateChange('pauseMenu');
+			} else if (act == 'minimize') {
+				remote.getCurrentWindow().minimize();
 			} else if (act == 'fullscreen') {
 				remote.getCurrentWindow().focus();
 				remote.getCurrentWindow().setFullScreen(true);

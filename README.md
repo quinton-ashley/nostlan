@@ -46,6 +46,10 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
 
+#### Xenia (Xbox 360)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.PNG)
+
 #### RPCS3 (PS3)
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.PNG)
@@ -72,7 +76,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
 -   custom theming
--   Xenia support
+-   PCSX2 support
 
 ## How is Bottlenose different from other front-ends?
 
@@ -147,7 +151,7 @@ PRs are welcome!  Please follow my coding style though.  No callback pyramids, u
 
 ## Contributing to Bottlenose
 
-I need a database file for Xenia and PCSX2.  gametdb does not have xbox 360 or PS2 game database files availabe. If someone could scrape a database site for me and give me a database file then I could support these emulators.
+I need a database file to support PCSX2.  gametdb does not have a PS2 game database file availabe. If someone could scrape a database site for me and give me a database file then I could support these emulators.
 
 If you would like to update an existing game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
 
@@ -275,6 +279,9 @@ Creative Commons Attribution 3.0 Unported
 <https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg>
 
 3DS SVG image trace by me (quinton-ashley/qashto)  
+
+Xbox 360 Loading Intro by Girish Sharma
+https://codepen.io/grssam/pen/dLbcv
 
 PS3 Icon Loader by Jan Machycek  
 <https://codepen.io/machyj/pen/ENvewe>

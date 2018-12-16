@@ -17,11 +17,11 @@ module.exports = async function(opt) {
 	const delay = require('delay');
 	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
-	const klaw = function(dir) {
+	const klaw = function(dir, options) {
 		return new Promise((resolve, reject) => {
 			let items = [];
 			let i = 0;
-			require('klaw')(dir)
+			require('klaw')(dir, options)
 				.on('data', item => {
 					if (i > 0) {
 						items.push(item.path);
@@ -349,12 +349,24 @@ module.exports = async function(opt) {
 				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/dev_hdd0/game`;
 			}
 
-			if (!(await fs.exists(gameLibDir))) {
+			for (let i=0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
+				if (i>=1) {
+					cui.uiStateChange('setupMenu');
+					await removeIntro(0);
+					cui.err(`Game library does not exist`);
+					return;
+				}
 				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
 			let files = await klaw(gameLibDir);
-			if (!files.length || (files.length == 1 &&
-					path.parse(files[0]).base == '.DS_Store')) {
+			for (let i=0; !files.length || (files.length == 1 &&
+				path.parse(files[0]).base == '.DS_Store'); i++) {
+				if (i>=1) {
+					await removeIntro(0);
+					cui.uiStateChange('setupMenu');
+					cui.err(`Game library has no game files`);
+					return;
+				}
 				gameLibDir = elec.selectDir(`select ${sys} game directory`);
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');

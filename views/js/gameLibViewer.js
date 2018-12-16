@@ -14,11 +14,11 @@ const Viewer = function() {
 	const delay = require('delay');
 	const fs = require('fs-extra');
 	const klawAsync = require('klaw');
-	const klaw = function(dir) {
+	const klaw = function(dir, options) {
 		return new Promise((resolve, reject) => {
 			let items = [];
 			let i = 0;
-			require('klaw')(dir)
+			require('klaw')(dir, options)
 				.on('data', item => {
 					if (i > 0) {
 						items.push(item.path);

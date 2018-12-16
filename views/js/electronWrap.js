@@ -1,5 +1,7 @@
 const ElectronWrap = function() {
 	// electron support
+	const log = console.log;
+	const err = console.error;
 	let remote = {};
 	let dialog = {};
 	try {
@@ -12,13 +14,14 @@ const ElectronWrap = function() {
 		try {
 			dir = dialog.showOpenDialog({
 				properties: ['openDirectory'],
-				title: 'choose folder',
+				title: 'choose folder: ' + msg,
 				message: msg
 			});
+			return dir[0].replace(/\\/g, '/');
 		} catch (ror) {
 			err(ror);
 		}
-		return dir[0].replace(/\\/g, '/');
+		return;
 	}
 
 	this.selectFile = function(msg) {
@@ -26,13 +29,14 @@ const ElectronWrap = function() {
 		try {
 			file = dialog.showOpenDialog({
 				properties: ['openFile'],
-				title: 'choose file',
+				title: 'choose file: ' + msg,
 				message: msg
 			});
+			return file[0].replace(/\\/g, '/');
 		} catch (ror) {
 			err(ror);
 		}
-		return file[0].replace(/\\/g, '/');
+		return;
 	}
 }
 module.exports = new ElectronWrap();

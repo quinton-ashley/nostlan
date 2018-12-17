@@ -370,7 +370,7 @@ const Viewer = function() {
 					emuAppPath += '-emu';
 				}
 			}
-			if (await fs.exists(emuAppPath)) {
+			if (linux || await fs.exists(emuAppPath)) {
 				prefs[sys].app[osType] = emuAppPath;
 				return emuAppPath;
 			}
@@ -434,6 +434,9 @@ const Viewer = function() {
 				args.push('-b');
 			} else if (emu == 'xenia') {
 				args.push('--d3d12_resolution_scale=2');
+				args.push('--fullscreen');
+			} else if (emu == 'PCSX2') {
+				args.push('--nogui');
 				args.push('--fullscreen');
 			}
 			cui.removeView('libMain');

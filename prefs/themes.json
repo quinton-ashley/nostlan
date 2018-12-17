@@ -77,5 +77,14 @@
 		"template": {
 			"coverFull": "https://img00.deviantart.net/bed6/i/2015/183/2/1/ps3_cover_template_by_the_prototype92-d5xwdlw.png"
 		}
+	},
+	"ps2": {
+		"default": {
+			"id": "SLUS-20370",
+			"title": "Kingdom Hearts"
+		},
+		"template": {
+			"coverFull": "https://img00.deviantart.net/9074/i/2014/254/d/d/ps2_cover_template_by_etschannel-d7ycz27.png"
+		}
 	}
 }

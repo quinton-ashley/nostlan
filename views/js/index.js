@@ -87,9 +87,10 @@ module.exports = async function(opt) {
 	// or apple mouse with their Mac
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
 	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
-	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'xbox360', 'ps3'];
-	// 'ps2',
-	if (mac) {
+	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2'];
+	if (win) {
+		systems.push('xbox360');
+	} else if (mac) {
 		systems = ['wii', 'ds', '3ds', 'switch'];
 	}
 	let sys;

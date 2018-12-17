@@ -6,13 +6,11 @@
 		"emu": "DeSmuME"
 	},
 	"wii": {
-		"app": {},
+		"app": {
+			"mac": "$home/Library/Application Support/Dolphin"
+		},
 		"emu": "Dolphin",
-		"style": "gcn",
-		"usr": {
-			"mac": "$home/Library/Application Support/Dolphin",
-			"linux": "$home/.local/share/dolphin-emu"
-		}
+		"style": "gcn"
 	},
 	"wiiu": {
 		"app": {},

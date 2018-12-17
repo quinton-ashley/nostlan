@@ -54,6 +54,10 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.PNG)
 
+#### PCSX2 (PS2)
+
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.PNG)
+
 ## Please consider donating!
 
 Even though Bottlenose is open source software that's free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use this app please donate an amount of your choosing.  I'm a freelance developer so I need your support to develop new features.  Thank you!
@@ -75,8 +79,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   easy way to mix and swap texture packs for Dolphin
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
--   custom theming
--   PCSX2 support
+-   custom themes
 
 ## How is Bottlenose different from other front-ends?
 
@@ -150,8 +153,6 @@ Bottlenose is open source and MIT licensed!  I loved using Electron to make Bott
 PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package shortly.
 
 ## Contributing to Bottlenose
-
-I need a database file to support PCSX2.  gametdb does not have a PS2 game database file availabe. If someone could scrape a database site for me and give me a database file then I could support these emulators.
 
 If you would like to update an existing game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
 

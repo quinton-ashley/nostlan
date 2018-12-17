@@ -60,7 +60,8 @@
 	--button-color: #3a3a3a;
 }
 
-.ps3 {
+.ps3,
+.ps2 {
 	--cover-color: #333;
 	--cover-text-color: #111;
 	--button-color: #333;
@@ -271,6 +272,38 @@ img {
 }
 
 .ps3 .front-cover-crop .shade {
+	position: absolute;
+	width: 1%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+/*=====PS2 360===*/
+.ps2 .front-cover-crop {
+	width: 200.4%;
+	top: 2.3%;
+	left: 0;
+}
+
+.ps2 .front-cover {
+	height: 100%;
+	width: 100%;
+	top: -0.5%;
+	left: -1%;
+}
+
+.ps2 .front-cover img {
+	height: 100%;
+	width: 100%;
+	transform: scale(.966);
+}
+
+.ps2 .front-cover-crop img {
+	transform: translate(-51.5%, 0%);
+}
+
+.ps2 .front-cover-crop .shade {
 	position: absolute;
 	width: 1%;
 	height: 100%;

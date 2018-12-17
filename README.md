@@ -22,39 +22,39 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   controllers connect automatically, no setup
 -   auto maps Xbox One and PS4 controllers to Switch button layout
 -   browse demo mode if don't have any games on your computer
--   the only high quality front end to support Windows, macOS, and Linux!
+-   the only high quality front end to support Linux, macOS, and Windows!
 
 ## Supported Emulators
 
-#### Dolphin (Wii, Gamecube, Virtual Console)
+#### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
 
-#### Cemu (Wii U)
+#### Cemu (Wii U) [Windows & Linux* using Wine]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
 
-#### Yuzu (Switch)
+#### Yuzu (Switch) [Linux, macOS, & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
 
-#### Citra (3DS)
+#### Citra (3DS) [Linux, macOS, & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
 
-#### DeSmuME (DS)
+#### DeSmuME (DS) [macOS & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
 
-#### Xenia (Xbox 360)
+#### Xenia (Xbox 360) [Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.PNG)
 
-#### RPCS3 (PS3)
+#### RPCS3 (PS3) [Linux & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.PNG)
 
-#### PCSX2 (PS2)
+#### PCSX2 (PS2) [Linux, macOS, & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.PNG)
 
@@ -110,7 +110,7 @@ Select a game from your game library to view it's cover.  You'll see the cover o
 
 ## System Requirements
 
-Bottlnose will probably not perform well on low-end systems.  Utlra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 just fine.
+Bottlenose will probably not perform well on low-end systems.  Utlra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 just fine.
 
 ## Error Reporting
 
@@ -143,6 +143,10 @@ emu (root folder can have any name)
 Bottlenose was designed to optionally use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
 On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
+
+## Emulators Supported on Linux
+
+The Linux version of Bottlenose now supports Dolphin, Citra.  Cemu is supported via wine.  It's started using `wine /emu/Cemu/BIN/Cemu.exe`
 
 ## Development Info
 

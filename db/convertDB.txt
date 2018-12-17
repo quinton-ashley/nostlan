@@ -15,3 +15,7 @@ ps2:
 
 regex: \|([^\|]*)\|([^\|]*)\|[^\|]*[^\|\n]*\n
 replace: \t"id": "$1",\n\t"title": "$2"\n}, {\n
+
+gba:
+regex: <game name="([^"]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+<crc>([^<]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n
+replace: "id": "$1",\n\t"title": "$2"\n}, {\n

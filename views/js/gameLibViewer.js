@@ -133,6 +133,8 @@ const Viewer = function() {
 				res = await dlFromAndy(title, file, 'Sony PlayStation 2');
 			} else if (sys == 'xbox360') {
 				res = await dlFromAndy(title, file, 'Xbox 360');
+			} else if (sys == 'gba') {
+				res = await dlFromAndy(title, file, 'Game Boy Advance');
 			} else if (game.id.length > 4) {
 				res = await dlFromAndy(title, file, 'Nintendo Game Cube');
 				if (!res) {

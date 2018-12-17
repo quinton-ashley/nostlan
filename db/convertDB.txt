@@ -9,4 +9,9 @@ replace:
 xbox360
 
 regex: ([^\|]*)\|([^\|]*)\|[^\|]*\|[^\|]*\|[^\|\n]*\n
-replace: \t"id": "$1",\n\t"title": "$2",\n\t"texp": []\n}, {\n
+replace: \t"id": "$1",\n\t"title": "$2"\n}, {\n
+
+ps2:
+
+regex: \|([^\|]*)\|([^\|]*)\|[^\|]*[^\|\n]*\n
+replace: \t"id": "$1",\n\t"title": "$2"\n}, {\n

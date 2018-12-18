@@ -111,7 +111,7 @@ Select a game from your game library to view it's cover.  You'll see the cover o
 
 ## System Requirements
 
-Bottlenose will probably not perform well on low-end systems.  Utlra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 just fine.
+Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 just fine.
 
 ## Error Reporting
 

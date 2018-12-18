@@ -314,7 +314,7 @@ const Viewer = function() {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win) {
+		if (win || (linux && emu == 'cemu')) {
 			emuDirPath = path.join(prefs.btlDir,
 				`../${prefs[sys].emu}/BIN`);
 			if (emu == 'citra') {
@@ -345,7 +345,7 @@ const Viewer = function() {
 				emuAppPath = emuDirPath + '/';
 			}
 			emuAppPath += emuNameCases[i];
-			if (win) {
+			if (win || (linux && emu == 'cemu')) {
 				if (emu == 'citra') {
 					emuAppPath += '-qt';
 				}
@@ -369,10 +369,10 @@ const Viewer = function() {
 				}
 			} else if (linux) {
 				if (emu == 'dolphin') {
-					emuAppPath += '-emu';
+					emuAppPath = 'dolphin-emu';
 				}
 			}
-			if (linux || await fs.exists(emuAppPath)) {
+			if ((linux && emu != 'cemu') || await fs.exists(emuAppPath)) {
 				prefs[sys].app[osType] = emuAppPath;
 				return emuAppPath;
 			}
@@ -404,30 +404,46 @@ const Viewer = function() {
 		if (!emuAppPath) {
 			return;
 		}
-		let gameFile = games.find(x => x.id === id);
-		if (gameFile) {
-			gameFile = getAbsolutePath(gameFile.file);
-		} else {
-			cui.err('game not found: ' + id);
-			return;
-		}
-		if (emu == 'rpcs3') {
-			gameFile += '/USRDIR/EBOOT.BIN';
-		}
+		let gameFile;
 		let args = [];
-		if (emu == 'cemu') {
-			let files = await klaw(gameFile + '/code');
-			let ext, file;
-			for (let i = 0; i < files.length; i++) {
-				file = files[i].path;
-				ext = path.parse(file).ext;
-				if (ext == '.rpx') {
-					gameFile = file;
-					break;
-				}
+		emuDirPath = path.join(emuAppPath, '..');
+		if (linux) {
+			if (emu == 'cemu') {
+				args.push(emuAppPath);
+				emuAppPath = 'wine';
+			} else if (emu == 'citra') {
+				emuAppPath = 'flatpak';
+				args.push('run');
+				args.push('org.citra.citra-canary');
 			}
-			args.push('-g');
 		}
+		if (cui.ui == 'cover') {
+			gameFile = games.find(x => x.id === id);
+			if (gameFile) {
+				gameFile = getAbsolutePath(gameFile.file);
+			} else {
+				cui.err('game not found: ' + id);
+				return;
+			}
+			if (emu == 'rpcs3') {
+				gameFile += '/USRDIR/EBOOT.BIN';
+			}
+			if (emu == 'cemu') {
+				let files = await klaw(gameFile + '/code');
+				log(files);
+				let ext, file;
+				for (let i = 0; i < files.length; i++) {
+					file = files[i];
+					ext = path.parse(file).ext;
+					if (ext == '.rpx') {
+						gameFile = file;
+						break;
+					}
+				}
+				args.push('-g');
+			}
+		}
+		log(emu);
 		if (cui.ui == 'cover') {
 			args.push(gameFile);
 			if (emu == 'cemu' || emu == 'citra') {
@@ -437,16 +453,13 @@ const Viewer = function() {
 			} else if (emu == 'xenia') {
 				args.push('--d3d12_resolution_scale=2');
 				args.push('--fullscreen');
-			} else if (emu == 'PCSX2') {
+			} else if (emu == 'pcsx2') {
 				args.push('--nogui');
 				args.push('--fullscreen');
 			}
 			cui.removeView('libMain');
 			cui.uiStateChange('playingBack');
-		} else {
-			args = [];
 		}
-		emuDirPath = path.join(emuAppPath, '..');
 		log(emuAppPath);
 		log(args);
 		log(emuDirPath);

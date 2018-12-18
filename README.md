@@ -34,7 +34,7 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
 
-#### Yuzu (Switch) [Linux, macOS, & Windows]
+#### Yuzu (Switch) [Linux & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
 
@@ -42,7 +42,7 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
 
-#### DeSmuME (DS) [macOS & Windows]
+#### DeSmuME (DS) [Linux, macOS & Windows]
 
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
 
@@ -80,6 +80,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant search
 -   custom themes
+-   mGBA support
 
 ## How is Bottlenose different from other front-ends?
 
@@ -146,7 +147,7 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 ## Emulators Supported on Linux
 
-The Linux version of Bottlenose now supports Dolphin, Citra.  Cemu is supported via wine.  It's started using `wine /emu/Cemu/BIN/Cemu.exe`
+The Linux version of Bottlenose now supports Cemu (wine), Citra (flatpak), Dolphin, and PCSX2.  I will add support for DeSmuME, RPCS3 and Yuzu soon.
 
 ## Development Info
 
@@ -286,7 +287,7 @@ Creative Commons Attribution 3.0 Unported
 3DS SVG image trace by me (quinton-ashley/qashto)  
 
 Xbox 360 Loading Intro by Girish Sharma
-https://codepen.io/grssam/pen/dLbcv
+<https://codepen.io/grssam/pen/dLbcv>
 
 PS3 Icon Loader by Jan Machycek  
 <https://codepen.io/machyj/pen/ENvewe>

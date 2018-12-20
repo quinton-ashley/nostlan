@@ -100,6 +100,11 @@ module.exports = async function(opt) {
 	let outLog = '';
 	let games = [];
 
+	const olog = (msg) => {
+		log(msg.replace(/[\t\r\n]/gi, '').replace(':', ': '));
+		outLog += '\r\n' + msg + '\r\n';
+	};
+
 	let introFiles = {
 		css: {},
 		html: {}
@@ -110,7 +115,10 @@ module.exports = async function(opt) {
 		let fType = ((type == 'css') ? 'css' : 'html');
 		if (!introFiles[fType][sysStyle]) {
 			let introFile = path.join(__dirname,
-				`../${type}/${sysStyle}Load.${type}`);
+				`.. / $ {
+			type
+		}
+		/${sysStyle}Load.${type}`);
 			if (await fs.exists(introFile)) {
 				if (type == 'css') {
 					introFiles[fType][sysStyle] = `
@@ -202,6 +210,23 @@ module.exports = async function(opt) {
 			log(gameDB);
 		}
 
+		let idRegex;
+		if (sys == 'switch') {
+			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/;
+		} else if (sys == 'ps3') {
+			idRegex = /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/;
+		} else if (sys == 'wii' || sys == 'wiiu') {
+			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/;
+		} else if (sys == '3ds' || sys == 'ds') {
+			idRegex = /(?:^|[\[\(])([A-Z][A-Z0-9]{2}[A-Z])(?:[\]\)]|$)/;
+		} else if (sys == 'gba') {
+			idRegex = /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/;
+		} else if (sys == 'ps2') {
+			idRegex = /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/;
+		} else if (sys == 'xbox360') {
+			idRegex = /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/;
+		}
+
 		let searchOpt = {
 			shouldSort: true,
 			threshold: 0.4,
@@ -223,7 +248,6 @@ module.exports = async function(opt) {
 			// a lot of pruning is required to get good search results
 			for (let i = 0; i < files.length; i++) {
 				file = files[i];
-				log(file);
 				let term = path.parse(file);
 				if (term.base[0] == '.') {
 					continue;
@@ -235,6 +259,7 @@ module.exports = async function(opt) {
 				} else {
 					term = term.base;
 				}
+				olog('file:\t\t\t' + term);
 				// eliminations part 1
 				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
 				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
@@ -249,17 +274,12 @@ module.exports = async function(opt) {
 					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
 					term = term.replace(/thousand year/gi, 'Thousand-Year');
 				}
-				term = term.replace(/sm *64/gi, 'Super Mario 64');
+				term = term.replace(/s*m *64n*/gi, 'Super Mario 64');
 				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 				// special check for ids
-				log(term);
 				let id;
-				if (sys == 'switch') {
-					id = term.match(/(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/);
-				} else if (sys == 'ps3') {
-					id = term.match(/(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/);
-				} else {
-					id = term.match(/(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/);
+				if (idRegex) {
+					id = term.match(idRegex);
 				}
 				if (id) {
 					id = id[1];
@@ -271,10 +291,8 @@ module.exports = async function(opt) {
 								continue;
 							}
 						}
-						log('id: ' + id);
-						log(game.title);
-						outLog += term + '\r\n' + game.title + '\r\n\r\n';
-						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
+						olog('id:\t\t\t\t' + id);
+						olog('found match:\t\t' + game.title + '\r\n');
 						games.push(game);
 						continue;
 					}
@@ -308,13 +326,14 @@ module.exports = async function(opt) {
 				term = term.replace(/ *decrypted */gi, '');
 
 				term = term.trim();
-				log(term);
 				let game = addGame(fuse, term);
+				olog('search term:\t\t' + term);
 				if (game) {
-					log(game.title);
-					outLog += term + '\r\n' + game.title + '\r\n\r\n';
+					olog('found match:\t\t' + game.title + '\r\n');
 					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 					games.push(game);
+				} else {
+					olog('no match found\r\n');
 				}
 			}
 		}

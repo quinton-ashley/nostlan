@@ -50,6 +50,7 @@
 			}
 		},
 		"gamepad": {
+			"profile": "Xbox/PS: Adaptive",
 			"mapping": {
 				"Xbox/PS: Adaptive": {
 					"map": {
@@ -95,7 +96,6 @@
 		"autoHideCover": false
 	},
 	"session": {
-		"sys": "wii",
-		"controllerProfile": "Xbox/PS: Adaptive"
+		"sys": "wii"
 	}
 }

@@ -172,14 +172,14 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 ## Emulators Supported on Linux
 
-The Linux version of Bottlenose now supports running these emulators using these commands:
-Cemu    `wine path/to/emu/Cemu/BIN/Cemu.exe`
-Citra   `flatpak run org.citra.citra-canary`
-DeSmuME not tested yet
-Dolphin `dolphin-emu`
-PCSX2   `PCSX2`
-RPCS3   `path/to/emu/RPCS3/BIN/rpcs3.AppImage`
-Yuzu    `path/to/emu/Yuzu/BIN/yuzu`
+The Linux version of Bottlenose now supports running these emulators using these commands:  
+Cemu    `wine path/to/emu/Cemu/BIN/Cemu.exe`  
+Citra   `flatpak run org.citra.citra-canary`  
+DeSmuME not tested yet  
+Dolphin `dolphin-emu`  
+PCSX2   `PCSX2`  
+RPCS3   `path/to/emu/RPCS3/BIN/rpcs3.AppImage`  
+Yuzu    `path/to/emu/Yuzu/BIN/yuzu`  
 
 ## Development Info
 
@@ -234,7 +234,7 @@ The following names can be used to specify images:
 -   `"disc"` the front of the game's (first) disc
 -   `"cart"` the front of the game's (first) cartridge
 
-Box art is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
+Box art is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
 
 ```javascript
 {
@@ -261,6 +261,8 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 
 `session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
 
+`session.controllerProfile` the controller profile you want to use
+
 ## Planned Features! (continued)
 
 Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley/qashto) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
@@ -269,7 +271,7 @@ Texture packs with a rating of 7 and above will be considered recommended.  In a
 
 Here are some answers to common questions about Bottlenose.  I've also responded to complaints in an effort to anticipate and mitigate toxic arguments about Bottlenose.  I would prefer to facilitate respectful discussions on community forums like r/emulation.  I'm not bitter but I work on this project in my free time.  I made it open source cause I want to share my work with other people for free.  I'm not afraid of criticism either.  Suggestions, feedback, and/or offering to help me is awesome but hateful, toxic, or un-constructive criticism is not acceptable.
 
-## "Nice app! Why did you decide to make Bottlenose?"
+### "Nice app! Why did you decide to make Bottlenose?"
 
 I just wanted a simple, unified app for launching games with any modern emulator just by using a game controller to browse game boxes.  After I found Andy Decarli's site I knew I could make Bottlenose stand out as a UHD app.  Andy's scans are so high res you can see the printer color dot patterns distinctively.  There's a real sense of physicality to them.  I think Bottlenose succeeds in providing a digital version of the experience of browsing through game boxes and not little game art thumbnails surrounded by wasted space, text, and metadata.  Compared to the boxless digital download product pages on modern online game shops, I think it's an appropriately nostalgic way to browse games.
 
@@ -277,7 +279,7 @@ Another primary goal of mine, as a pretty amateur texture pack creator, was to m
 
 <https://forums.dolphin-emu.org/Thread-introducing-resource-packs-a-new-feature-to-manage-and-install-texture-packs>
 
-## "If you don't change {x} about Bottlenose, I'll never use it and I hope you fail!"
+### "If you don't change {x} about Bottlenose, I'll never use it and I hope you fail!"
 
 I'm not afraid to call people out for being rude and entitled.  There are better ways to phrase your thoughts.  
 
@@ -293,15 +295,15 @@ You want to help:
 You choose to support me financially:  
 "I'm a Patreon supporter and I justifiably feel entitled to {x}."
 
-## "Bottlenose is a bad name!"
+### "Bottlenose is a bad name!"
 
 Yes the app has quickly outgrown it's original purpose of being a Dolphin companion app.  Unfortunately, I'm attached to the name and it's not going to change.
 
-## "Your logo is trash, I hate it!"
+### "Your logo is trash, I hate it!"
 
 I'm not a professional artist, I'm a programmer.  Vaporwave art subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the logo embodies the vaporwave ideology and aesthetic.  I had fun making it and I personally like the outcome but I'm not super attached to it.
 
-## "Your logo doesn't match the minimalist aesthetics of the app."
+### "Your logo doesn't match the minimalist aesthetics of the app."
 
 That's a fair, constructive point that it doesn't match the engraved plastic aesthetic of the app.  I've thought about doing a logo that uses the engraved plastic look found on the plastic menus in Bottlenose.  I've also thought about doing a logo that looks "printed".  Changing the logo is not a priority for me right now though as I want to focus on more functional updates to Bottlenose.  
 

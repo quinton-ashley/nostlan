@@ -559,7 +559,7 @@ const Viewer = function() {
 			if (act == 'b') {
 				cui.coverClicked();
 				cui.uiStateChange('libMain');
-			} else if (act == 'y') {
+			} else if (act == 'y' && !(/(ps|xbox)/i).test(sys)) {
 				flipCover();
 			} else {
 				return false;

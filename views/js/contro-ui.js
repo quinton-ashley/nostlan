@@ -43,16 +43,11 @@ const CUI = function() {
 	for (let i of btnNames) {
 		btnStates[i] = false;
 	}
-	let gvMainMenuLabels = {
-		x: 'power',
-		y: 'reset',
-		b: 'open'
-	};
 
 	let map = {};
 
-	this.setButtonMapping = function(mapping, session) {
-		let prof = mapping[session.controllerProfile];
+	this.mapButtons = function(gamepad, session) {
+		let prof = gamepad.mapping[gamepad.profile];
 		let sys = session.sys;
 		let enable;
 		if (prof.enable) {
@@ -257,7 +252,7 @@ const CUI = function() {
 			doAction('b');
 			return;
 		}
-		uiOnChange(state, subState || uiSub);
+		uiOnChange(state, subState || uiSub, gamepadConnected);
 		if (subState) {
 			$('#' + state).removeClass(uiSub || 'XXXXX');
 			$('#' + state).addClass(subState);
@@ -422,11 +417,7 @@ const CUI = function() {
 				i = map[i] || i;
 
 				if (!gamepadConnected) {
-					let $button;
-
-					$button = $('#' + gvMainMenuLabels[i]);
-
-					$button.text(i.toUpperCase());
+					uiOnChange(ui, uiSub, true);
 					$('html').addClass('cui-gamepadConnected');
 				}
 				let query = btn.query();

@@ -99,3 +99,95 @@ html {
 .hide * {
 	filter: opacity(0) !important;
 }
+
+.ps .square span,
+.ps2 .square span,
+.ps3 .square span,
+.ps4 .square span {
+	display:block;
+	font-size: 0px;
+ 	border: 10px solid #d49ac0;
+ 	width:100%;
+ 	height:100%;
+  position: relative;
+  transform: scale(.5);
+}
+
+.ps .circle span,
+.ps2 .circle span,
+.ps3 .circle span,
+.ps4 .circle span {
+	display:block;
+	font-size: 0px;
+ 	border: 10px solid #eb5535;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.6);
+  border-radius: inherit;
+}
+
+.ps .cross span,
+.ps2 .cross span,
+.ps3 .cross span,
+.ps4 .cross span {
+	display:block;
+	font-size: 0px;
+	position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ps .cross span:after,
+.ps .cross span:before,
+.ps2 .cross span:after,
+.ps2 .cross span:before,
+.ps3 .cross span:after,
+.ps3 .cross span:before,
+.ps4 .cross span:after,
+.ps4 .cross span:before {
+ 	content: "";
+	font-size: 0px;
+  width: 0;
+  height: 100%;
+  border: 5px solid #8d95c7;
+  position: absolute;
+  transform: scale(0.55) rotate(45deg);
+  left: 50%;
+  margin-left: -5px;
+}
+
+.ps .cross span:after,
+.ps2 .cross span:after,
+.ps3 .cross span:after,
+.ps4 .cross span:after {
+ 	transform: scale(0.55) rotate(-45deg);
+}
+
+.ps .triangle span,
+.ps2 .triangle span,
+.ps3 .triangle span,
+.ps4 .triangle span {
+	display: block;
+	font-size: 0px;
+	border-left: 17px solid transparent;
+	border-right: 17px solid transparent;
+	border-bottom: 28px solid #1d6f56;
+	position: absolute;
+	transform: translate(55%, -60%) scale(1.3);
+}
+
+.ps .triangle span:after,
+.ps2 .triangle span:after,
+.ps3 .triangle span:after,
+.ps4 .triangle span:after {
+ 	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-left: 17px solid transparent;
+	border-right: 17px solid transparent;
+	border-bottom: 28px solid #2e3335;
+	left: -17px;
+	top: 2px;
+	transform: scale(0.65);
+}

@@ -406,7 +406,7 @@ module.exports = async function(opt) {
 		await fs.ensureDir(btlDir);
 		prefs.btlDir = btlDir;
 		prefs.session.sys = sys;
-		cui.setButtonMapping(prefs.ui.gamepad.mapping, prefs.session);
+		cui.mapButtons(prefs.ui.gamepad, prefs.session);
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
@@ -493,7 +493,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		});
 		sys = prefs.session.sys;
-		cui.setButtonMapping(prefs.ui.gamepad.mapping, prefs.session);
+		cui.mapButtons(prefs.ui.gamepad, prefs.session);
 	}
 
 	cui.setResize((adjust) => {
@@ -509,7 +509,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	});
 
-	cui.setUIOnChange((state, subState) => {
+	cui.setUIOnChange((state, subState, gamepadConnected) => {
 		let labels = ['', '', ''];
 		if (state == 'cover') {
 			labels = ['Play', '', 'Back'];
@@ -528,6 +528,19 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		$('.cover.power .text').text(labels[0]);
 		$('.cover.reset .text').text(labels[1]);
 		$('.cover.open .text').text(labels[2]);
+
+		if (!gamepadConnected) {
+			return;
+		}
+		let buttons = ['X', 'Y', 'B'];
+		if ((/xbox/i).test(subState)) {
+			buttons = ['Y', 'X', 'B'];
+		} else if ((/ps/i).test(subState)) {
+			buttons = ['', '', ''];
+		}
+		$('#power span').text(buttons[0]);
+		$('#reset span').text(buttons[1]);
+		$('#open span').text(buttons[2]);
 	});
 
 	async function removeIntro(time) {
@@ -595,21 +608,23 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 			}
-		} else if (ui == 'libMain') {
-			if (act == 'x') {
-				await powerBtn();
-			} else if (act == 'y') {
-				await resetBtn();
+		} else if (ui == 'libMain' || ui == 'cover') {
+			if (!(/(ps|xbox)/i).test(sys)) {
+				if (act == 'x') {
+					await powerBtn();
+				} else if (act == 'y') {
+					await resetBtn();
+				} else {
+					return false;
+				}
 			} else {
-				return false;
-			}
-		} else if (ui == 'cover') {
-			if (act == 'x') {
-				await powerBtn();
-			} else if (act == 'y') {
-				await resetBtn();
-			} else {
-				return false;
+				if (act == 'y') {
+					await powerBtn();
+				} else if (act == 'x') {
+					await resetBtn();
+				} else {
+					return false;
+				}
 			}
 		} else if (ui == 'sysMenu' && !isBtn) {
 			if (!viewer) {
@@ -727,13 +742,21 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	});
 
 	$('#power').click(function() {
-		cui.buttonPressed('x');
+		if (!(/(ps|xbox)/i).test(sys)) {
+			cui.buttonPressed('x');
+		} else {
+			cui.buttonPressed('y');
+		}
 	});
 	$('#view').click(function() {
 		cui.buttonPressed('start');
 	});
 	$('#reset').click(function() {
-		cui.buttonPressed('y');
+		if (!(/(ps|xbox)/i).test(sys)) {
+			cui.buttonPressed('y');
+		} else {
+			cui.buttonPressed('x');
+		}
 	});
 	$('#open').click(function() {
 		cui.buttonPressed('b');

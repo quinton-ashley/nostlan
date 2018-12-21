@@ -49,16 +49,43 @@ const CUI = function() {
 		b: 'open'
 	};
 
-	// Xbox One controller mapped to
-	// Nintendo Switch controller button layout
-	//  Y B  ->  X A
-	// X A  ->  Y B
-	let map = {
-		a: 'b',
-		b: 'a',
-		x: 'y',
-		y: 'x'
-	};
+	let map = {};
+
+	this.setButtonMapping = function(mapping, session) {
+		let prof = mapping[session.controllerProfile];
+		let sys = session.sys;
+		let enable;
+		if (prof.enable) {
+			enable = new RegExp(`(${prof.enable})`, 'i');
+		}
+		let disable;
+		if (prof.disable) {
+			disable = new RegExp(`(${prof.disable})`, 'i');
+		}
+		// Xbox/PS Adaptive profile usage example:
+
+		// User is currently browsing their Nintendo Switch library
+		// Xbox One controller is mapped to
+		// Nintendo Switch controller button layout
+		//  Y B  ->  X A
+		// X A  ->  Y B
+
+		// When browsing Xbox 360 games no mapping occurs
+		//  Y B  ->  Y B
+		// X A  ->  X A
+
+		// When browsing PS3 games no mapping occurs either
+		// since A(Xbox One) auto maps to X(PS3)
+		//  Y B  ->  △ ○
+		// X A  ->  □ X
+		if ((!enable || enable.test(sys)) && (!disable || !disable.test(sys))) {
+			// log('controller remapping enabled for ' + sys);
+			map = prof.map;
+		} else {
+			// log('no controller remapping for ' + sys);
+			map = {};
+		}
+	}
 
 	let customActions = () => {
 		log('set custom actions with the setCustomActions method');

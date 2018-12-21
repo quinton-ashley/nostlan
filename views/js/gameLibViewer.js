@@ -363,7 +363,7 @@ const Viewer = function() {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win || (linux && emu == 'cemu')) {
+		if (win || (linux && (/(cemu|yuzu|rpcs3)/).test(emu))) {
 			emuDirPath = path.join(prefs.btlDir,
 				`../${prefs[sys].emu}/BIN`);
 			if (emu == 'citra') {
@@ -373,7 +373,7 @@ const Viewer = function() {
 					emuDirPath += '/canary-mingw';
 				}
 			}
-			if (emu == 'switch') {
+			if (win && emu == 'yuzu') {
 				emuDirPath = os.homedir() + '/AppData/Local/yuzu';
 				if (await fs.exists(emuDirPath + '/canary')) {
 					emuDirPath += '/canary';
@@ -394,7 +394,7 @@ const Viewer = function() {
 				emuAppPath = emuDirPath + '/';
 			}
 			emuAppPath += emuNameCases[i];
-			if (win || (linux && emu == 'cemu')) {
+			if (win) {
 				if (emu == 'citra') {
 					emuAppPath += '-qt';
 				}
@@ -419,9 +419,13 @@ const Viewer = function() {
 			} else if (linux) {
 				if (emu == 'dolphin') {
 					emuAppPath = 'dolphin-emu';
+				} else if (emu == 'cemu') {
+					emuAppPath += '.exe';
+				} else if (emu == 'rpcs3') {
+					emuAppPath += '.AppImage';
 				}
 			}
-			if ((linux && emu != 'cemu') || await fs.exists(emuAppPath)) {
+			if ((linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) || await fs.exists(emuAppPath)) {
 				prefs[sys].app[osType] = emuAppPath;
 				return emuAppPath;
 			}
@@ -431,7 +435,7 @@ const Viewer = function() {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {
 				emuAppPath += '-qt-bin';
-			} else if (emu == 'switch') {
+			} else if (emu == 'yuzu') {
 				emuAppPath += '-bin';
 			}
 		}

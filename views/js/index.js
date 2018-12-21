@@ -114,11 +114,7 @@ module.exports = async function(opt) {
 	async function getIntroFile(type) {
 		let fType = ((type == 'css') ? 'css' : 'html');
 		if (!introFiles[fType][sysStyle]) {
-			let introFile = path.join(__dirname,
-				`.. / $ {
-			type
-		}
-		/${sysStyle}Load.${type}`);
+			let introFile = path.join(__dirname, `../${type}/${sysStyle}Load.${type}`);
 			if (await fs.exists(introFile)) {
 				if (type == 'css') {
 					introFiles[fType][sysStyle] = `
@@ -410,6 +406,7 @@ module.exports = async function(opt) {
 		await fs.ensureDir(btlDir);
 		prefs.btlDir = btlDir;
 		prefs.session.sys = sys;
+		cui.setButtonMapping(prefs.ui.gamepad.mapping, prefs.session);
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewer.load(games, prefs, sys);
 		await removeIntro();
@@ -496,6 +493,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		});
 		sys = prefs.session.sys;
+		cui.setButtonMapping(prefs.ui.gamepad.mapping, prefs.session);
 	}
 
 	cui.setResize((adjust) => {

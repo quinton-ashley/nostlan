@@ -103,15 +103,40 @@ Steam is an ugly mess on UHD displays and if you're reading this you've probably
 
 ## Using Bottlenose
 
-Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup required.  Button input is mapped from Xbox One and PS4 button layouts to the Switch button layout.  Although this may be confusing to some I decided to do this because I like playing games made for Nintendo consoles with the button layout intended by the developers.
+Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default button mapping profile is "Xbox/PS: Adaptive".
 
 The console themed cover overlay shows your basic options.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload you game library.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
 
 Select a game from your game library to view it's cover.  You'll see the cover overlay change.  Clicking "Play" will play the game.
 
+## What is Adaptive Button Mapping?
+
+    // Xbox/PS Adaptive profile usage example:
+
+    // User is currently browsing their Nintendo Switch library
+    // Xbox One controller is mapped to
+    // Nintendo Switch controller button layout
+    //  Y B  ->  X A
+    // X A  ->  Y B
+
+    // User is browsing Xbox 360 games so no mapping occurs
+    //  Y B  ->  Y B
+    // X A  ->  X A
+
+    // User is browsing PS3 games so no mapping occurs either
+    // since A(Xbox One) auto maps to X(PS3)
+    //  Y B  ->  △ ○
+    // X A  ->  □ X
+
+Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the button layout of controllers made for whatever system you're browsing.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers that have a standard button layout.  The B button on Nintendo systems means "no" or "back".  The default profile remaps from Xbox and PlayStation button layouts to Nintendo's button layout when browsing Nintendo system libraries.  This mapping will occur when browsing Nintendo game libraries only.  On PS and Xbox game libraries the "Xbox/PS: Adaptive" profile does not remap buttons.  Hence you will always be using the correct button layout for the system library you're browsing.
+
+I encourage Bottlenose users to use adaptive mapping in your emulator controller settings too.  This way you can play games using button layout the game developers intended while using a controller made for a different system.
+
+The other standard gamepad mapping profile types are "Consistent", for non-adaptive mapping and "None", for no mapping.  You can easily change between these options by editing your preferences file.
+
 ## System Requirements
 
-Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 just fine.
+Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without any bad stuttering.
 
 ## Error Reporting
 
@@ -147,7 +172,14 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 ## Emulators Supported on Linux
 
-The Linux version of Bottlenose now supports Cemu (wine), Citra (flatpak), Dolphin, and PCSX2.  I will add support for DeSmuME, RPCS3 and Yuzu soon.
+The Linux version of Bottlenose now supports running these emulators using these commands:
+Cemu    `wine path/to/emu/Cemu/BIN/Cemu.exe`
+Citra   `flatpak run org.citra.citra-canary`
+DeSmuME not tested yet
+Dolphin `dolphin-emu`
+PCSX2   `PCSX2`
+RPCS3   `path/to/emu/RPCS3/BIN/rpcs3.AppImage`
+Yuzu    `path/to/emu/Yuzu/BIN/yuzu`
 
 ## Development Info
 
@@ -232,6 +264,48 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 ## Planned Features! (continued)
 
 Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley/qashto) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
+
+## FAQs
+
+Here are some answers to common questions about Bottlenose.  I've also responded to complaints in an effort to anticipate and mitigate toxic arguments about Bottlenose.  I would prefer to facilitate respectful discussions on community forums like r/emulation.  I'm not bitter but I work on this project in my free time.  I made it open source cause I want to share my work with other people for free.  I'm not afraid of criticism either.  Suggestions, feedback, and/or offering to help me is awesome but hateful, toxic, or un-constructive criticism is not acceptable.
+
+## "Nice app! Why did you decide to make Bottlenose?"
+
+I just wanted a simple, unified app for launching games with any modern emulator just by using a game controller to browse game boxes.  After I found Andy Decarli's site I knew I could make Bottlenose stand out as a UHD app.  Andy's scans are so high res you can see the printer color dot patterns distinctively.  There's a real sense of physicality to them.  I think Bottlenose succeeds in providing a digital version of the experience of browsing through game boxes and not little game art thumbnails surrounded by wasted space, text, and metadata.  Compared to the boxless digital download product pages on modern online game shops, I think it's an appropriately nostalgic way to browse games.
+
+Another primary goal of mine, as a pretty amateur texture pack creator, was to make an auto-installer/updater/manager for dolphin texture packs, hence the name Bottlenose.  There are so many incredible texture packs that I feel are going unappreciated cause people don't know about them (not talking about mine, they're just alright imo haha).  When I announced Bottlenose I posted this idea in a comment on Reddit but hadn't implemented it yet.  Luckily for me, my idea inspired a Dolphin dev to build a texture pack manager into Dolphin officially!  I'm waiting for that to be finished and hopefully it'll accept command line input.
+
+<https://forums.dolphin-emu.org/Thread-introducing-resource-packs-a-new-feature-to-manage-and-install-texture-packs>
+
+## "If you don't change {x} about Bottlenose, I'll never use it and I hope you fail!"
+
+I'm not afraid to call people out for being rude and entitled.  There are better ways to phrase your thoughts.  
+
+Something is missing or obviously flawed and I probably already have plans for it:  
+"Are you going to do {x} in the future?"
+
+Something goes wrong but you understand that I'm just one guy doing this for fun:  
+"I had a problem with Bottlenose.  Could you please help me/fix it?"
+
+You want to help:  
+"I'd like to help you fix an issue with Bottlenose."
+
+You choose to support me financially:  
+"I'm a Patreon supporter and I justifiably feel entitled to {x}."
+
+## "Bottlenose is a bad name!"
+
+Yes the app has quickly outgrown it's original purpose of being a Dolphin companion app.  Unfortunately, I'm attached to the name and it's not going to change.
+
+## "Your logo is trash, I hate it!"
+
+I'm not a professional artist, I'm a programmer.  Vaporwave art subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the logo embodies the vaporwave ideology and aesthetic.  I had fun making it and I personally like the outcome but I'm not super attached to it.
+
+## "Your logo doesn't match the minimalist aesthetics of the app."
+
+That's a fair, constructive point that it doesn't match the engraved plastic aesthetic of the app.  I've thought about doing a logo that uses the engraved plastic look found on the plastic menus in Bottlenose.  I've also thought about doing a logo that looks "printed".  Changing the logo is not a priority for me right now though as I want to focus on more functional updates to Bottlenose.  
+
+Anyone can be a critic but if you want to make a design mock up, please send it to me.
 
 ## Credits!
 

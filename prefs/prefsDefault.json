@@ -51,8 +51,43 @@
 		},
 		"gamepad": {
 			"mapping": {
-				"from": "Xbox One",
-				"to": "Switch"
+				"Xbox/PS: Adaptive": {
+					"map": {
+						"a": "b",
+						"b": "a",
+						"x": "y",
+						"y": "x"
+					},
+					"disable": "ps|xbox|pc"
+				},
+				"Nintendo: Adaptive": {
+					"map": {
+						"a": "b",
+						"b": "a",
+						"x": "y",
+						"y": "x"
+					},
+					"enable": "ps|xbox|pc"
+				},
+				"Xbox/PS: Consistent": {
+					"map": {
+						"a": "b",
+						"b": "a",
+						"x": "y",
+						"y": "x"
+					}
+				},
+				"Nintendo: Consistent": {
+					"map": {
+						"a": "b",
+						"b": "a",
+						"x": "y",
+						"y": "x"
+					}
+				},
+				"None": {
+					"map": {}
+				}
 			}
 		},
 		"getBackCoverHQ": false,
@@ -60,6 +95,7 @@
 		"autoHideCover": false
 	},
 	"session": {
-		"sys": "wii"
+		"sys": "wii",
+		"controllerProfile": "Xbox/PS: Adaptive"
 	}
 }

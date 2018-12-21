@@ -132,7 +132,7 @@ Although some may find this confusing at first, adaptive profiles map the button
 
 I encourage Bottlenose users to use adaptive mapping in your emulator controller settings too.  This way you can play games using button layout the game developers intended while using a controller made for a different system.
 
-The other standard gamepad mapping profile types are "Consistent", for non-adaptive mapping and "None", for no mapping.  You can easily change between these options by editing your preferences file.
+The other included gamepad mapping profile types are "Consistent", for non-adaptive mapping and "None", for no mapping.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.
 
 ## System Requirements
 
@@ -261,7 +261,7 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 
 `session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
 
-`session.controllerProfile` the controller profile you want to use
+`gamepad.profile` the controller profile you want to use
 
 ## Planned Features! (continued)
 
@@ -273,7 +273,7 @@ Here are some answers to common questions about Bottlenose.  I've also responded
 
 ### "Nice app! Why did you decide to make Bottlenose?"
 
-I just wanted a simple, unified app for launching games with any modern emulator just by using a game controller to browse game boxes.  After I found Andy Decarli's site I knew I could make Bottlenose stand out as a UHD app.  Andy's scans are so high res you can see the printer color dot patterns distinctively.  There's a real sense of physicality to them.  I think Bottlenose succeeds in providing a digital version of the experience of browsing through game boxes and not little game art thumbnails surrounded by wasted space, text, and metadata.  Compared to the boxless digital download product pages on modern online game shops, I think it's an appropriately nostalgic way to browse games.
+I wanted a simple, unified app for launching games with any modern emulator just by using a game controller to browse game boxes.  After I found Andy Decarli's site I knew I could make Bottlenose stand out as a UHD app.  Andy's scans are so high res you can see the printer color dot patterns distinctively.  There's a real sense of physicality to them.  I think Bottlenose succeeds in providing a digital version of the experience of browsing through game boxes and not little game art thumbnails surrounded by wasted space, text, and metadata.  Compared to the boxless digital download product pages on modern online game shops, I think it's an appropriately nostalgic way to browse these games.
 
 Another primary goal of mine, as a pretty amateur texture pack creator, was to make an auto-installer/updater/manager for dolphin texture packs, hence the name Bottlenose.  There are so many incredible texture packs that I feel are going unappreciated cause people don't know about them (not talking about mine, they're just alright imo haha).  When I announced Bottlenose I posted this idea in a comment on Reddit but hadn't implemented it yet.  Luckily for me, my idea inspired a Dolphin dev to build a texture pack manager into Dolphin officially!  I'm waiting for that to be finished and hopefully it'll accept command line input.
 
@@ -344,6 +344,9 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 ### Themes
 
 As of yet, all themes were made by me (quinton-ashley/qashto)
+
+CSS PlayStation button icons adapted from a CodePen by Hugo Giraudel
+<https://codepen.io/HugoGiraudel/pen/iJphI>
 
 ### Loading Sequences
 

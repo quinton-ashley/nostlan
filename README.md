@@ -28,35 +28,35 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 #### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png)
 
 #### Cemu (Wii U) [Windows & Linux* using Wine]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
 
 #### Yuzu (Switch) [Linux & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.png)
 
 #### Citra (3DS) [Linux, macOS, & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png)
 
 #### DeSmuME (DS) [Linux, macOS & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
 
 #### Xenia (Xbox 360) [Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
 
 #### RPCS3 (PS3) [Linux & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png)
 
 #### PCSX2 (PS2) [Linux, macOS, & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.PNG)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
 
 ## Please consider donating!
 

@@ -449,7 +449,7 @@ const Viewer = function() {
 
 	this.powerBtn = async function() {
 		let id = cui.getCur('libMain').attr('id');
-		if (!id) {
+		if (!id && cui.ui == 'cover') {
 			cui.err('cursor was not on a game');
 			return;
 		}

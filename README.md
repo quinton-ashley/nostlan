@@ -124,7 +124,7 @@ Select a game from your game library to view it's cover.  You'll see the cover o
     // X A  ->  X A
 
     // User is browsing PS3 games so no mapping occurs either
-    // since A(Xbox One) auto maps to X(PS3)
+    // since Xbox One has the same mapping as PS3
     //  Y B  ->  △ ○
     // X A  ->  □ X
 
@@ -132,9 +132,9 @@ Although some may find this confusing at first, adaptive profiles map the button
 
 Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
 
-I encourage Bottlenose users to use adaptive mapping in your emulator controller settings too.  This way you can play games using button layout the game developers intended while using a controller made for a different system.
+I recommend using adaptive mapping in your emulator controller settings too.  This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
 
-The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping.  Using a non-adaptive profile is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.  If for example, you're using a Nintendo Switch controller, you should use `Nintendo_Adaptive`.
+The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.  If for example, you're using a Nintendo Switch controller, you should use `Nintendo_Adaptive`.
 
 ## System Requirements
 
@@ -174,7 +174,7 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 ## Emulators Supported on Linux
 
-The Linux version of Bottlenose now supports running these emulators using these commands:  
+The Linux version of Bottlenose now supports running emulators using these commands:  
 Cemu    `wine path/to/emu/Cemu/BIN/Cemu.exe`  
 Citra   `flatpak run org.citra.citra-canary`  
 DeSmuME not tested yet  
@@ -189,7 +189,7 @@ Bottlenose is open source and MIT licensed!  I loved using Electron to make Bott
 
 ## Contributing to Bottlenose (code)
 
-PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package shortly.
+PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package at some point.
 
 ## Contributing to Bottlenose
 

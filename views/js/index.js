@@ -296,6 +296,7 @@ module.exports = async function(opt) {
 						}
 						olog('id:\t\t\t\t' + id);
 						olog('found match:\t\t' + game.title + '\r\n');
+						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
 					}
@@ -624,6 +625,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	}
 
+	async function quit() {
+		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
+		app.quit();
+	}
+
 	async function doAction(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
@@ -677,8 +683,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			} else if (act == 'prefs') {
 				opn(prefsPath);
 			} else if (act == 'quit') {
-				await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
-				app.quit();
+				await quit();
 			} else {
 				return false;
 			}
@@ -761,6 +766,14 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
 		cui.buttonPressed('view');
+		return false;
+	});
+	Mousetrap.bind(['command+option+i', 'ctrl+shift+i'], function() {
+		remote.getCurrentWindow().toggleDevTools();
+		return false;
+	});
+	Mousetrap.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], function() {
+		quit();
 		return false;
 	});
 	Mousetrap.bind(['space'], function() {

@@ -103,7 +103,7 @@ Steam is an ugly mess on UHD displays and if you're reading this you've probably
 
 ## Using Bottlenose
 
-Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default button mapping profile is "Xbox/PS: Adaptive".
+Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default controller button mapping profile is `Xbox_PS_Adaptive`.
 
 The console themed cover overlay shows your basic options.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload you game library.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
 
@@ -128,11 +128,13 @@ Select a game from your game library to view it's cover.  You'll see the cover o
     //  Y B  ->  △ ○
     // X A  ->  □ X
 
-Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the button layout of controllers made for whatever system you're browsing.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers that have a standard button layout.  The B button on Nintendo systems means "no" or "back".  The default profile remaps from Xbox and PlayStation button layouts to Nintendo's button layout when browsing Nintendo system libraries.  This mapping will occur when browsing Nintendo game libraries only.  On PS and Xbox game libraries the "Xbox/PS: Adaptive" profile does not remap buttons.  Hence you will always be using the correct button layout for the system library you're browsing.
+Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the button layout of controllers made for whatever system you're browsing.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers that have a standard button layout.  The B button on Nintendo systems means "no" or "back".  The default profile remaps from Xbox and PlayStation button layouts to Nintendo's button layout when browsing Nintendo system libraries.  This mapping will occur when browsing Nintendo game libraries only.  On PS and Xbox game libraries `Xbox_PS_Adaptive` does not remap buttons.
+
+Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
 
 I encourage Bottlenose users to use adaptive mapping in your emulator controller settings too.  This way you can play games using button layout the game developers intended while using a controller made for a different system.
 
-The other included gamepad mapping profile types are "Consistent", for non-adaptive mapping and "None", for no mapping.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.
+The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping.  Using a non-adaptive profile is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.  If for example, you're using a Nintendo Switch controller, you should use `Nintendo_Adaptive`.
 
 ## System Requirements
 

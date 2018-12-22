@@ -50,46 +50,8 @@
 			}
 		},
 		"gamepad": {
-			"profile": "Xbox/PS: Adaptive",
-			"mapping": {
-				"Xbox/PS: Adaptive": {
-					"map": {
-						"a": "b",
-						"b": "a",
-						"x": "y",
-						"y": "x"
-					},
-					"disable": "ps|xbox|pc"
-				},
-				"Nintendo: Adaptive": {
-					"map": {
-						"a": "b",
-						"b": "a",
-						"x": "y",
-						"y": "x"
-					},
-					"enable": "ps|xbox|pc"
-				},
-				"Xbox/PS: Consistent": {
-					"map": {
-						"a": "b",
-						"b": "a",
-						"x": "y",
-						"y": "x"
-					}
-				},
-				"Nintendo: Consistent": {
-					"map": {
-						"a": "b",
-						"b": "a",
-						"x": "y",
-						"y": "x"
-					}
-				},
-				"None": {
-					"map": {}
-				}
-			}
+			"profile": "Xbox_PS_Adaptive",
+			"map": {}
 		},
 		"getBackCoverHQ": false,
 		"recheckImgs": false,

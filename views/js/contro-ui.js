@@ -45,9 +45,54 @@ const CUI = function() {
 	}
 
 	let map = {};
+	const remappingProfiles = {
+		Xbox_PS_Adaptive: {
+			map: {
+				a: 'b',
+				b: 'a',
+				x: 'y',
+				y: 'x'
+			},
+			disable: 'ps|xbox|pc'
+		},
+		Nintendo_Adaptive: {
+			map: {
+				a: 'b',
+				b: 'a',
+				x: 'y',
+				y: 'x'
+			},
+			enable: 'ps|xbox|pc'
+		},
+		Xbox_PS_Consistent: {
+			map: {
+				a: 'b',
+				b: 'a',
+				x: 'y',
+				y: 'x'
+			}
+		},
+		Nintendo_Consistent: {
+			map: {
+				a: 'b',
+				b: 'a',
+				x: 'y',
+				y: 'x'
+			}
+		},
+		Xbox_PS_None: {
+			map: {}
+		},
+		Nintendo_None: {
+			map: {}
+		}
+	};
 
-	this.mapButtons = function(gamepad, session) {
-		let prof = gamepad.mapping[gamepad.profile];
+	this.mapButtons = function(gamepad, session, normalize) {
+		let prof = remappingProfiles[gamepad.profile];
+		if (!prof) {
+			prof = remappingProfiles['Xbox_PS_Adaptive'];
+		}
 		let sys = session.sys;
 		let enable;
 		if (prof.enable) {
@@ -75,10 +120,27 @@ const CUI = function() {
 		// X A  ->  □ X
 		if ((!enable || enable.test(sys)) && (!disable || !disable.test(sys))) {
 			// log('controller remapping enabled for ' + sys);
-			map = prof.map;
+			map = {};
+			for (let i in prof.map) {
+				map[i] = gamepad.map[prof.map[i]] || prof.map[i];
+			}
 		} else {
 			// log('no controller remapping for ' + sys);
 			map = {};
+		}
+
+		// normalize X and Y to nintendo physical layout
+		// this will make the physical layout of an app consistent
+		// and doAction choices consistent for certain buttons
+		if (normalize &&
+			((normalize.disable &&
+					!(new RegExp(`(${normalize.disable})`, 'i')).test(gamepad.profile)) ||
+				(normalize.enable &&
+					(new RegExp(`(${normalize.enable})`, 'i')).test(gamepad.profile))
+			)) {
+			for (let i in normalize.map) {
+				map[i] = gamepad.map[normalize.map[i]] || normalize.map[i];
+			}
 		}
 	}
 
@@ -97,6 +159,7 @@ const CUI = function() {
 			customActions(act, this.btns.includes(act));
 		}
 	};
+	this.doAction = doAction;
 
 	let resize = () => {
 		log('set custom resize with the setResize method');
@@ -135,7 +198,7 @@ const CUI = function() {
 
 	function scrollTo(position, time) {
 		if (isNaN(position)) {
-			log("pos can't be: " + position);
+			log(`pos can't be: ` + position);
 			return;
 		}
 		pos = position;
@@ -504,7 +567,7 @@ const CUI = function() {
 		log(msg);
 		let $errMenu = $('#errMenu');
 		if (!$errMenu.length) {
-			$('body').append(pug('#errMenu.menu: .row-y: .uie(name="error-okay") Okay'));
+			$('body').append(pug(`#errMenu.menu: .row-y: .uie(name='error-okay') Okay`));
 			$errMenu = $('#errMenu');
 			$errMenu.prepend(md('# Error  \n' + 'unknown error'));
 			$('#errMenu .uie').click(uieClicked);

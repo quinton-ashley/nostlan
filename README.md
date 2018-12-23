@@ -2,7 +2,7 @@
 
 Bottlenose is a _high quality_ front-end companion app for video game emulators!  
 [Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/build/icon.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
 
@@ -271,13 +271,15 @@ Texture packs with a rating of 7 and above will be considered recommended.  In a
 
 ## FAQs
 
-Here are some answers to common questions about Bottlenose.  I've also responded to complaints in an effort to anticipate and mitigate toxic arguments about Bottlenose.  I would prefer to facilitate respectful discussions on community forums like r/emulation.  I'm not bitter but I work on this project in my free time.  I made it open source cause I want to share my work with other people for free.  I'm not afraid of criticism either.  Suggestions, feedback, and/or offering to help me is awesome but hateful, toxic, or un-constructive criticism is not acceptable.
+Here are some answers to common questions about Bottlenose.  I've also responded to complaints in an effort to anticipate and mitigate toxic arguments about Bottlenose.  I would prefer to facilitate respectful discussions on community forums like r/emulation.  I'm not bitter but I work on this project in my free time and it's open source cause I want to share it with people for free.  I'm not afraid of criticism either.  Suggestions and feedback can be really helpful for the continued development of Bottlenose but hateful, toxic, or un-constructive criticism is not acceptable.  
+
+Bottlenose is not the procedural outcome of a greedy, monolithic corporation, it's the creation of a single human, me (qashto), so I'm going to take it personally if you hate on it.
 
 ### "Nice app! Why did you decide to make Bottlenose?"
 
 I wanted a simple, unified app for launching games with any modern emulator just by using a game controller to browse game boxes.  After I found Andy Decarli's site I knew I could make Bottlenose stand out as a UHD app.  Andy's scans are so high res you can see the printer color dot patterns distinctively.  There's a real sense of physicality to them.  I think Bottlenose succeeds in providing a digital version of the experience of browsing through game boxes and not little game art thumbnails surrounded by wasted space, text, and metadata.  Compared to the boxless digital download product pages on modern online game shops, I think it's an appropriately nostalgic way to browse these games.
 
-Another primary goal of mine, as a pretty amateur texture pack creator, was to make an auto-installer/updater/manager for dolphin texture packs, hence the name Bottlenose.  There are so many incredible texture packs that I feel are going unappreciated cause people don't know about them (not talking about mine, they're just alright imo haha).  When I announced Bottlenose I posted this idea in a comment on Reddit but hadn't implemented it yet.  Luckily for me, my idea inspired a Dolphin dev to build a texture pack manager into Dolphin officially!  I'm waiting for that to be finished and hopefully it'll accept command line input.
+Another primary goal of mine, as a pretty amateur texture pack creator, was to make an auto-installer/updater/manager for dolphin texture packs, hence the name Bottlenose.  There are so many incredible texture packs that I feel are going unappreciated cause people don't know about them.  When I announced Bottlenose I posted this idea in a comment on Reddit but hadn't implemented it yet.  Luckily for me, my idea inspired a Dolphin dev to build a texture pack manager into Dolphin officially!  I'm waiting for that to be finished and hopefully it'll accept command line input.
 
 <https://forums.dolphin-emu.org/Thread-introducing-resource-packs-a-new-feature-to-manage-and-install-texture-packs>
 
@@ -285,10 +287,10 @@ Another primary goal of mine, as a pretty amateur texture pack creator, was to m
 
 I'm not afraid to call people out for being rude and entitled.  There are better ways to phrase your thoughts.  
 
-Something is missing or obviously flawed and I probably already have plans for it:  
+Something is missing or obviously flawed and I probably already have plans to do it:  
 "Are you going to do {x} in the future?"
 
-Something goes wrong but you understand that I'm just one guy doing this for fun:  
+Something goes wrong:  
 "I had a problem with Bottlenose.  Could you please help me/fix it?"
 
 You want to help:  
@@ -303,17 +305,11 @@ Yes the app has quickly outgrown it's original purpose of being a Dolphin compan
 
 ### "Your logo is trash, I hate it!"
 
-I'm not a professional artist, I'm a programmer.  Vaporwave art subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the logo embodies the vaporwave ideology and aesthetic.  I had fun making it and I personally like the outcome but I'm not super attached to it.
-
-### "Your logo doesn't match the minimalist aesthetics of the app."
-
-That's a fair, constructive point that it doesn't match the engraved plastic aesthetic of the app.  I've thought about doing a logo that uses the engraved plastic look found on the plastic menus in Bottlenose.  I've also thought about doing a logo that looks "printed".  Changing the logo is not a priority for me right now though as I want to focus on more functional updates to Bottlenose.  
-
-Anyone can be a critic but if you want to make a design mock up, please send it to me.
+I'm not a professional artist, I'm a programmer.  Vaporwave art subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the full logo and app icon both embody the vaporwave ideology and aesthetic.  I had fun making the logo and I personally like the outcome.
 
 ## Credits!
 
-Bottlenose uses publicly available images under Fair Use.  
+Obviously, Bottlenose wouldn't exist without the developers of these emulators.  Please support the devs of emulators you use!  Bottlenose uses publicly available images under Fair Use.
 
 ### Logo
 

@@ -1,6 +1,6 @@
 # Bottlenose
 
-Bottlenose is a _high quality_ front-end launcher for video game emulators available on Linux, macOS, and Windows!  
+Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
 [Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 

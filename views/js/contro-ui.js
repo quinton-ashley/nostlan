@@ -161,6 +161,14 @@ const CUI = function() {
 	};
 	this.doAction = doAction;
 
+	let customHeldActions = () => {
+		log('set custom actions with the setCustomHeldActions method');
+	};
+	let doHeldAction = (act, timeHeld) => {
+		customHeldActions(act, this.btns.includes(act), timeHeld);
+	};
+	this.doHeldAction = doHeldAction;
+
 	let resize = () => {
 		log('set custom resize with the setResize method');
 	};
@@ -247,28 +255,6 @@ const CUI = function() {
 	}
 	this.scrollToCursor = scrollToCursor;
 
-	function coverClicked() {
-		let classes = $cur.attr('class').split(' ');
-		if (classes.includes('uie-disabled')) {
-			return false;
-		}
-		let $reel = $cur.parent();
-		scrollToCursor(1000, 0);
-		$cur.toggleClass('selected');
-		$reel.toggleClass('selected');
-		$('.reel').toggleClass('bg');
-		// $('nav').toggleClass('gamestate');
-		if ($cur.hasClass('selected')) {
-			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
-			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
-		} else {
-			$reel.css('left', '');
-			$cur.css('transform', '');
-		}
-		return true;
-	}
-	this.coverClicked = coverClicked;
-
 	function removeCursor() {
 		if (!$cur) {
 			return;
@@ -322,8 +308,6 @@ const CUI = function() {
 		}
 		if ((/cover/gi).test(state)) {
 			makeCursor(cuis[ui].$cur, state);
-		} else if (state == 'sysMenu' || state == 'pauseMenu') {
-			labels = ['', '', 'Back'];
 		} else if ((/main/gi).test(state)) {
 			$('.menu').hide();
 			if (ui == 'errMenu' || (!(/cover/gi).test(ui) && !(/menu/gi).test(ui))) {
@@ -471,6 +455,38 @@ const CUI = function() {
 	}
 	this.buttonPressed = buttonPressed;
 
+	async function buttonHeld(btn) {
+		if (typeof btn == 'string') {
+			btn = {
+				label: btn
+			};
+		}
+		let lbl = btn.label.toLowerCase();
+		log(ui);
+		switch (lbl) {
+			case 'a':
+				await doHeldAction($cur.attr('name') || 'a');
+				break;
+			case 'up':
+			case 'down':
+			case 'left':
+			case 'right':
+			case 'b':
+			case 'x':
+			case 'y':
+			case 'view':
+			case 'start':
+				await doHeldAction(lbl);
+				break;
+			default:
+				if (opt.v) {
+					log('button does nothing');
+				}
+				return;
+		}
+	}
+	this.buttonHeld = buttonHeld;
+
 	async function loop() {
 		if (gamepadConnected || gamepad.isConnected()) {
 			for (let i in btns) {
@@ -488,18 +504,20 @@ const CUI = function() {
 				if (!btnStates[i] && !query) {
 					continue;
 				}
-				// if button is held, query is true and unchanged
-				if (btnStates[i] && query) {
-					// log(i + ' button press held');
-					continue;
-				}
-				// save button state change
-				btnStates[i] = query;
 				// if button press ended query is false
 				if (!query) {
 					// log(i + ' button press end');
+					btnStates[i] = 0;
 					continue;
 				}
+				// if button is held, query is true and unchanged
+				if (btnStates[i] && query) {
+					btnStates[i] += 1;
+					await buttonHeld(i, btnStates[i]);
+					continue;
+				}
+				// save button state change
+				btnStates[i] += 1;
 				// if button press just started, query is true
 				if (opt.v) {
 					log(i + ' button press start');

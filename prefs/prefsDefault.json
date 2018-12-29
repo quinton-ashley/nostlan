@@ -3,22 +3,38 @@
 	"region": "E",
 	"ds": {
 		"app": {},
+		"cmd": {
+			"mac": ["${app}", "${game}"],
+			"win": ["${app}", "${game}"]
+		},
 		"emu": "DeSmuME"
 	},
 	"wii": {
-		"app": {
-			"mac": "$home/Library/Application Support/Dolphin"
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}", "-b"],
+			"mac": ["${app}", "${game}", "-b"],
+			"win": ["${app}", "${game}", "-b"]
 		},
 		"emu": "Dolphin",
 		"style": "gcn"
 	},
 	"wiiu": {
 		"app": {},
+		"cmd": {
+			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
+			"win": ["${app}", "-g", "${game}", "-f"]
+		},
 		"emu": "Cemu"
 	},
 	"3ds": {
 		"app": {
 			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
+		},
+		"cmd": {
+			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
+			"mac": ["${app}", "${game}", "-f"],
+			"win": ["${app}", "${game}", "-f"]
 		},
 		"emu": "Citra",
 		"style": "n3ds"
@@ -28,18 +44,34 @@
 			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
 			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
 		},
+		"cmd": {
+			"linux": ["${app}", "${game}"],
+			"mac": ["${app}", "${game}"],
+			"win": ["${app}", "${game}"]
+		},
 		"emu": "Yuzu"
 	},
 	"xbox360": {
 		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]
+		},
 		"emu": "Xenia"
 	},
 	"ps2": {
 		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
+			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
+		},
 		"emu": "PCSX2"
 	},
 	"ps3": {
 		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}"],
+			"win": ["${app}", "${game}"]
+		},
 		"emu": "RPCS3"
 	},
 	"ui": {

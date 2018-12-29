@@ -1,6 +1,6 @@
 # Bottlenose
 
-Bottlenose is a _high quality_ front-end companion app for video game emulators!  
+Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
 [Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
@@ -12,15 +12,14 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ## Features
 
--   unified UI for mouse/game controller interaction
+-   unified UI for mouse/gamepad interaction
 -   designed for _UHD_ displays and projectors
 -   scrapes multiple database sites for the _highest quality_ box art
--   _aesthetic_ UI themes for each supported console
--   launch games in fullscreen
--   reverse scroll effect on alternating rows in cover view mode
--   uses individual emulators: no cores and no controller input lag
--   controllers connect automatically, no setup
--   auto maps Xbox One and PS4 controllers to Switch button layout
+-   _nostalgic_ UI themes for each supported console
+-   launch games fullscreen (for emulators that support this option)
+-   fancy reverse scroll effect on alternating rows in cover view mode
+-   uses individual emulators: no cores and no controller input transfer lag
+-   controllers connect to Bottlenose automatically, no setup required
 -   browse demo mode if don't have any games on your computer
 -   the only high quality front end to support Linux, macOS, and Windows!
 
@@ -73,8 +72,10 @@ Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea
 
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
 
--   batch install/update texture packs for Dolphin
+-   create a database of Dolphin texture packs
+-   batch install/update texture packs for Dolphin (is now being added into Dolphin officially)
 -   batch install/update graphics packs for Cemu
+-   batch install emulators
 -   automatic emulator updates for emus that lack this feature
 -   easy way to mix and swap texture packs for Dolphin
 -   list style view mode for browsing through box sides, useful for very large game libraries
@@ -90,24 +91,24 @@ Emulation Station is a nice front end for Windows and Linux.  Like Bottlenose, i
 The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like that.  Overall, I like Launchbox and Bottlenose is not intended to replace it.  Launchbox has support for so many emulators and numerous impressive features.  Instead, Bottlenose will mainly focus on mature emulators of consoles released after the year 2000.  Screenshot is of the "Big Box" mode of Launchbox.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
-OpenEmu for macOS is a great app for making controller profiles consistent among different emulators.  Otherwise it looks just like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide.
+OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide though.
 ![](http://openemu.org/img/intro-gb-grid.png)
 
-Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  This is a poor substitute for a dedicated game launcher app.  Explorer also has a blinding white background which is not easy on the eyes during late night gaming sessions.
+Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Retroarch is not really comparable to Bottlenose.  It uses seperate cores instead of individual emulator apps.  Game art is low res and the interface is barebones.  Good for small devices but I would never use it.
+Retroarch is not really comparable to Bottlenose.  It uses seperate cores instead of individual emulator apps.  Game art is low res and the interface is barebones.  Good for small devices but personally I would never use it.
 ![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
 
 Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
 
 ## Using Bottlenose
 
-Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default controller button mapping profile is `Xbox_PS_Adaptive`.
+Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default controller button mapping profile is `Xbox_PS_Adaptive`.  If you're using a Nintendo controller switch to `Nintendo_Adaptive` in your preferences file.
 
-The console themed cover overlay shows your basic options.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the console cover overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload you game library.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
+The console themed plastic cover overlay menu displays the basic options on any given screen.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload the lib viewer.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
 
-Select a game from your game library to view it's cover.  You'll see the cover overlay change.  Clicking "Play" will play the game.
+Select a game from your game library to view it's cover.  You'll see the overlay options change.  Clicking "Play" will play the game.  "Flip" doesn't do anything right now.
 
 ## What is Adaptive Button Mapping?
 
@@ -140,10 +141,6 @@ The other included gamepad mapping profile types are "Consistent", for non-adapt
 
 Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without any bad stuttering.
 
-## Error Reporting
-
-If Bottlenose has trouble matching your game file names and you see a bunch of covers of mismatched games or you are missing games in your library view, please [send me](mailto:qashto@gmail.com) your error log file and I'll try to sort it out.  Send me a description of any other errors or report an issue with the code on this project's Github.
-
 ## Optional Template File Structure
 
 ```javascript
@@ -171,6 +168,18 @@ emu (root folder can have any name)
 Bottlenose was designed to optionally use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
 On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
+
+## Error Reporting
+
+Please [send me](mailto:qashto@gmail.com) send me a description of any errors with the relevant error log or report an issue with the code on this project's Github.
+
+### Missing Cover Art
+
+If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{GAMEID}/img`.  For more info see the "Contributing to Bottlnose" and "Images" sections of this README.  Suitable cover art databases to scrape haven't been found for Xbox 360 and PS2 games yet so only a few game covers for those systems can be scraped right now.  Know of a good site with an API or consistent urls?  Let me know please!
+
+### Mismatched or Unidentified Games/Hacks
+
+If Bottlenose has trouble matching your game file names or you are missing games in your library view, report it to me, excluding hacks and PS2/Xbox 360 games for now.
 
 ## Emulators Supported on Linux
 
@@ -240,12 +249,12 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 
 ```javascript
 {
- "id": "ALERA",
- "title": "Mario Tennis Aces",
- "texp": [],
- "img": {
-	 "box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
- }
+  "id": "ALERA",
+  "title": "Mario Tennis Aces",
+  "texp": [],
+  "img": {
+    "box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
+  }
 }
 ```
 

@@ -615,13 +615,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		let args = [];
 		emuDirPath = path.join(emuAppPath, '..');
 		if (linux) {
-			if (emu == 'cemu') {
-				args.push(emuAppPath);
-				emuAppPath = 'wine';
-			} else if (emu == 'citra') {
-				emuAppPath = 'flatpak';
-				args.push('run');
-				args.push('org.citra.citra-canary');
+			if (emu == 'citra') {
+				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
 		if (cui.ui == 'cover') {
@@ -647,38 +642,37 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 						break;
 					}
 				}
-				args.push('-g');
 			}
 		}
 		log(emu);
-
-		if (cui.ui == 'cover') {
-			args.push(gameFile);
-			if (emu == 'cemu' || emu == 'citra') {
-				args.push('-f');
-			} else if (emu == 'dolphin') {
-				args.push('-b');
-			} else if (emu == 'xenia') {
-				args.push('--d3d12_resolution_scale=2');
-				args.push('--fullscreen');
-			} else if (emu == 'pcsx2') {
-				args.push('--nogui');
-				args.push('--fullscreen');
+		let cmdArray = prefs[sys].cmd[osType];
+		for (let arg of cmdArray) {
+			if (arg == '${app}') {
+				args.push(emuAppPath);
+				if (cui.ui == 'libMain') {
+					return;
+				}
+			} else if (arg == '${game}') {
+				args.push(gameFile);
+			} else {
+				args.push(arg);
 			}
-			cui.removeView('libMain');
-			cui.uiStateChange('playingGame');
 		}
-		log(emuAppPath);
+
+		if (cui.ui != 'libMain') {
+			cui.removeView('libMain');
+			cui.uiStateChange('playingBack');
+		}
 		log(args);
 		log(emuDirPath);
 		try {
 			// animatePlay();
-			await spawn(args[0], args.slice(1), {
+			await spawn(args[0], args.slice(1) || [], {
 				cwd: emuDirPath,
 				stdio: 'inherit'
 			});
 		} catch (ror) {
-			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${ror}`);
+			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${args.toString()}\n${ror}`);
 		}
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
@@ -686,7 +680,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			await intro();
 			await viewerLoad();
 			await removeIntro();
-			if (cui.ui == 'playingGame') {
+			if (cui.ui == 'playingBack') {
 				cui.uiStateChange('libMain');
 			}
 		}
@@ -714,7 +708,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function doHeldAction(act, isBtn, timeHeld) {
 		log(act + " held for " + timeHeld);
-		if (ui == 'playingGame') {
+		if (ui == 'playingBack') {
 			if (act == start && timeHeld > 3000) {
 				// TODO quit emulator app
 			}
@@ -745,7 +739,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	async function doAction(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
-		if (ui == 'playingGame') {
+		if (ui == 'playingBack') {
 			return;
 		}
 		let onMenu = (/menu/gi).test(ui);
@@ -797,9 +791,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				cui.uiStateChange('libMain');
 			}
 		} else if (ui == 'sysMenu' && !isBtn) {
-			if (!emu) {
-				return;
-			}
+			// if (!emu) {
+			// 	return;
+			// }
 			cui.removeView('libMain');
 			sys = act;
 			cui.removeCursor();

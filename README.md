@@ -274,6 +274,8 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 
 `gamepad.profile` the controller profile you want to use
 
+`[sys].cmd.[os]` the launch command for that game system and os
+
 ## Planned Features! (continued)
 
 Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley/qashto) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.

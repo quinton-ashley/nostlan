@@ -26,7 +26,7 @@
 		},
 		"template": {
 			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png",
-			"openBox": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Wii-optical-case.png"
+			"boxOpen": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Wii-optical-case.png"
 		}
 	},
 	"wiiu": {

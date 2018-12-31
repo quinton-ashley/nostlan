@@ -34,12 +34,12 @@
 	margin: 0;
 	font-size: 4vh;
 	text-align: center;
-	border: 3px solid var(--cover-text-color);
+	border: 3px solid #555;
 	border-radius: 10px;
 	box-shadow: 0.5px 0.5px 0 rgba(255, 255, 255, .5);
 }
 
 .menu .cursor {
-	background-color: var(--cover-color);
+	background-color: #555;
 	filter: brightness(1.2);
 }

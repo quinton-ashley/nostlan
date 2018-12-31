@@ -101,26 +101,80 @@ html {
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }
-@keyframes open-box-anim {
-	from {
-		transform: rotateY(0deg);
-	}
 
-	to {
-		transform: rotateY(180deg);
-	}
-}
-
-.open-box {
-	animation-name: open-box-anim;
-	animation-duration: 2000ms;
-	animation-iteration-count: 1;
-	animation-timing-function: linear;
-}
-
-#intro {
+#infoSelect {
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
+	display: none;
+	transition: all 500ms ease-in-out;
+	transform: translate(0) scale(1);
+}
+
+#infoSelect.zoom-gameManualSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+#infoSelect.zoom-gameMediaSelect {
+	transform: translate(-71vh,-11vh) scale(2);
+}
+
+#infoSelect.zoom-gameMemorySelect {
+	transform: translate(-146vh,129vh) scale(4);
+}
+
+#infoSelect.zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+#gameBoxOpen {
+	z-index: 10;
+}
+
+#gameBoxOpenMask {
+	z-index: 19;
+	pointer-events: none;
+}
+
+#gameBoxOpen,
+#gameBoxOpenMask {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	height: 100%;
+	width: auto;
+	transform: translate(-50%);
+}
+
+#infoSelect .row-y * {
+	position: fixed;
+	z-index: 11;
+	top: 50%;
+	left: 50%;
+	height: auto;
+}
+
+#gameMemory {
+	width: 18.5vh;
+	transform: translate(148%,-213%);
+}
+
+#gameMedia {
+	width: 40.8vh;
+	transform: translate(39.4%,-35%);
+}
+
+#gameTexp {
+	width: 94vh;
+	transform: translate(-110%,-50.5%);
+}
+
+#gameManual {
+	width: 55.5vh;
+	transform: translate(-110%,-50.5%);
 }
 
 #intro {
@@ -173,15 +227,6 @@ html {
 }
 
 .menu {
-	position: fixed;
-	z-index: 100;
-	width: 50vw;
-	padding-top: 2vh;
-	padding-bottom: 2vh;
-	margin-left: 25vw;
-	margin-top: 5vh;
-	text-align: left;
-	display: none;
 	background-color: var(--cover-color);
 	color: var(--cover-text-color);
 	border-color: var(--cover-text-color);
@@ -192,17 +237,6 @@ html {
 
 .menu * {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-}
-
-.menu code,
-.menu pre {
-	font-size: 1.5vh;
-}
-
-.menu p {
-	margin-left: 5%;
-	margin-right: 5%;
-	font-size: 2vh;
 }
 
 .menu code,
@@ -217,13 +251,6 @@ html {
 	border: 3px solid var(--cover-text-color);
 	border-radius: 10px;
 	box-shadow: 0.5px 0.5px 0 rgba(255, 255, 255, .5);
-	font-size: 4vh;
-	text-align: center;
-}
-
-.menu h1 {
-	text-align: center;
-	font-size: 4vh;
 }
 
 .menu .cursor {

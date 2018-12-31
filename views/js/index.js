@@ -359,7 +359,6 @@ module.exports = async function(opt) {
 
 	async function reload() {
 		cui.uiStateChange('loading');
-		$('.menu').hide();
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
@@ -430,8 +429,6 @@ module.exports = async function(opt) {
 	}
 
 	async function load() {
-		$('#update').hide();
-		$('.menu').hide();
 		let files = await klaw(path.join(__rootDir, '/views/md'));
 		log(files);
 		for (let file of files) {
@@ -532,13 +529,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	cui.setUIOnChange((state, subState, gamepadConnected) => {
 		let labels = ['', '', ''];
-		if (state == 'cover' || state == 'info') {
+		if (state == 'coverSelect' || state == 'infoSelect') {
 			labels = ['Play', '', 'Back'];
 			cui.getCur().toggleClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
 			cui.getCur().removeClass('no-outline');
-		} else if (state == 'sysMenu' || state == 'pauseMenu') {
+		} else if (state == 'sysMenu' || state == 'pauseMenu' || (/game/i).test(state)) {
 			labels = ['', '', 'Back'];
 		}
 		if (subState == 'gcn') {
@@ -603,7 +600,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function powerBtn() {
 		let id = cui.getCur('libMain').attr('id');
-		if (!id && cui.ui == 'cover') {
+		if (!id && cui.ui == 'coverSelect') {
 			cui.err('cursor was not on a game');
 			return;
 		}
@@ -619,7 +616,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
-		if (cui.ui == 'cover') {
+		if (cui.ui == 'coverSelect') {
 			gameFile = games.find(x => x.id === id);
 			if (gameFile) {
 				gameFile = getAbsolutePath(gameFile.file);
@@ -715,7 +712,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	}
 
-	function coverClicked() {
+	function coverClicked(select) {
 		let $cur = cui.getCur();
 		let classes = $cur.attr('class').split(' ');
 		if (classes.includes('uie-disabled')) {
@@ -748,7 +745,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			app.quit();
 			process.exit(0);
 		}
-		if (ui == 'libMain' || ui == 'cover') {
+		if (ui == 'libMain' || ui == 'coverSelect') {
 			if (act == 'x') {
 				await powerBtn();
 			}
@@ -757,7 +754,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.uiStateChange('pauseMenu');
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
-			cui.uiStateChange('libMain');
+			cui.doAction('back');
 		} else if (act == 'view') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
@@ -767,28 +764,52 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (ui == 'libMain') {
 			if (act == 'a') {
 				coverClicked();
-				cui.uiStateChange('cover');
+				cui.uiStateChange('coverSelect');
 			} else if (act == 'b' && !onMenu) {
 				cui.uiStateChange('sysMenu');
 			} else if (act == 'y') {
 				await resetBtn();
 			}
-		} else if (ui == 'cover') {
+		} else if (ui == 'coverSelect') {
 			if (act == 'a') {
-				cui.getCur().toggleClass('open-box');
-				cui.uiStateChange('info');
+				let id = cui.getCur('libMain').attr('id');
+				let game = games.find(x => x.id === id);
+				let template = getTemplate();
+
+				$('#gameBoxOpen').prop('src', await imgExists(template, 'boxOpen'));
+				$('#gameBoxOpenMask').prop('src', await imgExists(template, 'boxOpenMask'));
+				$('#gameMemory').prop('src', await imgExists(template, 'memoryFront'));
+				$('#gameManual').prop('src', await imgExists(template, 'manual0'));
+
+				let mediaName = 'disc';
+				if (sys == 'switch' || sys == '3ds') {
+					mediaName = 'cart';
+				}
+				let mediaImg = await imgExists(game, mediaName);
+				if (!mediaImg) {
+					mediaImg = await imgExists(template, mediaName);
+				}
+				$('#gameMedia').prop('src', mediaImg);
+				cui.uiStateChange('infoSelect');
 			} else if (act == 'b') {
-				coverClicked();
 				cui.uiStateChange('libMain');
+				coverClicked();
 			} else if (act == 'y' || act == 'flip') {
 				log('flip cover not enabled yet');
 			}
-		} else if (ui == 'info') {
-			if (act == 'a') {
-				cui.getCur();
+		} else if (ui == 'infoSelect') {
+			if (act != 'back' && !isBtn) {
+				let state = 'game' + act[0].toUpperCase() + act.substr(1) + 'Select';
+				$('#infoSelect').addClass('zoom-' + state);
+				cui.uiStateChange(state);
 			} else if (act == 'b') {
-				coverClicked();
 				cui.uiStateChange('libMain');
+				coverClicked();
+			}
+		} else if ((/game/i).test(ui)) {
+			if (act == 'b') {
+				$('#infoSelect').removeClass('zoom-' + ui);
+				cui.doAction('back');
 			}
 		} else if (ui == 'sysMenu' && !isBtn) {
 			// if (!emu) {
@@ -799,9 +820,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu' && !isBtn) {
-			if (act == 'back') {
-				cui.uiStateChange('pauseMenu');
-			} else if (act == 'minimize') {
+			if (act == 'minimize') {
 				remote.getCurrentWindow().minimize();
 			} else if (act == 'fullscreen') {
 				remote.getCurrentWindow().focus();
@@ -1002,6 +1021,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		}
 		opn(largestImgUrl);
+	}
+
+	async function getImgFileLocation(game, name) {
+		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
+		let file;
+
 	}
 
 	async function getImg(game, name, skip) {

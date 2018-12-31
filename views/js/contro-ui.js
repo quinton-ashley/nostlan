@@ -1,5 +1,5 @@
 const CUI = function() {
-	let opt = {
+	let opt = this.opt = {
 		v: true
 	};
 	const log = console.log;
@@ -36,6 +36,7 @@ const CUI = function() {
 	let mouse;
 	let mouseWheelDeltaNSS;
 	let pos = 0;
+	let uiPrevStates = [];
 	let uiPrev;
 	let ui;
 	let uiSub;
@@ -148,13 +149,22 @@ const CUI = function() {
 		log('set custom actions with the setCustomActions method');
 	};
 	let doAction = (act) => {
-		if (act == 'error-okay') {
-			if ((/back/gi).test(uiPrev)) {
-				this.uiStateChange('libMain');
+		if (act == 'error-okay' || act == 'back') {
+			if (uiPrev) {
+				for (let i = uiPrevStates.length - 1; i >= 0; i--) {
+					if (!(/menu/i).test(uiPrevStates[i]) && ui != uiPrevStates[i]) {
+						this.uiStateChange(uiPrevStates[i]);
+						break;
+					}
+				}
 			} else {
-				this.uiStateChange(uiPrev);
+				for (let state of uiPrevStates) {
+					if ((/main/i).test(state)) {
+						this.uiStateChange(state);
+						break;
+					}
+				}
 			}
-			scrollToCursor(10, 0);
 		} else {
 			customActions(act, this.btns.includes(act));
 		}
@@ -185,12 +195,10 @@ const CUI = function() {
 		state = state || ui;
 		if ((/menu/gi).test(state)) {
 			let $menu = $('#' + state);
-			$('.menu').hide();
-			$menu.show();
 			$menu.css('margin-top', $(window).height() * .5 - $menu.outerHeight() * .5);
-			if (state != ui) {
-				makeCursor($('#' + state).find('.row-y').eq(0).children().eq(0), state);
-			}
+		}
+		if ((/main/gi).test(state)) {
+			scrollToCursor(10, 0);
 		}
 		resize(adjust);
 	}
@@ -278,12 +286,17 @@ const CUI = function() {
 	this.makeCursor = makeCursor;
 
 	function addView(state) {
-		$(`#${state} .uie`).click(uieClicked);
+		$(`#${state} .uie`).off('click').click(uieClicked);
+		$(`#${state} .uie`).off('hover').hover(uieHovered);
 	}
 	this.addView = addView;
 
 	function removeView(state) {
 		$('#' + state).empty();
+		if ((/main/i).test(state)) {
+			uiPrev = null;
+			this.uiPrev = null;
+		}
 	}
 	this.removeView = removeView;
 
@@ -295,37 +308,55 @@ const CUI = function() {
 		uiOnChange = func;
 	};
 
-	function uiStateChange(state, subState) {
+	function uiStateChange(state, subState, opt) {
+		opt = opt || {};
 		if (state == ui) {
 			log('b ' + state);
 			doAction('b');
 			return;
 		}
 		uiOnChange(state, subState || uiSub, gamepadConnected);
+		if ((/main/gi).test(state)) {
+			if (ui == 'errMenu' || (!(/select/gi).test(ui) && !(/menu/gi).test(ui))) {
+				let $mid = $('#' + state + ' .reel.r0').children();
+				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
+				makeCursor($mid, state);
+			} else {
+				makeCursor(cuis[state].$cur, state);
+			}
+			scrollToCursor(1, 0);
+		} else if ((/select/gi).test(state)) {
+			makeCursor(cuis[ui].$cur, state);
+		} else {
+			let $temp = $('#' + state).find('.row-y').eq(0).find('.uie').eq(0);
+			if (!$temp.length) {
+				$temp = $('#' + state).find('.row-x').eq(0).find('.uie').eq(0);
+			}
+			makeCursor($temp, state);
+		}
 		if (subState) {
 			$('#' + state).removeClass(uiSub || 'XXXXX');
 			$('#' + state).addClass(subState);
 		}
-		if ((/cover/gi).test(state)) {
-			makeCursor(cuis[ui].$cur, state);
-		} else if ((/main/gi).test(state)) {
-			$('.menu').hide();
-			if (ui == 'errMenu' || (!(/cover/gi).test(ui) && !(/menu/gi).test(ui))) {
-				let $mid = $('#' + state + ' .reel.r0').children();
-				$mid = $mid.eq(Math.round($mid.length * .5) - 1);
-				makeCursor($mid, state);
-				scrollToCursor(10, 0);
-			} else {
-				makeCursor(cuis[state].$cur, state);
-			}
-		}
 		this.resize(true, state);
+		if (!opt.b && !opt.keepBackground &&
+			!(/select/gi).test(state) && !(/menu/gi).test(state) || (/menu/gi).test(ui)) {
+			// $('.cui:not(.main)').hide();
+			$('#' + ui).hide();
+		} else {
+			// log('keeping prev ui in background');
+		}
+		$('#' + state).show();
+		if (ui) {
+			uiPrevStates.push(ui);
+		}
 		uiPrev = ui;
 		ui = state;
 		uiSub = subState || uiSub;
-		this.ui = state;
-		if (opt.v) {
-			log('ui state: ' + state);
+		this.ui = ui;
+		this.uiPrev = uiPrev;
+		if (this.opt.v) {
+			log('ui state changed from ' + uiPrev + ' to ' + state);
 		}
 	}
 	this.uiStateChange = uiStateChange;
@@ -555,8 +586,8 @@ const CUI = function() {
 	}
 	this.start = function(options) {
 		opt = options || {};
-		$('.menu .uie').click(uieClicked);
-		$('.menu .uie').hover(uieHovered);
+		$('.cui .uie').off('click').click(uieClicked);
+		$('.cui .uie').off('hover').hover(uieHovered);
 		loop();
 		$(window).resize(this.resize);
 	};

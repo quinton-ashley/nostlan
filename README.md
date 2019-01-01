@@ -21,6 +21,7 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   uses individual emulators: no cores and no controller input transfer lag
 -   controllers connect to Bottlenose automatically, no setup required
 -   browse demo mode if don't have any games on your computer
+-   advanced customization made easy, edit launch commands and swap images
 -   the only high quality front end to support Linux, macOS, and Windows!
 
 ## Supported Emulators
@@ -141,7 +142,11 @@ The other included gamepad mapping profile types are "Consistent", for non-adapt
 
 Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without any bad stuttering.
 
-## Optional Template File Structure
+## Setting up Bottlenose
+
+If you do not want to use the optional template file structure, simply select "continue" on the setup page.  Bottlenose will prompt you for the location of your game directories.  It may also prompt for the emulator app before you launch a game with Bottlenose for the first time.  Setup as you go and Bottlenose will save these locations in your preferences file.
+
+## OPTIONAL Template File Structure
 
 ```javascript
 emu (root folder can have any name)
@@ -169,94 +174,9 @@ Bottlenose was designed to optionally use the same directory structure as WiiUSB
 
 On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
 
-## Error Reporting
-
-Please [send me](mailto:qashto@gmail.com) send me a description of any errors with the relevant error log or report an issue with the code on this project's Github.
-
 ### Missing Cover Art
 
 If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{GAMEID}/img`.  For more info see the "Contributing to Bottlnose" and "Images" sections of this README.  Suitable cover art databases to scrape haven't been found for Xbox 360 and PS2 games yet so only a few game covers for those systems can be scraped right now.  Know of a good site with an API or consistent urls?  Let me know please!
-
-### Mismatched or Unidentified Games/Hacks
-
-If Bottlenose has trouble matching your game file names or you are missing games in your library view, report it to me, excluding hacks and PS2/Xbox 360 games for now.
-
-## Emulators Supported on Linux
-
-The Linux version of Bottlenose now supports running emulators using these commands:  
-Cemu    `wine path/to/emu/Cemu/BIN/Cemu.exe`  
-Citra   `flatpak run org.citra.citra-canary`  
-DeSmuME not tested yet  
-Dolphin `dolphin-emu`  
-PCSX2   `PCSX2`  
-RPCS3   `path/to/emu/RPCS3/BIN/rpcs3.AppImage`  
-Yuzu    `path/to/emu/Yuzu/BIN/yuzu`  
-
-## Development Info
-
-Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
-
-## Contributing to Bottlenose (code)
-
-PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package at some point.
-
-## Contributing to Bottlenose
-
-If you would like to update an existing game database, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
-
-```javascript
-{
- "id": "G8ME01",
- "title": "Paper Mario: The Thousand-Year Door",
- "texp": [{
-	 "name": "HD",
-	 "authors": ["The Dolphin Community"],
-	 "rate": 10,
-	 "version": "1.7.0",
-	 "png": "https://drive.google.com/file/d/1QtgZFz2darznGNtViJVOep8UZ3xuaUkN/view?usp=sharing",
-	 "dds": "https://drive.google.com/file/d/1x6XJnQTW9SvbA6EmNHIKz9bGDXXweHAD/view?usp=sharing",
-	 "url": "https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018"
- }]
-}
-```
-
-### Game Properties
-
--   `id` is the official id of the game, if the game you're adding is a homebrew or mod then you must make a unique id for it with a valid region code
--   `name` the official name of the game, subtitles should be delineated using a colon.
--   `texp` the texture pack array, order is irrelevant
--   `img` img array which contains an object with image names/image url key/data pairs that override the default scape location.
-
-### Texture Packs
-
--   `name` should be short, simple and should not include "Texture" or "Pack".
--   `png` and `dds` links must be direct download links or google drive links.  No Mega links, they will never be supported by Bottlenose.
--   `url` is the link to the relevant forum post or readme.
--   `version` must use semantic versioning.
--   `rate` is the pack's rating 1-10.
-
-### Images
-
-The following names can be used to specify images:
-
--   `"box"` the front cover including box ()
--   `"coverFull"` the entire cover sleeve, no box
--   `"cover"` the front facing portion of the cover sleeve, no box
--   `"disc"` the front of the game's (first) disc
--   `"cart"` the front of the game's (first) cartridge
-
-Box art is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, add them in an `img` object like this:
-
-```javascript
-{
-  "id": "ALERA",
-  "title": "Mario Tennis Aces",
-  "texp": [],
-  "img": {
-    "box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
-  }
-}
-```
 
 ## User Preferences
 
@@ -275,6 +195,85 @@ Box art is prioritized in this order: box (highest quality), coverFull, cover, b
 `gamepad.profile` the controller profile you want to use
 
 `[sys].cmd.[os]` the launch command for that game system and os
+
+## Advanced Features: Custom Launch Commands
+
+Edit your preferences file to change the default launch command for each OS.  This is an example of Cemu's command object:
+
+```JSON
+"cmd": {
+	"linux": ["wine", "${app}", "-g", "${game}", "-f"],
+	"win": ["${app}", "-g", "${game}", "-f"]
+}
+```
+
+## Error Reporting
+
+Please [send me](mailto:qashto@gmail.com) send me a description of any errors with the relevant error log or report an issue with the code on this project's Github.
+
+### Mismatched or Unidentified Games/Hacks
+
+If Bottlenose has trouble matching your game file names or you are missing games in your library view, report it to me.  (excluding hacks and PS2/Xbox 360 games for now)
+
+## Contributing to Bottlenose
+
+You can contribute to Bottlenose to add to and update existing game databases, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
+
+```javascript
+{
+ "id": "G8ME01",
+ "title": "Paper Mario: The Thousand-Year Door",
+ "texp": [{
+	 "name": "HD",
+	 "authors": ["The Dolphin Community"],
+	 "rate": 10,
+	 "version": "1.7.0",
+	 "png": ["https://drive.google.com/file/d/1QtgZFz2darznGNtViJVOep8UZ3xuaUkN/view?usp=sharing"],
+	 "dds": ["https://drive.google.com/file/d/1x6XJnQTW9SvbA6EmNHIKz9bGDXXweHAD/view?usp=sharing"],
+	 "url": ["https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018"]
+ }]
+}
+```
+
+### Game Properties
+
+-   `id` is the official id of the game
+-   `name` the official name of the game, subtitles are delineated using a colon
+-   `texp` the texture pack array, order is irrelevant
+-   `img` an object with "imageKind": "image/url" pairs that override the default scrape location
+
+### Texture Packs
+
+-   `authors` usernames or real names of the author(s)
+-   `name` should be short and simple, such as "UHD" or "Blue Edition"
+-   `png` and `dds` link(s) to direct download the pack
+-   `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
+-   `url` link(s) to the relevant forum post or readme
+-   `version` the semantic version of the pack
+-   `rate` the pack's rating 1-10
+-   `patron` donation link(s) to the author(s) of pack
+
+### Images
+
+The following names can be used to specify images:
+
+-   `box` the front cover including box
+-   `coverFull` the entire cover sleeve, no box
+-   `cover` the front facing portion of the cover sleeve, no box
+-   `disc` the front of the game's (first) disc
+-   `cart` the front of the game's (first) cartridge
+
+Box art scraping is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, you can add them in the game's `img` object like this:
+
+```javascript
+{
+  "id": "ALERA",
+  "title": "Mario Tennis Aces",
+  "img": {
+    "box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
+  }
+}
+```
 
 ## Planned Features! (continued)
 
@@ -316,7 +315,15 @@ Yes the app has quickly outgrown it's original purpose of being a Dolphin compan
 
 ### "Your logo is trash, I hate it!"
 
-I'm not a professional artist, I'm a programmer.  Vaporwave art subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the full logo and app icon both embody the vaporwave ideology and aesthetic.  I had fun making the logo and I personally like the outcome.
+I'm not a professional artist, I'm a programmer.  [Vaporwave art](https://en.wikipedia.org/wiki/Vaporwave) subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the full logo and app icon both embody the vaporwave ideology and aesthetic.  I had fun making the logo and I personally like the outcome.
+
+## Development Info
+
+Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
+
+## Contributing to Bottlenose (code)
+
+PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package at some point.
 
 ## Credits!
 
@@ -324,21 +331,17 @@ Obviously, Bottlenose wouldn't exist without the developers of these emulators. 
 
 ### Logo
 
-The logo is a vaporwave style variation on MayImilae's Dolphin logo
-<https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg>
+The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variation on [MayImilae's Dolphin logo](https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg)  
 
 ### Databases
 
-gametdb database text files  
-<https://www.gametdb.com/>
+[gametdb](https://www.gametdb.com/) database text files  
 
 ### Covers
 
-The highest quality box scans are from Andy Decarli!  
-<http://andydecarli.com/Video%20Games/Collection>
+The highest quality box scans are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection)!  
 
-Full covers, boxes, discs/carts are scraped from gametdb  
-<https://www.gametdb.com/>
+Full covers, boxes, discs/carts are scraped from [gametdb](https://www.gametdb.com/)  
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
 
@@ -354,44 +357,31 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 
 As of yet, all themes were made by me (quinton-ashley/qashto)
 
-CSS PlayStation button icons adapted from a CodePen by Hugo Giraudel
-<https://codepen.io/HugoGiraudel/pen/iJphI>
+[CSS PlayStation button icons adapted from a CodePen by Hugo Giraudel](https://codepen.io/HugoGiraudel/pen/iJphI)  
 
 ### Loading Sequences
 
-Gamecube Intro by MarcMalignan : MIT licensed  
-<https://codepen.io/MarcMalignan/pen/doCth>
+[Gamecube Intro by MarcMalignan : MIT licensed](https://codepen.io/MarcMalignan/pen/doCth)  
 
-DS by Murat Khatypov  
-<https://codepen.io/AntonEssenetial/pen/LtBaK>
+[DS by Murat Khatypov](https://codepen.io/AntonEssenetial/pen/LtBaK)  
 
-Switch Pure CSS by joshbader : MIT licensed  
-<https://codepen.io/joshbader/pen/mjZzGM>
+[Switch Pure CSS by joshbader : MIT licensed](https://codepen.io/joshbader/pen/mjZzGM)  
 
-Wii U Gamepad SVG by Tokyoship from Wikimedia Commons  
-Creative Commons Attribution 3.0 Unported  
-<https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg>
+[Wii U Gamepad SVG by Tokyoship from Wikimedia Commons : Creative Commons Attribution 3.0 Unported](https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg)  
 
 3DS SVG image trace by me (quinton-ashley/qashto)  
 
-Xbox 360 Loading Intro by Girish Sharma
-<https://codepen.io/grssam/pen/dLbcv>
+[Xbox 360 Loading Intro by Girish Sharma](https://codepen.io/grssam/pen/dLbcv)  
 
-PS3 Icon Loader by Jan Machycek  
-<https://codepen.io/machyj/pen/ENvewe>
+[PS3 Icon Loader by Jan Machycek](https://codepen.io/machyj/pen/ENvewe)
 
 ### Fonts
 
-nintender  
-<http://www.fontspace.com/lyric-type/nintender>  
-Gamecuben  
-<https://www.dafont.com/gamecube.font>  
-Continum  
-<https://fontmeme.com/fonts/continuum-font/>  
-theboldfont  
-<https://www.dafont.com/the-bold-font.font>  
-DS_BIOS  
-<https://www.dafont.com/nintendo-ds-bios.font>  
+[nintender](http://www.fontspace.com/lyric-type/nintender)  
+[Gamecuben](https://www.dafont.com/gamecube.font)  
+[Continum](https://fontmeme.com/fonts/continuum-font/)  
+[theboldfont](https://www.dafont.com/the-bold-font.font)  
+[DS_BIOS](https://www.dafont.com/nintendo-ds-bios.font)  
 
 ## Legal Disclaimer
 

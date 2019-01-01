@@ -772,6 +772,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		} else if (ui == 'coverSelect') {
 			if (act == 'a') {
+				return;
+				// TODO finish open box menu
 				let id = cui.getCur('libMain').attr('id');
 				let game = games.find(x => x.id === id);
 				let template = getTemplate();

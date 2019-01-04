@@ -1,7 +1,8 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)
+[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)  
+You must have the Chromium or Chrome web browser installed to run Bottlenose  
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -188,13 +189,15 @@ If Bottlenose can't find images for a game in the Bottlenose database you can pu
 
 `ui.getBackCoverHQ` get's the back of the box in high quality for games without available full covers
 
-`ui.recheckImgs` when true, on reset, images for all games in the given library, not just new games will be scraped for
+`ui.recheckImgs` when true, on reset, images will be scraped for all games in the given library, not just new games
 
 `session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
 
 `gamepad.profile` the controller profile you want to use
 
 `[sys].cmd.[os]` the launch command for that game system and os
+
+`chromium` path to Chrome or Chromium is used by puppeteer to scrape some sites. Bottlenose should be able to automatically find your Chrome or Chromium installation if you have it in a default location and will set this path itself
 
 ## Advanced Features: Custom Launch Commands
 
@@ -257,9 +260,12 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 
 The following names can be used to specify images:
 
--   `box` the front cover including box
+-   `box` the front cover including the box
+-   `boxBack` the back cover including the box
 -   `coverFull` the entire cover sleeve, no box
 -   `cover` the front facing portion of the cover sleeve, no box
+-   `coverSide` the side facing portion of the cover sleeve, no box
+-   `coverBack` the side facing portion of the cover sleeve, no box
 -   `disc` the front of the game's (first) disc
 -   `cart` the front of the game's (first) cartridge
 
@@ -337,11 +343,13 @@ The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variati
 
 [gametdb](https://www.gametdb.com/) database text files  
 
-### Covers
+### Game Box and Disc Art
 
 The highest quality box scans are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection)!  
 
 Full covers, boxes, discs/carts are scraped from [gametdb](https://www.gametdb.com/)  
+
+Some covers scraped from [gamefaqs](https://gamefaqs.gamespot.com) with puppeteer
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
 

@@ -197,9 +197,6 @@ const CUI = function() {
 			let $menu = $('#' + state);
 			$menu.css('margin-top', $(window).height() * .5 - $menu.outerHeight() * .5);
 		}
-		if ((/main/gi).test(state)) {
-			scrollToCursor(10, 0);
-		}
 		resize(adjust);
 	}
 
@@ -255,8 +252,8 @@ const CUI = function() {
 		if (scrollDist < $(window).height() * minDistance) {
 			return;
 		}
-		let sTime = time || ($(window).height() * 2 - $cur.height()) / 5;
-		if (!time && scrollDist > $cur.height() * 1.1) {
+		let sTime = ((time > -1) ? time || 1 : ($(window).height() * 2 - $cur.height()) / 5);
+		if (time == undefined && scrollDist > $cur.height() * 1.1) {
 			sTime += scrollDist;
 		}
 		scrollTo(position, sTime);
@@ -324,7 +321,7 @@ const CUI = function() {
 			} else {
 				makeCursor(cuis[state].$cur, state);
 			}
-			scrollToCursor(1, 0);
+			scrollToCursor(0, 0);
 		} else if ((/select/gi).test(state)) {
 			makeCursor(cuis[ui].$cur, state);
 		} else {

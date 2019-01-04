@@ -62,6 +62,7 @@
 		"app": {},
 		"cmd": {
 			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
+			"mac": ["${app}", "${game}", "--nogui", "--fullscreen"],
 			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
 		},
 		"emu": "PCSX2"

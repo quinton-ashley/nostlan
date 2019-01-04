@@ -432,7 +432,7 @@ img {
 	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
-/*=====PS2 360===*/
+/*=====PS2===*/
 .ps2 .front-cover-crop {
 	width: 200.4%;
 	top: 2.3%;
@@ -458,7 +458,16 @@ img {
 
 .ps2 .front-cover-crop .shade {
 	position: absolute;
-	width: 1%;
+	width: 4%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.ps2 .front-cover .shade {
+	position: absolute;
+	width: 4%;
 	height: 100%;
 	top: 0;
 	left: 0;

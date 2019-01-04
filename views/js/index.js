@@ -21,8 +21,26 @@ module.exports = async function(opt) {
 	const os = require('os');
 	const opn = require('opn');
 	const path = require('path');
+	const probe = require('probe-image-size');
 	const req = require('requisition');
 	var Mousetrap = require('mousetrap');
+	const puppeteer = require('puppeteer-core');
+	let browser;
+	let page;
+
+	// const sevenBin = require('7zip-bin');
+	// const {
+	// 	extractFull
+	// } = require('node-7z');
+	// const extract = (input, output, opt) => {
+	// 	return new Promise((resolve, reject) => {
+	// 		opt.$bin = sevenBin.path7za;
+	// 		extractFull(input, output, opt)
+	// 			.on('end', () => resolve())
+	// 			.on('error', (err) => reject(err));
+	// 	});
+	// };
+
 	let osType = os.type();
 	const linux = (osType == 'Linux');
 	const mac = (osType == 'Darwin');
@@ -92,7 +110,7 @@ module.exports = async function(opt) {
 	if (win) {
 		systems.push('xbox360');
 	} else if (mac) {
-		systems = ['wii', 'ds', '3ds', 'switch'];
+		systems = ['wii', 'ds', '3ds', 'switch', 'ps2'];
 	}
 	let sys;
 	let sysStyle = '';
@@ -212,6 +230,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reset() {
+		let _games = games;
 		games = [];
 		let gameDB = [];
 		let DBPath = path.join(__rootDir, `/db/${sys}DB.json`);
@@ -348,10 +367,35 @@ module.exports = async function(opt) {
 				}
 			}
 		}
-		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		let outLogPath = `${usrDir}/_usr/${sys}Log.log`;
 		await fs.outputFile(outLogPath, outLog);
 		outLog = '';
+		for (let i in games) {
+			let id = games[i].id;
+			let _game = _games.find(x => x.id === id);
+			if (_game && _game.gf) {
+				games[i].gf = _game.gf;
+			} else {
+				$('#loadDialog0').text('indexing ' + games[i].title);
+				let gf = await getGamefaqsURL(sys, games[i]);
+				if (!gf) {
+					continue;
+				}
+				gf = gf.substr(30).split(/[/-]/);
+				if (sys == 'wii') {
+					if (gf[0] == 'gamecube') {
+						gf[0] = 'gcn';
+					}
+					games[i].sys = gf[0];
+				}
+				games[i].gf = gf[1];
+			}
+		}
+		await outputGamesJSON();
+	}
+
+	async function outputGamesJSON() {
+		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
 		}));
@@ -691,6 +735,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		await viewerLoad();
 		await removeIntro();
 		cui.uiStateChange('libMain');
+		cui.scrollToCursor(0);
 	}
 
 	async function createTemplate(emuDir) {
@@ -730,6 +775,24 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else {
 			$reel.css('left', '');
 			$cur.css('transform', '');
+		}
+	}
+
+	async function loadBrowser() {
+		if (!browser) {
+			if (!prefs.chromium || !(await fs.exists(prefs.chromium))) {
+				prefs.chromium = require('chrome-finder')();
+			}
+			if (!prefs.chromium) {
+				prefs.chromium = elec.selectFile('select chromium or chrome');
+			}
+			try {
+				browser = await puppeteer.launch({
+					executablePath: prefs.chromium
+				});
+			} catch (ror) {
+				log(ror);
+			}
 		}
 	}
 
@@ -800,6 +863,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				log('flip cover not enabled yet');
 			}
 		} else if (ui == 'infoSelect') {
+			if (act == 'texp') {
+				await loadBrowser();
+			}
 			if (act != 'back' && !isBtn) {
 				let state = 'game' + act[0].toUpperCase() + act.substr(1) + 'Select';
 				$('#infoSelect').addClass('zoom-' + state);
@@ -966,18 +1032,115 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		return;
 	}
 
-	async function dlFromAndy(title, file, system) {
-		let url = `http://andydecarli.com/Video Games/Collection/${system}/Scans/Full Size/${system} ${title}`;
-		url = url.replace(/ /g, '%20');
+	function unwrapGFUrl(title, game) {
+		let system = game.sys || sys;
+		if (system == 'wiiu') {
+			system = 'wii-u';
+		} else if (system == 'gcn') {
+			system = 'gamecube';
+		}
+		return `${sys}/${game.gf}-${title.replace(/ /g, '-')}`
+	}
+
+	async function dlFromGamefaqs(title, dir, name, game) {
+		if (!browser) {
+			await loadBrowser();
+		}
+		if (!browser) {
+			return;
+		}
+		let $gf, url, res, ext;
+		if (!game.gf) {
+			return;
+		}
+		urlBase = 'https://gamefaqs.gamespot.com';
+		url = urlBase + '/' + unwrapGFUrl(title, game);
 		log(url);
-		let res = await dl(url + `%20Front%20Cover.jpg`, file);
+		$gf = await goTo(url + '/images');
+		url = $gf.find('#content .region:contains("US")').eq(0).prev().attr('href');
+		if (!url) {
+			return;
+		}
+		url = urlBase + url;
+		log(url);
+		$gf = await goTo(url);
+		$gf = $gf.find('#content .img img');
+		url = $gf.eq(0).attr('src');
+		if (!url) {
+			return;
+		}
+		ext = url.substr(-4);
+		log(ext);
+		if (name != 'coverSide') {
+			res = await dl(url, dir + '/cover' + ext);
+		}
+		if (res || name == 'coverSide') {
+			await dl(url.replace('front', 'side'), dir + '/coverSide' + ext);
+		}
 		if (res && prefs.ui.getBackCoverHQ) {
-			await dl(url + `%20Back%20Cover.jpg`, file);
+			await dl(url.replace('front', 'back'), dir + '/coverBack' + ext);
 		}
 		return res;
 	}
 
-	const probe = require('probe-image-size');
+	async function getGamefaqsURL(system, game) {
+		if (!browser) {
+			await loadBrowser();
+		}
+		if (!browser) {
+			return;
+		}
+		let $gf, url;
+		if (system == 'wiiu') {
+			system = 'wii-u';
+		} else if (system == 'gcn') {
+			system = 'gamecube';
+		}
+		$gf = await goTo(`https://sitemap.gamefaqs.com/game/${system}/${game.title[0].toUpperCase()}/`);
+		url = $gf.find(`a:contains("${game.title}")`).eq(0).attr('href');
+		if (!url && system == 'wii') {
+			if (game.id.length > 4) {
+				url = await getGamefaqsURL('gcn', game);
+			} else {
+				url = await getGamefaqsURL('n64', game);
+				if (!url) {
+					url = await getGamefaqsURL('snes', game);
+				}
+				if (!url) {
+					url = await getGamefaqsURL('nes', game);
+				}
+			}
+		}
+		return url;
+	}
+
+	let systemsMapForAndy = {
+		wiiu: 'Nintendo Wii U',
+		'3ds': 'Nintendo 3DS',
+		ds: 'Nintendo DS',
+		ps3: 'Sony PlayStation 3',
+		ps2: 'Sony PlayStation 2',
+		xbox360: 'Xbox 360',
+		gba: 'Game Boy Advance',
+		wii: 'Nintendo Wii',
+		gcn: 'Nintendo Game Cube',
+		n64: 'Nintendo 64',
+		snes: 'Super Nintendo',
+		nes: 'Nintendo'
+	};
+
+	async function dlFromAndy(title, dir, system) {
+		system = systemsMapForAndy[system];
+		let url = `http://andydecarli.com/Video Games/Collection/${system}/Scans/Full Size/${system} ${title}`;
+		url = url.replace(/ /g, '%20');
+		log(url);
+		let res = await dl(url + `%20Front%20Cover.jpg`, dir + '/box.jpg');
+		if (res && prefs.ui.getBackCoverHQ) {
+			await dl(url + `%20Back%20Cover.jpg`, dir + '/boxBack.jpg');
+		}
+		return res;
+	}
+
 	let gb = {
 		key: '77fc79812677f482659ce5f0f4e53b936eafda23',
 		base: 'https://www.giantbomb.com/api',
@@ -1032,8 +1195,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	}
 
 	async function getImg(game, name, skip) {
+		let res = await imgExists(game, name);
+		if (res) {
+			return res;
+		}
 		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
-		let file, res, url;
+		let file, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
 			url = game.img[name].split(/ \\ /);
@@ -1051,39 +1218,25 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		}
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
-		// get high quality box for gamecube/wii
+
+		let title = game.title.replace(/[\:]/g, '');
+		let systemsMap = {};
+		// get high quality box from Andy Decarli's site
 		if (sys != 'switch' && name == 'box') {
-			file = `${dir}/${name}.jpg`;
-			if (await fs.exists(file)) {
-				return file;
-			}
-			let title = game.title.replace(/[\:]/g, '');
-			if (sys == 'wiiu') {
-				res = await dlFromAndy(title, file, 'Nintendo Wii U');
-			} else if (sys == '3ds') {
-				res = await dlFromAndy(title, file, 'Nintendo 3DS');
-			} else if (sys == 'ds') {
-				res = await dlFromAndy(title, file, 'Nintendo DS');
-			} else if (sys == 'ps3') {
-				res = await dlFromAndy(title, file, 'Sony PlayStation 3');
-			} else if (sys == 'ps2') {
-				res = await dlFromAndy(title, file, 'Sony PlayStation 2');
-			} else if (sys == 'xbox360') {
-				res = await dlFromAndy(title, file, 'Xbox 360');
-			} else if (sys == 'gba') {
-				res = await dlFromAndy(title, file, 'Game Boy Advance');
+			if (sys != 'wii') {
+				res = await dlFromAndy(title, dir, sys);
 			} else if (game.id.length > 4) {
-				res = await dlFromAndy(title, file, 'Nintendo Game Cube');
+				res = await dlFromAndy(title, dir, 'gcn');
 				if (!res) {
-					res = await dlFromAndy(title, file, 'Nintendo Wii');
+					res = await dlFromAndy(title, dir, 'wii');
 				}
 			} else {
-				res = await dlFromAndy(title, file, 'Nintendo 64');
+				res = await dlFromAndy(title, dir, 'n64');
 				if (!res) {
-					res = await dlFromAndy(title, file, 'Super Nintendo');
+					res = await dlFromAndy(title, dir, 'snes');
 				}
 				if (!res) {
-					res = await dlFromAndy(title, file, 'Nintendo');
+					res = await dlFromAndy(title, dir, 'nes');
 				}
 			}
 			if (res) {
@@ -1093,42 +1246,53 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (skip) {
 			return;
 		}
-		// get image from gametdb
-		file = `${dir}/${name}`;
-		let id = game.id;
-		for (let i = 0; i < 3; i++) {
-			if (sys != 'switch' && i == 1) {
-				break;
-			}
-			if (i == 1) {
-				id = id.substr(0, id.length - 1) + 'B';
-			}
-			if (i == 2) {
-				id = id.substr(0, id.length - 1) + 'C';
-			}
-			let locale = 'US';
-			if (sys == 'ps3') {
-				if (id[2] == 'E') {
-					locale = 'EN';
+
+		if (sys != 'ps2' && sys != 'xbox360' && sys != 'gba' && name != 'coverSide') {
+			// get image from gametdb
+			file = `${dir}/${name}`;
+			let id = game.id;
+			for (let i = 0; i < 3; i++) {
+				if (sys != 'switch' && i == 1) {
+					break;
+				}
+				if (i == 1) {
+					id = id.substr(0, id.length - 1) + 'B';
+				}
+				if (i == 2) {
+					id = id.substr(0, id.length - 1) + 'C';
+				}
+				let locale = 'US';
+				if (sys == 'ps3') {
+					if (id[2] == 'E') {
+						locale = 'EN';
+					}
+				}
+				url = `https://art.gametdb.com/${sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
+				log(url);
+				res = await dlNoExt(url, file);
+				if (res) {
+					return res;
+				}
+				url = url.replace(name + 'HQ', name + 'M');
+				res = await dlNoExt(url, file);
+				if (res) {
+					return res;
+				}
+				url = url.replace(name + 'M', name);
+				res = await dlNoExt(url, file);
+				if (res) {
+					return res;
 				}
 			}
-			url = `https://art.gametdb.com/${sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
-			log(url);
-			res = await dlNoExt(url, file);
-			if (res) {
-				return res;
-			}
-			url = url.replace(name + 'HQ', name + 'M');
-			res = await dlNoExt(url, file);
-			if (res) {
-				return res;
-			}
-			url = url.replace(name + 'M', name);
-			res = await dlNoExt(url, file);
+		}
+
+		if (name == 'cover' || name == 'coverSide') {
+			res = await dlFromGamefaqs(title, dir, name, game);
 			if (res) {
 				return res;
 			}
 		}
+
 		return;
 	}
 
@@ -1147,14 +1311,19 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		let imgDir;
 		for (let i = 0; i < games.length + 1; i++) {
 			let res;
-			let game = games[i];
+			let game;
 			if (i == games.length) {
 				game = getTemplate();
+			} else {
+				game = games[i];
 			}
 			imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
-				await getImg(game, 'box', true);
+				await getImg(game, 'box', 'highQuality');
 				res = await getImg(game, 'coverFull');
+				if (!res) {
+					await getImg(game, 'coverSide');
+				}
 				if (!res && !(await imgExists(game, 'box'))) {
 					res = await getImg(game, 'cover');
 					if (!res) {
@@ -1167,7 +1336,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					await getImg(game, 'cart');
 				}
 			}
-			await fs.ensureDir(imgDir);
 		}
 		defaultCoverImg = await getImg(theme.default, 'box');
 		if (!defaultCoverImg) {
@@ -1401,6 +1569,24 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (!shouldRebindMouse) {
 			cui.rebind('mouse');
 		}
+	}
+
+	async function goTo(url) {
+		// if a page is already open, then close it
+		if (page) {
+			await page.close();
+		}
+		page = await browser.newPage();
+		await page.setRequestInterception(true);
+		page.on('request', request => {
+			if (request.resourceType === 'image' || request.resourceType === 'media' || request.resourceType === 'font') {
+				request.abort();
+			} else {
+				request.continue();
+			}
+		});
+		await page.goto(url);
+		return $('<div/>').append(await page.content());
 	}
 
 	remote.getCurrentWindow().setFullScreen(true);

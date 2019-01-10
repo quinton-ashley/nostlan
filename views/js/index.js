@@ -835,7 +835,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		} else if (ui == 'coverSelect') {
 			if (act == 'a') {
-				return;
+				// return;
 				// TODO finish open box menu
 				let id = cui.getCur('libMain').attr('id');
 				let game = games.find(x => x.id === id);
@@ -1070,14 +1070,16 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return;
 		}
 		ext = url.substr(-4);
-		log(ext);
+		log(url);
 		if (name != 'coverSide') {
 			res = await dl(url, dir + '/cover' + ext);
 		}
 		if (res || name == 'coverSide') {
+			log(url);
 			await dl(url.replace('front', 'side'), dir + '/coverSide' + ext);
 		}
 		if (res && prefs.ui.getBackCoverHQ) {
+			log(url);
 			await dl(url.replace('front', 'back'), dir + '/coverBack' + ext);
 		}
 		return res;
@@ -1563,7 +1565,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		}
 		await addTemplates(template, rows, templateAmt);
-		cui.addView('libMain');
+		cui.addView('libMain', {
+			"hoverCurDisable": true
+		});
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
 		if (!shouldRebindMouse) {

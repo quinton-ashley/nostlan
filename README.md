@@ -1,8 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases)  
-You must have the Chromium or Chrome web browser installed to run Bottlenose  
+[Download](https://github.com/quinton-ashley/bottlenose/releases) [Bottlenose and please choose an amount to pay for it](https://www.paypal.me/qashto/25)  
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -10,6 +9,10 @@ You must have the Chromium or Chrome web browser installed to run Bottlenose
 A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulators have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
 
 Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
+
+## Requirements
+
+You must have the Chromium or Chrome web browser installed on your computer to use Bottlenose.
 
 ## Features
 
@@ -61,29 +64,28 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ## Please consider donating!
 
-Even though Bottlenose is open source software that's free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use this app please donate an amount of your choosing.  I'm a freelance developer so I need your support to develop new features.  Thank you!
+Even though Bottlenose is open source software that's free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use this app please donate an amount of your choosing.  I need your support to develop new features.  Thank you!
 
 Monthly Donations:  
 Patreon: <https://www.patreon.com/qashto>  
 
 Single Donation:  
-Paypal: <https://www.paypal.me/qashto/25>  
-Ethereum: 0xb4355179da353f1BA4AA0BB5a7E3Ba4FdC7128ea  
+Paypal: <https://www.paypal.me/qashto/25>
 
 ## Planned Features!
 
 I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
 
 -   create a database of Dolphin texture packs
--   batch install/update texture packs for Dolphin (is now being added into Dolphin officially)
--   batch install/update graphics packs for Cemu
--   batch install emulators
+-   batch install and auto-update texture packs for Dolphin
+-   install emulators
 -   automatic emulator updates for emus that lack this feature
 -   easy way to mix and swap texture packs for Dolphin
 -   list style view mode for browsing through box sides, useful for very large game libraries
--   instant search
--   custom themes
+-   instant autocomplete search
+-   user ability to make custom themes
 -   mGBA support
+-   support for modded game isos/roms (currently skipped during indexing)
 
 ## How is Bottlenose different from other front-ends?
 
@@ -175,9 +177,9 @@ Bottlenose was designed to optionally use the same directory structure as WiiUSB
 
 On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
 
-### Missing Cover Art
+On macOS, Bottlenose looks for your emu apps in `Applications/`.
 
-If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{GAMEID}/img`.  For more info see the "Contributing to Bottlnose" and "Images" sections of this README.  Suitable cover art databases to scrape haven't been found for Xbox 360 and PS2 games yet so only a few game covers for those systems can be scraped right now.  Know of a good site with an API or consistent urls?  Let me know please!
+On Linux, Bottlenose knows how to use apps via the command line and will prompt you for the location of other emu apps.
 
 ## User Preferences
 
@@ -214,9 +216,17 @@ Edit your preferences file to change the default launch command for each OS.  Th
 
 Please [send me](mailto:qashto@gmail.com) send me a description of any errors with the relevant error log or report an issue with the code on this project's Github.
 
-### Mismatched or Unidentified Games/Hacks
+### Mismatched or Unidentified Games
 
-If Bottlenose has trouble matching your game file names or you are missing games in your library view, report it to me.  (excluding hacks and PS2/Xbox 360 games for now)
+If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.
+
+### Mismatched or Unidentified Game Hacks
+
+Bottlenose doesn't support game hacks (fully) yet.  In the future, I think I will use the game's original cover and put a sticker on it with the name of the hack.
+
+### Missing Cover Art
+
+As of version 1.0.44, Bottlenose should be able to get all your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{GAMEID}/img`.  For more info see the "Images" sections of this README.
 
 ## Contributing to Bottlenose
 

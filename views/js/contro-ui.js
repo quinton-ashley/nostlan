@@ -282,7 +282,8 @@ const CUI = function() {
 	}
 	this.makeCursor = makeCursor;
 
-	function addView(state) {
+	function addView(state, opt) {
+		cuis[state] = opt;
 		$(`#${state} .uie`).off('click').click(uieClicked);
 		$(`#${state} .uie`).off('hover').hover(uieHovered);
 	}
@@ -369,7 +370,9 @@ const CUI = function() {
 	this.uieClicked = uieClicked;
 
 	function uieHovered() {
-		makeCursor($(this));
+		if (!cuis[ui].hoverCurDisable) {
+			makeCursor($(this));
+		}
 	}
 	this.uieHovered = uieHovered;
 

@@ -9,6 +9,10 @@
   "build": {
     "appId": "com.qashto.bottlenose",
     "copyright": "Copyright © 2018 Quinton Ashley",
+		"electronVersion": "4.0.1",
+		"electronDownload": {
+			"version": "4.0.1"
+		},
     "mac": {
       "category": "public.app-category.game",
       "target": [
@@ -128,7 +132,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --runtime=electron --target=4.0.0 --disturl=https://atom.io/download/atom-shell --abi=64",
+    "rebuild": "npm rebuild --runtime=electron --target=4.0.1 --disturl=https://github.com/electron/electron/releases/tag/v4.0.1 --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m -l -w",
     "gh-publish": "electron-builder -p always",
@@ -137,5 +141,5 @@
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.45"
+  "version": "1.0.46"
 }

@@ -9,10 +9,10 @@
   "build": {
     "appId": "com.qashto.bottlenose",
     "copyright": "Copyright © 2018 Quinton Ashley",
-		"electronVersion": "4.0.1",
-		"electronDownload": {
-			"version": "4.0.1"
-		},
+    "electronVersion": "4.0.1",
+    "electronDownload": {
+      "version": "4.0.1"
+    },
     "mac": {
       "category": "public.app-category.game",
       "target": [
@@ -135,11 +135,11 @@
     "rebuild": "npm rebuild --runtime=electron --target=4.0.1 --disturl=https://atom.io/download/atom-shell --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m -l -w",
-    "gh-publish": "electron-builder -p always",
+    "gh-publish": "electron-builder -m -l -w -p always",
     "postinstall": "electron-builder install-app-deps",
     "v": "npm version patch --force",
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.47"
+  "version": "1.0.48"
 }

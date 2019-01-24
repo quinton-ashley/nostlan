@@ -10,10 +10,6 @@ A front-end or user interface (UI) is the presentation and interaction layer of 
 
 Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
 
-## Requirements
-
-You must have the Chromium or Chrome web browser installed on your computer to use Bottlenose.
-
 ## Features
 
 -   unified UI for mouse/gamepad interaction
@@ -198,8 +194,6 @@ On Linux, Bottlenose knows how to use apps via the command line and will prompt 
 `gamepad.profile` the controller profile you want to use
 
 `[sys].cmd.[os]` the launch command for that game system and os
-
-`chromium` path to Chrome or Chromium is used by puppeteer to scrape some sites. Bottlenose should be able to automatically find your Chrome or Chromium installation if you have it in a default location and will set this path itself
 
 ## Advanced Features: Custom Launch Commands
 

@@ -24,7 +24,6 @@ module.exports = async function(opt) {
 	const probe = require('probe-image-size');
 	const req = require('requisition');
 	var Mousetrap = require('mousetrap');
-	const puppeteer = require('puppeteer-core');
 	let browser;
 	let page;
 
@@ -370,27 +369,6 @@ module.exports = async function(opt) {
 		let outLogPath = `${usrDir}/_usr/${sys}Log.log`;
 		await fs.outputFile(outLogPath, outLog);
 		outLog = '';
-		for (let i in games) {
-			let id = games[i].id;
-			let _game = _games.find(x => x.id === id);
-			if (_game && _game.gf) {
-				games[i].gf = _game.gf;
-			} else {
-				$('#loadDialog0').text('indexing ' + games[i].title);
-				let gf = await getGamefaqsURL(sys, games[i]);
-				if (!gf) {
-					continue;
-				}
-				gf = gf.substr(30).split(/[/-]/);
-				if (sys == 'wii') {
-					if (gf[0] == 'gamecube') {
-						gf[0] = 'gcn';
-					}
-					games[i].sys = gf[0];
-				}
-				games[i].gf = gf[1];
-			}
-		}
 		await outputGamesJSON();
 	}
 
@@ -778,24 +756,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	}
 
-	async function loadBrowser() {
-		if (!browser) {
-			if (!prefs.chromium || !(await fs.exists(prefs.chromium))) {
-				prefs.chromium = require('chrome-finder')();
-			}
-			if (!prefs.chromium) {
-				prefs.chromium = elec.selectFile('select chromium or chrome');
-			}
-			try {
-				browser = await puppeteer.launch({
-					executablePath: prefs.chromium
-				});
-			} catch (ror) {
-				log(ror);
-			}
-		}
-	}
-
 	async function doAction(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
@@ -864,7 +824,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		} else if (ui == 'infoSelect') {
 			if (act == 'texp') {
-				await loadBrowser();
+				// implement texp install
 			}
 			if (act != 'back' && !isBtn) {
 				let state = 'game' + act[0].toUpperCase() + act.substr(1) + 'Select';
@@ -1030,90 +990,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		}
 		return;
-	}
-
-	function unwrapGFUrl(title, game) {
-		let system = game.sys || sys;
-		if (system == 'wiiu') {
-			system = 'wii-u';
-		} else if (system == 'gcn') {
-			system = 'gamecube';
-		}
-		return `${sys}/${game.gf}-${title.replace(/ /g, '-')}`
-	}
-
-	async function dlFromGamefaqs(title, dir, name, game) {
-		if (!browser) {
-			await loadBrowser();
-		}
-		if (!browser) {
-			return;
-		}
-		let $gf, url, res, ext;
-		if (!game.gf) {
-			return;
-		}
-		urlBase = 'https://gamefaqs.gamespot.com';
-		url = urlBase + '/' + unwrapGFUrl(title, game);
-		log(url);
-		$gf = await goTo(url + '/images');
-		url = $gf.find('#content .region:contains("US")').eq(0).prev().attr('href');
-		if (!url) {
-			return;
-		}
-		url = urlBase + url;
-		log(url);
-		$gf = await goTo(url);
-		$gf = $gf.find('#content .img img');
-		url = $gf.eq(0).attr('src');
-		if (!url) {
-			return;
-		}
-		ext = url.substr(-4);
-		log(url);
-		if (name != 'coverSide') {
-			res = await dl(url, dir + '/cover' + ext);
-		}
-		if (res || name == 'coverSide') {
-			log(url);
-			await dl(url.replace('front', 'side'), dir + '/coverSide' + ext);
-		}
-		if (res && prefs.ui.getBackCoverHQ) {
-			log(url);
-			await dl(url.replace('front', 'back'), dir + '/coverBack' + ext);
-		}
-		return res;
-	}
-
-	async function getGamefaqsURL(system, game) {
-		if (!browser) {
-			await loadBrowser();
-		}
-		if (!browser) {
-			return;
-		}
-		let $gf, url;
-		if (system == 'wiiu') {
-			system = 'wii-u';
-		} else if (system == 'gcn') {
-			system = 'gamecube';
-		}
-		$gf = await goTo(`https://sitemap.gamefaqs.com/game/${system}/${game.title[0].toUpperCase()}/`);
-		url = $gf.find(`a:contains("${game.title}")`).eq(0).attr('href');
-		if (!url && system == 'wii') {
-			if (game.id.length > 4) {
-				url = await getGamefaqsURL('gcn', game);
-			} else {
-				url = await getGamefaqsURL('n64', game);
-				if (!url) {
-					url = await getGamefaqsURL('snes', game);
-				}
-				if (!url) {
-					url = await getGamefaqsURL('nes', game);
-				}
-			}
-		}
-		return url;
 	}
 
 	let systemsMapForAndy = {
@@ -1285,13 +1161,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				if (res) {
 					return res;
 				}
-			}
-		}
-
-		if (name == 'cover' || name == 'coverSide') {
-			res = await dlFromGamefaqs(title, dir, name, game);
-			if (res) {
-				return res;
 			}
 		}
 

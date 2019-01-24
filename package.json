@@ -17,12 +17,6 @@
       "category": "public.app-category.game",
       "target": [
         {
-          "target": "dmg",
-          "arch": [
-            "x64"
-          ]
-        },
-        {
           "target": "zip",
           "arch": [
             "x64"
@@ -135,11 +129,15 @@
     "rebuild": "npm rebuild --runtime=electron --target=4.0.1 --disturl=https://atom.io/download/atom-shell --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m -l -w",
-    "gh-publish": "electron-builder -p always",
+    "gh-publish": "electron-builder -m -l -w -p always",
     "postinstall": "electron-builder install-app-deps",
     "v": "npm version patch --force",
     "version": "git add -A",
     "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
+<<<<<<< HEAD
   "version": "1.0.48"
+=======
+  "version": "1.0.49"
+>>>>>>> 7ee1c0bcdbcbaddd3d8ac865cc0c73e459a900d0
 }

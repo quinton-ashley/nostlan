@@ -616,9 +616,14 @@ const CUI = function() {
 		log(msg);
 		let $errMenu = $('#errMenu');
 		if (!$errMenu.length) {
-			$('body').append(pug(`#errMenu.menu: .row-y: .uie(name='error-okay') Okay`));
+			$('body').append(`
+<div class="menu" id="errMenu">
+    <div class="row-y">
+        <div class="uie" name="error-okay">Okay</div>
+    </div>
+</div>`);
 			$errMenu = $('#errMenu');
-			$errMenu.prepend(md('# Error  \n' + 'unknown error'));
+			$errMenu.prepend(`<h1>Error</h1><p>unknown error</p>`);
 			$('#errMenu .uie').click(uieClicked);
 			$('#errMenu .uie').hover(uieHovered);
 		}
@@ -626,9 +631,5 @@ const CUI = function() {
 		this.uiStateChange('errMenu');
 	}
 	this.err = err;
-
-	require('process').on('uncaughtException', function(msg) {
-		err(msg)
-	});
 };
 module.exports = new CUI();

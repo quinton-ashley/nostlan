@@ -669,7 +669,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (arg == '${app}') {
 				args.push(emuAppPath);
 				if (cui.ui == 'libMain') {
-					return;
+					break;
 				}
 			} else if (arg == '${game}') {
 				args.push(gameFile);

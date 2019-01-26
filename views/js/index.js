@@ -4,7 +4,7 @@
  * copyright 2018
  */
 module.exports = async function(opt) {
-	const log = console.log;
+	global.log = console.log;
 	global.__rootDir = opt.__rootDir;
 	opt.v = false;
 
@@ -21,11 +21,7 @@ module.exports = async function(opt) {
 	const os = require('os');
 	const opn = require('opn');
 	const path = require('path');
-	const probe = require('probe-image-size');
-	const req = require('requisition');
 	var Mousetrap = require('mousetrap');
-	let browser;
-	let page;
 
 	// const sevenBin = require('7zip-bin');
 	// const {
@@ -95,12 +91,15 @@ module.exports = async function(opt) {
 	log(usrDir);
 	global.cui = require('./contro-ui.js');
 	const elec = require('./electronWrap.js');
+	const dl = require('./dl/dl.js');
+	const dlFromAndy = require('./dl/andy.js');
+	const dlFromGamesTDB = require('./dl/gamestdb.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 	let prefsPath = usrDir + '/_usr/prefs.json';
-	let prefs = prefsDefault;
+	global.prefs = prefsDefault;
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac
 	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
@@ -962,116 +961,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		cui.buttonPressed('b');
 	});
 
-	async function dl(url, file) {
-		if (!(await fs.exists(file))) {
-			let res = await req(url);
-			if (res.status == 404) {
-				return;
-			}
-			$('#loadDialog1').text(url.replace(/\%20/g, ' '));
-			log('loading image: ' + url);
-			log('saving to: ' + file);
-			await res.saveTo(file);
-			$('#loadDialog1').text(' ');
-		}
-		return file;
-	}
-
-	async function dlNoExt(url, file) {
-		let res;
-		for (let i = 0; i < 2; i++) {
-			if (i == 0) {
-				res = await dl(url + '.jpg', file + '.jpg');
-			} else if (i == 1) {
-				res = await dl(url + '.png', file + '.png');
-			}
-			if (res) {
-				return res;
-			}
-		}
-		return;
-	}
-
-	let systemsMapForAndy = {
-		wiiu: 'Nintendo Wii U',
-		'3ds': 'Nintendo 3DS',
-		ds: 'Nintendo DS',
-		ps3: 'Sony PlayStation 3',
-		ps2: 'Sony PlayStation 2',
-		xbox360: 'Xbox 360',
-		gba: 'Game Boy Advance',
-		wii: 'Nintendo Wii',
-		gcn: 'Nintendo Game Cube',
-		n64: 'Nintendo 64',
-		snes: 'Super Nintendo',
-		nes: 'Nintendo'
-	};
-
-	async function dlFromAndy(title, dir, system) {
-		system = systemsMapForAndy[system];
-		let url = `http://andydecarli.com/Video Games/Collection/${system}/Scans/Full Size/${system} ${title}`;
-		url = url.replace(/ /g, '%20');
-		log(url);
-		let res = await dl(url + `%20Front%20Cover.jpg`, dir + '/box.jpg');
-		if (res && prefs.ui.getBackCoverHQ) {
-			await dl(url + `%20Back%20Cover.jpg`, dir + '/boxBack.jpg');
-		}
-		return res;
-	}
-
-	let gb = {
-		key: '77fc79812677f482659ce5f0f4e53b936eafda23',
-		base: 'https://www.giantbomb.com/api',
-		regex: {}
-	};
-	gb.params = `api_key=${gb.key}&format=json`;
-	gb.search = `${gb.base}/search/?${gb.params}&resources=game&query=`;
-
-	async function dlFromGiant(query) {
-		if (!gb.regex['ps3']) {
-			let regexStr = '(packag|disc|back|JP|Japan';
-			let elminSystems = [
-				'wii', 'ds', '3ds', 'switch', 'xbox',
-				'ps3', 'ps2', 'pc', 'gamecube', 'gcn'
-			];
-			for (let elimSys of elminSystems) {
-				regexStr += '|' + elimSys;
-			}
-			regexStr += ')';
-			regexStr.replace('\|ps3', '');
-			gb.regex['ps3'] = new RegExp(regexStr, 'i');
-		}
-		let url = gb.search + query;
-		let res = await (await req(url)).json();
-		let tags = res.results[0].image_tags;
-		url = tags.find(x => x.name === 'Box Art').api_detail_url;
-		url += '&' + gb.params;
-		res = await (await req(url)).json();
-		let images = res.results;
-		let largestImgUrl = '';
-		let largest = 0;
-		for (let i in images) {
-			images[i] = images[i].original_url;
-			let size = (await probe(images[i]));
-			log(images[i]);
-			log(size.width + 'x' + size.height);
-			if (size.height > largest) {
-				let name = images[i].split('-')[1];
-				if (!gb.regex['ps3'].test(name)) {
-					largest = size.height;
-					largestImgUrl = images[i];
-				}
-			}
-		}
-		opn(largestImgUrl);
-	}
-
-	async function getImgFileLocation(game, name) {
-		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
-		let file;
-
-	}
-
 	async function getImg(game, name, skip) {
 		let res = await imgExists(game, name);
 		if (res) {
@@ -1082,6 +971,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
 			url = game.img[name].split(/ \\ /);
+			let ext;
 			if (url[1]) {
 				ext = url[1];
 				url = url[0];
@@ -1097,74 +987,17 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
 
-		let title = game.title.replace(/[\:]/g, '');
-		let systemsMap = {};
 		// get high quality box from Andy Decarli's site
-		if (sys != 'switch' && name == 'box') {
-			if (sys != 'wii') {
-				res = await dlFromAndy(title, dir, sys);
-			} else if (game.id.length > 4) {
-				res = await dlFromAndy(title, dir, 'gcn');
-				if (!res) {
-					res = await dlFromAndy(title, dir, 'wii');
-				}
-			} else {
-				res = await dlFromAndy(title, dir, 'n64');
-				if (!res) {
-					res = await dlFromAndy(title, dir, 'snes');
-				}
-				if (!res) {
-					res = await dlFromAndy(title, dir, 'nes');
-				}
-			}
-			if (res) {
-				return res;
-			}
+		res = await dlFromAndy(sys, game, name);
+		if (res) {
+			return res;
 		}
+
 		if (skip) {
 			return;
 		}
 
-		if (sys != 'ps2' && sys != 'xbox360' && sys != 'gba' && name != 'coverSide') {
-			// get image from gametdb
-			file = `${dir}/${name}`;
-			let id = game.id;
-			for (let i = 0; i < 3; i++) {
-				if (sys != 'switch' && i == 1) {
-					break;
-				}
-				if (i == 1) {
-					id = id.substr(0, id.length - 1) + 'B';
-				}
-				if (i == 2) {
-					id = id.substr(0, id.length - 1) + 'C';
-				}
-				let locale = 'US';
-				if (sys == 'ps3') {
-					if (id[2] == 'E') {
-						locale = 'EN';
-					}
-				}
-				url = `https://art.gametdb.com/${sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
-				log(url);
-				res = await dlNoExt(url, file);
-				if (res) {
-					return res;
-				}
-				url = url.replace(name + 'HQ', name + 'M');
-				res = await dlNoExt(url, file);
-				if (res) {
-					return res;
-				}
-				url = url.replace(name + 'M', name);
-				res = await dlNoExt(url, file);
-				if (res) {
-					return res;
-				}
-			}
-		}
-
-		return;
+		return await dlFromGamesTDB(sys, game, name);
 	}
 
 	function getTemplate() {
@@ -1442,24 +1275,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (!shouldRebindMouse) {
 			cui.rebind('mouse');
 		}
-	}
-
-	async function goTo(url) {
-		// if a page is already open, then close it
-		if (page) {
-			await page.close();
-		}
-		page = await browser.newPage();
-		await page.setRequestInterception(true);
-		page.on('request', request => {
-			if (request.resourceType === 'image' || request.resourceType === 'media' || request.resourceType === 'font') {
-				request.abort();
-			} else {
-				request.continue();
-			}
-		});
-		await page.goto(url);
-		return $('<div/>').append(await page.content());
 	}
 
 	remote.getCurrentWindow().setFullScreen(true);

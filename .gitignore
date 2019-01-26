@@ -6,3 +6,5 @@ node_modules
 wit
 package-lock.json
 *.log
+
+views/js/dl/gamefaqsIndex.js

@@ -1,7 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download](https://github.com/quinton-ashley/bottlenose/releases) [Bottlenose and please choose an amount to pay for it](https://www.paypal.me/qashto/25)  
+[Download](https://github.com/quinton-ashley/bottlenose/releases) [Bottlenose and please choose an amount to pay for it](https://www.paypal.me/qashto/25) [or become a patreon supporter!](https://www.patreon.com/qashto)  
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -14,15 +14,14 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 -   unified UI for mouse/gamepad interaction
 -   designed for _UHD_ displays and projectors
--   scrapes multiple database sites for the _highest quality_ box art
+-   checks multiple database sites for the _highest quality_ box art
 -   _nostalgic_ UI themes for each supported console
--   launch games fullscreen (for emulators that support this option)
--   fancy reverse scroll effect on alternating rows in cover view mode
+-   fancy scroll direction alternation effect on rows in cover view mode
 -   uses individual emulators: no cores and no controller input transfer lag
 -   controllers connect to Bottlenose automatically, no setup required
--   browse demo mode if don't have any games on your computer
 -   advanced customization made easy, edit launch commands and swap images
--   the only high quality front end to support Linux, macOS, and Windows!
+-   browse demo mode if don't have any games on your computer
+-   cross-platform support for Linux, macOS, and Windows!
 
 ## Supported Emulators
 
@@ -78,10 +77,10 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   automatic emulator updates for emus that lack this feature
 -   easy way to mix and swap texture packs for Dolphin
 -   list style view mode for browsing through box sides, useful for very large game libraries
--   instant autocomplete search
+-   instant auto-complete search
 -   user ability to make custom themes
 -   mGBA support
--   support for modded game isos/roms (currently skipped during indexing)
+-   support for modded game isos or roms (currently skipped during indexing)
 
 ## How is Bottlenose different from other front-ends?
 
@@ -187,7 +186,7 @@ On Linux, Bottlenose knows how to use apps via the command line and will prompt 
 
 `ui.getBackCoverHQ` get's the back of the box in high quality for games without available full covers
 
-`ui.recheckImgs` when true, on reset, images will be scraped for all games in the given library, not just new games
+`ui.recheckImgs` when true, on reset, images will be downloaded for all games in the given library, not just new games
 
 `session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
 
@@ -247,7 +246,7 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 -   `id` is the official id of the game
 -   `name` the official name of the game, subtitles are delineated using a colon
 -   `texp` the texture pack array, order is irrelevant
--   `img` an object with "imageKind": "image/url" pairs that override the default scrape location
+-   `img` an object with "imgFileType": "url" pairs that override the default image location
 
 ### Texture Packs
 
@@ -273,7 +272,7 @@ The following names can be used to specify images:
 -   `disc` the front of the game's (first) disc
 -   `cart` the front of the game's (first) cartridge
 
-Box art scraping is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, you can add them in the game's `img` object like this:
+Box art downloading is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, you can add them in the game's `img` object like this:
 
 ```javascript
 {
@@ -289,51 +288,13 @@ Box art scraping is prioritized in this order: box (highest quality), coverFull,
 
 Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley/qashto) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
 
-## FAQs
-
-Here are some answers to common questions about Bottlenose.  I've also responded to complaints in an effort to anticipate and mitigate toxic arguments about Bottlenose.  I would prefer to facilitate respectful discussions on community forums like r/emulation.  I'm not bitter but I work on this project in my free time and it's open source cause I want to share it with people for free.  I'm not afraid of criticism either.  Suggestions and feedback can be really helpful for the continued development of Bottlenose but hateful, toxic, or un-constructive criticism is not acceptable.  
-
-Bottlenose is not the procedural outcome of a greedy, monolithic corporation, it's the creation of a single human, me (qashto), so I'm going to take it personally if you hate on it.
-
-### "Nice app! Why did you decide to make Bottlenose?"
-
-I wanted a simple, unified app for launching games with any modern emulator just by using a game controller to browse game boxes.  After I found Andy Decarli's site I knew I could make Bottlenose stand out as a UHD app.  Andy's scans are so high res you can see the printer color dot patterns distinctively.  There's a real sense of physicality to them.  I think Bottlenose succeeds in providing a digital version of the experience of browsing through game boxes and not little game art thumbnails surrounded by wasted space, text, and metadata.  Compared to the boxless digital download product pages on modern online game shops, I think it's an appropriately nostalgic way to browse these games.
-
-Another primary goal of mine, as a pretty amateur texture pack creator, was to make an auto-installer/updater/manager for dolphin texture packs, hence the name Bottlenose.  There are so many incredible texture packs that I feel are going unappreciated cause people don't know about them.  When I announced Bottlenose I posted this idea in a comment on Reddit but hadn't implemented it yet.  Luckily for me, my idea inspired a Dolphin dev to build a texture pack manager into Dolphin officially!  I'm waiting for that to be finished and hopefully it'll accept command line input.
-
-<https://forums.dolphin-emu.org/Thread-introducing-resource-packs-a-new-feature-to-manage-and-install-texture-packs>
-
-### "If you don't change {x} about Bottlenose, I'll never use it and I hope you fail!"
-
-I'm not afraid to call people out for being rude and entitled.  There are better ways to phrase your thoughts.  
-
-Something is missing or obviously flawed and I probably already have plans to do it:  
-"Are you going to do {x} in the future?"
-
-Something goes wrong:  
-"I had a problem with Bottlenose.  Could you please help me/fix it?"
-
-You want to help:  
-"I'd like to help you fix an issue with Bottlenose."
-
-You choose to support me financially:  
-"I'm a Patreon supporter and I justifiably feel entitled to {x}."
-
-### "Bottlenose is a bad name!"
-
-Yes the app has quickly outgrown it's original purpose of being a Dolphin companion app.  Unfortunately, I'm attached to the name and it's not going to change.
-
-### "Your logo is trash, I hate it!"
-
-I'm not a professional artist, I'm a programmer.  [Vaporwave art](https://en.wikipedia.org/wiki/Vaporwave) subverts the kind of commercially successful aesthetics of the past in a nostalgic, playful way.  Visual vaporwave art often utilizes neon cyan and hot pink colors and strange, often wavy textures.  Typically, this art form is not meant to be taken super seriously or analyzed from a commercial design perspective.  I think the full logo and app icon both embody the vaporwave ideology and aesthetic.  I had fun making the logo and I personally like the outcome.
-
 ## Development Info
 
 Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
 
 ## Contributing to Bottlenose (code)
 
-PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  I will be changing more of the code to make contro-ui a separate package at some point.
+PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.
 
 ## Credits!
 
@@ -351,9 +312,9 @@ The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variati
 
 The highest quality box scans are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection)!  
 
-Full covers, boxes, discs/carts are scraped from [gametdb](https://www.gametdb.com/)  
+Full covers, boxes, discs/carts are downloaded from [gametdb](https://www.gametdb.com/)  
 
-Some covers scraped from [gamefaqs](https://gamefaqs.gamespot.com) with puppeteer
+Some covers are downloaded from [gamefaqs](https://gamefaqs.gamespot.com)
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
 

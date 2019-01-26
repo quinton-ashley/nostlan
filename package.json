@@ -133,7 +133,8 @@
     "postinstall": "electron-builder install-app-deps",
     "v": "npm version patch --force",
     "version": "git add -A",
-    "postversion": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
+    "postversion": "git push",
+    "V": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.50"
+  "version": "1.0.51"
 }

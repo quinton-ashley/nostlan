@@ -6,7 +6,12 @@
 		},
 		"template": {
 			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png",
-			"disc": "http://vgboxart.com/process-download.php?id=434&type=resource \\ png"
+			"disc": "http://vgboxart.com/process-download.php?id=434&type=resource \\ png",
+			"boxOpen": "https://raw.githubusercontent.com/quinton-ashley/bottlenose-img/master/gcn/boxOpen.png",
+			"boxOpenMask": "https://raw.githubusercontent.com/quinton-ashley/bottlenose-img/master/gcn/boxOpenMask.png",
+			"manual": "https://raw.githubusercontent.com/quinton-ashley/bottlenose-img/master/gcn/manual0.png",
+			"memoryFront": "https://raw.githubusercontent.com/quinton-ashley/bottlenose-img/master/gcn/memoryFront.png",
+			"memoryBack": "https://raw.githubusercontent.com/quinton-ashley/bottlenose-img/master/gcn/memoryBack.png"
 		}
 	},
 	"ds": {

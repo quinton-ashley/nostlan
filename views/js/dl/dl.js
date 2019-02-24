@@ -30,9 +30,9 @@ async function dlNoExt(url, file) {
 	return;
 }
 
-module.exports = async function(url, file, hasExt) {
-	if (hasExt) {
-		return await dlWithExt(url, file);
+module.exports = async function(url, file, noExt) {
+	if (noExt) {
+		return await dlNoExt(url, file);
 	}
-	return await dlNoExt(url, file);
+	return await dlWithExt(url, file);
 }

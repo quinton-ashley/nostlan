@@ -2,10 +2,19 @@ const dl = require('./dl.js');
 
 class Gamestdb {
 	constructor() {
-
+		this.availableImgs = [
+			"box",
+			"cart",
+			"cover",
+			"coverFull",
+			"disc"
+		];
 	}
 
 	async dlImg(sys, game, name) {
+		if (!this.availableImgs.includes(name)) {
+			return;
+		}
 		// get image from gametdb
 		let res, url;
 		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
@@ -29,17 +38,17 @@ class Gamestdb {
 			}
 			url = `https://art.gametdb.com/${sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
 			log(url);
-			res = await dl(url, file, false);
+			res = await dl(url, file, true);
 			if (res) {
 				return res;
 			}
 			url = url.replace(name + 'HQ', name + 'M');
-			res = await dl(url, file, false);
+			res = await dl(url, file, true);
 			if (res) {
 				return res;
 			}
 			url = url.replace(name + 'M', name);
-			res = await dl(url, file, false);
+			res = await dl(url, file, true);
 			if (res) {
 				return res;
 			}

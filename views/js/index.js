@@ -10,6 +10,7 @@ module.exports = async function(opt) {
 	const spawn = require('await-spawn');
 	const deepExtend = require('deep-extend');
 	const Fuse = require('fuse.js');
+	const rmDiacritics = require('diacritics').remove;
 
 	// const sevenBin = require('7zip-bin');
 	// const {
@@ -889,7 +890,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		cui.buttonPressed('b');
 	});
 
-	async function getImg(game, name, skip) {
+	async function getImg(game, name, hq) {
 		let res = await imgExists(game, name);
 		if (res) {
 			return res;
@@ -898,6 +899,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		let file, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
+			log(name);
 			url = game.img[name].split(/ \\ /);
 			let ext;
 			if (url[1]) {
@@ -921,7 +923,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return res;
 		}
 
-		if (skip) {
+		if (hq) {
 			return;
 		}
 
@@ -944,15 +946,18 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		for (let i = 0; i < games.length + 1; i++) {
 			let res;
 			let game;
-			if (i == games.length) {
+			let isTemplate = (i == games.length);
+			if (isTemplate) {
 				game = getTemplate();
 			} else {
 				game = games[i];
 			}
+			if (game.title) {
+				game.title = rmDiacritics(game.title);
+			}
 			imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
-			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
-				await fs.ensureDir(imgDir);
-				await getImg(game, 'box', 'highQuality');
+			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir)) || isTemplate) {
+				await getImg(game, 'box', 'HQ');
 				res = await getImg(game, 'coverFull');
 				if (!res) {
 					await getImg(game, 'coverSide');
@@ -968,6 +973,16 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				} else {
 					await getImg(game, 'cart');
 				}
+				if (prefs.ui.getExtraImgs || isTemplate) {
+					log(game);
+					await getImg(game, 'boxOpen');
+					await getImg(game, 'boxOpenMask');
+					await getImg(game, 'manual');
+					await getImg(game, 'memoryBack');
+					await getImg(game, 'memoryFront');
+				}
+
+				await fs.ensureDir(imgDir);
 			}
 		}
 		defaultCoverImg = await getImg(theme.default, 'box');

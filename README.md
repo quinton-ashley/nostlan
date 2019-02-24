@@ -27,35 +27,43 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 #### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png)
 
 #### Cemu (Wii U) [Windows & Linux* using Wine]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu_LQ.png)
 
 #### Yuzu (Switch) [Linux & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch_LQ.png)
 
 #### Citra (3DS) [Linux, macOS, & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds_LQ.png)
 
 #### DeSmuME (DS) [Linux, macOS & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png)
 
 #### Xenia (Xbox 360) [Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png)
 
 #### RPCS3 (PS3) [Linux & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3_LQ.png)
 
 #### PCSX2 (PS2) [Linux, macOS, & Windows]
 
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png)
 
 ## Please consider donating!
 

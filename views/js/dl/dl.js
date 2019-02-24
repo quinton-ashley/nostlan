@@ -1,4 +1,3 @@
-const fs = require('fs-extra');
 const req = require('requisition');
 
 async function dlWithExt(url, file) {
@@ -20,9 +19,9 @@ async function dlNoExt(url, file) {
 	let res;
 	for (let i = 0; i < 2; i++) {
 		if (i == 0) {
-			res = await dl(url + '.jpg', file + '.jpg');
+			res = await dlWithExt(url + '.jpg', file + '.jpg');
 		} else if (i == 1) {
-			res = await dl(url + '.png', file + '.png');
+			res = await dlWithExt(url + '.png', file + '.png');
 		}
 		if (res) {
 			return res;

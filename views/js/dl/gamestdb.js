@@ -7,6 +7,7 @@ class Gamestdb {
 
 	async dlImg(sys, game, name) {
 		// get image from gametdb
+		let res, url;
 		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 		let file = `${dir}/${name}`;
 		let id = game.id;
@@ -44,5 +45,6 @@ class Gamestdb {
 			}
 		}
 	}
+}
 
-	module.exports = new Gamestdb();
+module.exports = new Gamestdb();

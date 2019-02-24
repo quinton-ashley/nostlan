@@ -2,78 +2,74 @@ doctype html
 html
 
 head
-link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
-link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
-link(rel='stylesheet' type='text/css' href='../css/contro-ui.css')
-link(rel='stylesheet' type='text/css' href='../css/style.css')
-title= title
+  title= title
+  link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
+  link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
+  link(rel='stylesheet' type='text/css' href='../css/contro-ui.css')
+  link(rel='stylesheet' type='text/css' href='../css/style.css')
+
 body
-	#dialogs
-		#loadDialog0
-		#loadDialog1
-		#loadDialog2
-	#donateMenu.cui.menu
-		.row-y
-			.uie(name='donated') already donated
-			.uie(name='donate-monthly') donate monthly
-			.uie(name='donate-single') donate one-time
-			.uie(name='donate-later') remind me later
-	#checkDonationMenu.cui.menu
-		input#donorPassword.col-12.form-control(placeholder="donor password")
-		.row-y
-			.uie(name='continue') continue
-			.uie(name='back') I haven't donated yet
-	#welcomeMenu.cui.menu
-		.row-y
-			.uie(name='full') setup full version
-			.uie(name='demo') use demo mode
-	#setupMenu.cui.menu
-		.row-y
-			.uie(name='old') use existing WiiUSBHelper template
-			.uie(name='new-in-docs') create new template in ~/Documents
-			.uie(name='new') create new template
-			.uie(name='continue') continue
-	#pauseMenu.cui.menu
-		h1 Pause Menu
-		.row-y
-			.uie(name='back') back
-			.uie(name='minimize') minimize
-			.uie(name='fullscreen') fullscreen
-			.uie(name='toggleCover') auto-hide cover overlay
-			.uie(name='openLog') open error log
-			.uie(name='prefs') edit preferences
-			.uie(name='quit') quit
-	#sysMenu.cui.menu.row-y
-		h1 Select System
-	#infoSelect.cui.row-x
-		img#gameBoxOpen.uie(name='b')
-		.row-y
-			img#gameTexp.uie(name='texp')
-			img#gameManual.uie(name='manual')
-		.row-y
-			img#gameMemory.uie(name='memory')
-			img#gameMedia.uie(name='media')
-		img#gameBoxOpenMask
-	#libMain.cui.main.row-x
-nav.navbar.fixed-top.p-0
-	.cover.power.p-2.m-0: ul.nav.justify-content-left.m-0
-		.power.text Power
-		li.nav-item
-			button#power.powerBtn.nav-link.triangle: span
-			//- img.logoNav(src='../img/logo.png')
-	.cover.view.p-2.m-0: ul.nav.justify-content-right.m-0
-		li.nav-item
-			button#view Bottlenose
-nav.navbar.fixed-bottom.p-0
-	.cover.reset.p-2.m-0: ul.nav.justify-content-left.m-0
-		.reset.text Reset
-		li.nav-item
-			button#reset.resetBtn.nav-link.square: span
-	.cover.open.p-2.m-0: ul.nav.justify-content-right.m-0
-		li.nav-item
-			button#open.openBtn.nav-link.circle: span
-		.open.text Open
-script.
-	console.log('opening index.pug');
-	console.log('#{node_modules}');
-	require('../js/index.js')({__rootDir:'#{__rootDir}'});
+  #dialogs
+    #loadDialog0
+    #loadDialog1
+    #loadDialog2
+  #donateMenu.menu.row-y
+    .uie(name='donated') already donated
+    .uie(name='donate-monthly') donate monthly
+    .uie(name='donate-single') donate one-time
+    .uie(name='donate-later') remind me later
+  #checkDonationMenu.menu.row-y
+    input#donorPassword.col-12.form-control(placeholder="donor password")
+    .uie(name='continue') continue
+    .uie(name='back') I haven't donated yet
+  #welcomeMenu.menu.row-y
+    .uie(name='full') setup full version
+    .uie(name='demo') use demo mode
+  #setupMenu.menu.row-y
+    .uie(name='old') use existing WiiUSBHelper template
+    .uie(name='new-in-docs') create new template in ~/Documents
+    .uie(name='new') create new template
+    .uie(name='continue') continue
+  #pauseMenu.menu.row-y
+    h1 Pause Menu
+    .uie(name='back') back
+    .uie(name='minimize') minimize
+    .uie(name='fullscreen') fullscreen
+    .uie(name='toggleCover') auto-hide cover overlay
+    .uie(name='openLog') open error log
+    .uie(name='prefs') edit preferences
+    .uie(name='quit') quit
+  #sysMenu.menu.row-y
+    h1 Select System
+  #infoSelect.row-x
+    img#gameBoxOpen.uie(name='b')
+    .row-y
+      img#gameTexp.uie(name='texp')
+      img#gameManual.uie(name='manual')
+    .row-y
+      img#gameMemory.uie(name='memory')
+      img#gameMedia.uie(name='media')
+    img#gameBoxOpenMask
+  #libMain.main.row-x
+  nav.navbar.fixed-top.p-0
+    .cover.power.p-2.m-0: ul.nav.justify-content-left.m-0
+      .power.text Power
+      li.nav-item
+        button#power.powerBtn.nav-link.triangle: span
+      //- img.logoNav(src='../img/logo.png')
+    .cover.view.p-2.m-0: ul.nav.justify-content-right.m-0
+      li.nav-item
+        button#view Bottlenose
+  nav.navbar.fixed-bottom.p-0
+    .cover.reset.p-2.m-0: ul.nav.justify-content-left.m-0
+      .reset.text Reset
+      li.nav-item
+        button#reset.resetBtn.nav-link.square: span
+    .cover.open.p-2.m-0: ul.nav.justify-content-right.m-0
+      li.nav-item
+        button#open.openBtn.nav-link.circle: span
+      .open.text Open
+  script.
+    console.log('opening index.pug');
+    console.log('#{node_modules}');
+    require('../js/index.js')({__rootDir:'#{__rootDir}'});

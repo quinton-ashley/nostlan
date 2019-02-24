@@ -5,7 +5,7 @@ class Gamefaqs {
 
 	}
 
-	async img(url, dir, name) {
+	async dlImg(url, dir, name) {
 		let ext = url.substr(-4).toLowerCase();
 		log(url);
 		if (name != 'coverSide') {

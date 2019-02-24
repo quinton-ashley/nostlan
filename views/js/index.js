@@ -4,24 +4,12 @@
  * copyright 2018
  */
 module.exports = async function(opt) {
-	global.log = console.log;
-	global.__rootDir = opt.__rootDir;
-	opt.v = false;
+	// opt.v = false; // quieter log
+	await require('./setup/setup.js')(opt);
 
-	const remote = require('electron').remote;
-	const {
-		app,
-		dialog
-	} = remote;
 	const spawn = require('await-spawn');
 	const deepExtend = require('deep-extend');
-	const delay = require('delay');
-	const fs = require('fs-extra');
 	const Fuse = require('fuse.js');
-	const os = require('os');
-	const opn = require('opn');
-	const path = require('path');
-	var Mousetrap = require('mousetrap');
 
 	// const sevenBin = require('7zip-bin');
 	// const {
@@ -36,64 +24,14 @@ module.exports = async function(opt) {
 	// 	});
 	// };
 
-	let osType = os.type();
-	const linux = (osType == 'Linux');
-	const mac = (osType == 'Darwin');
-	const win = (osType == 'Windows_NT');
-	if (win) {
-		osType = 'win';
-	} else if (mac) {
-		osType = 'mac';
-	} else if (linux) {
-		osType = 'linux';
-	}
-
-	const $ = require('jquery');
-	window.$ = window.jQuery = $;
-	window.Tether = require('tether');
-	window.Bootstrap = require('bootstrap');
-	String.prototype.insert = function(insert, index) {
-		return this.substr(0, index) + insert + this.substr(index);
-	}
-
-	const markdown = require('markdown-it')();
-	global.md = (str) => {
-		return markdown.render(str);
-	};
-	const pDog = require('pug');
-	global.pug = (str, locals, insert) => {
-		str = pDog.compile(str)(locals);
-		if (insert) {
-			str = str.insert(insert, str.lastIndexOf('<'));
-		}
-		return str;
-	};
-	const klaw = function(dir, options) {
-		return new Promise((resolve, reject) => {
-			let items = [];
-			let i = 0;
-			require('klaw')(dir, options)
-				.on('data', item => {
-					if (i > 0) {
-						items.push(item.path);
-					}
-					i++;
-				})
-				.on('end', () => resolve(items))
-				.on('error', (err, item) => reject(err, item));
-		});
-	};
-
 	// bottlenose dir location cannot be changed
 	// only used to store small files, no images
 	// the user's preferences and game libs json databases
 	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
 	log(usrDir);
-	global.cui = require('./contro-ui.js');
-	const elec = require('./electronWrap.js');
 	const dl = require('./dl/dl.js');
-	const dlFromAndy = require('./dl/andy.js');
-	const dlFromGamesTDB = require('./dl/gamestdb.js');
+	const andyDecarli = require('./dl/andyDecarli.js');
+	const gamestdb = require('./dl/gamestdb.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -933,18 +871,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		cui.buttonPressed('view');
 		return false;
 	});
-	Mousetrap.bind(['command+option+i', 'ctrl+shift+i'], function() {
-		remote.getCurrentWindow().toggleDevTools();
-		return false;
-	});
 	Mousetrap.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], function() {
 		cui.doAction('quit');
-		return false;
-	});
-	Mousetrap.bind(['space'], function() {
-		return false;
-	});
-	Mousetrap.bind(['up', 'down', 'left', 'right'], function() {
 		return false;
 	});
 
@@ -988,7 +916,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
 
 		// get high quality box from Andy Decarli's site
-		res = await dlFromAndy(sys, game, name);
+		res = await andyDecarli.dlImg(sys, game, name);
 		if (res) {
 			return res;
 		}
@@ -997,7 +925,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return;
 		}
 
-		return await dlFromGamesTDB(sys, game, name);
+		return await gamestdb.dlImg(sys, game, name);
 	}
 
 	function getTemplate() {
@@ -1023,6 +951,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 			imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
+				await fs.ensureDir(imgDir);
 				await getImg(game, 'box', 'highQuality');
 				res = await getImg(game, 'coverFull');
 				if (!res) {
@@ -1073,7 +1002,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				cl1 = 'front-cover ' + sys;
 				if (!file) {
 					log(`no images found for game: ${game.id} ${game.title}`);
-					await fs.remove(`${prefs.btlDir}/${sys}/${game.id}`);
 					return;
 				}
 			}

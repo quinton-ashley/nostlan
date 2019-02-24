@@ -74,7 +74,7 @@
   ],
   "dependencies": {
     "await-spawn": "^2.1.2",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "chrome-finder": "^1.0.5",
     "circletype": "^2.3.0",
     "contro": "^2.1.2",
@@ -85,20 +85,20 @@
     "electron-pug": "^2.0.0",
     "electron-updater": "^4.0.6",
     "fs-extra": "^7.0.1",
-    "fuse.js": "^3.3.0",
+    "fuse.js": "^3.4.2",
     "gooder": "^1.0.4",
     "jquery": "^3.3.1",
     "klaw": "^3.0.0",
     "markdown-it": "^8.4.2",
-    "material-design-icons-iconfont": "^3.0.3",
-    "moment": "^2.23.0",
+    "material-design-icons-iconfont": "^4.0.5",
+    "moment": "^2.24.0",
     "mousetrap": "^1.6.2",
-    "node-7z": "^1.0.1",
+    "node-7z": "^1.1.0",
     "opn": "^5.4.0",
-    "popper.js": "^1.14.6",
+    "popper.js": "^1.14.7",
     "probe-image-size": "^4.0.0",
     "pug": "^2.0.3",
-    "puppeteer-core": "^1.11.0",
+    "puppeteer-core": "^1.12.2",
     "requisition": "^1.7.0",
     "tether": "^1.4.5"
   },
@@ -136,5 +136,5 @@
     "postversion": "git push",
     "V": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.51"
+  "version": "1.0.52"
 }

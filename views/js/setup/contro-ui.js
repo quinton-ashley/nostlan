@@ -586,8 +586,8 @@ const CUI = function() {
 	}
 	this.start = function(options) {
 		opt = options || {};
-		$('.cui .uie').off('click').click(uieClicked);
-		$('.cui .uie').off('hover').hover(uieHovered);
+		$('.uie').off('click').click(uieClicked);
+		$('.uie').off('hover').hover(uieHovered);
 		loop();
 		$(window).resize(this.resize);
 	};

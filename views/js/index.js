@@ -7,7 +7,6 @@ module.exports = async function(opt) {
 	// opt.v = false; // quieter log
 	await require('./setup/setup.js')(opt);
 
-	const spawn = require('await-spawn');
 	const deepExtend = require('deep-extend');
 	const Fuse = require('fuse.js');
 	const rmDiacritics = require('diacritics').remove;
@@ -60,6 +59,8 @@ module.exports = async function(opt) {
 	let emu;
 	let defaultCoverImg;
 	let templateAmt = 4;
+	let child;
+	let childState = 'closed';
 
 	let normalizeButtonLayout = {
 		map: {
@@ -560,7 +561,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function powerBtn() {
 		let id = cui.getCur('libMain').attr('id');
-		if (!id && cui.ui == 'coverSelect') {
+		if (!id && cui.ui != 'libMain') {
 			cui.err('cursor was not on a game');
 			return;
 		}
@@ -576,7 +577,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
-		if (cui.ui == 'coverSelect') {
+		if (cui.ui != 'libMain') {
 			gameFile = games.find(x => x.id === id);
 			if (gameFile) {
 				gameFile = getAbsolutePath(gameFile.file);
@@ -622,15 +623,35 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		log(args);
 		log(emuDirPath);
-		try {
-			// animatePlay();
-			await spawn(args[0], args.slice(1) || [], {
-				cwd: emuDirPath,
-				stdio: 'inherit'
-			});
-		} catch (ror) {
-			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${args.toString()}\n${ror}`);
+
+		// animatePlay();
+		// if (cui.ui == 'playingBack') {
+		// 	remote.getCurrentWindow().minimize();
+		// }
+
+		child = require('child_process').spawn(args[0], args.slice(1) || [], {
+			cwd: emuDirPath,
+			stdio: 'inherit',
+			detached: true
+		});
+
+		childState = 'running';
+
+		child.on('close', (code) => {
+			closeEmu(code);
+		});
+	}
+
+	async function closeEmu(code) {
+		log(`emulator closed`);
+		if (childState == 'resetting') {
+			await powerBtn();
+			return;
 		}
+		if (code) {
+			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${args.toString()}\n${data}`);
+		}
+
 		remote.getCurrentWindow().focus();
 		remote.getCurrentWindow().setFullScreen(true);
 		if (cui.ui != 'libMain') {
@@ -641,6 +662,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				cui.uiStateChange('libMain');
 			}
 		}
+		childState = 'closed';
 	}
 
 	async function resetBtn() {
@@ -665,13 +687,24 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	}
 
 	async function doHeldAction(act, isBtn, timeHeld) {
+		if (timeHeld < 3000) {
+			return;
+		}
 		log(act + " held for " + timeHeld);
-		if (ui == 'playingBack') {
-			if (act == start && timeHeld > 3000) {
-				// TODO quit emulator app
+		let ui = cui.ui;
+		if (ui == 'playingBack' && timeHeld > 3000 && childState == 'running') {
+			if (act == 'start') {
+				log('shutting down emulator');
+				childState = 'closing';
+				child.kill('SIGINT');
+			} else if (act == 'select') {
+				log('resetting emulator');
+				childState = 'resetting';
+				child.kill('SIGINT');
 			}
 		}
 	}
+	cui.setCustomHeldActions(doHeldAction);
 
 	function coverClicked(select) {
 		let $cur = cui.getCur();
@@ -716,7 +749,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
 			cui.doAction('back');
-		} else if (act == 'view') {
+		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
 			if (!prefs.ui.autoHideCover) {
@@ -792,7 +825,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				remote.getCurrentWindow().focus();
 				remote.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'toggleCover') {
-				cui.buttonPressed('view');
+				cui.buttonPressed('select');
 			} else if (act == 'openLog') {
 				opn(`${usrDir}/_usr/${sys}Log.log`);
 			} else if (act == 'prefs') {
@@ -869,7 +902,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	}
 
 	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
-		cui.buttonPressed('view');
+		cui.buttonPressed('select');
 		return false;
 	});
 	Mousetrap.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], function() {
@@ -1032,7 +1065,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function animatePlay() {
 		await delay(10000);
-		remote.getCurrentWindow().minimize();
 	}
 
 	function getAbsolutePath(file) {
@@ -1211,7 +1243,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		await addTemplates(template, rows, templateAmt);
 		cui.addView('libMain', {
-			"hoverCurDisable": true
+			hoverCurDisabled: true
 		});
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');

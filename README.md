@@ -19,7 +19,7 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   fancy scroll direction alternation effect on rows in cover view mode
 -   uses individual emulators: no cores and no controller input transfer lag
 -   controllers connect to Bottlenose automatically, no setup required
--   advanced customization made easy, edit launch commands and swap images
+-   advanced customization: edit launch commands and change game art
 -   browse demo mode if don't have any games on your computer
 -   cross-platform support for Linux, macOS, and Windows!
 

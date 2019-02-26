@@ -269,7 +269,6 @@ const CUI = function() {
 	this.removeCursor = removeCursor;
 
 	function makeCursor($cursor, state) {
-		log($cursor);
 		if (!$cursor) {
 			return;
 		}

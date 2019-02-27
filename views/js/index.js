@@ -701,12 +701,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		log(act + " held for " + timeHeld);
 		let ui = cui.ui;
-		if (ui == 'playingBack' && timeHeld > 3000 && childState == 'running') {
-			if (act == 'start') {
+		if (ui == 'playingBack' && childState == 'running') {
+			if (act == prefs.inGame.quit.hold && timeHeld > prefs.inGame.quit.time) {
 				log('shutting down emulator');
 				childState = 'closing';
 				child.kill('SIGINT');
-			} else if (act == 'select') {
+			} else if (act == prefs.inGame.reset.hold && timeHeld > prefs.inGame.reset.time) {
 				log('resetting emulator');
 				childState = 'resetting';
 				child.kill('SIGINT');

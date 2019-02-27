@@ -106,6 +106,16 @@
 		"recheckImgs": false,
 		"autoHideCover": false
 	},
+	"inGame": {
+		"quit": {
+			"hold": "start",
+			"time": 5000
+		},
+		"reset": {
+			"hold": "select",
+			"time": 5000
+		}
+	},
 	"session": {
 		"sys": "wii"
 	}

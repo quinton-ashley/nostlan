@@ -132,8 +132,8 @@ module.exports = async function(opt) {
 	};
 
 	global.Mousetrap = require('mousetrap');
-	// global.cui = require('contro-ui');
-	global.cui = require('./contro-ui.js');
+	global.cui = require('contro-ui');
+	// global.cui = require('./contro-ui.js');
 
 	Mousetrap.bind(['command+option+i', 'command+shift+i', 'ctrl+shift+i', 'ctrl+alt+i'], function() {
 		remote.getCurrentWindow().toggleDevTools();

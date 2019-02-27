@@ -19,6 +19,8 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   fancy scroll direction alternation effect on rows in cover view mode
 -   uses individual emulators: no cores and no controller input transfer lag
 -   controllers connect to Bottlenose automatically, no setup required
+-   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
+-   gamecube controller support with [gca-js](https://github.com/YonicDev/gca-js)
 -   advanced customization: edit launch commands and change game art
 -   browse demo mode if don't have any games on your computer
 -   cross-platform support for Linux, macOS, and Windows!

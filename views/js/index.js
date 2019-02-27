@@ -5,7 +5,8 @@
  */
 module.exports = async function(opt) {
 	// opt.v = false; // quieter log
-	await require('./setup/setup.js')(opt);
+	opt.electron = true;
+	await require(opt.__rootDir + '/core/setup.js')(opt);
 
 	const deepExtend = require('deep-extend');
 	const Fuse = require('fuse.js');
@@ -29,9 +30,9 @@ module.exports = async function(opt) {
 	// the user's preferences and game libs json databases
 	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
 	log(usrDir);
-	const dl = require('./dl/dl.js');
-	const andyDecarli = require('./dl/andyDecarli.js');
-	const gamestdb = require('./dl/gamestdb.js');
+	const dl = require(__rootDir + '/core/dl/dl.js');
+	const andyDecarli = require(__rootDir + '/core/dl/andyDecarli.js');
+	const gamestdb = require(__rootDir + '/core/dl/gamestdb.js');
 
 	// get the default prefrences
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
@@ -319,7 +320,7 @@ module.exports = async function(opt) {
 	}
 
 	async function reload() {
-		cui.uiStateChange('loading');
+		cui.change('loading');
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
@@ -331,7 +332,7 @@ module.exports = async function(opt) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
 		} else {
 			if (!emuDir) {
-				cui.uiStateChange('setupMenu');
+				cui.change('setupMenu');
 				await removeIntro(0);
 				return;
 			}
@@ -342,7 +343,7 @@ module.exports = async function(opt) {
 
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
 				if (i >= 1) {
-					cui.uiStateChange('setupMenu');
+					cui.change('setupMenu');
 					await removeIntro(0);
 					cui.err(`Game library does not exist`);
 					return;
@@ -354,7 +355,7 @@ module.exports = async function(opt) {
 					path.parse(files[0]).base == '.DS_Store'); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.uiStateChange('setupMenu');
+					cui.change('setupMenu');
 					cui.err(`Game library has no game files`);
 					return;
 				}
@@ -382,11 +383,11 @@ module.exports = async function(opt) {
 		await fs.ensureDir(btlDir);
 		prefs.btlDir = btlDir;
 		prefs.session.sys = sys;
-		cui.mapButtons(prefs.ui.gamepad, prefs.session, normalizeButtonLayout);
+		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 		await viewerLoad();
 		await removeIntro();
-		cui.uiStateChange('libMain', sysStyle);
+		cui.change('libMain', sysStyle);
 	}
 
 	async function load() {
@@ -451,6 +452,14 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (prefs.ui.gamepad.mapping) {
 				delete prefs.ui.gamepad.mapping;
 			}
+			if (prefs.ui.gamepad.profile) {
+				prefs.ui.gamepad.default.profile = prefs.ui.gamepad.profile;
+				delete prefs.ui.gamepad.profile;
+			}
+			if (prefs.ui.gamepad.map) {
+				prefs.ui.gamepad.default.map = prefs.ui.gamepad.map;
+				delete prefs.ui.gamepad.map;
+			}
 		}
 		// currently supported systems
 		let sysMenuHTML = '.row-y\n';
@@ -472,7 +481,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		});
 		sys = prefs.session.sys;
-		cui.mapButtons(prefs.ui.gamepad, prefs.session, normalizeButtonLayout);
+		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 	}
 
 	cui.setResize((adjust) => {
@@ -619,7 +628,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 		if (cui.ui != 'libMain') {
 			cui.removeView('libMain');
-			cui.uiStateChange('playingBack');
+			cui.change('playingBack');
 		}
 		log(args);
 		log(emuDirPath);
@@ -659,7 +668,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			await viewerLoad();
 			await removeIntro();
 			if (cui.ui == 'playingBack') {
-				cui.uiStateChange('libMain');
+				cui.change('libMain');
 			}
 		}
 		childState = 'closed';
@@ -667,12 +676,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function resetBtn() {
 		cui.removeView('libMain');
-		cui.uiStateChange('resetting');
+		cui.change('resetting');
 		await intro();
 		await reset();
 		await viewerLoad();
 		await removeIntro();
-		cui.uiStateChange('libMain');
+		cui.change('libMain');
 		cui.scrollToCursor(0);
 	}
 
@@ -727,7 +736,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	}
 
-	async function doAction(act, isBtn) {
+	cui.setCustomActions(async function(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
 		if (ui == 'playingBack') {
@@ -737,7 +746,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (act == 'quit') {
 			await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
 			app.quit();
-			process.exit(0);
+			process.kill('SIGINT');
+			return;
 		}
 		if (ui == 'libMain' || ui == 'coverSelect') {
 			if (act == 'x') {
@@ -745,7 +755,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		}
 		if (act == 'start' && !onMenu) {
-			cui.uiStateChange('pauseMenu');
+			cui.change('pauseMenu');
 		} else if (act == 'b' && onMenu &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
 			cui.doAction('back');
@@ -758,9 +768,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (ui == 'libMain') {
 			if (act == 'a') {
 				coverClicked();
-				cui.uiStateChange('coverSelect');
+				cui.change('coverSelect');
 			} else if (act == 'b' && !onMenu) {
-				cui.uiStateChange('sysMenu');
+				cui.change('sysMenu');
 			} else if (act == 'y') {
 				await resetBtn();
 			}
@@ -786,9 +796,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					mediaImg = await imgExists(template, mediaName);
 				}
 				$('#gameMedia').prop('src', mediaImg);
-				cui.uiStateChange('infoSelect');
+				cui.change('infoSelect');
 			} else if (act == 'b') {
-				cui.uiStateChange('libMain');
+				cui.change('libMain');
 				coverClicked();
 			} else if (act == 'y' || act == 'flip') {
 				log('flip cover not enabled yet');
@@ -800,9 +810,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (act != 'back' && !isBtn) {
 				let state = 'game' + act[0].toUpperCase() + act.substr(1) + 'Select';
 				$('#infoSelect').addClass('zoom-' + state);
-				cui.uiStateChange(state);
+				cui.change(state);
 			} else if (act == 'b') {
-				cui.uiStateChange('libMain');
+				cui.change('libMain');
 				coverClicked();
 			}
 		} else if ((/game/i).test(ui)) {
@@ -839,7 +849,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			} else if (act == 'donate-later') {
 				await reload();
 			} else if (act == 'donated') {
-				cui.uiStateChange('checkDonationMenu');
+				cui.change('checkDonationMenu');
 			}
 		} else if (ui == 'checkDonationMenu') {
 			let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
@@ -848,7 +858,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				prefs.donor = true;
 				await reload();
 			} else {
-				cui.uiStateChange('donateMenu');
+				cui.change('donateMenu');
 				cui.err('incorrect donor password');
 			}
 		} else if (ui == 'welcomeMenu') {
@@ -859,7 +869,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				await createTemplate(emuDir);
 				await reload();
 			} else if (act == 'full') {
-				cui.uiStateChange('setupMenu');
+				cui.change('setupMenu');
 			}
 		} else if (ui == 'setupMenu') {
 			if (act == 'new' || act == 'new-in-docs' || act == 'old') {
@@ -888,11 +898,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					emuDir = os.homedir() + '/Documents/emu';
 				}
 				await createTemplate(emuDir);
-				cui.uiStateChange('sysMenu');
+				cui.change('sysMenu');
 			}
 		}
-	}
-	cui.setCustomActions(doAction);
+	});
 
 	function unicodeToChar(text) {
 		return text.replace(/\\u[\dA-F]{4}/gi,
@@ -901,27 +910,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			});
 	}
 
-	Mousetrap.bind(['command+n', 'ctrl+n'], function() {
-		cui.buttonPressed('select');
-		return false;
-	});
-	Mousetrap.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], function() {
-		cui.doAction('quit');
-		return false;
-	});
+	cui.bind(['command+n', 'ctrl+n'], 'select');
 
-	$('#power').click(function() {
-		cui.buttonPressed('x');
-	});
-	$('#view').click(function() {
-		cui.buttonPressed('start');
-	});
-	$('#reset').click(function() {
-		cui.buttonPressed('y');
-	});
-	$('#open').click(function() {
-		cui.buttonPressed('b');
-	});
+	cui.click('#power', 'x');
+	cui.click('#view', 'start');
+	cui.click('#reset', 'y');
+	cui.click('#open', 'b');
 
 	async function getImg(game, name, hq) {
 		let res = await imgExists(game, name);
@@ -989,7 +983,27 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				game.title = rmDiacritics(game.title);
 			}
 			imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
+
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir)) || isTemplate) {
+				await fs.ensureDir(imgDir);
+
+				if (sys != 'switch' && sys != '3ds') {
+					await getImg(game, 'disc');
+				} else {
+					await getImg(game, 'cart');
+				}
+
+				if (prefs.ui.getExtraImgs || isTemplate) {
+					await getImg(game, 'boxOpen');
+					await getImg(game, 'boxOpenMask');
+					await getImg(game, 'manual');
+					await getImg(game, 'memoryBack');
+					await getImg(game, 'memoryFront');
+				}
+				if (isTemplate) {
+					continue;
+				}
+
 				await getImg(game, 'box', 'HQ');
 				res = await getImg(game, 'coverFull');
 				if (!res) {
@@ -1001,21 +1015,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 						await getImg(game, 'box');
 					}
 				}
-				if (sys != 'switch' && sys != '3ds') {
-					await getImg(game, 'disc');
-				} else {
-					await getImg(game, 'cart');
-				}
-				if (prefs.ui.getExtraImgs || isTemplate) {
-					log(game);
-					await getImg(game, 'boxOpen');
-					await getImg(game, 'boxOpenMask');
-					await getImg(game, 'manual');
-					await getImg(game, 'memoryBack');
-					await getImg(game, 'memoryFront');
-				}
-
-				await fs.ensureDir(imgDir);
 			}
 		}
 		defaultCoverImg = await getImg(theme.default, 'box');
@@ -1257,12 +1256,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	if (prefs.donor) {
 		await reload();
 	} else if (await fs.exists(prefsPath) && !prefs.donor) {
-		cui.uiStateChange('donateMenu');
+		cui.change('donateMenu');
 	} else {
-		cui.uiStateChange('welcomeMenu');
+		cui.change('welcomeMenu');
 	}
 	cui.start({
-		v: true
+		v: true,
+		gca: prefs.ui.gamepad.gca
 	});
 	await delay(1000);
 	cui.resize(true);

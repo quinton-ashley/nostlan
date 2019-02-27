@@ -78,14 +78,15 @@
     "chrome-finder": "^1.0.5",
     "circletype": "^2.3.0",
     "contro": "^2.1.2",
+    "contro-ui": "^1.0.5",
     "copy-paste": "^1.3.0",
     "deep-extend": "^0.6.0",
     "delay": "^4.1.0",
     "diacritics": "^1.3.0",
     "electron-pug": "^2.0.0",
-    "electron-updater": "^4.0.6",
     "fs-extra": "^7.0.1",
     "fuse.js": "^3.4.2",
+    "gca-js": "^1.0.2",
     "gooder": "^1.0.4",
     "jquery": "^3.3.1",
     "klaw": "^3.0.0",
@@ -126,7 +127,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --runtime=electron --target=4.0.1 --disturl=https://atom.io/download/atom-shell --abi=64",
+    "rebuild": "npm rebuild --runtime=electron --target=4.0.6 --disturl=https://atom.io/download/atom-shell --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m -l -w",
     "gh-publish": "electron-builder -m -l -w -p always",
@@ -136,5 +137,5 @@
     "postversion": "git push",
     "V": "git remote | xargs -L1 git push --all && git push --tags && npm publish"
   },
-  "version": "1.0.55"
+  "version": "1.0.56"
 }

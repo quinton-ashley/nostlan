@@ -11,12 +11,9 @@ const CUI = function() {
 		and
 	} = require('contro');
 	let gamepad = new Gamepad();
-	// let gamepad = {
-	// 	isConnected: () => {
-	// 		return false;
-	// 	}
-	// };
+
 	let gamepadConnected = false;
+	let gamepadType = 'default';
 	let btnNames = [
 		'a', 'b', 'x', 'y',
 		'up', 'down', 'left', 'right',
@@ -88,13 +85,22 @@ const CUI = function() {
 			map: {}
 		}
 	};
-
-	this.mapButtons = function(gamepad, session, normalize) {
-		let prof = remappingProfiles[gamepad.profile];
-		if (!prof) {
-			prof = remappingProfiles['Xbox_PS_Adaptive'];
+	let sys = 'PC';
+	let gamepadPrefs = {
+		default: {
+			profile: 'Xbox_PS_Adaptive',
+			map: {}
 		}
-		let sys = session.sys;
+	};
+	let normalize = {};
+
+	function mapButtons(system, gPrefs, norm) {
+		sys = system || sys;
+		gamepadPrefs = gPrefs || gamepadPrefs;
+		normalize = norm || normalize;
+
+		let pad = gamepadPrefs[gamepadType];
+		let prof = remappingProfiles[pad.profile];
 		let enable;
 		if (prof.enable) {
 			enable = new RegExp(`(${prof.enable})`, 'i');
@@ -123,7 +129,7 @@ const CUI = function() {
 			// log('controller remapping enabled for ' + sys);
 			map = {};
 			for (let i in prof.map) {
-				map[i] = gamepad.map[prof.map[i]] || prof.map[i];
+				map[i] = pad.map[prof.map[i]] || prof.map[i];
 			}
 		} else {
 			// log('no controller remapping for ' + sys);
@@ -135,15 +141,16 @@ const CUI = function() {
 		// and doAction choices consistent for certain buttons
 		if (normalize &&
 			((normalize.disable &&
-					!(new RegExp(`(${normalize.disable})`, 'i')).test(gamepad.profile)) ||
+					!(new RegExp(`(${normalize.disable})`, 'i')).test(pad.profile)) ||
 				(normalize.enable &&
-					(new RegExp(`(${normalize.enable})`, 'i')).test(gamepad.profile))
+					(new RegExp(`(${normalize.enable})`, 'i')).test(pad.profile))
 			)) {
 			for (let i in normalize.map) {
-				map[i] = gamepad.map[normalize.map[i]] || normalize.map[i];
+				map[i] = pad.map[normalize.map[i]] || normalize.map[i];
 			}
 		}
 	}
+	this.mapButtons = mapButtons;
 
 	let customActions = () => {};
 	let doAction = (act) => {
@@ -151,20 +158,24 @@ const CUI = function() {
 			if (uiPrev) {
 				for (let i = uiPrevStates.length - 1; i >= 0; i--) {
 					if (!(/menu/i).test(uiPrevStates[i]) && ui != uiPrevStates[i]) {
-						this.uiStateChange(uiPrevStates[i]);
+						this.change(uiPrevStates[i]);
 						break;
 					}
 				}
 			} else {
 				for (let state of uiPrevStates) {
 					if ((/main/i).test(state)) {
-						this.uiStateChange(state);
+						this.change(state);
 						break;
 					}
 				}
 			}
 		} else {
 			customActions(act, this.btns.includes(act));
+		}
+		if (act == 'quit') {
+			app.quit();
+			process.kill('SIGINT');
 		}
 	};
 	this.doAction = doAction;
@@ -299,14 +310,14 @@ const CUI = function() {
 	this.removeView = removeView;
 
 	let uiOnChange = () => {
-		log('set custom ui state change with the setUIStateChange method');
+		log('set custom ui state change with the setchange method');
 	};
 
 	this.setUIOnChange = function(func) {
 		uiOnChange = func;
 	};
 
-	function uiStateChange(state, subState, opt) {
+	function change(state, subState, opt) {
 		opt = opt || {};
 		if (state == ui) {
 			log('b ' + state);
@@ -364,7 +375,7 @@ const CUI = function() {
 			log('ui state changed from ' + uiPrev + ' to ' + state);
 		}
 	}
-	this.uiStateChange = uiStateChange;
+	this.change = change;
 
 	function uieClicked() {
 		let classes = $(this).attr('class').split(' ');
@@ -529,75 +540,124 @@ const CUI = function() {
 		}
 	}
 	this.buttonHeld = buttonHeld;
+	async function parseBtns(btns) {
+		if (!gamepadConnected) {
+			uiOnChange(ui, uiSub, true);
+			$('html').addClass('cui-gamepadConnected');
+			gamepadConnected = true;
+		}
+		for (let i in btns) {
+			let btn = btns[i];
+			// incomplete maps are okay
+			// no one to one mapping necessary
+			i = map[i] || i;
+
+			let query;
+			if (typeof btn == 'boolean') {
+				query = btn;
+			} else {
+				query = btn.query();
+			}
+			// if button is not pressed, query is false and unchanged
+			if (!btnStates[i] && !query) {
+				continue;
+			}
+			// if button press ended query is false
+			if (!query) {
+				// log(i + ' button press end');
+				btnStates[i] = 0;
+				continue;
+			}
+			// if button is held, query is true and unchanged
+			if (btnStates[i] && query) {
+				btnStates[i] += 1;
+				await buttonHeld(i, btnStates[i] * 16);
+				continue;
+			}
+			// save button state change
+			btnStates[i] += 1;
+			// if button press just started, query is true
+			if (opt.v) {
+				log(i + ' button press start');
+			}
+			await buttonPressed(i);
+		}
+	}
+
+	function sticks(stks) {
+		let didMove = false;
+		let vect = stks.left;
+		if (vect.y < -.5) {
+			if (stickNue.y) move('up');
+			stickNue.y = false;
+		}
+		if (vect.y > .5) {
+			if (stickNue.y) move('down');
+			stickNue.y = false;
+		}
+		if (vect.x < -.5) {
+			if (stickNue.x) move('left');
+			stickNue.x = false;
+		}
+		if (vect.x > .5) {
+			if (stickNue.x) move('right');
+			stickNue.x = false;
+		}
+		if (vect.x < .5 &&
+			vect.x > -.5) {
+			stickNue.x = true;
+		}
+		if (vect.y < .5 &&
+			vect.y > -.5) {
+			stickNue.y = true;
+		}
+	}
+
+	async function parse(btns, stks, trigs, type) {
+		if (type && gamepadType != type) {
+			let res = false;
+			for (let i in btns) {
+				let btn = btns[i];
+				let val;
+				if (typeof btn == 'boolean') {
+					val = btn;
+				} else {
+					val = btn.query();
+				}
+				if (val) {
+					res = true;
+				}
+			}
+			if (res) {
+				gamepadType = type;
+				mapButtons();
+			} else {
+				return;
+			}
+		}
+
+		await parseBtns(btns);
+		sticks(stks);
+	}
+	this.parse = parse;
 
 	async function loop() {
 		if (gamepadConnected || gamepad.isConnected()) {
-			for (let i in btns) {
-				let btn = btns[i];
-				// incomplete maps are okay
-				// no one to one mapping necessary
-				i = map[i] || i;
-
-				if (!gamepadConnected) {
-					uiOnChange(ui, uiSub, true);
-					$('html').addClass('cui-gamepadConnected');
-				}
-				let query = btn.query();
-				// if button is not pressed, query is false and unchanged
-				if (!btnStates[i] && !query) {
-					continue;
-				}
-				// if button press ended query is false
-				if (!query) {
-					// log(i + ' button press end');
-					btnStates[i] = 0;
-					continue;
-				}
-				// if button is held, query is true and unchanged
-				if (btnStates[i] && query) {
-					btnStates[i] += 1;
-					await buttonHeld(i, btnStates[i] * 16);
-					continue;
-				}
-				// save button state change
-				btnStates[i] += 1;
-				// if button press just started, query is true
-				if (opt.v) {
-					log(i + ' button press start');
-				}
-				await buttonPressed(i);
-			}
-			let vect = gamepad.stick('left').query();
-			if (vect.y < -.5) {
-				if (stickNue.y) move('up');
-				stickNue.y = false;
-			}
-			if (vect.y > .5) {
-				if (stickNue.y) move('down');
-				stickNue.y = false;
-			}
-			if (vect.x < -.5) {
-				if (stickNue.x) move('left');
-				stickNue.x = false;
-			}
-			if (vect.x > .5) {
-				if (stickNue.x) move('right');
-				stickNue.x = false;
-			}
-			if (vect.x < .5 &&
-				vect.x > -.5) {
-				stickNue.x = true;
-			}
-			if (vect.y < .5 &&
-				vect.y > -.5) {
-				stickNue.y = true;
-			}
-			gamepadConnected = true;
+			let stks = {
+				left: gamepad.stick('left').query(),
+				right: gamepad.stick('right').query()
+			};
+			let trigs;
+			await parse(btns, stks, trigs, 'default');
 		}
 		requestAnimationFrame(loop);
 	}
+
 	this.start = function(options) {
 		opt = options || {};
+		if (opt.gca) {
+			require('./gca.js')();
+		}
 		$('.uie').off('click').click(uieClicked);
 		$('.uie').off('hover').hover(uieHovered);
 		loop();
@@ -624,7 +684,20 @@ const CUI = function() {
 		});
 	}
 
-	function err(msg) {
+	this.bind = function(keys, act) {
+		Mousetrap.bind(keys, function() {
+			cui.doAction(act);
+			return false;
+		});
+	}
+
+	this.click = function(elem, act) {
+		$(elem).click(function() {
+			cui.buttonPressed(act);
+		});
+	}
+
+	function error(msg) {
 		log(msg);
 		let $errMenu = $('#errMenu');
 		if (!$errMenu.length) {
@@ -640,8 +713,10 @@ const CUI = function() {
 			$('#errMenu .uie').hover(uieHovered);
 		}
 		$('#errMenu p').text(msg);
-		this.uiStateChange('errMenu');
+		this.change('errMenu');
 	}
-	this.err = err;
+	this.error = error;
+	this.err = error;
+	this.er = error;
 };
 module.exports = new CUI();

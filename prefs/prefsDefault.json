@@ -83,8 +83,23 @@
 			}
 		},
 		"gamepad": {
-			"profile": "Xbox_PS_Adaptive",
-			"map": {}
+			"gca": true,
+			"default": {
+				"profile": "Xbox_PS_Adaptive",
+				"map": {}
+			},
+			"ps": {
+				"profile": "Xbox_PS_Adaptive",
+				"map": {}
+			},
+			"xbox": {
+				"profile": "Xbox_PS_Adaptive",
+				"map": {}
+			},
+			"nintendo": {
+				"profile": "Nintendo_Adaptive",
+				"map": {}
+			}
 		},
 		"getBackCoverHQ": false,
 		"getExtraImgs": false,

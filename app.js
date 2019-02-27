@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const log = console.log;
+global.log = console.log;
 
 global.__rootDir = __dirname;
 const {
@@ -11,24 +11,14 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const setupPug = require('electron-pug');
-const {
-	autoUpdater
-} = require("electron-updater");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 async function createWindow() {
-	autoUpdater.checkForUpdatesAndNotify();
-	let pkgPath = path.join(__rootDir, 'package.json');
-	log(pkgPath);
-	let package = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
-	log('starting ' + package.name);
-
 	try {
 		const locals = {
-			title: package.name,
 			__rootDir: __rootDir.replace(/\\/g, '/'),
 			node_modules: path.join(__rootDir, 'node_modules').replace(/\\/g, '/')
 		};
@@ -53,7 +43,7 @@ async function createWindow() {
 	mainWindow.loadURL(`file://${__dirname}/views/pug/index.pug`);
 
 	// Open the DevTools.
-	// mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', function() {

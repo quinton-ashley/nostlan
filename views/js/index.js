@@ -25,12 +25,20 @@ module.exports = async function(opt) {
 	// 	});
 	// };
 
-	// bottlenose dir location cannot be changed
-	// only used to store small files, no images
-	// the user's preferences and game libs json databases
+	// Bottlenose dir location cannot be changed.
+	// Only used to store small config files, no images,
+	// so that it doesn't take much space on the user's
+	// main hard drive.  I don't give users a choice
+	// to move this folder elsewhere because it needs to be
+	// in a set location.
+	// The user's preferences and game libs json databases
+	// are stored here.
 	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
 	log(usrDir);
+
+	// dl is a helper lib I made for downloading images
 	const dl = require(__rootDir + '/core/dl/dl.js');
+	// modules that use dl
 	const andyDecarli = require(__rootDir + '/core/dl/andyDecarli.js');
 	const gamestdb = require(__rootDir + '/core/dl/gamestdb.js');
 
@@ -38,30 +46,34 @@ module.exports = async function(opt) {
 	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 	let prefsPath = usrDir + '/_usr/prefs.json';
-	global.prefs = prefsDefault;
+	global.prefs = prefsDefault; // set to defaults at first
+
 	// I assume the user is using a smooth scroll trackpad
-	// or apple mouse with their Mac
-	prefs.ui.mouse.wheel.multi = ((!mac) ? 1 : 0.25);
-	prefs.ui.mouse.wheel.smooth = ((!mac) ? false : true);
+	// or apple mouse with their Mac.
+	if (mac) {
+		prefs.ui.mouse.wheel.multi = 0.25;
+		prefs.ui.mouse.wheel.smooth = true;
+	}
+
 	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2'];
 	if (win) {
 		systems.push('xbox360');
 	} else if (mac) {
 		systems = ['wii', 'ds', '3ds', 'switch', 'ps2'];
 	}
-	let sys;
-	let sysStyle = '';
-	let emuDir = '';
-	let btlDir = '';
-	let outLog = '';
-	let games = [];
+	let sys; // current system
+	let sysStyle = ''; // style of that system
+	let emuDir = ''; // bottlenose dir is stored here
+	let btlDir = ''; // stores game art images and other game media
+	let outLog = ''; // path to the game search output log file
+	let games = []; // array of current games from the systems' db
 	let themes;
 	let theme;
-	let emu;
+	let emu; // current emulator
 	let defaultCoverImg;
-	let templateAmt = 4;
-	let child;
-	let childState = 'closed';
+	let templateAmt = 4; // template boxes in each column of the lib viewer
+	let child; // child process running an emulator
+	let childState = 'closed'; // status of the process
 
 	let normalizeButtonLayout = {
 		map: {
@@ -70,6 +82,8 @@ module.exports = async function(opt) {
 		},
 		disable: 'nintendo'
 	};
+	// physical layout always matches the on screen postion of x and y
+	// in the cover menu
 
 	const olog = (msg) => {
 		log(msg.replace(/[\t\r\n]/gi, '').replace(':', ': '));
@@ -348,7 +362,7 @@ module.exports = async function(opt) {
 					cui.err(`Game library does not exist`);
 					return;
 				}
-				gameLibDir = elec.selectDir(`select ${sys} game directory`);
+				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
 			}
 			let files = await klaw(gameLibDir);
 			for (let i = 0; !files.length || (files.length == 1 &&
@@ -359,7 +373,7 @@ module.exports = async function(opt) {
 					cui.err(`Game library has no game files`);
 					return;
 				}
-				gameLibDir = elec.selectDir(`select ${sys} game directory`);
+				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
 				files = await klaw(gameLibDir);
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');
@@ -785,7 +799,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				$('#gameBoxOpen').prop('src', await imgExists(template, 'boxOpen'));
 				$('#gameBoxOpenMask').prop('src', await imgExists(template, 'boxOpenMask'));
 				$('#gameMemory').prop('src', await imgExists(template, 'memoryFront'));
-				$('#gameManual').prop('src', await imgExists(template, 'manual0'));
+				$('#gameManual').prop('src', await imgExists(template, 'manual'));
 
 				let mediaName = 'disc';
 				if (sys == 'switch' || sys == '3ds') {
@@ -880,7 +894,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				if (act == 'new-in-docs') {
 					emuDir = os.homedir() + '/Documents';
 				} else {
-					emuDir = elec.selectDir(msg);
+					emuDir = dialog.selectDir(msg);
 				}
 				if (!emuDir) {
 					return false;
@@ -1165,7 +1179,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				return emuAppPath;
 			}
 		}
-		emuAppPath = elec.selectFile('select emulator app');
+		emuAppPath = dialog.selectFile('select emulator app');
 		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {

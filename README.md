@@ -1,7 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download](https://github.com/quinton-ashley/bottlenose/releases) [Bottlenose and please choose an amount to pay for it](https://www.paypal.me/qashto/25) [or become a patreon supporter!](https://www.patreon.com/qashto)  
+[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and [please choose an amount to pay for it](https://www.paypal.me/qashto/25) or [become a patreon supporter!](https://www.patreon.com/qashto)  
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -77,10 +77,11 @@ Patreon: <https://www.patreon.com/qashto>
 Single Donation:  
 Paypal: <https://www.paypal.me/qashto/25>
 
-## Planned Features!
+## Planned Features
 
-I want to make Bottlenose a full companion app for Dolphin and other emulators, not just a nice front-end.  If enough people are interested in Bottlenose and donate enough, I will be able to set aside the time to implement these features!
+If enough people support the project on Patreon I will be able to set aside the time to implement these features!
 
+-   open box menu with submenus for manual reading, save management, and disc art viewing
 -   create a database of Dolphin texture packs
 -   batch install and auto-update texture packs for Dolphin
 -   install emulators
@@ -89,7 +90,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant auto-complete search
 -   user ability to make custom themes
--   mGBA support
+-   mGBA and PPSSPP support
 -   support for modded game isos or roms (currently skipped during indexing)
 
 ## How is Bottlenose different from other front-ends?
@@ -97,7 +98,7 @@ I want to make Bottlenose a full companion app for Dolphin and other emulators, 
 Emulation Station is a nice front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  However, with Bottlenose I wanted to make box art the primary, practically singular, focus of the UI, not metadata or descriptions.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
-The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose!  Launchbox looks useful for old arcade titles and seems like it's ready to run in custom arcade cabinets and on PCs with older hardware.  It shoots for quantity over quality image wise which makes sense for giant arcade game libraries.  Also, a lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Maybe that's not a big deal for most people but I don't like that.  Overall, I like Launchbox and Bottlenose is not intended to replace it.  Launchbox has support for so many emulators and numerous impressive features.  Instead, Bottlenose will mainly focus on mature emulators of consoles released after the year 2000.  Screenshot is of the "Big Box" mode of Launchbox.
+The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose.  A lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Screenshot is of the "Big Box" mode of Launchbox.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide though.
@@ -106,7 +107,7 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Retroarch is not really comparable to Bottlenose.  It uses seperate cores instead of individual emulator apps.  Game art is low res and the interface is barebones.  Good for small devices but personally I would never use it.
+Retroarch is not really comparable to Bottlenose.  It uses separate cores instead of individual emulator apps.  Game art is low res and the interface is barebones.  Good for small devices but personally I would never use it.
 ![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
 
 Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
@@ -178,7 +179,7 @@ emu (root folder can have any name)
         └── Turbo.rpx
 ```
 
-Bottlenose was designed to optionally use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Bottlenose was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
 On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
 
@@ -217,7 +218,7 @@ Edit your preferences file to change the default launch command for each OS.  Th
 
 ## Error Reporting
 
-Please [send me](mailto:qashto@gmail.com) send me a description of any errors with the relevant error log or report an issue with the code on this project's Github.
+Please [send me](mailto:qashto@gmail.com) a description of any errors with the relevant error log or report an issue with the code on this project's Github.
 
 ### Mismatched or Unidentified Games
 
@@ -256,7 +257,7 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 -   `id` is the official id of the game
 -   `name` the official name of the game, subtitles are delineated using a colon
 -   `texp` the texture pack array, order is irrelevant
--   `img` an object with "imgFileType": "url" pairs that override the default image location
+-   `img` an object with `"imgFileType": "url"` pairs that override the default image location
 
 ### Texture Packs
 
@@ -340,7 +341,7 @@ Some full resolution product images from Amazon are used for Wii U and Switch ti
 
 As of yet, all themes were made by me (quinton-ashley/qashto)
 
-[CSS PlayStation button icons adapted from a CodePen by Hugo Giraudel](https://codepen.io/HugoGiraudel/pen/iJphI)  
+[CSS PlayStation button icons were adapted from a CodePen by Hugo Giraudel](https://codepen.io/HugoGiraudel/pen/iJphI)  
 
 ### Loading Sequences
 

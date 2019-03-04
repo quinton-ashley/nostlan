@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-global.log = console.log;
+const log = console.log;
 
-global.__rootDir = __dirname;
+const __rootDir = __dirname;
 const {
 	app,
 	BrowserWindow

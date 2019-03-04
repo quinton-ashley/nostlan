@@ -1,4 +1,14 @@
 {
+	"ds": {
+		"default": {
+			"id": "ASME",
+			"title": "Super Mario 64 DS"
+		},
+		"template": {
+			"box": "http://vgboxart.com/process-download.php?id=385&type=resource \\ png",
+			"cart": "http://i40.tinypic.com/1z2dq4x.png"
+		}
+	},
 	"gcn": {
 		"default": {
 			"id": "GALE01",
@@ -14,14 +24,51 @@
 			"memoryBack": "https://raw.githubusercontent.com/quinton-ashley/bottlenose-img/master/gcn/memoryBack.png"
 		}
 	},
-	"ds": {
+	"mame": {
 		"default": {
-			"id": "ASME",
-			"title": "Super Mario 64 DS"
+			"id": "spang",
+			"title": "Super Pang (World 900914)"
+		},
+		"template": {}
+	},
+	"n3ds": {
+		"default": {
+			"id": "AREE",
+			"title": "Super Mario 3D Land"
 		},
 		"template": {
-			"box": "http://vgboxart.com/process-download.php?id=385&type=resource \\ png",
-			"cart": "http://i40.tinypic.com/1z2dq4x.png"
+			"box": "http://vgboxart.com/resources/template/12048_new-nintendo-3ds-prev.png",
+			"cart": "https://vgboxart.com/process-download.php?id=1505&type=resource // png"
+		},
+		"ui": {
+			"system": "https://reedart.files.wordpress.com/2014/01/nintendo-3ds-xl-screen-template1.jpg"
+		}
+	},
+	"ps3": {
+		"default": {
+			"id": "BCUS98154",
+			"title": "inFamous"
+		},
+		"template": {
+			"coverFull": "https://img00.deviantart.net/bed6/i/2015/183/2/1/ps3_cover_template_by_the_prototype92-d5xwdlw.png"
+		}
+	},
+	"ps2": {
+		"default": {
+			"id": "SLUS-20370",
+			"title": "Kingdom Hearts"
+		},
+		"template": {
+			"coverFull": "https://img00.deviantart.net/9074/i/2014/254/d/d/ps2_cover_template_by_etschannel-d7ycz27.png"
+		}
+	},
+	"switch": {
+		"default": {
+			"id": "AAACA",
+			"title": "Super Mario Odyssey"
+		},
+		"template": {
+			"box": "https://img00.deviantart.net/e372/i/2017/054/2/1/nintendo_switch_box_games_base_by_ponces245-db0674h.png"
 		}
 	},
 	"wii": {
@@ -43,28 +90,6 @@
 			"coverFull": "https://img00.deviantart.net/1865/i/2014/266/0/f/wii_u_cover_template_by_etschannel-d7sgkyf.png"
 		}
 	},
-	"n3ds": {
-		"default": {
-			"id": "AREE",
-			"title": "Super Mario 3D Land"
-		},
-		"template": {
-			"box": "http://vgboxart.com/resources/template/12048_new-nintendo-3ds-prev.png",
-			"cart": "https://vgboxart.com/process-download.php?id=1505&type=resource // png"
-		},
-		"ui": {
-			"system": "https://reedart.files.wordpress.com/2014/01/nintendo-3ds-xl-screen-template1.jpg"
-		}
-	},
-	"switch": {
-		"default": {
-			"id": "AAACA",
-			"title": "Super Mario Odyssey"
-		},
-		"template": {
-			"box": "https://img00.deviantart.net/e372/i/2017/054/2/1/nintendo_switch_box_games_base_by_ponces245-db0674h.png"
-		}
-	},
 	"xbox360": {
 		"default": {
 			"id": "4D5307E6",
@@ -72,24 +97,6 @@
 		},
 		"template": {
 			"coverFull": "https://img00.deviantart.net/aa3e/i/2016/205/7/3/xbox_360_cover_template_by_etschannel-d7tad9h.png"
-		}
-	},
-	"ps3": {
-		"default": {
-			"id": "BCUS98154",
-			"title": "inFamous"
-		},
-		"template": {
-			"coverFull": "https://img00.deviantart.net/bed6/i/2015/183/2/1/ps3_cover_template_by_the_prototype92-d5xwdlw.png"
-		}
-	},
-	"ps2": {
-		"default": {
-			"id": "SLUS-20370",
-			"title": "Kingdom Hearts"
-		},
-		"template": {
-			"coverFull": "https://img00.deviantart.net/9074/i/2014/254/d/d/ps2_cover_template_by_etschannel-d7ycz27.png"
 		}
 	}
 }

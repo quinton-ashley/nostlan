@@ -1001,6 +1001,18 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir)) || isTemplate) {
 				await fs.ensureDir(imgDir);
 
+				await getImg(game, 'box', 'HQ');
+				res = await getImg(game, 'coverFull');
+				if (!res) {
+					await getImg(game, 'coverSide');
+				}
+				if (!res && !(await imgExists(game, 'box'))) {
+					res = await getImg(game, 'cover');
+					if (!res) {
+						await getImg(game, 'box');
+					}
+				}
+
 				if (sys != 'switch' && sys != '3ds') {
 					await getImg(game, 'disc');
 				} else {
@@ -1013,21 +1025,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					await getImg(game, 'manual');
 					await getImg(game, 'memoryBack');
 					await getImg(game, 'memoryFront');
-				}
-				if (isTemplate) {
-					continue;
-				}
-
-				await getImg(game, 'box', 'HQ');
-				res = await getImg(game, 'coverFull');
-				if (!res) {
-					await getImg(game, 'coverSide');
-				}
-				if (!res && !(await imgExists(game, 'box'))) {
-					res = await getImg(game, 'cover');
-					if (!res) {
-						await getImg(game, 'box');
-					}
 				}
 			}
 		}

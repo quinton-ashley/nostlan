@@ -6,20 +6,24 @@ replace: {\n"id": "$1", "title": "$2", "texp": []\n},
 regex: \t\t\["\w\w\w[^e][^\n]*\n
 replace:
 
-xbox360
+// xbox360
 
 regex: ([^\|]*)\|([^\|]*)\|[^\|]*\|[^\|]*\|[^\|\n]*\n
 replace: \t"id": "$1",\n\t"title": "$2"\n}, {\n
 
-ps2:
+// ps2
 
 regex: \|([^\|]*)\|([^\|]*)\|[^\|]*[^\|\n]*\n
 replace: \t"id": "$1",\n\t"title": "$2"\n}, {\n
 
-gba:
+// gba
+
 regex: <game name="([^"]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+<crc>([^<]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n
 replace: "id": "$1",\n\t"title": "$2"\n}, {\n
 
-mame:
-regex: (\S+)\s*("[^"]+")
+// mame
+
+src: $ ./mame64 --list
+
+regex: (\S+)\s*("[^\n]+)
 replace: "id": "$1",\n\t"title": $2\n}, {

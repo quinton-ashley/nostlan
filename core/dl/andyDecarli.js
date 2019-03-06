@@ -30,12 +30,11 @@ class AndyDecarli {
 		return res;
 	}
 
-	async dlImg(sys, game, name) {
-		if (name != 'box') {
+	async dlImg(sys, game, dir, name) {
+		if (name != 'box' || sys == 'mame') {
 			return;
 		}
 		let res;
-		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 		let title = game.title.replace(/[\:]/g, '');
 		if (sys != 'switch') {
 			if (sys != 'wii') {

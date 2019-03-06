@@ -359,6 +359,8 @@ As of yet, all themes were made by me (quinton-ashley/qashto)
 
 [PS3 Icon Loader by Jan Machycek](https://codepen.io/machyj/pen/ENvewe)
 
+MAME loader by [Vadim Huck's](https://codepen.io/M4TERIAL/pen/gavvQL) and [Matt J Roberts'](https://codepen.io/mattjroberts/pen/pazNdx)
+
 ### Fonts
 
 [nintender](http://www.fontspace.com/lyric-type/nintender)  

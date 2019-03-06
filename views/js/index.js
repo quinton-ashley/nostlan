@@ -33,7 +33,7 @@ module.exports = async function(opt) {
 	// in a set location.
 	// The user's preferences and game libs json databases
 	// are stored here.
-	const usrDir = path.join(os.homedir(), '/Documents/emu/bottlenose');
+	const usrDir = os.homedir() + '/Documents/emu/bottlenose';
 	log(usrDir);
 
 	// dl is a helper lib I made for downloading images
@@ -43,7 +43,7 @@ module.exports = async function(opt) {
 	const gamestdb = require(__rootDir + '/core/dl/gamestdb.js');
 
 	// get the default prefrences
-	let prefsDefaultPath = path.join(__rootDir, '/prefs/prefsDefault.json');
+	let prefsDefaultPath = __rootDir + '/prefs/prefsDefault.json';
 	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 	let prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = prefsDefault; // set to defaults at first
@@ -55,11 +55,11 @@ module.exports = async function(opt) {
 		prefs.ui.mouse.wheel.smooth = true;
 	}
 
-	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2'];
+	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2', 'mame'];
 	if (win) {
 		systems.push('xbox360');
 	} else if (mac) {
-		systems = ['wii', 'ds', '3ds', 'switch', 'ps2'];
+		systems = ['wii', 'ds', '3ds', 'switch', 'ps2', 'mame'];
 	}
 	let sys; // current system
 	let sysStyle = ''; // style of that system
@@ -70,7 +70,7 @@ module.exports = async function(opt) {
 	let themes;
 	let theme;
 	let emu; // current emulator
-	let defaultCoverImg;
+	let defaultBox;
 	let templateAmt = 4; // template boxes in each column of the lib viewer
 	let child; // child process running an emulator
 	let childState = 'closed'; // status of the process
@@ -94,12 +94,14 @@ module.exports = async function(opt) {
 		css: {},
 		html: {}
 	};
+	let introJS;
+	let introUsesJS;
 
 	// retrieves the loading sequence files, some are pug not plain html
 	async function getIntroFile(type) {
 		let fType = ((type == 'css') ? 'css' : 'html');
 		if (!introFiles[fType][sysStyle]) {
-			let introFile = path.join(__dirname, `../${type}/${sysStyle}Load.${type}`);
+			let introFile = `${__rootDir}/views/${type}/${sysStyle}Load.${type}`;
 			if (await fs.exists(introFile)) {
 				if (type == 'css') {
 					introFiles[fType][sysStyle] = `
@@ -124,13 +126,15 @@ module.exports = async function(opt) {
 	}
 
 	async function intro() {
+		$('#dialogs').show();
 		await getIntroFile('pug');
 		await getIntroFile('css');
-		let hasJS = await fs.exists(path.join(__dirname, `../js/${sysStyle}Load.js`));
-		if (hasJS) {
-			require(`../js/${sysStyle}Load.js`)();
+		let file = `${__rootDir}/views/js/${sysStyle}Load.js`;
+		introUsesJS = await fs.exists(file);
+		if (introUsesJS) {
+			introJS = require(file);
+			introJS.start();
 		}
-		$('#dialogs').show();
 	}
 
 	function addGame(fuse, searchTerm) {
@@ -186,7 +190,7 @@ module.exports = async function(opt) {
 		let _games = games;
 		games = [];
 		let gameDB = [];
-		let DBPath = path.join(__rootDir, `/db/${sys}DB.json`);
+		let DBPath = `${__rootDir}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
 		if (opt.v) {
 			log(gameDB);
@@ -207,6 +211,8 @@ module.exports = async function(opt) {
 			idRegex = /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/;
 		} else if (sys == 'xbox360') {
 			idRegex = /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/;
+		} else if (sys == 'mame') {
+			idRegex = /(\S+)/;
 		}
 
 		let searchOpt = {
@@ -231,9 +237,10 @@ module.exports = async function(opt) {
 			for (let i = 0; i < files.length; i++) {
 				file = files[i];
 				let term = path.parse(file);
-				if (term.base[0] == '.') {
-					continue;
-				}
+				// if it's a hidden file like '.DS_STORE' on macOS, skip it
+				if (term.base[0] == '.') continue;
+				// if it's the dir.txt in the mame roms folder skip it
+				if (term.base == 'dir.txt') continue;
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
 				if (sys != 'wiiu' && sys != 'ps3') {
@@ -263,6 +270,7 @@ module.exports = async function(opt) {
 				if (idRegex) {
 					id = term.match(idRegex);
 				}
+				log(id);
 				if (id) {
 					id = id[1];
 					let game = gameDB.find(x => x.id === id);
@@ -338,6 +346,7 @@ module.exports = async function(opt) {
 		$('body').removeClass();
 		sysStyle = (prefs[sys].style || sys);
 		$('body').addClass(sys + ' ' + sysStyle);
+		emu = prefs[sys].emu.toLowerCase();
 
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
@@ -350,23 +359,28 @@ module.exports = async function(opt) {
 				await removeIntro(0);
 				return;
 			}
+			log(emu);
 			let gameLibDir = `${emuDir}/${prefs[sys].emu}/GAMES`;
-			if (sys == 'ps3') {
+			if (emu == 'rpcs3') {
 				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/dev_hdd0/game`;
+			} else if (emu == 'mame') {
+				gameLibDir = `${emuDir}/${prefs[sys].emu}/BIN/roms`;
 			}
+
+			log(gameLibDir);
 
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
 				if (i >= 1) {
 					cui.change('setupMenu');
 					await removeIntro(0);
-					cui.err(`Game library does not exist`);
+					cui.err(`Game library does not exist: \n` + gameLibDir);
 					return;
 				}
 				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
 			}
 			let files = await klaw(gameLibDir);
 			for (let i = 0; !files.length || (files.length == 1 &&
-					path.parse(files[0]).base == '.DS_Store'); i++) {
+					(['.DS_Store', 'dir.txt'].includes(path.parse(files[0]).base))); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
 					cui.change('setupMenu');
@@ -405,7 +419,7 @@ module.exports = async function(opt) {
 	}
 
 	async function load() {
-		let files = await klaw(path.join(__rootDir, '/views/md'));
+		let files = await klaw(__rootDir + '/views/md');
 		log(files);
 		for (let file of files) {
 			file = file;
@@ -572,9 +586,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	});
 
 	async function removeIntro(time) {
+		log('time:' + time);
 		if (cui.ui != 'errMenu') {
-			await delay(time || 2000);
+			await delay(time || prefs.load.delay);
 		}
+		if (introUsesJS) introJS.stop();
 		$('#intro').remove();
 		$('link.introStyle').prop('disabled', true);
 		$('link.introStyle').remove();
@@ -592,7 +608,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (!emuAppPath) {
 			return;
 		}
-		let gameFile;
+		let game;
 		let args = [];
 		emuDirPath = path.join(emuAppPath, '..');
 		if (linux) {
@@ -601,25 +617,25 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		}
 		if (cui.ui != 'libMain') {
-			gameFile = games.find(x => x.id === id);
-			if (gameFile) {
-				gameFile = getAbsolutePath(gameFile.file);
+			game = games.find(x => x.id === id);
+			if (game.file) {
+				game.file = getAbsolutePath(game.file);
 			} else {
 				cui.err('game not found: ' + id);
 				return;
 			}
 			if (emu == 'rpcs3') {
-				gameFile += '/USRDIR/EBOOT.BIN';
+				game.file += '/USRDIR/EBOOT.BIN';
 			}
 			if (emu == 'cemu') {
-				let files = await klaw(gameFile + '/code');
+				let files = await klaw(game.file + '/code');
 				log(files);
 				let ext, file;
 				for (let i = 0; i < files.length; i++) {
 					file = files[i];
 					ext = path.parse(file).ext;
 					if (ext == '.rpx') {
-						gameFile = file;
+						game.file = file;
 						break;
 					}
 				}
@@ -633,8 +649,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				if (cui.ui == 'libMain') {
 					break;
 				}
-			} else if (arg == '${game}') {
-				args.push(gameFile);
+			} else if (arg == '${game}' || arg == '${game.file}') {
+				args.push(game.file);
+			} else if (arg == '${game.id}') {
+				args.push(game.id);
+			} else if (arg == '${game.title}') {
+				args.push(game.title);
 			} else {
 				args.push(arg);
 			}
@@ -701,11 +721,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 
 	async function createTemplate(emuDir) {
 		for (let i = 0; i < systems.length; i++) {
-			let emu = prefs[systems[i]].emu;
 			if (win) {
-				await fs.ensureDir(`${emuDir}/${emu}/BIN`);
+				await fs.ensureDir(`${emuDir}/${prefs[systems[i]].emu}/BIN`);
 			}
-			await fs.ensureDir(`${emuDir}/${emu}/GAMES`);
+			await fs.ensureDir(`${emuDir}/${prefs[systems[i]].emu}/GAMES`);
 		}
 	}
 
@@ -878,7 +897,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
 				emuDir = os.homedir() + '/Documents/emu';
-				let templatePath = path.join(__rootDir, '/demo');
+				let templatePath = __rootDir + '/demo';
 				await fs.copy(templatePath, emuDir);
 				await createTemplate(emuDir);
 				await reload();
@@ -936,7 +955,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (res) {
 			return res;
 		}
-		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
+		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
+		let imgDir = getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
@@ -950,16 +970,19 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				url = url[0];
 				ext = url.substr(-3);
 			}
-			file = `${dir}/${name}.${ext}`;
+			file = `${imgDir}/${name}.${ext}`;
 			res = await dl(url, file);
 			if (res) {
 				return res;
 			}
 		}
-		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
+
+		if (game.id == '_TEMPLATE') {
+			return;
+		}
 
 		// get high quality box from Andy Decarli's site
-		res = await andyDecarli.dlImg(sys, game, name);
+		res = await andyDecarli.dlImg(sys, game, imgDir, name);
 		if (res) {
 			return res;
 		}
@@ -968,7 +991,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return;
 		}
 
-		return await gamestdb.dlImg(sys, game, name);
+		return await gamestdb.dlImg(sys, game, imgDir, name);
 	}
 
 	function getTemplate() {
@@ -996,15 +1019,21 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			if (game.title) {
 				game.title = rmDiacritics(game.title);
 			}
-			imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
+			imgDir = getImgDir(game);
 
 			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir)) || isTemplate) {
 				await fs.ensureDir(imgDir);
 
-				await getImg(game, 'box', 'HQ');
+				if (!isTemplate || (!(await imgExists(game, 'coverFull')) &&
+						!(await imgExists(game, 'cover')))) {
+					await getImg(game, 'box', 'HQ');
+				}
 				res = await getImg(game, 'coverFull');
 				if (!res) {
 					await getImg(game, 'coverSide');
+					if (!(await imgExists(game, 'boxBack'))) {
+						await getImg(game, 'coverBack');
+					}
 				}
 				if (!res && !(await imgExists(game, 'box'))) {
 					res = await getImg(game, 'cover');
@@ -1028,17 +1057,28 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				}
 			}
 		}
-		defaultCoverImg = await getImg(theme.default, 'box');
-		if (!defaultCoverImg) {
-			log('ERROR: No default cover image found');
-			return;
+		if (theme.default) {
+			defaultBox = await getImg(theme.default, 'box');
+			if (!defaultBox) {
+				log('ERROR: No default box image found');
+				return;
+			}
 		}
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));
 	}
 
+	function getImgDir(game) {
+		let imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
+		if (emu == 'mame') {
+			imgDir = `${emuDir}/${prefs[sys].emu}/BIN/artwork/${game.id}`;
+		}
+		return imgDir;
+	}
+
 	async function imgExists(game, name) {
-		let file = `${prefs.btlDir}/${sys}/${game.id}/img/${name}.png`;
+		let imgDir = getImgDir(game);
+		let file = `${imgDir}/${name}.png`;
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
@@ -1066,7 +1106,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		$('.reel.r' + reelNum).append(pug(`
 #${game.id}.uie${((game.id != '_TEMPLATE')?'':'.uie-disabled')}
-	${((cl1)?`img.box(src="${defaultCoverImg}")`:'')}
+	${((cl1)?`img.box(src="${defaultBox}")`:'')}
 	section${((cl1)?'.'+cl1: '')}
 		img${((cl1)?'.cov': '.box')}(src="${file}")
 		${((cl1)?'.shade.p-0.m-0':'')}
@@ -1109,9 +1149,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win || (linux && (/(cemu|yuzu|rpcs3)/).test(emu))) {
-			emuDirPath = path.join(prefs.btlDir,
-				`../${prefs[sys].emu}/BIN`);
+		if (win || (linux && (/(cemu|yuzu|rpcs3)/).test(emu)) ||
+			(mac && emu == 'mame')) {
+			emuDirPath = `${emuDir}/${prefs[sys].emu}/BIN`;
 			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
 					emuDirPath += '/nightly-mingw';
@@ -1151,16 +1191,21 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				} else if (emu == 'yuzu') {
 					emuAppPath += '/' + emuNameCases[1];
 				}
-				emuAppPath += '.app/Contents/MacOS';
+				if (emu != 'mame') {
+					emuAppPath += '.app/Contents/MacOS';
+				}
 				if (emu == 'desmume') {
 					emuAppPath += '/' + emuNameCases[0];
-				} else {
+				} else if (emu != 'mame') {
 					emuAppPath += '/' + emuNameCases[1];
 				}
 				if (emu == 'citra') {
 					emuAppPath += '-qt-bin';
 				} else if (emu == 'yuzu') {
 					emuAppPath += '-bin';
+				}
+				if (emu == 'mame') {
+					emuAppPath += '64';
 				}
 			} else if (linux) {
 				if (emu == 'dolphin') {
@@ -1176,6 +1221,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				return emuAppPath;
 			}
 		}
+		log("couldn't find app at path:\n" + emuAppPath);
 		emuAppPath = dialog.selectFile('select emulator app');
 		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
@@ -1204,12 +1250,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	async function viewerLoad() {
 		cui.resize(true);
 		let shouldRebindMouse;
-		if (emu) {
-			shouldRebindMouse = true;
-		}
-		emu = prefs[sys].emu.toLowerCase();
 		if (!themes) {
-			let themesPath = path.join(global.__rootDir, '/prefs/themes.json');
+			shouldRebindMouse = true;
+			let themesPath = __rootDir + '/prefs/themes.json';
 			themes = JSON.parse(await fs.readFile(themesPath));
 		}
 		theme = themes[prefs[sys].style || sys];
@@ -1257,7 +1300,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		});
 		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
-		if (!shouldRebindMouse) {
+		if (shouldRebindMouse) {
 			cui.rebind('mouse');
 		}
 	}

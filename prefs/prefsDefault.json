@@ -1,6 +1,18 @@
 {
 	"btlDir": "",
 	"region": "E",
+	"3ds": {
+		"app": {
+			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
+		},
+		"cmd": {
+			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
+			"mac": ["${app}", "${game}", "-f"],
+			"win": ["${app}", "${game}", "-f"]
+		},
+		"emu": "Citra",
+		"style": "n3ds"
+	},
 	"ds": {
 		"app": {},
 		"cmd": {
@@ -8,6 +20,44 @@
 			"win": ["${app}", "${game}"]
 		},
 		"emu": "DeSmuME"
+	},
+	"mame": {
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game.id}"],
+			"mac": ["${app}", "${game.id}"],
+			"win": ["${app}", "${game.id}"]
+		},
+		"emu": "MAME"
+	},
+	"ps2": {
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
+			"mac": ["${app}", "${game}", "--nogui", "--fullscreen"],
+			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
+		},
+		"emu": "PCSX2"
+	},
+	"ps3": {
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}"],
+			"win": ["${app}", "${game}"]
+		},
+		"emu": "RPCS3"
+	},
+	"switch": {
+		"app": {
+			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
+			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
+		},
+		"cmd": {
+			"linux": ["${app}", "${game}"],
+			"mac": ["${app}", "${game}"],
+			"win": ["${app}", "${game}"]
+		},
+		"emu": "Yuzu"
 	},
 	"wii": {
 		"app": {},
@@ -27,53 +77,12 @@
 		},
 		"emu": "Cemu"
 	},
-	"3ds": {
-		"app": {
-			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
-		},
-		"cmd": {
-			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
-			"mac": ["${app}", "${game}", "-f"],
-			"win": ["${app}", "${game}", "-f"]
-		},
-		"emu": "Citra",
-		"style": "n3ds"
-	},
-	"switch": {
-		"app": {
-			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
-			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"mac": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"emu": "Yuzu"
-	},
 	"xbox360": {
 		"app": {},
 		"cmd": {
 			"win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]
 		},
 		"emu": "Xenia"
-	},
-	"ps2": {
-		"app": {},
-		"cmd": {
-			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
-			"mac": ["${app}", "${game}", "--nogui", "--fullscreen"],
-			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
-		},
-		"emu": "PCSX2"
-	},
-	"ps3": {
-		"app": {},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"emu": "RPCS3"
 	},
 	"ui": {
 		"mouse": {
@@ -105,6 +114,9 @@
 		"getExtraImgs": false,
 		"recheckImgs": false,
 		"autoHideCover": false
+	},
+	"load": {
+		"delay": 2000
 	},
 	"inGame": {
 		"quit": {

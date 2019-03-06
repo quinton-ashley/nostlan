@@ -11,13 +11,12 @@ class Gamestdb {
 		];
 	}
 
-	async dlImg(sys, game, name) {
-		if (!this.availableImgs.includes(name)) {
+	async dlImg(sys, game, dir, name) {
+		if (!this.availableImgs.includes(name) || sys == 'mame') {
 			return;
 		}
 		// get image from gametdb
 		let res, url;
-		let dir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 		let file = `${dir}/${name}`;
 		let id = game.id;
 		for (let i = 0; i < 3; i++) {

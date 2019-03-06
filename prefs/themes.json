@@ -25,10 +25,6 @@
 		}
 	},
 	"mame": {
-		"default": {
-			"id": "spang",
-			"title": "Super Pang (World 900914)"
-		},
 		"template": {}
 	},
 	"n3ds": {

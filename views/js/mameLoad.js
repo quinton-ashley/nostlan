@@ -4,6 +4,7 @@ class Script {
 	constructor() {}
 
 	async start() {
+		stopAnimation = false;
 
 		await delay(1000);
 
@@ -205,6 +206,7 @@ class Script {
 				requestAnimationFrame(render);
 			} else {
 				scene.remove.apply(scene, scene.children);
+				$('div canvas').parent().remove();
 			}
 			// log('animation active');
 			c.clearRect(0, 0, canvas.width, canvas.height);

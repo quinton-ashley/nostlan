@@ -12,7 +12,7 @@ canvas {
 }
 
 #intro {
-	background-color: transparent;
+	background-color: transparent!important;
 }
 
 .main {

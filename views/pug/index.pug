@@ -2,7 +2,8 @@ doctype html
 html
 
 head
-	title= title
+	title Bottlenose
+	meta(charset='utf-8')
 	link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
 	link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
 	link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
@@ -72,4 +73,4 @@ body
 	script.
 		console.log('opening index.pug');
 		console.log('#{node_modules}');
-		require('../js/index.js')({__rootDir:'#{__rootDir}'});
+		require('../js/index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

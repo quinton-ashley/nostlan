@@ -81,6 +81,12 @@ html {
 	--cover-text-color: #111;
 	--button-color: #333;
 }
+
+.mame {
+	--cover-color: #11426C;
+	--cover-text-color: #00274f;
+	--button-color: #11426C;
+}
 /*================General====================*/
 .hiddenRow {
 	padding: 0 !important;
@@ -233,6 +239,12 @@ html {
 	border-radius: 32px;
 	border-width: 8px 0 8px 0;
 	border-style: solid;
+	font-weight: bold;
+}
+
+.menu h1 {
+	font-weight: bolder;
+	margin-bottom: 2vh;
 }
 
 .menu * {
@@ -598,6 +610,10 @@ img {
 .switch .front-cover-crop img {
 	transform: translate(-52.4%, 0%);
 }
+/*================MAME Game Lib Viewer====================*/
+.mame .box {
+	border-radius: 0;
+}
 /*================Game Lib Viewer====================*/
 .front-cover,
 .front-cover-crop {
@@ -765,7 +781,52 @@ button:focus {
 ul.nav {
 	height: 100%;
 }
+/*================PS2 + PS3 Cover========================*/
+@font-face {
+	font-family: 'Sownie';
+	src: local('Sownie'), local('Sownie'), url("../fonts/sownie.ttf");
+}
+
+.ps2 #view,
+.ps3 #view,
+.ps4 #view {
+	font-family: 'Sownie', sans-serif;
+	font-size: 1.74vw;
+	text-transform: uppercase;
+	border: none;
+	box-shadow: none;
+	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
+	transform: translate(-1.9%, -85%) scale(1, 3);
+}
 /*================MAME Cover========================*/
+@font-face {
+	font-family: 'Orbitron';
+	font-style: normal;
+	font-weight: 900;
+	src: local('Orbitron Black'), local('Orbitron-Black'), url("https://fonts.gstatic.com/s/orbitron/v10/yMJWMIlzdpvBhQQL_QI4UDh2qtBTWFHy.woff2") format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.mame nav .text,
+.ps2 nav .text,
+.ps3 nav .text,
+.ps4 nav .text {
+	font-family: 'Orbitron', sans-serif;
+	text-transform: uppercase;
+	font-size: 2.4vw;
+	transform: translate(0%,13%) scale(1, 2);
+	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
+}
+
+.mame #view {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 2vw;
+	text-transform: uppercase;
+	border: none;
+	box-shadow: none;
+	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
+	transform: translate(-1.9%, -85%) scale(1, 3);
+}
 /*================Gamecube Cover====================*/
 @font-face {
 	font-family: Gamecuben;
@@ -777,6 +838,7 @@ ul.nav {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
 	font-size: 3vw;
 	font-weight: bold;
+	text-transform: lowercase;
 	letter-spacing: -3px;
 }
 

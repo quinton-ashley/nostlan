@@ -3,10 +3,10 @@
  * authors: quinton-ashley
  * copyright 2018
  */
-module.exports = async function(opt) {
-	// opt.v = false; // quieter log
-	opt.electron = true;
-	await require(opt.__rootDir + '/core/setup.js')(opt);
+module.exports = async function(arg) {
+	// arg.v = false; // quieter log
+	arg.electron = true;
+	await require(arg.__rootDir + '/core/setup.js')(arg);
 
 	const deepExtend = require('deep-extend');
 	const Fuse = require('fuse.js');
@@ -16,10 +16,10 @@ module.exports = async function(opt) {
 	// const {
 	// 	extractFull
 	// } = require('node-7z');
-	// const extract = (input, output, opt) => {
+	// const extract = (input, output, arg) => {
 	// 	return new Promise((resolve, reject) => {
-	// 		opt.$bin = sevenBin.path7za;
-	// 		extractFull(input, output, opt)
+	// 		arg.$bin = sevenBin.path7za;
+	// 		extractFull(input, output, arg)
 	// 			.on('end', () => resolve())
 	// 			.on('error', (err) => reject(err));
 	// 	});
@@ -139,7 +139,7 @@ module.exports = async function(opt) {
 
 	function addGame(fuse, searchTerm) {
 		let results = fuse.search(searchTerm.substr(0, 32));
-		if (opt.v) {
+		if (arg.v) {
 			log(results);
 		}
 		let region = prefs.region;
@@ -192,7 +192,7 @@ module.exports = async function(opt) {
 		let gameDB = [];
 		let DBPath = `${__rootDir}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
-		if (opt.v) {
+		if (arg.v) {
 			log(gameDB);
 		}
 
@@ -215,7 +215,7 @@ module.exports = async function(opt) {
 			idRegex = /(\S+)/;
 		}
 
-		let searchOpt = {
+		let searcharg = {
 			shouldSort: true,
 			threshold: 0.4,
 			location: 0,
@@ -227,7 +227,7 @@ module.exports = async function(opt) {
 				"title"
 			]
 		};
-		let fuse = new Fuse(gameDB, searchOpt);
+		let fuse = new Fuse(gameDB, searcharg);
 		for (let h = 0; h < prefs[sys].libs.length; h++) {
 			let files = await klaw(prefs[sys].libs[h], {
 				depthLimit: 0
@@ -536,11 +536,6 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (state == 'sysMenu' || state == 'pauseMenu' || (/game/i).test(state)) {
 			labels = ['', '', 'Back'];
 		}
-		if (subState == 'gcn') {
-			for (let i = 0; i < labels.length; i++) {
-				labels[i] = labels[i].toLowerCase();
-			}
-		}
 		$('.text.power').text(labels[0]);
 		$('.text.reset').text(labels[1]);
 		$('.text.open').text(labels[2]);
@@ -609,7 +604,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return;
 		}
 		let game;
-		let args = [];
+		let cmdArgs = [];
 		emuDirPath = path.join(emuAppPath, '..');
 		if (linux) {
 			if (emu == 'citra') {
@@ -643,20 +638,22 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		log(emu);
 		let cmdArray = prefs[sys].cmd[osType];
-		for (let arg of cmdArray) {
-			if (arg == '${app}') {
-				args.push(emuAppPath);
+		for (let cmdArg of cmdArray) {
+			if (cmdArg == '${app}') {
+				cmdArgs.push(emuAppPath);
 				if (cui.ui == 'libMain') {
 					break;
 				}
-			} else if (arg == '${game}' || arg == '${game.file}') {
-				args.push(game.file);
-			} else if (arg == '${game.id}') {
-				args.push(game.id);
-			} else if (arg == '${game.title}') {
-				args.push(game.title);
+			} else if (cmdArg == '${game}' || cmdArg == '${game.file}') {
+				cmdArgs.push(game.file);
+			} else if (cmdArg == '${game.id}') {
+				cmdArgs.push(game.id);
+			} else if (cmdArg == '${game.title}') {
+				cmdArgs.push(game.title);
+			} else if (cmdArg == '${cwd}') {
+				cmdArgs.push(emuDirPath);
 			} else {
-				args.push(arg);
+				cmdArgs.push(cmdArg);
 			}
 		}
 
@@ -664,15 +661,15 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			cui.removeView('libMain');
 			cui.change('playingBack');
 		}
-		log(args);
+		log(cmdArgs);
 		log(emuDirPath);
 
 		// animatePlay();
 		// if (cui.ui == 'playingBack') {
-		// 	remote.getCurrentWindow().minimize();
+		// 	electron.getCurrentWindow().minimize();
 		// }
 
-		child = require('child_process').spawn(args[0], args.slice(1) || [], {
+		child = require('child_process').spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
 			cwd: emuDirPath,
 			stdio: 'inherit',
 			detached: true
@@ -692,11 +689,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return;
 		}
 		if (code) {
-			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${args.toString()}\n${data}`);
+			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${cmdArgs.toString()}\n${data}`);
 		}
 
-		remote.getCurrentWindow().focus();
-		remote.getCurrentWindow().setFullScreen(true);
+		electron.getCurrentWindow().focus();
+		electron.getCurrentWindow().setFullScreen(true);
 		if (cui.ui != 'libMain') {
 			await intro();
 			await viewerLoad();
@@ -799,13 +796,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				cui.resize(true);
 			}
 		} else if (ui == 'libMain') {
-			if (act == 'a') {
-				coverClicked();
-				cui.change('coverSelect');
-			} else if (act == 'b' && !onMenu) {
+			if (act == 'b' && !onMenu) {
 				cui.change('sysMenu');
 			} else if (act == 'y') {
 				await resetBtn();
+			} else {
+				coverClicked();
+				cui.change('coverSelect');
 			}
 		} else if (ui == 'coverSelect') {
 			if (act == 'a') {
@@ -863,10 +860,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			await reload();
 		} else if (ui == 'pauseMenu' && !isBtn) {
 			if (act == 'minimize') {
-				remote.getCurrentWindow().minimize();
+				electron.getCurrentWindow().minimize();
 			} else if (act == 'fullscreen') {
-				remote.getCurrentWindow().focus();
-				remote.getCurrentWindow().setFullScreen(true);
+				electron.getCurrentWindow().focus();
+				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'openLog') {
@@ -1305,7 +1302,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 	}
 
-	remote.getCurrentWindow().setFullScreen(true);
+	electron.getCurrentWindow().setFullScreen(true);
 	await load();
 	if (prefs.donor) {
 		await reload();

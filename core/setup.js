@@ -1,7 +1,8 @@
-module.exports = async function(opt) {
+module.exports = async function(arg) {
+	global.arg = arg;
 	global.log = console.log;
 	global.er = console.error;
-	global.__rootDir = opt.__rootDir;
+	global.__rootDir = arg.__rootDir;
 	global.pkg = require(__rootDir + '/package.json');
 
 	global.delay = require('delay');
@@ -12,11 +13,11 @@ module.exports = async function(opt) {
 	global.process = require('process');
 	global.spawn = require('await-spawn');
 
-	global.klaw = function(dir, options) {
+	global.klaw = function(dir, opt) {
 		return new Promise((resolve, reject) => {
 			let items = [];
 			let i = 0;
-			require('klaw')(dir, options)
+			require('klaw')(dir, opt)
 				.on('data', item => {
 					if (i > 0) {
 						items.push(item.path);
@@ -44,19 +45,19 @@ module.exports = async function(opt) {
 		return this.substr(0, index) + insert + this.substr(index);
 	}
 
-	if (!opt.electron) {
+	if (!arg.electron) {
 		return;
 	}
 
-	global.remote = require('electron').remote;
-	global.app = remote.app;
-	global.dialog = remote.dialog;
+	global.electron = require('electron').remote;
+	global.app = electron.app;
+	global.dialog = electron.dialog;
 
-	dialog.select = function(lopt) {
-		lopt = lopt || {};
+	dialog.select = function(larg) {
+		larg = larg || {};
 		let files = [];
-		if (lopt.types || lopt.type) {
-			let types = lopt.types || lopt.type;
+		if (larg.types || larg.type) {
+			let types = larg.types || larg.type;
 			let properties = [];
 			if (typeof types == 'string') {
 				types = [types];
@@ -72,14 +73,14 @@ module.exports = async function(opt) {
 			if (types.includes('multi') || types.includes('files')) {
 				properties.push('multiSelections');
 			}
-			lopt.properties = properties;
+			larg.properties = properties;
 		} else {
-			lopt.properties = ['openFile', 'openDirectory', 'multiSelections'];
+			larg.properties = ['openFile', 'openDirectory', 'multiSelections'];
 		}
-		lopt.title = lopt.msg;
-		lopt.message = lopt.msg;
+		larg.title = larg.msg;
+		larg.message = larg.msg;
 		try {
-			files = dialog.showOpenDialog(lopt);
+			files = dialog.showOpenDialog(larg);
 		} catch (ror) {
 			er(ror);
 		}
@@ -91,31 +92,32 @@ module.exports = async function(opt) {
 		return (files && files.length == 1) ? files[0] : files;
 	};
 
-	dialog.selectFile = function(msg, lopt) {
-		lopt = lopt || {};
-		lopt.type = 'file';
-		lopt.msg = 'Select File: ' + msg;
-		return dialog.select(lopt);
+	dialog.selectFile = function(msg, larg) {
+		larg = larg || {};
+		larg.type = 'file';
+		larg.msg = 'Select File: ' + msg;
+		return dialog.select(larg);
 	};
 
-	dialog.selectFiles = function(msg, lopt) {
-		lopt = lopt || {};
-		lopt.type = 'files';
-		lopt.msg = 'Select Files: ' + msg;
-		return dialog.select(lopt);
+	dialog.selectFiles = function(msg, larg) {
+		larg = larg || {};
+		larg.type = 'files';
+		larg.msg = 'Select Files: ' + msg;
+		return dialog.select(larg);
 	};
 	dialog.selectMulti = dialog.selectFiles;
 
-	dialog.selectDir = function(msg, lopt) {
-		lopt = lopt || {};
-		lopt.type = 'dir';
-		lopt.msg = 'Select Folder: ' + msg;
-		return dialog.select(lopt);
+	dialog.selectDir = function(msg, larg) {
+		larg = larg || {};
+		larg.type = 'dir';
+		larg.msg = 'Select Folder: ' + msg;
+		return dialog.select(larg);
 	};
 	dialog.selectFolder = dialog.selectDir;
 
 	window.$ = window.jQuery = require('jquery');
 	window.Tether = require('tether');
+	window.Popper = require('popper.js');
 	window.Bootstrap = require('bootstrap');
 
 	const markdown = require('markdown-it')();
@@ -135,12 +137,12 @@ module.exports = async function(opt) {
 	global.cui = require('contro-ui');
 	// global.cui = require('./contro-ui.js');
 
-	Mousetrap.bind(['command+option+i', 'command+shift+i', 'ctrl+shift+i', 'ctrl+alt+i'], function() {
-		remote.getCurrentWindow().toggleDevTools();
+	Mousetrap.bind(['command+argion+i', 'command+shift+i', 'ctrl+shift+i', 'ctrl+alt+i'], function() {
+		electron.getCurrentWindow().toggleDevTools();
 		return false;
 	});
 	Mousetrap.bind(['command+r', 'ctrl+r'], function() {
-		remote.getCurrentWindow().reload();
+		electron.getCurrentWindow().reload();
 		return false;
 	});
 	Mousetrap.bind('space', function() {

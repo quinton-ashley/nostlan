@@ -24,9 +24,9 @@
 	"mame": {
 		"app": {},
 		"cmd": {
-			"linux": ["${app}", "${game.id}"],
-			"mac": ["${app}", "${game.id}"],
-			"win": ["${app}", "${game.id}"]
+			"linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
+			"mac": ["${app}", "-inipath", "${cwd}", "${game.id}"],
+			"win": ["${app}", "-inipath", "${cwd}", "${game.id}"]
 		},
 		"emu": "MAME"
 	},

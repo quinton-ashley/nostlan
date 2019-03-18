@@ -28,25 +28,14 @@ body {
 	background-position: top center;
 }
 
-h1 {
-	color: #C6CBF5;
-	font-family: 'Orbitron', sans-serif;
-	font-size: 120px!important;
-	font-weight: 1000!important;
-	line-height: 1.2!important;
+#svg4563 {
 	left: 50%;
-	margin: -135px 0 0 -420px !important;
+	margin: -275px 0 0 -325px !important;
 	position: absolute;
-	text-align: center;
-	text-transform: uppercase;
 	top: 50%;
-	width: 852px;
+	width: 700px;
 	z-index: 11;
-	background: -webkit-linear-gradient(top, #151C60, #C6CBF5 40%, black 40%, #E1A0CE 65%, white);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: white;
+	/* background: -webkit-linear-gradient(top, #151C60, #C6CBF5 40%, black 40%, #E1A0CE 65%, white); */
 }
 
 h2 {

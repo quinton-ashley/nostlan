@@ -518,8 +518,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			let $cvSel = $cv.find('#view');
 			let cvHeight = $cv.height();
 			let cpHeight = $('.cover.power').height();
+			let mod = 24;
+			if ((/ps/i).test(sys)) mod = -8;
 			if (adjust || cvHeight != cpHeight) {
-				$cvSel.css('margin-top', (cpHeight + 24) * .5);
+				$cvSel.css('margin-top', (cpHeight + mod) * .5);
 				$('nav').height(cpHeight + 24);
 			}
 		}
@@ -800,12 +802,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				cui.change('sysMenu');
 			} else if (act == 'y') {
 				await resetBtn();
-			} else {
+			} else if (act == 'a' || !isBtn) {
 				coverClicked();
 				cui.change('coverSelect');
 			}
 		} else if (ui == 'coverSelect') {
-			if (act == 'a') {
+			if (act == 'a' || !isBtn) {
 				// return;
 				// TODO finish open box menu
 				let id = cui.getCur('libMain').attr('id');

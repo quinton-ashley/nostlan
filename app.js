@@ -3,8 +3,12 @@
 (async function() {
 	const log = console.log;
 	let arg = require('minimist')(process.argv.slice(2));
-	arg.__rootDir = __dirname;
-	arg.electron = true;
+	arg.__rootDir = __dirname.replace(/\\/g, '/');
+	if (arg.i || arg.h) {
+		return;
+	} else {
+		arg.electron = true;
+	}
 
 	const {
 		app,
@@ -23,7 +27,7 @@
 		try {
 			const locals = {
 				arg: JSON.stringify(arg),
-				node_modules: path.join(__dirname, 'node_modules').replace(/\\/g, '/')
+				node_modules: path.join(arg.__rootDir, 'node_modules').replace(/\\/g, '/')
 			};
 			log(locals);
 			let pug = await setupPug({
@@ -39,14 +43,14 @@
 		mainWindow = new BrowserWindow({
 			width: 3840 / 2,
 			height: 2160 / 2,
-			frame: false,
-			nodeIntegration: true
+			nodeIntegration: true,
+			frame: false
 		});
 
 		mainWindow.loadURL(`file://${__dirname}/views/pug/index.pug`);
 
 		// Open the DevTools.
-		mainWindow.webContents.openDevTools();
+		// mainWindow.webContents.openDevTools();
 
 		// Emitted when the window is closed.
 		mainWindow.on('closed', function() {

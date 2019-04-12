@@ -28,6 +28,7 @@
       ]
     },
     "linux": {
+      "category": "Utility",
       "target": [
         {
           "target": "AppImage",
@@ -88,7 +89,7 @@
     "fuse.js": "^3.4.4",
     "gca-js": "^1.0.2",
     "gooder": "^1.0.4",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "klaw": "^3.0.0",
     "markdown-it": "^8.4.2",
     "material-design-icons-iconfont": "^4.0.5",
@@ -141,5 +142,5 @@
     "postversion": "git push",
     "V": "git push origin $npm_package_version && npm publish"
   },
-  "version": "1.0.64"
+  "version": "1.0.65"
 }

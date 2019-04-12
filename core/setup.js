@@ -45,6 +45,10 @@ module.exports = async function(arg) {
 		return this.substr(0, index) + insert + this.substr(index);
 	}
 
+	path.nx = (file) => {
+		return file.replace(/\\/g, '/');
+	};
+
 	if (!arg.electron) {
 		return;
 	}
@@ -53,11 +57,11 @@ module.exports = async function(arg) {
 	global.app = electron.app;
 	global.dialog = electron.dialog;
 
-	dialog.select = function(larg) {
-		larg = larg || {};
+	dialog.select = function(opt) {
+		opt = opt || {};
 		let files = [];
-		if (larg.types || larg.type) {
-			let types = larg.types || larg.type;
+		if (opt.types || opt.type) {
+			let types = opt.types || opt.type;
 			let properties = [];
 			if (typeof types == 'string') {
 				types = [types];
@@ -73,14 +77,14 @@ module.exports = async function(arg) {
 			if (types.includes('multi') || types.includes('files')) {
 				properties.push('multiSelections');
 			}
-			larg.properties = properties;
+			opt.properties = properties;
 		} else {
-			larg.properties = ['openFile', 'openDirectory', 'multiSelections'];
+			opt.properties = ['openFile', 'openDirectory', 'multiSelections'];
 		}
-		larg.title = larg.msg;
-		larg.message = larg.msg;
+		opt.title = opt.msg;
+		opt.message = opt.msg;
 		try {
-			files = dialog.showOpenDialog(larg);
+			files = dialog.showOpenDialog(opt);
 		} catch (ror) {
 			er(ror);
 		}
@@ -92,26 +96,26 @@ module.exports = async function(arg) {
 		return (files && files.length == 1) ? files[0] : files;
 	};
 
-	dialog.selectFile = function(msg, larg) {
-		larg = larg || {};
-		larg.type = 'file';
-		larg.msg = 'Select File: ' + msg;
-		return dialog.select(larg);
+	dialog.selectFile = function(msg, opt) {
+		opt = opt || {};
+		opt.type = 'file';
+		opt.msg = 'Select File: ' + msg;
+		return dialog.select(opt);
 	};
 
-	dialog.selectFiles = function(msg, larg) {
-		larg = larg || {};
-		larg.type = 'files';
-		larg.msg = 'Select Files: ' + msg;
-		return dialog.select(larg);
+	dialog.selectFiles = function(msg, opt) {
+		opt = opt || {};
+		opt.type = 'files';
+		opt.msg = 'Select Files: ' + msg;
+		return dialog.select(opt);
 	};
 	dialog.selectMulti = dialog.selectFiles;
 
-	dialog.selectDir = function(msg, larg) {
-		larg = larg || {};
-		larg.type = 'dir';
-		larg.msg = 'Select Folder: ' + msg;
-		return dialog.select(larg);
+	dialog.selectDir = function(msg, opt) {
+		opt = opt || {};
+		opt.type = 'dir';
+		opt.msg = 'Select Folder: ' + msg;
+		return dialog.select(opt);
 	};
 	dialog.selectFolder = dialog.selectDir;
 

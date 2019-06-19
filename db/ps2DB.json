@@ -2293,7 +2293,11 @@
 	"title": "King of Route 66"
 }, {
 	"id": "SLUS-20370",
-	"title": "Kingdom Hearts"
+	"title": "Kingdom Hearts",
+	"img": {
+		"coverFull": "https://cover.box3.net/newsimg/dvdmov/max1357286745-frontback-cover.jpg",
+		"disc": "https://cover.box3.net/newsimg/dvdmov/max1357286879-potlaccd-cover.jpg"
+	}
 }, {
 	"id": "SLUS-21799",
 	"title": "Kingdom Hearts: Re:chain of Memories"

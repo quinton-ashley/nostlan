@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.bottlenose",
     "copyright": "Copyright © 2018 Quinton Ashley",
-    "electronVersion": "4.0.6",
+    "electronVersion": "4.2.0",
     "electronDownload": {
-      "version": "4.0.6"
+      "version": "4.2.0"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -89,21 +89,21 @@
     "fuse.js": "^3.4.4",
     "gca-js": "^1.0.2",
     "gooder": "^1.0.4",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.1",
     "klaw": "^3.0.0",
     "markdown-it": "^8.4.2",
-    "material-design-icons-iconfont": "^4.0.5",
+    "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "mousetrap": "^1.6.3",
     "node-7z": "^1.1.0",
-    "opn": "^5.5.0",
+    "open": "^6.2.0",
     "popper.js": "^1.15.0",
     "probe-image-size": "^4.0.0",
     "pug": "^2.0.3",
-    "puppeteer-core": "^1.14.0",
+    "puppeteer-core": "^1.15.0",
     "requisition": "^1.7.0",
-    "tether": "^1.4.5",
-    "three": "^0.102.1",
+    "tether": "^1.4.6",
+    "three": "^0.104.0",
     "yauzl-promise": "^2.1.3"
   },
   "description": "Bottlenose is a front-end for video game emulators, use it to install and auto-update texture packs!",
@@ -130,7 +130,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --runtime=electron --target=4.0.6 --disturl=https://atom.io/download/atom-shell --abi=64",
+    "rebuild": "npm rebuild --runtime=electron --target=4.2.0 --disturl=https://atom.io/download/atom-shell --abi=64",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m && electron-builder -w && electron-builder -l",
     "gh-publish": "electron-builder -m -l -w -p always",
@@ -142,5 +142,5 @@
     "postversion": "git push",
     "V": "git push origin $npm_package_version && npm publish"
   },
-  "version": "1.0.65"
+  "version": "1.0.66"
 }

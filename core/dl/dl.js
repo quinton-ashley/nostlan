@@ -2,7 +2,13 @@ const req = require('requisition');
 
 async function dlWithExt(url, file) {
 	if (!(await fs.exists(file))) {
-		let res = await req(url);
+		let res;
+		try {
+			res = await req(url);
+		} catch (ror) {
+			er(ror);
+			return;
+		}
 		if (res.status == 404) {
 			return;
 		}

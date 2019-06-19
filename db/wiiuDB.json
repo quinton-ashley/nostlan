@@ -1034,7 +1034,10 @@
 		"title": "Kirby and the Rainbow Paintbrush"
 	}, {
 		"id": "AYCE01",
-		"title": "Yoshi's Woolly World"
+		"title": "Yoshi's Woolly World",
+		"img": {
+			"box": "https://images-na.ssl-images-amazon.com/images/I/913v8OjpEJL.jpg"
+		}
 	}, {
 		"id": "AYCJ01",
 		"title": "Yoshi Wool World"
@@ -1325,7 +1328,10 @@
 		"title": "Art Academy: Atelier"
 	}, {
 		"id": "CNFE01",
-		"title": "Paper Mario: Color Splash"
+		"title": "Paper Mario: Color Splash",
+		"img": {
+			"box": "https://images-na.ssl-images-amazon.com/images/I/91cUSeClStL.jpg"
+		}
 	}, {
 		"id": "CNFJ01",
 		"title": "Paper Mario: Color Splash"

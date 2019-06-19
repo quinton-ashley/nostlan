@@ -118,7 +118,7 @@ html {
 	height: 100%;
 	display: none;
 	transition: all 500ms ease-in-out;
-	transform: translate(0) scale(1);
+	transform: translate(0);
 }
 
 #infoSelect.zoom-gameManualSelect {
@@ -171,6 +171,7 @@ html {
 
 #gameMedia {
 	width: 40.8vh;
+	border-radius: 50%;
 	transform: translate(39.4%,-35%);
 }
 
@@ -413,6 +414,37 @@ img {
 	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
 }
+
+.ds #infoSelect {
+	transform: scale(.6);
+}
+
+.ds #gameManual {
+	width: 85vh;
+	transform: translate(-109%,-46%);
+}
+
+.ds #gameMedia {
+	width: 27.6vh;
+	transform: translate(130%,-3.5%);
+}
+
+#infoSelect.zoom-gameManualSelect {
+	transform: translate(48vh,-4vh) scale(1.17);
+}
+
+#infoSelect.zoom-gameMediaSelect {
+	transform: translate(-95vh,-24vh) scale(2);
+}
+
+#infoSelect.zoom-gameMemorySelect {
+	transform: translate(-146vh,129vh) scale(4);
+}
+
+#infoSelect.zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
 /*================PS3 Game Lib Viewer====================*/
 
 .ps3 .front-cover-crop {
@@ -491,6 +523,25 @@ img {
 	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+
+.ps2 #gameMemory {
+	width: 29.1vh;
+	transform: translate(78%,-209%);
+}
+
+.ps2 #infoSelect.zoom-gameMemorySelect {
+	transform: translate(-104vh,-110vh) rotate(90deg) scale(3);
+}
+
+.ps2 #gameMedia {
+	width: 63vh;
+	transform: translate(8.5%,-29%);
+}
+
+.ps2 #infoSelect.zoom-gameMediaSelect {
+	transform: translate(-55vh,-20.7vh) scale(1.55);
+}
+
 /*=====Xbox 360===*/
 
 .xbox360 .front-cover-crop {

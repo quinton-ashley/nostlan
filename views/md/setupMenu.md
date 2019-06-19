@@ -1,3 +1,3 @@
 # Bottlenose Setup
 
-If you've used WiiUSBHelper select "use WiiUSBHelper template", then select your `EMULATORS` directory.  If not, select "create new template" and choose an install location.  If you don't want to move your games into the template, that's okay!  Bottlenose will prompt you for their location.
+Choose a custom install location or use the default location `~/Documents/emu` for storing the game art images Bottlenose will download.  Bottlenose will also create a template here for you to put all your emulators and games into if you choose to.  You do not have to move them into these folders.  If no emulators or games are found in the template folders, Bottlenose will prompt you for their location.

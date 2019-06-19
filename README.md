@@ -276,12 +276,18 @@ The following names can be used to specify images:
 
 -   `box` the front cover including the box
 -   `boxBack` the back cover including the box
+-   `boxOpen` the inside of the game's box
+-   `boxOpenMask` clips that should appear above game media, manual, and memory card
+-   `cart` the front of the game's (first) cartridge
 -   `coverFull` the entire cover sleeve, no box
 -   `cover` the front facing portion of the cover sleeve, no box
 -   `coverSide` the side facing portion of the cover sleeve, no box
 -   `coverBack` the side facing portion of the cover sleeve, no box
 -   `disc` the front of the game's (first) disc
--   `cart` the front of the game's (first) cartridge
+-   `manual` the front of the game's manual
+-   `memory` the front of a memory card
+-   `memoryBack` the back of a memory card
+-   `promo` a promotional insert included in the game box
 
 Box art downloading is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, you can add them in the game's `img` object like this:
 

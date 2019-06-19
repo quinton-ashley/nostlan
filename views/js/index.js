@@ -3,12 +3,11 @@
  * authors: quinton-ashley
  * copyright 2018
  */
+
 module.exports = async function(arg) {
 	// arg.v = false; // quieter log
-	arg.electron = true;
 	await require(arg.__rootDir + '/core/setup.js')(arg);
 
-	const deepExtend = require('deep-extend');
 	const Fuse = require('fuse.js');
 	const rmDiacritics = require('diacritics').remove;
 
@@ -43,10 +42,9 @@ module.exports = async function(arg) {
 	const gamestdb = require(__rootDir + '/core/dl/gamestdb.js');
 
 	// get the default prefrences
-	let prefsDefaultPath = __rootDir + '/prefs/prefsDefault.json';
-	let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
-	let prefsPath = usrDir + '/_usr/prefs.json';
-	global.prefs = prefsDefault; // set to defaults at first
+	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
+	prefsMan.prefsPath = usrDir + '/_usr/prefs.json';
+	global.prefs = await prefsMan.loadDefaultPrefs();
 
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
@@ -104,9 +102,9 @@ module.exports = async function(arg) {
 			let introFile = `${__rootDir}/views/${type}/${sysStyle}Load.${type}`;
 			if (await fs.exists(introFile)) {
 				if (type == 'css') {
-					introFiles[fType][sysStyle] = `
-					<link class="introStyle" rel="stylesheet" type="text/css" href="${introFile}">
-					`;
+					introFiles[fType][sysStyle] =
+						`<link class="introStyle" rel="stylesheet" type="text/css" ` +
+						`href="${introFile}">`;
 				} else {
 					introFile = await fs.readFile(introFile, 'utf8');
 					if (type == 'pug') {
@@ -283,7 +281,8 @@ module.exports = async function(arg) {
 						}
 						olog('id:\t\t\t\t' + id);
 						olog('found match:\t\t' + game.title + '\r\n');
-						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
+						game.file = '$' + h + '/' +
+							path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
 					}
@@ -379,8 +378,11 @@ module.exports = async function(arg) {
 				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
 			}
 			let files = await klaw(gameLibDir);
-			for (let i = 0; !files.length || (files.length == 1 &&
-					(['.DS_Store', 'dir.txt'].includes(path.parse(files[0]).base))); i++) {
+			for (let i = 0; !files.length || (
+					files.length == 1 &&
+					(['.DS_Store', 'dir.txt'].includes(
+						path.parse(files[0]).base))
+				); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
 					cui.change('setupMenu');
@@ -403,7 +405,8 @@ module.exports = async function(arg) {
 				await reload();
 				return;
 			}
-			$('#loadDialog2').text('this may take a few minutes, sit back and relax!');
+			$('#loadDialog2').text(
+				'this may take a few minutes, sit back and relax!');
 			await reset();
 		}
 		btlDir = emuDir + '/bottlenose';
@@ -412,7 +415,7 @@ module.exports = async function(arg) {
 		prefs.btlDir = btlDir;
 		prefs.session.sys = sys;
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
-		await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
+		await prefsMan.save();
 		await viewerLoad();
 		await removeIntro();
 		cui.change('libMain', sysStyle);
@@ -428,8 +431,11 @@ module.exports = async function(arg) {
 			let fileName = path.parse(file).name;
 			if (fileName == 'setupMenu') {
 				if (win) {
-					html += `
-Windows users should not store emulator apps or games in \`Program Files\` or any other folder that Bottlenose will not have read/write access to.  On Windows, Bottlenose will look for emulator executables in the \`BIN\` folder or the default install location of that emulator.
+					html += `Windows users should not store emulator apps or games ` +
+						`in \`Program Files\` or any other folder that Bottlenose will ` +
+						`not have read/write access to.  On Windows, Bottlenose will ` +
+						`look for emulator executables in the \`BIN\` folder or the ` +
+						`default install location of that emulator.
 \`\`\`
 	emu (root folder can have any name)
 	└─┬ Dolphin
@@ -445,9 +451,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 `;
 				} else {
 					if (mac) {
-						html += 'On macOS, Bottlenose will look for emulator apps in `/Applications/`';
+						html += 'On macOS, Bottlenose will look for emulator ' +
+							'apps in `/Applications/`';
 					} else {
-						html += 'On Linux, Bottlenose will look for emulator apps in their default install locations.';
+						html += 'On Linux, Bottlenose will look for emulator apps in ' +
+							'their default install locations.';
 					}
 					html += `
 \`\`\`
@@ -471,9 +479,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			file = path.parse(file);
 			$('#' + file.name).prepend(html);
 		}
-		if (await fs.exists(prefsPath)) {
-			let prefs1 = JSON.parse(await fs.readFile(prefsPath));
-			deepExtend(prefs, prefs1);
+		if (await prefsMan.canLoad()) {
+			await prefsMan.load();
 			emuDir = path.join(prefs.btlDir, '..');
 
 			// clean up previous versions of the prefs file
@@ -535,7 +542,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
 			cui.getCur().removeClass('no-outline');
-		} else if (state == 'sysMenu' || state == 'pauseMenu' || (/game/i).test(state)) {
+		} else if (
+			state == 'sysMenu' ||
+			state == 'pauseMenu' ||
+			(/game/i).test(state)
+		) {
 			labels = ['', '', 'Back'];
 		}
 		$('.text.power').text(labels[0]);
@@ -671,11 +682,12 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		// 	electron.getCurrentWindow().minimize();
 		// }
 
-		child = require('child_process').spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
-			cwd: emuDirPath,
-			stdio: 'inherit',
-			detached: true
-		});
+		child = require('child_process')
+			.spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
+				cwd: emuDirPath,
+				stdio: 'inherit',
+				detached: true
+			});
 
 		childState = 'running';
 
@@ -691,7 +703,11 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			return;
 		}
 		if (code) {
-			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  If you were unable to start the game, setup ${emu} if you haven't already.  Make sure it will boot the game and try again.  \n${cmdArgs.toString()}\n${data}`);
+			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  ` +
+				`This is probably not an issue with Bottlenose.  ` +
+				`If you were unable to start the game, setup ${emu} if you haven't ` +
+				`already.  Make sure it will boot the game and try again.  \n` +
+				`${cmdArgs.toString()}\n${data}`);
 		}
 
 		electron.getCurrentWindow().focus();
@@ -734,11 +750,17 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		log(act + " held for " + timeHeld);
 		let ui = cui.ui;
 		if (ui == 'playingBack' && childState == 'running') {
-			if (act == prefs.inGame.quit.hold && timeHeld > prefs.inGame.quit.time) {
+			if (
+				act == prefs.inGame.quit.hold &&
+				timeHeld > prefs.inGame.quit.time
+			) {
 				log('shutting down emulator');
 				childState = 'closing';
 				child.kill('SIGINT');
-			} else if (act == prefs.inGame.reset.hold && timeHeld > prefs.inGame.reset.time) {
+			} else if (
+				act == prefs.inGame.reset.hold &&
+				timeHeld > prefs.inGame.reset.time
+			) {
 				log('resetting emulator');
 				childState = 'resetting';
 				child.kill('SIGINT');
@@ -776,7 +798,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		let onMenu = (/menu/gi).test(ui);
 		if (act == 'quit') {
-			await fs.outputFile(prefsPath, JSON.stringify(prefs, null, '\t'));
+			await prefsMan.save();
 			app.quit();
 			process.kill('SIGINT');
 			return;
@@ -815,12 +837,13 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				let template = getTemplate();
 
 				$('#gameBoxOpen').prop('src', await imgExists(template, 'boxOpen'));
-				$('#gameBoxOpenMask').prop('src', await imgExists(template, 'boxOpenMask'));
-				$('#gameMemory').prop('src', await imgExists(template, 'memoryFront'));
+				$('#gameBoxOpenMask').prop('src',
+					await imgExists(template, 'boxOpenMask'));
+				$('#gameMemory').prop('src', await imgExists(template, 'memory'));
 				$('#gameManual').prop('src', await imgExists(template, 'manual'));
 
 				let mediaName = 'disc';
-				if (sys == 'switch' || sys == '3ds') {
+				if (sys == 'switch' || sys == '3ds' || sys == 'ds') {
 					mediaName = 'cart';
 				}
 				let mediaImg = await imgExists(game, mediaName);
@@ -829,7 +852,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				}
 				$('#gameMedia').prop('src', mediaImg);
 				cui.change('infoSelect');
+				$('#libMain').hide();
 			} else if (act == 'b') {
+				$('#libMain').show();
 				cui.change('libMain');
 				coverClicked();
 			} else if (act == 'y' || act == 'flip') {
@@ -871,7 +896,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			} else if (act == 'openLog') {
 				opn(`${usrDir}/_usr/${sys}Log.log`);
 			} else if (act == 'prefs') {
-				opn(prefsPath);
+				opn(prefsMan.prefsPath);
 			}
 		} else if (ui == 'donateMenu') {
 			if (act == 'donate-monthly') {
@@ -884,7 +909,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 				cui.change('checkDonationMenu');
 			}
 		} else if (ui == 'checkDonationMenu') {
-			let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
+			let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075' +
+				'\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
 			let usrDonorPass = $('#donorPassword').val();
 			if (usrDonorPass == unicodeToChar(password)) {
 				prefs.donor = true;
@@ -905,9 +931,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 		} else if (ui == 'setupMenu') {
 			if (act == 'new' || act == 'new-in-docs' || act == 'old') {
-				let msg = `choose the folder you want to template to go in`;
+				let msg = 'choose the folder you want to template to go in';
 				if (act == 'old') {
-					msg = `choose the folder EMULATORS from your WiiUSBHelper file structure`;
+					msg = 'choose the folder EMULATORS from your WiiUSBHelper ' +
+						'file structure';
 				}
 				if (act == 'new-in-docs') {
 					emuDir = os.homedir() + '/Documents';
@@ -954,7 +981,9 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (res) {
 			return res;
 		}
-		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
+		$('#loadDialog0').html(md(
+			`scraping for the  \n${name}  \nof  \n${game.title}`
+		));
 		let imgDir = getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
@@ -997,6 +1026,15 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		if (!theme.template.box) {
 			theme.template.box = '';
 		}
+		let imgTypes = [
+			'boxOpen', 'boxOpenMask', 'manual',
+			'memory', 'memoryBack'
+		];
+		let urlBase = 'https://raw.githubusercontent.com/quinton-ashley';
+		urlBase += `/bottlenose-img/master/${sys}/_TEMPLATE/img`;
+		for (let imgType of imgTypes) {
+			theme.template[imgType] = urlBase + `/${imgType}.png`;
+		}
 		return {
 			id: '_TEMPLATE',
 			title: 'Template',
@@ -1020,11 +1058,17 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 			}
 			imgDir = getImgDir(game);
 
-			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir)) || isTemplate) {
+			if (
+				prefs.ui.recheckImgs ||
+				!(await fs.exists(imgDir)) ||
+				isTemplate
+			) {
 				await fs.ensureDir(imgDir);
 
-				if (!isTemplate || (!(await imgExists(game, 'coverFull')) &&
-						!(await imgExists(game, 'cover')))) {
+				if (!isTemplate ||
+					(!(await imgExists(game, 'coverFull')) &&
+						!(await imgExists(game, 'cover')))
+				) {
 					await getImg(game, 'box', 'HQ');
 				}
 				res = await getImg(game, 'coverFull');
@@ -1051,8 +1095,8 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					await getImg(game, 'boxOpen');
 					await getImg(game, 'boxOpenMask');
 					await getImg(game, 'manual');
+					await getImg(game, 'memory');
 					await getImg(game, 'memoryBack');
-					await getImg(game, 'memoryFront');
 				}
 			}
 		}
@@ -1215,7 +1259,10 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 					emuAppPath += '.AppImage';
 				}
 			}
-			if ((linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) || await fs.exists(emuAppPath)) {
+			if (
+				(linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) ||
+				await fs.exists(emuAppPath)
+			) {
 				prefs[sys].app[osType] = emuAppPath;
 				return emuAppPath;
 			}
@@ -1267,12 +1314,16 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 		}
 		$('style.gameViewerRowsStyle').remove();
 		let $glv = $('#libMain');
-		let dynRowStyle = `<style class="gameViewerRowsStyle" type="text/css">.reel {width: ${1 / rows * 100}%;}`
+		let dynRowStyle = '<style class="gameViewerRowsStyle" type="text/css">' +
+			`.reel {width: ${1 / rows * 100}%;}`
 		for (let i = 0; i < rows; i++) {
-			$glv.append(pug(`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`));
-			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`
+			$glv.append(pug(
+				`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`
+			));
+			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`;
 		}
-		dynRowStyle += `.cui-gamepadConnected .reel .uie.cursor {
+		dynRowStyle += `
+.cui-gamepadConnected .reel .uie.cursor {
 	outline: ${Math.abs(7-rows)}px dashed white;
 	outline-offset: ${ 9-rows}px;
 }`;
@@ -1308,7 +1359,7 @@ Windows users should not store emulator apps or games in \`Program Files\` or an
 	await load();
 	if (prefs.donor) {
 		await reload();
-	} else if (await fs.exists(prefsPath) && !prefs.donor) {
+	} else if (await prefsMan.canLoad() && !prefs.donor) {
 		cui.change('donateMenu');
 	} else {
 		cui.change('welcomeMenu');

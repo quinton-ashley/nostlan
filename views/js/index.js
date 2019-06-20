@@ -49,7 +49,7 @@ module.exports = async function(arg) {
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
 	if (mac) {
-		prefs.ui.mouse.wheel.multi = 0.25;
+		prefs.ui.mouse.wheel.multi = 0.5;
 		prefs.ui.mouse.wheel.smooth = true;
 	}
 

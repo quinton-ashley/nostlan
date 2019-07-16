@@ -7,6 +7,7 @@
 module.exports = async function(arg) {
 	// arg.v = false; // quieter log
 	await require(arg.__rootDir + '/core/setup.js')(arg);
+	log('version: ' + pkg.version);
 
 	const Fuse = require('fuse.js');
 	const rmDiacritics = require('diacritics').remove;

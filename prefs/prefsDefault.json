@@ -21,6 +21,15 @@
 		},
 		"emu": "DeSmuME"
 	},
+	"gba": {
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "-f", "${game}"],
+			"mac": ["${app}", "-f", "${game}"],
+			"win": ["${app}", "-f", "${game}"]
+		},
+		"emu": "mGBA"
+	},
 	"mame": {
 		"app": {},
 		"cmd": {

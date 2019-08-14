@@ -1,0 +1,10 @@
+.gba #intro {
+	background-color: #000;
+}
+
+.gba #intro svg {
+	position: absolute;
+	width: 90vw;
+	top: 30%;
+	left: 5%;
+}

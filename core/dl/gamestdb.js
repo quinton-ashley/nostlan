@@ -12,7 +12,7 @@ class Gamestdb {
 	}
 
 	async dlImg(sys, game, dir, name) {
-		if (!this.availableImgs.includes(name) || sys == 'mame') {
+		if (!this.availableImgs.includes(name) || sys == 'mame' || sys == 'ps2' || sys == 'gba') {
 			return;
 		}
 		// get image from gametdb

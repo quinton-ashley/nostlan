@@ -52,10 +52,10 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 [click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png)
 
-#### Xenia (Xbox 360) [Windows]
+#### mGBA (GBA) [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png)
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba_LQ.png)
 
 #### RPCS3 (PS3) [Linux & Windows]
 
@@ -66,6 +66,11 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 [click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png)
+
+#### Xenia (Xbox 360) [Windows]
+
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png)
 
 ## Please consider donating!
 
@@ -85,38 +90,36 @@ If enough people support the project on Patreon I will be able to set aside the 
 -   create a database of Dolphin texture packs
 -   batch install and auto-update texture packs for Dolphin
 -   install emulators
--   automatic emulator updates for emus that lack this feature
+-   automatic emulator updates for emulators that lack this feature
 -   easy way to mix and swap texture packs for Dolphin
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant auto-complete search
 -   user ability to make custom themes
--   mGBA and PPSSPP support
+-   PPSSPP support
 -   support for modded game isos or roms (currently skipped during indexing)
 
 ## How is Bottlenose different from other front-ends?
 
-Emulation Station is a nice front end for Windows and Linux.  Like Bottlenose, it's open source!  I was inspired by Emulation Station when I started working on Bottlenose.  However, with Bottlenose I wanted to make box art the primary, practically singular, focus of the UI, not metadata or descriptions.
+When I created Bottlenose I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.  This is a screenshot of Emulation Station, which is a prime example of this problem.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
-The most popular front end for Windows is Launchbox.  If Launchbox's design is a bit too hectic for you then you might like the simplicity of Bottlenose.  A lot of the game cover screens erroneously contain in-game or promotional art for a different game.  For example in the promotional video, Super Smash Bros. for N64 has Brawl character renders behind it.  Screenshot is of the "Big Box" mode of Launchbox.
+This is Launchbox for Windows, it's the most popular frontend.  Note that a lot of screen space is wasted and the game box art is thumbnail sized.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
-OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res, grid spacing is too wide though.
-![](http://openemu.org/img/intro-gb-grid.png)
-
-Windows Explorer, despite not having gamepad support, is also surprisingly popular for some reason.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
+Windows Explorer, despite not having gamepad support, is also surprisingly popular.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Retroarch is not really comparable to Bottlenose.  It uses separate cores instead of individual emulator apps.  Game art is low res and the interface is barebones.  Good for small devices but personally I would never use it.
+Retroarch is a different kind of frontend.  It uses separate cores instead of individual emulator apps like Bottlenose does.  Game art is very low res and the interface is barebones.  It runs on a lot of platforms and seems good for small devices.
 ![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
 
-Steam is an ugly mess on UHD displays and if you're reading this you've probably used it already.  I'm not going to include a screen shot here.  You're welcome.
+OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res and grid spacing is too wide though.  It doesn't support newer emulators either.
+![](http://openemu.org/img/intro-gb-grid.png)
 
 ## Using Bottlenose
 
 Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default controller button mapping profile is `Xbox_PS_Adaptive`.  If you're using a Nintendo controller switch to `Nintendo_Adaptive` in your preferences file.
 
-The console themed plastic cover overlay menu displays the basic options on any given screen.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload the lib viewer.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
+The console themed plastic cover overlay menu displays the basic options on any given screen.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload the game library viewer.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
 
 Select a game from your game library to view it's cover.  You'll see the overlay options change.  Clicking "Play" will play the game.  "Flip" doesn't do anything right now.
 
@@ -224,10 +227,6 @@ Please [send me](mailto:qashto@gmail.com) a description of any errors with the r
 
 If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.
 
-### Mismatched or Unidentified Game Hacks
-
-Bottlenose doesn't support game hacks (fully) yet.  In the future, I think I will use the game's original cover and put a sticker on it with the name of the hack.
-
 ### Missing Cover Art
 
 As of version 1.0.44, Bottlenose should be able to get all your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{GAMEID}/img`.  For more info see the "Images" sections of this README.
@@ -274,8 +273,9 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 
 The following names can be used to specify images:
 
--   `box` the front cover including the box
--   `boxBack` the back cover including the box
+-   `box` the front of the box
+-   `boxSide` the side of the box
+-   `boxBack` the back of the box
 -   `boxOpen` the inside of the game's box
 -   `boxOpenMask` clips that should appear above game media, manual, and memory card
 -   `cart` the front of the game's (first) cartridge
@@ -374,6 +374,7 @@ MAME loader by [Vadim Huck's](https://codepen.io/M4TERIAL/pen/gavvQL) and [Matt 
 [Continum](https://fontmeme.com/fonts/continuum-font/)  
 [theboldfont](https://www.dafont.com/the-bold-font.font)  
 [DS_BIOS](https://www.dafont.com/nintendo-ds-bios.font)  
+[Early_Gameboy](https://www.dafont.com/early-gameboy.font)
 
 ## Legal Disclaimer
 

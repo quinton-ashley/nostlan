@@ -41,6 +41,7 @@ module.exports = async function(arg) {
 	// modules that use dl
 	const andyDecarli = require(__rootDir + '/core/dl/andyDecarli.js');
 	const gamestdb = require(__rootDir + '/core/dl/gamestdb.js');
+	const gamefaqs = require(__rootDir + '/core/dl/gamefaqs.js');
 
 	// get the default prefrences
 	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
@@ -54,11 +55,11 @@ module.exports = async function(arg) {
 		prefs.ui.mouse.wheel.smooth = true;
 	}
 
-	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2', 'mame'];
+	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2', 'mame', 'gba'];
 	if (win) {
 		systems.push('xbox360');
 	} else if (mac) {
-		systems = ['wii', 'ds', '3ds', 'switch', 'ps2', 'mame'];
+		systems = ['wii', 'ds', '3ds', 'switch', 'ps2', 'mame', 'gba'];
 	}
 	let sys; // current system
 	let sysStyle = ''; // style of that system
@@ -137,7 +138,7 @@ module.exports = async function(arg) {
 	}
 
 	function addGame(fuse, searchTerm) {
-		let results = fuse.search(searchTerm.substr(0, 32));
+		let results = fuse.search(searchTerm.substr(0, 64));
 		if (arg.v) {
 			log(results);
 		}
@@ -191,9 +192,6 @@ module.exports = async function(arg) {
 		let gameDB = [];
 		let DBPath = `${__rootDir}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
-		if (arg.v) {
-			log(gameDB);
-		}
 
 		let idRegex;
 		if (sys == 'switch') {
@@ -218,8 +216,8 @@ module.exports = async function(arg) {
 			shouldSort: true,
 			threshold: 0.4,
 			location: 0,
-			distance: 100,
-			maxPatternLength: 32,
+			distance: 5,
+			maxPatternLength: 64,
 			minMatchCharLength: 1,
 			keys: [
 				"id",
@@ -240,6 +238,8 @@ module.exports = async function(arg) {
 				if (term.base[0] == '.') continue;
 				// if it's the dir.txt in the mame roms folder skip it
 				if (term.base == 'dir.txt') continue;
+				// if the file is a save file skip it
+				if (term.ext == '.sav') continue;
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
 				if (sys != 'wiiu' && sys != 'ps3') {
@@ -269,9 +269,9 @@ module.exports = async function(arg) {
 				if (idRegex) {
 					id = term.match(idRegex);
 				}
-				log(id);
 				if (id) {
 					id = id[1];
+					log(id);
 					let game = gameDB.find(x => x.id === id);
 					if (game) {
 						if (sys == 'ps3') {
@@ -305,8 +305,13 @@ module.exports = async function(arg) {
 					term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
 				} else if (sys == 'switch') {
 					term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
+				} else if (sys == 'gba') {
+					term = term.replace(/ # GBA/gi, '');
 				}
 				// special subs part 3
+				term = term.replace(/Dragonball/gi, 'Dragon Ball');
+				term = term.replace(/Goku 2/gi, 'Goku II');
+				term = term.replace(/Yu-Gi-Oh /gi, 'Yu-Gi-Oh! ');
 				term = term.replace(/lego/gi, 'lego');
 				term = term.replace(/warioware,*/gi, 'Wario Ware');
 				term = term.replace(/ bros( |$)/gi, ' Bros. ');
@@ -351,7 +356,7 @@ module.exports = async function(arg) {
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
-		if (await fs.exists(gamesPath)) {
+		if (!prefs.ui.recheckImgs && await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
 		} else {
 			if (!emuDir) {
@@ -844,7 +849,7 @@ module.exports = async function(arg) {
 				$('#gameManual').prop('src', await imgExists(template, 'manual'));
 
 				let mediaName = 'disc';
-				if (sys == 'switch' || sys == '3ds' || sys == 'ds') {
+				if (sys == 'switch' || sys == '3ds' || sys == 'ds' || sys == 'gba') {
 					mediaName = 'cart';
 				}
 				let mediaImg = await imgExists(game, mediaName);
@@ -1000,7 +1005,11 @@ module.exports = async function(arg) {
 				ext = url.substr(-3);
 			}
 			file = `${imgDir}/${name}.${ext}`;
-			res = await dl(url, file);
+			if (url.includes('gamefaqs')) {
+				res = await gamefaqs.dlImg(url, imgDir, name);
+			} else {
+				res = await dl(url, file);
+			}
 			if (res) {
 				return res;
 			}
@@ -1086,10 +1095,10 @@ module.exports = async function(arg) {
 					}
 				}
 
-				if (sys != 'switch' && sys != '3ds') {
-					await getImg(game, 'disc');
-				} else {
+				if (sys == 'switch' || sys == '3ds' || sys == 'ds' || sys == 'gba') {
 					await getImg(game, 'cart');
+				} else {
+					await getImg(game, 'disc');
 				}
 
 				if (prefs.ui.getExtraImgs || isTemplate) {
@@ -1227,6 +1236,8 @@ module.exports = async function(arg) {
 			if (win) {
 				if (emu == 'citra') {
 					emuAppPath += '-qt';
+				} else if (emu == 'mgba') {
+					emuAppPath += '-sdl';
 				}
 				emuAppPath += '.exe';
 			} else if (mac) {

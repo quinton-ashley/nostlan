@@ -4,7 +4,8 @@
 	const log = console.log;
 	let arg = require('minimist')(process.argv.slice(2));
 	arg.__rootDir = __dirname.replace(/\\/g, '/');
-	if (arg.i || arg.h) {
+	if (arg.h) {
+		log('info about the app');
 		return;
 	} else {
 		arg.electron = true;
@@ -40,19 +41,34 @@
 			log(err);
 		}
 
-		mainWindow = new BrowserWindow({
-			width: 3840 / 2,
-			height: 2160 / 2,
+		let windowPrms = {
 			webPreferences: {
 				nodeIntegration: true
-			},
-			frame: false
-		});
+			}
+		};
+		if (arg.scrape) {
+			windowPrms.width = 3840 / 4;
+			windowPrms.height = 2160 / 2;
+		} else {
+			windowPrms.width = 3840 / 2;
+			windowPrms.height = 2160 / 2;
+			windowPrms.frame = false;
+		}
 
-		mainWindow.loadURL(`file://${__dirname}/views/pug/index.pug`);
+		mainWindow = new BrowserWindow(windowPrms);
+
+		let url;
+		if (arg.scrape) {
+			url = `file://${__dirname}/dev/scrape.pug`;
+		} else {
+			url = `file://${__dirname}/views/pug/index.pug`;
+		}
+		mainWindow.loadURL(url);
 
 		// Open the DevTools.
-		// mainWindow.webContents.openDevTools();
+		if (arg.dev) {
+			mainWindow.webContents.openDevTools();
+		}
 
 		// Emitted when the window is closed.
 		mainWindow.on('closed', function() {

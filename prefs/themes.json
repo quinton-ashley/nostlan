@@ -9,6 +9,15 @@
 			"cart": "http://i40.tinypic.com/1z2dq4x.png"
 		}
 	},
+	"gba": {
+		"default": {
+			"id": "84EE4776",
+			"title": "Pokemon: Fire Red Version"
+		},
+		"template": {
+			"box": "https://i.warosu.org/data/vr/img/0012/83/1387453429811.png"
+		}
+	},
 	"gcn": {
 		"default": {
 			"id": "GALE01",

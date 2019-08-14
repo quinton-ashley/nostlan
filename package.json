@@ -94,14 +94,14 @@
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "mousetrap": "^1.6.3",
-    "node-7z": "^1.1.0",
+    "node-7z": "^1.1.1",
     "open": "^6.4.0",
     "popper.js": "^1.15.0",
     "probe-image-size": "^4.1.1",
     "pug": "^2.0.4",
     "puppeteer-core": "^1.18.1",
     "requisition": "^1.7.0",
-    "tether": "^1.4.6",
+    "tether": "^1.4.7",
     "three": "^0.106.2",
     "yauzl-promise": "^2.1.3"
   },
@@ -141,5 +141,5 @@
     "postversion": "git push",
     "V": "git push origin $npm_package_version && npm publish"
   },
-  "version": "1.0.69"
+  "version": "1.0.70"
 }

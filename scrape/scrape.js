@@ -24,13 +24,14 @@ module.exports = async function(arg) {
 	sys = arg.sys || sys;
 	if (arg.gfs) await scraper.load(sys);
 	let name = 'cover';
-	if (sys == 'gba') name = 'box';
+	if (sys == 'gba' || sys == 'mame') name = 'box';
 
 	let games = [];
 	let dbPath = `${__rootDir}/scrape/db/${sys}DB.json`;
 	games = JSON.parse(await fs.readFile(dbPath)).games;
 
 	let found = 0;
+	let saved = 0;
 	for (let i = 0; i < games.length; i++) {
 		if (arg.test && found >= arg.test) {
 			log('test done!');
@@ -53,8 +54,9 @@ module.exports = async function(arg) {
 		}
 		log(`found: ${found}/${i+1} ${Number(found/(i+1)*100).toFixed(2)}%`);
 		log(`completed: ${i+1}/${games.length} ${Number((i+1)/games.length*100).toFixed(2)}%`);
-		if (found && found % 10 == 0) {
+		if (found && found % 10 == 0 && found != saved) {
 			await save();
+			saved = found;
 		}
 	}
 

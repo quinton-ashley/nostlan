@@ -59,14 +59,14 @@
 
 		let url;
 		if (arg.scrape) {
-			url = `file://${__dirname}/dev/scrape.pug`;
+			url = `file://${__dirname}/scrape/scrape.pug`;
 		} else {
 			url = `file://${__dirname}/views/pug/index.pug`;
 		}
 		mainWindow.loadURL(url);
 
 		// Open the DevTools.
-		if (arg.dev) {
+		if (arg.dev || arg.scrape) {
 			mainWindow.webContents.openDevTools();
 		}
 

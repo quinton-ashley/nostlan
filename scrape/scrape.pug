@@ -1,0 +1,16 @@
+doctype html
+html
+
+head
+	title GameFaqsScraper
+	meta(charset='utf-8')
+	link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
+	link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
+	link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
+	link(rel='stylesheet' type='text/css' href='./style.css')
+
+body
+	script.
+		console.log('opening scrape.pug');
+		console.log('#{node_modules}');
+		require('./scrape.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

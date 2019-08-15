@@ -1,0 +1,249 @@
+{
+	"btlDir": "",
+	"region": "E",
+	"3ds": {
+		"app": {
+			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
+		},
+		"cmd": {
+			"linux": [
+				"flatpak",
+				"run",
+				"${app}",
+				"${game}",
+				"-f"
+			],
+			"mac": [
+				"${app}",
+				"${game}",
+				"-f"
+			],
+			"win": [
+				"${app}",
+				"${game}",
+				"-f"
+			]
+		},
+		"emu": "Citra",
+		"style": "n3ds"
+	},
+	"ds": {
+		"app": {},
+		"cmd": {
+			"mac": [
+				"${app}",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		},
+		"emu": "DeSmuME"
+	},
+	"gba": {
+		"app": {},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"-f",
+				"${game}"
+			],
+			"mac": [
+				"${app}",
+				"-f",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"-f",
+				"${game}"
+			]
+		},
+		"emu": "mGBA"
+	},
+	"mame": {
+		"app": {},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"-inipath",
+				"${cwd}",
+				"${game.id}"
+			],
+			"mac": [
+				"${app}",
+				"-inipath",
+				"${cwd}",
+				"${game.id}"
+			],
+			"win": [
+				"${app}",
+				"-inipath",
+				"${cwd}",
+				"${game.id}"
+			]
+		},
+		"emu": "MAME"
+	},
+	"ps2": {
+		"app": {},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"${game}",
+				"--nogui",
+				"--fullscreen"
+			],
+			"mac": [
+				"${app}",
+				"${game}",
+				"--nogui",
+				"--fullscreen"
+			],
+			"win": [
+				"${app}",
+				"${game}",
+				"--nogui",
+				"--fullscreen"
+			]
+		},
+		"emu": "PCSX2"
+	},
+	"ps3": {
+		"app": {},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		},
+		"emu": "RPCS3"
+	},
+	"switch": {
+		"app": {
+			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
+			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
+		},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"${game}"
+			],
+			"mac": [
+				"${app}",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		},
+		"emu": "Yuzu"
+	},
+	"wii": {
+		"app": {},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"${game}",
+				"-b"
+			],
+			"mac": [
+				"${app}",
+				"${game}",
+				"-b"
+			],
+			"win": [
+				"${app}",
+				"${game}",
+				"-b"
+			]
+		},
+		"emu": "Dolphin",
+		"style": "gcn"
+	},
+	"wiiu": {
+		"app": {},
+		"cmd": {
+			"linux": [
+				"wine",
+				"${app}",
+				"-g",
+				"${game}",
+				"-f"
+			],
+			"win": [
+				"${app}",
+				"-g",
+				"${game}",
+				"-f"
+			]
+		},
+		"emu": "Cemu"
+	},
+	"xbox360": {
+		"app": {},
+		"cmd": {
+			"win": [
+				"${app}",
+				"${game}",
+				"--d3d12_resolution_scale=2",
+				"--fullscreen"
+			]
+		},
+		"emu": "Xenia"
+	},
+	"ui": {
+		"mouse": {
+			"wheel": {
+				"multi": 1,
+				"smooth": false
+			}
+		},
+		"gamepad": {
+			"gca": true,
+			"default": {
+				"profile": "Xbox_PS_Adaptive",
+				"map": {}
+			},
+			"ps": {
+				"profile": "Xbox_PS_Adaptive",
+				"map": {}
+			},
+			"xbox": {
+				"profile": "Xbox_PS_Adaptive",
+				"map": {}
+			},
+			"nintendo": {
+				"profile": "Nintendo_Adaptive",
+				"map": {}
+			}
+		},
+		"getBackCoverHQ": false,
+		"getExtraImgs": false,
+		"recheckImgs": false,
+		"autoHideCover": false
+	},
+	"load": {
+		"delay": 2000
+	},
+	"inGame": {
+		"quit": {
+			"hold": "start",
+			"time": 5000
+		},
+		"reset": {
+			"hold": "select",
+			"time": 5000
+		}
+	},
+	"session": {
+		"sys": "wii"
+	},
+	"chromium": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+}

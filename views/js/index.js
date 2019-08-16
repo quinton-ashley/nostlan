@@ -422,8 +422,8 @@ module.exports = async function(arg) {
 				'this may take a few minutes, sit back and relax!');
 			await reset();
 		}
+		emuDir = emuDir.replace(/\\/g, '/');
 		btlDir = emuDir + '/bottlenose';
-		btlDir = btlDir.replace(/\\/g, '/');
 		await fs.ensureDir(btlDir);
 		prefs.btlDir = btlDir;
 		prefs.session.sys = sys;
@@ -1137,7 +1137,7 @@ module.exports = async function(arg) {
 	function getImgDir(game) {
 		let imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 		if (emu == 'mame') {
-			imgDir = `${prefs.btlDir}/MAME/BIN/artwork/${game.id}`;
+			imgDir = `${emuDir}/MAME/BIN/artwork/${game.id}`;
 		}
 		return imgDir;
 	}

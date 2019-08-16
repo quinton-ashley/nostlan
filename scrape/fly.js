@@ -22,26 +22,21 @@ class FlyerFeverScraper {
 			let $images = $page1.find('.post .row .pxu-photo img');
 			if (!$images.length) continue;
 			let img = {};
-			img[name] = $images.eq(0).attr('data-highres');
-			if (!img[name]) img[name] = $images.eq(0).attr('src');
-			if (!img[name]) continue;
-			if (arg.dl) {
-				await dl(img[name], `${__rootDir}/dev/img/${game.id}/${name}.${img[name].substr(-3)}`);
-			}
-			if ($images.length > 1) {
-				name += 'Back';
-				img[name] = $images.eq(1).attr('data-highres');
-				if (!img[name]) img[name] = $images.eq(1).attr('src');
-				if (img[name] && arg.dl) {
+
+			let _name = name + 'Back';
+			for (let j = 0; j < $images.length; j++) {
+				if (j == 1) name += 'Back';
+				if (j > 1) name = _name + (j - 1);
+				img[name] = $images.eq(j).attr('data-highres');
+				if (!img[name]) img[name] = $images.eq(j).attr('src');
+				if (j == 0 && !img[name]) break;
+				if (!img[name]) {
+					delete img[name];
+				} else if (arg.dl) {
 					await dl(img[name], `${__rootDir}/dev/img/${game.id}/${name}.${img[name].substr(-3)}`);
 				}
-				if (!img[name]) delete img[name];
 			}
-			for (let i = 1; i < $images.length; i++) {
-				img[name + i] = $images.eq(i + 1).attr('data-highres');
-				if (!img[name + i]) img[name + i] = $images.eq(i + 1).attr('src');
-				if (!img[name + i]) delete img[name + i];
-			}
+			if (!img[name]) continue;
 			log(img);
 			return img;
 		}

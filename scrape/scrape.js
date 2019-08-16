@@ -32,7 +32,7 @@ module.exports = async function(arg) {
 
 	let found = 0;
 	let saved = 0;
-	for (let i = 0; i < games.length; i++) {
+	for (let i = (arg.skip || 0); i < games.length; i++) {
 		if (arg.test && found >= arg.test) {
 			log('test done!');
 			break;
@@ -52,7 +52,7 @@ module.exports = async function(arg) {
 			log('game already has an image');
 			found++;
 		}
-		log(`found: ${found}/${i+1} ${Number(found/(i+1)*100).toFixed(2)}%`);
+		log(`found: ${found}/${i+1-arg.skip} ${Number(found/(i+1-arg.skip)*100).toFixed(2)}%`);
 		log(`completed: ${i+1}/${games.length} ${Number((i+1)/games.length*100).toFixed(2)}%`);
 		if (found && found % 10 == 0 && found != saved) {
 			await save();

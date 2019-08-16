@@ -141,5 +141,5 @@
     "postversion": "git push",
     "V": "git push origin $npm_package_version && npm publish"
   },
-  "version": "1.0.72"
+  "version": "1.0.73"
 }

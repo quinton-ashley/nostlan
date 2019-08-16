@@ -137,8 +137,8 @@ module.exports = async function(arg) {
 		}
 	}
 
-	function addGame(fuse, searchTerm) {
-		let results = fuse.search(searchTerm.substr(0, 64));
+	async function addGame(searcher, searchTerm) {
+		let results = await searcher(searchTerm.substr(0, 64));
 		if (arg.v) {
 			log(results);
 		}
@@ -180,13 +180,13 @@ module.exports = async function(arg) {
 					continue;
 				}
 			}
-			$('#loadDialog0').text('loading ' + results[i].title);
 			return results[i];
 		}
 		return;
 	}
 
 	async function reset() {
+		$('#loadDialog0').text('Indexing your game library');
 		let _games = games;
 		games = [];
 		let gameDB = [];
@@ -225,6 +225,11 @@ module.exports = async function(arg) {
 			]
 		};
 		let fuse = new Fuse(gameDB, searcharg);
+		let searcher = function(searchTerm) {
+			return new Promise((resolve, reject) => {
+				resolve(fuse.search(searchTerm));
+			});
+		};
 		for (let h = 0; h < prefs[sys].libs.length; h++) {
 			let files = await klaw(prefs[sys].libs[h], {
 				depthLimit: 0
@@ -248,6 +253,8 @@ module.exports = async function(arg) {
 					term = term.base;
 				}
 				olog('file:\t\t\t' + term);
+				$('#loadDialog1').text(term);
+				await delay(1);
 				// eliminations part 1
 				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
 				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
@@ -322,7 +329,7 @@ module.exports = async function(arg) {
 				term = term.replace(/ *decrypted */gi, '');
 
 				term = term.trim();
-				let game = addGame(fuse, term);
+				let game = await addGame(searcher, term);
 				olog('search term:\t\t' + term);
 				if (game) {
 					olog('found match:\t\t' + game.title + '\r\n');
@@ -536,6 +543,13 @@ module.exports = async function(arg) {
 			if (adjust || cvHeight != cpHeight) {
 				$cvSel.css('margin-top', (cpHeight + mod) * .5);
 				$('nav').height(cpHeight + 24);
+			}
+			let $cur = cui.getCur();
+			if ($cur.hasClass('selected')) {
+				cui.scrollToCursor(0, 0);
+				let $reel = $cur.parent();
+				$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+				$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 			}
 		}
 	});
@@ -775,19 +789,17 @@ module.exports = async function(arg) {
 	}
 	cui.setCustomHeldActions(doHeldAction);
 
-	function coverClicked(select) {
+	async function coverClicked(select) {
 		let $cur = cui.getCur();
-		let classes = $cur.attr('class').split(' ');
-		if (classes.includes('uie-disabled')) {
-			return false;
-		}
+		if ($cur.hasClass('uie-disabled')) return false;
 		let $reel = $cur.parent();
-		cui.scrollToCursor(1000, 0);
 		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
 		// $('nav').toggleClass('gamestate');
 		if ($cur.hasClass('selected')) {
+			cui.scrollToCursor(250, 0);
+			await delay(250);
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 		} else {
@@ -831,7 +843,7 @@ module.exports = async function(arg) {
 			} else if (act == 'y') {
 				await resetBtn();
 			} else if (act == 'a' || !isBtn) {
-				coverClicked();
+				await coverClicked();
 				cui.change('coverSelect');
 			}
 		} else if (ui == 'coverSelect') {
@@ -862,7 +874,7 @@ module.exports = async function(arg) {
 			} else if (act == 'b') {
 				$('#libMain').show();
 				cui.change('libMain');
-				coverClicked();
+				await coverClicked();
 			} else if (act == 'y' || act == 'flip') {
 				log('flip cover not enabled yet');
 			}
@@ -876,7 +888,7 @@ module.exports = async function(arg) {
 				cui.change(state);
 			} else if (act == 'b') {
 				cui.change('libMain');
-				coverClicked();
+				await coverClicked();
 			}
 		} else if ((/game/i).test(ui)) {
 			if (act == 'b') {
@@ -1033,13 +1045,14 @@ module.exports = async function(arg) {
 	}
 
 	function getTemplate() {
-		if (!theme.template.box) {
-			theme.template.box = '';
-		}
 		let imgTypes = [
 			'boxOpen', 'boxOpenMask', 'manual',
 			'memory', 'memoryBack'
 		];
+		if (!theme.template.box) {
+			imgTypes.push('box');
+			imgTypes.push('boxBack');
+		}
 		let urlBase = 'https://raw.githubusercontent.com/quinton-ashley';
 		urlBase += `/bottlenose-img/master/${sys}/_TEMPLATE/img`;
 		for (let imgType of imgTypes) {
@@ -1124,7 +1137,7 @@ module.exports = async function(arg) {
 	function getImgDir(game) {
 		let imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
 		if (emu == 'mame') {
-			imgDir = `${emuDir}/${prefs[sys].emu}/BIN/artwork/${game.id}`;
+			imgDir = `${prefs.btlDir}/MAME/BIN/artwork/${game.id}`;
 		}
 		return imgDir;
 	}

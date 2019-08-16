@@ -323,17 +323,19 @@ The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variati
 
 ### Databases
 
-[gametdb](https://www.gametdb.com/) database text files  
+I converted several game database text files to JSON from [gametdb](https://www.gametdb.com/)  
 
-### Game Box and Disc Art
+### Game Artwork
 
-The highest quality box scans are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection)!  
+High quality box scans of popular games for many systems are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection)  
 
 Full covers, boxes, discs/carts are downloaded from [gametdb](https://www.gametdb.com/)  
 
-Some covers are downloaded from [gamefaqs](https://gamefaqs.gamespot.com)
+Most PS2 and GBA game artwork is downloaded from [gamefaqs](https://gamefaqs.gamespot.com)
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
+
+Archival quality images of MAME games and software are from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/)  
 
 ### Template Art
 

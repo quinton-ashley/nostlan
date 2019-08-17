@@ -945,7 +945,7 @@ ul.nav {
 	border: none;
 	box-shadow: none;
 	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
-	transform: translate(0, -3vw) scale(1, 2.5);
+	transform: translate(0, -2vw) scale(1, 2.5);
 }
 /*================Gamecube Cover====================*/
 @font-face {

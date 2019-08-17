@@ -50,7 +50,6 @@ module.exports = async function(arg) {
 	};
 	for (let scraper in scrapers) {
 		scraper = scrapers[scraper];
-		log(scraper);
 		srp[scraper] = require(__rootDir + '/scrape/' + scraper + '.js');
 	}
 
@@ -545,6 +544,10 @@ module.exports = async function(arg) {
 			}
 		});
 		sys = arg.sys || prefs.session.sys;
+		if (prefs.session.gameID) {
+			let $cur = $('#' + prefs.session.gameID).eq(0);
+			cui.makeCursor($cur);
+		}
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 	}
 
@@ -644,6 +647,7 @@ module.exports = async function(arg) {
 
 	async function powerBtn() {
 		let id = cui.getCur('libMain').attr('id');
+		prefs.session.gameID = id;
 		if (!id && cui.ui != 'libMain') {
 			cui.err('cursor was not on a game');
 			return;

@@ -1,3 +1,9 @@
+// DEVELOPMENT USE ONLY!
+// This code is not for end users, it's for creating the game art database
+// files. These files have direct download links to images so that end users
+// will not have to individually scrape for images.
+// Even though I have decided to open source these files please do not run them // yourself.  If you have any questions email me: qashto@gmail.com
+
 module.exports = async function(arg) {
 	global.path = require('path');
 	arg.__rootDir = path.join(__dirname, '/..').replace(/\\/g, '/');
@@ -13,18 +19,22 @@ module.exports = async function(arg) {
 		user: 'qashto@gmail.com'
 	});
 
-	let scrapers = ['gfs', 'fly'];
+	let scrapers = ['gfs', 'fly', 'tcp'];
 	if (!scrapers.includes(arg.scrape)) {
 		er('invalid scraper use one of the following: ' + scrapers.toString());
 		return;
 	}
+	const deepExtend = require('deep-extend');
 	let scraper = require(`./${arg.scrape}.js`);
 	let sys = 'ps2';
 	if (arg.scrape == 'fly') sys = 'mame';
 	sys = arg.sys || sys;
-	if (arg.gfs) await scraper.load(sys);
+	if (arg.scrape == 'gfs' || arg.scrape == 'tcp') {
+		await scraper.load(sys);
+	}
 	let name = 'cover';
 	if (sys == 'gba' || sys == 'mame') name = 'box';
+	if (arg.scrape == 'tcp') name = 'coverFull';
 
 	let games = [];
 	let dbPath = `${__rootDir}/scrape/db/${sys}DB.json`;
@@ -39,10 +49,18 @@ module.exports = async function(arg) {
 		}
 		let game = games[i];
 		log(game.title);
-		if (!game.img || !game.img[name]) {
+		if (arg.override || !game.img || !game.img[name]) {
 			let img = await scraper.getImgUrls(sys, game, name);
 			if (img) {
-				if (!game.img) game.img = img;
+				if (!game.img) {
+					game.img = img;
+				} else if (!arg.override) {
+					deepExtend(game.img, img);
+				} else {
+					// TODO deep extend doesn't work, do it manually
+					deepExtend(game.img, img);
+					game.img = img;
+				}
 				log('image found!');
 				found++;
 			} else {
@@ -52,7 +70,7 @@ module.exports = async function(arg) {
 			log('game already has an image');
 			found++;
 		}
-		log(`found: ${found}/${i+1-arg.skip} ${Number(found/(i+1-arg.skip)*100).toFixed(2)}%`);
+		log(`found: ${found}/${i+1-(arg.skip||0)} ${Number(found/(i+1-(arg.skip||0))*100).toFixed(2)}%`);
 		log(`completed: ${i+1}/${games.length} ${Number((i+1)/games.length*100).toFixed(2)}%`);
 		if (found && found % 10 == 0 && found != saved) {
 			await save();

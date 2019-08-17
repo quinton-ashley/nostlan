@@ -37,11 +37,22 @@ module.exports = async function(arg) {
 	log(usrDir);
 
 	// dl is a helper lib I made for downloading images
-	const dl = require(__rootDir + '/core/dl/dl.js');
-	// modules that use dl
-	const andyDecarli = require(__rootDir + '/core/dl/andyDecarli.js');
-	const gamestdb = require(__rootDir + '/core/dl/gamestdb.js');
-	const gamefaqs = require(__rootDir + '/core/dl/gamefaqs.js');
+	const dl = require(__rootDir + '/scrape/dl.js');
+	// scrapers that use dl
+	let srp = {};
+	let scrapers = {
+		b: 'bmb',
+		c: 'tcp',
+		d: 'dec',
+		g: 'gfs',
+		f: 'fly',
+		t: 'tdb'
+	};
+	for (let scraper in scrapers) {
+		scraper = scrapers[scraper];
+		log(scraper);
+		srp[scraper] = require(__rootDir + '/scrape/' + scraper + '.js');
+	}
 
 	// get the default prefrences
 	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
@@ -74,6 +85,7 @@ module.exports = async function(arg) {
 	let templateAmt = 4; // template boxes in each column of the lib viewer
 	let child; // child process running an emulator
 	let childState = 'closed'; // status of the process
+	let cmdArgs = [];
 
 	let normalizeButtonLayout = {
 		map: {
@@ -247,7 +259,8 @@ module.exports = async function(arg) {
 				if (term.ext == '.sav') continue;
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
-				if (sys != 'wiiu' && sys != 'ps3') {
+				let isDir = (await fs.stat(file)).isDirectory();
+				if (sys != 'wiiu' && sys != 'ps3' && !isDir) {
 					term = term.name;
 				} else {
 					term = term.base;
@@ -314,8 +327,11 @@ module.exports = async function(arg) {
 					term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
 				} else if (sys == 'gba') {
 					term = term.replace(/ # GBA/gi, '');
+				} else if (sys == 'ps2') {
+					term = term.replace(/Marvel Vs.*/gi, 'Marvel Vs Capcom 2');
 				}
 				// special subs part 3
+				term = term.replace(/pes *(\d\d\d\d).*/gi, 'Pro Evolution Soccer $1');
 				term = term.replace(/Dragonball/gi, 'Dragon Ball');
 				term = term.replace(/Goku 2/gi, 'Goku II');
 				term = term.replace(/Yu-Gi-Oh /gi, 'Yu-Gi-Oh! ');
@@ -528,7 +544,7 @@ module.exports = async function(arg) {
 				}
 			}
 		});
-		sys = prefs.session.sys;
+		sys = arg.sys || prefs.session.sys;
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 	}
 
@@ -545,8 +561,8 @@ module.exports = async function(arg) {
 				$('nav').height(cpHeight + 24);
 			}
 			let $cur = cui.getCur();
-			if ($cur.hasClass('selected')) {
-				cui.scrollToCursor(0, 0);
+			if ($cur.hasClass('selected') && cui.ui != 'coverSelect') {
+				cui.scrollToCursor(250, 0);
 				let $reel = $cur.parent();
 				$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 				$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
@@ -595,7 +611,7 @@ module.exports = async function(arg) {
 			}
 		}
 		let buttons = ['X', 'Y', 'B'];
-		if ((/xbox/i).test(subState)) {
+		if ((/(xbox|mame)/i).test(subState)) {
 			buttons = ['Y', 'X', 'B'];
 			adjust(true);
 		} else if ((/ps/i).test(subState)) {
@@ -637,7 +653,7 @@ module.exports = async function(arg) {
 			return;
 		}
 		let game;
-		let cmdArgs = [];
+		cmdArgs = [];
 		emuDirPath = path.join(emuAppPath, '..');
 		if (linux) {
 			if (emu == 'citra') {
@@ -690,7 +706,7 @@ module.exports = async function(arg) {
 			}
 		}
 
-		if (cui.ui != 'libMain') {
+		if (cui.ui != 'libMain' || emu == 'mame') {
 			cui.removeView('libMain');
 			cui.change('playingBack');
 		}
@@ -727,7 +743,7 @@ module.exports = async function(arg) {
 				`This is probably not an issue with Bottlenose.  ` +
 				`If you were unable to start the game, setup ${emu} if you haven't ` +
 				`already.  Make sure it will boot the game and try again.  \n` +
-				`${cmdArgs.toString()}\n${data}`);
+				`${cmdArgs.toString()}\nerror code: ${code}`);
 		}
 
 		electron.getCurrentWindow().focus();
@@ -798,8 +814,7 @@ module.exports = async function(arg) {
 		$('.reel').toggleClass('bg');
 		// $('nav').toggleClass('gamestate');
 		if ($cur.hasClass('selected')) {
-			cui.scrollToCursor(250, 0);
-			await delay(250);
+			cui.scrollToCursor(500, 0);
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 		} else {
@@ -1007,41 +1022,36 @@ module.exports = async function(arg) {
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
 			log(name);
-			url = game.img[name].split(/ \\ /);
-			let ext;
+			url = game.img[name].split(' ');
+			let ext, scraper;
 			if (url[1]) {
-				ext = url[1];
-				url = url[0];
+				scraper = scrapers[url[0]];
+				let data = url.slice(1);
+				log(data);
+				url = srp[scraper].unwrapUrl(data);
+				log(url);
 			} else {
 				url = url[0];
-				ext = url.substr(-3);
 			}
+			ext = url.substr(-3);
 			file = `${imgDir}/${name}.${ext}`;
-			if (url.includes('gamefaqs')) {
-				res = await gamefaqs.dlImg(url, imgDir, name);
+			if (scraper == 'gfs') {
+				res = await srp.gfs.dlImg(url, imgDir, name);
 			} else {
 				res = await dl(url, file);
 			}
-			if (res) {
-				return res;
-			}
+			if (res) return res;
 		}
 
-		if (game.id == '_TEMPLATE') {
-			return;
-		}
+		if (game.id == '_TEMPLATE') return;
 
 		// get high quality box from Andy Decarli's site
-		res = await andyDecarli.dlImg(sys, game, imgDir, name);
-		if (res) {
-			return res;
-		}
+		res = await srp.dec.dlImg(sys, game, imgDir, name);
+		if (res) return res;
 
-		if (hq) {
-			return;
-		}
+		if (hq) return;
 
-		return await gamestdb.dlImg(sys, game, imgDir, name);
+		return await srp.tdb.dlImg(sys, game, imgDir, name);
 	}
 
 	function getTemplate() {
@@ -1067,6 +1077,7 @@ module.exports = async function(arg) {
 
 	async function loadImages() {
 		let imgDir;
+		let _gamesLength = games.length;
 		for (let i = 0; i < games.length + 1; i++) {
 			let res;
 			let game;
@@ -1103,8 +1114,11 @@ module.exports = async function(arg) {
 				}
 				if (!res && !(await imgExists(game, 'box'))) {
 					res = await getImg(game, 'cover');
+					if (!res) res = await getImg(game, 'box');
 					if (!res) {
-						await getImg(game, 'box');
+						games.splice(i, 1);
+						i--;
+						continue;
 					}
 				}
 
@@ -1123,6 +1137,7 @@ module.exports = async function(arg) {
 				}
 			}
 		}
+		if (_gamesLength != games.length) await outputGamesJSON();
 		if (theme.default) {
 			defaultBox = await getImg(theme.default, 'box');
 			if (!defaultBox) {
@@ -1177,6 +1192,7 @@ module.exports = async function(arg) {
 		img${((cl1)?'.cov': '.box')}(src="${file}")
 		${((cl1)?'.shade.p-0.m-0':'')}
 		`));
+		return true;
 	}
 
 	async function animatePlay() {
@@ -1247,11 +1263,9 @@ module.exports = async function(arg) {
 			}
 			emuAppPath += emuNameCases[i];
 			if (win) {
-				if (emu == 'citra') {
-					emuAppPath += '-qt';
-				} else if (emu == 'mgba') {
-					emuAppPath += '-sdl';
-				}
+				if (emu == 'citra') emuAppPath += '-qt';
+				if (emu == 'mgba') emuAppPath += '-sdl';
+				if (emu == 'mame') emuAppPath += '64';
 				emuAppPath += '.exe';
 			} else if (mac) {
 				if (emu == 'citra') {
@@ -1272,9 +1286,7 @@ module.exports = async function(arg) {
 				} else if (emu == 'yuzu') {
 					emuAppPath += '-bin';
 				}
-				if (emu == 'mame') {
-					emuAppPath += '64';
-				}
+				if (emu == 'mame') emuAppPath += '64';
 			} else if (linux) {
 				if (emu == 'dolphin') {
 					emuAppPath = 'dolphin-emu';

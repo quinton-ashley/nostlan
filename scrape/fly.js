@@ -1,7 +1,15 @@
-const dl = require(__rootDir + '/core/dl/dl.js');
+const dl = require('./dl.js');
 
 class FlyerFeverScraper {
 	constructor() {}
+
+	wrapUrl(url) {
+		return url.replace(/https:\/\/66\.media\.tumblr\.com\/(\w+)\/tumblr_(\w+)_1280.png/, 'f $1 $2');
+	}
+
+	unwrapUrl(data) {
+		return `https://66.media.tumblr.com/${data[0]}/tumblr_${data[1]}_1280.png`;
+	};
 
 	async getImgUrls(sys, game, name) {
 		if (!browser) {
@@ -35,6 +43,7 @@ class FlyerFeverScraper {
 				} else if (arg.dl) {
 					await dl(img[name], `${__rootDir}/dev/img/${game.id}/${name}.${img[name].substr(-3)}`);
 				}
+				if (img[name]) img[name] = this.wrapUrl(img[name]);
 			}
 			if (!img[name]) continue;
 			log(img);

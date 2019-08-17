@@ -297,6 +297,10 @@ img {
 	bottom: 0;
 }
 
+.reel:not(.reverse) {
+	top: 0;
+}
+
 .reel {
 	position: absolute;
 	width: 12.5%;
@@ -330,7 +334,7 @@ img {
 
 .reel,
 .reel .uie {
-	transition: transform 1s, scale 1s, left 0.75s, opacity 0.5s, z-index 1s;
+	transition: transform 1s, scale 1s, left 0.75s, opacity 0s, z-index 0s;
 }
 
 #dialogs {
@@ -451,6 +455,38 @@ img {
 }
 /*================GBA Game Lib Viewer====================*/
 
+.gba .front-cover-crop {
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+.gba .front-cover {
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+.gba .front-cover img {
+	width: 100%;
+	height: 100%;
+}
+
+.gba .front-cover-crop img {
+	width: 100%;
+	height: 100%;
+	transform: translate(-55.8%, 0%) scale(2.115, 1);
+}
+
+.gba .front-cover-crop .shade {
+	position: absolute;
+	width: 1.3%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: linear-gradient(0.25turn, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+}
+
 .gba #_TEMPLATE {
 	overflow: hidden;
 }
@@ -460,7 +496,7 @@ img {
 }
 
 .gba .box {
-	border-radius: 0;
+	border-radius: 1.6%;
 }
 /*================PS3 Game Lib Viewer====================*/
 

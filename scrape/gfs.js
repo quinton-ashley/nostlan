@@ -1,4 +1,4 @@
-const dl = require(__rootDir + '/core/dl/dl.js');
+const dl = require('./dl.js');
 const Fuse = require('fuse.js');
 let regions = {
 	ps2: {
@@ -18,6 +18,15 @@ let gfs = {};
 
 class GameFaqsScraper {
 	constructor() {}
+
+	wrapUrl(url) {
+		return url.replace(/https\:\/\/gamefaqs.akamaized.net\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/, 'g $1$2$3$4');
+	}
+
+	unwrapUrl(data) {
+		data = data[0];
+		return `https://gamefaqs.akamaized.net/box/${data[0]}/${data[1]}/${data[2]}/${data.substr(3)}_front.jpg`;
+	}
 
 	async getImgUrls(sys, game, name) {
 		if (!browser) {
@@ -63,7 +72,7 @@ class GameFaqsScraper {
 		}
 		log(url);
 		let img = {};
-		img[name] = url;
+		img[name] = this.wrapUrl(url);
 		// await dl(url, __rootDir + '/scrape/img/' + game.id + url.substr(-4));
 		return img;
 	}
@@ -154,6 +163,35 @@ class GameFaqsScraper {
 			log(url);
 		}
 		await fs.outputFile(gfsPath, JSON.stringify(gfs[sys]));
+	}
+
+	async dlImg(url, dir, name) {
+		let ext = url.substr(-4).toLowerCase();
+		let imgPath = dir + '/' + name + ext;
+		log(url);
+		let res;
+		if (!name.includes('Side')) {
+			res = await dl(url, imgPath);
+		}
+		if (res || name.includes('Side')) {
+			log(url.replace('front', 'side'));
+			if (!name.includes('Side')) {
+				imgPath = dir + '/' + name + 'Side' + ext;
+			} else {
+				imgPath = dir + '/' + name + ext;
+			}
+			await dl(url.replace('front', 'side'), imgPath);
+		}
+		if (res && prefs.ui.getBackCoverHQ) {
+			log(url.replace('front', 'back'));
+			if (!name.includes('Side')) {
+				imgPath = dir + '/' + name + 'Back' + ext;
+			} else {
+				imgPath = dir + '/' + name.replace('Side', 'Back') + ext;
+			}
+			await dl(url.replace('front', 'back'), imgPath);
+		}
+		return res;
 	}
 }
 

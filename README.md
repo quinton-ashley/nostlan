@@ -256,7 +256,7 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 -   `id` is the official id of the game
 -   `name` the official name of the game, subtitles are delineated using a colon
 -   `texp` the texture pack array, order is irrelevant
--   `img` an object with `"imgFileType": "url"` pairs that override the default image location
+-   `img` an object with `"imgFileName": "url"` pairs that override the default image location
 
 ### Texture Packs
 
@@ -331,7 +331,7 @@ High quality box scans of popular games for many systems are from [Andy Decarli]
 
 Full covers, boxes, discs/carts are downloaded from [gametdb](https://www.gametdb.com/)  
 
-Most PS2 and GBA game artwork is downloaded from [gamefaqs](https://gamefaqs.gamespot.com)
+Most PS2 and GBA game artwork is downloaded from [The Cover Project](http://www.thecoverproject.net/) and [gamefaqs](https://gamefaqs.gamespot.com)
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
 

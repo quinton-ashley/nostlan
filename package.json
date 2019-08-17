@@ -79,7 +79,7 @@
     "chrome-finder": "^1.0.5",
     "circletype": "^2.3.0",
     "contro": "^2.1.3",
-    "contro-ui": "^1.0.13",
+    "contro-ui": "^1.0.17",
     "deep-extend": "^0.6.0",
     "delay": "^4.3.0",
     "diacritics": "^1.3.0",
@@ -133,7 +133,7 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m && electron-builder -w && electron-builder -l",
     "gh-publish": "electron-builder -m -l -w -p always",
-    "postinstall": "electron-builder install-app-deps | electron-rebuild",
+    "postinstall": "electron-builder install-app-deps -c.electronVersion 5.0.5 | electron-rebuild",
     "delete-tags": "git tag | xargs git tag -d",
     "delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
     "v": "npm version patch --force",
@@ -141,5 +141,5 @@
     "postversion": "git push",
     "V": "git push origin $npm_package_version && npm publish"
   },
-  "version": "1.0.75"
+  "version": "1.0.76"
 }

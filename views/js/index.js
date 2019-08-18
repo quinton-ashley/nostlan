@@ -544,10 +544,6 @@ module.exports = async function(arg) {
 			}
 		});
 		sys = arg.sys || prefs.session.sys;
-		if (prefs.session.gameID) {
-			let $cur = $('#' + prefs.session.gameID).eq(0);
-			cui.makeCursor($cur);
-		}
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 	}
 
@@ -632,6 +628,14 @@ module.exports = async function(arg) {
 		$('#open span').text(buttons[2]);
 	});
 
+	cui.setUIAfterChange(() => {
+		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack') && cui.ui == 'libMain' && prefs.session.gameID) {
+			let $cur = $('#' + prefs.session.gameID).eq(0);
+			cui.makeCursor($cur);
+			cui.scrollToCursor(250, 0);
+		}
+	});
+
 	async function removeIntro(time) {
 		log('time:' + time);
 		if (cui.ui != 'errMenu') {
@@ -646,12 +650,10 @@ module.exports = async function(arg) {
 	}
 
 	async function powerBtn() {
-		let id = cui.getCur('libMain').attr('id');
-		prefs.session.gameID = id;
-		if (!id && cui.ui != 'libMain') {
-			cui.err('cursor was not on a game');
-			return;
-		}
+		let id = cui.getCur().attr('id');
+		log(id);
+		if (id) prefs.session.gameID = id;
+		if (!id) id = prefs.session.gameID;
 		let emuAppPath = await getEmuAppPath();
 		if (!emuAppPath) {
 			return;
@@ -1096,11 +1098,7 @@ module.exports = async function(arg) {
 			}
 			imgDir = getImgDir(game);
 
-			if (
-				prefs.ui.recheckImgs ||
-				!(await fs.exists(imgDir)) ||
-				isTemplate
-			) {
+			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
 				await fs.ensureDir(imgDir);
 
 				if (!isTemplate ||

@@ -166,9 +166,9 @@ class Script {
 		    float dProd = max(0.2, dot(vNormal, light));
 
 		    gl_FragColor = vec4(0, // R
-		                      84, // G
-		                      25, // B
-		                      1.0);  // A
+		                      24, // G
+		                      15, // B
+		                      0.1);  // A
 		}
 		`,
 			wireframe: true,

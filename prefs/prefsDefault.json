@@ -121,7 +121,6 @@
 		},
 		"getBackCoverHQ": false,
 		"getExtraImgs": false,
-		"recheckImgs": false,
 		"autoHideCover": false
 	},
 	"load": {

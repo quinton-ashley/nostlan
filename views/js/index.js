@@ -11,19 +11,18 @@ module.exports = async function(arg) {
 
 	const Fuse = require('fuse.js');
 	const rmDiacritics = require('diacritics').remove;
-
-	// const sevenBin = require('7zip-bin');
-	// const {
-	// 	extractFull
-	// } = require('node-7z');
-	// const extract = (input, output, arg) => {
-	// 	return new Promise((resolve, reject) => {
-	// 		arg.$bin = sevenBin.path7za;
-	// 		extractFull(input, output, arg)
-	// 			.on('end', () => resolve())
-	// 			.on('error', (err) => reject(err));
-	// 	});
-	// };
+	global.fs.extract = (input, output, opt) => {
+		opt = opt || {};
+		return new Promise(async (resolve, reject) => {
+			opt.$bin = require('7zip-bin').path7za;
+			require('node-7z').extractFull(input, output, opt)
+				.on('end', () => {
+					fs.remove(input);
+					resolve(output)
+				})
+				.on('error', (ror) => reject(ror));
+		});
+	};
 
 	// Bottlenose dir location cannot be changed.
 	// Only used to store small config files, no images,
@@ -44,8 +43,9 @@ module.exports = async function(arg) {
 		b: 'bmb',
 		c: 'tcp',
 		d: 'dec',
-		g: 'gfs',
 		f: 'fly',
+		g: 'gfs',
+		m: 'mdo',
 		t: 'tdb'
 	};
 	for (let scraper in scrapers) {
@@ -85,6 +85,7 @@ module.exports = async function(arg) {
 	let child; // child process running an emulator
 	let childState = 'closed'; // status of the process
 	let cmdArgs = [];
+	let recheckImgs = false;
 
 	let normalizeButtonLayout = {
 		map: {
@@ -378,7 +379,7 @@ module.exports = async function(arg) {
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
-		if (!prefs.ui.recheckImgs && await fs.exists(gamesPath)) {
+		if (!recheckImgs && await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
 		} else {
 			if (!emuDir) {
@@ -512,9 +513,8 @@ module.exports = async function(arg) {
 			emuDir = path.join(prefs.btlDir, '..');
 
 			// clean up previous versions of the prefs file
-			if (prefs.ui.gamepad.mapping) {
-				delete prefs.ui.gamepad.mapping;
-			}
+			if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
+			if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
 			if (prefs.ui.gamepad.profile) {
 				prefs.ui.gamepad.default.profile = prefs.ui.gamepad.profile;
 				delete prefs.ui.gamepad.profile;
@@ -786,11 +786,18 @@ module.exports = async function(arg) {
 	}
 
 	async function doHeldAction(act, isBtn, timeHeld) {
-		if (timeHeld < 3000) {
+		if (timeHeld < 2000) {
 			return;
 		}
 		log(act + " held for " + timeHeld);
 		let ui = cui.ui;
+		if (ui == 'libMain') {
+			if (act == 'y') {
+				recheckImgs = true;
+				await resetBtn();
+				recheckImgs = false;
+			}
+		}
 		if (ui == 'playingBack' && childState == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
@@ -1055,6 +1062,9 @@ module.exports = async function(arg) {
 		res = await srp.dec.dlImg(sys, game, imgDir, name);
 		if (res) return res;
 
+		res = await srp.mdo.dlImg(sys, game, imgDir, name);
+		if (res) return res;
+
 		if (hq) return;
 
 		return await srp.tdb.dlImg(sys, game, imgDir, name);
@@ -1098,7 +1108,7 @@ module.exports = async function(arg) {
 			}
 			imgDir = getImgDir(game);
 
-			if (prefs.ui.recheckImgs || !(await fs.exists(imgDir))) {
+			if (recheckImgs || !(await fs.exists(imgDir))) {
 				await fs.ensureDir(imgDir);
 
 				if (!isTemplate ||
@@ -1136,6 +1146,8 @@ module.exports = async function(arg) {
 					await getImg(game, 'manual');
 					await getImg(game, 'memory');
 					await getImg(game, 'memoryBack');
+				} else if (sys == 'mame') {
+					await getImg(game, 'boxOpen');
 				}
 			}
 		}

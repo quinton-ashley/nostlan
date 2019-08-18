@@ -4,13 +4,14 @@ class MrDo {
 	constructor() {}
 
 	async dlImg(sys, game, dir, name) {
-		if (name != 'box' || sys != 'mame') {
+		if (name != 'boxOpen' || sys != 'mame') {
 			return;
 		}
 		let url = `http://www.mameworld.info/mrdo/artwork/${game.id}.zip`;
-		let res = await dl(url, dir);
+		let file = dir + `/${game.id}.zip`;
+		let res = await dl(url, file);
 		// TODO rename files
-
+		res = await fs.extract(file, dir + `/${game.id}`);
 		return res;
 	}
 }

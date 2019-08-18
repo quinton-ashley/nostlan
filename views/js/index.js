@@ -1010,10 +1010,10 @@ module.exports = async function(arg) {
 
 	cui.bind(['command+n', 'ctrl+n'], 'select');
 
-	cui.click('#power', 'x');
-	cui.click('#view', 'start');
-	cui.click('#reset', 'y');
-	cui.click('#open', 'b');
+	cui.click('#powerBtn', 'x');
+	cui.click('#viewBtn', 'start');
+	cui.click('#resetBtn', 'y');
+	cui.click('#openBtn', 'b');
 
 	async function getImg(game, name, hq) {
 		let res = await imgExists(game, name);

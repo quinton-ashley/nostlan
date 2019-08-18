@@ -53,22 +53,22 @@ body
 		img#gameBoxOpenMask
 	#libMain.main.row-x
 	nav.navbar.fixed-top.p-0
-		.cover.power.p-2.m-0: ul.nav.justify-content-left.m-0
+		button#powerBtn.cover.power.p-2.m-0: ul.nav.justify-content-left.m-0
 			.power.text Power
 			li.nav-item
-				button#power.powerBtn.nav-link.triangle: span
+				#power.nav-link.triangle: span
 			//- img.logoNav(src='../img/logo.png')
-		.cover.view.p-2.m-0: ul.nav.justify-content-right.m-0
+		button#viewBtn.cover.view.p-2.m-0: ul.nav.justify-content-right.m-0
 			li.nav-item
-				button#view Bottlenose
+				#view Bottlenose
 	nav.navbar.fixed-bottom.p-0
-		.cover.reset.p-2.m-0: ul.nav.justify-content-left.m-0
+		button#resetBtn.cover.reset.p-2.m-0: ul.nav.justify-content-left.m-0
 			.reset.text Reset
 			li.nav-item
-				button#reset.resetBtn.nav-link.square: span
-		.cover.open.p-2.m-0: ul.nav.justify-content-right.m-0
+				#reset.nav-link.square: span
+		button#openBtn.cover.open.p-2.m-0: ul.nav.justify-content-right.m-0
 			li.nav-item
-				button#open.openBtn.nav-link.circle: span
+				#open.nav-link.circle: span
 			.open.text Open
 	script.
 		console.log('opening index.pug');

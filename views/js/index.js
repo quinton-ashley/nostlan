@@ -634,8 +634,8 @@ module.exports = async function(arg) {
 	});
 
 	cui.setUIAfterChange(() => {
-		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack') && cui.ui == 'libMain' && prefs.session.gameID) {
-			let $cur = $('#' + prefs.session.gameID).eq(0);
+		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
+			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
@@ -655,8 +655,9 @@ module.exports = async function(arg) {
 	async function powerBtn(withoutGame) {
 		let id = cui.getCur().attr('id');
 		log(id);
-		if (id) prefs.session.gameID = id;
-		if (!id) id = prefs.session.gameID;
+		if (!prefs.session[sys]) prefs.session[sys] = {};
+		if (id) prefs.session[sys].gameID = id;
+		if (!id) id = prefs.session[sys].gameID;
 		let emuAppPath = await getEmuAppPath();
 		if (!emuAppPath) return;
 		let game;

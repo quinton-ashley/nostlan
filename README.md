@@ -199,9 +199,11 @@ On Linux, Bottlenose knows how to use apps via the command line and will prompt 
 
 `session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
 
+`session.{sys}.gameID` the id of the last game that was run for the specified system
+
 `gamepad.profile` the controller profile you want to use
 
-`(sys).cmd.(os)` the launch command for that game system and os
+`{sys}.cmd.{os}` the launch command for that game system and os
 
 ## Advanced Features: Custom Launch Commands
 

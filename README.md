@@ -1,7 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and [please choose an amount to pay for it](https://www.paypal.me/qashto/25) or [become a patreon supporter!](https://www.patreon.com/qashto)  
+[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and [please choose an amount to pay for it](https://www.paypal.me/qashto/10) or [become a patreon supporter!](https://www.patreon.com/qashto)  
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -91,6 +91,7 @@ Paypal: <https://www.paypal.me/qashto/25>
 
 If enough people support the project on Patreon I will be able to set aside the time to implement these features!
 
+-   real time filter search for games
 -   open box menu with submenus for manual reading, save management, and disc art viewing
 -   create a database of Dolphin texture packs
 -   batch install and auto-update texture packs for Dolphin

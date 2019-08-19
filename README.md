@@ -95,8 +95,7 @@ If enough people support the project on Patreon I will be able to set aside the 
 -   list style view mode for browsing through box sides, useful for very large game libraries
 -   instant auto-complete search
 -   user ability to make custom themes
--   PPSSPP support
--   support for modded game isos or roms (currently skipped during indexing)
+-   PPSSPP emulator support
 
 ## How is Bottlenose different from other front-ends?
 
@@ -117,11 +116,7 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 
 ## Using Bottlenose
 
-Unlike Steam, Bottlenose does not send controller input to emulators.  Therefore there is no lag caused by using Bottlenose.  Bottlenose auto detects controllers, no setup is required.  The default controller button mapping profile is `Xbox_PS_Adaptive`.  If you're using a Nintendo controller switch to `Nintendo_Adaptive` in your preferences file.
-
-The console themed plastic cover overlay menu displays the basic options on any given screen.  On any game lib view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  If you've added new games to your game libraries "Reset" will reload the game library viewer.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Power" starts the console emulator without a game.
-
-Select a game from your game library to view it's cover.  You'll see the overlay options change.  Clicking "Play" will play the game.  "Flip" doesn't do anything right now.
+Bottlenose auto detects controllers, no setup is required.  The console themed plastic cover overlay menu displays the basic options on any given screen.  On any game library view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Reset" will start the emulator without a game.  "Power" start the emulator with the selected game.
 
 ## What is Adaptive Button Mapping?
 
@@ -206,7 +201,7 @@ On Linux, Bottlenose knows how to use apps via the command line and will prompt 
 
 `gamepad.profile` the controller profile you want to use
 
-`[sys].cmd.[os]` the launch command for that game system and os
+`(sys).cmd.(os)` the launch command for that game system and os
 
 ## Advanced Features: Custom Launch Commands
 
@@ -225,11 +220,11 @@ Please [send me](mailto:qashto@gmail.com) a description of any errors with the r
 
 ### Mismatched or Unidentified Games
 
-If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.
+If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.  Using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this in the far future.
 
 ### Missing Cover Art
 
-As of version 1.0.44, Bottlenose should be able to get all your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{GAMEID}/img`.  For more info see the "Images" sections of this README.
+As of version 1.0.81, Bottlenose should be able to get nearly all of your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{game.id}/img`.  For more info see the "Images" sections of this README.
 
 ## Contributing to Bottlenose
 
@@ -289,7 +284,7 @@ The following names can be used to specify images:
 -   `memoryBack` the back of a memory card
 -   `promo` a promotional insert included in the game box
 
-Box art downloading is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to change images in the UI.  For now, you can add them in the game's `img` object like this:
+Box art downloading is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to add image urls from within the UI.  For now, you can add them in the game's `img` object like this:
 
 ```javascript
 {
@@ -307,7 +302,7 @@ Texture packs with a rating of 7 and above will be considered recommended.  In a
 
 ## Development Info
 
-Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and proudly uses Pug, jQuery, Bootstrap, and Contro.
+Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and uses Pug, jQuery, Bootstrap, and Contro.
 
 ## Contributing to Bottlenose (code)
 
@@ -315,7 +310,7 @@ PRs are welcome!  Please follow my coding style though.  No callback pyramids, u
 
 ## Credits!
 
-Obviously, Bottlenose wouldn't exist without the developers of these emulators.  Please support the devs of emulators you use!  Bottlenose uses publicly available images under Fair Use.
+Obviously, Bottlenose wouldn't exist without the developers of these emulators.  Please support the devs of emulators you use!
 
 ### Logo
 
@@ -323,19 +318,21 @@ The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variati
 
 ### Databases
 
-I converted several game database text files to JSON from [gametdb](https://www.gametdb.com/)  
+I converted several game database text files to JSON from [gametdb](https://www.gametdb.com/).  
 
 ### Game Artwork
 
-High quality box scans of popular games for many systems are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection)  
+Bottlenose downloads publicly available images under Fair Use.
 
-Full covers, boxes, discs/carts are downloaded from [gametdb](https://www.gametdb.com/)  
+High quality box scans of popular games for many systems are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection).  
 
-Most PS2 and GBA game artwork is downloaded from [The Cover Project](http://www.thecoverproject.net/) and [gamefaqs](https://gamefaqs.gamespot.com)
+Full covers, boxes, discs/carts are downloaded from [gametdb](https://www.gametdb.com/).  
+
+Most PS2 and GBA game artwork is downloaded from [The Cover Project](http://www.thecoverproject.net/) and [gamefaqs](https://gamefaqs.gamespot.com).  
 
 Some full resolution product images from Amazon are used for Wii U and Switch titles.
 
-Archival quality images of MAME games and software are from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/)  
+Archival quality images of arcade game flyers for MAME are from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/).  MAME arcade cabinet artwork is downloaded from [Mr. Do's Arcade](http://www.mameworld.info/mrdo/mame_artwork_ingame.php).  
 
 ### Template Art
 

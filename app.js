@@ -46,7 +46,7 @@
 				nodeIntegration: true
 			}
 		};
-		if (arg.scrape) {
+		if (arg.scrape || arg.conv) {
 			windowPrms.width = 3840 / 4;
 			windowPrms.height = 2160 / 2;
 		} else {
@@ -60,13 +60,15 @@
 		let url;
 		if (arg.scrape) {
 			url = `file://${__dirname}/scrape/scrape.pug`;
+		} else if (arg.conv) {
+			url = `file://${__dirname}/dev/convert.pug`;
 		} else {
 			url = `file://${__dirname}/views/pug/index.pug`;
 		}
 		mainWindow.loadURL(url);
 
 		// Open the DevTools.
-		if (arg.dev || arg.scrape) {
+		if (arg.dev || arg.scrape || arg.conv) {
 			mainWindow.webContents.openDevTools();
 		}
 

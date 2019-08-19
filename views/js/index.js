@@ -18,9 +18,12 @@ module.exports = async function(arg) {
 			require('node-7z').extractFull(input, output, opt)
 				.on('end', () => {
 					fs.remove(input);
-					resolve(output)
+					resolve(output);
 				})
-				.on('error', (ror) => reject(ror));
+				.on('error', (ror) => {
+					// er(ror);
+					resolve();
+				});
 		});
 	};
 
@@ -151,9 +154,7 @@ module.exports = async function(arg) {
 
 	async function addGame(searcher, searchTerm) {
 		let results = await searcher(searchTerm.substr(0, 64));
-		if (arg.v) {
-			log(results);
-		}
+		if (arg.v) log(results);
 		let region = prefs.region;
 		for (let i = 0; i < results.length; i++) {
 			if (results[i].title.length > searchTerm.length + 6) {
@@ -197,7 +198,7 @@ module.exports = async function(arg) {
 		return;
 	}
 
-	async function reset() {
+	async function rescan() {
 		$('#loadDialog0').text('Indexing your game library');
 		let _games = games;
 		games = [];
@@ -232,8 +233,8 @@ module.exports = async function(arg) {
 			maxPatternLength: 64,
 			minMatchCharLength: 1,
 			keys: [
-				"id",
-				"title"
+				'id',
+				'title'
 			]
 		};
 		let fuse = new Fuse(gameDB, searcharg);
@@ -379,7 +380,7 @@ module.exports = async function(arg) {
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
-		if (!recheckImgs && await fs.exists(gamesPath)) {
+		if (await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games;
 		} else {
 			if (!emuDir) {
@@ -436,7 +437,7 @@ module.exports = async function(arg) {
 			}
 			$('#loadDialog2').text(
 				'this may take a few minutes, sit back and relax!');
-			await reset();
+			await rescan();
 		}
 		emuDir = emuDir.replace(/\\/g, '/');
 		btlDir = emuDir + '/bottlenose';
@@ -571,7 +572,10 @@ module.exports = async function(arg) {
 
 	cui.setUIOnChange((state, subState, gamepadConnected) => {
 		let labels = ['', '', ''];
-		if (state == 'coverSelect' || state == 'infoSelect') {
+		if (state == 'coverSelect') {
+			labels = ['Play', 'Flip', 'Back'];
+			cui.getCur().toggleClass('no-outline');
+		} else if (state == 'infoSelect') {
 			labels = ['Play', '', 'Back'];
 			cui.getCur().toggleClass('no-outline');
 		} else if (state == 'libMain') {
@@ -579,10 +583,11 @@ module.exports = async function(arg) {
 			cui.getCur().removeClass('no-outline');
 		} else if (
 			state == 'sysMenu' ||
-			state == 'pauseMenu' ||
 			(/game/i).test(state)
 		) {
 			labels = ['', '', 'Back'];
+		} else if (state == 'pauseMenu') {
+			labels = ['Quit', 'Mini', 'Back'];
 		}
 		$('.text.power').text(labels[0]);
 		$('.text.reset').text(labels[1]);
@@ -591,21 +596,21 @@ module.exports = async function(arg) {
 		function adjust(flip) {
 			if (flip && $('nav.fixed-top').find('#view').length) {
 				$('.cover.open').css({
-					"border-radius": "0 0 0 32px",
-					"border-width": "0 0 8px 0"
+					'border-radius': '0 0 0 32px',
+					'border-width': '0 0 8px 0'
 				}).appendTo('nav.fixed-top');
 				$('.cover.view').css({
-					"border-radius": "32px 0 0 0",
-					"border-width": "8px 0 0 0"
+					'border-radius': '32px 0 0 0',
+					'border-width': '8px 0 0 0'
 				}).appendTo('nav.fixed-bottom');
 			} else if (!flip && $('nav.fixed-top').find('#open').length) {
 				$('.cover.open').css({
-					"border-radius": "32px 0 0 0",
-					"border-width": "8px 0 0 0"
+					'border-radius': '32px 0 0 0',
+					'border-width': '8px 0 0 0'
 				}).appendTo('nav.fixed-bottom');
 				$('.cover.view').css({
-					"border-radius": "0 0 0 32px",
-					"border-width": "0 0 8px 0"
+					'border-radius': '0 0 0 32px',
+					'border-width': '0 0 8px 0'
 				}).appendTo('nav.fixed-top');
 			}
 		}
@@ -638,9 +643,7 @@ module.exports = async function(arg) {
 
 	async function removeIntro(time) {
 		log('time:' + time);
-		if (cui.ui != 'errMenu') {
-			await delay(time || prefs.load.delay);
-		}
+		await delay(time || prefs.load.delay);
 		if (introUsesJS) introJS.stop();
 		$('#intro').remove();
 		$('link.introStyle').prop('disabled', true);
@@ -649,15 +652,13 @@ module.exports = async function(arg) {
 		$('#loadDialog2').text('');
 	}
 
-	async function powerBtn() {
+	async function powerBtn(withoutGame) {
 		let id = cui.getCur().attr('id');
 		log(id);
 		if (id) prefs.session.gameID = id;
 		if (!id) id = prefs.session.gameID;
 		let emuAppPath = await getEmuAppPath();
-		if (!emuAppPath) {
-			return;
-		}
+		if (!emuAppPath) return;
 		let game;
 		cmdArgs = [];
 		emuDirPath = path.join(emuAppPath, '..');
@@ -666,7 +667,7 @@ module.exports = async function(arg) {
 				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
-		if (cui.ui != 'libMain') {
+		if (!withoutGame) {
 			game = games.find(x => x.id === id);
 			if (game.file) {
 				game.file = getAbsolutePath(game.file);
@@ -696,7 +697,7 @@ module.exports = async function(arg) {
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
 				cmdArgs.push(emuAppPath);
-				if (cui.ui == 'libMain') {
+				if (withoutGame) {
 					break;
 				}
 			} else if (cmdArg == '${game}' || cmdArg == '${game.file}') {
@@ -712,7 +713,7 @@ module.exports = async function(arg) {
 			}
 		}
 
-		if (cui.ui != 'libMain' || emu == 'mame') {
+		if (!withoutGame || emu == 'mame') {
 			cui.removeView('libMain');
 			cui.change('playingBack');
 		}
@@ -740,7 +741,7 @@ module.exports = async function(arg) {
 
 	async function closeEmu(code) {
 		log(`emulator closed`);
-		if (childState == 'resetting') {
+		if (childState == 'rescanning') {
 			await powerBtn();
 			return;
 		}
@@ -758,22 +759,13 @@ module.exports = async function(arg) {
 			await intro();
 			await viewerLoad();
 			await removeIntro();
-			if (cui.ui == 'playingBack') {
-				cui.change('libMain');
-			}
+			cui.change('libMain');
 		}
 		childState = 'closed';
 	}
 
 	async function resetBtn() {
-		cui.removeView('libMain');
-		cui.change('resetting');
-		await intro();
-		await reset();
-		await viewerLoad();
-		await removeIntro();
-		cui.change('libMain');
-		cui.scrollToCursor(0);
+		await powerBtn('withoutGame');
 	}
 
 	async function createTemplate(emuDir) {
@@ -789,15 +781,8 @@ module.exports = async function(arg) {
 		if (timeHeld < 2000) {
 			return;
 		}
-		log(act + " held for " + timeHeld);
+		log(act + ' held for ' + timeHeld);
 		let ui = cui.ui;
-		if (ui == 'libMain') {
-			if (act == 'y') {
-				recheckImgs = true;
-				await resetBtn();
-				recheckImgs = false;
-			}
-		}
 		if (ui == 'playingBack' && childState == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
@@ -810,8 +795,8 @@ module.exports = async function(arg) {
 				act == prefs.inGame.reset.hold &&
 				timeHeld > prefs.inGame.reset.time
 			) {
-				log('resetting emulator');
-				childState = 'resetting';
+				log('rescanning emulator');
+				childState = 'rescanning';
 				child.kill('SIGINT');
 			}
 		}
@@ -931,18 +916,36 @@ module.exports = async function(arg) {
 			sys = act;
 			cui.removeCursor();
 			await reload();
-		} else if (ui == 'pauseMenu' && !isBtn) {
-			if (act == 'minimize') {
+		} else if (ui == 'pauseMenu') {
+			if (act == 'minimize' || act == 'y') {
 				electron.getCurrentWindow().minimize();
 			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'toggleCover') {
 				cui.buttonPressed('select');
+			} else if (act == 'recheckLib' || act == 'rescanLib') {
+				if (act == 'recheckLib') {
+					recheckImgs = true;
+					await fs.remove(`${usrDir}/_usr/${sys}Games.json`);
+				}
+				cui.removeView('libMain');
+				cui.change('rescanning');
+				await intro();
+				await rescan();
+				await viewerLoad();
+				await removeIntro();
+				cui.change('libMain');
+				cui.scrollToCursor(0);
+				recheckImgs = false;
 			} else if (act == 'openLog') {
 				opn(`${usrDir}/_usr/${sys}Log.log`);
 			} else if (act == 'prefs') {
 				opn(prefsMan.prefsPath);
+			} else if (act == 'x') {
+				cui.doAction('quit');
+			} else if (act == 'start') {
+				cui.doAction('back');
 			}
 		} else if (ui == 'donateMenu') {
 			if (act == 'donate-monthly') {
@@ -987,16 +990,10 @@ module.exports = async function(arg) {
 				} else {
 					emuDir = dialog.selectDir(msg);
 				}
-				if (!emuDir) {
-					return false;
-				}
-				if (act != 'old') {
-					emuDir += '/emu';
-				}
+				if (!emuDir) return false;
+				if (act != 'old') emuDir += '/emu';
 				await createTemplate(emuDir);
-				if (act != 'old') {
-					opn(emuDir);
-				}
+				if (act != 'old') opn(emuDir);
 			}
 			if (act == 'continue' || act == 'old') {
 				if (!(await fs.exists(emuDir))) {
@@ -1024,9 +1021,7 @@ module.exports = async function(arg) {
 
 	async function getImg(game, name, hq) {
 		let res = await imgExists(game, name);
-		if (res) {
-			return res;
-		}
+		if (res) return res;
 		$('#loadDialog0').html(md(
 			`scraping for the  \n${name}  \nof  \n${game.title}`
 		));
@@ -1130,24 +1125,25 @@ module.exports = async function(arg) {
 					if (!res) {
 						games.splice(i, 1);
 						i--;
+						await fs.remove(imgDir);
 						continue;
 					}
 				}
 
 				if (sys == 'switch' || sys == '3ds' || sys == 'ds' || sys == 'gba') {
 					await getImg(game, 'cart');
-				} else {
+				} else if (sys != 'mame') {
 					await getImg(game, 'disc');
 				}
 
-				if (prefs.ui.getExtraImgs || isTemplate) {
+				if (sys == 'mame') {
+					await getImg(game, 'boxOpen');
+				} else if (prefs.ui.getExtraImgs || isTemplate) {
 					await getImg(game, 'boxOpen');
 					await getImg(game, 'boxOpenMask');
 					await getImg(game, 'manual');
 					await getImg(game, 'memory');
 					await getImg(game, 'memoryBack');
-				} else if (sys == 'mame') {
-					await getImg(game, 'boxOpen');
 				}
 			}
 		}
@@ -1155,7 +1151,7 @@ module.exports = async function(arg) {
 		if (theme.default) {
 			defaultBox = await getImg(theme.default, 'box');
 			if (!defaultBox) {
-				log('ERROR: No default box image found');
+				er('ERROR: No default box image found');
 				return;
 			}
 		}
@@ -1177,9 +1173,12 @@ module.exports = async function(arg) {
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
-				return;
+				if (sys != 'mame' || name != 'boxOpen' || !(await fs.exists(`${imgDir}/default.lay`))) {
+					return;
+				} else {
+					file = `${imgDir}/default.lay`;
+				}
 			}
-			return file;
 		}
 		return file;
 	}
@@ -1214,9 +1213,7 @@ module.exports = async function(arg) {
 	}
 
 	function getAbsolutePath(file) {
-		if (!file) {
-			return '';
-		}
+		if (!file) return '';
 		let lib = file.match(/\$\d+/g);
 		if (lib) {
 			lib = lib[0].substr(1);
@@ -1224,9 +1221,7 @@ module.exports = async function(arg) {
 			file = file.replace(/\$\d+/g, prefs[sys].libs[lib]);
 		}
 		let tags = file.match(/\$[a-zA-Z]+/g);
-		if (!tags) {
-			return file;
-		}
+		if (!tags) return file;
 		let replacement = '';
 		for (tag of tags) {
 			tag = tag.substr(1);
@@ -1318,7 +1313,7 @@ module.exports = async function(arg) {
 				return emuAppPath;
 			}
 		}
-		log("couldn't find app at path:\n" + emuAppPath);
+		log('couldn\'t find app at path:\n' + emuAppPath);
 		emuAppPath = dialog.selectFile('select emulator app');
 		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];

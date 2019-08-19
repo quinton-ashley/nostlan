@@ -269,6 +269,8 @@ module.exports = async function(arg) {
 				olog('file:\t\t\t' + term);
 				$('#loadDialog1').text(term);
 				await delay(1);
+				// rpcs3 ignore games with these ids
+				if (term == 'TEST12345' || term == 'RPSN00001') continue;
 				// eliminations part 1
 				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
 				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');

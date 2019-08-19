@@ -931,7 +931,7 @@ ul.nav {
 	border: none;
 	box-shadow: none;
 	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
-	transform: translate(0, -2vw) scale(1, 2.5);
+	transform: translate(0, -2.9vw) scale(1, 2.5);
 }
 /*================Gamecube Cover====================*/
 @font-face {
@@ -1084,7 +1084,7 @@ ul.nav {
 	border-right: 17px solid transparent;
 	border-bottom: 28px solid #1d6f56;
 	position: absolute;
-	transform: translate(55%, -60%) scale(1.3);
+	transform: translate(55%, 60%) scale(1.3);
 }
 
 .ps .triangle span:after,

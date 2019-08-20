@@ -12,6 +12,7 @@ html {
 	padding: 0;
 	background-color: #000;
 	text-align: center;
+	user-select: none;
 }
 /*================Themes====================*/
 :root {
@@ -386,6 +387,22 @@ img {
 	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3));
 }
+
+.gcn #infoSelect.zoom-gameManualSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+.gcn #infoSelect.zoom-gameMediaSelect {
+	transform: translate(-71vh,-11vh) scale(2);
+}
+
+.gcn #infoSelect.zoom-gameMemorySelect {
+	transform: translate(-146vh,129vh) scale(4);
+}
+
+.gcn #infoSelect.zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
 /*================ds Game Lib Viewer====================*/
 .ds .front-cover-crop {
 	width: 100%;
@@ -434,19 +451,19 @@ img {
 	transform: translate(130%,-3.5%);
 }
 
-#infoSelect.zoom-gameManualSelect {
+.ds #infoSelect.zoom-gameManualSelect {
 	transform: translate(48vh,-4vh) scale(1.17);
 }
 
-#infoSelect.zoom-gameMediaSelect {
+.ds #infoSelect.zoom-gameMediaSelect {
 	transform: translate(-95vh,-24vh) scale(2);
 }
 
-#infoSelect.zoom-gameMemorySelect {
+.ds #infoSelect.zoom-gameMemorySelect {
 	transform: translate(-146vh,129vh) scale(4);
 }
 
-#infoSelect.zoom-gameTexpSelect {
+.ds #infoSelect.zoom-gameTexpSelect {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================GBA Game Lib Viewer====================*/

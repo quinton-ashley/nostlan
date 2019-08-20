@@ -68,11 +68,24 @@ module.exports = async function(arg) {
 		prefs.ui.mouse.wheel.smooth = true;
 	}
 
-	let systems = ['wii', 'ds', 'wiiu', '3ds', 'switch', 'ps3', 'ps2', 'mame', 'gba'];
+	let systems = {
+		wii: 'Wii/Gamecube',
+		ds: 'Nintendo DS',
+		wiiu: 'Wii U',
+		'3ds': 'Nintendo 3DS',
+		switch: 'Nintendo Switch',
+		ps3: 'PlayStation 3',
+		ps2: 'PlayStation 2',
+		mame: 'MAME',
+		gba: 'Game Boy Advance'
+	};
 	if (win) {
-		systems.push('xbox360');
+		systems.push({
+			xbox360: 'Xbox 360'
+		});
 	} else if (mac) {
-		systems = ['wii', 'ds', '3ds', 'switch', 'ps2', 'mame', 'gba'];
+		delete systems.wiiu;
+		delete systems.ps3;
 	}
 	let sys; // current system
 	let sysStyle = ''; // style of that system
@@ -529,10 +542,8 @@ module.exports = async function(arg) {
 		}
 		// currently supported systems
 		let sysMenuHTML = '.row-y\n';
-		for (let i = 0; i < systems.length; i++) {
-			sys = systems[i];
-			let text = ((prefs[sys].style || '') + ' ' + sys).trim();
-			sysMenuHTML += `\t.uie(name="${sys}") ${text}\n`;
+		for (let _sys in systems) {
+			sysMenuHTML += `\t.uie(name="${_sys}") ${systems[_sys]}\n`;
 		}
 		$('#sysMenu').append(pug(sysMenuHTML));
 		if (prefs.ui.autoHideCover) {
@@ -562,34 +573,38 @@ module.exports = async function(arg) {
 				$cvSel.css('margin-top', (cpHeight + mod) * .5);
 				$('nav').height(cpHeight + 24);
 			}
-			let $cur = cui.getCur();
-			if ($cur.hasClass('selected') && cui.ui != 'coverSelect') {
-				cui.scrollToCursor(250, 0);
-				let $reel = $cur.parent();
-				$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
-				$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
-			}
+		}
+		let $cur = cui.getCur();
+		if ($cur.hasClass('selected')) {
+			cui.scrollToCursor(250, 0);
+			let $reel = $cur.parent();
+			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 		}
 	});
 
 	cui.setUIOnChange((state, subState, gamepadConnected) => {
-		let labels = ['', '', ''];
+		let labels = [' ', ' ', ' '];
 		if (state == 'coverSelect') {
 			labels = ['Play', 'Flip', 'Back'];
-			cui.getCur().toggleClass('no-outline');
+			cui.getCur().addClass('no-outline');
 		} else if (state == 'infoSelect') {
-			labels = ['Play', '', 'Back'];
-			cui.getCur().toggleClass('no-outline');
+			labels = ['Play', ' ', 'Back'];
+			cui.getCur().addClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
-			cui.getCur().removeClass('no-outline');
+			cui.getCur(state).removeClass('no-outline');
 		} else if (
 			state == 'sysMenu' ||
-			(/game/i).test(state)
-		) {
-			labels = ['', '', 'Back'];
+			(/game/i).test(state)) {
+			labels = [' ', ' ', 'Back'];
 		} else if (state == 'pauseMenu') {
 			labels = ['Quit', 'Mini', 'Back'];
+		}
+		if (sys == 'wii' && prefs[sys].style == 'gcn') {
+			for (let i in labels) {
+				labels[i] = labels[i].toLowerCase();
+			}
 		}
 		$('.text.power').text(labels[0]);
 		$('.text.reset').text(labels[1]);
@@ -643,6 +658,15 @@ module.exports = async function(arg) {
 		}
 	});
 
+
+
+	function hideDialogs() {
+		$('#dialogs').hide();
+		$('#loadDialog0').text('');
+		$('#loadDialog1').text('');
+		$('#loadDialog2').text('');
+	}
+
 	async function removeIntro(time) {
 		log('time:' + time);
 		await delay(time || prefs.load.delay);
@@ -650,8 +674,7 @@ module.exports = async function(arg) {
 		$('#intro').remove();
 		$('link.introStyle').prop('disabled', true);
 		$('link.introStyle').remove();
-		$('#dialogs').hide();
-		$('#loadDialog2').text('');
+		hideDialogs();
 	}
 
 	async function powerBtn(withoutGame) {
@@ -717,16 +740,15 @@ module.exports = async function(arg) {
 		}
 
 		if (!withoutGame || emu == 'mame') {
-			cui.removeView('libMain');
+			// cui.removeView('libMain');
 			cui.change('playingBack');
+			$('#libMain').hide();
+			$('#dialogs').show();
+			$('#loadDialog0').text(`Starting ${prefs[sys].emu}`);
+			if (!withoutGame) $('#loadDialog1').text(game.title);
 		}
 		log(cmdArgs);
 		log(emuDirPath);
-
-		// animatePlay();
-		// if (cui.ui == 'playingBack') {
-		// 	electron.getCurrentWindow().minimize();
-		// }
 
 		child = require('child_process')
 			.spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
@@ -744,26 +766,29 @@ module.exports = async function(arg) {
 
 	async function closeEmu(code) {
 		log(`emulator closed`);
-		if (childState == 'rescanning') {
+		if (childState == 'resetting') {
 			await powerBtn();
 			return;
 		}
-		if (code) {
-			cui.err(`${prefs[sys].emu} was unable to start the game or crashed.  ` +
-				`This is probably not an issue with Bottlenose.  ` +
-				`If you were unable to start the game, setup ${emu} if you haven't ` +
-				`already.  Make sure it will boot the game and try again.  \n` +
-				`${cmdArgs.toString()}\nerror code: ${code}`);
-		}
-
-		electron.getCurrentWindow().focus();
-		electron.getCurrentWindow().setFullScreen(true);
-		if (cui.ui != 'libMain') {
-			await intro();
-			await viewerLoad();
-			await removeIntro();
+		$('#libMain').show();
+		hideDialogs();
+		if (cui.getCur('libMain').hasClass('selected')) {
+			cui.change('coverSelect');
+		} else {
 			cui.change('libMain');
 		}
+		if (code) {
+			let erMsg = `${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  Check online to make sure ${prefs[sys].emu} can boot the game.\n<code>`;
+			for (let i in cmdArgs) {
+				if (i == 0) erMsg += '$ ';
+				erMsg += `${cmdArgs[i]} `;
+			}
+			erMsg += '</code>';
+			cui.err(erMsg, code);
+		}
+		log('exited with code ' + code);
+		electron.getCurrentWindow().focus();
+		electron.getCurrentWindow().setFullScreen(true);
 		childState = 'closed';
 	}
 
@@ -772,11 +797,11 @@ module.exports = async function(arg) {
 	}
 
 	async function createTemplate(emuDir) {
-		for (let i = 0; i < systems.length; i++) {
+		for (let _sys in systems) {
 			if (win) {
-				await fs.ensureDir(`${emuDir}/${prefs[systems[i]].emu}/BIN`);
+				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/BIN`);
 			}
-			await fs.ensureDir(`${emuDir}/${prefs[systems[i]].emu}/GAMES`);
+			await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/GAMES`);
 		}
 	}
 
@@ -798,8 +823,8 @@ module.exports = async function(arg) {
 				act == prefs.inGame.reset.hold &&
 				timeHeld > prefs.inGame.reset.time
 			) {
-				log('rescanning emulator');
-				childState = 'rescanning';
+				log('resetting emulator');
+				childState = 'resetting';
 				child.kill('SIGINT');
 			}
 		}
@@ -863,7 +888,7 @@ module.exports = async function(arg) {
 				cui.change('coverSelect');
 			}
 		} else if (ui == 'coverSelect') {
-			if (act == 'a' || !isBtn) {
+			if ((act == 'a' || !isBtn) && (await imgExists(getTemplate(), 'boxOpen'))) {
 				// return;
 				// TODO finish open box menu
 				let id = cui.getCur('libMain').attr('id');
@@ -888,7 +913,6 @@ module.exports = async function(arg) {
 				cui.change('infoSelect');
 				$('#libMain').hide();
 			} else if (act == 'b') {
-				$('#libMain').show();
 				cui.change('libMain');
 				await coverClicked();
 			} else if (act == 'y' || act == 'flip') {
@@ -954,7 +978,7 @@ module.exports = async function(arg) {
 			if (act == 'donate-monthly') {
 				opn('https://www.patreon.com/qashto');
 			} else if (act == 'donate-single') {
-				opn('https://www.paypal.me/qashto/25');
+				opn('https://www.paypal.me/qashto/20');
 			} else if (act == 'donate-later') {
 				await reload();
 			} else if (act == 'donated') {
@@ -1211,10 +1235,6 @@ module.exports = async function(arg) {
 		return true;
 	}
 
-	async function animatePlay() {
-		await delay(10000);
-	}
-
 	function getAbsolutePath(file) {
 		if (!file) return '';
 		let lib = file.match(/\$\d+/g);
@@ -1397,7 +1417,6 @@ module.exports = async function(arg) {
 		cui.addView('libMain', {
 			hoverCurDisabled: true
 		});
-		$('#dialogs').hide();
 		$('#view').css('margin-top', '20px');
 		if (shouldRebindMouse) {
 			cui.rebind('mouse');

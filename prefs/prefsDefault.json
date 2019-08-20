@@ -119,6 +119,7 @@
 				"map": {}
 			}
 		},
+		"maxRows": 8,
 		"getBackCoverHQ": false,
 		"getExtraImgs": false,
 		"autoHideCover": false

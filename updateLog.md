@@ -1,4 +1,4 @@
-# 1.1.0
+# 1.1.1
 
 MAME and mGBA are now supported!  Major user experience improvements.
 
@@ -16,9 +16,15 @@ I've made an ease of use change that several users have suggested.  The entire o
 
 Controller profiles are now assigned automatically by controller type: `xbox`, `ps`, or `nintendo`.  The `default` profile will be used if the connected controller's gamepad id is not one of those types.
 
+Several annoying User Interface problems have been fixed in this version.
+
 Bottlenose now remembers your most recently played game for each individual emulator.  Bottlenose will auto-scroll and place the game controller cursor on it when you load the corresponding game library.  This is a necessity for the large MAME library.  Filter searching for games will be the next feature I will work on!
 
-Please [donate](https://www.paypal.me/qashto/10) to support my development of Bottlenose if you can.  If everyone that downloads this update gave me even one dollar I could dedicate more time to working on this project.  I spent several days over the past month working non-stop to make this update.  Supporting so many emulators and game libraries has proven to be a massive undertaking.  I know there's still a lot to be done but I want Bottlenose to stand toe to toe with the other frontends.
+Bottlenose is no longer an "experimental" project and is ready for public use!
+
+If something is wrong with the app or if you have any questions please email me <mailto:qashto@gmail.com> or write up an issue report on Github.
+
+Please [donate any amount](https://www.paypal.me/qashto/10) to support my development of Bottlenose if you can.  If everyone that downloads this update gave me even one dollar I would really appreciate it.  I spent several days over the past month working non-stop to make this update.  Supporting so many emulators and game libraries has proven to be a massive undertaking.
 
 # 1.0.65
 

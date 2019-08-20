@@ -85,7 +85,7 @@ Monthly Donations:
 Patreon: <https://www.patreon.com/qashto>  
 
 Single Donation:  
-Paypal: <https://www.paypal.me/qashto/25>
+Paypal: <https://www.paypal.me/qashto/20>
 
 ## Planned Features
 

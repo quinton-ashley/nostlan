@@ -80,9 +80,7 @@ module.exports = async function(arg) {
 		gba: 'Game Boy Advance'
 	};
 	if (win) {
-		systems.push({
-			xbox360: 'Xbox 360'
-		});
+		systems.xbox360 = 'Xbox 360';
 	} else if (mac) {
 		delete systems.wiiu;
 		delete systems.ps3;
@@ -651,14 +649,12 @@ module.exports = async function(arg) {
 	});
 
 	cui.setUIAfterChange(() => {
-		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
+		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack' || cui.uiPrev == 'errMenu') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
 	});
-
-
 
 	function hideDialogs() {
 		$('#dialogs').hide();
@@ -1374,13 +1370,10 @@ module.exports = async function(arg) {
 		theme.style = prefs[sys].style || sys;
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		await loadImages();
-		let rows = 8;
-		if (games.length < 18) {
-			rows = 4;
-		}
-		if (games.length < 8) {
-			rows = 2;
-		}
+		let rows = prefs.ui.maxRows || 8;
+		if (games.length < 42) rows = 8;
+		if (games.length < 18) rows = 4;
+		if (games.length < 4) rows = 2;
 		$('style.gameViewerRowsStyle').remove();
 		let $glv = $('#libMain');
 		let dynRowStyle = '<style class="gameViewerRowsStyle" type="text/css">' +

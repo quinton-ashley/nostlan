@@ -447,8 +447,9 @@ img {
 }
 
 .ds #gameMedia {
-	width: 27.6vh;
-	transform: translate(130%,-3.5%);
+	width: 26.6vh;
+	transform: translate(137%,-2.5%);
+	border-radius: 0;
 }
 
 .ds #infoSelect.zoom-gameManualSelect {

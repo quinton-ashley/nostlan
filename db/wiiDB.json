@@ -31815,6 +31815,9 @@
 		}, {
 			"id": "G8ME01",
 			"title": "Paper Mario: The Thousand-Year Door",
+			"img": {
+				"disc": "q"
+			},
 			"texp": [{
 				"name": "HD",
 				"authors": ["The Dolphin Community"],

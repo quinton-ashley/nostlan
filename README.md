@@ -1,7 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and [please choose an amount to pay for it](https://www.paypal.me/qashto/20) or [become a patreon supporter!](https://www.patreon.com/qashto)  
+[Download Bottlenose](https://oko.sh/GGEzNZ) and [please choose an amount to pay for it](https://www.paypal.me/qashto/20) or [become a patreon supporter!](https://www.patreon.com/qashto)  
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -29,7 +29,7 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 #### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png)
+[click to see the full quality UHD screenshot](https://oko.sh/fSwc)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png)
 
 #### Cemu (Wii U) [Windows & Linux* using Wine]
@@ -91,15 +91,17 @@ Paypal: <https://www.paypal.me/qashto/20>
 
 If enough people support the project on Patreon I will be able to set aside the time to implement these features!
 
--   real time filter search for games
--   open box menu with submenus for manual reading, save management, and disc art viewing
+-   ability to manually add individual games
+-   an open game box menu with submenus for game manuals, managing save files, and disc art
+-   creating open box menu images for all supported systems, [help needed!](https://github.com/quinton-ashley/bottlenose-img/blob/master/README.md#bottlenose-img)
+-   save file management
+-   cloud save to a folder in Dropbox, OneDrive, etc.
+-   filter searching for games
 -   create a database of Dolphin texture packs
 -   batch install and auto-update texture packs for Dolphin
--   install emulators
--   automatic emulator updates for emulators that lack this feature
+-   install emulators/updates from app
 -   easy way to mix and swap texture packs for Dolphin
 -   list style view mode for browsing through box sides, useful for very large game libraries
--   instant auto-complete search
 -   user ability to make custom themes
 -   PPSSPP emulator support
 

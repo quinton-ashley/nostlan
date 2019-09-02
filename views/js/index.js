@@ -49,6 +49,7 @@ module.exports = async function(arg) {
 		f: 'fly',
 		g: 'gfs',
 		m: 'mdo',
+		q: 'gqa',
 		t: 'tdb'
 	};
 	for (let scraper in scrapers) {
@@ -1055,13 +1056,23 @@ module.exports = async function(arg) {
 			log(name);
 			url = game.img[name].split(' ');
 			let ext, scraper;
-			if (url[1]) {
+			// url[0] is the url and url[1] is the file type
+			if (url[1] && url[0].length != 1) {
+				// catch and ignore old method of doing this from
+				// a previous version of Bottlnose
+				if (url[1][0] == '/' || url[1][0] == '\\') return;
+				url = url[0] + '.' + url[1];
+			} else if (url[0] == 'q') {
+				url = srp.gqa.unwrapUrl(sys, game, name);
+			} else if (url[1]) {
+				// url[0] is key for the scraper
 				scraper = scrapers[url[0]];
+				// the unique parts of the url for the site the img was scraped from
 				let data = url.slice(1);
-				log(data);
+				// unwrap/unminify the url using the unique parts
 				url = srp[scraper].unwrapUrl(data);
-				log(url);
 			} else {
+				// the url is just a regular old link
 				url = url[0];
 			}
 			ext = url.substr(-3);
@@ -1090,23 +1101,20 @@ module.exports = async function(arg) {
 
 	function getTemplate() {
 		let imgTypes = [
-			'boxOpen', 'boxOpenMask', 'manual',
+			'box', 'boxBack', 'boxOpen', 'boxOpenMask', 'manual',
 			'memory', 'memoryBack'
 		];
-		if (!theme.template.box) {
-			imgTypes.push('box');
-			imgTypes.push('boxBack');
-		}
-		let urlBase = 'https://raw.githubusercontent.com/quinton-ashley';
-		urlBase += `/bottlenose-img/master/${sys}/_TEMPLATE/img`;
-		for (let imgType of imgTypes) {
-			theme.template[imgType] = urlBase + `/${imgType}.png`;
-		}
-		return {
+		let template = {
 			id: '_TEMPLATE',
 			title: 'Template',
 			img: theme.template
 		};
+		for (let imgType of imgTypes) {
+			if (!template.img[imgType]) {
+				template.img[imgType] = 'q';
+			}
+		}
+		return template;
 	}
 
 	async function loadImages() {

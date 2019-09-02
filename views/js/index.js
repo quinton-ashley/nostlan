@@ -562,10 +562,10 @@ module.exports = async function(arg) {
 
 	cui.setResize((adjust) => {
 		if (!$('nav').hasClass('hide')) {
-			let $cv = $('.cover.view');
+			let $cv = $('.console.view');
 			let $cvSel = $cv.find('#view');
 			let cvHeight = $cv.height();
-			let cpHeight = $('.cover.power').height();
+			let cpHeight = $('.console.power').height();
 			let mod = 24;
 			if ((/ps/i).test(sys)) mod = -8;
 			if (adjust || cvHeight != cpHeight) {
@@ -588,11 +588,13 @@ module.exports = async function(arg) {
 			labels = ['Play', 'Flip', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'infoSelect') {
-			labels = ['Play', ' ', 'Back'];
+			labels = ['Manuals', 'Texp', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
 			cui.getCur(state).removeClass('no-outline');
+		} else if (state == 'gameMediaSelect') {
+			labels = ['ImgDir', 'File', 'Back'];
 		} else if (
 			state == 'sysMenu' ||
 			(/game/i).test(state)) {
@@ -611,20 +613,20 @@ module.exports = async function(arg) {
 
 		function adjust(flip) {
 			if (flip && $('nav.fixed-top').find('#view').length) {
-				$('.cover.open').css({
+				$('.console.open').css({
 					'border-radius': '0 0 0 32px',
 					'border-width': '0 0 8px 0'
 				}).appendTo('nav.fixed-top');
-				$('.cover.view').css({
+				$('.console.view').css({
 					'border-radius': '32px 0 0 0',
 					'border-width': '8px 0 0 0'
 				}).appendTo('nav.fixed-bottom');
 			} else if (!flip && $('nav.fixed-top').find('#open').length) {
-				$('.cover.open').css({
+				$('.console.open').css({
 					'border-radius': '32px 0 0 0',
 					'border-width': '8px 0 0 0'
 				}).appendTo('nav.fixed-bottom');
-				$('.cover.view').css({
+				$('.console.view').css({
 					'border-radius': '0 0 0 32px',
 					'border-width': '0 0 8px 0'
 				}).appendTo('nav.fixed-top');
@@ -655,6 +657,9 @@ module.exports = async function(arg) {
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
+		if (cui.ui == 'infoSelect') {
+			cui.makeCursor($('#gameMedia').eq(0));
+		}
 	});
 
 	function hideDialogs() {
@@ -675,7 +680,7 @@ module.exports = async function(arg) {
 	}
 
 	async function powerBtn(withoutGame) {
-		let id = cui.getCur().attr('id');
+		let id = cui.getCur('libMain').attr('id');
 		log(id);
 		if (!prefs.session[sys]) prefs.session[sys] = {};
 		if (id) prefs.session[sys].gameID = id;
@@ -771,7 +776,7 @@ module.exports = async function(arg) {
 		hideDialogs();
 		if (cui.getCur('libMain').hasClass('selected')) {
 			cui.change('coverSelect');
-		} else {
+		} else if (cui.ui != 'libMain') {
 			cui.change('libMain');
 		}
 		if (code) {
@@ -846,6 +851,11 @@ module.exports = async function(arg) {
 		}
 	}
 
+	function getCurGame() {
+		let id = cui.getCur('libMain').attr('id');
+		return games.find(x => x.id === id);
+	}
+
 	cui.setCustomActions(async function(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
@@ -888,8 +898,7 @@ module.exports = async function(arg) {
 			if ((act == 'a' || !isBtn) && (await imgExists(getTemplate(), 'boxOpen'))) {
 				// return;
 				// TODO finish open box menu
-				let id = cui.getCur('libMain').attr('id');
-				let game = games.find(x => x.id === id);
+				let game = getCurGame();
 				let template = getTemplate();
 
 				$('#gameBoxOpen').prop('src', await imgExists(template, 'boxOpen'));
@@ -912,23 +921,66 @@ module.exports = async function(arg) {
 			} else if (act == 'b') {
 				cui.change('libMain');
 				await coverClicked();
-			} else if (act == 'y' || act == 'flip') {
-				log('flip cover not enabled yet');
+			} else if (act == 'y') { // flip
+				let $cur = cui.getCur();
+				if (!$cur.hasClass('flip')) {
+					$cur.addClass('flip');
+					let $box = $cur.find('.box').eq(0);
+					let game = getCurGame();
+					let boxBack = await imgExists(game, 'boxBack');
+					if (boxBack) {
+						$box.src(boxBack);
+						$box.addClass('boxBack');
+					}
+					let $cover = $cur.find('img.cover').eq(0);
+					if (!$cover.length) return;
+					let coverBack = await imgExists(game, 'coverBack');
+					if (coverBack) {
+						$cover.prop('src', coverBack);
+						$cur.find('.cover').addClass('coverBack');
+					} else {
+						let coverFull = await imgExists(game, 'coverFull');
+						if (coverFull) {
+							$cover.prop('src', coverFull);
+							$cur.find('.cover').addClass('coverFull');
+						} else {
+							return;
+						}
+					}
+					$cur.find('.cover').removeClass('cover');
+					$cur.find('.shade').removeClass('hide');
+					$cover.removeClass('hide');
+				} else {
+
+				}
 			}
 		} else if (ui == 'infoSelect') {
-			if (act == 'texp') {
-				// implement texp install
-			}
-			if (act != 'back' && !isBtn) {
-				let state = 'game' + act[0].toUpperCase() + act.substr(1) + 'Select';
-				$('#infoSelect').addClass('zoom-' + state);
-				cui.change(state);
-			} else if (act == 'b') {
+			if (act != 'b') {
+				if (act == 'x') act = 'Manual';
+				if (act == 'y') act = 'Texp';
+				if (act == 'a') act = 'Media';
+				if (!(/(memory|manual|media)/gi).test(act)) return;
+				act = act[0].toUpperCase() + act.substr(1);
+				act = 'game' + act + 'Select';
+				$('#infoSelect').addClass('zoom-' + act);
+				cui.change(act);
+			} else {
 				cui.change('libMain');
 				await coverClicked();
 			}
 		} else if ((/game/i).test(ui)) {
-			if (act == 'b') {
+			if (act != 'back' && act != 'b' && ui == 'gameMediaSelect') {
+				if (act == 'a' || act == 'media') {
+					$('#infoSelect').removeClass('zoom-' + ui);
+					cui.doAction('back');
+					cui.change('libMain');
+					await powerBtn();
+				} else if (act == 'y') { // ImgDir
+					opn(getImgDir(getCurGame()));
+				} else if (act == 'x') { // File
+					opn(getCurGame().file);
+				}
+			} else if (act == 'b') {
 				$('#infoSelect').removeClass('zoom-' + ui);
 				cui.doAction('back');
 			}
@@ -1063,7 +1115,7 @@ module.exports = async function(arg) {
 				if (url[1][0] == '/' || url[1][0] == '\\') return;
 				url = url[0] + '.' + url[1];
 			} else if (url[0] == 'q') {
-				url = srp.gqa.unwrapUrl(sys, game, name);
+				url = srp.gqa.unwrapUrl(theme.style, game, name);
 			} else if (url[1]) {
 				// url[0] is key for the scraper
 				scraper = scrapers[url[0]];
@@ -1219,10 +1271,10 @@ module.exports = async function(arg) {
 		let file = await imgExists(game, 'box');
 		if (!file) {
 			file = await imgExists(game, 'coverFull');
-			cl1 = 'front-cover-crop ' + sys;
+			cl1 = '.coverFull';
 			if (!file) {
 				file = await imgExists(game, 'cover');
-				cl1 = 'front-cover ' + sys;
+				cl1 = '.cover';
 				if (!file) {
 					log(`no images found for game: ${game.id} ${game.title}`);
 					return;
@@ -1230,11 +1282,11 @@ module.exports = async function(arg) {
 			}
 		}
 		$('.reel.r' + reelNum).append(pug(`
-#${game.id}.uie${((game.id != '_TEMPLATE')?'':'.uie-disabled')}
-	${((cl1)?`img.box(src="${defaultBox}")`:'')}
-	section${((cl1)?'.'+cl1: '')}
-		img${((cl1)?'.cov': '.box')}(src="${file}")
-		${((cl1)?'.shade.p-0.m-0':'')}
+#${game.id}.${game.sys || theme.style}.uie${((game.id != '_TEMPLATE')?'':'.uie-disabled')}
+	${((cl1)?`img.box(src="${defaultBox}")`:`img.box(src="${file}")`)}
+	section.crop${cl1 || '.cover'}
+		img${(cl1||'.cover') + ((cl1)?'':'.hide')}(src="${(cl1)?file:''}")
+		.shade.p-0.m-0${(cl1)?'':'.hide'}
 		`));
 		return true;
 	}

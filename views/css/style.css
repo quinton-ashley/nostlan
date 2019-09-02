@@ -362,23 +362,43 @@ img {
 #loadDialog2 {
 	top: 95%;
 }
+
+.flip img.box {
+	transform: rotate(180deg);
+}
 /*================Wii Game Lib Viewer====================*/
-.wii .front-cover-crop {
+.gcn .crop.coverFull,
+.wii .crop.coverFull {
 	width: 200.1%;
 	top: 1.4%;
 	left: 0;
 }
 
-.wii .front-cover {
+.gcn .crop.cover,
+.wii .crop.cover {
 	width: 94.5%;
 	top: 2.6%;
 	left: 0.8%;
 }
 
-.wii .front-cover-crop img {
+.gcn img.coverFull,
+.wii img.coverFull {
 	transform: translate(-51.2%, 0%);
 }
 
+.gcn .flip .crop.coverFull,
+.wii .flip .crop.coverFull {
+	width: 100%;
+}
+
+.gcn .flip img.coverFull,
+.wii .flip img.coverFull {
+	width: 200.1%;
+	transform: translate(1.2%, 0%);
+	object-fit: contain;
+}
+
+.gcn .shade,
 .wii .shade {
 	position: absolute;
 	width: 1.6%;
@@ -404,31 +424,31 @@ img {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================ds Game Lib Viewer====================*/
-.ds .front-cover-crop {
+.ds .crop.coverFull {
 	width: 100%;
 	top: 0;
 	left: 0;
 }
 
-.ds .front-cover {
+.ds .crop.cover {
 	width: 100%;
 	top: -0.3%;
 	left: 0.4%;
 }
 
-.ds .front-cover img {
+.ds img.cover {
 	width: 100%;
 	height: 100%;
 	transform: scale(.948, .948);
 }
 
-.ds .front-cover-crop img {
+.ds img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(-54.6%, 0%) scale(2.04, .95);
 }
 
-.ds .front-cover-crop .shade {
+.ds .crop.coverFull .shade {
 	position: absolute;
 	width: 1.3%;
 	height: 100%;
@@ -468,30 +488,30 @@ img {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================GBA Game Lib Viewer====================*/
-.gba .front-cover-crop {
+.gba .crop.coverFull {
 	width: 100%;
 	top: 0;
 	left: 0;
 }
 
-.gba .front-cover {
+.gba .crop.cover {
 	width: 100%;
 	top: 0;
 	left: 0;
 }
 
-.gba .front-cover img {
+.gba img.cover {
 	width: 100%;
 	height: 100%;
 }
 
-.gba .front-cover-crop img {
+.gba img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(-55.8%, 0%) scale(2.115, 1);
 }
 
-.gba .front-cover-crop .shade {
+.gba .crop.coverFull .shade {
 	position: absolute;
 	width: 1.3%;
 	height: 100%;
@@ -512,33 +532,33 @@ img {
 	border-radius: 1.6%;
 }
 /*================PS3 Game Lib Viewer====================*/
-.ps3 .front-cover-crop {
+.ps3 .crop.coverFull {
 	width: 100%;
 	height: 100%;
 	top: 3%;
 	left: 0;
 }
 
-.ps3 .front-cover {
+.ps3 .crop.cover {
 	width: 100%;
 	height: 100%;
 	top: 2.8%;
 	left: 0;
 }
 
-.ps3 .front-cover img {
+.ps3 img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.95, .885);
 }
 
-.ps3 .front-cover-crop img {
+.ps3 img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(-52.5%, 0%) scale(2, .89);
 }
 
-.ps3 .front-cover-crop .shade {
+.ps3 .crop.coverFull .shade {
 	position: absolute;
 	width: 1%;
 	height: 100%;
@@ -547,30 +567,30 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*=====PS2===*/
-.ps2 .front-cover-crop {
+.ps2 .crop.coverFull {
 	width: 200.4%;
 	top: 2.3%;
 	left: 0;
 }
 
-.ps2 .front-cover {
+.ps2 .crop.cover {
 	height: 100%;
 	width: 100%;
 	top: -0.5%;
 	left: -1%;
 }
 
-.ps2 .front-cover img {
+.ps2 img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.966);
 }
 
-.ps2 .front-cover-crop img {
+.ps2 img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 
-.ps2 .front-cover-crop .shade {
+.ps2 .crop.coverFull .shade {
 	position: absolute;
 	width: 4%;
 	height: 100%;
@@ -579,7 +599,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-.ps2 .front-cover .shade {
+.ps2 .crop.cover .shade {
 	position: absolute;
 	width: 4%;
 	height: 100%;
@@ -606,30 +626,30 @@ img {
 	transform: translate(-55vh,-20.7vh) scale(1.55);
 }
 /*=====Xbox 360===*/
-.xbox360 .front-cover-crop {
+.xbox360 .crop.coverFull {
 	width: 200.4%;
 	top: 1.2%;
 	left: 0;
 }
 
-.xbox360 .front-cover {
+.xbox360 .crop.cover {
 	height: 100%;
 	width: 100%;
 	top: -0.5%;
 	left: -1%;
 }
 
-.xbox360 .front-cover img {
+.xbox360 img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.966);
 }
 
-.xbox360 .front-cover-crop img {
+.xbox360 img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 
-.xbox360 .front-cover-crop .shade {
+.xbox360 .crop.coverFull .shade {
 	position: absolute;
 	width: 1%;
 	height: 100%;
@@ -638,20 +658,20 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Wii U Game Lib Viewer====================*/
-.wiiu .front-cover-crop {
+.wiiu .crop.coverFull {
 	width: 200.4%;
 	top: 2.1%;
 	left: 0;
 }
 
-.wiiu .front-cover {
+.wiiu .crop.cover {
 	height: 100%;
 	width: 100%;
 	top: -0%;
 	left: -1.1%;
 }
 
-.wiiu .front-cover img {
+.wiiu img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.946, .956);
@@ -661,11 +681,11 @@ img {
 	border-radius: 2%;
 }
 
-.wiiu .front-cover-crop img {
+.wiiu img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 
-.wiiu .front-cover-crop .shade {
+.wiiu .crop.coverFull .shade {
 	position: absolute;
 	width: 1%;
 	height: 100%;
@@ -674,13 +694,13 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================3ds Game Lib Viewer====================*/
-.n3ds .front-cover-crop {
+.n3ds .crop.coverFull {
 	width: 203.9%;
 	top: 2.2%;
 	left: 0.1%;
 }
 
-.n3ds .front-cover {
+.n3ds .crop.cover {
 	width: 97%;
 	top: 2.2%;
 	left: 0.1%;
@@ -690,7 +710,7 @@ img {
 	border-radius: 2%;
 }
 
-.n3ds .front-cover-crop img {
+.n3ds img.coverFull {
 	transform: translate(-52.4%, 0%);
 }
 
@@ -703,20 +723,20 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 /*================Switch Game Lib Viewer====================*/
-.switch .front-cover-crop {
+.switch .crop.coverFull {
 	width: 200%;
 	top: 2.6%;
 	left: 0.8%;
 }
 
-.switch .front-cover {
+.switch .crop.cover {
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: -2%;
 }
 
-.switch .front-cover img {
+.switch img.cover {
 	width: 100%;
 	height: 100%;
 	border-radius: 0;
@@ -727,7 +747,7 @@ img {
 	border-radius: 2.7%;
 }
 
-.switch .front-cover-crop img {
+.switch img.coverFull {
 	transform: translate(-52.4%, 0%);
 }
 /*================MAME Game Lib Viewer====================*/
@@ -735,8 +755,8 @@ img {
 	border-radius: 0;
 }
 /*================Game Lib Viewer====================*/
-.front-cover,
-.front-cover-crop {
+.crop.cover,
+.crop.coverFull {
 	height: 100%;
 	overflow: hidden;
 	position: absolute;
@@ -779,7 +799,7 @@ nav * {
 	pointer-events: all;
 }
 
-.cover {
+.console {
 	width: 19%;
 	border-style: solid;
 	margin-left: 30px;
@@ -788,7 +808,7 @@ nav * {
 	border-color: var(--cover-text-color);
 }
 
-.cover * {
+.console * {
 	margin-top: auto;
 	margin-bottom: auto;
 }
@@ -798,14 +818,14 @@ nav * {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
-.cover.power {
+.console.power {
 	background-color: var(--power-color, var(--cover-color));
 	border-color: var(--power-text-color, var(--cover-text-color));
 	border-radius: 0 0 32px 0;
 	border-width: 0 0 8px 0;
 }
 
-.cover.view {
+.console.view {
 	background-color: var(--view-color, var(--cover-color));
 	border-color: var(--view-text-color, var(--cover-text-color));
 	height: 100%;
@@ -813,7 +833,7 @@ nav * {
 	border-width: 0 0 8px 0;
 }
 
-.cover.reset {
+.console.reset {
 	background-color: var(--reset-color, var(--cover-color));
 	border-color: var(--reset-text-color, var(--cover-text-color));
 	height: 100%;
@@ -821,7 +841,7 @@ nav * {
 	border-width: 8px 0 0 0;
 }
 
-.cover.open {
+.console.open {
 	background-color: var(--open-color, var(--cover-color));
 	border-color: var(--open-text-color, var(--cover-text-color));
 	height: 100%;
@@ -829,22 +849,22 @@ nav * {
 	border-radius: 32px 0 0 0;
 }
 
-.cover.power *,
-.cover.reset * {
+.console.power *,
+.console.reset * {
 	margin-left: auto;
 }
 
-.cover.power .nav-item,
-.cover.reset .nav-item {
+.console.power .nav-item,
+.console.reset .nav-item {
 	margin-right: 4%;
 }
 
-.cover.open *,
-.cover.view * {
+.console.open *,
+.console.view * {
 	margin-right: auto;
 }
 
-.cover.open .nav-item {
+.console.open .nav-item {
 	margin-left: 4%;
 }
 
@@ -852,12 +872,12 @@ img.logoNav {
 	height: 32px;
 }
 
-.cover.view li {
+.console.view li {
 	height: 100%;
 	margin: auto;
 }
 
-.cover .nav-link {
+.console .nav-link {
 	color: var(--button-text-color);
 	background: var(--button-color);
 }
@@ -867,12 +887,12 @@ button:focus {
 	outline: none;
 }
 
-.cover .nav-link:hover {
+.console .nav-link:hover {
 	filter: brightness(0.8);
 	outline: none;
 }
 
-.cover .nav-link {
+.console .nav-link {
 	font-family: "contb";
 	font-size: 48px;
 	border-width: 4px;
@@ -886,15 +906,15 @@ button:focus {
 	height: 80px;
 }
 
-.cover #power {
+.console #power {
 	background: var(--powerBtn-color, var(--button-color));
 }
 
-.cover #reset {
+.console #reset {
 	background: var(--resetBtn-color, var(--button-color));
 }
 
-.cover #open {
+.console #open {
 	background: var(--openBtn-color, var(--button-color));
 }
 
@@ -965,7 +985,7 @@ ul.nav {
 	letter-spacing: -3px;
 }
 
-.gcn .cover.power .text {
+.gcn .console.power .text {
 	letter-spacing: -5px;
 }
 /*================ds Cover====================*/
@@ -1012,11 +1032,11 @@ ul.nav {
 	font-weight: 900;
 }
 
-.switch .cover.open .text {
+.switch .console.open .text {
 	color: rgb(210, 50, 25);
 }
 
-.switch .cover.reset .text {
+.switch .console.reset .text {
 	color: rgb(0, 125, 160);
 }
 /*================Xbox 360 Cover========================*/

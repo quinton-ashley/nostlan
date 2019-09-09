@@ -73,7 +73,7 @@ module.exports = async function(arg) {
 		wii: 'Wii/Gamecube',
 		ds: 'Nintendo DS',
 		wiiu: 'Wii U',
-		'3ds': 'Nintendo 3DS',
+		n3ds: 'Nintendo 3DS',
 		switch: 'Nintendo Switch',
 		ps3: 'PlayStation 3',
 		ps2: 'PlayStation 2',
@@ -93,9 +93,7 @@ module.exports = async function(arg) {
 	let outLog = ''; // path to the game search output log file
 	let games = []; // array of current games from the systems' db
 	let themes;
-	let theme;
 	let emu; // current emulator
-	let defaultBox;
 	let templateAmt = 4; // template boxes in each column of the lib viewer
 	let child; // child process running an emulator
 	let childState = 'closed'; // status of the process
@@ -178,7 +176,7 @@ module.exports = async function(arg) {
 			if (demoRegex.test(results[i].title) != demoRegex.test(searchTerm)) {
 				continue;
 			}
-			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == '3ds') {
+			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == 'n3ds') {
 				let gRegion = results[i].id[3];
 				// TODO: this is a temporary region filter
 				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) {
@@ -225,7 +223,7 @@ module.exports = async function(arg) {
 			idRegex = /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/;
 		} else if (sys == 'wii' || sys == 'wiiu') {
 			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/;
-		} else if (sys == '3ds' || sys == 'ds') {
+		} else if (sys == 'n3ds' || sys == 'ds') {
 			idRegex = /(?:^|[\[\(])([A-Z][A-Z0-9]{2}[A-Z])(?:[\]\)]|$)/;
 		} else if (sys == 'gba') {
 			idRegex = /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/;
@@ -316,7 +314,7 @@ module.exports = async function(arg) {
 							}
 						}
 						olog('id:\t\t\t\t' + id);
-						olog('found match:\t\t' + game.title + '\r\n');
+						olog(`found match:\t\t${game.title} ${game.id} ${game.sys||sysStyle}\r\n`);
 						game.file = '$' + h + '/' +
 							path.relative(prefs[sys].libs[h], file);
 						games.push(game);
@@ -353,7 +351,8 @@ module.exports = async function(arg) {
 				term = term.replace(/lego/gi, 'lego');
 				term = term.replace(/warioware,*/gi, 'Wario Ware');
 				term = term.replace(/ bros( |$)/gi, ' Bros. ');
-				term = term.replace(/(papermario|paper mario[^\: ])/gi, 'Paper Mario');
+				term = term.replace(/paper *mario[^\: ]/gi, 'Paper Mario');
+				term = term.replace(/paper *mario *the/gi, 'Paper Mario: The');
 				// eliminations part 3
 				term = term.replace(/[\[\(]*(v*\d+\.|rev *\d).*/gi, '');
 				term = term.replace(/\[[^\]]*\]/g, '');
@@ -363,7 +362,7 @@ module.exports = async function(arg) {
 				let game = await addGame(searcher, term);
 				olog('search term:\t\t' + term);
 				if (game) {
-					olog('found match:\t\t' + game.title + '\r\n');
+					olog(`found match:\t\t${game.title} ${game.id} ${game.sys||sysStyle}\r\n`);
 					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 					games.push(game);
 				} else {
@@ -387,8 +386,8 @@ module.exports = async function(arg) {
 	async function reload() {
 		cui.change('loading');
 		$('body').removeClass();
-		sysStyle = (prefs[sys].style || sys);
-		$('body').addClass(sys + ' ' + sysStyle);
+		sysStyle = prefs[sys].style || sys;
+		$('body').addClass(sysStyle);
 		emu = prefs[sys].emu.toLowerCase();
 
 		await intro();
@@ -462,7 +461,7 @@ module.exports = async function(arg) {
 		await prefsMan.save();
 		await viewerLoad();
 		await removeIntro();
-		cui.change('libMain', sysStyle);
+		cui.change('libMain');
 	}
 
 	async function load() {
@@ -527,7 +526,7 @@ module.exports = async function(arg) {
 			await prefsMan.load();
 			emuDir = path.join(prefs.btlDir, '..');
 
-			// clean up previous versions of the prefs file
+			// clean up deprecated versions of the prefs file
 			if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
 			if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
 			if (prefs.ui.gamepad.profile) {
@@ -538,6 +537,7 @@ module.exports = async function(arg) {
 				prefs.ui.gamepad.default.map = prefs.ui.gamepad.map;
 				delete prefs.ui.gamepad.map;
 			}
+			if (prefs['3ds']) prefs.n3ds = prefs['3ds'];
 		}
 		// currently supported systems
 		let sysMenuHTML = '.row-y\n';
@@ -557,6 +557,8 @@ module.exports = async function(arg) {
 			}
 		});
 		sys = arg.sys || prefs.session.sys;
+		// deprecated system id, change to 'n3ds'
+		if (sys == '3ds') sys = 'n3ds';
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 	}
 
@@ -588,13 +590,13 @@ module.exports = async function(arg) {
 			labels = ['Play', 'Flip', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'infoSelect') {
-			labels = ['Manuals', 'Texp', 'Back'];
+			labels = ['Manuals', 'ImgDir', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
 			cui.getCur(state).removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
-			labels = ['ImgDir', 'File', 'Back'];
+			labels = ['Texp', 'File', 'Back'];
 		} else if (
 			state == 'sysMenu' ||
 			(/game/i).test(state)) {
@@ -840,12 +842,15 @@ module.exports = async function(arg) {
 		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
+		$('body').removeClass();
 		// $('nav').toggleClass('gamestate');
 		if ($cur.hasClass('selected')) {
+			$('body').addClass($cur.attr('class').split(/\s+/)[0]);
 			cui.scrollToCursor(500, 0);
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 		} else {
+			$('body').addClass(sysStyle);
 			$reel.css('left', '');
 			$cur.css('transform', '');
 		}
@@ -895,11 +900,12 @@ module.exports = async function(arg) {
 				cui.change('coverSelect');
 			}
 		} else if (ui == 'coverSelect') {
-			if ((act == 'a' || !isBtn) && (await imgExists(getTemplate(), 'boxOpen'))) {
+			if ((act == 'a' || !isBtn) &&
+				(await imgExists(themes[cui.getCur().attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
 				// return;
 				// TODO finish open box menu
 				let game = getCurGame();
-				let template = getTemplate();
+				let template = themes[game.sys || sys].template;
 
 				$('#gameBoxOpen').prop('src', await imgExists(template, 'boxOpen'));
 				$('#gameBoxOpenMask').prop('src',
@@ -908,7 +914,7 @@ module.exports = async function(arg) {
 				$('#gameManual').prop('src', await imgExists(template, 'manual'));
 
 				let mediaName = 'disc';
-				if (sys == 'switch' || sys == '3ds' || sys == 'ds' || sys == 'gba') {
+				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
 					mediaName = 'cart';
 				}
 				let mediaImg = await imgExists(game, mediaName);
@@ -922,42 +928,15 @@ module.exports = async function(arg) {
 				cui.change('libMain');
 				await coverClicked();
 			} else if (act == 'y') { // flip
-				let $cur = cui.getCur();
-				if (!$cur.hasClass('flip')) {
-					$cur.addClass('flip');
-					let $box = $cur.find('.box').eq(0);
-					let game = getCurGame();
-					let boxBack = await imgExists(game, 'boxBack');
-					if (boxBack) {
-						$box.src(boxBack);
-						$box.addClass('boxBack');
-					}
-					let $cover = $cur.find('img.cover').eq(0);
-					if (!$cover.length) return;
-					let coverBack = await imgExists(game, 'coverBack');
-					if (coverBack) {
-						$cover.prop('src', coverBack);
-						$cur.find('.cover').addClass('coverBack');
-					} else {
-						let coverFull = await imgExists(game, 'coverFull');
-						if (coverFull) {
-							$cover.prop('src', coverFull);
-							$cur.find('.cover').addClass('coverFull');
-						} else {
-							return;
-						}
-					}
-					$cur.find('.cover').removeClass('cover');
-					$cur.find('.shade').removeClass('hide');
-					$cover.removeClass('hide');
-				} else {
-
-				}
+				await flipGameBox();
 			}
 		} else if (ui == 'infoSelect') {
 			if (act != 'b') {
 				if (act == 'x') act = 'Manual';
-				if (act == 'y') act = 'Texp';
+				if (act == 'y') {
+					opn(getImgDir(getCurGame()));
+					return;
+				}
 				if (act == 'a') act = 'Media';
 				if (!(/(memory|manual|media)/gi).test(act)) return;
 				act = act[0].toUpperCase() + act.substr(1);
@@ -975,8 +954,8 @@ module.exports = async function(arg) {
 					cui.doAction('back');
 					cui.change('libMain');
 					await powerBtn();
-				} else if (act == 'y') { // ImgDir
-					opn(getImgDir(getCurGame()));
+				} else if (act == 'y') { // Texp
+
 				} else if (act == 'x') { // File
 					opn(getCurGame().file);
 				}
@@ -1095,6 +1074,78 @@ module.exports = async function(arg) {
 	cui.click('#resetBtn', 'y');
 	cui.click('#openBtn', 'b');
 
+	async function editImgSrc($cur, $img, game, name) {
+		if (!game) return;
+		let img = await imgExists(game, name);
+		log(img);
+		if (!img) return;
+		let prevClass = $img.attr('class');
+		if (!prevClass) return;
+		prevClass = prevClass.split(/\s+/)[0];
+		$img.prop('src', img);
+		let $elems = $cur.find('.' + prevClass);
+		for (let i in $elems) {
+			let $elem = $elems.eq(i);
+			$elem.removeClass(prevClass);
+			$elem.addClass(name);
+		}
+		return img;
+	}
+
+	async function flipGameBox() {
+		let $cur = cui.getCur();
+		let game = getCurGame();
+		let template = themes[game.sys || sys].template;
+		let dflt = themes[game.sys || sys].default;
+		if (!$cur.hasClass('flip')) {
+			$cur.addClass('flip');
+			let $box = $cur.find('.box').eq(0);
+			if (!(await editImgSrc($cur, $box, game, 'boxBack'))) {
+				if (!(await editImgSrc($cur, $box, dflt, 'boxBack'))) {
+					await editImgSrc($cur, $box, dflt, 'box');
+				}
+			}
+			$cur.find('.shade').removeClass('hide');
+			let $cover = $cur.find('img.cover');
+			if (!$cover.length) {
+				$cover = $cur.find('img.coverFull').eq(0).removeClass('hide');
+				return;
+			}
+			$cover = $cover.eq(0);
+			for (let name of ['coverBack', 'coverFull']) {
+				for (let g of [game, template]) {
+					if (await editImgSrc($cur, $cover, g, name)) break;
+				}
+			}
+			$cover.removeClass('hide');
+		} else {
+			$cur.removeClass('flip');
+			let $box = $cur.find('img.boxBack');
+			if (!$box.length) $box = $cur.find('img.box');
+			if (!$box.length) return;
+			$box = $box.eq(0);
+			let hasBox = true;
+			for (let g of [game, template]) {
+				if (await editImgSrc($cur, $box, g, 'box')) break;
+				hasBox = false;
+			}
+			if ((game.sys || sys) != 'switch') $cur.find('.shade').addClass('hide');
+			let $cover = $cur.find('img.coverBack');
+			if (!$cover.length) $cover = $cur.find('img.coverFull');
+			if (!$cover.length) return;
+			$cover = $cover.eq(0);
+			if (hasBox) {
+				$cover.addClass('hide');
+			} else {
+				let name = '';
+				for (name of ['coverBack', 'coverFull']) {
+					if (await editImgSrc($cur, $cover, game, name)) break;
+				}
+				if (name == 'coverFull') $cur.find('.shade').addClass('hide');
+			}
+		}
+	}
+
 	async function getImg(game, name, hq) {
 		let res = await imgExists(game, name);
 		if (res) return res;
@@ -1115,7 +1166,7 @@ module.exports = async function(arg) {
 				if (url[1][0] == '/' || url[1][0] == '\\') return;
 				url = url[0] + '.' + url[1];
 			} else if (url[0] == 'q') {
-				url = srp.gqa.unwrapUrl(theme.style, game, name);
+				url = srp.gqa.unwrapUrl(sys, game, name);
 			} else if (url[1]) {
 				// url[0] is key for the scraper
 				scraper = scrapers[url[0]];
@@ -1137,7 +1188,7 @@ module.exports = async function(arg) {
 			if (res) return res;
 		}
 
-		if (game.id == '_TEMPLATE') return;
+		if (game.id.includes('_TEMPLATE')) return;
 
 		// get high quality box from Andy Decarli's site
 		res = await srp.dec.dlImg(sys, game, imgDir, name);
@@ -1151,33 +1202,40 @@ module.exports = async function(arg) {
 		return await srp.tdb.dlImg(sys, game, imgDir, name);
 	}
 
-	function getTemplate() {
-		let imgTypes = [
-			'box', 'boxBack', 'boxOpen', 'boxOpenMask', 'manual',
-			'memory', 'memoryBack'
-		];
-		let template = {
-			id: '_TEMPLATE',
-			title: 'Template',
-			img: theme.template
-		};
-		for (let imgType of imgTypes) {
-			if (!template.img[imgType]) {
-				template.img[imgType] = 'q';
-			}
-		}
-		return template;
-	}
-
 	async function loadImages() {
 		let imgDir;
 		let _gamesLength = games.length;
+		let isTemplate;
+
+		// deprecated 3ds to n3ds
+		if (sys == 'n3ds') {
+			let depDir = `${prefs.btlDir}/3ds`;
+			if (await fs.exists(depDir)) {
+				await fs.move(depDir, `${prefs.btlDir}/n3ds`);
+			}
+		}
+		// deprecated template dir
+		let depTemplateDir = `${prefs.btlDir}/${sys}/_TEMPLATE`;
+		if (await fs.exists(depTemplateDir)) {
+			if (sys == 'wii') {
+				await fs.move(depTemplateDir + '/img',
+					`${prefs.btlDir}/${sys}/_TEMPLATE_gcn`);
+			} else {
+				await fs.move(depTemplateDir + '/img',
+					`${prefs.btlDir}/${sys}/_TEMPLATE_${sys}`);
+			}
+			await fs.remove(depTemplateDir);
+		}
+
 		for (let i = 0; i < games.length + 1; i++) {
 			let res;
 			let game;
-			let isTemplate = (i == games.length);
-			if (isTemplate) {
-				game = getTemplate();
+			if (!isTemplate && i == games.length) {
+				game = themes[sysStyle].template;
+				isTemplate = true;
+				if (sys != sysStyle) i--;
+			} else if (isTemplate) {
+				game = themes[sys].template;
 			} else {
 				game = games[i];
 			}
@@ -1186,12 +1244,21 @@ module.exports = async function(arg) {
 			}
 			imgDir = getImgDir(game);
 
+			if (sys != 'mame') {
+				// move img dir from deprecated location
+				let imgDirDep = imgDir + '/img';
+				if (await fs.exists(imgDirDep)) {
+					await fs.copy(imgDirDep, imgDir);
+					await fs.remove(imgDirDep);
+				}
+			}
+
 			if (recheckImgs || !(await fs.exists(imgDir))) {
 				await fs.ensureDir(imgDir);
 
 				if (!isTemplate ||
 					(!(await imgExists(game, 'coverFull')) &&
-						!(await imgExists(game, 'cover')))
+						!(await imgExists(game, 'cover')) && sys != 'gba')
 				) {
 					await getImg(game, 'box', 'HQ');
 				}
@@ -1213,7 +1280,7 @@ module.exports = async function(arg) {
 					}
 				}
 
-				if (sys == 'switch' || sys == '3ds' || sys == 'ds' || sys == 'gba') {
+				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
 					await getImg(game, 'cart');
 				} else if (sys != 'mame') {
 					await getImg(game, 'disc');
@@ -1231,19 +1298,17 @@ module.exports = async function(arg) {
 			}
 		}
 		if (_gamesLength != games.length) await outputGamesJSON();
-		if (theme.default) {
-			defaultBox = await getImg(theme.default, 'box');
-			if (!defaultBox) {
-				er('ERROR: No default box image found');
-				return;
-			}
+		if (sys != 'mame' && (!themes[sysStyle].default ||
+				!(await getImg(themes[sysStyle].default, 'box')))) {
+			er('ERROR: No default box image found');
+			return;
 		}
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));
 	}
 
 	function getImgDir(game) {
-		let imgDir = `${prefs.btlDir}/${sys}/${game.id}/img`;
+		let imgDir = `${prefs.btlDir}/${sys}/${game.id}`;
 		if (emu == 'mame') {
 			imgDir = `${emuDir}/MAME/BIN/artwork/${game.id}`;
 		}
@@ -1281,13 +1346,16 @@ module.exports = async function(arg) {
 				}
 			}
 		}
-		$('.reel.r' + reelNum).append(pug(`
-#${game.id}.${game.sys || theme.style}.uie${((game.id != '_TEMPLATE')?'':'.uie-disabled')}
-	${((cl1)?`img.box(src="${defaultBox}")`:`img.box(src="${file}")`)}
+		let cover = `
+game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.uie-disabled')}
+	${((cl1)?`img.box(src="${
+		(await imgExists(themes[game.sys || sys].default, 'box'))
+	}")`:`img.box(src="${file}")`)}
 	section.crop${cl1 || '.cover'}
 		img${(cl1||'.cover') + ((cl1)?'':'.hide')}(src="${(cl1)?file:''}")
-		.shade.p-0.m-0${(cl1)?'':'.hide'}
-		`));
+		.shade.p-0.m-0${(cl1||(game.sys||sys)=='switch'||(game.sys||sys)=='gba')?'':'.hide'}
+`;
+		$('.reel.r' + reelNum).append(pug(cover));
 		return true;
 	}
 
@@ -1425,9 +1493,26 @@ module.exports = async function(arg) {
 			shouldRebindMouse = true;
 			let themesPath = __rootDir + '/prefs/themes.json';
 			themes = JSON.parse(await fs.readFile(themesPath));
+			let imgTypes = [
+				'box', 'boxBack', 'boxOpen', 'boxOpenMask', 'manual',
+				'memory', 'memoryBack'
+			];
+			for (let system in themes) {
+				let theme = themes[system];
+				let template = {
+					id: '_TEMPLATE_' + system,
+					title: system + ' template',
+					img: theme.template,
+					sys: system
+				};
+				for (let imgType of imgTypes) {
+					if (!template.img[imgType]) {
+						template.img[imgType] = 'q';
+					}
+				}
+				theme.template = template;
+			}
 		}
-		theme = themes[prefs[sys].style || sys];
-		theme.style = prefs[sys].style || sys;
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		await loadImages();
 		let rows = prefs.ui.maxRows || 8;
@@ -1451,7 +1536,7 @@ module.exports = async function(arg) {
 }`;
 		dynRowStyle += '</style>';
 		$('body').append(dynRowStyle);
-		let template = getTemplate();
+		let template = themes[sysStyle].template;
 		await addTemplates(template, rows, templateAmt);
 		for (let i = 0, j = 0; i < games.length; i++) {
 			try {

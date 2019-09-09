@@ -14,9 +14,7 @@
 			"id": "84EE4776",
 			"title": "Pokemon: Fire Red Version"
 		},
-		"template": {
-			"box": "https://i.warosu.org/data/vr/img/0012/83/1387453429811.png"
-		}
+		"template": {}
 	},
 	"gcn": {
 		"default": {
@@ -77,8 +75,7 @@
 			"title": "Super Mario Galaxy 2"
 		},
 		"template": {
-			"coverFull": "http://img06.deviantart.net/5aaf/i/2014/254/a/7/gamecube_cover_template_by_etschannel-d7ycz3o.png",
-			"boxOpen": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Wii-optical-case.png"
+			"coverFull": "http://orig15.deviantart.net/c135/f/2006/327/d/9/wii_cover_template___hi_res_by_stardogchampion.png"
 		}
 	},
 	"wiiu": {

@@ -1,18 +1,6 @@
 {
 	"btlDir": "",
 	"region": "E",
-	"3ds": {
-		"app": {
-			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
-		},
-		"cmd": {
-			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
-			"mac": ["${app}", "${game}", "-f"],
-			"win": ["${app}", "${game}", "-f"]
-		},
-		"emu": "Citra",
-		"style": "n3ds"
-	},
 	"ds": {
 		"app": {},
 		"cmd": {
@@ -29,6 +17,17 @@
 			"win": ["${app}", "-f", "${game}"]
 		},
 		"emu": "mGBA"
+	},
+	"n3ds": {
+		"app": {
+			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
+		},
+		"cmd": {
+			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
+			"mac": ["${app}", "${game}", "-f"],
+			"win": ["${app}", "${game}", "-f"]
+		},
+		"emu": "Citra"
 	},
 	"mame": {
 		"app": {},

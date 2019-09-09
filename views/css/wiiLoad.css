@@ -1,0 +1,39 @@
+.ring-2 {
+	transform: translate(0, 50%);
+	width: 45vh;
+	height: 45vh;
+	margin: 0 auto;
+	border: 4vh solid #4b9cdb;
+	border-radius: 100%;
+}
+
+.ball-holder {
+	position: absolute;
+	width: 11vh;
+	height: 37vh;
+	left: 14vh;
+	top: 0;
+}
+
+.ball {
+	position: absolute;
+	top: -9vh;
+	left: 0;
+	width: 12vh;
+	height: 12vh;
+	border-radius: 100%;
+	background: radial-gradient(circle at 50%, #fff 0%, #4282B3 60%);
+}
+
+#intro .ball-holder {
+	animation: loadingE 1.7s linear infinite;
+}
+@keyframes loadingE {
+	0 {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,459 +1,4006 @@
 {
-	"games": [{
-		"id": "VGMOA",
-		"title": "spacenx",
-		"img": {
-			"cover": "https://camo.githubusercontent.com/c2abbf93fbf0bc199c06121b493318b85da0a250/687474703a2f2f76676d6f6f73652e636f6d2f706f7374732f32343236313230312532302d25323025354272656c65617365253544253230537061636525323047616d652125323028666f7225323057696925323055292e706f73742f67616d65706c61792e706e67 png"
-		}
-	}, {
-		"id": "ADFJA",
-		"title": "Super Mario Party",
-		"img": {
-			"box": "https://images-na.ssl-images-amazon.com/images/I/81O3ChgymRL.jpg"
-		}
-	}, {
-		"id": "ROWEA",
-		"title": "Ōkami HD",
-		"img": {
-			"cover": "https://images-na.ssl-images-amazon.com/images/I/919I8yMJTUL.jpg"
-		}
-	}, {
-		"id": "AAAAA",
-		"title": "The Legend of Zelda: Breath of the Wild"
-	}, {
-		"id": "AAACA",
-		"title": "Super Mario Odyssey",
-		"img": {
-			"box": "https://images-na.ssl-images-amazon.com/images/I/91JZdTYcjFL.jpg"
-		}
-	}, {
-		"id": "AAB6A",
-		"title": "Splatoon 2"
-	}, {
-		"id": "AAB6B",
-		"title": "Splatoon 2"
-	}, {
-		"id": "AAB6C",
-		"title": "Splatoon 2"
-	}, {
-		"id": "AAB7A",
-		"title": "Monster Hunter XX: Double Cross Nintendo Switch Ver."
-	}, {
-		"id": "AAB8A",
-		"title": "Super Bomberman R"
-	}, {
-		"id": "AABPA",
-		"title": "Mario Kart 8 Deluxe"
-	}, {
-		"id": "AABQA",
-		"title": "ARMS"
-	}, {
-		"id": "AACAC",
-		"title": "Disgaea 5 Complete"
-	}, {
-		"id": "AACCA",
-		"title": "1-2-Switch"
-	}, {
-		"id": "AB36A",
-		"title": "Troll and I"
-	}, {
-		"id": "AB38A",
-		"title": "NBA 2K18"
-	}, {
-		"id": "AB39A",
-		"title": "RiME"
-	}, {
-		"id": "AB4JA",
-		"title": "The LEGO NINJAGO Movie Video Game"
-	}, {
-		"id": "AB4JB",
-		"title": "The LEGO NINJAGO Movie Video Game"
-	}, {
-		"id": "AB4JC",
-		"title": "The LEGO NINJAGO Movie Video Game"
-	}, {
-		"id": "AB5JB",
-		"title": "Soldam: Drop, Connect, Erase"
-	}, {
-		"id": "AB92A",
-		"title": "Cave Story+"
-	}, {
-		"id": "AB93A",
-		"title": "Ittle Dew 2+"
-	}, {
-		"id": "AB96A",
-		"title": "Tiny Barbarian DX"
-	}, {
-		"id": "ABD7C",
-		"title": "Sonic Mania Plus"
-	}, {
-		"id": "ABM2A",
-		"title": "LEGO City Undercover"
-	}, {
-		"id": "ABM2B",
-		"title": "LEGO City Undercover"
-	}, {
-		"id": "ABMKA",
-		"title": "Has Been Heroes"
-	}, {
-		"id": "ABQLA",
-		"title": "Sonic Forces"
-	}, {
-		"id": "ABQLB",
-		"title": "Sonic Forces"
-	}, {
-		"id": "ABQLC",
-		"title": "Sonic Forces"
-	}, {
-		"id": "ABTCB",
-		"title": "Wonder Boy: The Dragon's Trap"
-	}, {
-		"id": "ABTDA",
-		"title": "Cars 3: Driven to Win"
-	}, {
-		"id": "ABTDB",
-		"title": "Cars 3: Driven to Win"
-	}, {
-		"id": "ABTDC",
-		"title": "Cars 3: Driven to Win"
-	}, {
-		"id": "ABWUA",
-		"title": "Nobunaga no Yabou: Souzou with Power Up Kit"
-	}, {
-		"id": "ABYBA",
-		"title": "Dragon Ball Xenoverse 2"
-	}, {
-		"id": "AC8QA",
-		"title": "Fate/Extella: The Umbral Star"
-	}, {
-		"id": "ACC2A",
-		"title": "Resident Evil: Revelations Collection"
-	}, {
-		"id": "ACD3A",
-		"title": "VOEZ"
-	}, {
-		"id": "ACL4A",
-		"title": "LEGO Worlds"
-	}, {
-		"id": "ACL9A",
-		"title": "One Piece: Unlimited World R Deluxe Edition"
-	}, {
-		"id": "ACNGB",
-		"title": "Runner3"
-	}, {
-		"id": "ACS3A",
-		"title": "Minecraft: Story Mode - The Complete Adventure"
-	}, {
-		"id": "ACVKA",
-		"title": "Rayman Legends: Definitive Edition"
-	}, {
-		"id": "ACVKB",
-		"title": "Rayman Origins: Definitive Edition"
-	}, {
-		"id": "ACXPA",
-		"title": "Dragon Quest Builders"
-	}, {
-		"id": "AD2DA",
-		"title": "Nobunaga no Yabou: Taishi"
-	}, {
-		"id": "AD6QA",
-		"title": "Harvest Moon: Light of Hope - Special Edition"
-	}, {
-		"id": "AD6QB",
-		"title": "Harvest Moon: Light of Hope - Special Edition"
-	}, {
-		"id": "AD77A",
-		"title": "Syberia"
-	}, {
-		"id": "AD78A",
-		"title": "Syberia 2"
-	}, {
-		"id": "AD79B",
-		"title": "Gear.Club Unlimited"
-	}, {
-		"id": "AD7TA",
-		"title": "Armed Blue Gunvolt Striker Pack"
-	}, {
-		"id": "AD9BA",
-		"title": "Touhou Kobuto V: Burst Battle"
-	}, {
-		"id": "ADAVA",
-		"title": "Seiken Densetsu Collection"
-	}, {
-		"id": "ADCEA",
-		"title": "FIFA 18"
-	}, {
-		"id": "ADEBA",
-		"title": "Just Dance 2018"
-	}, {
-		"id": "ADENA",
-		"title": "Xenoblade 2"
-	}, {
-		"id": "ADENB",
-		"title": "Xenoblade Chronicles 2"
-	}, {
-		"id": "ADFUA",
-		"title": "Nintendo Labo - Toy-Con 01: Variety Kit"
-	}, {
-		"id": "ADFVA",
-		"title": "Nintendo Labo - Toy-Con 02: Robot Kit"
-	}, {
-		"id": "ADK7A",
-		"title": "Monster Jam: Crush It!"
-	}, {
-		"id": "ADLRA",
-		"title": "Sine Mora EX"
-	}, {
-		"id": "ADMMA",
-		"title": "Rocket League"
-	}, {
-		"id": "ADQPA",
-		"title": "Monopoly for Nintendo Switch"
-	}, {
-		"id": "ADWFA",
-		"title": "Nights of Azure 2: Bride of the New Moon"
-	}, {
-		"id": "ADWFB",
-		"title": "Nights of Azure 2: Bride of the New Moon"
-	}, {
-		"id": "ADWYA",
-		"title": "Lost Sphear"
-	}, {
-		"id": "ADXHA",
-		"title": "Fire Emblem Warriors"
-	}, {
-		"id": "ADXHB",
-		"title": "Fire Emblem Warriors"
-	}, {
-		"id": "ADYFA",
-		"title": "Winning Post 8 2017"
-	}, {
-		"id": "AE98A",
-		"title": "Bayonetta 2"
-	}, {
-		"id": "AEABB",
-		"title": "Poi: Explorer Edition"
-	}, {
-		"id": "AEANA",
-		"title": "LEGO Marvel Super Heroes 2"
-	}, {
-		"id": "AEANB",
-		"title": "LEGO Marvel Super Heroes 2"
-	}, {
-		"id": "AEANC",
-		"title": "LEGO Marvel Super Heroes 2"
-	}, {
-		"id": "AECNA",
-		"title": "Shingeki no Kyojin 2"
-	}, {
-		"id": "AECRA",
-		"title": "Retro City Rampage DX"
-	}, {
-		"id": "AECYA",
-		"title": "Portal Knights"
-	}, {
-		"id": "AEDXA",
-		"title": "Scribblenauts Showdown"
-	}, {
-		"id": "AEESA",
-		"title": "Champion Jockey Special"
-	}, {
-		"id": "AEG7A",
-		"title": "R.B.I. Baseball 17"
-	}, {
-		"id": "AEJQA",
-		"title": "Axiom Verge"
-	}, {
-		"id": "AEJQB",
-		"title": "Axiom Verge"
-	}, {
-		"id": "AEQKA",
-		"title": "Overcooked: Special Edition"
-	}, {
-		"id": "AES8A",
-		"title": "Ben 10"
-	}, {
-		"id": "AESEA",
-		"title": "Farming Simulator"
-	}, {
-		"id": "AESEB",
-		"title": "Farming Simulator"
-	}, {
-		"id": "AEXYA",
-		"title": "Snipperclips Plus: Cut It Out, Together!"
-	}, {
-		"id": "AF3BA",
-		"title": "DOOM"
-	}, {
-		"id": "AF3CA",
-		"title": "The Elder Scrolls V: Skyrim"
-	}, {
-		"id": "AF49A",
-		"title": "Atelier Lydie & Soeur: Fushigi na Kaiga no Renkinjutsu Samurai"
-	}, {
-		"id": "AFCAA",
-		"title": "Sumikko Gurashi: Sumikko Park e Youkoso"
-	}, {
-		"id": "AFHRA",
-		"title": "This is the Police"
-	}, {
-		"id": "AFLHA",
-		"title": "Lumo"
-	}, {
-		"id": "AFLJA",
-		"title": "88 Heroes: 98 Heroes Edition"
-	}, {
-		"id": "AFLSA",
-		"title": "The Longest Five Minutes"
-	}, {
-		"id": "AFQMA",
-		"title": "L.A. Noire"
-	}, {
-		"id": "AFQMC",
-		"title": "L.A. Noire"
-	}, {
-		"id": "AFVHA",
-		"title": "South Park: The Fractured But Whole"
-	}, {
-		"id": "AFVPA",
-		"title": "Unbox: Newbie's Adventure"
-	}, {
-		"id": "AFVWA",
-		"title": "Snow Moto Racing Freedom"
-	}, {
-		"id": "AFWTA",
-		"title": "Donkey Kong Country: Tropical Freeze"
-	}, {
-		"id": "AGCYA",
-		"title": "Asonde Shogi ga Tsuyokunaru! Ginsei Shogi DX"
-	}, {
-		"id": "AGK2A",
-		"title": "Super Putty Squad"
-	}, {
-		"id": "AGLQA",
-		"title": "Stern Pinball Arcade"
-	}, {
-		"id": "AGV2A",
-		"title": "Sengoku Musou: Sanada Maru"
-	}, {
-		"id": "AGVVA",
-		"title": "Musou Orochi 2 Ultimate"
-	}, {
-		"id": "AGVYA",
-		"title": "Shin Sangoku Musou 7 Empires"
-	}, {
-		"id": "AGW3A",
-		"title": "Batman: The Telltale Series"
-	}, {
-		"id": "AGXWA",
-		"title": "MXGP3: The Official Motocross Videogame"
-	}, {
-		"id": "AGY7B",
-		"title": "Octopath Traveler"
-	}, {
-		"id": "AH26A",
-		"title": "Kirby Star Allies"
-	}, {
-		"id": "AH3EA",
-		"title": "LEGO The Incredibles"
-	}, {
-		"id": "AHABA",
-		"title": "Party Planet"
-	}, {
-		"id": "AJ6HA",
-		"title": "Anata no Shikihime Kyouikutan"
-	}, {
-		"id": "AJA8A",
-		"title": "One Piece: Kaizoku Musou 3 - Deluxe Edition"
-	}, {
-		"id": "AJAMA",
-		"title": "3D MiniGolf"
-	}, {
-		"id": "AJH9A",
-		"title": "Captain Toad: Treasure Tracker",
-		"img": {
-			"box": "https://images-na.ssl-images-amazon.com/images/I/91mSluAuj7L.jpg"
-		}
-	}, {
-		"id": "AJJ7A",
-		"title": "Monster Energy Supercross: The Official Videogame"
-	}, {
-		"id": "AJMUA",
-		"title": "The Snack World: Trejarers Gold"
-	}, {
-		"id": "AK6JA",
-		"title": "Street Fighter: 30th Anniversary Collection",
-		"img": {
-			"box": "https://art.gametdb.com/switch/box/EN/AK6JA.png"
-		}
-	}, {
-		"id": "AKUTA",
-		"title": "Zelda Musou: Hyrule All Stars DX"
-	}, {
-		"id": "AKUTB",
-		"title": "Hyrule Warriors: Definitive Edition"
-	}, {
-		"id": "ALECA",
-		"title": "Winning Post 8 2018"
-	}, {
-		"id": "ALERA",
-		"title": "Mario Tennis Aces",
-		"img": {
-			"box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
-		}
-	}, {
-		"id": "ALXDA",
-		"title": "Happy Birthdays"
-	}, {
-		"id": "ALXDC",
-		"title": "Happy Birthdays"
-	}, {
-		"id": "AMSGA",
-		"title": "Shantae: Half-Genie Hero Ultimate Edition"
-	}, {
-		"id": "AMSGB",
-		"title": "Shantae: Half-Genie Hero Ultimate Edition"
-	}, {
-		"id": "AN33A",
-		"title": "Owlboy"
-	}, {
-		"id": "APMBA",
-		"title": "All-Star Fruit Racing"
-	}, {
-		"id": "BAAAA",
-		"title": "Just Dance 2017"
-	}, {
-		"id": "BAACA",
-		"title": "Puyo Puyo Tetris"
-	}, {
-		"id": "BAACB",
-		"title": "Puyo Puyo Tetris"
-	}, {
-		"id": "BAACC",
-		"title": "Puyo Puyo Tetris"
-	}, {
-		"id": "BAANA",
-		"title": "Mario + Rabbids: Kingdom Battle"
-	}, {
-		"id": "BAAVA",
-		"title": "Minna de Waiwai! Spelunker"
-	}, {
-		"id": "BAAYA",
-		"title": "Pokken Tournament DX"
-	}, {
-		"id": "BAAZA",
-		"title": "The Binding of Isaac: Afterbirth+"
-	}, {
-		"id": "BABBD",
-		"title": "Ultra Street Fighter II: The Final Challengers"
-	}, {
-		"id": "BABBE",
-		"title": "Ultra Street Fighter II: The Final Challengers"
-	}, {
-		"id": "BABJA",
-		"title": "Ikenie to Yuki no Setsuna"
-	}, {
-		"id": "BABKA",
-		"title": "Dragon Quest Heroes I・II for Nintendo Switch"
-	}]
+"version": "20190907193131",
+"games": [{
+	"id": "VGMOA",
+	"title": "spacenx",
+	"img": {
+		"cover": "https://camo.githubusercontent.com/c2abbf93fbf0bc199c06121b493318b85da0a250/687474703a2f2f76676d6f6f73652e636f6d2f706f7374732f32343236313230312532302d25323025354272656c65617365253544253230537061636525323047616d652125323028666f7225323057696925323055292e706f73742f67616d65706c61792e706e67 png"
+	}
+}, {
+	"id": "AAAAA",
+	"title": "The Legend of Zelda: Breath of the Wild"
+}, {
+	"id": "AAABA",
+	"title": "Super Smash Bros. Ultimate"
+}, {
+	"id": "AAACA",
+	"title": "Super Mario Odyssey",
+	"img": {
+		"box": "https://images-na.ssl-images-amazon.com/images/I/91JZdTYcjFL.jpg"
+	}
+}, {
+	"id": "AAB6A",
+	"title": "Splatoon 2"
+}, {
+	"id": "AAB6B",
+	"title": "Splatoon 2"
+}, {
+	"id": "AAB6C",
+	"title": "Splatoon 2"
+}, {
+	"id": "AAB7A",
+	"title": "Monster Hunter XX: Double Cross Nintendo Switch Ver."
+}, {
+	"id": "AAB7B",
+	"title": "Monster Hunter - Generations - Ultimate"
+}, {
+	"id": "AAB8A",
+	"title": "Super Bomberman R"
+}, {
+	"id": "AABPA",
+	"title": "Mario Kart 8 Deluxe"
+}, {
+	"id": "AABQA",
+	"title": "ARMS"
+}, {
+	"id": "AACAA",
+	"title": "Makai Senki Disgaea 5"
+}, {
+	"id": "AACAC",
+	"title": "Disgaea 5 Complete"
+}, {
+	"id": "AACCA",
+	"title": "1-2-Switch"
+}, {
+	"id": "AB36A",
+	"title": "Troll and I"
+}, {
+	"id": "AB38A",
+	"title": "NBA 2K18"
+}, {
+	"id": "AB39A",
+	"title": "RiME"
+}, {
+	"id": "AB4JA",
+	"title": "The LEGO NINJAGO Movie Video Game"
+}, {
+	"id": "AB4JB",
+	"title": "The LEGO NINJAGO Movie Video Game"
+}, {
+	"id": "AB4JC",
+	"title": "The LEGO NINJAGO Movie Video Game"
+}, {
+	"id": "AB5JB",
+	"title": "Soldam: Drop, Connect, Erase"
+}, {
+	"id": "AB92A",
+	"title": "Cave Story+"
+}, {
+	"id": "AB92C",
+	"title": "Cave Story+"
+}, {
+	"id": "AB93A",
+	"title": "Ittle Dew 2+"
+}, {
+	"id": "AB96A",
+	"title": "Tiny Barbarian DX"
+}, {
+	"id": "AB9EA",
+	"title": "Snake Pass"
+}, {
+	"id": "AB9ZA",
+	"title": "Blade Strangers"
+}, {
+	"id": "AB9ZB",
+	"title": "Blade Strangers"
+}, {
+	"id": "ABD7C",
+	"title": "Sonic Mania Plus"
+}, {
+	"id": "ABM2A",
+	"title": "LEGO City Undercover"
+}, {
+	"id": "ABM2B",
+	"title": "LEGO City Undercover"
+}, {
+	"id": "ABM2C",
+	"title": "LEGO City Undercover"
+}, {
+	"id": "ABMKA",
+	"title": "Has Been Heroes"
+}, {
+	"id": "ABQLA",
+	"title": "Sonic Forces"
+}, {
+	"id": "ABQLB",
+	"title": "Sonic Forces"
+}, {
+	"id": "ABQLC",
+	"title": "Sonic Forces"
+}, {
+	"id": "ABTCB",
+	"title": "Wonder Boy: The Dragon's Trap"
+}, {
+	"id": "ABTCC",
+	"title": "Wonder Boy - The Dragon's Trap"
+}, {
+	"id": "ABTCD",
+	"title": "Wonder Boy - The Dragon's Trap"
+}, {
+	"id": "ABTCE",
+	"title": "Wonder Boy - The Dragon's Trap"
+}, {
+	"id": "ABTDA",
+	"title": "Cars 3: Driven to Win"
+}, {
+	"id": "ABTDB",
+	"title": "Cars 3: Driven to Win"
+}, {
+	"id": "ABTDC",
+	"title": "Cars 3: Driven to Win"
+}, {
+	"id": "ABVKA",
+	"title": "San Goku Shi 13 with Power-Up Kit"
+}, {
+	"id": "ABWUA",
+	"title": "Nobunaga no Yabou: Souzou with Power Up Kit"
+}, {
+	"id": "ABYBA",
+	"title": "Dragon Ball Xenoverse 2"
+}, {
+	"id": "ABYRA",
+	"title": "Oceanhorn - Monster of Uncharted Seas"
+}, {
+	"id": "AC2GA",
+	"title": "Mario + Rabbids - Kingdom Battle"
+}, {
+	"id": "AC8QA",
+	"title": "Fate/Extella: The Umbral Star"
+}, {
+	"id": "ACATC",
+	"title": "Steamworld Dig 2"
+}, {
+	"id": "ACC2A",
+	"title": "Resident Evil: Revelations Collection"
+}, {
+	"id": "ACD3A",
+	"title": "VOEZ"
+}, {
+	"id": "ACGNA",
+	"title": "Thumper"
+}, {
+	"id": "ACGPA",
+	"title": "Monster Boy and the Cursed Kingdom"
+}, {
+	"id": "ACHHA",
+	"title": "WWE 2K18"
+}, {
+	"id": "ACKBC",
+	"title": "Yooka-Laylee"
+}, {
+	"id": "ACL4A",
+	"title": "LEGO Worlds"
+}, {
+	"id": "ACL9A",
+	"title": "One Piece: Unlimited World R Deluxe Edition"
+}, {
+	"id": "ACMPB",
+	"title": "Flipping Death"
+}, {
+	"id": "ACNGB",
+	"title": "Runner3"
+}, {
+	"id": "ACPGB",
+	"title": "Stardew Valley"
+}, {
+	"id": "ACS3A",
+	"title": "Minecraft: Story Mode - The Complete Adventure"
+}, {
+	"id": "ACVKA",
+	"title": "Rayman Legends: Definitive Edition"
+}, {
+	"id": "ACVKB",
+	"title": "Rayman Origins: Definitive Edition"
+}, {
+	"id": "ACXPA",
+	"title": "Dragon Quest Builders"
+}, {
+	"id": "ACXPB",
+	"title": "Dragon Quest Builders"
+}, {
+	"id": "ACXWB",
+	"title": "Mantis Burn Racing"
+}, {
+	"id": "ACYXA",
+	"title": "Constructor Plus"
+}, {
+	"id": "AD2DA",
+	"title": "Nobunaga no Yabou: Taishi"
+}, {
+	"id": "AD2DB",
+	"title": "Nobunaga no Yabou - Taishi with Power-Up Kit"
+}, {
+	"id": "AD3HD",
+	"title": "Slime-san Superslime Edition"
+}, {
+	"id": "AD4CE",
+	"title": "Aces of the Luftwaffe - Squadron - Extended Edition"
+}, {
+	"id": "AD6NA",
+	"title": "My Little Riding Champion"
+}, {
+	"id": "AD6QA",
+	"title": "Harvest Moon: Light of Hope - Special Edition"
+}, {
+	"id": "AD6QB",
+	"title": "Harvest Moon: Light of Hope - Special Edition"
+}, {
+	"id": "AD77A",
+	"title": "Syberia"
+}, {
+	"id": "AD78A",
+	"title": "Syberia 2"
+}, {
+	"id": "AD79A",
+	"title": "Gear.Club Unlimited"
+}, {
+	"id": "AD79B",
+	"title": "Gear.Club Unlimited"
+}, {
+	"id": "AD7TA",
+	"title": "Armed Blue Gunvolt Striker Pack"
+}, {
+	"id": "AD7TB",
+	"title": "Azure Striker Gunvolt: Striker Pack"
+}, {
+	"id": "AD82A",
+	"title": "Schlag den Star - Das Spiel"
+}, {
+	"id": "AD8AA",
+	"title": "Yesterday Origins"
+}, {
+	"id": "AD8HA",
+	"title": "Starlink: Battle for Atlas"
+}, {
+	"id": "AD8YB",
+	"title": "Slain - Back from Hell"
+}, {
+	"id": "AD9BA",
+	"title": "Touhou Kobuto V: Burst Battle"
+}, {
+	"id": "AD9PA",
+	"title": "Payday 2"
+}, {
+	"id": "ADALA",
+	"title": "New Super Mario Bros. U Deluxe"
+}, {
+	"id": "ADAVA",
+	"title": "Seiken Densetsu Collection"
+}, {
+	"id": "ADCEA",
+	"title": "FIFA 18"
+}, {
+	"id": "ADEBA",
+	"title": "Just Dance 2018"
+}, {
+	"id": "ADENA",
+	"title": "Xenoblade 2"
+}, {
+	"id": "ADENB",
+	"title": "Xenoblade Chronicles 2"
+}, {
+	"id": "ADEUB",
+	"title": "Penguin Wars"
+}, {
+	"id": "ADFJA",
+	"title": "Super Mario Party",
+	"img": {
+		"box": "https://images-na.ssl-images-amazon.com/images/I/81O3ChgymRL.jpg"
+	}
+}, {
+	"id": "ADFUA",
+	"title": "Nintendo Labo - Toy-Con 01: Variety Kit"
+}, {
+	"id": "ADFVA",
+	"title": "Nintendo Labo - Toy-Con 02: Robot Kit"
+}, {
+	"id": "ADFWA",
+	"title": "Nintendo Labo - Toy-Con 03: Vehicle Kit"
+}, {
+	"id": "ADFXA",
+	"title": "Nintendo Labo - Toy-Con 04: VR Kit"
+}, {
+	"id": "ADK7A",
+	"title": "Monster Jam: Crush It!"
+}, {
+	"id": "ADK7B",
+	"title": "Monster Jam - Crush It!"
+}, {
+	"id": "ADLRA",
+	"title": "Sine Mora EX"
+}, {
+	"id": "ADM9A",
+	"title": "Battle Chasers: Nightwar"
+}, {
+	"id": "ADMMA",
+	"title": "Rocket League"
+}, {
+	"id": "ADMMC",
+	"title": "Rocket League Ultimate Edition"
+}, {
+	"id": "ADPVA",
+	"title": "The Count Lucanor"
+}, {
+	"id": "ADQPA",
+	"title": "Monopoly for Nintendo Switch"
+}, {
+	"id": "ADW2A",
+	"title": "Pokémon: Let's Go, Pikachu"
+}, {
+	"id": "ADW3A",
+	"title": "Pokémon: Let's Go, Eevee!"
+}, {
+	"id": "ADWFA",
+	"title": "Nights of Azure 2: Bride of the New Moon"
+}, {
+	"id": "ADWFB",
+	"title": "Nights of Azure 2: Bride of the New Moon"
+}, {
+	"id": "ADWGA",
+	"title": "Vegas Party"
+}, {
+	"id": "ADWHB",
+	"title": "Dimension Drive"
+}, {
+	"id": "ADWTB",
+	"title": "Cartoon Network - Battle Crashers"
+}, {
+	"id": "ADWYA",
+	"title": "Lost Sphear"
+}, {
+	"id": "ADXHA",
+	"title": "Fire Emblem Warriors"
+}, {
+	"id": "ADXHB",
+	"title": "Fire Emblem Warriors"
+}, {
+	"id": "ADYFA",
+	"title": "Winning Post 8 2017"
+}, {
+	"id": "ADZ6B",
+	"title": "Thimbleweed Park"
+}, {
+	"id": "AE5RA",
+	"title": "Penny-Punching Princess"
+}, {
+	"id": "AE78B",
+	"title": "Mutant Mudds Collection"
+}, {
+	"id": "AE8QA",
+	"title": "Kingdom - New Lands"
+}, {
+	"id": "AE98A",
+	"title": "Bayonetta 2"
+}, {
+	"id": "AE99A",
+	"title": "Bayonetta"
+}, {
+	"id": "AEA2A",
+	"title": "Yoshi's Crafted World"
+}, {
+	"id": "AEABB",
+	"title": "Poi: Explorer Edition"
+}, {
+	"id": "AEABC",
+	"title": "Poi: Explorer Edition"
+}, {
+	"id": "AEANA",
+	"title": "LEGO Marvel Super Heroes 2"
+}, {
+	"id": "AEANB",
+	"title": "LEGO Marvel Super Heroes 2"
+}, {
+	"id": "AEANC",
+	"title": "LEGO Marvel Super Heroes 2"
+}, {
+	"id": "AEB8A",
+	"title": "Little Nightmares: Complete Edition"
+}, {
+	"id": "AEBNB",
+	"title": "Brawlout"
+}, {
+	"id": "AEBNC",
+	"title": "Brawlout"
+}, {
+	"id": "AECNA",
+	"title": "Shingeki no Kyojin 2"
+}, {
+	"id": "AECNB",
+	"title": "Attack on Titan 2"
+}, {
+	"id": "AECNC",
+	"title": "Attack on Titan 2"
+}, {
+	"id": "AECRA",
+	"title": "Retro City Rampage DX"
+}, {
+	"id": "AECYA",
+	"title": "Portal Knights"
+}, {
+	"id": "AECYC",
+	"title": "Portal Knights"
+}, {
+	"id": "AECZC",
+	"title": "Golf Story"
+}, {
+	"id": "AEDXA",
+	"title": "Scribblenauts Showdown"
+}, {
+	"id": "AEESA",
+	"title": "Champion Jockey Special"
+}, {
+	"id": "AEEVA",
+	"title": "Syberia 1 & 2"
+}, {
+	"id": "AEG7A",
+	"title": "R.B.I. Baseball 17"
+}, {
+	"id": "AEJQA",
+	"title": "Axiom Verge"
+}, {
+	"id": "AEJQB",
+	"title": "Axiom Verge"
+}, {
+	"id": "AEK6A",
+	"title": "Island Flight Simulator"
+}, {
+	"id": "AELYA",
+	"title": "Let's Sing 2018"
+}, {
+	"id": "AELYB",
+	"title": "Let's Sing 2018"
+}, {
+	"id": "AELYC",
+	"title": "Let's Sing 10"
+}, {
+	"id": "AELYD",
+	"title": "Let's Sing 2018"
+}, {
+	"id": "AENWA",
+	"title": "Superbeat: Xonic"
+}, {
+	"id": "AEQKA",
+	"title": "Overcooked: Special Edition"
+}, {
+	"id": "AEQZB",
+	"title": "Shaq Fu - A Legend Reborn"
+}, {
+	"id": "AES8A",
+	"title": "Ben 10"
+}, {
+	"id": "AES9A",
+	"title": "Adventure Time - Pirates of the Enchiridion"
+}, {
+	"id": "AESEA",
+	"title": "Farming Simulator: Nintendo Switch Edition"
+}, {
+	"id": "AESEB",
+	"title": "Farming Simulator: Nintendo Switch Edition"
+}, {
+	"id": "AEUCA",
+	"title": "Minecraft"
+}, {
+	"id": "AEUWA",
+	"title": "Mercenary Kings Reloaded"
+}, {
+	"id": "AEW4A",
+	"title": "Steredenn"
+}, {
+	"id": "AEXYA",
+	"title": "Snipperclips Plus: Cut It Out, Together!"
+}, {
+	"id": "AEZPA",
+	"title": "The Escapists 2"
+}, {
+	"id": "AF2GB",
+	"title": "Go Vacation"
+}, {
+	"id": "AF2GC",
+	"title": "Go Vacation"
+}, {
+	"id": "AF33A",
+	"title": "N++ (NPLUSPLUS)"
+}, {
+	"id": "AF3BA",
+	"title": "DOOM"
+}, {
+	"id": "AF3BB",
+	"title": "DOOM"
+}, {
+	"id": "AF3CA",
+	"title": "The Elder Scrolls V: Skyrim"
+}, {
+	"id": "AF3CB",
+	"title": "The Elder Scrolls V - Skyrim"
+}, {
+	"id": "AF3MA",
+	"title": "Lovers in a Dangerous Spacetime"
+}, {
+	"id": "AF49A",
+	"title": "Atelier Lydie & Soeur: Fushigi na Kaiga no Renkinjutsu Samurai"
+}, {
+	"id": "AF49B",
+	"title": "Atelier Lydie & Suelle ~The Alchemists and the Mysterious Paintings~"
+}, {
+	"id": "AF7TA",
+	"title": "Hakuoki Shinkai Fuukaden for Nintendo Switch"
+}, {
+	"id": "AF86A",
+	"title": "Code of Princess EX"
+}, {
+	"id": "AF86B",
+	"title": "Code of Princess EX"
+}, {
+	"id": "AFATA",
+	"title": "Flinthook"
+}, {
+	"id": "AFCAA",
+	"title": "Sumikko Gurashi: Sumikko Park e Youkoso"
+}, {
+	"id": "AFD5A",
+	"title": "Flashback"
+}, {
+	"id": "AFFBB",
+	"title": "Shelter Generations"
+}, {
+	"id": "AFFCA",
+	"title": "State of Mind"
+}, {
+	"id": "AFHRA",
+	"title": "This is the Police"
+}, {
+	"id": "AFJVA",
+	"title": "The Flame in the Flood"
+}, {
+	"id": "AFJWA",
+	"title": "Human - Fall Flat"
+}, {
+	"id": "AFLHA",
+	"title": "Lumo"
+}, {
+	"id": "AFLJA",
+	"title": "88 Heroes: 98 Heroes Edition"
+}, {
+	"id": "AFLLA",
+	"title": "Super Chariot"
+}, {
+	"id": "AFLPA",
+	"title": "Syberia 3"
+}, {
+	"id": "AFLRA",
+	"title": "Nickelodeon Paw Patrol - On A Roll Marshall"
+}, {
+	"id": "AFLSA",
+	"title": "The Longest Five Minutes"
+}, {
+	"id": "AFQMA",
+	"title": "L.A. Noire"
+}, {
+	"id": "AFQMC",
+	"title": "L.A. Noire"
+}, {
+	"id": "AFVHA",
+	"title": "South Park: The Fractured But Whole"
+}, {
+	"id": "AFVPA",
+	"title": "Unbox: Newbie's Adventure"
+}, {
+	"id": "AFVQA",
+	"title": "Worms W.M.D."
+}, {
+	"id": "AFVVA",
+	"title": "Aqua Moto Racing Utopia"
+}, {
+	"id": "AFVWA",
+	"title": "Snow Moto Racing Freedom"
+}, {
+	"id": "AFVXA",
+	"title": "Sports Party"
+}, {
+	"id": "AFWTA",
+	"title": "Donkey Kong Country: Tropical Freeze"
+}, {
+	"id": "AFXDE",
+	"title": "PixelJunk Monsters 2"
+}, {
+	"id": "AG2WB",
+	"title": "Oxenfree"
+}, {
+	"id": "AG72A",
+	"title": "Gal Metal!"
+}, {
+	"id": "AG72D",
+	"title": "Gal Metal"
+}, {
+	"id": "AGBLB",
+	"title": "Dragon Marked for Death"
+}, {
+	"id": "AGBLE",
+	"title": "Dragon Marked for Death"
+}, {
+	"id": "AGBNA",
+	"title": "Gal Gun 2"
+}, {
+	"id": "AGBNB",
+	"title": "Gal Gun 2"
+}, {
+	"id": "AGBNC",
+	"title": "Gal Gun 2"
+}, {
+	"id": "AGBQA",
+	"title": "Gotouchi Tetsudou for Nintendo Switch!!"
+}, {
+	"id": "AGCYA",
+	"title": "Asonde Shogi ga Tsuyokunaru! Ginsei Shogi DX"
+}, {
+	"id": "AGGXA",
+	"title": "Taiko no Tatsujin - Nintendo Switch Version!"
+}, {
+	"id": "AGGXB",
+	"title": "Taiko no Tatsujin - Drum 'n' Fun!"
+}, {
+	"id": "AGHQA",
+	"title": "Naruto Shippuden Ultimate Storm Trilogy"
+}, {
+	"id": "AGJBE",
+	"title": "Shinobi Refle - Senran Kagura"
+}, {
+	"id": "AGJCA",
+	"title": "Peach Ball - Senran Kagura"
+}, {
+	"id": "AGJCB",
+	"title": "Peach Ball - Senran Kagura"
+}, {
+	"id": "AGK2A",
+	"title": "Super Putty Squad"
+}, {
+	"id": "AGK7A",
+	"title": "Caveman Warriors - Deluxe Edition"
+}, {
+	"id": "AGLQA",
+	"title": "Stern Pinball Arcade"
+}, {
+	"id": "AGNWA",
+	"title": "Musynx"
+}, {
+	"id": "AGSLA",
+	"title": "Ao no Kanata no Four Rhythm for Nintendo Switch"
+}, {
+	"id": "AGUWA",
+	"title": "Deemo"
+}, {
+	"id": "AGV2A",
+	"title": "Sengoku Musou: Sanada Maru"
+}, {
+	"id": "AGV8A",
+	"title": "Yoku's Island Express"
+}, {
+	"id": "AGVVA",
+	"title": "Musou Orochi 2 Ultimate"
+}, {
+	"id": "AGVYA",
+	"title": "Shin Sangoku Musou 7 Empires"
+}, {
+	"id": "AGW3A",
+	"title": "Batman: The Telltale Series"
+}, {
+	"id": "AGXWA",
+	"title": "MXGP3: The Official Motocross Videogame"
+}, {
+	"id": "AGY7A",
+	"title": "Octopath Traveler"
+}, {
+	"id": "AGY7B",
+	"title": "Octopath Traveler"
+}, {
+	"id": "AGYVB",
+	"title": "RXN -Raijin-"
+}, {
+	"id": "AH26A",
+	"title": "Kirby Star Allies"
+}, {
+	"id": "AH3EA",
+	"title": "LEGO The Incredibles"
+}, {
+	"id": "AH3EB",
+	"title": "LEGO The Incredibles"
+}, {
+	"id": "AH3EC",
+	"title": "LEGO - Incredible Family"
+}, {
+	"id": "AH5BC",
+	"title": "Tiny Troopers Joint Ops XL"
+}, {
+	"id": "AH79A",
+	"title": "Cat Quest"
+}, {
+	"id": "AH86C",
+	"title": "Runbow - Deluxe Edition"
+}, {
+	"id": "AH97A",
+	"title": "Dragon Quest Builders 2 - Hakaishin Sidoh to Karappo no Shima"
+}, {
+	"id": "AHABA",
+	"title": "Party Planet"
+}, {
+	"id": "AHH4B",
+	"title": "The Coma - Recut"
+}, {
+	"id": "AHHBA",
+	"title": "Urban Trial Playground"
+}, {
+	"id": "AHHBB",
+	"title": "Urban Trial Playground"
+}, {
+	"id": "AHNRA",
+	"title": "Work x Work"
+}, {
+	"id": "AHQ3A",
+	"title": "Crash Bandicoot N. Sane Trilogy"
+}, {
+	"id": "AHQ3B",
+	"title": "Crash Bandicoot Buttobi 3-Dan Mori! Bonus Edition"
+}, {
+	"id": "AHT4A",
+	"title": "The End Is Nigh"
+}, {
+	"id": "AHWWA",
+	"title": "Neo Atlas 1469"
+}, {
+	"id": "AHXCA",
+	"title": "Firefighters - The Simulation"
+}, {
+	"id": "AJ29C",
+	"title": "Max - The Curse of Brotherhood"
+}, {
+	"id": "AJ6HA",
+	"title": "Anata no Shikihime Kyouikutan"
+}, {
+	"id": "AJ6HB",
+	"title": "The Princess Guide"
+}, {
+	"id": "AJ7TA",
+	"title": "Hotel Transylvania 3 - Monsters Overboard"
+}, {
+	"id": "AJ8JC",
+	"title": "Mercenaries Saga Chronicles"
+}, {
+	"id": "AJ9KB",
+	"title": "Victor Vran - Overkill Edition"
+}, {
+	"id": "AJ9KE",
+	"title": "Victor Vran - Overkill Edition"
+}, {
+	"id": "AJA8A",
+	"title": "One Piece: Kaizoku Musou 3 - Deluxe Edition"
+}, {
+	"id": "AJA8B",
+	"title": "One Piece - Pirate Warriors 3 - Deluxe Edition"
+}, {
+	"id": "AJAGA",
+	"title": "Ginger: Beyond the Crystal"
+}, {
+	"id": "AJAKA",
+	"title": "Tales of the Tiny Planet"
+}, {
+	"id": "AJAMA",
+	"title": "3D MiniGolf"
+}, {
+	"id": "AJH9A",
+	"title": "Captain Toad: Treasure Tracker",
+	"img": {
+		"box": "https://images-na.ssl-images-amazon.com/images/I/91mSluAuj7L.jpg"
+	}
+}, {
+	"id": "AJJ7A",
+	"title": "Monster Energy Supercross: The Official Videogame"
+}, {
+	"id": "AJJ7B",
+	"title": "Monster Energy Supercross - The Official Videogame"
+}, {
+	"id": "AJJ8A",
+	"title": "MotoGP 18"
+}, {
+	"id": "AJJ8B",
+	"title": "MotoGP 18"
+}, {
+	"id": "AJKJB",
+	"title": "Vostok Inc."
+}, {
+	"id": "AJMUA",
+	"title": "The Snack World: Trejarers Gold"
+}, {
+	"id": "AJUKA",
+	"title": "Ostwind - Das Spiel"
+}, {
+	"id": "AJUKB",
+	"title": "Windstorm"
+}, {
+	"id": "AJUMA",
+	"title": "R.B.I. Baseball 18"
+}, {
+	"id": "AK2JA",
+	"title": "Gem Smashers"
+}, {
+	"id": "AK3DA",
+	"title": "The Misshitsu Kara no Dasshutsu - Unmei o Tsunagu 35 no Nazo"
+}, {
+	"id": "AK4CA",
+	"title": "BlazBlue - Cross Tag Battle"
+}, {
+	"id": "AK4SA",
+	"title": "Crystal Crisis"
+}, {
+	"id": "AK5BA",
+	"title": "Titan Quest"
+}, {
+	"id": "AK5UA",
+	"title": "Neko-Tomo"
+}, {
+	"id": "AK63A",
+	"title": "Dark Souls - Remastered"
+}, {
+	"id": "AK63B",
+	"title": "Dark Souls - Remastered"
+}, {
+	"id": "AK67A",
+	"title": "Outlast"
+}, {
+	"id": "AK6JA",
+	"title": "Street Fighter 30th Anniversary Collection",
+	"img": {
+		"box": "https://art.gametdb.com/switch/box/EN/AK6JA.png"
+	}
+}, {
+	"id": "AK6JB",
+	"title": "Street Fighter - 30th Anniversary Collection International",
+	"img": {
+		"box": "https://art.gametdb.com/switch/box/EN/AK6JA.png"
+	}
+}, {
+	"id": "AK7RA",
+	"title": "Worldend Syndrome"
+}, {
+	"id": "AK9YA",
+	"title": "Trailblazers"
+}, {
+	"id": "AK9ZA",
+	"title": "Hello Kitty Kruisers"
+}, {
+	"id": "AKBFA",
+	"title": "Legend of Kay - Anniversary"
+}, {
+	"id": "AKN7A",
+	"title": "Rabbit x Labyrinth - Puzzle Out Stories"
+}, {
+	"id": "AKP3A",
+	"title": "Daisenryaku Perfect 4.0"
+}, {
+	"id": "AKRVA",
+	"title": "Mega Man Legacy Collection"
+}, {
+	"id": "AKTUA",
+	"title": "Danmaku Unlimited 3"
+}, {
+	"id": "AKUTA",
+	"title": "Zelda Musou: Hyrule All Stars DX"
+}, {
+	"id": "AKUTB",
+	"title": "Hyrule Warriors: Definitive Edition"
+}, {
+	"id": "AKW2A",
+	"title": "Refrain no Chika Meikyuu to Majo no Ryodan"
+}, {
+	"id": "AKW2B",
+	"title": "Labyrinth of Refrain - Coven of Dusk"
+}, {
+	"id": "AKW2D",
+	"title": "Coven and Labyrinth of Refrain"
+}, {
+	"id": "AKXEA",
+	"title": "Overcooked! 2"
+}, {
+	"id": "AKXGD",
+	"title": "Bomber Crew: Complete Edition"
+}, {
+	"id": "AKYDA",
+	"title": "Pro Yakyuu Famista Evolution"
+}, {
+	"id": "AKZTA",
+	"title": "Ys VIII - Lacrimosa of DANA"
+}, {
+	"id": "AKZTB",
+	"title": "Ys VIII: Lacrimosa of Dana"
+}, {
+	"id": "AKZYA",
+	"title": "Kunio-Kun - The World Classics Collection"
+}, {
+	"id": "AKZYB",
+	"title": "Kunio-Kun - The World Classics Collection"
+}, {
+	"id": "AKZZA",
+	"title": "Jang-Navi Mahjong Online"
+}, {
+	"id": "AL2VA",
+	"title": "Crayola Scoot"
+}, {
+	"id": "AL4LD",
+	"title": "Furi - Definitive Edition"
+}, {
+	"id": "AL72A",
+	"title": "Boku no Hero Academia - One's Justice"
+}, {
+	"id": "AL72B",
+	"title": "My Hero One's Justice"
+}, {
+	"id": "AL7WA",
+	"title": "Tales of Vesperia: Definitive Edition"
+}, {
+	"id": "AL8HA",
+	"title": "My Time at Portia"
+}, {
+	"id": "ALA2A",
+	"title": "Choukaiten Sushi Striker - The Way of Sushido"
+}, {
+	"id": "ALA2B",
+	"title": "Sushi Striker - The Way of Sushido"
+}, {
+	"id": "ALAJA",
+	"title": "Cube Creator X"
+}, {
+	"id": "ALCCB",
+	"title": "WorldNeverland - Elnea Kingdom"
+}, {
+	"id": "ALDLA",
+	"title": "Outlast 2"
+}, {
+	"id": "ALECA",
+	"title": "Winning Post 8 2018"
+}, {
+	"id": "ALERA",
+	"title": "Mario Tennis Aces",
+	"img": {
+		"box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
+	}
+}, {
+	"id": "ALF3A",
+	"title": "Saturday Morning RPG"
+}, {
+	"id": "ALGCA",
+	"title": "Mega Man 11"
+}, {
+	"id": "ALGGA",
+	"title": "Mega Man X Legacy Collection"
+}, {
+	"id": "ALGGB",
+	"title": "Rockman X Anniversary Collection"
+}, {
+	"id": "ALGHB",
+	"title": "Rockman X Anniversary Collection 2"
+}, {
+	"id": "ALH4A",
+	"title": "Knights of Pen and Paper +1 Deluxier Edition"
+}, {
+	"id": "ALMAA",
+	"title": "Fitness Boxing"
+}, {
+	"id": "ALMAB",
+	"title": "Fitness Boxing"
+}, {
+	"id": "ALQSA",
+	"title": "The Mahjong"
+}, {
+	"id": "ALSPA",
+	"title": "Onimusha - Warlords"
+}, {
+	"id": "ALXCA",
+	"title": "PriPara - All Idol Perfect Stage!"
+}, {
+	"id": "ALXDA",
+	"title": "Happy Birthdays"
+}, {
+	"id": "ALXDB",
+	"title": "Happy Birthdays"
+}, {
+	"id": "ALXDC",
+	"title": "Happy Birthdays"
+}, {
+	"id": "AM4ZB",
+	"title": "Fairune Collection"
+}, {
+	"id": "AM5WA",
+	"title": "Dragon Ball FighterZ"
+}, {
+	"id": "AM78A",
+	"title": "Subarashiki Kono Sekai Final Remix"
+}, {
+	"id": "AM78B",
+	"title": "The World Ends With You -Final Remix-"
+}, {
+	"id": "AM7LA",
+	"title": "RPG Tkool MV Trinity"
+}, {
+	"id": "AM7SA",
+	"title": "Ōkami HD",
+	"img": {
+		"cover": "https://images-na.ssl-images-amazon.com/images/I/919I8yMJTUL.jpg"
+	}
+}, {
+	"id": "AM7TA",
+	"title": "Shining Resonance Refrain"
+}, {
+	"id": "AM7TB",
+	"title": "Shining Resonance Refrain"
+}, {
+	"id": "AM7TC",
+	"title": "Shining Resonance Refrain"
+}, {
+	"id": "AM7UA",
+	"title": "Layers of Fear - Legacy"
+}, {
+	"id": "AMAGB",
+	"title": "Darkest Dungeon"
+}, {
+	"id": "AMAGC",
+	"title": "Darkest Dungeon - Ancestral Edition"
+}, {
+	"id": "AMAGD",
+	"title": "Darkest Dungeon - Ancestral Edition"
+}, {
+	"id": "AMBFA",
+	"title": "Party Arcade"
+}, {
+	"id": "AMD7A",
+	"title": "Waku Waku Doubutsu Land"
+}, {
+	"id": "AMDFA",
+	"title": "Atari Flashback Classics"
+}, {
+	"id": "AMG9A",
+	"title": "Nightmare Boy"
+}, {
+	"id": "AMHXA",
+	"title": "Little Dragons Café"
+}, {
+	"id": "AMHXB",
+	"title": "Little Dragons Café"
+}, {
+	"id": "AMHXC",
+	"title": "Little Dragons Café - Himitsu no Ryuu to Fushigi na Shima"
+}, {
+	"id": "AMHXD",
+	"title": "Little Dragons Café"
+}, {
+	"id": "AMHZA",
+	"title": "Salt and Sanctuary"
+}, {
+	"id": "AMJLA",
+	"title": "Boku no Kanojo wa Ningyo-Hime! - My Girlfriend Is a Mermaid!"
+}, {
+	"id": "AMKCA",
+	"title": "Team Sonic Racing"
+}, {
+	"id": "AMKCB",
+	"title": "Team Sonic Racing"
+}, {
+	"id": "AMKCC",
+	"title": "Team Sonic Racing"
+}, {
+	"id": "AMKMA",
+	"title": "Wolfenstein II - The New Colossus"
+}, {
+	"id": "AMKMB",
+	"title": "Wolfenstein II - The New Colossus"
+}, {
+	"id": "AMKMC",
+	"title": "Wolfenstein II - The New Colossus"
+}, {
+	"id": "AMLJA",
+	"title": "RICO"
+}, {
+	"id": "AMM5A",
+	"title": "Hunting Simulator"
+}, {
+	"id": "AMN9A",
+	"title": "Carnival Games"
+}, {
+	"id": "AMNCA",
+	"title": "Giana Sisters - Twisted Dreams - Owltimate Edition"
+}, {
+	"id": "AMNPA",
+	"title": "Steins;Gate Elite"
+}, {
+	"id": "AMNPC",
+	"title": "Steins;Gate Elite"
+}, {
+	"id": "AMPPB",
+	"title": "Wild Guns Reloaded"
+}, {
+	"id": "AMPPC",
+	"title": "Wild Guns Reloaded"
+}, {
+	"id": "AMPZA",
+	"title": "Nickelodeon Kart Racers"
+}, {
+	"id": "AMQ2A",
+	"title": "FIFA 19"
+}, {
+	"id": "AMSGA",
+	"title": "Shantae: Half-Genie Hero Ultimate Edition"
+}, {
+	"id": "AMSGB",
+	"title": "Shantae: Half-Genie Hero Ultimate Edition"
+}, {
+	"id": "AMSMA",
+	"title": "Fushigi no Gensoukyou TOD - Reloaded"
+}, {
+	"id": "AMSMB",
+	"title": "Fushigi no Gensoukyou TOD - Reloaded"
+}, {
+	"id": "AMSMC",
+	"title": "Touhou Genso Wanderer - Reloaded"
+}, {
+	"id": "AMSTA",
+	"title": "SD Gundam - G Generation Genesis for Nintendo Switch"
+}, {
+	"id": "AMU4A",
+	"title": "Cabela's - The Hunt - Championship Edition"
+}, {
+	"id": "AMU5A",
+	"title": "Bass Pro Shops - The Strike - Championship Edition"
+}, {
+	"id": "AMUSA",
+	"title": "Fallen Legion: Rise to Glory"
+}, {
+	"id": "AMVKA",
+	"title": "Spintires - MudRunner - American Wilds"
+}, {
+	"id": "AN2EA",
+	"title": "Trials Rising"
+}, {
+	"id": "AN2GA",
+	"title": "de Blob 2"
+}, {
+	"id": "AN2VB",
+	"title": "The Lost Child"
+}, {
+	"id": "AN32A",
+	"title": "Professional Construction - The Simulation"
+}, {
+	"id": "AN33A",
+	"title": "Owlboy"
+}, {
+	"id": "AN37A",
+	"title": "Ultimate Runner"
+}, {
+	"id": "AN3NA",
+	"title": "Phoenix Wright - Ace Attorney Trilogy"
+}, {
+	"id": "AN4PA",
+	"title": "FOX n FORESTS"
+}, {
+	"id": "AN62A",
+	"title": "Shiin"
+}, {
+	"id": "AN9KA",
+	"title": "Sniper Elite V2 Remastered"
+}, {
+	"id": "ANBMA",
+	"title": "Grave Danger"
+}, {
+	"id": "ANBPA",
+	"title": "Iconoclasts"
+}, {
+	"id": "ANCBA",
+	"title": "GRIP"
+}, {
+	"id": "ANECA",
+	"title": "Kato Hifumi Kudan Kanshuu - Hifumin no Shogi Dojo"
+}, {
+	"id": "ANKGA",
+	"title": "de Blob"
+}, {
+	"id": "ANL6A",
+	"title": "Yomawari to Shin Yomawari"
+}, {
+	"id": "ANL6B",
+	"title": "Yomawari - The Long Night Collection"
+}, {
+	"id": "ANM4A",
+	"title": "Project Highrise - Architect's Edition"
+}, {
+	"id": "ANM4D",
+	"title": "Project Highrise Architects Edition"
+}, {
+	"id": "ANNKA",
+	"title": "The Adventure Pals"
+}, {
+	"id": "ANQYA",
+	"title": "Let's Sing 2019"
+}, {
+	"id": "ANQYB",
+	"title": "Let's Sing 2019 - Hits Francais"
+}, {
+	"id": "ANQYD",
+	"title": "Let's Sing 2019 - Mit Deutschen Hits"
+}, {
+	"id": "ANQZB",
+	"title": "The Voice of Germany"
+}, {
+	"id": "ANR6A",
+	"title": "Super Dragon Ball Heroes - World Mission"
+}, {
+	"id": "ANR6B",
+	"title": "Super Dragon Ball Heroes - World Mission"
+}, {
+	"id": "ANR8A",
+	"title": "Firefighters - Airport Fire Department"
+}, {
+	"id": "ANUNA",
+	"title": "God Wars - Nihon Shinwa Taisen"
+}, {
+	"id": "ANUNB",
+	"title": "God Wars the Complete Legend"
+}, {
+	"id": "ANVYA",
+	"title": "Fire Emblem: Three Houses"
+}, {
+	"id": "ANVZA",
+	"title": "Xenoblade Chronicles 2: Torna - The Golden Country"
+}, {
+	"id": "ANW7A",
+	"title": "LEGO DC Super-Villains"
+}, {
+	"id": "ANWEA",
+	"title": "Usotsuki Hime to Moumoku Ouji"
+}, {
+	"id": "ANWEC",
+	"title": "The Liar Princess and the Blind Prince"
+}, {
+	"id": "ANWED",
+	"title": "The Liar Princess and the Blind Prince"
+}, {
+	"id": "ANX9A",
+	"title": "This Is the Police 2"
+}, {
+	"id": "ANXCC",
+	"title": "Yonder - The Cloud Catcher Chronicles"
+}, {
+	"id": "ANXCD",
+	"title": "Yonder - The Cloud Catcher Chronicles"
+}, {
+	"id": "ANXCE",
+	"title": "Yonder - The Cloud Catcher Chronicles"
+}, {
+	"id": "ANXQA",
+	"title": "Chicken Range"
+}, {
+	"id": "ANXTA",
+	"title": "Dead Cells"
+}, {
+	"id": "ANXTB",
+	"title": "Dead Cells"
+}, {
+	"id": "ANZ9A",
+	"title": "Closed Nightmare"
+}, {
+	"id": "ANZ9C",
+	"title": "Closed Nightmare"
+}, {
+	"id": "AP2NA",
+	"title": "Just Dance 2019"
+}, {
+	"id": "AP2RA",
+	"title": "FINAL FANTASY X X-2 HD Remaster"
+}, {
+	"id": "AP2RD",
+	"title": "Final Fantasy X X-2 HD Remaster"
+}, {
+	"id": "AP3MA",
+	"title": "Namco Museum Arcade Pac"
+}, {
+	"id": "AP3TA",
+	"title": "SNK 40th Anniversary Collection"
+}, {
+	"id": "AP4QA",
+	"title": "Bibi Blocksberg - Big Broom Race 3"
+}, {
+	"id": "AP4RA",
+	"title": "Bibi & Tina - Adventures with Horses"
+}, {
+	"id": "AP4ZA",
+	"title": "Bloodstained: Curse of the Moon"
+}, {
+	"id": "AP6TA",
+	"title": "Gear.Club Unlimited 2"
+}, {
+	"id": "AP6TB",
+	"title": "Gear.Club Unlimited 2"
+}, {
+	"id": "AP7HA",
+	"title": "Moto Racer 4"
+}, {
+	"id": "AP7JA",
+	"title": "ATV Drift & Tricks"
+}, {
+	"id": "AP8HA",
+	"title": "SaGa - Scarlet Grace - Hiiro no Yabou"
+}, {
+	"id": "AP9MA",
+	"title": "Silence"
+}, {
+	"id": "AP9YA",
+	"title": "Tantei Jinguuji Saburou Prism of Eyes"
+}, {
+	"id": "APABA",
+	"title": "American Ninja Warrior - Challenge"
+}, {
+	"id": "APCPA",
+	"title": "West of Loathing"
+}, {
+	"id": "APCYA",
+	"title": "Shantae and the Pirate's Curse"
+}, {
+	"id": "APDQA",
+	"title": "Bomb Chicken"
+}, {
+	"id": "APECA",
+	"title": "Billion Road"
+}, {
+	"id": "APEKA",
+	"title": "Tennis World Tour"
+}, {
+	"id": "APEKB",
+	"title": "Tennis World Tour"
+}, {
+	"id": "APFZA",
+	"title": "Minecraft - Story Mode - Season Two"
+}, {
+	"id": "APG6A",
+	"title": "Kamen Rider - Climax Scramble Zi-O"
+}, {
+	"id": "APG7A",
+	"title": "Nari Kids Park - HUGtto! PreCure"
+}, {
+	"id": "APG8A",
+	"title": "Nari Kids Park - Kaitou Sentai Lupinranger VS Keisatsu Sentai Patranger"
+}, {
+	"id": "APG9A",
+	"title": "Nari Kids Park - Ultraman R B"
+}, {
+	"id": "APH3A",
+	"title": "Broken Age"
+}, {
+	"id": "APH5A",
+	"title": "Cosmic Star Heroine"
+}, {
+	"id": "APH8A",
+	"title": "Capcom Belt Action Collection"
+}, {
+	"id": "APH9A",
+	"title": "Psyvariar Delta"
+}, {
+	"id": "APHFA",
+	"title": "Higurashi no Naku Koro ni Hou"
+}, {
+	"id": "APHGA",
+	"title": "Daitoshokan no Hitsujikai - Library Party"
+}, {
+	"id": "APHNA",
+	"title": "Night Trap - 25th Anniversary Edition"
+}, {
+	"id": "APJYA",
+	"title": "Big Buck Hunter Arcade"
+}, {
+	"id": "APKDA",
+	"title": "Pikachin-Kit - Game de Pirameki Daisakusen"
+}, {
+	"id": "APLPB",
+	"title": "Shikhondo Soul Eater"
+}, {
+	"id": "APMBA",
+	"title": "All-Star Fruit Racing"
+}, {
+	"id": "APMFA",
+	"title": "Rapala Fishing - Pro Series"
+}, {
+	"id": "APNGA",
+	"title": "Makai Senki Disgaea Refine"
+}, {
+	"id": "APNGB",
+	"title": "Disgaea 1 Complete"
+}, {
+	"id": "APNGC",
+	"title": "Makai Senki Disgaea Refine"
+}, {
+	"id": "APNVB",
+	"title": "Fallen Legion - Rise to Glory"
+}, {
+	"id": "APPAA",
+	"title": "Laytons Mystery Journey Katrielle to Daifugou no Inbou DX"
+}, {
+	"id": "APQ4A",
+	"title": "BlazBlue - Central Fiction - Special Edition"
+}, {
+	"id": "APSAA",
+	"title": "My Riding Stables - Life with Horses"
+}, {
+	"id": "APSBA",
+	"title": "Senjou no Valkyria 4"
+}, {
+	"id": "APSBB",
+	"title": "Valkyria Chronicles 4"
+}, {
+	"id": "APSWA",
+	"title": "FINAL FANTASY XII: THE ZODIAC AGE"
+}, {
+	"id": "APT9A",
+	"title": "Nil Admirari no Tenbin Irodori Nadeshiko"
+}, {
+	"id": "APTYA",
+	"title": "Dragons Dogma - Dark Arisen"
+}, {
+	"id": "APTYB",
+	"title": "Dragons Dogma - Dark Arisen"
+}, {
+	"id": "APUAA",
+	"title": "Cendrillon palikA"
+}, {
+	"id": "APUBA",
+	"title": "Code Realize - Saikou no Hanataba"
+}, {
+	"id": "APUWA",
+	"title": "Mutant Football League - Dynasty Edition"
+}, {
+	"id": "APV9A",
+	"title": "The Walking Dead - The Final Season"
+}, {
+	"id": "APVKA",
+	"title": "Toki"
+}, {
+	"id": "APVSA",
+	"title": "SNK Heroines - Tag Team Frenzy"
+}, {
+	"id": "APVSB",
+	"title": "SNK Heroines - Tag Team Frenzy"
+}, {
+	"id": "APVSC",
+	"title": "SNK Heroines - Tag Team Frenzy"
+}, {
+	"id": "APVWA",
+	"title": "Beyblade Burst - Battle Zero"
+}, {
+	"id": "APWNA",
+	"title": "Musou Orochi 3"
+}, {
+	"id": "APWNB",
+	"title": "Warriors Orochi 4"
+}, {
+	"id": "APWSA",
+	"title": "Undertale"
+}, {
+	"id": "APXTA",
+	"title": "NORN9 LOFN for Nintendo Switch"
+}, {
+	"id": "APXZA",
+	"title": "Harvest Life"
+}, {
+	"id": "APYJA",
+	"title": "America's Greatest Game Shows - Wheel of Fortune & Jeopardy!"
+}, {
+	"id": "AQ2KA",
+	"title": "Nora to Oujo to Noraneko Heart HD"
+}, {
+	"id": "AQ3FA",
+	"title": "Diablo III - Eternal Collection"
+}, {
+	"id": "AQ3FB",
+	"title": "Diablo III - Eternal Collection"
+}, {
+	"id": "AQ4HA",
+	"title": "Aragami - Shadow Edition"
+}, {
+	"id": "AQ4LA",
+	"title": "The Escapists: Complete Edition"
+}, {
+	"id": "AQ4XA",
+	"title": "Sphinx and the Cursed Mummy"
+}, {
+	"id": "AQ5VA",
+	"title": "Xenon Racer"
+}, {
+	"id": "AQ76A",
+	"title": "Biohazard 0 HD REMASTER"
+}, {
+	"id": "AQ76B",
+	"title": "Resident Evil 0"
+}, {
+	"id": "AQ79A",
+	"title": "This War of Mine - Complete Edition"
+}, {
+	"id": "AQ8NA",
+	"title": "Psikyo Collection Vol.1"
+}, {
+	"id": "AQ8UA",
+	"title": "Bendy and the Ink Machine"
+}, {
+	"id": "AQ8UB",
+	"title": "Bendy and the Ink Machine"
+}, {
+	"id": "AQ93A",
+	"title": "Lapis Re Abyss"
+}, {
+	"id": "AQ93D",
+	"title": "Lapis x Labyrinth"
+}, {
+	"id": "AQ9HA",
+	"title": "Satsujin Tantei - Jack the Ripper"
+}, {
+	"id": "AQA5B",
+	"title": "Candle - The Power of the Flame"
+}, {
+	"id": "AQA6A",
+	"title": "Hello Neighbor"
+}, {
+	"id": "AQAJA",
+	"title": "Assassin's Creed III Remastered"
+}, {
+	"id": "AQALA",
+	"title": "V-Rally 4"
+}, {
+	"id": "AQALB",
+	"title": "V-Rally 4"
+}, {
+	"id": "AQANA",
+	"title": "MAHJONG Deluxe 3"
+}, {
+	"id": "AQBEA",
+	"title": "Fate Extella Link"
+}, {
+	"id": "AQBQA",
+	"title": "Goosebumps - The Game"
+}, {
+	"id": "AQBRA",
+	"title": "Scribblenauts Mega Pack"
+}, {
+	"id": "AQBXA",
+	"title": "Nelke to Densetsu no Renkinjutsushi Tachi - Aratana Daichi no Atelier"
+}, {
+	"id": "AQBXB",
+	"title": "Nelke & the Legendary Alchemists - Ateliers of the New World"
+}, {
+	"id": "AQCJA",
+	"title": "Memories Off - Innocent Fille"
+}, {
+	"id": "AQCLA",
+	"title": "Wer Weiss Denn Sowas"
+}, {
+	"id": "AQCQA",
+	"title": "Knights of Pen & Paper 2 - Deluxiest Edition"
+}, {
+	"id": "AQDRA",
+	"title": "Yoshiwara Higanbana Kuon no Chigiri"
+}, {
+	"id": "AQDSA",
+	"title": "Sangoku Rensenki - Otome no Heihou!"
+}, {
+	"id": "AQDWA",
+	"title": "ARK - Survival Evolved"
+}, {
+	"id": "AQE3A",
+	"title": "Moonlighter"
+}, {
+	"id": "AQEGA",
+	"title": "PixARK"
+}, {
+	"id": "AQENA",
+	"title": "Cytus Alpha"
+}, {
+	"id": "AQF9A",
+	"title": "Sumikko Gurashi Atsumare! Sumikko Town"
+}, {
+	"id": "AQGAA",
+	"title": "Gesshizu - Gajigaji Nakama o Sodateyou"
+}, {
+	"id": "AQGKA",
+	"title": "SEGA Mega Drive Classics"
+}, {
+	"id": "AQGKB",
+	"title": "SEGA Genesis Classics"
+}, {
+	"id": "AQH2B",
+	"title": "Broken Sword 5 - The Serpent's Curse"
+}, {
+	"id": "AQH8A",
+	"title": "Anima - Gate of Memories"
+}, {
+	"id": "AQJ3A",
+	"title": "RemiLore - Lost Girl in the Lands of Lore"
+}, {
+	"id": "AQJ3B",
+	"title": "RemiLore"
+}, {
+	"id": "AQLGA",
+	"title": "Legendary Fishing"
+}, {
+	"id": "AQM9A",
+	"title": "Pilot Sports"
+}, {
+	"id": "AQN8A",
+	"title": "Waku Waku Sweets Amai Okashi ga Dekiru kana"
+}, {
+	"id": "AQN8C",
+	"title": "Waku Waku Sweets"
+}, {
+	"id": "AQNBA",
+	"title": "Q.U.B.E. 2"
+}, {
+	"id": "AQNNA",
+	"title": "Robotics;Notes DaSH"
+}, {
+	"id": "AQNVA",
+	"title": "UglyDolls An Imperfect Adventure"
+}, {
+	"id": "AQNYA",
+	"title": "NBA 2K19"
+}, {
+	"id": "AQPZA",
+	"title": "LEGO Harry Potter Collection"
+}, {
+	"id": "AQQ2A",
+	"title": "Windjammers"
+}, {
+	"id": "AQQDA",
+	"title": "Little Friends - Dogs and Cats"
+}, {
+	"id": "AQQDB",
+	"title": "Little Friends: Dogs & Cats"
+}, {
+	"id": "AQQDC",
+	"title": "Little Friends Dogs and Cats"
+}, {
+	"id": "AQQYB",
+	"title": "Mahjong Solitaire Refresh"
+}, {
+	"id": "AQSNA",
+	"title": "RollerCoaster Tycoon Adventures"
+}, {
+	"id": "AQSNC",
+	"title": "RollerCoaster Tycoon Adventures"
+}, {
+	"id": "AQSXA",
+	"title": "Wizard's Symphony"
+}, {
+	"id": "AQTAA",
+	"title": "Death Mark"
+}, {
+	"id": "AQTHA",
+	"title": "Sword Art Online: Hollow Realization Deluxe Edition"
+}, {
+	"id": "AQTHB",
+	"title": "SWORD ART ONLINE - Hollow Realization Deluxe Edition"
+}, {
+	"id": "AQTMA",
+	"title": "Dragons - Dawn of New Riders"
+}, {
+	"id": "AQTWA",
+	"title": "For The King"
+}, {
+	"id": "AQW8A",
+	"title": "Umihara Kawase Fresh!"
+}, {
+	"id": "AQWBA",
+	"title": "The Caligula Effect - Overdose"
+}, {
+	"id": "AQWBB",
+	"title": "The Caligula Effect - Overdose"
+}, {
+	"id": "AQWQA",
+	"title": "RIOT - Civil Unrest"
+}, {
+	"id": "AQYTA",
+	"title": "Atelier Rorona Arland no Renkinjutsushi DX"
+}, {
+	"id": "AQYUA",
+	"title": "Atelier Totori Arland no Renkinjutsushi 2 DX"
+}, {
+	"id": "AQYVA",
+	"title": "Atelier Meruru Arland no Renkinjutsushi 3 DX"
+}, {
+	"id": "AQYWB",
+	"title": "Reverie - Sweet As Edition"
+}, {
+	"id": "AQZ7A",
+	"title": "Monster Energy Supercross - The Official Videogame 2"
+}, {
+	"id": "AQZPA",
+	"title": "The Banner Saga Trilogy"
+}, {
+	"id": "AR28A",
+	"title": "YU-NO - Kono Yo no Hate de Koi o Utau Shoujo"
+}, {
+	"id": "AR3UA",
+	"title": "Deponia"
+}, {
+	"id": "AR49A",
+	"title": "Steven Universe - Save the Light"
+}, {
+	"id": "AR6EA",
+	"title": "Zoids Wild - King of Blast"
+}, {
+	"id": "AR8VA",
+	"title": "Among The Sleep: Enhanced Edition"
+}, {
+	"id": "AR9RA",
+	"title": "Travis Strikes Again - No More Heroes"
+}, {
+	"id": "ARA5A",
+	"title": "Asterix & Obelix XXL 2"
+}, {
+	"id": "ARAMA",
+	"title": "Crash Dummy"
+}, {
+	"id": "ARAXA",
+	"title": "Asonde Igo ga Tsuyokunaru! Ginsei Igo DX"
+}, {
+	"id": "ARAZA",
+	"title": "Diabolik Lovers - Chaos Lineage"
+}, {
+	"id": "ARB7A",
+	"title": "Operacion Triunfo 2017"
+}, {
+	"id": "ARBNA",
+	"title": "World of Final Fantasy Maxima"
+}, {
+	"id": "ARC4A",
+	"title": "Darius Cozmic Collection"
+}, {
+	"id": "ARC4B",
+	"title": "Darius Cozmic Collection"
+}, {
+	"id": "ARC6A",
+	"title": "Lulua no Atelier - Arland no Renkinjutsushi 4"
+}, {
+	"id": "ARC6B",
+	"title": "Atelier Lulua - The Scion of Arland"
+}, {
+	"id": "ARCRA",
+	"title": "Professional Farmer - Nintendo Switch Edition"
+}, {
+	"id": "ARCSA",
+	"title": "Daedalus - The Awakening of Golden Jazz"
+}, {
+	"id": "ARCWA",
+	"title": "Panda Hero"
+}, {
+	"id": "ARCYA",
+	"title": "Monster Dynamite"
+}, {
+	"id": "ARD7A",
+	"title": "Fimbul"
+}, {
+	"id": "AREHA",
+	"title": "The LEGO Movie 2 Videogame"
+}, {
+	"id": "AREPA",
+	"title": "OPUS Collection"
+}, {
+	"id": "AREUB",
+	"title": "Battle Princess Madelyn"
+}, {
+	"id": "ARF4A",
+	"title": "R.B.I. Baseball 19"
+}, {
+	"id": "ARFDA",
+	"title": "Nora to Oujo to Noraneko Heart 2"
+}, {
+	"id": "ARFEA",
+	"title": "Langrisser I & II"
+}, {
+	"id": "ARFQA",
+	"title": "Chocobo’s Mystery Dungeon - Every Buddy!"
+}, {
+	"id": "ARGWA",
+	"title": "Saints Row: The Third - The Full Package"
+}, {
+	"id": "ARJKA",
+	"title": "Hanayaka Nari, Waga Ichizoku Modern Nostalgie for Nintendo Switch"
+}, {
+	"id": "ARKLA",
+	"title": "Root Letter - Last Answer"
+}, {
+	"id": "ARMXA",
+	"title": "Girls und Panzer - Dream Tank Match DX"
+}, {
+	"id": "ARMXB",
+	"title": "Girls und Panzer - Dream Tank Match DX"
+}, {
+	"id": "ARNGA",
+	"title": "Sid Meier's Civilization VI"
+}, {
+	"id": "ARNQA",
+	"title": "NBA 2K Playgrounds 2"
+}, {
+	"id": "ARQNA",
+	"title": "Memories Off - Innocent Fille for Dearest"
+}, {
+	"id": "ARR9A",
+	"title": "The Book of Unwritten Tales 2"
+}, {
+	"id": "ARRKA",
+	"title": "Katamari Damacy REROLL"
+}, {
+	"id": "ARRKB",
+	"title": "Katamari Damacy REROLL"
+}, {
+	"id": "ARRMA",
+	"title": "Chou Tousouchuu & Chou Sentouchuu Double Pack"
+}, {
+	"id": "ARRUA",
+	"title": "Hasbro Game Night"
+}, {
+	"id": "ARSDA",
+	"title": "The Raven Remastered"
+}, {
+	"id": "ARSZA",
+	"title": "Gelly Break"
+}, {
+	"id": "ARUCA",
+	"title": "The Nameko no Puzzle - Nameko Dai Hanshoku"
+}, {
+	"id": "ARW9A",
+	"title": "Hello Neighbor Hide & Seek"
+}, {
+	"id": "ARWEA",
+	"title": "Psikyo Collection Vol. 2"
+}, {
+	"id": "ARX6B",
+	"title": "YouTubers Life OMG!"
+}, {
+	"id": "ARXCA",
+	"title": "Nightshade Hyakka Hakuro"
+}, {
+	"id": "ARYWA",
+	"title": "Yunohana SpRING! Mellow Times"
+}, {
+	"id": "ARYXA",
+	"title": "Reine des Fleurs for Nintendo Switch"
+}, {
+	"id": "ARZ5A",
+	"title": "Winning Post 9"
+}, {
+	"id": "ARZXA",
+	"title": "Kiniro no Corda - Octave"
+}, {
+	"id": "AS36B",
+	"title": "VA-11 HALL-A: Cyberpunk Bartender Action"
+}, {
+	"id": "AS49A",
+	"title": "Trueberbrook"
+}, {
+	"id": "AS49C",
+	"title": "Truberbrook"
+}, {
+	"id": "ASABB",
+	"title": "Dead or Alive Xtreme 3 - Scarlet"
+}, {
+	"id": "ASADA",
+	"title": "Mortal Kombat 11"
+}, {
+	"id": "ASB4A",
+	"title": "Steins;Gate - Divergencies Assort"
+}, {
+	"id": "ASBKA",
+	"title": "Child of Light - Ultimate Edition + Valiant Hearts"
+}, {
+	"id": "ASCMA",
+	"title": "Season Match Bundle - Part 1 and 2"
+}, {
+	"id": "ASCQA",
+	"title": "Shin Sangoku Musou 7 with Moushouden DX"
+}, {
+	"id": "ASE3A",
+	"title": "Blade Arcus Rebellion from Shining"
+}, {
+	"id": "ASE7A",
+	"title": "Harukanaru Toki no Naka De 6 DX"
+}, {
+	"id": "ASEJA",
+	"title": "Taishou x Alice: All in One"
+}, {
+	"id": "ASFSA",
+	"title": "Darksiders - Warmastered Edition"
+}, {
+	"id": "ASGEA",
+	"title": "Destiny Connect"
+}, {
+	"id": "ASGGA",
+	"title": "Unravel Two"
+}, {
+	"id": "ASGPA",
+	"title": "FUN! FUN! Animal Park"
+}, {
+	"id": "ASH3A",
+	"title": "Game Doraemon Nobita no Getsumen Tansaki"
+}, {
+	"id": "ASHEA",
+	"title": "Super Robot Wars T"
+}, {
+	"id": "ASHEB",
+	"title": "Super Robot Taisen T"
+}, {
+	"id": "ASHEC",
+	"title": "Super Robot Wars T"
+}, {
+	"id": "ASK3A",
+	"title": "Rad Rodgers Radical Edition"
+}, {
+	"id": "ASN7A",
+	"title": "Windstorm Aris Arrival"
+}, {
+	"id": "AST4A",
+	"title": "Crash Team Racing Nitro-Fueled"
+}, {
+	"id": "ASU8A",
+	"title": "Robotics;Notes Otoku Set"
+}, {
+	"id": "ASUCA",
+	"title": "Minna no Dobutsu Shogi"
+}, {
+	"id": "ASYVA",
+	"title": "Shiritsu Berubara Gakuen Versailles no Bara Re imagination"
+}, {
+	"id": "ASYWA",
+	"title": "Sengoku Musou 4 DX"
+}, {
+	"id": "ATCAA",
+	"title": "THE Variety Game Daishugo"
+}, {
+	"id": "ATCBA",
+	"title": "THE Taikan! Sports Pack: Tennis, Bowling, Golf, Billiard"
+}, {
+	"id": "ATD8A",
+	"title": "Air Conflicts Collection"
+}, {
+	"id": "ATKZA",
+	"title": "Piczle Puzzle Pack 3-in-1"
+}, {
+	"id": "ATMFA",
+	"title": "Guilty Gear - 20th Anniversary Edition"
+}, {
+	"id": "ATQXA",
+	"title": "Guilty Gear - 20th Anniversary Edition"
+}, {
+	"id": "ATR7A",
+	"title": "Piofiore No Banshou -Ricordo-"
+}, {
+	"id": "ATXNA",
+	"title": "Psikyo Collection Vol. 3"
+}, {
+	"id": "ATXUA",
+	"title": "Fort Boyard"
+}, {
+	"id": "BAAAA",
+	"title": "Just Dance 2017"
+}, {
+	"id": "BAACA",
+	"title": "Puyo Puyo Tetris"
+}, {
+	"id": "BAACB",
+	"title": "Puyo Puyo Tetris"
+}, {
+	"id": "BAACC",
+	"title": "Puyo Puyo Tetris"
+}, {
+	"id": "BAANA",
+	"title": "Mario + Rabbids: Kingdom Battle"
+}, {
+	"id": "BAAQA",
+	"title": "Super Mario Maker 2"
+}, {
+	"id": "BAARA",
+	"title": "Skylanders - Imaginators"
+}, {
+	"id": "BAAVA",
+	"title": "Minna de Waiwai! Spelunker"
+}, {
+	"id": "BAAYA",
+	"title": "Pokken Tournament DX"
+}, {
+	"id": "BAAZA",
+	"title": "The Binding of Isaac: Afterbirth+"
+}, {
+	"id": "BAAZD",
+	"title": "The Binding of Isaac - Afterbirth+"
+}, {
+	"id": "BABBA",
+	"title": "Ultra Street Fighter II - The Final Challengers"
+}, {
+	"id": "BABBD",
+	"title": "Ultra Street Fighter II: The Final Challengers"
+}, {
+	"id": "BABBE",
+	"title": "Ultra Street Fighter II: The Final Challengers"
+}, {
+	"id": "BABJA",
+	"title": "Ikenie to Yuki no Setsuna"
+}, {
+	"id": "BABKA",
+	"title": "Dragon Quest Heroes I•II for Nintendo Switch"
+}, {
+	"id": "AB23A",
+	"title": "Arcade Archives DOUBLE DRAGON"
+}, {
+	"id": "AB24A",
+	"title": "Arcade Archives Renegade"
+}, {
+	"id": "AB26A",
+	"title": "Arcade Archives CRAZY CLIMBER"
+}, {
+	"id": "AB28A",
+	"title": "Arcade Archives TERRA CRESTA"
+}, {
+	"id": "AB29A",
+	"title": "Arcade Archives Ninja-Kid"
+}, {
+	"id": "AB2DA",
+	"title": "Little Inferno"
+}, {
+	"id": "AB2EA",
+	"title": "Human Resource Machine"
+}, {
+	"id": "AB2GA",
+	"title": "World of Goo"
+}, {
+	"id": "AB2GB",
+	"title": "Goo no Wakusei"
+}, {
+	"id": "AB2MA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 98"
+}, {
+	"id": "AB2NA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 95"
+}, {
+	"id": "AB2PA",
+	"title": "ACA NEOGEO GAROU: MARK OF THE WOLVES"
+}, {
+	"id": "AB2QA",
+	"title": "ACA NEOGEO OVER TOP"
+}, {
+	"id": "AB2RA",
+	"title": "ACA NEOGEO SAMURAI SHODOWN IV"
+}, {
+	"id": "AB2TA",
+	"title": "ACA NEOGEO WAKU WAKU 7"
+}, {
+	"id": "AB2UA",
+	"title": "ACA NEOGEO SHOCK TROOPERS"
+}, {
+	"id": "AB2VA",
+	"title": "ACA NEOGEO WORLD HEROES PERFECT"
+}, {
+	"id": "AB2WA",
+	"title": "ACA NEOGEO METAL SLUG 3"
+}, {
+	"id": "AB2YA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 99"
+}, {
+	"id": "AB2ZA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 94"
+}, {
+	"id": "AB3BA",
+	"title": "Arcade Archives Kids Horehore Daisakusen"
+}, {
+	"id": "AB3NA",
+	"title": "Minecraft: Nintendo Switch Edition"
+}, {
+	"id": "AB46A",
+	"title": "Graceful Explosion Machine"
+}, {
+	"id": "AB7NA",
+	"title": "Shovel Knight: Specter of Torment"
+}, {
+	"id": "AB7PA",
+	"title": "Shovel Knight: Treasure Trove"
+}, {
+	"id": "AB97A",
+	"title": "VVVVVV"
+}, {
+	"id": "ABD7A",
+	"title": "Sonic Mania"
+}, {
+	"id": "ABETA",
+	"title": "Blaster Master Zero"
+}, {
+	"id": "ABEWA",
+	"title": "New Frontier Days -Founding Pioneers-"
+}, {
+	"id": "ABEZA",
+	"title": "Othello"
+}, {
+	"id": "ABK2A",
+	"title": "PAC-MAN CHAMPIONSHIP EDITION 2 PLUS"
+}, {
+	"id": "ABKYA",
+	"title": "Namco Museum"
+}, {
+	"id": "ABMHA",
+	"title": "Infinite Minigolf"
+}, {
+	"id": "ABQBA",
+	"title": "The Jackbox Party Pack 3"
+}, {
+	"id": "ABTCA",
+	"title": "Wonder Boy: The Dragon's Trap"
+}, {
+	"id": "ABYYA",
+	"title": "TumbleSeed"
+}, {
+	"id": "AC2NA",
+	"title": "Piczle Lines DX"
+}, {
+	"id": "AC5FA",
+	"title": "KAMIKO"
+}, {
+	"id": "AC5WA",
+	"title": "IMPLOSION"
+}, {
+	"id": "AC9YA",
+	"title": "ACA NEOGEO NEO TURF MASTERS"
+}, {
+	"id": "ACC3A",
+	"title": "RESIDENT EVIL REVELATIONS 2"
+}, {
+	"id": "ACF3A",
+	"title": "Celeste"
+}, {
+	"id": "ACFEA",
+	"title": "Vroom in the night sky"
+}, {
+	"id": "ACGKA",
+	"title": "Pocket Rumble"
+}, {
+	"id": "ACGMA",
+	"title": "NBA Playgrounds"
+}, {
+	"id": "ACGMB",
+	"title": "NBA Playgrounds"
+}, {
+	"id": "ACKBA",
+	"title": "Yooka-Laylee"
+}, {
+	"id": "ACM3A",
+	"title": "Dandara"
+}, {
+	"id": "ACMPA",
+	"title": "Flipping Death"
+}, {
+	"id": "ACMTA",
+	"title": "ACA NEOGEO METAL SLUG"
+}, {
+	"id": "ACMUA",
+	"title": "GoNNER"
+}, {
+	"id": "ACMWA",
+	"title": "ACA NEOGEO SAMURAI SHODOWN"
+}, {
+	"id": "ACMXA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 2000"
+}, {
+	"id": "ACMZA",
+	"title": "ACA NEOGEO FATAL FURY"
+}, {
+	"id": "ACNCA",
+	"title": "Mr Shifty"
+}, {
+	"id": "ACPFA",
+	"title": "WarGroove"
+}, {
+	"id": "ACPGA",
+	"title": "Stardew Valley"
+}, {
+	"id": "ACS6A",
+	"title": "Space Dave"
+}, {
+	"id": "ACXWA",
+	"title": "Mantis Burn Racing"
+}, {
+	"id": "ACYVB",
+	"title": "Flip Wars"
+}, {
+	"id": "AD2YB",
+	"title": "Earth Atlantis"
+}, {
+	"id": "AD32A",
+	"title": "INVERSUS Deluxe"
+}, {
+	"id": "AD3CA",
+	"title": "Physical Contact: 2048"
+}, {
+	"id": "AD3GA",
+	"title": "Qbics Paint"
+}, {
+	"id": "AD3HA",
+	"title": "Slime-san"
+}, {
+	"id": "AD4CA",
+	"title": "Aces of the Luftwaffe Squadron"
+}, {
+	"id": "AD6EA",
+	"title": "BOOST BEAST"
+}, {
+	"id": "AD6GA",
+	"title": "Shephy"
+}, {
+	"id": "AD6LA",
+	"title": "Ironcast"
+}, {
+	"id": "AD6PA",
+	"title": "Morphies Law"
+}, {
+	"id": "AD7DA",
+	"title": "Splasher"
+}, {
+	"id": "AD7SA",
+	"title": "MIGHTY GUNVOLT BURST"
+}, {
+	"id": "AD87A",
+	"title": "RIVE: Ultimate Edition"
+}, {
+	"id": "AD89A",
+	"title": "Koi DX"
+}, {
+	"id": "AD8CA",
+	"title": "The Jackbox Party Pack"
+}, {
+	"id": "AD8DA",
+	"title": "The Jackbox Party Pack 2"
+}, {
+	"id": "AD8EA",
+	"title": "The Jackbox Party Pack 4"
+}, {
+	"id": "AD8GA",
+	"title": "Vaccine"
+}, {
+	"id": "AD8QB",
+	"title": "De Mambo"
+}, {
+	"id": "AD8YA",
+	"title": "Slain"
+}, {
+	"id": "AD8ZA",
+	"title": "Nine Parchments"
+}, {
+	"id": "AD9TA",
+	"title": "forma.8"
+}, {
+	"id": "AD9YA",
+	"title": "Beach Buggy Racing"
+}, {
+	"id": "ADBRA",
+	"title": "ACA NEOGEO BLAZING STAR"
+}, {
+	"id": "ADCDA",
+	"title": "Hulu"
+}, {
+	"id": "ADCJA",
+	"title": "Niconico"
+}, {
+	"id": "ADF9A",
+	"title": "Astro Duel Deluxe"
+}, {
+	"id": "ADFHA",
+	"title": "Dark Witch Music Episode: Rudymical"
+}, {
+	"id": "ADLJB",
+	"title": "Unholy Heights"
+}, {
+	"id": "ADMWA",
+	"title": "Physical Contact: Speed"
+}, {
+	"id": "ADNEA",
+	"title": "UNO"
+}, {
+	"id": "ADNFA",
+	"title": "Bulb Boy"
+}, {
+	"id": "ADNFC",
+	"title": "Bulb Boy"
+}, {
+	"id": "ADPXA",
+	"title": "I and Me"
+}, {
+	"id": "ADQ7A",
+	"title": "Pinball FX3"
+}, {
+	"id": "ADRBA",
+	"title": "Brave Dungeon + Dark Witchs Story:COMBAT"
+}, {
+	"id": "ADS5A",
+	"title": "ACA NEOGEO MAGICAL DROP II"
+}, {
+	"id": "ADS8A",
+	"title": "ACA NEOGEO AERO FIGHTERS 2"
+}, {
+	"id": "ADS9A",
+	"title": "ACA NEOGEO MAGICIAN LORD"
+}, {
+	"id": "ADSZA",
+	"title": "ACA NEOGEO LAST RESORT"
+}, {
+	"id": "ADTKA",
+	"title": "League Of Evil"
+}, {
+	"id": "ADVAA",
+	"title": "Conga Master Party"
+}, {
+	"id": "ADW4A",
+	"title": "The Long Reach"
+}, {
+	"id": "ADWRA",
+	"title": "Putty Pals"
+}, {
+	"id": "ADWSA",
+	"title": "Elliot Quest"
+}, {
+	"id": "ADWVA",
+	"title": "The Fall Part 2: Unbound"
+}, {
+	"id": "ADXKB",
+	"title": "Plantera"
+}, {
+	"id": "ADXVA",
+	"title": "Ninja Shodown"
+}, {
+	"id": "ADY5A",
+	"title": "Use Your Words"
+}, {
+	"id": "AE5FA",
+	"title": "Unepic"
+}, {
+	"id": "AE78A",
+	"title": "Mutant Mudds Collection"
+}, {
+	"id": "AE8EA",
+	"title": "Puzzle Box Maker"
+}, {
+	"id": "AEALA",
+	"title": "Stick It to the Man"
+}, {
+	"id": "AEB5A",
+	"title": "Rocket Fist"
+}, {
+	"id": "AEB7A",
+	"title": "ZOMBIE GOLD RUSH"
+}, {
+	"id": "AEBMA",
+	"title": "Wheels of Aurelia"
+}, {
+	"id": "AEC7A",
+	"title": "Pic-a-Pix Deluxe"
+}, {
+	"id": "AEC7B",
+	"title": "Oekaki Puzzle Pic a Pix Deluxe"
+}, {
+	"id": "AECTA",
+	"title": "Death Squared"
+}, {
+	"id": "AECXB",
+	"title": "Super Ping Pong Trick Shot"
+}, {
+	"id": "AECZA",
+	"title": "Golf Story"
+}, {
+	"id": "AED6A",
+	"title": "Spacecats with Lasers"
+}, {
+	"id": "AEDLA",
+	"title": "The Mummy Demastered"
+}, {
+	"id": "AEDUA",
+	"title": "Rogue Trooper Redux"
+}, {
+	"id": "AEG2A",
+	"title": "Earthlock"
+}, {
+	"id": "AEG4A",
+	"title": "World to the West"
+}, {
+	"id": "AEG5A",
+	"title": "Yono and the Celestial Elephants"
+}, {
+	"id": "AEJ6A",
+	"title": "Puzzle Adventure Blockle"
+}, {
+	"id": "AEJBA",
+	"title": "Physical Contact: Picture Place"
+}, {
+	"id": "AELUA",
+	"title": "Family Computer Nintendo Switch Online"
+}, {
+	"id": "AELUB",
+	"title": "Nintendo Entertainment System - Nintendo Switch Online"
+}, {
+	"id": "AELWA",
+	"title": "Bombslinger"
+}, {
+	"id": "AENQA",
+	"title": "Levels+"
+}, {
+	"id": "AENUA",
+	"title": "JYDGE"
+}, {
+	"id": "AEP7A",
+	"title": "Picross S"
+}, {
+	"id": "AEPGA",
+	"title": "Severed"
+}, {
+	"id": "AEPVA",
+	"title": "Tumblestone"
+}, {
+	"id": "AEPWA",
+	"title": "The Bridge"
+}, {
+	"id": "AER9A",
+	"title": "Castle of Heart"
+}, {
+	"id": "AERSA",
+	"title": "Lichtspeer: Double Speer Edition"
+}, {
+	"id": "AERTA",
+	"title": "Time Recoil"
+}, {
+	"id": "AESCA",
+	"title": "Dead Synchronicity: Tomorrow Comes Today"
+}, {
+	"id": "AESGA",
+	"title": "Arcade Archives MARIO BROS."
+}, {
+	"id": "AET6A",
+	"title": "Robonauts"
+}, {
+	"id": "AET9A",
+	"title": "The Sexy Brutale"
+}, {
+	"id": "AEUDA",
+	"title": "Ultra Hyperball"
+}, {
+	"id": "AEUSA",
+	"title": "Semispheres"
+}, {
+	"id": "AEVQA",
+	"title": "Brawl"
+}, {
+	"id": "AEVZA",
+	"title": "Chess Ultra"
+}, {
+	"id": "AEW5A",
+	"title": "Bridge Constructor Portal"
+}, {
+	"id": "AEW6A",
+	"title": "Next Up Hero"
+}, {
+	"id": "AEW7A",
+	"title": "Super Beat Sports"
+}, {
+	"id": "AEWHA",
+	"title": "KORG Gadget"
+}, {
+	"id": "AEWXA",
+	"title": "Disco Dodgeball Remix"
+}, {
+	"id": "AEXMA",
+	"title": "12 orbits"
+}, {
+	"id": "AEYEA",
+	"title": "Sparkle 2"
+}, {
+	"id": "AEYHA",
+	"title": "Neon Chrome"
+}, {
+	"id": "AEYUA",
+	"title": "Bad Dudes"
+}, {
+	"id": "AEZAA",
+	"title": "ACA NEOGEO METAL SLUG 2"
+}, {
+	"id": "AEZSA",
+	"title": "Battle Chef Brigade"
+}, {
+	"id": "AF3FA",
+	"title": "Oh...Sir!! The Insult Simulator"
+}, {
+	"id": "AF3KA",
+	"title": "Phantom Trigger"
+}, {
+	"id": "AF3YA",
+	"title": "Party Golf"
+}, {
+	"id": "AF46A",
+	"title": "Ghost 1.0"
+}, {
+	"id": "AF5JA",
+	"title": "Rock N Racing Off Road DX"
+}, {
+	"id": "AF5KA",
+	"title": "Rock N Racing Grand Prix"
+}, {
+	"id": "AF7BA",
+	"title": "Sky Force Reloaded"
+}, {
+	"id": "AF7EA",
+	"title": "STRIKERS1945 for Nintendo Switch"
+}, {
+	"id": "AF7ZA",
+	"title": "Xenoraid"
+}, {
+	"id": "AF82A",
+	"title": "Gorogoa"
+}, {
+	"id": "AF8UA",
+	"title": "PHANTOM BREAKER:BATTLE GROUNDS OVER DRIVE"
+}, {
+	"id": "AF8VA",
+	"title": "BUTCHER"
+}, {
+	"id": "AF9QA",
+	"title": "Morphite"
+}, {
+	"id": "AFD6A",
+	"title": "Flat Heroes"
+}, {
+	"id": "AFDQA",
+	"title": "Kid Tripp"
+}, {
+	"id": "AFFAA",
+	"title": "PAN-PAN A tiny big adventure"
+}, {
+	"id": "AFJGA",
+	"title": "MUJO"
+}, {
+	"id": "AFJJA",
+	"title": "Phantasy Star Online 2 Cloud"
+}, {
+	"id": "AFJPA",
+	"title": "ACA NEOGEO METAL SLUG X"
+}, {
+	"id": "AFJSA",
+	"title": "ACA NEOGEO SPIN MASTER"
+}, {
+	"id": "AFJVB",
+	"title": "The Flame In The Flood Complete Edition"
+}, {
+	"id": "AFLMA",
+	"title": "Transcripted"
+}, {
+	"id": "AFN3A",
+	"title": "NeuroVoider"
+}, {
+	"id": "AFQLA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 96"
+}, {
+	"id": "AFRNA",
+	"title": "Quest of Dungeons"
+}, {
+	"id": "AFSNA",
+	"title": "GUNBARICH for Nintendo Switch"
+}, {
+	"id": "AFTLA",
+	"title": "Wulverblade"
+}, {
+	"id": "AFVBA",
+	"title": "Sky Ride"
+}, {
+	"id": "AFXDB",
+	"title": "PixelJunk Monsters 2"
+}, {
+	"id": "AFYTA",
+	"title": "Tower Of Babel"
+}, {
+	"id": "AG27B",
+	"title": "Romancing SaGa 2"
+}, {
+	"id": "AG2SA",
+	"title": "Stern Pinball Arcade"
+}, {
+	"id": "AG2WA",
+	"title": "Oxenfree"
+}, {
+	"id": "AG4RA",
+	"title": "Aegis Defenders"
+}, {
+	"id": "AG4ZA",
+	"title": "Revenant Saga"
+}, {
+	"id": "AGB2A",
+	"title": "InnerSpace"
+}, {
+	"id": "AGF2A",
+	"title": "Mulaka"
+}, {
+	"id": "AGFAA",
+	"title": "DOUBLE DRAGON4"
+}, {
+	"id": "AGFRA",
+	"title": "Floor Kids"
+}, {
+	"id": "AGFZA",
+	"title": "Die for Valhalla!"
+}, {
+	"id": "AGGMA",
+	"title": "Johnny Turbos Arcade Caveman Ninja"
+}, {
+	"id": "AGHQB",
+	"title": "NARUTO SHIPPUDEN: Ultimate Ninja STORM TRILOGY"
+}, {
+	"id": "AGHRB",
+	"title": "NARUTO: Ultimate Ninja STORM"
+}, {
+	"id": "AGHTB",
+	"title": "NARUTO SHIPPUDEN: Ultimate Ninja STORM 3 Full Burst"
+}, {
+	"id": "AGJBA",
+	"title": "SENRAN KAGURA Reflexions"
+}, {
+	"id": "AGJBB",
+	"title": "SENRAN KAGURA Reflexions"
+}, {
+	"id": "AGM2A",
+	"title": "Poly Bridge"
+}, {
+	"id": "AGQLA",
+	"title": "Mom Hid My Game!"
+}, {
+	"id": "AGQLB",
+	"title": "Mama ni Game Kakusareta"
+}, {
+	"id": "AGR3A",
+	"title": "Sausage Sports Club"
+}, {
+	"id": "AGS7A",
+	"title": "Yōdanji"
+}, {
+	"id": "AGXXA",
+	"title": "Violett"
+}, {
+	"id": "AGZYA",
+	"title": "Astro Bears Party"
+}, {
+	"id": "AGZZA",
+	"title": "Disc Jam"
+}, {
+	"id": "AH42A",
+	"title": "Legendary Eleven"
+}, {
+	"id": "AH4YA",
+	"title": "Pato Box"
+}, {
+	"id": "AH58A",
+	"title": "Arcade Archives Traverse USA"
+}, {
+	"id": "AH5SA",
+	"title": "Heroes of the Monkey Tavern"
+}, {
+	"id": "AH69A",
+	"title": "BadNorth"
+}, {
+	"id": "AH7AA",
+	"title": "Uurnog Uurnlimited"
+}, {
+	"id": "AH7BA",
+	"title": "DragonFangZ"
+}, {
+	"id": "AH7QA",
+	"title": "Light Fall"
+}, {
+	"id": "AH86A",
+	"title": "Runbow"
+}, {
+	"id": "AH99A",
+	"title": "EARTH WARS"
+}, {
+	"id": "AHAXA",
+	"title": "36 Fragments of Midnight"
+}, {
+	"id": "AHB6A",
+	"title": "Binaries"
+}, {
+	"id": "AHDGA",
+	"title": "Sparkle 2 Evo"
+}, {
+	"id": "AHDJA",
+	"title": "Dont Knock Twice"
+}, {
+	"id": "AHDMA",
+	"title": "Frederic 2"
+}, {
+	"id": "AHEGA",
+	"title": "Hollow"
+}, {
+	"id": "AHGWA",
+	"title": "Squareboy vs Bullies: Arena Edition"
+}, {
+	"id": "AHH2A",
+	"title": "BLEED"
+}, {
+	"id": "AHH3A",
+	"title": "Letter Quest Remastered"
+}, {
+	"id": "AHHAA",
+	"title": "Hand of Fate 2"
+}, {
+	"id": "AHHGA",
+	"title": "Fear Effect Sedna"
+}, {
+	"id": "AHHQA",
+	"title": "Moon Hunters"
+}, {
+	"id": "AHKJA",
+	"title": "Frederic: Resurrection of Music"
+}, {
+	"id": "AHKRA",
+	"title": "Teslagrad"
+}, {
+	"id": "AHL2A",
+	"title": "Johnny Turbos Arcade Wizard Fire"
+}, {
+	"id": "AHL7A",
+	"title": "2064: Read Only Memories INTEGRAL"
+}, {
+	"id": "AHLKA",
+	"title": "Johnny Turbos Arcade Two Crude"
+}, {
+	"id": "AHLLA",
+	"title": "Johnny Turbos Arcade Sly Spy"
+}, {
+	"id": "AHLMB",
+	"title": "Gate of Doom"
+}, {
+	"id": "AHLYC",
+	"title": "Johnny Turbos Arcade Super Burger Time"
+}, {
+	"id": "AHMHA",
+	"title": "Oh...Sir! The Hollywood Roast"
+}, {
+	"id": "AHMJA",
+	"title": "One More Dungeon"
+}, {
+	"id": "AHMXA",
+	"title": "Night in the Woods"
+}, {
+	"id": "AHNXA",
+	"title": "Super Meat Boy"
+}, {
+	"id": "AHPKA",
+	"title": "Riptide GP: Renegade"
+}, {
+	"id": "AHPPA",
+	"title": "Knight Terrors"
+}, {
+	"id": "AHQSA",
+	"title": "Dungeon Rushers"
+}, {
+	"id": "AHSHA",
+	"title": "Never Stop Sneakin"
+}, {
+	"id": "AHTDA",
+	"title": "Crawl"
+}, {
+	"id": "AHUMA",
+	"title": "Tallowmere"
+}, {
+	"id": "AHUMB",
+	"title": "Tallowmere"
+}, {
+	"id": "AHUTA",
+	"title": "Pankapu"
+}, {
+	"id": "AHVEA",
+	"title": "Völgarr the Viking"
+}, {
+	"id": "AHXBA",
+	"title": "I, Zombie"
+}, {
+	"id": "AJ28A",
+	"title": "King Oddball"
+}, {
+	"id": "AJ2ZA",
+	"title": "Shadow Bug"
+}, {
+	"id": "AJ4FA",
+	"title": "Ace of Seafood"
+}, {
+	"id": "AJ4JA",
+	"title": "The Final Station"
+}, {
+	"id": "AJ4MC",
+	"title": "Streets of Red : Devils Dare Deluxe"
+}, {
+	"id": "AJ6TA",
+	"title": "10 Second Running RETURNS"
+}, {
+	"id": "AJ8JB",
+	"title": "Mercenaries Saga Chronicles"
+}, {
+	"id": "AJA5A",
+	"title": "Maria The Witch"
+}, {
+	"id": "AJAEA",
+	"title": "Blossom Tales"
+}, {
+	"id": "AJBXA",
+	"title": "Red Game Without a Great Name"
+}, {
+	"id": "AJBZA",
+	"title": "Green Game"
+}, {
+	"id": "AJC3A",
+	"title": "Antiquia Lost"
+}, {
+	"id": "AJCNA",
+	"title": "Vesta"
+}, {
+	"id": "AJKJA",
+	"title": "Vostok Inc."
+}, {
+	"id": "AJKKA",
+	"title": "Fe"
+}, {
+	"id": "AJKPA",
+	"title": "Embers of Mirrim"
+}, {
+	"id": "AJMVA",
+	"title": "TINY METAL"
+}, {
+	"id": "AJQWA",
+	"title": "Immortal Redneck"
+}, {
+	"id": "AJSAA",
+	"title": "Octodad: Dadliest Catch"
+}, {
+	"id": "AJSBA",
+	"title": "Tanzia"
+}, {
+	"id": "AJSLA",
+	"title": "Perception"
+}, {
+	"id": "AJT7A",
+	"title": "OPUS: The Day We Found Earth"
+}, {
+	"id": "AJWMA",
+	"title": "Shu"
+}, {
+	"id": "AJXEA",
+	"title": "Enter the Gungeon"
+}, {
+	"id": "AJXTA",
+	"title": "MEMBRANE"
+}, {
+	"id": "AK2PA",
+	"title": "ACORN Tactics"
+}, {
+	"id": "AK2QA",
+	"title": "Skies of Fury"
+}, {
+	"id": "AK35A",
+	"title": "Pokémon Quest"
+}, {
+	"id": "AK39A",
+	"title": "Plague Road"
+}, {
+	"id": "AK3AA",
+	"title": "The Men of Yoshiwara: Kikuya"
+}, {
+	"id": "AK3CA",
+	"title": "The Men of Yoshiwara: Ohgiya"
+}, {
+	"id": "AK3NA",
+	"title": "Sleep Tight"
+}, {
+	"id": "AK4GA",
+	"title": "ClusterPuck 99"
+}, {
+	"id": "AK4WA",
+	"title": "Old Mans Journey"
+}, {
+	"id": "AK53A",
+	"title": "Black The Fall"
+}, {
+	"id": "AK62A",
+	"title": "Tactical Mind"
+}, {
+	"id": "AK6UA",
+	"title": "A magical high school girl"
+}, {
+	"id": "AK6ZA",
+	"title": "Regalia: Of Men and Monarchs - Royal Edition"
+}, {
+	"id": "AK74A",
+	"title": "Just Shapes & Beats"
+}, {
+	"id": "AK7KA",
+	"title": "Ambition of the slimes"
+}, {
+	"id": "AK7SA",
+	"title": "HANDY麻雀"
+}, {
+	"id": "AK88A",
+	"title": "Hiragana Pixel Party"
+}, {
+	"id": "AK8YA",
+	"title": "6180 the moon"
+}, {
+	"id": "AK9DA",
+	"title": "Crimsonland"
+}, {
+	"id": "AK9NA",
+	"title": "SteamWorld Heist: Ultimate Edition"
+}, {
+	"id": "AK9RA",
+	"title": "SteamWorld Dig"
+}, {
+	"id": "AK9TA",
+	"title": "Shiftlings"
+}, {
+	"id": "AK9XA",
+	"title": "The Next Penelope"
+}, {
+	"id": "AKB3A",
+	"title": "Dont Starve"
+}, {
+	"id": "AKBLA",
+	"title": "Woodle Tree Adventures"
+}, {
+	"id": "AKBLB",
+	"title": "Woodle Tree"
+}, {
+	"id": "AKBPA",
+	"title": "Wizard of Legend"
+}, {
+	"id": "AKCVA",
+	"title": "Mecho Tales"
+}, {
+	"id": "AKD5A",
+	"title": "Late Shift"
+}, {
+	"id": "AKKSA",
+	"title": "Fossil Hunters"
+}, {
+	"id": "AKLDA",
+	"title": "Star Ghost"
+}, {
+	"id": "AKLHA",
+	"title": "Hollow Knight"
+}, {
+	"id": "AKLZA",
+	"title": "Super One More Jump"
+}, {
+	"id": "AKMUA",
+	"title": "Fruitfall Crush"
+}, {
+	"id": "AKPCA",
+	"title": "Gotcha Racing 2nd"
+}, {
+	"id": "AKQAA",
+	"title": "Hammerwatch"
+}, {
+	"id": "AKQVA",
+	"title": "Smoke and Sacrifice"
+}, {
+	"id": "AKQYA",
+	"title": "Detention"
+}, {
+	"id": "AKQYB",
+	"title": "Detention"
+}, {
+	"id": "AKS9A",
+	"title": "Paper Wars"
+}, {
+	"id": "AKVEA",
+	"title": "Serial Cleaner"
+}, {
+	"id": "AKVEB",
+	"title": "Serial Cleaner George no Ura Shigoto"
+}, {
+	"id": "AKVGA",
+	"title": "Bloody Zombies"
+}, {
+	"id": "AKXFA",
+	"title": "SpiritSphere DX"
+}, {
+	"id": "AKXGA",
+	"title": "Bomber Crew"
+}, {
+	"id": "AKY4A",
+	"title": "Lifeless Planet"
+}, {
+	"id": "AKYLA",
+	"title": "Spellspire"
+}, {
+	"id": "AKYMA",
+	"title": "Tennis"
+}, {
+	"id": "AKYWA",
+	"title": "Arcade Archives VS. SUPER MARIO BROS."
+}, {
+	"id": "AL4LA",
+	"title": "Furi"
+}, {
+	"id": "AL5CA",
+	"title": "BINGO for Nintendo Switch"
+}, {
+	"id": "AL8QA",
+	"title": "Mugsters"
+}, {
+	"id": "AL96A",
+	"title": "STRIKERS1945Ⅱ for Nintendo Switch"
+}, {
+	"id": "AL9ZA",
+	"title": "Mega Man Legacy Collection 2"
+}, {
+	"id": "ALAFA",
+	"title": "Crypt of the Necrodancer"
+}, {
+	"id": "ALAHA",
+	"title": "FANTASY HERO～unsigned legacy～"
+}, {
+	"id": "ALC9A",
+	"title": "AQUA KITTY UDX"
+}, {
+	"id": "ALCCA",
+	"title": "WorldNeverland-ElneaKingdom-"
+}, {
+	"id": "ALCLA",
+	"title": "Slayaway Camp: Butchers Cut"
+}, {
+	"id": "ALDNA",
+	"title": "Guns Gore and Cannoli"
+}, {
+	"id": "ALELA",
+	"title": "Tennis in the Face"
+}, {
+	"id": "ALEWA",
+	"title": "60 Seconds!"
+}, {
+	"id": "ALF2A",
+	"title": "Super Daryl Deluxe"
+}, {
+	"id": "ALF5A",
+	"title": "Ikaruga"
+}, {
+	"id": "ALFBA",
+	"title": "Energy Cycle"
+}, {
+	"id": "ALFXA",
+	"title": "Neonwall"
+}, {
+	"id": "ALFYA",
+	"title": "Toki Tori 2+"
+}, {
+	"id": "ALG7A",
+	"title": "NORTH"
+}, {
+	"id": "ALGHA",
+	"title": "Mega Man X Legacy Collection 2"
+}, {
+	"id": "ALGTA",
+	"title": "The Infectious Madness of Doctor Dekker"
+}, {
+	"id": "ALGWA",
+	"title": "Subsurface Circular"
+}, {
+	"id": "ALGYA",
+	"title": "BAFL"
+}, {
+	"id": "ALH3A",
+	"title": "Chameleon Run Deluxe Edition"
+}, {
+	"id": "ALH9A",
+	"title": "Banner Saga"
+}, {
+	"id": "ALHJA",
+	"title": "ACA NEOGEO 2020 SUPER BASEBALL"
+}, {
+	"id": "ALHMA",
+	"title": "ACA NEOGEO THE KING OF FIGHTERS 97"
+}, {
+	"id": "ALHNA",
+	"title": "ACA NEOGEO SENGOKU 2"
+}, {
+	"id": "ALHWA",
+	"title": "Spiral Splatter"
+}, {
+	"id": "ALHXA",
+	"title": "Save the Ninja Clan"
+}, {
+	"id": "ALJ3A",
+	"title": "Last day of June"
+}, {
+	"id": "ALJAA",
+	"title": "Banner Saga 2"
+}, {
+	"id": "ALJBA",
+	"title": "Banner Saga 3"
+}, {
+	"id": "ALJPA",
+	"title": "ACA NEOGEO SENGOKU 3"
+}, {
+	"id": "ALJRA",
+	"title": "ACA NEOGEO AERO FIGHTERS 3"
+}, {
+	"id": "ALJVA",
+	"title": "ACA NEOGEO REAL BOUT FATAL FURY SPECIAL"
+}, {
+	"id": "ALJXA",
+	"title": "ACA NEOGEO THE LAST BLADE 2"
+}, {
+	"id": "ALLAA",
+	"title": "The Pinball Arcade"
+}, {
+	"id": "ALNXA",
+	"title": "Midnight Deluxe"
+}, {
+	"id": "ALNXB",
+	"title": "Midnight Deluxe"
+}, {
+	"id": "ALPKA",
+	"title": "The Trail: Frontier Challenge"
+}, {
+	"id": "ALPRA",
+	"title": "GUNBIRD for Nintendo Switch"
+}, {
+	"id": "ALPWA",
+	"title": "ZEROGUNNER2- for Nintendo Switch"
+}, {
+	"id": "ALR4A",
+	"title": "Puzzle Puppers"
+}, {
+	"id": "ALR8A",
+	"title": "Nuclien"
+}, {
+	"id": "ALS4A",
+	"title": "Arcade Archives HEROIC EPISODE"
+}, {
+	"id": "ALS6A",
+	"title": "Arcade Archives Kid Niki Radical Ninja"
+}, {
+	"id": "ALS7A",
+	"title": "Arcade Archives STAR FORCE"
+}, {
+	"id": "ALS9A",
+	"title": "Sparkle Unleashed"
+}, {
+	"id": "ALU2A",
+	"title": "Word Search by POWGI"
+}, {
+	"id": "ALU6A",
+	"title": "BLEED 2"
+}, {
+	"id": "ALV2A",
+	"title": "Stikbold! A Dodgeball Adventure DELUXE"
+}, {
+	"id": "ALX7A",
+	"title": "Skee-Ball"
+}, {
+	"id": "AM3GA",
+	"title": "SamuraiAces for Nintendo Switch"
+}, {
+	"id": "AM3MA",
+	"title": "UnExplored - Unlocked Edition"
+}, {
+	"id": "AM4EA",
+	"title": "POISOFTs \"Thud\""
+}, {
+	"id": "AM4LA",
+	"title": "Metropolis: Lux Obscura"
+}, {
+	"id": "AM4NA",
+	"title": "Twin Robots: Ultimate Edition"
+}, {
+	"id": "AM4ZA",
+	"title": "Fairune Collection"
+}, {
+	"id": "AM53A",
+	"title": "Arcade Archives PUNCH-OUT!!"
+}, {
+	"id": "AM54A",
+	"title": "Arcade Archives 10-Yard Fight"
+}, {
+	"id": "AM55A",
+	"title": "Arcade Archives MOON PATROL"
+}, {
+	"id": "AM65A",
+	"title": "20XX"
+}, {
+	"id": "AM68A",
+	"title": "Packet Queen #"
+}, {
+	"id": "AM6BA",
+	"title": "Arcade Archives Ikki"
+}, {
+	"id": "AM6DA",
+	"title": "Arcade Archives City CONNECTION"
+}, {
+	"id": "AM6MA",
+	"title": "Arcade Archives RYGAR"
+}, {
+	"id": "AM6WA",
+	"title": "Space Ribbon"
+}, {
+	"id": "AM86A",
+	"title": "Toki Tori"
+}, {
+	"id": "AM9CA",
+	"title": "Epic Loon"
+}, {
+	"id": "AM9XA",
+	"title": "Pirates: All Aboard!"
+}, {
+	"id": "AM9YA",
+	"title": "Grid Mania"
+}, {
+	"id": "AM9ZA",
+	"title": "Jumping Joe & Friends"
+}, {
+	"id": "AMAEA",
+	"title": "Heart and Slash"
+}, {
+	"id": "AMAMA",
+	"title": "Gridd: Retroenhanced"
+}, {
+	"id": "AMDAA",
+	"title": "Millie"
+}, {
+	"id": "AMDCA",
+	"title": "ChromaGun"
+}, {
+	"id": "AMDHA",
+	"title": "Mini Metro"
+}, {
+	"id": "AMEJA",
+	"title": "Qbik"
+}, {
+	"id": "AMEKA",
+	"title": "Timberman VS"
+}, {
+	"id": "AMELA",
+	"title": "Goetia"
+}, {
+	"id": "AMF6A",
+	"title": "Energy Invasion"
+}, {
+	"id": "AMG8A",
+	"title": "Kill The Bad Guy"
+}, {
+	"id": "AMJPA",
+	"title": "Masters of Anima"
+}, {
+	"id": "AMJSA",
+	"title": "The Darkside Detective"
+}, {
+	"id": "AMLMA",
+	"title": "Old School Musical"
+}, {
+	"id": "AMM8A",
+	"title": "Energy Balance"
+}, {
+	"id": "AMNAA",
+	"title": "One Eyed Kutkh"
+}, {
+	"id": "AMNBA",
+	"title": "Pirate Pop Plus"
+}, {
+	"id": "AMP5A",
+	"title": "Rogue Aces"
+}, {
+	"id": "AMP9A",
+	"title": "Kona"
+}, {
+	"id": "AMQBA",
+	"title": "Joe Devers Lone Wolf"
+}, {
+	"id": "AMQDA",
+	"title": "Alteric"
+}, {
+	"id": "AMQJA",
+	"title": "Xeodrifter"
+}, {
+	"id": "AMQWA",
+	"title": "TorqueL -Physics Modified Edition-"
+}, {
+	"id": "AMQYA",
+	"title": "Typoman"
+}, {
+	"id": "AMR2A",
+	"title": "Mad Carnage"
+}, {
+	"id": "AMR3A",
+	"title": "Gekido Kintaros Revenge"
+}, {
+	"id": "AMS8A",
+	"title": "Sky Rogue"
+}, {
+	"id": "AMUMA",
+	"title": "Lode Runner Legacy"
+}, {
+	"id": "AMVDA",
+	"title": "Ultra Space Battle Brawl"
+}, {
+	"id": "AMVJA",
+	"title": "Manticore - Galaxy on Fire"
+}, {
+	"id": "AMVLA",
+	"title": "Death Road to Canada"
+}, {
+	"id": "AMWBA",
+	"title": "Animal Super Squad"
+}, {
+	"id": "AMWCA",
+	"title": "LIMBO"
+}, {
+	"id": "AMWDA",
+	"title": "INSIDE"
+}, {
+	"id": "AMWEA",
+	"title": "Deep Ones"
+}, {
+	"id": "AMXFA",
+	"title": "Baseball Riot"
+}, {
+	"id": "AMYEA",
+	"title": "Radiation Island"
+}, {
+	"id": "AMYKA",
+	"title": "Pode"
+}, {
+	"id": "AMZHA",
+	"title": "Enchanting Mahjong Match"
+}, {
+	"id": "AMZKA",
+	"title": "Coffin Dodgers"
+}, {
+	"id": "AN28A",
+	"title": "Tetras Escape"
+}, {
+	"id": "AN29A",
+	"title": "InkSplosion"
+}, {
+	"id": "AN34A",
+	"title": "Zombillie"
+}, {
+	"id": "AN35A",
+	"title": "NO THING"
+}, {
+	"id": "AN39A",
+	"title": "Bloons TD 5"
+}, {
+	"id": "AN3AA",
+	"title": "Toy Stunt Bike: Tiptops Trials"
+}, {
+	"id": "AN3LA",
+	"title": "World Conqueror X"
+}, {
+	"id": "AN3YA",
+	"title": "Henry the Hamster Handler"
+}, {
+	"id": "AN58B",
+	"title": "No Heroes Here"
+}, {
+	"id": "AN5WA",
+	"title": "Another Lost Phone: Lauras Story"
+}, {
+	"id": "AN66A",
+	"title": "DragonBlaze for Nintendo Switch"
+}, {
+	"id": "AN6AA",
+	"title": "LUMINES REMASTERED"
+}, {
+	"id": "AN6FA",
+	"title": "BIOHAZARD 7 resident evil cloud version"
+}, {
+	"id": "AN6GA",
+	"title": "Mushroom Wars 2"
+}, {
+	"id": "AN6HA",
+	"title": "Suicide Guy"
+}, {
+	"id": "AN74A",
+	"title": "Tesla vs Lovecraft"
+}, {
+	"id": "AN76A",
+	"title": "Devious Dungeon"
+}, {
+	"id": "AN7MA",
+	"title": "ACA NEOGEO BASEBALL STARS PROFESSIONAL"
+}, {
+	"id": "AN7NA",
+	"title": "ACA NEOGEO GHOST PILOTS"
+}, {
+	"id": "AN7RA",
+	"title": "ACA NEOGEO SUPER SIDEKICKS 2"
+}, {
+	"id": "AN7UA",
+	"title": "ACA NEOGEO NINJA COMBAT"
+}, {
+	"id": "AN7VA",
+	"title": "ACA NEOGEO SUPER SIDEKICKS 3 THE NEXT GLORY"
+}, {
+	"id": "AN9EA",
+	"title": "TENGAI for Nintendo Switch"
+}, {
+	"id": "AN9LA",
+	"title": "Sparkle 3: Genesis"
+}, {
+	"id": "ANAEA",
+	"title": "Totes the Goat"
+}, {
+	"id": "ANAMA",
+	"title": "Danger Mouse"
+}, {
+	"id": "ANB9A",
+	"title": "Spartan"
+}, {
+	"id": "ANBDA",
+	"title": "Raging Justice"
+}, {
+	"id": "ANBEA",
+	"title": "FM Touch 2018"
+}, {
+	"id": "ANBFA",
+	"title": "PLANET ALPHA"
+}, {
+	"id": "ANBWA",
+	"title": "Semblance"
+}, {
+	"id": "ANCXA",
+	"title": "ICEY"
+}, {
+	"id": "ANDGA",
+	"title": "Nihilumbra"
+}, {
+	"id": "ANDHA",
+	"title": "Road to Ballhalla"
+}, {
+	"id": "ANDVA",
+	"title": "Dungeon Stars"
+}, {
+	"id": "ANG7A",
+	"title": "Shape Of The World"
+}, {
+	"id": "ANG8A",
+	"title": "A Normal Lost Phone"
+}, {
+	"id": "ANHZA",
+	"title": "Spot The Difference"
+}, {
+	"id": "ANJ7A",
+	"title": "SolDivide for Nintendo Switch"
+}, {
+	"id": "ANKPA",
+	"title": "Figment"
+}, {
+	"id": "ANQ5A",
+	"title": "1917 - The Alien Invasion DX"
+}, {
+	"id": "ANR5A",
+	"title": "Superola and the lost burgers"
+}, {
+	"id": "ANREA",
+	"title": "Holy Potatoes! A Weapon Shop?!"
+}, {
+	"id": "ANRLA",
+	"title": "Glaive: Brick Breaker"
+}, {
+	"id": "ANRMA",
+	"title": "Animal Rivals Switch"
+}, {
+	"id": "ANSAA",
+	"title": "Muddledash"
+}, {
+	"id": "ANSDA",
+	"title": "SHIFT QUANTUMSHIFT QUANTUM"
+}, {
+	"id": "ANUHA",
+	"title": "Guts and Glory"
+}, {
+	"id": "ANUMA",
+	"title": "Miles and Kilo"
+}, {
+	"id": "ANVVA",
+	"title": "Dawn of the Breakers"
+}, {
+	"id": "ANY8A",
+	"title": "Enigmatis 2: The Mists of Ravenwood"
+}, {
+	"id": "ANYRA",
+	"title": "Octocopter: Double or Squids"
+}, {
+	"id": "ANYWA",
+	"title": "KeroBlaster"
+}, {
+	"id": "AP26A",
+	"title": "Angels of Death"
+}, {
+	"id": "AP2DA",
+	"title": "VSR: Void Space Racing"
+}, {
+	"id": "AP2PA",
+	"title": "Picross S2"
+}, {
+	"id": "AP2QA",
+	"title": "GUNBIRD2 for Nintendo Switch"
+}, {
+	"id": "AP2SA",
+	"title": "The Lions Song"
+}, {
+	"id": "AP3CA",
+	"title": "Fortnite"
+}, {
+	"id": "AP4AA",
+	"title": "Element"
+}, {
+	"id": "AP4CA",
+	"title": "Paladins"
+}, {
+	"id": "AP4TA",
+	"title": "Hungry Shark World"
+}, {
+	"id": "AP52A",
+	"title": "ACA NEOGEO NINJA COMMANDO"
+}, {
+	"id": "AP54A",
+	"title": "ACA NEOGEO AGGRESSORS OF DARK KOMBAT"
+}, {
+	"id": "AP5QA",
+	"title": "ACA NEOGEO Money Puzzle Exchanger"
+}, {
+	"id": "AP5RA",
+	"title": "ACA NEOGEO THE SUPER SPY"
+}, {
+	"id": "AP5SA",
+	"title": "The Fall"
+}, {
+	"id": "AP5TA",
+	"title": "ACA NEOGEO LEAGUE BOWLING"
+}, {
+	"id": "AP5WA",
+	"title": "ACA NEOGEO METAL SLUG 4"
+}, {
+	"id": "AP5XA",
+	"title": "ACA NEOGEO CROSSED SWORDS"
+}, {
+	"id": "AP5YA",
+	"title": "ACA NEOGEO FOOTBALL FRENZY"
+}, {
+	"id": "AP63A",
+	"title": "LifeGoesOn"
+}, {
+	"id": "AP75A",
+	"title": "Arcade Archives DONKEY KONG"
+}, {
+	"id": "AP76A",
+	"title": "Arcade Archives Sky Skipper"
+}, {
+	"id": "AP7FA",
+	"title": "Cubikolor"
+}, {
+	"id": "AP7VB",
+	"title": "Calculation Castle: Grecos Ghostly Challenge Subtraction"
+}, {
+	"id": "AP7WA",
+	"title": "World Soccer Pinball"
+}, {
+	"id": "AP86A",
+	"title": "The VideoKid"
+}, {
+	"id": "AP8PA",
+	"title": "NOT A HERO"
+}, {
+	"id": "AP94A",
+	"title": "One Strike"
+}, {
+	"id": "AP9PA",
+	"title": "Behind The Screen"
+}, {
+	"id": "AP9QA",
+	"title": "GREEN"
+}, {
+	"id": "APAHA",
+	"title": "Dust: An Elysian Tail"
+}, {
+	"id": "APAWA",
+	"title": "Drawful 2"
+}, {
+	"id": "APB8A",
+	"title": "The Adventures of Elena Temple"
+}, {
+	"id": "APBKA",
+	"title": "Ninja Striker!"
+}, {
+	"id": "APBRA",
+	"title": "Pool Panic"
+}, {
+	"id": "APCCA",
+	"title": "BlobCat"
+}, {
+	"id": "APCGA",
+	"title": "Clustertruck"
+}, {
+	"id": "APCNA",
+	"title": "Garage"
+}, {
+	"id": "APCWA",
+	"title": "Air Hockey"
+}, {
+	"id": "APDSA",
+	"title": "A Robot Named Fight"
+}, {
+	"id": "APELA",
+	"title": "State of Anarchy: Master of Mayhem"
+}, {
+	"id": "APEQA",
+	"title": "Infernium"
+}, {
+	"id": "APFCA",
+	"title": "Spectrum"
+}, {
+	"id": "APFDA",
+	"title": "The Way Remastered"
+}, {
+	"id": "APFNA",
+	"title": "Jotun: Valhalla Edition"
+}, {
+	"id": "APFPA",
+	"title": "Fallout Shelter"
+}, {
+	"id": "APFTA",
+	"title": "GALAK-Z: Variant S"
+}, {
+	"id": "APG5A",
+	"title": "FRAMED COLLECTION"
+}, {
+	"id": "APGEA",
+	"title": "Perfect Angle"
+}, {
+	"id": "APHBA",
+	"title": "Zaccaria Pinball"
+}, {
+	"id": "APHEA",
+	"title": "INK"
+}, {
+	"id": "APHYA",
+	"title": "Super Sportmatchen"
+}, {
+	"id": "APJ3A",
+	"title": "Minit"
+}, {
+	"id": "APJCA",
+	"title": "Songbringer"
+}, {
+	"id": "APJNA",
+	"title": "Jurassic Pinball"
+}, {
+	"id": "APJUA",
+	"title": "Bouncy Bob"
+}, {
+	"id": "APJVA",
+	"title": "Agatha Knife"
+}, {
+	"id": "APK7A",
+	"title": "Out Of The Box"
+}, {
+	"id": "APLMA",
+	"title": "Super Blackjack Battle II Turbo - The Card Warriors"
+}, {
+	"id": "APLNA",
+	"title": "In Between"
+}, {
+	"id": "APLWA",
+	"title": "The Warlock of Firetop Mountain"
+}, {
+	"id": "APLXA",
+	"title": "Soccer Slammers"
+}, {
+	"id": "APMAA",
+	"title": "Hexologic"
+}, {
+	"id": "APMNA",
+	"title": "Lost Sea"
+}, {
+	"id": "APN8A",
+	"title": "FINAL FANTASY XV POCKET EDITION HD"
+}, {
+	"id": "APNAA",
+	"title": "Fill-a-Pix: Phils Epic Adventure"
+}, {
+	"id": "APNAB",
+	"title": "Mosaic Art Fill a Pix Deluxe"
+}, {
+	"id": "APNPA",
+	"title": "Slice Dice & Rice"
+}, {
+	"id": "APNSA",
+	"title": "Crossing Souls"
+}, {
+	"id": "APPPA",
+	"title": "DroneFight"
+}, {
+	"id": "APPSA",
+	"title": "Its Spring Again"
+}, {
+	"id": "APPTA",
+	"title": "Another World"
+}, {
+	"id": "APPVA",
+	"title": "Moorhuhn Remake"
+}, {
+	"id": "APQWB",
+	"title": "Calculation Castle: Grecos Ghostly Challenge Addition"
+}, {
+	"id": "APRAA",
+	"title": "Castlestorm"
+}, {
+	"id": "APRGA",
+	"title": "Treadnauts"
+}, {
+	"id": "APS6A",
+	"title": "Bud Spencer & Terence Hill - Slaps And Beans"
+}, {
+	"id": "APS7A",
+	"title": "Dont Die Mr. Robot DX"
+}, {
+	"id": "APS8A",
+	"title": "The Mooseman"
+}, {
+	"id": "APSGA",
+	"title": "Prison Architect"
+}, {
+	"id": "APT2A",
+	"title": "The Mystery of the Hudson Case"
+}, {
+	"id": "APTCA",
+	"title": "Shin Den Ai Nani ga Hoshii no Ema Sakura"
+}, {
+	"id": "APTLA",
+	"title": "Sky Gamblers: Storm Raiders"
+}, {
+	"id": "APTRA",
+	"title": "Quad Fighter K"
+}, {
+	"id": "APUPA",
+	"title": "SKYPEACE"
+}, {
+	"id": "APV8A",
+	"title": "Kitten Squad"
+}, {
+	"id": "APVPA",
+	"title": "Flood of Light"
+}, {
+	"id": "APWDA",
+	"title": "NEKO Para Vol.1"
+}, {
+	"id": "APWHA",
+	"title": "Them Bombs"
+}, {
+	"id": "APWXA",
+	"title": "MyFarm 2018"
+}, {
+	"id": "APY5A",
+	"title": "Sparkle Zero"
+}, {
+	"id": "APZXA",
+	"title": "FullBlast"
+}, {
+	"id": "APZZA",
+	"title": "Punch Club"
+}, {
+	"id": "AQ2RA",
+	"title": "Mummy Pinball"
+}, {
+	"id": "AQ4PA",
+	"title": "X-Morph: Defense"
+}, {
+	"id": "AQ59A",
+	"title": "Arcade Archives OMEGA FIGHTER"
+}, {
+	"id": "AQ6BA",
+	"title": "Beat Cop"
+}, {
+	"id": "AQ7PA",
+	"title": "The Messenger"
+}, {
+	"id": "AQ8MA",
+	"title": "Realpolitiks"
+}, {
+	"id": "AQ8XA",
+	"title": "Wasteland 2: Directors Cut"
+}, {
+	"id": "AQ9KA",
+	"title": "EXTREME POKER"
+}, {
+	"id": "AQ9ZA",
+	"title": "The Walking Dead"
+}, {
+	"id": "AQA5A",
+	"title": "Candle - The Power of the Flame"
+}, {
+	"id": "AQAPA",
+	"title": "Neverout"
+}, {
+	"id": "AQBHA",
+	"title": "The Journey Down: Chapter One"
+}, {
+	"id": "AQBJA",
+	"title": "The Journey Down: Chapter Two"
+}, {
+	"id": "AQBKA",
+	"title": "The Journey Down: Chapter Three"
+}, {
+	"id": "AQBLA",
+	"title": "Super Destronaut DX"
+}, {
+	"id": "AQBMA",
+	"title": "1979 Revolution: Black Friday"
+}, {
+	"id": "AQCRA",
+	"title": "Rento Fortune Monolit"
+}, {
+	"id": "AQDNA",
+	"title": "Lanota"
+}, {
+	"id": "AQDUA",
+	"title": "Bastion"
+}, {
+	"id": "AQE7A",
+	"title": "Toby: The Secret Mine"
+}, {
+	"id": "AQE8A",
+	"title": "Paranautical Activity"
+}, {
+	"id": "AQEVA",
+	"title": "Polygod"
+}, {
+	"id": "AQFPA",
+	"title": "Megaton Rainfall"
+}, {
+	"id": "AQFRA",
+	"title": "The Inner World"
+}, {
+	"id": "AQFSA",
+	"title": "The Inner World - The Last Wind Monk"
+}, {
+	"id": "AQGNA",
+	"title": "Detective Gallo"
+}, {
+	"id": "AQGPA",
+	"title": "The Wardrobe"
+}, {
+	"id": "AQGRA",
+	"title": "Hyper Light Drifter - Special Edition"
+}, {
+	"id": "AQH3A",
+	"title": "Super Volley Blast"
+}, {
+	"id": "AQHMA",
+	"title": "FunBox Party"
+}, {
+	"id": "AQHPA",
+	"title": "Dream Alone"
+}, {
+	"id": "AQHRA",
+	"title": "Tiny Hands Adventure"
+}, {
+	"id": "AQJEA",
+	"title": "The Low Road"
+}, {
+	"id": "AQLEA",
+	"title": "Moonfall Ultimate"
+}, {
+	"id": "AQLHA",
+	"title": "Frost"
+}, {
+	"id": "AQLPA",
+	"title": "Heroki"
+}, {
+	"id": "AQM6A",
+	"title": "Piczle Lines DX 500 More Puzzles!"
+}, {
+	"id": "AQM7A",
+	"title": "Super Inefficient Golf"
+}, {
+	"id": "AQNCA",
+	"title": "Broforce"
+}, {
+	"id": "AQNJA",
+	"title": "Spider Solitaire F"
+}, {
+	"id": "AQPXA",
+	"title": "KRC"
+}, {
+	"id": "AQRMA",
+	"title": "Darts Up"
+}, {
+	"id": "AQRVA",
+	"title": "Sigi - A Fart for Melusina"
+}, {
+	"id": "AQRWA",
+	"title": "Into The Breach"
+}, {
+	"id": "AQSWA",
+	"title": "Starship Avenger Operation: Take Back Earth"
+}, {
+	"id": "AQUGA",
+	"title": "Treasure Stack"
+}, {
+	"id": "AQUHA",
+	"title": "Lost Phone Stories"
+}, {
+	"id": "AQVFA",
+	"title": "Rotating Brave"
+}, {
+	"id": "AQVMA",
+	"title": "Ludo Mania"
+}, {
+	"id": "AQWGA",
+	"title": "Shio"
+}, {
+	"id": "AQX5A",
+	"title": "Cities: Skylines - Nintendo Switch Edition"
+}, {
+	"id": "AQX7A",
+	"title": "Surgeon Simulator CPR"
+}, {
+	"id": "AQXJA",
+	"title": "Keep Talking and Nobody Explodes"
+}, {
+	"id": "AQXVA",
+	"title": "Freedom Planet"
+}, {
+	"id": "AQXXA",
+	"title": "Ninjin: Clash of Carrots"
+}, {
+	"id": "AQYEA",
+	"title": "Monkey King: Master of the Clouds"
+}, {
+	"id": "AQZ2A",
+	"title": "STAY"
+}, {
+	"id": "AQZFA",
+	"title": "Shut Eye"
+}, {
+	"id": "ARG2A",
+	"title": "Fall Of Light - Darkest Edition"
+}, {
+	"id": "ARVVA",
+	"title": "Observer"
+}, {
+	"id": "AS6AA",
+	"title": "Bow to Blood: Last Captain Standing"
+}, {
+	"id": "ASTNA",
+	"title": "Oniken"
+}, {
+	"id": "ASXEA",
+	"title": "Odallus"
+}, {
+	"id": "BAABA",
+	"title": "FAST RMX"
+}, {
+	"id": "BAATA",
+	"title": "Karaoke JOYSOUND for Nintendo Switch"
+}, {
+	"id": "BAAVB",
+	"title": "Spelunker Party!"
+}]
 }

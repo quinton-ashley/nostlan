@@ -10,7 +10,6 @@ class MrDo {
 		let url = `http://www.mameworld.info/mrdo/artwork/${game.id}.zip`;
 		let file = dir + `/mdo.zip`;
 		let res = await dl(url, file);
-		if (mac) dir += `/${game.id}`;
 		res = await fs.extract(file, dir);
 		return res;
 	}

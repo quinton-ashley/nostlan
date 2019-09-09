@@ -1,6 +1,11 @@
 // format
-regex: \n\W*([^ ]*) = ([^\n]*)
-replace: {\n"id": "$1", "title": "$2", "texp": []\n},
+regex:
+
+\n([^\n ]*) = ([^\n]*)
+
+replace:
+
+}, {\n\t"id": "$1",\n\t"title": "$2"
 
 // remove non-english results
 regex: \t\t\["\w\w\w[^e][^\n]*\n

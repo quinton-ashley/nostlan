@@ -2,7 +2,7 @@
 
 (async function() {
 	const log = console.log;
-	let arg = require('minimist')(process.argv.slice(2));
+	let arg = require('minimist')(process.argv);
 	arg.__rootDir = __dirname.replace(/\\/g, '/');
 	if (arg.h) {
 		log('info about the app');

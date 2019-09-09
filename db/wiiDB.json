@@ -3869,7 +3869,10 @@
 			"title": "AMF Bowling Pinbusters!"
 		}, {
 			"id": "RMGE01",
-			"title": "Super Mario Galaxy"
+			"title": "Super Mario Galaxy",
+			"img": {
+				"disc": "https://www.mobygames.com/images/covers/l/142046-super-mario-galaxy-wii-media.jpg"
+			}
 		}, {
 			"id": "RMGJ01",
 			"title": "Super Mario Galaxy"
@@ -5255,7 +5258,10 @@
 			"title": "Solitaire & Mahjong"
 		}, {
 			"id": "RSPE01",
-			"title": "Wii Sports"
+			"title": "Wii Sports",
+			"img": {
+				"disc": "http://i.neoseeker.com/b/Games/Nintendo_Wii/Sports/Other/wii_sports_mediashot_mini_sHSp9iC8SoGH19G"
+			}
 		}, {
 			"id": "RSPJ01",
 			"title": "Wii Sports"
@@ -7333,7 +7339,9 @@
 		}, {
 			"id": "SB4E01",
 			"title": "Super Mario Galaxy 2",
-			"sys": "wii"
+			"img": {
+				"disc": "https://images.launchbox-app.com/87176b2a-d682-429c-906a-eb1cfc3c30b7.png"
+			}
 		}, {
 			"id": "SB4J01",
 			"title": "Super Mario Galaxy 2"
@@ -23218,7 +23226,10 @@
 			"title": "WiiMC"
 		}, {
 			"id": "WMH1",
-			"title": "Mother 1+2+3"
+			"title": "Mother 1+2+3",
+			"img": {
+				"coverFull": "https://ssl-forum-files.fobby.net/forum_attachments/0035/5369/mother123_Cover.png"
+			}
 		}, {
 			"id": "WN64",
 			"title": "Nintendo 64 Forwarder"
@@ -23867,6 +23878,7 @@
 		}, {
 			"id": "G8ME01",
 			"title": "Paper Mario: The Thousand-Year Door",
+			"sys": "gcn",
 			"img": {
 				"disc": "q"
 			},
@@ -23884,7 +23896,8 @@
 			"title": "Paper Mario RPG"
 		}, {
 			"id": "G8MP01",
-			"title": "Paper Mario: The Thousand-Year Door"
+			"title": "Paper Mario: The Thousand-Year Door",
+			"sys": "gcn"
 		}, {
 			"id": "G8OJ18",
 			"title": "Bobobo-bo Bo-bobo Dassutsu! Hajike Royale"
@@ -24034,7 +24047,8 @@
 			"title": "Midway Arcade Treasures"
 		}, {
 			"id": "GALE01",
-			"title": "Super Smash Bros. Melee"
+			"title": "Super Smash Bros. Melee",
+			"sys": "gcn"
 		}, {
 			"id": "GALJ01",
 			"title": "Dairantou Smash Brothers DX"
@@ -25772,6 +25786,7 @@
 		}, {
 			"id": "GKYE01",
 			"title": "Kirby Air Ride",
+			"sys": "gcn",
 			"texp": [{
 				"name": "UHD",
 				"authors": ["qashto", "kilerbomb", "Guitar_Bro", "gameboy96"],
@@ -26172,6 +26187,10 @@
 		}, {
 			"id": "GMSE01",
 			"title": "Super Mario Sunshine",
+			"sys": "gcn",
+			"img": {
+				"disc": "https://images.launchbox-app.com/40a9bd38-7d95-430f-830c-ed008d431bba.png"
+			},
 			"texp": [{
 				"name": "Hires",
 				"authors": ["razius"],

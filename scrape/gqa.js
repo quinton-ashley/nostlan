@@ -7,10 +7,10 @@ class GithubQuintonAshley {
 
 	unwrapUrl(sys, game, imgType) {
 		let url = 'https://raw.githubusercontent.com/quinton-ashley';
-		if (game.id != '_TEMPLATE') {
-			url += `/bottlenose-${sys}/master/${sys}/${game.id}/img`;
+		if (!game.id.includes('_TEMPLATE')) {
+			url += `/bottlenose-${sys}/master/${sys}/${game.id}`;
 		} else {
-			url += `/bottlenose-img/master/${sys}/${game.id}/img`;
+			url += `/bottlenose-img/master/${sys}/${game.id}`;
 		}
 		return url + `/${imgType}.png`;
 	};

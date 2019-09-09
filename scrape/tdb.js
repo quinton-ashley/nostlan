@@ -1,20 +1,20 @@
 const dl = require('./dl.js');
+let availableImgs = [
+	"box",
+	"cart",
+	"cover",
+	"coverFull",
+	"disc"
+];
 
 class Gamestdb {
-	constructor() {
-		this.availableImgs = [
-			"box",
-			"cart",
-			"cover",
-			"coverFull",
-			"disc"
-		];
-	}
+	constructor() {}
 
 	async dlImg(sys, game, dir, name) {
-		if (!this.availableImgs.includes(name) || sys == 'mame' || sys == 'ps2' || sys == 'gba') {
+		if (!availableImgs.includes(name) || sys == 'mame' || sys == 'ps2' || sys == 'gba') {
 			return;
 		}
+		if (sys == 'gcn') sys = 'wii';
 		// get image from gametdb
 		let res, url;
 		let file = `${dir}/${name}`;

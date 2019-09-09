@@ -6,7 +6,7 @@ Bottlenose is a _high quality_ front-end launcher for video game emulators!  Ava
 
 ## A what?
 
-A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulators have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
+A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulator apps have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
 
 Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
 
@@ -18,68 +18,68 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   _nostalgic_ UI themes for each supported console
 -   fancy scroll direction alternation effect on rows in cover view mode
 -   uses individual emulators: no cores and no controller input transfer lag
--   controllers connect to Bottlenose automatically, no setup required
+-   most controllers connect to Bottlenose automatically, no setup required
 -   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
--   gamecube controller support with [gca-js](https://github.com/YonicDev/gca-js)
+-   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
 -   advanced customization: edit launch commands and change game art
--   browse demo mode if don't have any games on your computer
+-   try out Bottlenose in demo mode if don't have any games on your computer
 -   cross-platform support for Linux, macOS, and Windows!
 
 ## Supported Emulators
 
 #### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://oko.sh/fSwc)
+[click this link to see the full quality UHD screenshot](https://oko.sh/fSwc)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png)
 
 #### Cemu (Wii U) [Windows & Linux* using Wine]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu_LQ.png)
 
 #### Yuzu (Switch) [Linux & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch_LQ.png)
 
 #### Citra (3DS) [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds_LQ.png)
 
 #### DeSmuME (DS) [Linux, macOS & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png)
 
 #### MAME [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame_LQ.png)
 
 #### mGBA (GBA) [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba_LQ.png)
 
 #### PCSX2 (PS2) [Linux, macOS, & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png)
 
 #### RPCS3 (PS3) [Linux & Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3_LQ.png)
 
 #### Xenia (Xbox 360) [Windows]
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png)
 
-#### Dolphin ~Wii Theme~
+#### Dolphin + Wii Theme
 
-[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png)
+[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii_LQ.png)
 
 ## Please consider donating!

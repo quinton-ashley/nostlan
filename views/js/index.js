@@ -385,6 +385,7 @@ module.exports = async function(arg) {
 
 	async function reload() {
 		cui.change('loading');
+		$('#loadDialog0').text('loading game library');
 		$('body').removeClass();
 		sysStyle = prefs[sys].style || sys;
 		$('body').addClass(sysStyle);

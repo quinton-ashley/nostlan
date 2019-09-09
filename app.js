@@ -27,7 +27,7 @@
 	async function createWindow() {
 		try {
 			const locals = {
-				arg: JSON.stringify(arg),
+				arg: JSON.stringify(arg).replace(/\\/g, '/').replace(/\/\//g, '/'),
 				node_modules: path.join(arg.__rootDir, 'node_modules').replace(/\\/g, '/')
 			};
 			log(locals);

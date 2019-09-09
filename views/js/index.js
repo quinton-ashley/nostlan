@@ -462,7 +462,7 @@ module.exports = async function(arg) {
 		await prefsMan.save();
 		await viewerLoad();
 		await removeIntro();
-		cui.change('libMain');
+		cui.change('libMain', sys);
 	}
 
 	async function load() {

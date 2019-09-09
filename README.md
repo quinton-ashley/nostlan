@@ -77,6 +77,11 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 [click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png)
 
+#### Dolphin ~Wii Theme~
+
+[click to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png)
+![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii_LQ.png)
+
 ## Please consider donating!
 
 Even though Bottlenose is open source software that's free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use this app please donate an amount of your choosing.  I need your support to develop new features.  Thank you!
@@ -93,7 +98,7 @@ If enough people support the project on Patreon I will be able to set aside the 
 
 -   ability to manually add individual games
 -   an open game box menu with submenus for game manuals, managing save files, and disc art
--   creating open box menu images for all supported systems, [help needed!](https://github.com/quinton-ashley/bottlenose-img/blob/master/README.md#bottlenose-img)
+-   making open box menu images for all supported systems, [help needed!](https://github.com/quinton-ashley/bottlenose-img/blob/master/README.md#bottlenose-img)
 -   save file management
 -   cloud save to a folder in Dropbox, OneDrive, etc.
 -   filter searching for games
@@ -124,38 +129,35 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 
 ## Using Bottlenose
 
-Bottlenose auto detects controllers, no setup is required.  The console themed plastic cover overlay menu displays the basic options on any given screen.  On any game library view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Reset" will start the emulator without a game.  "Power" start the emulator with the selected game.
+Bottlenose auto detects controllers when you press any button.  Controller type will be automatically determined so manual button mapping is not required.  The console themed cover overlay menu displays the basic options on any given screen.  On any game library view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Reset" will start the emulator without a game.  "Power" starts the emulator with the selected game.
 
 ## What is Adaptive Button Mapping?
 
-    // Xbox/PS Adaptive profile usage example:
+    // Xbox/PS Adaptive profile usage example for an Xbox One controller:
 
-    // User is currently browsing their Nintendo Switch library
-    // Xbox One controller is mapped to
-    // Nintendo Switch controller button layout
+    // any Nintendo console: remapped to match button positions
     //  Y B  ->  X A
     // X A  ->  Y B
 
-    // User is browsing Xbox 360 games so no mapping occurs
+    // Xbox 360 and MAME: not remapped
     //  Y B  ->  Y B
     // X A  ->  X A
 
-    // User is browsing PS3 games so no mapping occurs either
-    // since Xbox One has the same mapping as PS3
+    // any Playstation console: not remapped (similar btn positions)
     //  Y B  ->  △ ○
     // X A  ->  □ X
 
-Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the button layout of controllers made for whatever system you're browsing.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers that have a standard button layout.  The B button on Nintendo systems means "no" or "back".  The default profile remaps from Xbox and PlayStation button layouts to Nintendo's button layout when browsing Nintendo system libraries.  This mapping will occur when browsing Nintendo game libraries only.  On PS and Xbox game libraries `Xbox_PS_Adaptive` does not remap buttons.
+Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the button layout of controllers made for the system being emulated.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers.  The B button on Nintendo systems means "no" or "back".  The default profile remaps from Xbox and PlayStation button layouts to Nintendo's button layout when browsing Nintendo system libraries.  This mapping will occur when browsing Nintendo game libraries only.  On MAME, Playstation, and Xbox game libraries `Xbox_PS_Adaptive` does not remap buttons.
 
 Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
 
-I recommend using adaptive mapping in your emulator controller settings too.  This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
+I recommend using adaptive mapping in your controller settings for each emulator too.  This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
 
-The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.  If for example, you're using a Nintendo Switch controller, you should use `Nintendo_Adaptive`.
+The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.
 
 ## System Requirements
 
-Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without any bad stuttering.
+Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad.
 
 ## Setting up Bottlenose
 
@@ -191,19 +193,17 @@ On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  T
 
 On macOS, Bottlenose looks for your emu apps in `Applications/`.
 
-On Linux, Bottlenose knows how to use apps via the command line and will prompt you for the location of other emu apps.
+On Linux, Bottlenose launches most emu apps via the command line and will prompt you for the location of other emu apps.
 
 ## User Preferences
 
-`region` game files without game IDs in their game file name, for example "Super Smash Bros Melee.iso", will be auto assigned to a default region.  Use E for North and South America, P for European PAL, J for Japan.
+`region` game files without game IDs in their game file name, for example "Super Smash Bros Melee.iso", will be auto assigned to a default region.  Use E for North and South America, P for European PAL, J for Japan.  Currently you must rename the file of games made for other regions with the proper game ID.
 
 `ui.mouse.wheel.smoothScroll` = false on Windows by default, should be true if you have a mouse that supports smooth scrolling (like an Apple Macbook trackpad)
 
 `ui.mouse.wheel.multi` it's a multiplier that changes the scroll amount.
 
-`ui.getBackCoverHQ` get's the back of the box in high quality for games without available full covers
-
-`ui.recheckImgs` when true, on reset, images will be downloaded for all games in the given library, not just new games
+`ui.getBackCoverHQ` gets the back of the box in high quality for games without available full covers
 
 `session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
 
@@ -230,7 +230,7 @@ Please [send me](mailto:qashto@gmail.com) a description of any errors with the r
 
 ### Mismatched or Unidentified Games
 
-If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.  Using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this in the far future.
+If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.  I know that using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this for certain systems in the far future.  MAME does not have this problem but Bottlenose might've still downloaded the wrong cover art.  If your game was matched in the database but the cover art is wrong email me and let me know.
 
 ### Missing Cover Art
 
@@ -243,16 +243,7 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 ```javascript
 {
  "id": "G8ME01",
- "title": "Paper Mario: The Thousand-Year Door",
- "texp": [{
-	 "name": "HD",
-	 "authors": ["The Dolphin Community"],
-	 "rate": 10,
-	 "version": "1.7.0",
-	 "png": ["https://drive.google.com/file/d/1QtgZFz2darznGNtViJVOep8UZ3xuaUkN/view?usp=sharing"],
-	 "dds": ["https://drive.google.com/file/d/1x6XJnQTW9SvbA6EmNHIKz9bGDXXweHAD/view?usp=sharing"],
-	 "url": ["https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018"]
- }]
+ "title": "Paper Mario: The Thousand-Year Door"
 }
 ```
 
@@ -260,8 +251,8 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 
 -   `id` is the official id of the game
 -   `name` the official name of the game, subtitles are delineated using a colon
--   `texp` the texture pack array, order is irrelevant
--   `img` an object with `"imgFileName": "url"` pairs that override the default image location
+-   `texp` the array of texture pack objects
+-   `img` an object with `"imgFileName": "url"` pairs
 
 ### Texture Packs
 
@@ -282,7 +273,7 @@ The following names can be used to specify images:
 -   `boxSide` the side of the box
 -   `boxBack` the back of the box
 -   `boxOpen` the inside of the game's box
--   `boxOpenMask` clips that should appear above game media, manual, and memory card
+-   `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
 -   `cart` the front of the game's (first) cartridge
 -   `coverFull` the entire cover sleeve, no box
 -   `cover` the front facing portion of the cover sleeve, no box
@@ -294,7 +285,7 @@ The following names can be used to specify images:
 -   `memoryBack` the back of a memory card
 -   `promo` a promotional insert included in the game box
 
-Box art downloading is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to add image urls from within the UI.  For now, you can add them in the game's `img` object like this:
+Front cover box art is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to add image urls from within the UI.  For now, you can add them in the game's `img` object like this:
 
 ```javascript
 {
@@ -312,19 +303,19 @@ Texture packs with a rating of 7 and above will be considered recommended.  In a
 
 ## Development Info
 
-Bottlenose is open source and MIT licensed!  I loved using Electron to make Bottlenose.  I highly recommend it to devs interested in creating native desktop apps with node.js.  Bottlenose is written in good ol', no-types-allowed javascript and uses Pug, jQuery, Bootstrap, and Contro.
+Bottlenose is open source!  I loved using Electron to make Bottlenose.  I highly recommend it to developers interested in creating native desktop apps with node.js.  Bottlenose is written in Javascript, Pug, HTML and CSS.  It uses jQuery, Bootstrap, and Contro.
 
 ## Contributing to Bottlenose (code)
 
-PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.
+PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Email me if you want to collaborate on this project!
 
-## Credits!
+## Credits
 
-Obviously, Bottlenose wouldn't exist without the developers of these emulators.  Please support the devs of emulators you use!
+Obviously, Bottlenose wouldn't exist without the developers of these emulators.  Please support the development of emulators you use!
 
 ### Logo
 
-The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variation on [MayImilae's Dolphin logo](https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg)  
+The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variation on [MayImilae's public domain Dolphin logo](https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg)  
 
 ### Databases
 
@@ -332,17 +323,17 @@ I converted several game database text files to JSON from [gametdb](https://www.
 
 ### Game Artwork
 
-Bottlenose downloads publicly available images under Fair Use.
+Bottlenose downloads publicly available images under Fair Use.  
 
-High quality box scans of popular games for many systems are from [Andy Decarli](http://andydecarli.com/Video%20Games/Collection).  
+High quality box scans of popular games for many systems are downloaded from [Andy Decarli's image database](http://andydecarli.com/Video%20Games/Collection).  
 
-Full covers, boxes, discs/carts are downloaded from [gametdb](https://www.gametdb.com/).  
+Covers, boxes, and discs/carts for Wii/Gamecube, DS, Wii U, 3DS, Switch, and PlayStation 3 are downloaded from [gametdb](https://www.gametdb.com/).  
 
 Most PS2 and GBA game artwork is downloaded from [The Cover Project](http://www.thecoverproject.net/) and [gamefaqs](https://gamefaqs.gamespot.com).  
 
-Some full resolution product images from Amazon are used for Wii U and Switch titles.
+Archival quality images of arcade game flyers for MAME are downloaded from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/).  MAME arcade cabinet artwork is downloaded from [Mr. Do's Arcade](http://www.mameworld.info/mrdo/mame_artwork_ingame.php).  
 
-Archival quality images of arcade game flyers for MAME are from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/).  MAME arcade cabinet artwork is downloaded from [Mr. Do's Arcade](http://www.mameworld.info/mrdo/mame_artwork_ingame.php).  
+These sites are incredible resources thanks to all the people that created them and submit game art to them.
 
 ### Template Art
 
@@ -374,7 +365,7 @@ As of yet, all themes were made by me (quinton-ashley/qashto)
 
 [PS3 Icon Loader by Jan Machycek](https://codepen.io/machyj/pen/ENvewe)
 
-MAME loader by [Vadim Huck's](https://codepen.io/M4TERIAL/pen/gavvQL) and [Matt J Roberts'](https://codepen.io/mattjroberts/pen/pazNdx)
+MAME loader is a combination of two codepens: [Vadim Huck's](https://codepen.io/M4TERIAL/pen/gavvQL) and [Matt J Roberts'](https://codepen.io/mattjroberts/pen/pazNdx)
 
 ### Fonts
 

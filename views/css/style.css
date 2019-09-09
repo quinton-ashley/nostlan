@@ -39,35 +39,14 @@ html {
 }
 
 .wii {
-	--cover-color:#caccd1;
-	--cover-text-color:#999999;
+	--cover-color: #caccd1;
+	--cover-text-color: #999999;
 	--button-color: radial-gradient(circle at 40% 40%, #e5e5e5 30%, #d2d2d2 50%);
-	--button-border-color:#4bc4ed;
-	--power-color: repeating-linear-gradient(
-  	#ececec,
-  	#ececec 4px,
-  	#e3e3e3 4px,
- 	#e3e3e3 12px
-	);
-	--view-color: repeating-linear-gradient(
-	#ececec,
-	#ececec 4px,
-	#e3e3e3 4px,
-	#e3e3e3 12px
-	);
-	--powerBtn-border-color:#d2d2d2;
-	--powerBtn-color:radial-gradient(
-	circle at 50%,
-	#f7f7f7 0%,
-	#f7f7f7 15%,
-	#d2d2d2 15%,
-	#d2d2d2 20%,
-	#f7f7f7 20%,
-	#f7f7f7 25%,
-	#d2d2d2 25%,
-	#d2d2d2 65%,
-	#f7f7f7 65%,
-	#f7f7f7 100%);
+	--button-border-color: #4bc4ed;
+	--power-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
+	--view-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
+	--powerBtn-border-color: #d2d2d2;
+	--powerBtn-color: radial-gradient(circle at 50%, #f7f7f7 0%, #f7f7f7 15%, #d2d2d2 15%, #d2d2d2 20%, #f7f7f7 20%, #f7f7f7 25%, #d2d2d2 25%, #d2d2d2 65%, #f7f7f7 65%, #f7f7f7 100%);
 }
 
 .ds {
@@ -138,27 +117,11 @@ html {
 .mame {
 	--cover-color: #11426C;
 	--cover-text-color: #00274f;
-	--button-color: radial-gradient(circle at 50%, 
-	#00274f 0%,
-	#00274f 5%,
-	#11426C 40%,
-	#11426C 45%,
-	#00274f 50%,
-	#000 55%,
-	#11426C 55%,
-	#00274f 80%
-	);
-	--button-hover-color: radial-gradient(circle at 50%, 
-	#00274f 0%,
-	#00274f 15%,
-	#11426C 40%,
-	#00274f 50%,
-	#000 55%,
-	#11426C 55%,
-	#00274f 80%
-	);
+	--button-color: radial-gradient(circle at 50%, #00274f 0%, #00274f 5%, #11426C 40%, #11426C 45%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
+	--button-hover-color: radial-gradient(circle at 50%, #00274f 0%, #00274f 15%, #11426C 40%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
 }
 /*================General====================*/
+
 .hiddenRow {
 	padding: 0 !important;
 }
@@ -301,6 +264,7 @@ game {
 	font-feature-settings: 'liga';
 }
 /*================Game Lib Viewer====================*/
+
 #libMain {
 	max-width: 100%;
 	max-height: 100%;
@@ -448,6 +412,7 @@ img.coverFull {
 	background-color: var(--box-bg-color);
 }
 /*================Wii Game Lib Viewer====================*/
+
 .gcn .crop.coverFull,
 .wii .crop.coverFull {
 	width: 200.1%;
@@ -491,7 +456,7 @@ img.coverFull {
 .wii .flip .shade {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 	width: 3%;
-	left:98%;
+	left: 98%;
 }
 
 .gcn .zoom-gameManualSelect {
@@ -547,6 +512,7 @@ img.coverFull {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================ds Game Lib Viewer====================*/
+
 .ds .crop.coverFull {
 	width: 100%;
 	top: 0;
@@ -571,8 +537,19 @@ img.coverFull {
 	transform: translate(-54.6%, 0%) scale(2.04, .95);
 }
 
+.ds .flip img.coverFull {
+	width: 100%;
+	height: 100%;
+	transform: translate(54.6%, 0%) scale(2.04, .95);
+}
+
 .ds .shade {
 	width: 1.3%;
+}
+
+.ds .flip .shade {
+	width: 2%;
+	left: 98%;
 }
 
 .ds #infoSelect {
@@ -606,6 +583,7 @@ img.coverFull {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================GBA Game Lib Viewer====================*/
+
 .gba .crop.coverFull {
 	width: 100%;
 	top: 0;
@@ -648,6 +626,7 @@ img.coverFull {
 	border-radius: 1.6%;
 }
 /*================PS3 Game Lib Viewer====================*/
+
 .ps3 .crop.coverFull {
 	width: 100%;
 	height: 100%;
@@ -673,7 +652,12 @@ img.coverFull {
 	height: 100%;
 	transform: translate(-52.5%, 0%) scale(2, .89);
 }
+
+.ps3 .flip img.coverFull {
+	transform: translate(1.5%, -5%);
+}
 /*=====PS2===*/
+
 .ps2 .crop.coverFull {
 	width: 200.4%;
 	top: 2.3%;
@@ -695,6 +679,14 @@ img.coverFull {
 
 .ps2 img.coverFull {
 	transform: translate(-51.5%, 0%);
+}
+
+.ps2 .flip .crop.coverFull {
+	top: 1.2%;
+}
+
+.ps2 .flip img.coverFull {
+	transform: translate(1.5%, 0%);
 }
 
 .ps2 .shade {
@@ -719,6 +711,7 @@ img.coverFull {
 	transform: translate(-55vh,-20.7vh) scale(1.55);
 }
 /*=====Xbox 360===*/
+
 .xbox360 .crop.coverFull {
 	width: 200.4%;
 	top: 1.2%;
@@ -742,6 +735,7 @@ img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 /*================Wii U Game Lib Viewer====================*/
+
 .wiiu .crop.coverFull {
 	width: 200.4%;
 	top: 2.1%;
@@ -768,7 +762,17 @@ img.coverFull {
 .wiiu img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
+
+.wiiu .flip img.coverFull {
+	transform: translate(1.5%, 0%);
+}
+
+.wiiu .flip .shade {
+	width: 1.4%;
+	left: 98.7%;
+}
 /*================3ds Game Lib Viewer====================*/
+
 .n3ds .crop.coverFull {
 	width: 203.9%;
 	top: 2.2%;
@@ -790,12 +794,12 @@ img.coverFull {
 }
 
 .n3ds .shade {
-	width: .5%;
-	left:0%;
+	width: 0.5%;
+	left: 0;
 }
 
 .n3ds .flip .shade {
-	width: .5%;
+	width: 0.5%;
 	left: 99.5%;
 }
 
@@ -804,6 +808,7 @@ img.coverFull {
 	transform: translate(1%, .7%);
 }
 /*================Switch Game Lib Viewer====================*/
+
 .switch .crop.coverFull {
 	width: 200%;
 	top: 2.6%;
@@ -836,15 +841,23 @@ img.coverFull {
 	transform: translate(1.7%, -.3%);
 }
 
+.switch .shade {
+	width: 1%;
+	left: -.5%;
+	height: 95.3%;
+}
+
 .switch .flip .shade {
-	width: 2%;
-	left: 98%;
+	width: 1.5%;
+	left: 98.5%;
 }
 /*================MAME Game Lib Viewer====================*/
+
 .mame .box {
 	border-radius: 0;
 }
 /*================Game Lib Viewer====================*/
+
 .crop.cover,
 .crop.coverFull {
 	height: 100%;
@@ -1003,7 +1016,7 @@ button:focus {
 	outline: none;
 }
 
-.console:hover  .nav-link {
+.console:hover .nav-link {
 	filter: brightness(0.8);
 	outline: none;
 }
@@ -1026,6 +1039,7 @@ ul.nav {
 	height: 100%;
 }
 /*================3DS Cover========================*/
+
 .n3ds {
 	font-weight: 700;
 }
@@ -1077,8 +1091,8 @@ ul.nav {
 }
 
 .mame .console .nav-link {
-	border-width:0;
-	transform:scale(1.05);
+	border-width: 0;
+	transform: scale(1.05);
 }
 
 .mame .console:hover .nav-link {
@@ -1136,9 +1150,9 @@ ul.nav {
 	font-weight: 900;
 }
 
-.wii .console.reset .nav-link,
-.wii .console.open .nav-link {
-	box-shadow: 1px 5px 0px #bbbdc2;
+.wii .console.open .nav-link,
+.wii .console.reset .nav-link {
+	box-shadow: 1px 5px 0 #bbbdc2;
 }
 
 .wii .console:hover .nav-link {
@@ -1152,8 +1166,8 @@ ul.nav {
 	border-color: var(--button-border-color);
 }
 
-.wii .console:hover .text,
-.wii .console:hover #view {
+.wii .console:hover #view,
+.wii .console:hover .text {
 	color: var(--button-border-color);
 }
 
@@ -1171,10 +1185,12 @@ ul.nav {
 	font-weight: 900;
 }
 /*================Xbox 360 Cover========================*/
+
 .xbox360 nav {
 	font-weight: 700;
 }
 /*================Misc====================*/
+
 .hide,
 .hide * {
 	filter: opacity(0) !important;

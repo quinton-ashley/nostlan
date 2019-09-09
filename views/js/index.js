@@ -605,7 +605,8 @@ module.exports = async function(arg) {
 		} else if (state == 'pauseMenu') {
 			labels = ['Quit', 'Mini', 'Back'];
 		}
-		if (sys == 'wii' && prefs[sys].style == 'gcn') {
+		if (sys == 'wii' && (sysStyle == 'gcn' ||
+				(state != 'libMain' && $('body').attr('class') && $('body').attr('class').split(/\s+/)[0] == 'gcn'))) {
 			for (let i in labels) {
 				labels[i] = labels[i].toLowerCase();
 			}
@@ -1113,7 +1114,7 @@ module.exports = async function(arg) {
 				return;
 			}
 			$cover = $cover.eq(0);
-			for (let name of ['coverBack', 'coverFull']) {
+			for (let name of ['coverFull', 'coverBack']) {
 				for (let g of [game, template]) {
 					if (await editImgSrc($cur, $cover, g, name)) break;
 				}
@@ -1122,11 +1123,13 @@ module.exports = async function(arg) {
 		} else {
 			$cur.removeClass('flip');
 			let $box = $cur.find('img.boxBack');
+			log($box);
 			if (!$box.length) $box = $cur.find('img.box');
 			if (!$box.length) return;
 			$box = $box.eq(0);
+			log($box);
 			let hasBox = true;
-			for (let g of [game, template]) {
+			for (let g of [game, dflt, template]) {
 				if (await editImgSrc($cur, $box, g, 'box')) break;
 				hasBox = false;
 			}
@@ -1139,7 +1142,7 @@ module.exports = async function(arg) {
 				$cover.addClass('hide');
 			} else {
 				let name = '';
-				for (name of ['coverBack', 'coverFull']) {
+				for (name of ['coverFull', 'cover']) {
 					if (await editImgSrc($cur, $cover, game, name)) break;
 				}
 				if (name == 'coverFull') $cur.find('.shade').addClass('hide');

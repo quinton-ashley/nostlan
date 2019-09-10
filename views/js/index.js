@@ -1115,14 +1115,13 @@ module.exports = async function(arg) {
 		if (!$cur.hasClass('flip')) {
 			$cur.addClass('flip');
 			let $box = $cur.find('.box').eq(0);
-			let hasBoxBack = true;
 			if (!(await editImgSrc($cur, $box, game, 'boxBack'))) {
 				if (!(await editImgSrc($cur, $box, dflt, 'boxBack'))) {
 					await editImgSrc($cur, $box, dflt, 'box');
-					hasBoxBack = false;
 				}
+			} else {
+				return;
 			}
-			if (hasBoxBack) return;
 			$cur.find('.shade').removeClass('hide');
 			let $cover = $cur.find('img.cover');
 			if (!$cover.length) {
@@ -1165,7 +1164,7 @@ module.exports = async function(arg) {
 				for (name of ['coverFull', 'cover']) {
 					if (await editImgSrc($cur, $cover, game, name)) break;
 				}
-				if (name == 'coverFull') $cur.find('.shade').addClass('hide');
+				if (name == 'coverFull') $cur.find('.shade').removeClass('hide');
 			}
 		}
 	}

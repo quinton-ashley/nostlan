@@ -1,7 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://oko.sh/GGEzNZ) and [please choose an amount to pay for it](https://www.paypal.me/qashto/20) or [become a patreon supporter!](https://www.patreon.com/qashto)  
+[Download Bottlenose](https://oko.sh/GGEzNZ) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Bottlenose on patreon](https://www.patreon.com/qashto) to gain access to premium features!
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?
@@ -27,99 +27,102 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ## Supported Emulators
 
-#### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
+### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png">
 </a></p>
 
-#### Cemu (Wii U) [Windows & Linux* using Wine]
+### Cemu (Wii U) [Windows & Linux* using Wine]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu_LQ.png">
 </a></p>
 
-#### Yuzu (Switch) [Linux & Windows]
+### Yuzu (Switch) [Linux & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch_LQ.png">
 </a></p>
 
-#### Citra (3DS) [Linux, macOS, & Windows]
+### Citra (3DS) [Linux, macOS, & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds_LQ.png">
 </a></p>
 
-#### DeSmuME (DS) [Linux, macOS & Windows]
+### DeSmuME (DS) [Linux, macOS & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png">
 </a></p>
 
-#### MAME [Linux, macOS, & Windows]
+### MAME [Linux, macOS, & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame_LQ.png">
 </a></p>
 
-#### mGBA (GBA) [Linux, macOS, & Windows]
+### mGBA (GBA) [Linux, macOS, & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba_LQ.png">
 </a></p>
 
-#### PCSX2 (PS2) [Linux, macOS, & Windows]
+### PCSX2 (PS2) [Linux, macOS, & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png">
 </a></p>
 
-#### RPCS3 (PS3) [Linux & Windows]
+### RPCS3 (PS3) [Linux & Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3_LQ.png">
 </a></p>
 
-#### Xenia (Xbox 360) [Windows]
+### Xenia (Xbox 360) [Windows]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png">
 </a></p>
 
-#### Dolphin + Wii Theme
+### Dolphin + Wii Theme
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii_LQ.png">
 </a></p>
 
-## Please consider donating!
+## If you like using Bottlenose please donate!
 
-Even though Bottlenose is open source software that's free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use this app please donate an amount of your choosing.  I need your support to develop new features.  Thank you!
+Hi my name is Quinton and this is the part where I beg you for money!  Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use Bottlenose please donate an amount of your choosing.  Cloud saving is coming soon for [patrons](https://www.patreon.com/qashto).  Thank you!
 
-Monthly Donations:  
-Patreon: <https://www.patreon.com/qashto>  
+Become a patron of Bottlenose on Patreon:  
+<https://www.patreon.com/qashto>  
 
-Single Donation:  
-Paypal: <https://www.paypal.me/qashto/20>
+Donate through Paypal:  
+<https://www.paypal.me/qashto/20>
 
-## Planned Features
+<p><a href="https://www.patreon.com/qashto">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/banner.png">
+</a></p>
 
-If enough people support the project on Patreon I will be able to set aside the time to implement these features!
+## Premium Features
 
--   ability to manually add individual games
--   an open game box menu with submenus for game manuals, managing save files, and disc art
--   making open box menu images for all supported systems, [help needed!](https://github.com/quinton-ashley/bottlenose-img/blob/master/README.md#bottlenose-img)
--   save file management
--   cloud save to a folder in Dropbox, OneDrive, etc.
--   filter searching for games
--   create a database of Dolphin texture packs
+Support the development of Bottlenose on [Patreon](https://www.patreon.com/qashto) to gain access to these upcoming features!
+
+Coming Soon:
+
+-   UI for save file management
+-   cloud saving with Bottlenose will automatically sync your emulator game saves and save states to a folder in Dropbox, OneDrive, etc. play across multiple devices without losing in-game progress!
+
+Milestone Goals:
+
+-   single click to install emulators/updates
+-   database of Dolphin texture packs
 -   batch install and auto-update texture packs for Dolphin
--   install emulators/updates from app
 -   easy way to mix and swap texture packs for Dolphin
--   list style view mode for browsing through box sides, useful for very large game libraries
--   user ability to make custom themes
--   PPSSPP emulator support
+-   create custom themes
 
 ## How is Bottlenose different from other front-ends?
 

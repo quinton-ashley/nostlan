@@ -29,58 +29,69 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 #### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
-[click this link to see the full quality UHD screenshot](https://oko.sh/fSwc)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png">
+</a></p>
 
 #### Cemu (Wii U) [Windows & Linux* using Wine]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu_LQ.png">
+</a></p>
 
 #### Yuzu (Switch) [Linux & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch_LQ.png">
+</a></p>
 
 #### Citra (3DS) [Linux, macOS, & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds_LQ.png">
+</a></p>
 
 #### DeSmuME (DS) [Linux, macOS & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png">
+</a></p>
 
 #### MAME [Linux, macOS, & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame_LQ.png">
+</a></p>
 
 #### mGBA (GBA) [Linux, macOS, & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba_LQ.png">
+</a></p>
 
 #### PCSX2 (PS2) [Linux, macOS, & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png">
+</a></p>
 
 #### RPCS3 (PS3) [Linux & Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3_LQ.png">
+</a></p>
 
 #### Xenia (Xbox 360) [Windows]
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png">
+</a></p>
 
 #### Dolphin + Wii Theme
 
-[click this link to see the full quality UHD screenshot](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png)
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii_LQ.png)
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii_LQ.png">
+</a></p>
 
 ## Please consider donating!
 
@@ -133,21 +144,22 @@ Bottlenose auto detects controllers when you press any button.  Controller type 
 
 ## What is Adaptive Button Mapping?
 
-    // Xbox/PS Adaptive profile usage example for an Xbox One controller:
+    // Xbox/PS Adaptive profile example
+    // for an Xbox One controller:
 
-    // any Nintendo console: remapped to match button positions
+    // Nintendo: remapped to match button positions
     //  Y B  ->  X A
     // X A  ->  Y B
 
-    // Xbox 360 and MAME: not remapped
+    // Xbox or MAME: not remapped
     //  Y B  ->  Y B
     // X A  ->  X A
 
-    // any Playstation console: not remapped (similar btn positions)
+    // Playstation: not remapped (similar btn positions)
     //  Y B  ->  △ ○
     // X A  ->  □ X
 
-Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the button layout of controllers made for the system being emulated.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers.  The B button on Nintendo systems means "no" or "back".  The default profile remaps from Xbox and PlayStation button layouts to Nintendo's button layout when browsing Nintendo system libraries.  This mapping will occur when browsing Nintendo game libraries only.  On MAME, Playstation, and Xbox game libraries `Xbox_PS_Adaptive` does not remap buttons.
+Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the physical button layout of controllers made for the system being emulated.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers.  The B button on Nintendo systems means "no" or "back".
 
 Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
 
@@ -226,7 +238,7 @@ Edit your preferences file to change the default launch command for each OS.  Th
 
 ## Error Reporting
 
-Please [send me](mailto:qashto@gmail.com) a description of any errors with the relevant error log or report an issue with the code on this project's Github.
+Please [send me](mailto:qashto@gmail.com) a description of any errors with the relevant error log or report an issue on this project's Github.
 
 ### Mismatched or Unidentified Games
 
@@ -297,17 +309,13 @@ Front cover box art is prioritized in this order: box (highest quality), coverFu
 }
 ```
 
-## Planned Features! (continued)
-
-Texture packs with a rating of 7 and above will be considered recommended.  In a future version of Bottlenose, users will be able to batch install all the recommended packs for their entire game library.  The highest ranking pack for each game will become the default pack and placed in `User/Load/Textures`.  Users will still be able to install non-recommended packs individually in the app.  Incompleteness of a pack has no bearing on a pack's rating.  Pack ratings will be curated by me (quinton-ashley/qashto) and based on the Dolphin forum's democratic star rating and opinions from other texture pack creators.  The vast majority of packs currently on the Dolphin forums will receive a 8-10.
-
 ## Development Info
 
 Bottlenose is open source!  I loved using Electron to make Bottlenose.  I highly recommend it to developers interested in creating native desktop apps with node.js.  Bottlenose is written in Javascript, Pug, HTML and CSS.  It uses jQuery, Bootstrap, and Contro.
 
 ## Contributing to Bottlenose (code)
 
-PRs are welcome!  Please follow my coding style though.  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Email me if you want to collaborate on this project!
+PRs are welcome!  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Email me if you want to collaborate on this project!
 
 ## Credits
 

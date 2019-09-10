@@ -121,7 +121,6 @@ html {
 	--button-hover-color: radial-gradient(circle at 50%, #00274f 0%, #00274f 15%, #11426C 40%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
 }
 /*================General====================*/
-
 .hiddenRow {
 	padding: 0 !important;
 }
@@ -264,7 +263,6 @@ game {
 	font-feature-settings: 'liga';
 }
 /*================Game Lib Viewer====================*/
-
 #libMain {
 	max-width: 100%;
 	max-height: 100%;
@@ -394,7 +392,7 @@ img {
 	top: 95%;
 }
 
-.shade {
+game .shade {
 	position: absolute;
 	width: 1%;
 	height: 100%;
@@ -403,7 +401,7 @@ img {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-.flip .shade {
+game.flip .shade {
 	left: 98%;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
@@ -411,54 +409,56 @@ img {
 img.coverFull {
 	background-color: var(--box-bg-color);
 }
-/*================Wii Game Lib Viewer====================*/
-
-.gcn .crop.coverFull,
-.wii .crop.coverFull {
+/*================Wii/Gamecube Box====================*/
+game.gcn .crop.coverFull,
+game.wii .crop.coverFull {
 	width: 200.1%;
 	top: 1.4%;
 	left: 0;
 }
 
-.gcn .crop.cover,
-.wii .crop.cover {
+game.wii .crop.coverFull {
+	width: 200.6%;
+}
+
+game.gcn .crop.cover,
+game.wii .crop.cover {
 	width: 94.5%;
 	top: 2.6%;
 	left: 0.8%;
 }
 
-.gcn img.coverFull,
-.wii img.coverFull {
+game.gcn img.coverFull,
+game.wii img.coverFull {
 	transform: translate(-51.2%, 0%);
 }
 
-.gcn .flip .crop.coverFull,
-.wii .flip .crop.coverFull {
+game.gcn.flip .crop.coverFull,
+game.wii.flip .crop.coverFull {
 	width: 100%;
 }
 
-.gcn .flip img.coverFull {
-	width: 200.7%;
+game.gcn.flip img.coverFull {
 	transform: translate(1.2%, .4%);
 }
 
-.wii .flip img.coverFull {
+game.wii.flip img.coverFull {
 	width: 200.6%;
-	transform: translate(2%, 1%);
+	transform: translate(2%, .8%);
 }
 
-.gcn .shade,
-.wii .shade {
+game.gcn .shade,
+game.wii .shade {
 	width: 2%;
 }
 
-.gcn .flip .shade,
-.wii .flip .shade {
+game.gcn.flip .shade,
+game.wii.flip .shade {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 	width: 3%;
 	left: 98%;
 }
-
+/*================Wii/Gamecube Open Box====================*/
 .gcn .zoom-gameManualSelect {
 	transform: translate(34vh,0vh) scale(1);
 }
@@ -512,42 +512,41 @@ img.coverFull {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================ds Game Lib Viewer====================*/
-
-.ds .crop.coverFull {
+game.ds .crop.coverFull {
 	width: 100%;
 	top: 0;
 	left: 0;
 }
 
-.ds .crop.cover {
+game.ds .crop.cover {
 	width: 100%;
 	top: -0.3%;
 	left: 0.4%;
 }
 
-.ds img.cover {
+game.ds img.cover {
 	width: 100%;
 	height: 100%;
 	transform: scale(.948, .948);
 }
 
-.ds img.coverFull {
+game.ds img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(-54.6%, 0%) scale(2.04, .95);
 }
 
-.ds .flip img.coverFull {
+game.ds.flip img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(54.6%, 0%) scale(2.04, .95);
 }
 
-.ds .shade {
+game.ds .shade {
 	width: 1.3%;
 }
 
-.ds .flip .shade {
+game.ds.flip .shade {
 	width: 2%;
 	left: 98%;
 }
@@ -583,113 +582,110 @@ img.coverFull {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================GBA Game Lib Viewer====================*/
-
-.gba .crop.coverFull {
+game.gba .crop.coverFull {
 	width: 100%;
 	top: 0;
 	left: 0;
 }
 
-.gba .crop.cover {
+game.gba .crop.cover {
 	width: 100%;
 	top: 0;
 	left: 0;
 }
 
-.gba img.cover {
+game.gba img.cover {
 	width: 100%;
 	height: 100%;
 }
 
-.gba img.coverFull {
+game.gba img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(-55.8%, 0%) scale(2.115, 1);
 }
 
-.gba .flip img.coverFull {
+game.gba.flip img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(55.8%, 0%) scale(2.115, 1);
 }
 
-.gba .shade {
+game.gba .shade {
 	width: 1.3%;
 }
 
-.gba .flip .shade {
+game.gba.flip .shade {
 	left: 99%;
 	width: 1.3%;
 }
 
-.gba .box {
+game.gba .box {
 	border-radius: 1.6%;
 }
 /*================PS3 Game Lib Viewer====================*/
-
-.ps3 .crop.coverFull {
+game.ps3 .crop.coverFull {
 	width: 100%;
 	height: 100%;
 	top: 3%;
 	left: 0;
 }
 
-.ps3 .crop.cover {
+game.ps3 .crop.cover {
 	width: 100%;
 	height: 100%;
 	top: 2.8%;
 	left: 0;
 }
 
-.ps3 img.cover {
+game.ps3 img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.95, .885);
 }
 
-.ps3 img.coverFull {
+game.ps3 img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(-52.5%, 0%) scale(2, .89);
 }
 
-.ps3 .flip img.coverFull {
+game.ps3.flip img.coverFull {
 	transform: translate(1.5%, -5%);
 }
 /*=====PS2===*/
-
-.ps2 .crop.coverFull {
+game.ps2 .crop.coverFull {
 	width: 200.4%;
 	top: 2.3%;
 	left: 0;
 }
 
-.ps2 .crop.cover {
+game.ps2 .crop.cover {
 	height: 100%;
 	width: 100%;
 	top: -0.5%;
 	left: -1%;
 }
 
-.ps2 img.cover {
+game.ps2 img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.966);
 }
 
-.ps2 img.coverFull {
+game.ps2 img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 
-.ps2 .flip .crop.coverFull {
+game.ps2.flip .crop.coverFull {
 	top: 1.2%;
 }
 
-.ps2 .flip img.coverFull {
+game.ps2.flip img.coverFull {
 	transform: translate(1.5%, 0%);
 }
 
-.ps2 .shade {
+game.ps2 .shade {
 	width: 4%;
 }
 
@@ -711,170 +707,164 @@ img.coverFull {
 	transform: translate(-55vh,-20.7vh) scale(1.55);
 }
 /*=====Xbox 360===*/
-
-.xbox360 .crop.coverFull {
+game.xbox360 .crop.coverFull {
 	width: 200.4%;
 	top: 1.2%;
 	left: 0;
 }
 
-.xbox360 .crop.cover {
+game.xbox360 .crop.cover {
 	height: 100%;
 	width: 100%;
 	top: -0.5%;
 	left: -1%;
 }
 
-.xbox360 img.cover {
+game.xbox360 img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.966);
 }
 
-.xbox360 img.coverFull {
+game.xbox360 img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 /*================Wii U Game Lib Viewer====================*/
-
-.wiiu .crop.coverFull {
+game.wiiu .crop.coverFull {
 	width: 200.4%;
 	top: 2.1%;
 	left: 0;
 }
 
-.wiiu .crop.cover {
+game.wiiu .crop.cover {
 	height: 100%;
 	width: 100%;
 	top: -0%;
 	left: -1.1%;
 }
 
-.wiiu img.cover {
+game.wiiu img.cover {
 	height: 100%;
 	width: 100%;
 	transform: scale(.946, .956);
 }
 
-.wiiu .box {
+game.wiiu .box {
 	border-radius: 2%;
 }
 
-.wiiu img.coverFull {
+game.wiiu img.coverFull {
 	transform: translate(-51.5%, 0%);
 }
 
-.wiiu .flip img.coverFull {
+game.wiiu.flip img.coverFull {
 	transform: translate(1.5%, 0%);
 }
 
-.wiiu .flip .shade {
+game.wiiu.flip .shade {
 	width: 1.4%;
 	left: 98.7%;
 }
 /*================3ds Game Lib Viewer====================*/
-
-.n3ds .crop.coverFull {
+game.n3ds .crop.coverFull {
 	width: 203.9%;
 	top: 2.2%;
 	left: 0.1%;
 }
 
-.n3ds .crop.cover {
+game.n3ds .crop.cover {
 	width: 97%;
 	top: 2.2%;
 	left: 0.1%;
 }
 
-.n3ds .box {
+game.n3ds .box {
 	border-radius: 2%;
 }
 
-.n3ds img.coverFull {
+game.n3ds img.coverFull {
 	transform: translate(-52.4%, 0%);
 }
 
-.n3ds .shade {
+game.n3ds .shade {
 	width: 0.5%;
 	left: 0;
 }
 
-.n3ds .flip .shade {
+game.n3ds.flip .shade {
 	width: 0.5%;
 	left: 99.5%;
 }
 
-.n3ds .flip img.coverFull {
+game.n3ds.flip img.coverFull {
 	width: 204%;
 	transform: translate(1%, .7%);
 }
 /*================Switch Game Lib Viewer====================*/
-
-.switch .crop.coverFull {
+game.switch .crop.coverFull {
 	width: 200%;
 	top: 2.6%;
 	left: 0.8%;
 }
 
-.switch .crop.cover {
+game.switch .crop.cover {
 	width: 100%;
 	top: 0;
 	left: -2%;
 }
 
-.switch img.cover {
+game.switch img.cover {
 	width: 100%;
 	height: 100%;
 	border-radius: 0;
 	transform: scale(.95);
 }
 
-.switch .box {
+game.switch .box {
 	border-radius: 2.7%;
 }
 
-.switch img.coverFull {
+game.switch img.coverFull {
 	transform: translate(-52.4%, 0%);
 }
 
-.switch .flip img.coverFull {
+game.switch.flip img.coverFull {
 	width: 200%;
 	transform: translate(1.7%, -.3%);
 }
 
-.switch .shade {
+game.switch .shade {
 	width: 1%;
 	left: -.5%;
 	height: 95.3%;
 }
 
-.switch .flip .shade {
+game.switch.flip .shade {
 	width: 1.5%;
 	left: 98.5%;
 }
 /*================MAME Game Lib Viewer====================*/
-
-.mame .box {
+game.mame .box {
 	border-radius: 0;
 }
 /*================Game Lib Viewer====================*/
-
-.crop.cover,
-.crop.coverFull {
+game .crop.cover,
+game .crop.coverFull {
 	height: 100%;
 	overflow: hidden;
 	position: absolute;
 }
 
-.flip .crop.coverFull {
+game.flip .crop.coverFull {
 	width: 100%;
 }
 
-.flip img.box {
+game.flip img.box {
 	transform: rotate(180deg);
 }
 
-.flip img.coverFull {
-	width: 200.6%;
+game.flip img.coverFull {
+	width: 200.8%;
 	transform: translate(1.6%, 1%);
 }
 /*================Cover====================*/
@@ -1039,7 +1029,6 @@ ul.nav {
 	height: 100%;
 }
 /*================3DS Cover========================*/
-
 .n3ds {
 	font-weight: 700;
 }
@@ -1107,7 +1096,7 @@ ul.nav {
 
 .gcn nav {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
-	font-size: 3vw;
+	font-size: 40px;
 	font-weight: 900;
 	text-transform: lowercase;
 	letter-spacing: -3px;
@@ -1185,12 +1174,10 @@ ul.nav {
 	font-weight: 900;
 }
 /*================Xbox 360 Cover========================*/
-
 .xbox360 nav {
 	font-weight: 700;
 }
 /*================Misc====================*/
-
 .hide,
 .hide * {
 	filter: opacity(0) !important;

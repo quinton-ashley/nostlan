@@ -260,6 +260,7 @@ module.exports = async function(arg) {
 			let file;
 			// a lot of pruning is required to get good search results
 			for (let i = 0; i < files.length; i++) {
+				$('#loadDialog2').text(`${i+1}/${files.length + 1} files matched`);
 				file = files[i];
 				let term = path.parse(file);
 				// if it's a hidden file like '.DS_STORE' on macOS, skip it
@@ -315,6 +316,7 @@ module.exports = async function(arg) {
 						}
 						olog('id:\t\t\t\t' + id);
 						olog(`found match:\t\t${game.title} ${game.id} ${game.sys||sysStyle}\r\n`);
+						log(game);
 						game.file = '$' + h + '/' +
 							path.relative(prefs[sys].libs[h], file);
 						games.push(game);
@@ -363,6 +365,7 @@ module.exports = async function(arg) {
 				olog('search term:\t\t' + term);
 				if (game) {
 					olog(`found match:\t\t${game.title} ${game.id} ${game.sys||sysStyle}\r\n`);
+					log(game);
 					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 					games.push(game);
 				} else {
@@ -374,6 +377,7 @@ module.exports = async function(arg) {
 		await fs.outputFile(outLogPath, outLog);
 		outLog = '';
 		await outputGamesJSON();
+		clearDialogs();
 	}
 
 	async function outputGamesJSON() {
@@ -384,13 +388,11 @@ module.exports = async function(arg) {
 	}
 
 	async function reload() {
-		cui.change('loading');
-		$('#loadDialog0').text('loading game library');
-		$('body').removeClass();
+		emu = prefs[sys].emu;
 		sysStyle = prefs[sys].style || sys;
-		$('body').addClass(sysStyle);
-		emu = prefs[sys].emu.toLowerCase();
-
+		cui.change('loading', sysStyle);
+		$('#loadDialog0').text(`loading your ${systems[sys]} game library for ${emu}`);
+		emu = emu.toLowerCase();
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
@@ -449,8 +451,6 @@ module.exports = async function(arg) {
 				await reload();
 				return;
 			}
-			$('#loadDialog2').text(
-				'this may take a few minutes, sit back and relax!');
 			await rescan();
 		}
 		emuDir = emuDir.replace(/\\/g, '/');
@@ -463,6 +463,7 @@ module.exports = async function(arg) {
 		await viewerLoad();
 		await removeIntro();
 		cui.change('libMain', sys);
+		cui.resize(true);
 	}
 
 	async function load() {
@@ -578,7 +579,6 @@ module.exports = async function(arg) {
 		}
 		let $cur = cui.getCur();
 		if ($cur.hasClass('selected')) {
-			cui.scrollToCursor(250, 0);
 			let $reel = $cur.parent();
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
@@ -605,8 +605,7 @@ module.exports = async function(arg) {
 		} else if (state == 'pauseMenu') {
 			labels = ['Quit', 'Mini', 'Back'];
 		}
-		if (sys == 'wii' && (sysStyle == 'gcn' ||
-				(state != 'libMain' && $('body').attr('class') && $('body').attr('class').split(/\s+/)[0] == 'gcn'))) {
+		if (subState == 'gcn') {
 			for (let i in labels) {
 				labels[i] = labels[i].toLowerCase();
 			}
@@ -666,11 +665,15 @@ module.exports = async function(arg) {
 		}
 	});
 
-	function hideDialogs() {
-		$('#dialogs').hide();
+	function clearDialogs() {
 		$('#loadDialog0').text('');
 		$('#loadDialog1').text('');
 		$('#loadDialog2').text('');
+	}
+
+	function hideDialogs() {
+		$('#dialogs').hide();
+		clearDialogs();
 	}
 
 	async function removeIntro(time) {
@@ -838,24 +841,25 @@ module.exports = async function(arg) {
 	cui.setCustomHeldActions(doHeldAction);
 
 	async function coverClicked(select) {
-		let $cur = cui.getCur();
+		let $cur = cui.getCur('libMain');
 		if ($cur.hasClass('uie-disabled')) return false;
 		let $reel = $cur.parent();
 		$cur.toggleClass('selected');
 		$reel.toggleClass('selected');
 		$('.reel').toggleClass('bg');
-		$('body').removeClass();
 		// $('nav').toggleClass('gamestate');
 		if ($cur.hasClass('selected')) {
-			$('body').addClass($cur.attr('class').split(/\s+/)[0]);
+			let gameSys = $cur.attr('class').split(/\s+/)[0];
+			cui.change('coverSelect', gameSys);
 			cui.scrollToCursor(500, 0);
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 		} else {
-			$('body').addClass(sysStyle);
+			cui.change('libMain', sysStyle);
 			$reel.css('left', '');
 			$cur.css('transform', '');
 		}
+		cui.resize(true);
 	}
 
 	function getCurGame() {
@@ -899,7 +903,6 @@ module.exports = async function(arg) {
 				await resetBtn();
 			} else if (act == 'a' || !isBtn) {
 				await coverClicked();
-				cui.change('coverSelect');
 			}
 		} else if (ui == 'coverSelect') {
 			if ((act == 'a' || !isBtn) &&
@@ -927,10 +930,15 @@ module.exports = async function(arg) {
 				cui.change('infoSelect');
 				$('#libMain').hide();
 			} else if (act == 'b') {
-				cui.change('libMain');
 				await coverClicked();
 			} else if (act == 'y') { // flip
-				await flipGameBox();
+				let $cur = cui.getCur();
+				let ogHeight = $cur.height();
+				await flipGameBox($cur);
+				if (Math.abs(ogHeight - $cur.height()) > 10) {
+					cui.resize();
+					cui.scrollToCursor(0, 0);
+				}
 			}
 		} else if (ui == 'infoSelect') {
 			if (act != 'b') {
@@ -946,7 +954,6 @@ module.exports = async function(arg) {
 				$('#infoSelect').addClass('zoom-' + act);
 				cui.change(act);
 			} else {
-				cui.change('libMain');
 				await coverClicked();
 			}
 		} else if ((/game/i).test(ui)) {
@@ -1079,39 +1086,52 @@ module.exports = async function(arg) {
 	async function editImgSrc($cur, $img, game, name) {
 		if (!game) return;
 		let img = await imgExists(game, name);
-		log(img);
+		// log(img);
 		if (!img) return;
-		let prevClass = $img.attr('class');
-		if (!prevClass) return;
-		prevClass = prevClass.split(/\s+/)[0];
 		$img.prop('src', img);
-		let $elems = $cur.find('.' + prevClass);
-		for (let i in $elems) {
-			let $elem = $elems.eq(i);
+		let prevClass = $img.attr('class').replace('crop ', '');
+		let $elems;
+		if (prevClass && prevClass != 'hide') {
+			$elems = [
+				$cur.find('.' + prevClass)
+			];
+		} else {
+			$elems = [
+				$cur.find('section'),
+				$cur.find('section img')
+			];
+		}
+		for (let $elem of $elems) {
 			$elem.removeClass(prevClass);
 			$elem.addClass(name);
 		}
 		return img;
 	}
 
-	async function flipGameBox() {
-		let $cur = cui.getCur();
+	async function flipGameBox($cur) {
 		let game = getCurGame();
 		let template = themes[game.sys || sys].template;
 		let dflt = themes[game.sys || sys].default;
 		if (!$cur.hasClass('flip')) {
 			$cur.addClass('flip');
 			let $box = $cur.find('.box').eq(0);
+			let hasBoxBack = true;
 			if (!(await editImgSrc($cur, $box, game, 'boxBack'))) {
 				if (!(await editImgSrc($cur, $box, dflt, 'boxBack'))) {
 					await editImgSrc($cur, $box, dflt, 'box');
+					hasBoxBack = false;
 				}
 			}
+			if (hasBoxBack) return;
 			$cur.find('.shade').removeClass('hide');
 			let $cover = $cur.find('img.cover');
 			if (!$cover.length) {
-				$cover = $cur.find('img.coverFull').eq(0).removeClass('hide');
-				return;
+				$cover = $cur.find('img.coverFull');
+				if ($cover.length) {
+					$cover.eq(0).removeClass('hide');
+					return;
+				}
+				$cover = $cur.find('section img');
 			}
 			$cover = $cover.eq(0);
 			for (let name of ['coverFull', 'coverBack']) {
@@ -1136,7 +1156,7 @@ module.exports = async function(arg) {
 			if ((game.sys || sys) != 'switch') $cur.find('.shade').addClass('hide');
 			let $cover = $cur.find('img.coverBack');
 			if (!$cover.length) $cover = $cur.find('img.coverFull');
-			if (!$cover.length) return;
+			if (!$cover.length) $cover = $cur.find('section img');
 			$cover = $cover.eq(0);
 			if (hasBox) {
 				$cover.addClass('hide');
@@ -1168,7 +1188,8 @@ module.exports = async function(arg) {
 				// catch and ignore old method of doing this from
 				// a previous version of Bottlnose
 				if (url[1][0] == '/' || url[1][0] == '\\') return;
-				url = url[0] + '.' + url[1];
+				ext = url[1];
+				url = url[0];
 			} else if (url[0] == 'q') {
 				url = srp.gqa.unwrapUrl(sys, game, name);
 			} else if (url[1]) {
@@ -1182,7 +1203,7 @@ module.exports = async function(arg) {
 				// the url is just a regular old link
 				url = url[0];
 			}
-			ext = url.substr(-3);
+			if (!ext) ext = url.substr(-3);
 			file = `${imgDir}/${name}.${ext}`;
 			if (scraper == 'gfs') {
 				res = await srp.gfs.dlImg(url, imgDir, name);
@@ -1230,8 +1251,9 @@ module.exports = async function(arg) {
 			}
 			await fs.remove(depTemplateDir);
 		}
-
+		let gamesTotal = games.length + 1;
 		for (let i = 0; i < games.length + 1; i++) {
+			$('#loadDialog2').text(`${i+1}/${gamesTotal} games`);
 			let res;
 			let game;
 			if (!isTemplate && i == games.length) {
@@ -1355,8 +1377,8 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 	${((cl1)?`img.box(src="${
 		(await imgExists(themes[game.sys || sys].default, 'box'))
 	}")`:`img.box(src="${file}")`)}
-	section.crop${cl1 || '.cover'}
-		img${(cl1||'.cover') + ((cl1)?'':'.hide')}(src="${(cl1)?file:''}")
+	section.crop${cl1}
+		img${cl1 + ((cl1)?'':'.hide')}(src="${(cl1)?file:''}")
 		.shade.p-0.m-0${(cl1||(game.sys||sys)=='switch'||(game.sys||sys)=='gba')?'':'.hide'}
 `;
 		$('.reel.r' + reelNum).append(pug(cover));

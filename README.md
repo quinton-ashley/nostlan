@@ -1,7 +1,7 @@
 # Bottlenose
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://oko.sh/GGEzNZ) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Bottlenose on patreon](https://www.patreon.com/qashto) to gain access to premium features!
+[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Bottlenose on patreon](https://www.patreon.com/qashto) to gain access to premium features!
 ![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
 
 ## A what?

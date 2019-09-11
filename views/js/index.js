@@ -74,14 +74,14 @@ module.exports = async function(arg) {
 
 	let systems = {
 		wii: 'Wii/Gamecube',
-		ds: 'Nintendo DS',
 		wiiu: 'Wii U',
-		n3ds: 'Nintendo 3DS',
-		switch: 'Nintendo Switch',
-		ps3: 'PlayStation 3',
-		ps2: 'PlayStation 2',
+		switch: 'Switch',
+		gba: 'Game Boy Advance',
+		ds: 'DS',
+		n3ds: '3DS',
 		mame: 'MAME',
-		gba: 'Game Boy Advance'
+		ps2: 'PlayStation 2',
+		ps3: 'PlayStation 3'
 	};
 	if (win) {
 		systems.xbox360 = 'Xbox 360';

@@ -1022,15 +1022,17 @@ module.exports = async function(arg) {
 				cui.change('checkDonationMenu');
 			}
 		} else if (ui == 'checkDonationMenu') {
-			let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075' +
-				'\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
-			let usrDonorPass = $('#donorPassword').val();
-			if (usrDonorPass == unicodeToChar(password)) {
-				prefs.donor = true;
-				await reload();
-			} else {
-				cui.change('donateMenu');
-				cui.err('incorrect donor password');
+			if (act == 'continue') {
+				let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075' +
+					'\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
+				let usrDonorPass = $('#donorPassword').val();
+				if (usrDonorPass == unicodeToChar(password)) {
+					prefs.donor = true;
+					await reload();
+				} else {
+					cui.change('donateMenu');
+					cui.err('incorrect donor password');
+				}
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {

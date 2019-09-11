@@ -95,12 +95,12 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 
 ## If you like using Bottlenose please donate!
 
-Hi my name is Quinton and this is the part where I beg you for money!  Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use Bottlenose please donate an amount of your choosing.  Cloud saving is coming soon for [patrons](https://www.patreon.com/qashto).  Thank you!
+Hi my name is Quinton and this is the part where I beg you for money!  Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use Bottlenose please donate an amount of your choosing.  Cloud saving is coming soon for Patreon supporters.  Thank you!
 
-Become a patron of Bottlenose on Patreon:  
+Support on Patreon:  
 <https://www.patreon.com/qashto>  
 
-Donate through Paypal:  
+Donate via Paypal:  
 <https://www.paypal.me/qashto/20>
 
 <p><a href="https://www.patreon.com/qashto">
@@ -249,7 +249,7 @@ If Bottlenose has trouble matching your game file name, please take a look at th
 
 ### Missing Cover Art
 
-As of version 1.0.81, Bottlenose should be able to get nearly all of your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in `emu/bottlenose/{sys}/{game.id}/img`.  For more info see the "Images" sections of this README.
+As of version 1.0.81, Bottlenose should be able to get nearly all of your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in the game's image folder.  For more info see the "Images" sections of this README.
 
 ## Contributing to Bottlenose
 
@@ -282,8 +282,6 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 
 ### Images
 
-The following names can be used to specify images:
-
 -   `box` the front of the box
 -   `boxSide` the side of the box
 -   `boxBack` the back of the box
@@ -300,17 +298,7 @@ The following names can be used to specify images:
 -   `memoryBack` the back of a memory card
 -   `promo` a promotional insert included in the game box
 
-Front cover box art is prioritized in this order: box (highest quality), coverFull, cover, box (low quality).  In a future version of Bottlenose users will be able to add image urls from within the UI.  For now, you can add them in the game's `img` object like this:
-
-```javascript
-{
-  "id": "ALERA",
-  "title": "Mario Tennis Aces",
-  "img": {
-    "box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
-  }
-}
-```
+Images can be `.png` or `.jpg`.  Put your images in `emu/bottlenose/{sys}/{game.id}`.  You can access this folder by clicking on the game's box twice in Bottlenose and then clicking on "ImgDir".  Front cover box art is prioritized in this order: box, coverFull, cover.
 
 ## Development Info
 

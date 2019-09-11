@@ -11,6 +11,9 @@ module.exports = async function(arg) {
 
 	const Fuse = require('fuse.js');
 	const rmDiacritics = require('diacritics').remove;
+	const {
+		urlExists
+	} = require('url-exists-promise');
 	global.fs.extract = (input, output, opt) => {
 		opt = opt || {};
 		return new Promise(async (resolve, reject) => {
@@ -462,7 +465,7 @@ module.exports = async function(arg) {
 		await prefsMan.save();
 		await viewerLoad();
 		await removeIntro();
-		cui.change('libMain', sys);
+		cui.change('libMain', sysStyle);
 		cui.resize(true);
 	}
 
@@ -1521,8 +1524,21 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 			let themesPath = __rootDir + '/prefs/themes.json';
 			themes = JSON.parse(await fs.readFile(themesPath));
 			let imgTypes = [
-				'box', 'boxBack', 'boxOpen', 'boxOpenMask', 'manual',
-				'memory', 'memoryBack'
+				`box`, // the front of the box
+				`boxBack`, // the back of the box
+				`boxSide`, // the side of the box
+				`boxOpen`, // the inside of the game's box
+				`boxOpenMask`, // parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
+				`cart`, // the front of the game's (first) cartridge
+				`cover`, // the front facing portion of the cover sleeve, no box
+				`coverFull`, // the entire cover sleeve, no box
+				`coverBack`, // the side facing portion of the cover sleeve, no box
+				`coverSide`, // the side facing portion of the cover sleeve, no box
+				`disc`, // the front of the game's (first) disc
+				`manual`, // the front of the game's manual
+				`memory`, // the front of a memory card
+				`memoryBack`, // the back of a memory card
+				`promo` // a promotional insert included in the game box
 			];
 			for (let system in themes) {
 				let theme = themes[system];
@@ -1588,8 +1604,40 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 		}
 	}
 
+	async function checkForUpdate() {
+		let url = 'https://github.com/quinton-ashley/bottlenose/wiki/Update-Log-v';
+		let ogVer = pkg.version.split('.');
+		let ver = ogVer;
+		let updateAvail = false;
+		while (await urlExists(url + `${++ver[0]}.${0}`)) {}
+		ver[0]--;
+		if (ver[0] != ogVer[0]) {
+			ver[1] = 1;
+			updateAvail = true;
+		}
+		while (await urlExists(url + `${ver[0]}.${++ver[1]}`)) {}
+		ver[1]--;
+		if (ver[1] != ogVer[1]) updateAvail = true;
+
+		// updateAvail = true;
+		if (!updateAvail) return;
+		let updateVer = `${ver[0]}.${ver[1]}`;
+		url += updateVer;
+		$('#dialogs').show();
+		$('#loadDialog0').text(`Update to v${updateVer} available now!`);
+		$('#loadDialog2').text(url);
+		for (let i = 5; i > 0; i--) {
+			$('#loadDialog1').text(`Opening the link to the update log in ${i} seconds`);
+			await delay(1000);
+		}
+		opn(url);
+		await delay(500);
+		return updateVer;
+	}
+
 	electron.getCurrentWindow().setFullScreen(true);
 	await load();
+	if (prefs.load.checkForUpdate && await checkForUpdate()) app.quit();
 	if (prefs.donor) {
 		await reload();
 	} else if (await prefsMan.canLoad() && !prefs.donor) {

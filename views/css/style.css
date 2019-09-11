@@ -374,7 +374,7 @@ img {
 }
 
 #dialogs * {
-	width: 100vw;
+	background-color: #000;
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -1129,7 +1129,7 @@ ul.nav {
 
 .gcn nav {
 	font-family: "Gamecuben", "Gamecuben", Gamecuben;
-	font-size: 40px;
+	font-size: 52px;
 	font-weight: 900;
 	text-transform: lowercase;
 	letter-spacing: -3px;

@@ -97,9 +97,9 @@ module.exports = async function(arg) {
 	let games = []; // array of current games from the systems' db
 	let themes;
 	let emu; // current emulator
-	let templateAmt = 4; // template boxes in each column of the lib viewer
-	let child; // child process running an emulator
-	let childState = 'closed'; // status of the process
+	let child = require('child_process');
+	let emuChild; // emuChild process running an emulator
+	emuChild.state = 'closed'; // status of the process
 	let cmdArgs = [];
 	let recheckImgs = false;
 
@@ -203,6 +203,13 @@ module.exports = async function(arg) {
 					continue;
 				}
 				if (gRegion == 'C' && (region == 'E' || region == 'P')) {
+					continue;
+				}
+			} else if (sys == 'bsnes') {
+				let gRegion = results[i].id.split('-').splice(-2)[0];
+				log(gRegion)
+				await delay(100000);
+				if (gRegion != 'USA') {
 					continue;
 				}
 			}
@@ -762,23 +769,22 @@ module.exports = async function(arg) {
 		log(cmdArgs);
 		log(emuDirPath);
 
-		child = require('child_process')
-			.spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
-				cwd: emuDirPath,
-				stdio: 'inherit',
-				detached: true
-			});
+		emuChild = child.spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
+			cwd: emuDirPath,
+			stdio: 'inherit',
+			detached: true
+		});
 
-		childState = 'running';
+		emuChild.state = 'running';
 
-		child.on('close', (code) => {
+		emuChild.on('close', (code) => {
 			closeEmu(code);
 		});
 	}
 
 	async function closeEmu(code) {
 		log(`emulator closed`);
-		if (childState == 'resetting') {
+		if (emuChild.state == 'resetting') {
 			await powerBtn();
 			return;
 		}
@@ -801,7 +807,7 @@ module.exports = async function(arg) {
 		log('exited with code ' + code);
 		electron.getCurrentWindow().focus();
 		electron.getCurrentWindow().setFullScreen(true);
-		childState = 'closed';
+		emuChild.state = 'closed';
 	}
 
 	async function resetBtn() {
@@ -823,21 +829,21 @@ module.exports = async function(arg) {
 		}
 		log(act + ' held for ' + timeHeld);
 		let ui = cui.ui;
-		if (ui == 'playingBack' && childState == 'running') {
+		if (ui == 'playingBack' && emuChild.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
 			) {
 				log('shutting down emulator');
-				childState = 'closing';
-				child.kill('SIGINT');
+				emuChild.state = 'closing';
+				emuChild.kill('SIGINT');
 			} else if (
 				act == prefs.inGame.reset.hold &&
 				timeHeld > prefs.inGame.reset.time
 			) {
 				log('resetting emulator');
-				childState = 'resetting';
-				child.kill('SIGINT');
+				emuChild.state = 'resetting';
+				emuChild.kill('SIGINT');
 			}
 		}
 	}
@@ -896,8 +902,12 @@ module.exports = async function(arg) {
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
+			let $elem = $('#pauseMenu .uie[name="toggleCover"]');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
+				$elem.text('auto-hide cover overlay');
+			} else {
+				$elem.text('show cover overlay');
 			}
 		} else if (ui == 'libMain') {
 			if (act == 'b' && !onMenu) {
@@ -1580,6 +1590,7 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 		dynRowStyle += '</style>';
 		$('body').append(dynRowStyle);
 		let template = themes[sysStyle].template;
+		let templateAmt = 4;
 		await addTemplates(template, rows, templateAmt);
 		for (let i = 0, j = 0; i < games.length; i++) {
 			try {

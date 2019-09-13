@@ -1,4 +1,13 @@
 {
+	"bnes": {
+		"default":  {
+			"id": "SHVC-1A1B-06-MW-USA-0",
+			"title": "Super Mario World"
+		},
+		"template": {
+			"coverFull": "https://storage.googleapis.com/images.dustcoveredgames.com/eBay/images/templates/SNES-Template---Shenske.jpg"
+		}
+	},
 	"ds": {
 		"default": {
 			"id": "ASME",

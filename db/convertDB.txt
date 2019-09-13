@@ -32,3 +32,16 @@ src: $ ./mame64 --list
 
 regex: (\S+)\s*("[^\n]+)
 replace: "id": "$1",\n\t"title": $2\n}, {
+
+// bsnes
+
+regex:
+
+game\n[^\n]*\n[^\n]*\n[^:\n]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-*([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)\n[^:\n]*: *([^\n]*)\n((  )+[^\n]*\n)+
+
+replace:
+
+}, {\n\t"id": "$4",\n\t"revision": "$3",\n\t"title": "$1",\n\t"region": "$2"
+
+
+\/\/[^\-]*[^\n]*\n[^\n]*\n

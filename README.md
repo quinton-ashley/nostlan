@@ -2,7 +2,10 @@
 
 Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
 [Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Bottlenose on patreon](https://www.patreon.com/qashto) to gain access to premium features!
-![](https://raw.githubusercontent.com/quinton-ashley/bottlenose/master/views/img/icon.png)
+
+<p><a href="https://www.patreon.com/qashto">
+<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/banner.png">
+</a></p>
 
 ## A what?
 
@@ -172,7 +175,9 @@ The other included gamepad mapping profile types are "Consistent", for non-adapt
 
 ## System Requirements
 
-Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad.
+Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
+
+Warning!  If you pay for internet by bandwidth be aware that for large game libraries Bottlenose will download a lot of image files and this will take a lot of bandwidth.
 
 ## Setting up Bottlenose
 

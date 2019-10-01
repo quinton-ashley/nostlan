@@ -1,17 +1,17 @@
-# Bottlenose
+# Nostlan
 
-Bottlenose is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Bottlenose](https://github.com/quinton-ashley/bottlenose/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Bottlenose on patreon](https://www.patreon.com/qashto) to gain access to premium features!
+Nostlan is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
+[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Nostlan on patreon](https://www.patreon.com/qashto) to gain access to premium features!
 
 <p><a href="https://www.patreon.com/qashto">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/banner.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
 </a></p>
 
 ## A what?
 
 A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulator apps have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
 
-Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Bottlenose has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
+Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Nostlan has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
 
 ## Features
 
@@ -21,84 +21,84 @@ Bottlenose looks similar to media viewers like Kaleidescape and AppleTV.  You ca
 -   _nostalgic_ UI themes for each supported console
 -   fancy scroll direction alternation effect on rows in cover view mode
 -   uses individual emulators: no cores and no controller input transfer lag
--   most controllers connect to Bottlenose automatically, no setup required
+-   most controllers connect to Nostlan automatically, no setup required
 -   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
 -   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
 -   advanced customization: edit launch commands and change game art
--   try out Bottlenose in demo mode if don't have any games on your computer
+-   try out Nostlan in demo mode if don't have any games on your computer
 -   cross-platform support for Linux, macOS, and Windows!
 
-## Supported Emulators
+## Supported Emulators (click an image to see it in full quality 4K)
 
 ### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gcn_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn_LQ.png">
 </a></p>
 
 ### Cemu (Wii U) [Windows & Linux* using Wine]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wiiu_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_LQ.png">
 </a></p>
 
 ### Yuzu (Switch) [Linux & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/switch_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_LQ.png">
 </a></p>
 
 ### Citra (3DS) [Linux, macOS, & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/n3ds_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds_LQ.png">
 </a></p>
 
 ### DeSmuME (DS) [Linux, macOS & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ds_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds_LQ.png">
 </a></p>
 
 ### MAME [Linux, macOS, & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/mame_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame_LQ.png">
 </a></p>
 
 ### mGBA (GBA) [Linux, macOS, & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/gba_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba_LQ.png">
 </a></p>
 
 ### PCSX2 (PS2) [Linux, macOS, & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps2_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps2.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps2_LQ.png">
 </a></p>
 
 ### RPCS3 (PS3) [Linux & Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/ps3_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps3.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps3_LQ.png">
 </a></p>
 
 ### Xenia (Xbox 360) [Windows]
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/xbox360_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360_LQ.png">
 </a></p>
 
 ### Dolphin + Wii Theme
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/wii_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wii.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wii_LQ.png">
 </a></p>
 
-## If you like using Bottlenose please donate!
+## If you like using Nostlan please donate!
 
-Hi my name is Quinton and this is the part where I beg you for money!  Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use Bottlenose please donate an amount of your choosing.  Cloud saving is coming soon for Patreon supporters.  Thank you!
+Hi my name is Quinton and this is the part where I beg you for money!  Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use Nostlan please donate an amount of your choosing.  Cloud saving is coming soon for Patreon supporters.  Thank you!
 
 Support on Patreon:  
 <https://www.patreon.com/qashto>  
@@ -107,17 +107,17 @@ Donate via Paypal:
 <https://www.paypal.me/qashto/20>
 
 <p><a href="https://www.patreon.com/qashto">
-<img src="https://raw.githubusercontent.com/quinton-ashley/bottlenose-screenshots/master/banner.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
 </a></p>
 
 ## Premium Features
 
-Support the development of Bottlenose on [Patreon](https://www.patreon.com/qashto) to gain access to these upcoming features!
+Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these upcoming features!
 
 Coming Soon:
 
 -   UI for save file management
--   cloud saving with Bottlenose will automatically sync your emulator game saves and save states to a folder in Dropbox, OneDrive, etc. play across multiple devices without losing in-game progress!
+-   cloud saving with Nostlan will automatically sync your emulator game saves and save states to a folder in Dropbox, OneDrive, etc. play across multiple devices without losing in-game progress!
 
 Milestone Goals:
 
@@ -127,9 +127,9 @@ Milestone Goals:
 -   easy way to mix and swap texture packs for Dolphin
 -   create custom themes
 
-## How is Bottlenose different from other front-ends?
+## How is Nostlan different from other front-ends?
 
-When I created Bottlenose I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.  This is a screenshot of Emulation Station, which is a prime example of this problem.
+When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.  This is a screenshot of Emulation Station, which is a prime example of this problem.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
 This is Launchbox for Windows, it's the most popular frontend.  Note that a lot of screen space is wasted and the game box art is thumbnail sized.
@@ -138,15 +138,15 @@ This is Launchbox for Windows, it's the most popular frontend.  Note that a lot 
 Windows Explorer, despite not having gamepad support, is also surprisingly popular.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Retroarch is a different kind of frontend.  It uses separate cores instead of individual emulator apps like Bottlenose does.  Game art is very low res and the interface is barebones.  It runs on a lot of platforms and seems good for small devices.
+Retroarch is a different kind of frontend.  It uses separate cores instead of individual emulator apps like Nostlan does.  Game art is very low res and the interface is barebones.  It runs on a lot of platforms and seems good for small devices.
 ![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
 
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res and grid spacing is too wide though.  It doesn't support newer emulators either.
 ![](http://openemu.org/img/intro-gb-grid.png)
 
-## Using Bottlenose
+## Using Nostlan
 
-Bottlenose auto detects controllers when you press any button.  Controller type will be automatically determined so manual button mapping is not required.  The console themed cover overlay menu displays the basic options on any given screen.  On any game library view you can press the "Start" button on your controller or click "Bottlenose" on the overlay to access the settings menu.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Reset" will start the emulator without a game.  "Power" starts the emulator with the selected game.
+Nostlan auto detects controllers when you press any button.  Controller type will be automatically determined so manual button mapping is not required.  The console themed cover overlay menu displays the basic options on any given screen.  On any game library view you can press the "Start" button on your controller or click "Nostlan" on the overlay to access the settings menu.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Reset" will start the emulator without a game.  "Power" starts the emulator with the selected game.
 
 ## What is Adaptive Button Mapping?
 
@@ -175,13 +175,13 @@ The other included gamepad mapping profile types are "Consistent", for non-adapt
 
 ## System Requirements
 
-Bottlenose will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Bottlenose on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
+Nostlan will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Nostlan on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
 
-Warning!  If you pay for internet by bandwidth be aware that for large game libraries Bottlenose will download a lot of image files and this will take a lot of bandwidth.
+Warning!  If you pay for internet by bandwidth be aware that for large game libraries Nostlan will download a lot of image files and this will take a lot of bandwidth.
 
-## Setting up Bottlenose
+## Setting up Nostlan
 
-If you do not want to use the optional template file structure, simply select "continue" on the setup page.  Bottlenose will prompt you for the location of your game directories.  It may also prompt for the emulator app before you launch a game with Bottlenose for the first time.  Setup as you go and Bottlenose will save these locations in your preferences file.
+If you do not want to use the optional template file structure, simply select "continue" on the setup page.  Nostlan will prompt you for the location of your game directories.  It may also prompt for the emulator app before you launch a game with Nostlan for the first time.  Setup as you go and Nostlan will save these locations in your preferences file.
 
 ## OPTIONAL Template File Structure
 
@@ -207,13 +207,13 @@ emu (root folder can have any name)
         └── Turbo.rpx
 ```
 
-Bottlenose was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Bottlenose will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Bottlenose will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Nostlan was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Nostlan will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
-On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Bottlenose will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
+On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Nostlan will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
 
-On macOS, Bottlenose looks for your emu apps in `Applications/`.
+On macOS, Nostlan looks for your emu apps in `Applications/`.
 
-On Linux, Bottlenose launches most emu apps via the command line and will prompt you for the location of other emu apps.
+On Linux, Nostlan launches most emu apps via the command line and will prompt you for the location of other emu apps.
 
 ## User Preferences
 
@@ -225,7 +225,7 @@ On Linux, Bottlenose launches most emu apps via the command line and will prompt
 
 `ui.getBackCoverHQ` gets the back of the box in high quality for games without available full covers
 
-`session.sys` the last game library viewed, Bottlenose will load this library on start-up next time the app is run
+`session.sys` the last game library viewed, Nostlan will load this library on start-up next time the app is run
 
 `session.{sys}.gameID` the id of the last game that was run for the specified system
 
@@ -250,15 +250,15 @@ Please [send me](mailto:qashto@gmail.com) a description of any errors with the r
 
 ### Mismatched or Unidentified Games
 
-If Bottlenose has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Bottlenose menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Bottlenose will be able to find matches in its game databases.  I know that using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this for certain systems in the far future.  MAME does not have this problem but Bottlenose might've still downloaded the wrong cover art.  If your game was matched in the database but the cover art is wrong email me and let me know.
+If Nostlan has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Nostlan menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Nostlan will be able to find matches in its game databases.  I know that using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this for certain systems in the far future.  MAME does not have this problem but Nostlan might've still downloaded the wrong cover art.  If your game was matched in the database but the cover art is wrong email me and let me know.
 
 ### Missing Cover Art
 
-As of version 1.0.81, Bottlenose should be able to get nearly all of your game images.  If Bottlenose can't find images for a game in the Bottlenose database you can put cover art in the game's image folder.  For more info see the "Images" sections of this README.
+As of version 1.0.81, Nostlan should be able to get nearly all of your game images.  If Nostlan can't find images for a game in the Nostlan database you can put cover art in the game's image folder.  For more info see the "Images" sections of this README.
 
-## Contributing to Bottlenose
+## Contributing to Nostlan
 
-You can contribute to Bottlenose to add to and update existing game databases, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
+You can contribute to Nostlan to add to and update existing game databases, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
 
 ```javascript
 {
@@ -303,19 +303,19 @@ You can contribute to Bottlenose to add to and update existing game databases, m
 -   `memoryBack` the back of a memory card
 -   `promo` a promotional insert included in the game box
 
-Images can be `.png` or `.jpg`.  Put your images in `emu/bottlenose/{sys}/{game.id}`.  You can access this folder by clicking on the game's box twice in Bottlenose and then clicking on "ImgDir".  Front cover box art is prioritized in this order: box, coverFull, cover.
+Images can be `.png` or `.jpg`.  Put your images in `emu/nostlan/{sys}/{game.id}`.  You can access this folder by clicking on the game's box twice in Nostlan and then clicking on "ImgDir".  Front cover box art is prioritized in this order: box, coverFull, cover.
 
 ## Development Info
 
-Bottlenose is open source!  I loved using Electron to make Bottlenose.  I highly recommend it to developers interested in creating native desktop apps with node.js.  Bottlenose is written in Javascript, Pug, HTML and CSS.  It uses jQuery, Bootstrap, and Contro.
+Nostlan is open source!  I loved using Electron to make Nostlan.  I highly recommend it to developers interested in creating native desktop apps with node.js.  Nostlan is written in Javascript, Pug, HTML and CSS.  It uses jQuery, Bootstrap, and Contro.
 
-## Contributing to Bottlenose (code)
+## Contributing to Nostlan (code)
 
 PRs are welcome!  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Email me if you want to collaborate on this project!
 
 ## Credits
 
-Obviously, Bottlenose wouldn't exist without the developers of these emulators.  Please support the development of emulators you use!
+Obviously, Nostlan wouldn't exist without the developers of these emulators.  Please support the development of emulators you use!
 
 ### Logo
 
@@ -327,7 +327,7 @@ I converted several game database text files to JSON from [gametdb](https://www.
 
 ### Game Artwork
 
-Bottlenose downloads publicly available images under Fair Use.  
+Nostlan downloads publicly available images under Fair Use.  
 
 High quality box scans of popular games for many systems are downloaded from [Andy Decarli's image database](http://andydecarli.com/Video%20Games/Collection).  
 
@@ -382,7 +382,7 @@ MAME loader is a combination of two codepens: [Vadim Huck's](https://codepen.io/
 
 ## Legal Disclaimer
 
-Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Bottlenose does not condone piracy.  Bottlenose is open source software that does not infringe on any copyrights of texture packers, developers, or publishers.  Bottlenose is not affiliated with Nintendo, Sony, or Microsoft.  Anyone asking for or sharing information related to digital piracy on this project's Github issues will have their comments removed and flagged.
+Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Nostlan does not condone piracy.  Nostlan is open source software that does not infringe on any copyrights of texture packers, developers, or publishers.  Nostlan is not affiliated with Nintendo, Sony, or Microsoft.  Anyone asking for or sharing information related to digital piracy on this project's Github issues will have their comments removed and flagged.
 
 ## COPYRIGHT AND TRADEMARK INFO
 

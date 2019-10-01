@@ -30,7 +30,7 @@ module.exports = async function(arg) {
 		});
 	};
 
-	// Bottlenose dir location cannot be changed.
+	// Nostlan dir location cannot be changed.
 	// Only used to store small config files, no images,
 	// so that it doesn't take much space on the user's
 	// main hard drive.  I don't give users a choice
@@ -38,7 +38,14 @@ module.exports = async function(arg) {
 	// in a set location.
 	// The user's preferences and game libs json databases
 	// are stored here.
-	const usrDir = os.homedir() + '/Documents/emu/bottlenose';
+	let usrDir = os.homedir() + '/Documents/emu/bottlenose';
+
+	if (usrDir && (await fs.exists(usrDir))) {
+		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
+	}
+	usrDir = path.join(usrDir, '..') + '/nostlan';
+
+
 	log(usrDir);
 
 	// dl is a helper lib I made for downloading images
@@ -91,14 +98,13 @@ module.exports = async function(arg) {
 	}
 	let sys; // current system
 	let sysStyle = ''; // style of that system
-	let emuDir = ''; // bottlenose dir is stored here
-	let btlDir = ''; // stores game art images and other game media
+	let emuDir = ''; // nostlan dir is stored here
 	let outLog = ''; // path to the game search output log file
 	let games = []; // array of current games from the systems' db
 	let themes;
 	let emu; // current emulator
 	let child = require('child_process');
-	let emuChild; // emuChild process running an emulator
+	let emuChild = {}; // emuChild process running an emulator
 	emuChild.state = 'closed'; // status of the process
 	let cmdArgs = [];
 	let recheckImgs = false;
@@ -356,6 +362,7 @@ module.exports = async function(arg) {
 					term = term.replace(/Marvel Vs.*/gi, 'Marvel Vs Capcom 2');
 				}
 				// special subs part 3
+				term = term.replace(/jak *a*n*d* *daxter *the/gi, 'Jak and Daxter: The');
 				term = term.replace(/pes *(\d\d\d\d).*/gi, 'Pro Evolution Soccer $1');
 				term = term.replace(/Dragonball/gi, 'Dragon Ball');
 				term = term.replace(/Goku 2/gi, 'Goku II');
@@ -464,9 +471,8 @@ module.exports = async function(arg) {
 			await rescan();
 		}
 		emuDir = emuDir.replace(/\\/g, '/');
-		btlDir = emuDir + '/bottlenose';
-		await fs.ensureDir(btlDir);
-		prefs.btlDir = btlDir;
+		prefs.nlaDir = emuDir + '/nostlan';
+		await fs.ensureDir(prefs.nlaDir);
 		prefs.session.sys = sys;
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 		await prefsMan.save();
@@ -487,8 +493,8 @@ module.exports = async function(arg) {
 			if (fileName == 'setupMenu') {
 				if (win) {
 					html += `Windows users should not store emulator apps or games ` +
-						`in \`Program Files\` or any other folder that Bottlenose will ` +
-						`not have read/write access to.  On Windows, Bottlenose will ` +
+						`in \`Program Files\` or any other folder that Nostlan will ` +
+						`not have read/write access to.  On Windows, Nostlan will ` +
 						`look for emulator executables in the \`BIN\` folder or the ` +
 						`default install location of that emulator.
 \`\`\`
@@ -506,10 +512,10 @@ module.exports = async function(arg) {
 `;
 				} else {
 					if (mac) {
-						html += 'On macOS, Bottlenose will look for emulator ' +
+						html += 'On macOS, Nostlan will look for emulator ' +
 							'apps in `/Applications/`';
 					} else {
-						html += 'On Linux, Bottlenose will look for emulator apps in ' +
+						html += 'On Linux, Nostlan will look for emulator apps in ' +
 							'their default install locations.';
 					}
 					html += `
@@ -526,18 +532,12 @@ module.exports = async function(arg) {
 				html += 'Choose "continue" when you\'re ready.';
 				html = html.replace(/\t/g, '  ');
 			}
-			if (fileName == 'welcomeMenu') {
-				html = pug('.md', null, md(html) + pug(`img(src="../img/icon.png")`));
-			} else {
-				html = pug('.md', null, md(html));
-			}
+			html = pug('.md', null, md(html));
 			file = path.parse(file);
 			$('#' + file.name).prepend(html);
 		}
 		if (await prefsMan.canLoad()) {
 			await prefsMan.load();
-			emuDir = path.join(prefs.btlDir, '..');
-
 			// clean up deprecated versions of the prefs file
 			if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
 			if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
@@ -550,6 +550,17 @@ module.exports = async function(arg) {
 				delete prefs.ui.gamepad.map;
 			}
 			if (prefs['3ds']) prefs.n3ds = prefs['3ds'];
+
+			//TODO move btldir
+			if (prefs.btlDir) {
+				prefs.nlaDir = path.join(prefs.btlDir, '..') + '/nostlan';
+				if (await fs.exists(prefs.btlDir)) {
+					await fs.move(prefs.btlDir, prefs.nlaDir);
+				}
+				delete prefs.btlDir;
+			}
+			emuDir = path.join(prefs.nlaDir, '..');
+
 		}
 		// currently supported systems
 		let sysMenuHTML = '.row-y\n';
@@ -601,7 +612,7 @@ module.exports = async function(arg) {
 			labels = ['Play', 'Flip', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'infoSelect') {
-			labels = ['Manuals', 'ImgDir', 'Back'];
+			labels = ['Manual', 'ImgDir', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Power', 'Reset', 'Open'];
@@ -614,11 +625,6 @@ module.exports = async function(arg) {
 			labels = [' ', ' ', 'Back'];
 		} else if (state == 'pauseMenu') {
 			labels = ['Quit', 'Mini', 'Back'];
-		}
-		if (subState == 'gcn') {
-			for (let i in labels) {
-				labels[i] = labels[i].toLowerCase();
-			}
 		}
 		$('.text.power').text(labels[0]);
 		$('.text.reset').text(labels[1]);
@@ -796,7 +802,7 @@ module.exports = async function(arg) {
 			cui.change('libMain');
 		}
 		if (code) {
-			let erMsg = `${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Bottlenose.  Check online to make sure ${prefs[sys].emu} can boot the game.\n<code>`;
+			let erMsg = `${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[sys].emu} can boot the game.\n<code>`;
 			for (let i in cmdArgs) {
 				if (i == 0) erMsg += '$ ';
 				erMsg += `${cmdArgs[i]} `;
@@ -1058,26 +1064,23 @@ module.exports = async function(arg) {
 				cui.change('setupMenu');
 			}
 		} else if (ui == 'setupMenu') {
-			if (act == 'new' || act == 'new-in-docs' || act == 'old') {
-				let msg = 'choose the folder you want to template to go in';
-				if (act == 'old') {
-					msg = 'choose the folder EMULATORS from your WiiUSBHelper ' +
-						'file structure';
-				}
-				if (act == 'new-in-docs') {
-					emuDir = os.homedir() + '/Documents';
-				} else {
-					emuDir = dialog.selectDir(msg);
-				}
-				if (!emuDir) return false;
-				if (act != 'old') emuDir += '/emu';
-				await createTemplate(emuDir);
-				if (act != 'old') opn(emuDir);
+			let msg = 'choose the folder you want to template to go in';
+			if (act == 'old') {
+				msg = 'choose the folder EMULATORS from your WiiUSBHelper ' +
+					'file structure';
 			}
-			if (act == 'continue' || act == 'old') {
-				if (!(await fs.exists(emuDir))) {
-					emuDir = os.homedir() + '/Documents/emu';
-				}
+			if (act == 'new-in-docs') {
+				emuDir = os.homedir() + '/Documents';
+			} else {
+				emuDir = dialog.selectDir(msg);
+			}
+			if (!emuDir) return false;
+			if (act != 'old') emuDir += '/emu';
+			await createTemplate(emuDir);
+			if (act != 'old') {
+				opn(emuDir);
+			} else {
+				if (!(await fs.exists(emuDir))) return false;
 				await createTemplate(emuDir);
 				cui.change('sysMenu');
 			}
@@ -1248,20 +1251,20 @@ module.exports = async function(arg) {
 
 		// deprecated 3ds to n3ds
 		if (sys == 'n3ds') {
-			let depDir = `${prefs.btlDir}/3ds`;
+			let depDir = `${prefs.nlaDir}/3ds`;
 			if (await fs.exists(depDir)) {
-				await fs.move(depDir, `${prefs.btlDir}/n3ds`);
+				await fs.move(depDir, `${prefs.nlaDir}/n3ds`);
 			}
 		}
 		// deprecated template dir
-		let depTemplateDir = `${prefs.btlDir}/${sys}/_TEMPLATE`;
+		let depTemplateDir = `${prefs.nlaDir}/${sys}/_TEMPLATE`;
 		if (await fs.exists(depTemplateDir)) {
 			if (sys == 'wii') {
 				await fs.move(depTemplateDir + '/img',
-					`${prefs.btlDir}/${sys}/_TEMPLATE_gcn`);
+					`${prefs.nlaDir}/${sys}/_TEMPLATE_gcn`);
 			} else {
 				await fs.move(depTemplateDir + '/img',
-					`${prefs.btlDir}/${sys}/_TEMPLATE_${sys}`);
+					`${prefs.nlaDir}/${sys}/_TEMPLATE_${sys}`);
 			}
 			await fs.remove(depTemplateDir);
 		}
@@ -1338,9 +1341,9 @@ module.exports = async function(arg) {
 			}
 		}
 		if (_gamesLength != games.length) await outputGamesJSON();
-		if (sys != 'mame' && (!themes[sysStyle].default ||
+		if (sys != 'mame' && sys != 'gba' && (!themes[sysStyle].default ||
 				!(await getImg(themes[sysStyle].default, 'box')))) {
-			er('ERROR: No default box image found');
+			cui.err('ERROR: No default box image found for ' + themes[sysStyle].default.title + ' in the directory ' + getImgDir(themes[sysStyle].default));
 			return;
 		}
 
@@ -1348,7 +1351,7 @@ module.exports = async function(arg) {
 	}
 
 	function getImgDir(game) {
-		let imgDir = `${prefs.btlDir}/${sys}/${game.id}`;
+		let imgDir = `${prefs.nlaDir}/${sys}/${game.id}`;
 		if (emu == 'mame') {
 			imgDir = `${emuDir}/MAME/BIN/artwork/${game.id}`;
 		}
@@ -1616,7 +1619,7 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 	}
 
 	async function checkForUpdate() {
-		let url = 'https://github.com/quinton-ashley/bottlenose/wiki/Update-Log-v';
+		let url = 'https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v';
 		let ogVer = pkg.version.split('.');
 		let ver = ogVer;
 		let updateAvail = false;

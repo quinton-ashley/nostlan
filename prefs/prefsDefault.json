@@ -118,7 +118,7 @@
 				"map": {}
 			}
 		},
-		"maxRows": 8,
+		"maxColumns": 8,
 		"getBackCoverHQ": false,
 		"getExtraImgs": false,
 		"autoHideCover": false

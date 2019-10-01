@@ -3314,7 +3314,9 @@
 },{
 "id": "AWSP", "title": "Worms: Open Warfare"
 },{
-"id": "AWTE", "title": "Game & Watch Collection"
+"id": "AWTE", "title": "Game & Watch Collection", "img": {
+	"coverFull": "https://www.covercentury.com/covers/nintendods/g/nds_gameandwatchcollection_jp.jpg"
+}
 },{
 "id": "AWTJ", "title": "Game & Watch Collection"
 },{

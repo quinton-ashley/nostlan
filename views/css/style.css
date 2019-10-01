@@ -570,19 +570,19 @@ game.ds.flip .shade {
 	border-radius: 0;
 }
 
-.ds .zoom-gameManualSelect {
+.ds #infoSelect.zoom-gameManualSelect {
 	transform: translate(48vh,-4vh) scale(1.17);
 }
 
-.ds .zoom-gameMediaSelect {
+.ds #infoSelect.zoom-gameMediaSelect {
 	transform: translate(-95vh,-24vh) scale(2);
 }
 
-.ds .zoom-gameMemorySelect {
+.ds #infoSelect.zoom-gameMemorySelect {
 	transform: translate(-146vh,129vh) scale(4);
 }
 
-.ds .zoom-gameTexpSelect {
+.ds #infoSelect.zoom-gameTexpSelect {
 	transform: translate(34vh,0vh) scale(1);
 }
 /*================GBA Game Lib Viewer====================*/
@@ -898,21 +898,20 @@ game.flip img.coverFull {
 
 #view {
 	font-family: "Nintender", "Nintender", Nintender;
-	font-size: 24px;
+	font-size: 48px;
+	line-height: 43px;
 	font-weight: bold;
 	text-align-last: center;
 	-webkit-appearance: none;
-	border-width: 4px;
+	border-width: 8px;
 	border-style: solid;
 	border-color: var(--view-text-color, var(--cover-text-color));
 	color: var(--view-text-color, var(--cover-text-color));
 	background-color: transparent;
-	border-radius: 20px;
-	margin: 20px auto 0;
-	padding: 0 5% 0 7%;
-	width: fit-content;
-	height: 40px;
-	transform: translate(0%, -85%);
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
@@ -1051,8 +1050,8 @@ ul.nav {
 	height: 100%;
 }
 /*================3DS Cover========================*/
-.n3ds {
-	font-weight: 700;
+.n3ds .console .text {
+	font-weight: 800;
 }
 /*================PS2 + PS3 Cover========================*/
 @font-face {
@@ -1064,12 +1063,12 @@ ul.nav {
 .ps3 #view,
 .ps4 #view {
 	font-family: 'Sownie', sans-serif;
-	font-size: 1.74vw;
+	font-size: 2.6vw;
 	text-transform: uppercase;
 	border: none;
 	box-shadow: none;
 	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
-	transform: translate(0%, -67%) scale(1, 2);
+	transform: translate(0%, 50%) scale(1, 1.4);
 	text-rendering: geometricPrecision;
 }
 @font-face {
@@ -1144,8 +1143,8 @@ ul.nav {
 
 .ds .console .text {
 	font-family: "nDS", "nDS", nDS;
-	font-size: 5vw;
-	font-weight: 700;
+	transform: scale(1.6);
+	font-weight: 1000;
 }
 /*================gba Cover====================*/
 @font-face {
@@ -1205,8 +1204,23 @@ ul.nav {
 	font-weight: 900;
 }
 /*================Xbox 360 Cover========================*/
+@font-face {
+	font-family: X360;
+	src: local("X360"), local("X360"), url("../fonts/X360.ttf");
+}
+
 .xbox360 .console .text {
 	font-weight: 700;
+}
+
+.xbox360 #view {
+	font-family: 'X360', sans-serif;
+	font-size: 3.6vw;
+	text-transform: uppercase;
+	margin-left: -5%;
+	border: none;
+	box-shadow: none;
+	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
 }
 /*================Misc====================*/
 .hide,

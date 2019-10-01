@@ -360,6 +360,8 @@ module.exports = async function(arg) {
 					term = term.replace(/ # GBA/gi, '');
 				} else if (sys == 'ps2') {
 					term = term.replace(/Marvel Vs.*/gi, 'Marvel Vs Capcom 2');
+				} else if (sys == 'ds') {
+					term = term.replace(/^\w\d\d\d: /, '');
 				}
 				// special subs part 3
 				term = term.replace(/jak *a*n*d* *daxter *the/gi, 'Jak and Daxter: The');
@@ -550,8 +552,11 @@ module.exports = async function(arg) {
 				delete prefs.ui.gamepad.map;
 			}
 			if (prefs['3ds']) prefs.n3ds = prefs['3ds'];
-
-			//TODO move btldir
+			if (prefs.ui.maxRows) {
+				prefs.ui.maxColumns = prefs.ui.maxRows;
+				delete prefs.ui.maxRows;
+			}
+			// move old bottlenose directory
 			if (prefs.btlDir) {
 				prefs.nlaDir = path.join(prefs.btlDir, '..') + '/nostlan';
 				if (await fs.exists(prefs.btlDir)) {
@@ -560,7 +565,6 @@ module.exports = async function(arg) {
 				delete prefs.btlDir;
 			}
 			emuDir = path.join(prefs.nlaDir, '..');
-
 		}
 		// currently supported systems
 		let sysMenuHTML = '.row-y\n';
@@ -594,7 +598,7 @@ module.exports = async function(arg) {
 			let mod = 24;
 			if ((/ps/i).test(sys)) mod = -8;
 			if (adjust || cvHeight != cpHeight) {
-				$cvSel.css('margin-top', (cpHeight + mod) * .5);
+				$cvSel.css('margin-top', (cpHeight + mod) * .5 - cvHeight * .5 - 4);
 				$('nav').height(cpHeight + 24);
 			}
 		}
@@ -1374,7 +1378,7 @@ module.exports = async function(arg) {
 		return file;
 	}
 
-	async function addCover(game, reelNum) {
+	async function addCover(game, column) {
 		let cl1 = '';
 		let file = await imgExists(game, 'box');
 		if (!file) {
@@ -1398,7 +1402,7 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 		img${cl1 + ((cl1)?'':'.hide')}(src="${(cl1)?file:''}")
 		.shade.p-0.m-0${(cl1||(game.sys||sys)=='switch'||(game.sys||sys)=='gba')?'':'.hide'}
 `;
-		$('.reel.r' + reelNum).append(pug(cover));
+		$('.reel.r' + column).append(pug(cover));
 		return true;
 	}
 
@@ -1521,8 +1525,8 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 		return emuAppPath;
 	}
 
-	async function addTemplates(template, rows, num) {
-		for (let i = 0; i < rows; i++) {
+	async function addTemplates(template, cols, num) {
+		for (let i = 0; i < cols; i++) {
 			for (let j = 0; j < num; j++) {
 				await addCover(template, i);
 			}
@@ -1571,44 +1575,53 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 		}
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		await loadImages();
-		let rows = prefs.ui.maxRows || 8;
-		if (games.length < 42) rows = 8;
-		if (games.length < 18) rows = 4;
-		if (games.length < 4) rows = 2;
-		$('style.gameViewerRowsStyle').remove();
+		let cols = prefs.ui.maxColumns || 8;
+		if (games.length < 42) cols = 8;
+		if (games.length < 18) cols = 4;
+		if (games.length < 4) cols = 2;
+		$('style.gameViewerColsStyle').remove();
 		let $glv = $('#libMain');
-		let dynRowStyle = '<style class="gameViewerRowsStyle" type="text/css">' +
-			`.reel {width: ${1 / rows * 100}%;}`
-		for (let i = 0; i < rows; i++) {
+		let dynColStyle = '<style class="gameViewerColsStyle" type="text/css">' +
+			`.reel {width: ${1 / cols * 100}%;}`
+		for (let i = 0; i < cols; i++) {
 			$glv.append(pug(
 				`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`
 			));
-			dynRowStyle += `.reel.r${i} {left:  ${i / rows * 100}%;}`;
+			dynColStyle += `.reel.r${i} {left:  ${i / cols * 100}%;}`;
 		}
-		dynRowStyle += `
+		dynColStyle += `
 .cui-gamepadConnected .reel .uie.cursor {
-	outline: ${Math.abs(7-rows)}px dashed white;
-	outline-offset: ${ 9-rows}px;
+	outline: ${Math.abs(7-cols)}px dashed white;
+	outline-offset: ${ 9-cols}px;
 }`;
-		dynRowStyle += '</style>';
-		$('body').append(dynRowStyle);
+		dynColStyle += '</style>';
+		$('body').append(dynColStyle);
 		let template = themes[sysStyle].template;
 		let templateAmt = 4;
-		await addTemplates(template, rows, templateAmt);
-		for (let i = 0, j = 0; i < games.length; i++) {
+		await addTemplates(template, cols, templateAmt);
+		let mameSetRegex = /set [2-9]/i;
+		for (let i = 0, col = 0; i < games.length; i++) {
 			try {
-				for (let k = 0; k < rows; k++) {
-					if (i < games.length * (k + 1) / rows) {
-						await addCover(games[i], k);
+				while (col < cols) {
+					if (i < games.length * (col + 1) / cols) {
+						// temp code for hiding other game versions
+						// the ability to select different versions of MAME games
+						// aka "sets" will be added in the future
+						if (sys == 'mame') {
+							if (mameSetRegex.test(games[i].title)) break;
+							if (i != 0 && games[i - 1].img && games[i].img &&
+								games[i - 1].img.box == games[i].img.box) break;
+						}
+						await addCover(games[i], col);
 						break;
 					}
+					col++;
 				}
-				j++;
 			} catch (ror) {
-				log(ror);
+				er(ror);
 			}
 		}
-		await addTemplates(template, rows, templateAmt);
+		await addTemplates(template, cols, templateAmt);
 		cui.addView('libMain', {
 			hoverCurDisabled: true
 		});

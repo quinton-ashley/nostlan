@@ -9,9 +9,9 @@ Nostlan is a _high quality_ front-end launcher for video game emulators!  Availa
 
 ## A what?
 
-A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulator apps have basic game list UIs that you can interact with using a mouse or keyboard but not a game controller.
+A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulator apps have basic game list UIs that you can interact with using a mouse/keyboard but not a game controller.
 
-Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other front-ends, Nostlan has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
+Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other popular front-end launchers for video game emulators, Nostlan has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
 
 ## Features
 
@@ -24,7 +24,7 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can i
 -   most controllers connect to Nostlan automatically, no setup required
 -   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
 -   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
--   advanced customization: edit launch commands and change game art
+-   advanced customization: edit launch commands
 -   try out Nostlan in demo mode if don't have any games on your computer
 -   cross-platform support for Linux, macOS, and Windows!
 
@@ -129,7 +129,7 @@ Milestone Goals:
 
 ## How is Nostlan different from other front-ends?
 
-When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.  This is a screenshot of Emulation Station, which is a prime example of this problem.
+The name Nostlan, is a portmanteau of "nostalgia launcher".  When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.  This is a screenshot of Emulation Station, which is a prime example of this problem.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
 This is Launchbox for Windows, it's the most popular frontend.  Note that a lot of screen space is wasted and the game box art is thumbnail sized.
@@ -187,13 +187,24 @@ If you do not want to use the optional template file structure, simply select "c
 
     📁 emu (root folder can have any name)
     ├─┬ 📁 nostlan (image folder)
-    │ ├─┬ 📁 \_usr
+    │ ├─┬ 📁 usr
     │ │ ├─── 📄 pref.json (user's preferences)
     │ │ ├─── 📄 wiiGamesDB.json (user's wii game database)
     │ │ └─── 📄 wiiLog.json (error log check for mismatched game names)
     │ └─┬ 📁 wii
     │   └──┬ 📁 GALE01 (Melee's game id)
     │      └── 🖼 box.png
+    ├─┬ 📁 Cemu
+    │	├─┬ 📁 BIN
+    │	│ └── 🎮 Cemu.exe
+    │	└─┬ 📁 GAMES
+    │		└── 💿 Mario Kart 8/code/Turbo.rpx
+    ├─┬ 📁 Citra
+    │	├─┬ 📁 BIN
+    │	│	└─┬ 📁 nightly-mingw
+    │	│		└── 🎮 citra-qt.exe
+    │	└─┬ 📁 GAMES
+    │		└── 💿 Super Mario 3D Land.3ds
     ├─┬ 📁 Dolphin
     │	├─┬ 📁 BIN
     │	│ ├── 📁 User
@@ -203,6 +214,23 @@ If you do not want to use the optional template file structure, simply select "c
     │		├── 💿 Super Mario Sunshine.gcz
     │		├── 💿 Super Smash Bros Melee.iso
     │		└── 💿 sm64.wad
+    ├─┬ 📁 MAME
+    │	└─┬ 📁 BIN
+    │		├─┬ 📁 roms
+    │		│	├── 💿 1942.zip
+    │		│	└── 💿 spang.zip
+    │	  └── 🎮 mame64.exe
+    ├─┬ 📁 mGBA
+    │	├─┬ 📁 BIN
+    │	│ └── 🎮 mGBA.exe
+    │	└─┬ 📁 GAMES
+    │		├── 💿 Mario & Luigi - Superstar Saga.gba
+    │		└── 💿 Mario & Luigi - Superstar Saga.sav
+    ├─┬ 📁 PCSX2
+    │	├─┬ 📁 BIN
+    │	│ └── 🎮 pcsx2.exe
+    │	└─┬ 📁 GAMES
+    │		└── 💿 Bully.iso
     ├─┬ 📁 RPCS3
     │	└─┬ 📁 BIN
     │		├─┬ 📁 dev_hdd0
@@ -210,19 +238,23 @@ If you do not want to use the optional template file structure, simply select "c
     │		│		├── 💿 BLES00760/USRDIR/EBOOT.BIN
     │		│		└── 💿 BLUS30591/USRDIR/EBOOT.BIN
     │	  └── 🎮 rpcs3.exe
-    └─┬ 📁 Cemu
-      ├─┬ 📁 BIN
-    	│ └── 🎮 Cemu.exe
+    ├─┬ 📁 Xenia
+    │	├─┬ 📁 BIN
+    │	│ └── 🎮 xenia.exe
+    │	└─┬ 📁 GAMES
+    │		├── 💿 Halo 4 (disc a).iso
+    │		└── 💿 Halo 4 (disc b).iso
+    └─┬ 📁 Yuzu
       └─┬ 📁 GAMES
-        └── 💿 Mario Kart 8/code/Turbo.rpx
+        └── 💿 Super Mario Odyssey.xci
 
 Nostlan was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Nostlan will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
-On windows, the auto-updater for yuzu doesn't let users pick yuzu's location.  This is okay, Nostlan will default to the location that the installer uses instead of `emu/Yuzu/BIN`.
+Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to.  On Windows, Nostlan will look for emulator executables in the `BIN` folder or the default install location of that emulator (no need to move Yuzu).
 
-On macOS, Nostlan looks for your emu apps in `Applications/`.
+On macOS, Nostlan will look for emulator apps in `/Applications` or `BIN`.  Nostlan needs read/write permission to the install folder you choose so do not choose to install the Nostlan image folder at `/Applications`.
 
-On Linux, Nostlan launches most emu apps via the command line and will prompt you for the location of other emu apps.
+On Linux, Nostlan will look for emulator apps in their default install locations or `BIN`.
 
 ## User Preferences
 
@@ -261,9 +293,12 @@ Please [send me](mailto:qashto@gmail.com) a description of any errors with the r
 
 If Nostlan has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Nostlan menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Nostlan will be able to find matches in its game databases.  I know that using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this for certain systems in the far future.  MAME does not have this problem but Nostlan might've still downloaded the wrong cover art.  If your game was matched in the database but the cover art is wrong email me and let me know.
 
+    file:   Donkey Kong Country Tropical Freeze [ARKE01]
+    match:  Donkey Kong Country: Tropical Freeze
+
 ### Missing Cover Art
 
-As of version 1.0.81, Nostlan should be able to get nearly all of your game images.  If Nostlan can't find images for a game in the Nostlan database you can put cover art in the game's image folder.  For more info see the "Images" sections of this README.
+As of v1.2, Nostlan should be able to get nearly all of your game images.  If Nostlan can't find images for a game in the Nostlan database you can put cover art in the game's image folder.  For more info see the "Images" sections of this README.
 
 ## Contributing to Nostlan
 
@@ -324,15 +359,11 @@ PRs are welcome!  No callback pyramids, use Async/Await whenever possible.  Do n
 
 ## Credits
 
-Obviously, Nostlan wouldn't exist without the developers of these emulators.  Please support the development of emulators you use!
-
-### Logo
-
-The logo is a [vaporwave](https://en.wikipedia.org/wiki/Vaporwave) style variation on [MayImilae's public domain Dolphin logo](https://commons.wikimedia.org/wiki/File:Dolphin-logo.svg)  
+Obviously, Nostlan wouldn't exist without the developers of all the emulators it acts as a frontend for.  Please support the development of the emulators you use!
 
 ### Databases
 
-I converted several game database text files to JSON from [gametdb](https://www.gametdb.com/).  
+I converted several game database text files to JSON from [gametdb](https://www.gametdb.com/).
 
 ### Game Artwork
 
@@ -396,3 +427,5 @@ Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating ga
 ## COPYRIGHT AND TRADEMARK INFO
 
 MAME and the MAME Logo are Copyright © 1997-2019 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
+
+Nostlan and the Nostlan logo images are Copyright © 2019 Quinton Ashley.  The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/).  The Nostlan software itself is fully open source MIT licensed.

@@ -1,6 +1,6 @@
 # Nostlan Setup
 
-Choose the location of the `nostlan` image folder and a template file structure for organizing your game libraries.  If you don't want to put your games in these folders that's okay, Nostlan will prompt you for their location.
+Choose the location of the `nostlan` image folder and a template file structure for organizing your game libraries.  If you don't want to put your games in these folders that's okay, Nostlan will prompt you for their location.  [More info](https://github.com/quinton-ashley/nostlan#nostlan-file-structure)
 
 # os win
 

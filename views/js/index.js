@@ -121,7 +121,7 @@ module.exports = async function(arg) {
 
 	const olog = (msg) => {
 		log(msg.replace(/[\t\r\n]/gi, '').replace(':', ': '));
-		outLog += '\r\n' + msg + '\r\n';
+		outLog += msg + '\r\n';
 	};
 
 	let introFiles = {
@@ -293,7 +293,7 @@ module.exports = async function(arg) {
 				} else {
 					term = term.base;
 				}
-				olog('file:\t\t\t' + term);
+				olog('file:   ' + term);
 				$('#loadDialog1').text(term);
 				await delay(1);
 				// rpcs3 ignore games with these ids
@@ -330,8 +330,7 @@ module.exports = async function(arg) {
 								continue;
 							}
 						}
-						olog('id:\t\t\t\t' + id);
-						olog(`found match:\t\t${game.title} ${game.id} ${game.sys||sysStyle}\r\n`);
+						olog(`match:  ${game.title}\r\n`);
 						log(game);
 						game.file = '$' + h + '/' +
 							path.relative(prefs[sys].libs[h], file);
@@ -381,9 +380,8 @@ module.exports = async function(arg) {
 
 				term = term.trim();
 				let game = await addGame(searcher, term);
-				olog('search term:\t\t' + term);
 				if (game) {
-					olog(`found match:\t\t${game.title} ${game.id} ${game.sys||sysStyle}\r\n`);
+					olog(`match:  ${game.title}\r\n`);
 					log(game);
 					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 					games.push(game);
@@ -988,9 +986,7 @@ module.exports = async function(arg) {
 			cui.removeCursor();
 			await reload();
 		} else if (ui == 'pauseMenu') {
-			if (act == 'minimize' || act == 'y') {
-				electron.getCurrentWindow().minimize();
-			} else if (act == 'fullscreen') {
+			if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'toggleCover') {
@@ -1009,14 +1005,26 @@ module.exports = async function(arg) {
 				cui.change('libMain');
 				cui.scrollToCursor(0);
 				recheckImgs = false;
-			} else if (act == 'openLog') {
+			} else if (act == 'openErrorLog') {
 				opn(`${usrDir}/_usr/${sys}Log.log`);
+			} else if (act == 'showConsoleLog') {
+				electron.getCurrentWindow().toggleDevTools();
+				let $elem = $('#pauseMenu .uie[name="showConsoleLog"]');
+				if ($elem.text().includes('show')) {
+					$elem.text('hide console log');
+				} else {
+					$elem.text('show console log');
+				}
 			} else if (act == 'prefs') {
 				opn(prefsMan.prefsPath);
 			} else if (act == 'x') {
 				cui.doAction('quit');
 			} else if (act == 'start') {
 				cui.doAction('back');
+			}
+			if (act == 'minimize' || act == 'openErrorLog' ||
+				act == 'prefs' || act == 'y') {
+				electron.getCurrentWindow().minimize();
 			}
 		} else if (ui == 'donateMenu') {
 			if (act == 'donate-monthly') {

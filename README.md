@@ -187,10 +187,10 @@ If you do not want to use the optional template file structure, simply select "c
 
     📁 emu (root folder can have any name)
     ├─┬ 📁 nostlan (image folder)
-    │ └─┬ 📁 \_usr
-    │   ├─── 📄 pref.json (user preferences
-    │   ├─── 📄 wiiGamesDB.json (user wii game database)
-    │   └─── 📄 wiiLog.json (error log check for mismatched game names)
+    │ ├─┬ 📁 \_usr
+    │ │ ├─── 📄 pref.json (user's preferences)
+    │ │ ├─── 📄 wiiGamesDB.json (user's wii game database)
+    │ │ └─── 📄 wiiLog.json (error log check for mismatched game names)
     │ └─┬ 📁 wii
     │   └──┬ 📁 GALE01 (Melee's game id)
     │      └── 🖼 box.png
@@ -207,17 +207,14 @@ If you do not want to use the optional template file structure, simply select "c
     │	└─┬ 📁 BIN
     │		├─┬ 📁 dev_hdd0
     │ 	│	└─┬ 📁 game
-    │		│		├── 💿 Super Mario Sunshine.gcz
-    │		│		├── 💿 Super Smash Bros Melee.iso
-    │		│		└── 💿 sm64.wad
+    │		│		├── 💿 BLES00760/USRDIR/EBOOT.BIN
+    │		│		└── 💿 BLUS30591/USRDIR/EBOOT.BIN
     │	  └── 🎮 rpcs3.exe
     └─┬ 📁 Cemu
       ├─┬ 📁 BIN
     	│ └── 🎮 Cemu.exe
       └─┬ 📁 GAMES
-        └─┬ 📁 Mario Kart 8
-          └─┬ 📁 code
-            └── 💿 Turbo.rpx
+        └── 💿 Mario Kart 8/code/Turbo.rpx
 
 Nostlan was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Nostlan will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 

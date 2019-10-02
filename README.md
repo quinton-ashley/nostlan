@@ -4,7 +4,7 @@ Nostlan is a _high quality_ front-end launcher for video game emulators!  Availa
 [Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Nostlan on patreon](https://www.patreon.com/qashto) to gain access to premium features!
 
 <p><a href="https://www.patreon.com/qashto">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan/master/views/img/icon.png">
 </a></p>
 
 ## A what?

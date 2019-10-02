@@ -484,59 +484,41 @@ module.exports = async function(arg) {
 		cui.resize(true);
 	}
 
+	function osSpecificMD(data) {
+		let arr = data.split(/\n(# os [^\n]*)/gm);
+		data = '';
+		log(arr);
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i].slice(0, 5) == '# os ') {
+				if (win && arr[i].includes('win')) {
+					data += arr[i + 1];
+				} else if (linux && arr[i].includes('linux')) {
+					data += arr[i + 1];
+				} else if (mac && arr[i].includes('mac')) {
+					data += arr[i + 1];
+				}
+				i++;
+			} else {
+				data += arr[i];
+			}
+		}
+		return data;
+	}
+
 	async function load() {
 		let files = await klaw(__rootDir + '/views/md');
 		log(files);
 		for (let file of files) {
-			file = file;
 			log(file);
-			let html = await fs.readFile(file, 'utf8');
+			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
 			if (fileName == 'setupMenu') {
-				if (win) {
-					html += `Windows users should not store emulator apps or games ` +
-						`in \`Program Files\` or any other folder that Nostlan will ` +
-						`not have read/write access to.  On Windows, Nostlan will ` +
-						`look for emulator executables in the \`BIN\` folder or the ` +
-						`default install location of that emulator.
-\`\`\`
-	emu (root folder can have any name)
-	└─┬ Dolphin
-		├─┬ BIN
-		│ ├── User/...
-		│ ├── portable.txt
-		│ └── Dolphin.exe
-		└─┬ GAMES
-			├── Super Mario Sunshine.gcz
-			├── Super Smash Bros Melee.iso
-			└── sm64.wad
-\`\`\`
-`;
-				} else {
-					if (mac) {
-						html += 'On macOS, Nostlan will look for emulator ' +
-							'apps in `/Applications/`';
-					} else {
-						html += 'On Linux, Nostlan will look for emulator apps in ' +
-							'their default install locations.';
-					}
-					html += `
-\`\`\`
-	emu (root folder can have any name)
-	└─┬ Dolphin
-		└─┬ GAMES
-			├── Super Mario Sunshine.gcz
-			├── Super Smash Bros Melee.iso
-			└── sm64.wad
-\`\`\`
-`;
-				}
-				html += 'Choose "continue" when you\'re ready.';
-				html = html.replace(/\t/g, '  ');
+				data = osSpecificMD(data);
 			}
-			html = pug('.md', null, md(html));
+			data = data.replace(/\t/g, '  ');
+			data = pug('.md', null, md(data));
 			file = path.parse(file);
-			$('#' + file.name).prepend(html);
+			$('#' + file.name).prepend(data);
 		}
 		if (await prefsMan.canLoad()) {
 			await prefsMan.load();
@@ -826,10 +808,12 @@ module.exports = async function(arg) {
 
 	async function createTemplate(emuDir) {
 		for (let _sys in systems) {
-			if (win) {
+			if (win && (/(yuzu)/).test(prefs[_sys].emu)) {
 				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/BIN`);
 			}
-			await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/GAMES`);
+			if ((/(mame|rpcs3)/).test(prefs[_sys].emu)) {
+				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/GAMES`);
+			}
 		}
 	}
 
@@ -1068,6 +1052,12 @@ module.exports = async function(arg) {
 				cui.change('setupMenu');
 			}
 		} else if (ui == 'setupMenu') {
+			if (act == 'continue') {
+				if (!(await fs.exists(emuDir))) return false;
+				await createTemplate(emuDir);
+				cui.change('sysMenu');
+				return;
+			}
 			let msg = 'choose the folder you want to template to go in';
 			if (act == 'old') {
 				msg = 'choose the folder EMULATORS from your WiiUSBHelper ' +

@@ -80,7 +80,7 @@
     "chrome-finder": "^1.0.5",
     "circletype": "^2.3.0",
     "contro": "^2.1.3",
-    "contro-ui": "^1.0.26",
+    "contro-ui": "^1.0.28",
     "deep-extend": "^0.6.0",
     "delay": "^4.3.0",
     "diacritics": "^1.3.0",
@@ -99,9 +99,9 @@
     "node-7z": "^1.1.1",
     "open": "^6.4.0",
     "popper.js": "^1.15.0",
-    "probe-image-size": "^4.1.1",
+    "probe-image-size": "^5.0.0",
     "pug": "^2.0.4",
-    "puppeteer-core": "^1.19.0",
+    "puppeteer-core": "^1.20.0",
     "requisition": "^1.7.0",
     "tether": "^1.4.7",
     "three": "^0.108.0",
@@ -142,7 +142,7 @@
     "v": "npm version patch --force",
     "version": "git add -A",
     "postversion": "git push",
-    "V": "git push origin $npm_package_version && npm publish"
+    "V": "npm version minor --force"
   },
-  "version": "1.2.6"
+  "version": "1.3.0"
 }

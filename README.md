@@ -183,29 +183,41 @@ Warning!  If you pay for internet by bandwidth be aware that for large game libr
 
 If you do not want to use the optional template file structure, simply select "continue" on the setup page.  Nostlan will prompt you for the location of your game directories.  It may also prompt for the emulator app before you launch a game with Nostlan for the first time.  Setup as you go and Nostlan will save these locations in your preferences file.
 
-## OPTIONAL Template File Structure
+## Nostlan File Structure
 
-```javascript
-emu (root folder can have any name)
-├─┬ Dolphin
-│ ├─┬ BIN
-│ │ ├── User/...
-│ │ ├── portable.txt
-│ │ ├── Dolphin.exe
-│ │ └── ...
-│ └─┬ GAMES
-│   ├── Super Mario Sunshine.gcz
-│   ├── Super Smash Bros Melee.iso
-│   └── sm64.wad
-└─┬ Cemu
-  ├─┬ BIN
-	│ ├── Cemu.exe
-  │ └── ...
-  └─┬ GAMES
-    └─┬ Mario Kart 8 (game folder)
-      └─┬ code
-        └── Turbo.rpx
-```
+    📁 emu (root folder can have any name)
+    ├─┬ 📁 nostlan (image folder)
+    │ └─┬ 📁 \_usr
+    │   ├─── 📄 pref.json (user preferences
+    │   ├─── 📄 wiiGamesDB.json (user wii game database)
+    │   └─── 📄 wiiLog.json (error log check for mismatched game names)
+    │ └─┬ 📁 wii
+    │   └──┬ 📁 GALE01 (Melee's game id)
+    │      └── 🖼 box.png
+    ├─┬ 📁 Dolphin
+    │	├─┬ 📁 BIN
+    │	│ ├── 📁 User
+    │	│ ├── 📄 portable.txt
+    │	│ └── 🎮 Dolphin.exe
+    │	└─┬ 📁 GAMES
+    │		├── 💿 Super Mario Sunshine.gcz
+    │		├── 💿 Super Smash Bros Melee.iso
+    │		└── 💿 sm64.wad
+    ├─┬ 📁 RPCS3
+    │	└─┬ 📁 BIN
+    │		├─┬ 📁 dev_hdd0
+    │ 	│	└─┬ 📁 game
+    │		│		├── 💿 Super Mario Sunshine.gcz
+    │		│		├── 💿 Super Smash Bros Melee.iso
+    │		│		└── 💿 sm64.wad
+    │	  └── 🎮 rpcs3.exe
+    └─┬ 📁 Cemu
+      ├─┬ 📁 BIN
+    	│ └── 🎮 Cemu.exe
+      └─┬ 📁 GAMES
+        └─┬ 📁 Mario Kart 8
+          └─┬ 📁 code
+            └── 💿 Turbo.rpx
 
 Nostlan was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Nostlan will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 

@@ -1,0 +1,72 @@
+@font-face {
+	font-family: Yellowtail;
+	src: url("../fonts/Yellowtail.ttf");
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+	background: transparent;
+	left: 0;
+}
+
+.wrapper {
+	background: transparent;
+}
+
+.main {
+	opacity: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+	background-image: radial-gradient(ellipse farthest-corner at center top, #23233f 0%, #000000 60%);
+	background-size: cover;
+	background-position: top center;
+}
+
+#svg4563 {
+	left: 50%;
+	margin: -275px 0 0 -325px !important;
+	position: absolute;
+	top: 50%;
+	width: 700px;
+	z-index: 11;
+	/* background: -webkit-linear-gradient(top, #151C60, #C6CBF5 40%, black 40%, #E1A0CE 65%, white); */
+}
+
+h2 {
+	color: #d100b1;
+	display: block;
+	font-family: 'Yellowtail', cursive;
+	font-weight: bold;
+	font-size: 150px!important;
+	margin-top: -50px!important;
+	margin-right: -8em;
+	position: absolute;
+	text-shadow: 0 0 1px #d100b1, 0 -3px 3px rgba(255, 255, 255, 0.8), 0 3px 3px rgba(0, 0, 0, 0.5), 0 0 15px #d100b1, 0 0 45px rgba(209, 0, 177, 0.8);
+	text-align: center;
+	text-decoration: underline;
+	text-transform: none;
+	-webkit-transform: skew(-10deg) rotate(-10deg);
+	-ms-transform: skew(-10deg) rotate(-10deg);
+	transform: skew(-10deg) rotate(-10deg);
+	top: 50%;
+	width: 100%;
+	z-index: 11;
+}
+
+.logo-triangle {
+	fill: url("#grad1");
+	-webkit-filter: url(#dropshadow);
+	filter: url(#dropshadow);
+	left: 50%;
+	margin-top: -135px;
+	margin-left: -200px;
+	position: absolute;
+	top: 50%;
+	z-index: 8;
+}

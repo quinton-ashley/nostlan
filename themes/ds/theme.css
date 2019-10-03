@@ -1,0 +1,110 @@
+.ds {
+	--cover-color: #d0d4d7;
+	--cover-text-color: #7a7e81;
+	--powerBtn-color: #515256;
+}
+/*================ DS Cover ====================*/
+@font-face {
+	font-family: nDS;
+	src: url("../fonts/nDS.ttf");
+}
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.ds .console .text {
+	font-family: nDS;
+	transform: scale(1.6);
+	font-weight: 1000;
+}
+
+.ds #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================ DS Game Lib Viewer ====================*/
+
+game.ds .crop.coverFull {
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+game.ds .crop.cover {
+	width: 100%;
+	top: -0.3%;
+	left: 0.4%;
+}
+
+game.ds img.cover {
+	width: 100%;
+	height: 100%;
+	transform: scale(.948, .948);
+}
+
+game.ds img.coverFull {
+	width: 100%;
+	height: 100%;
+	transform: translate(-54.6%, 0%) scale(2.04, .95);
+}
+
+game.ds.flip img.coverFull {
+	width: 100%;
+	height: 100%;
+	transform: translate(54.6%, 0%) scale(2.04, .95);
+}
+
+game.ds .shade {
+	width: 1.3%;
+}
+
+game.ds.flip .shade {
+	width: 2%;
+	left: 98%;
+}
+
+.ds #infoSelect {
+	transform: scale(.6);
+}
+
+.ds #gameManual {
+	width: 85vh;
+	transform: translate(-109%,-46%);
+}
+
+.ds #gameMedia {
+	width: 26.6vh;
+	transform: translate(137%,-2.5%);
+	border-radius: 0;
+}
+
+.ds #infoSelect.zoom-gameManualSelect {
+	transform: translate(48vh,-4vh) scale(1.17);
+}
+
+.ds #infoSelect.zoom-gameMediaSelect {
+	transform: translate(-95vh,-24vh) scale(2);
+}
+
+.ds #infoSelect.zoom-gameMemorySelect {
+	transform: translate(-146vh,129vh) scale(4);
+}
+
+.ds #infoSelect.zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}

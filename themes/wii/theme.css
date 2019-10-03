@@ -1,0 +1,149 @@
+.wii {
+	--cover-color: #caccd1;
+	--cover-text-color: #999999;
+	--button-color: radial-gradient(circle at 40% 40%, #e5e5e5 30%, #d2d2d2 50%);
+	--button-border-color: #4bc4ed;
+	--power-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
+	--view-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
+	--powerBtn-border-color: #d2d2d2;
+	--powerBtn-color: radial-gradient(circle at 50%, #f7f7f7 0%, #f7f7f7 15%, #d2d2d2 15%, #d2d2d2 20%, #f7f7f7 20%, #f7f7f7 25%, #d2d2d2 25%, #d2d2d2 65%, #f7f7f7 65%, #f7f7f7 100%);
+}
+/*================ Wii Cover ====================*/
+@font-face {
+	font-family: contb;
+	src: url("../fonts/contb.ttf");
+}
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.wii .console .text {
+	font-family: contb;
+	font-weight: 900;
+}
+
+.wii .console.open .nav-link,
+.wii .console.reset .nav-link {
+	box-shadow: 1px 5px 0 #bbbdc2;
+}
+
+.wii .console:hover .nav-link {
+	filter: none;
+	transform: scale(1.05);
+	border-color: var(--button-border-color);
+}
+
+.wii .console:hover,
+.wii .console:hover #view {
+	border-color: var(--button-border-color);
+}
+
+.wii .console:hover #view,
+.wii .console:hover .text {
+	color: var(--button-border-color);
+}
+
+.wii .menu .cursor {
+	border-color: var(--button-border-color);
+}
+
+.console .nav-link {
+	font-family: "contb";
+}
+
+.wii #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================Wii Box====================*/
+
+game.wii .crop.coverFull {
+	width: 200.1%;
+	top: 1.4%;
+	left: 0;
+}
+
+game.wii .crop.coverFull {
+	width: 200.6%;
+}
+
+game.wii .crop.cover {
+	width: 94.5%;
+	top: 2.6%;
+	left: 0.8%;
+}
+
+game.wii img.coverFull {
+	transform: translate(-51.2%, 0%);
+}
+
+game.wii.flip .crop.coverFull {
+	width: 100%;
+}
+
+game.wii.flip img.coverFull {
+	width: 200.6%;
+	transform: translate(2%, .8%);
+}
+
+game.wii .shade {
+	width: 2%;
+}
+
+game.wii.flip .shade {
+	background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+	width: 3%;
+	left: 98%;
+}
+/*================Wii Open Box====================*/
+.wii #gameMemory {
+	width: 16vh;
+	transform: translate(32%,-256%);
+}
+
+.wii #gameMedia {
+	width: 60.8vh;
+	border-radius: 50%;
+	transform: translate(11%,-50%);
+}
+
+.wii #gameTexp {
+	width: 94vh;
+	transform: translate(-110%,-50.5%);
+}
+
+.wii #gameManual {
+	width: 57vh;
+	transform: translate(-119%,-50%);
+}
+
+.wii .zoom-gameManualSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+.wii .zoom-gameMediaSelect {
+	transform: translate(-59vh,0vh) scale(1.6);
+}
+
+.wii .zoom-gameMemorySelect {
+	transform: translate(-52vh,140vh) scale(4);
+}
+
+.wii .zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}

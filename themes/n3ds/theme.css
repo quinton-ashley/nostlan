@@ -1,0 +1,98 @@
+.n3ds {
+	--cover-color: #3f4044;
+	--cover-text-color: #202125;
+	--powerBtn-color: #5A86C7;
+	--resetBtn-color: #009a6d;
+	--openBtn-color: #DDBB62;
+}
+
+.n3ds.blue {
+	--cover-color: #557eaa;
+	--cover-text-color: #3a465e;
+	--powerBtn-color: #3a465e;
+	--resetBtn-color: #3a465e;
+	--openBtn-color: #3a465e;
+	--powerBtn-text-color: #5A86C7;
+	--resetBtn-text-color: #009a6d;
+	--openBtn-text-color: #DDBB62;
+}
+
+.n3ds.white {
+	--cover-color: #ebebeb;
+	--cover-text-color: #949494;
+	--powerBtn-color: #ffa93a;
+	--resetBtn-color: #ffa93a;
+	--openBtn-color: #ffa93a;
+	--powerBtn-text-color: #5A86C7;
+	--resetBtn-text-color: #009a6d;
+	--openBtn-text-color: #DDBB62;
+}
+/*================3DS Cover========================*/
+@font-face {
+	font-family: contb;
+	src: url("../fonts/contb.ttf");
+}
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.n3ds .console .text {
+	font-family: contb;
+	font-weight: 800;
+}
+
+.n3ds #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================3ds Game Lib Viewer====================*/
+
+game.n3ds .crop.coverFull {
+	width: 203.9%;
+	top: 2.2%;
+	left: 0.1%;
+}
+
+game.n3ds .crop.cover {
+	width: 97%;
+	top: 2.2%;
+	left: 0.1%;
+}
+
+game.n3ds .box {
+	border-radius: 2%;
+}
+
+game.n3ds img.coverFull {
+	transform: translate(-52.4%, 0%);
+}
+
+game.n3ds .shade {
+	width: 0.5%;
+	left: 0;
+}
+
+game.n3ds.flip .shade {
+	width: 0.5%;
+	left: 99.5%;
+}
+
+game.n3ds.flip img.coverFull {
+	width: 204%;
+	transform: translate(1%, .7%);
+}

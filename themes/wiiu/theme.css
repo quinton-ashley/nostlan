@@ -1,0 +1,76 @@
+.wiiu {
+	--cover-color: #3f4044;
+	--cover-text-color: #202125;
+	--button-color: #3f4044;
+	--powerBtn-text-color: #9c333a;
+}
+/*================ Wii U Cover ====================*/
+@font-face {
+	font-family: contb;
+	src: url("../fonts/contb.ttf");
+}
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.wiiu .console .text {
+	font-family: contb;
+	font-weight: 900;
+}
+
+.wiiu #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================ Wii U Game Lib Viewer ====================*/
+
+game.wiiu .crop.coverFull {
+	width: 200.4%;
+	top: 2.1%;
+	left: 0;
+}
+
+game.wiiu .crop.cover {
+	height: 100%;
+	width: 100%;
+	top: -0%;
+	left: -1.1%;
+}
+
+game.wiiu img.cover {
+	height: 100%;
+	width: 100%;
+	transform: scale(.946, .956);
+}
+
+game.wiiu .box {
+	border-radius: 2%;
+}
+
+game.wiiu img.coverFull {
+	transform: translate(-51.5%, 0%);
+}
+
+game.wiiu.flip img.coverFull {
+	transform: translate(1.5%, 0%);
+}
+
+game.wiiu.flip .shade {
+	width: 1.4%;
+	left: 98.7%;
+}

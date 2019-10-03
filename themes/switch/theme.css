@@ -1,0 +1,85 @@
+.switch {
+	--reset-color: rgb(10, 185, 230);
+	--reset-border-color: rgb(45, 210, 255);
+	--reset-text-color: rgb(0, 125, 160);
+	--open-color: rgb(255, 60, 40);
+	--open-border-color: rgb(255, 90, 60);
+	--open-text-color: rgb(210, 50, 25);
+}
+/*================Switch Cover====================*/
+@font-face {
+	font-family: theboldfont;
+	src: url("../fonts/theboldfont.ttf");
+}
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.switch .console .text {
+	font-family: theboldfont;
+	font-weight: 900;
+}
+
+.switch #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================Switch Game Lib Viewer====================*/
+
+game.switch .crop.coverFull {
+	width: 200%;
+	top: 2.6%;
+	left: 0.8%;
+}
+
+game.switch .crop.cover {
+	width: 100%;
+	top: 0;
+	left: -2%;
+}
+
+game.switch img.cover {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+	transform: scale(.95);
+}
+
+game.switch .box {
+	border-radius: 2.7%;
+}
+
+game.switch img.coverFull {
+	transform: translate(-52.4%, 0%);
+}
+
+game.switch.flip img.coverFull {
+	width: 200%;
+	transform: translate(1.7%, -.3%);
+}
+
+game.switch .shade {
+	width: 1%;
+	left: -.5%;
+	height: 95.3%;
+}
+
+game.switch.flip .shade {
+	width: 1.5%;
+	left: 98.5%;
+}

@@ -1,0 +1,53 @@
+.xbox360 {
+	--cover-color: #6b6b6b;
+	--cover-text-color: #3a3a3a;
+	--button-color: #3a3a3a;
+}
+/*================Xbox 360 Cover========================*/
+@font-face {
+	font-family: X360;
+	src: url("../fonts/X360.ttf");
+}
+
+.xbox360 .console .text {
+	font-family: X360;
+	font-weight: 700;
+}
+
+.xbox360 #view {
+	font-family: X360;
+	font-size: 3.6vw;
+	text-transform: uppercase;
+	margin-left: -5%;
+	border: none;
+	box-shadow: none;
+	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
+}
+/*=====Xbox 360===*/
+
+game.xbox360 .crop.coverFull {
+	width: 200.4%;
+	top: 1.2%;
+	left: 0;
+}
+
+game.xbox360 .crop.cover {
+	height: 100%;
+	width: 100%;
+	top: -0.5%;
+	left: -1%;
+}
+
+game.xbox360 img.cover {
+	height: 100%;
+	width: 100%;
+	transform: scale(.966);
+}
+
+game.xbox360 img.coverFull {
+	transform: translate(-51.5%, 0%);
+}
+
+game.xbox360.flip .shade {
+	width: 2%;
+}

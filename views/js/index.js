@@ -124,51 +124,20 @@ module.exports = async function(arg) {
 		outLog += msg + '\r\n';
 	};
 
-	let introFiles = {
-		css: {},
-		html: {}
-	};
-	let introJS;
-	let introUsesJS;
-
-	// retrieves the loading sequence files, some are pug not plain html
-	async function getIntroFile(type) {
-		let fType = ((type == 'css') ? 'css' : 'html');
-		if (!introFiles[fType][sysStyle]) {
-			let introFile = `${__rootDir}/views/${type}/${sysStyle}Load.${type}`;
-			if (await fs.exists(introFile)) {
-				if (type == 'css') {
-					introFiles[fType][sysStyle] =
-						`<link class="introStyle" rel="stylesheet" type="text/css" ` +
-						`href="${introFile}">`;
-				} else {
-					introFile = await fs.readFile(introFile, 'utf8');
-					if (type == 'pug') {
-						introFile = pug(introFile);
-					}
-					introFiles[fType][sysStyle] = introFile;
-				}
-			} else {
-				if (type == 'pug') {
-					getIntroFile('html');
-				} else {
-					introFiles[fType][sysStyle] = '';
-				}
-			}
-		}
-		$('body').prepend(introFiles[fType][sysStyle]);
-	}
-
 	async function intro() {
 		$('#dialogs').show();
-		await getIntroFile('pug');
-		await getIntroFile('css');
-		let file = `${__rootDir}/views/js/${sysStyle}Load.js`;
-		introUsesJS = await fs.exists(file);
-		if (introUsesJS) {
-			introJS = require(file);
-			introJS.start();
+		let file = `${__rootDir}/themes/${sysStyle}/intro.html`;
+		if (!(await fs.exists(file))) {
+			log(file);
+			let pugFile = file.slice(0, -4) + 'pug';
+			log(pugFile);
+			let pugFileContent = await fs.readFile(pugFile, 'utf8');
+			await fs.outputFile(file, pug(pugFileContent));
 		}
+		$('body').prepend(`<iframe id="intro" src="${file}"></iframe>`);
+
+		file = `${__rootDir}/themes/${sysStyle}/theme.css`;
+		$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
 	}
 
 	async function addGame(searcher, searchTerm) {
@@ -408,7 +377,11 @@ module.exports = async function(arg) {
 		emu = prefs[sys].emu;
 		sysStyle = prefs[sys].style || sys;
 		cui.change('loading', sysStyle);
-		$('#loadDialog0').text(`loading your ${systems[sys]} game library for ${emu}`);
+		if (emu != 'mame') {
+			$('#loadDialog0').text(`loading your ${systems[sys]} game library for ${emu}`);
+		} else {
+			$('#loadDialog0').text(`loading your ${systems[sys]} game library`);
+		}
 		emu = emu.toLowerCase();
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
@@ -485,7 +458,6 @@ module.exports = async function(arg) {
 	function osSpecificMD(data) {
 		let arr = data.split(/\n(# os [^\n]*)/gm);
 		data = '';
-		log(arr);
 		for (let i = 0; i < arr.length; i++) {
 			if (arr[i].slice(0, 5) == '# os ') {
 				if (win && arr[i].includes('win')) {
@@ -505,9 +477,7 @@ module.exports = async function(arg) {
 
 	async function load() {
 		let files = await klaw(__rootDir + '/views/md');
-		log(files);
 		for (let file of files) {
-			log(file);
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
 			if (fileName == 'setupMenu') {
@@ -679,10 +649,7 @@ module.exports = async function(arg) {
 	async function removeIntro(time) {
 		log('time:' + time);
 		await delay(time || prefs.load.delay);
-		if (introUsesJS) introJS.stop();
 		$('#intro').remove();
-		$('link.introStyle').prop('disabled', true);
-		$('link.introStyle').remove();
 		hideDialogs();
 	}
 

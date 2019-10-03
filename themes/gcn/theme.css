@@ -1,0 +1,149 @@
+.gcn {
+	--cover-color: #6a56b9;
+	--cover-text-color: #56429c;
+	--button-color: #6a56b9;
+	--powerBtn-color: #c0c0c0;
+	--openBtn-color: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
+}
+/*================ Gamecube Cover ====================*/
+@font-face {
+	font-family: Gamecuben;
+	src: url("../fonts/Gamecuben.ttf");
+}
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.gcn .console .text {
+	font-family: Gamecuben;
+	font-size: 52px;
+	font-weight: 900;
+	text-transform: lowercase;
+	letter-spacing: -3px;
+}
+
+.gcn .console.power .text {
+	letter-spacing: -5px;
+}
+
+.gcn #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================Wii/Gamecube Box====================*/
+game.gcn .crop.coverFull,
+game.wii .crop.coverFull {
+	width: 200.1%;
+	top: 1.4%;
+	left: 0;
+}
+
+game.wii .crop.coverFull {
+	width: 200.6%;
+}
+
+game.gcn .crop.cover,
+game.wii .crop.cover {
+	width: 94.5%;
+	top: 2.6%;
+	left: 0.8%;
+}
+
+game.gcn img.coverFull,
+game.wii img.coverFull {
+	transform: translate(-51.2%, 0%);
+}
+
+game.gcn.flip .crop.coverFull,
+game.wii.flip .crop.coverFull {
+	width: 100%;
+}
+
+game.gcn.flip img.coverFull {
+	transform: translate(1.2%, .4%);
+}
+
+game.wii.flip img.coverFull {
+	width: 200.6%;
+	transform: translate(2%, .8%);
+}
+
+game.gcn .shade,
+game.wii .shade {
+	width: 2%;
+}
+
+game.gcn.flip .shade,
+game.wii.flip .shade {
+	background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+	width: 3%;
+	left: 98%;
+}
+/*================Wii/Gamecube Open Box====================*/
+.gcn .zoom-gameManualSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+.gcn .zoom-gameMediaSelect {
+	transform: translate(-71vh,-11vh) scale(2);
+}
+
+.gcn .zoom-gameMemorySelect {
+	transform: translate(-146vh,129vh) scale(4);
+}
+
+.gcn .zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+.wii #gameMemory {
+	width: 16vh;
+	transform: translate(32%,-256%);
+}
+
+.wii #gameMedia {
+	width: 60.8vh;
+	border-radius: 50%;
+	transform: translate(11%,-50%);
+}
+
+.wii #gameTexp {
+	width: 94vh;
+	transform: translate(-110%,-50.5%);
+}
+
+.wii #gameManual {
+	width: 57vh;
+	transform: translate(-119%,-50%);
+}
+
+.wii .zoom-gameManualSelect {
+	transform: translate(34vh,0vh) scale(1);
+}
+
+.wii .zoom-gameMediaSelect {
+	transform: translate(-59vh,0vh) scale(1.6);
+}
+
+.wii .zoom-gameMemorySelect {
+	transform: translate(-52vh,140vh) scale(4);
+}
+
+.wii .zoom-gameTexpSelect {
+	transform: translate(34vh,0vh) scale(1);
+}

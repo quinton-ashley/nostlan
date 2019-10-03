@@ -1,77 +1,76 @@
 doctype html
 html
+	head
+		title Nostlan
+		meta(charset='utf-8')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
+		link(rel='stylesheet' type='text/css' href='../css/style.css')
 
-head
-	title Nostlan
-	meta(charset='utf-8')
-	link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
-	link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
-	link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
-	link(rel='stylesheet' type='text/css' href='../css/style.css')
-
-body
-	#dialogs
-		#loadDialog0
-		#loadDialog1
-		#loadDialog2
-	#donateMenu.menu.row-y
-		.uie(name='donated') already donated
-		.uie(name='donate-monthly') support on Patreon
-		.uie(name='donate-single') donate via Paypal
-		.uie(name='donate-later') remind me later
-	#checkDonationMenu.menu.row-y
-		input#donorPassword.col-12.form-control(placeholder="donor password")
-		.uie(name='continue') continue
-		.uie(name='back') I haven't donated yet
-	#welcomeMenu.menu.row-y
-		.uie(name='full') setup full version
-		.uie(name='demo') use demo mode
-	#setupMenu.menu.row-y
-		.uie(name='new-in-docs') install at ~/Documents/emu
-		.uie(name='new') choose install location
-		.uie(name='continue') finish setup
-	#pauseMenu.menu.row-y
-		h1 Main Menu
-		.uie(name='minimize') minimize
-		.uie(name='fullscreen') fullscreen
-		.uie(name='toggleCover') auto-hide cover overlay
-		.uie(name='rescanLib') rescan game library
-		.uie(name='recheckLib') recheck for images
-		.uie(name='showConsoleLog') show console log
-		.uie(name='openErrorLog') open error log file
-		.uie(name='prefs') edit preferences
-		.uie(name='quit') quit
-	#sysMenu.menu.row-y
-		h1 Select System
-	#infoSelect.row-x
-		img#gameBoxOpen.uie(name='b')
-		.row-y
-			img#gameTexp.uie(name='texp')
-			img#gameManual.uie(name='manual')
-		.row-y
-			img#gameMemory.uie(name='memory')
-			img#gameMedia.uie(name='media')
-		img#gameBoxOpenMask
-	#libMain.main.row-x
-	nav.navbar.fixed-top.p-0
-		button#powerBtn.console.power.p-2.m-0: ul.nav.justify-content-left.m-0
-			.power.text Power
-			li.nav-item
-				#power.nav-link.triangle: span
-			//- img.logoNav(src='../img/logo.png')
-		button#viewBtn.console.view.p-2.m-0: ul.nav.justify-content-right.m-0
-			li.nav-item
-				#view Nostlan
-	nav.navbar.fixed-bottom.p-0
-		button#resetBtn.console.reset.p-2.m-0: ul.nav.justify-content-left.m-0
-			.reset.text Reset
-			li.nav-item
-				#reset.nav-link.square: span
-		button#openBtn.console.open.p-2.m-0: ul.nav.justify-content-right.m-0
-			li.nav-item
-				#open.nav-link.circle: span
-			.open.text Open
-	script.
-		console.log('opening index.pug');
-		console.log('#{node_modules}');
-		require('../js/index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));
+	body
+		#dialogs
+			#loadDialog0
+			#loadDialog1
+			#loadDialog2
+		#donateMenu.menu.row-y
+			.uie(name='donated') already donated
+			.uie(name='donate-monthly') support on Patreon
+			.uie(name='donate-single') donate via Paypal
+			.uie(name='donate-later') remind me later
+		#checkDonationMenu.menu.row-y
+			input#donorPassword.col-12.form-control(placeholder="donor password")
+			.uie(name='continue') continue
+			.uie(name='back') I haven't donated yet
+		#welcomeMenu.menu.row-y
+			.uie(name='full') setup full version
+			.uie(name='demo') use demo mode
+		#setupMenu.menu.row-y
+			.uie(name='new-in-docs') install at ~/Documents/emu
+			.uie(name='new') choose install location
+			.uie(name='continue') finish setup
+		#pauseMenu.menu.row-y
+			h1 Main Menu
+			.uie(name='minimize') minimize
+			.uie(name='fullscreen') fullscreen
+			.uie(name='toggleCover') auto-hide cover overlay
+			.uie(name='rescanLib') rescan game library
+			.uie(name='recheckLib') recheck for images
+			.uie(name='showConsoleLog') show console log
+			.uie(name='openErrorLog') open error log file
+			.uie(name='prefs') edit preferences
+			.uie(name='quit') quit
+		#sysMenu.menu.row-y
+			h1 Select System
+		#infoSelect.row-x
+			img#gameBoxOpen.uie(name='b')
+			.row-y
+				img#gameTexp.uie(name='texp')
+				img#gameManual.uie(name='manual')
+			.row-y
+				img#gameMemory.uie(name='memory')
+				img#gameMedia.uie(name='media')
+			img#gameBoxOpenMask
+		#libMain.main.row-x
+		nav.navbar.fixed-top.p-0
+			button#powerBtn.console.power.p-2.m-0: ul.nav.justify-content-left.m-0
+				.power.text Power
+				li.nav-item
+					#power.nav-link.triangle: span
+				//- img.logoNav(src='../img/logo.png')
+			button#viewBtn.console.view.p-2.m-0: ul.nav.justify-content-right.m-0
+				li.nav-item
+					#view Nostlan
+		nav.navbar.fixed-bottom.p-0
+			button#resetBtn.console.reset.p-2.m-0: ul.nav.justify-content-left.m-0
+				.reset.text Reset
+				li.nav-item
+					#reset.nav-link.square: span
+			button#openBtn.console.open.p-2.m-0: ul.nav.justify-content-right.m-0
+				li.nav-item
+					#open.nav-link.circle: span
+				.open.text Open
+		script.
+			console.log('opening index.pug');
+			console.log('#{node_modules}');
+			require('../js/index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

@@ -1,39 +1,45 @@
-.ring-2 {
-	transform: translate(0, 50%);
-	width: 45vh;
-	height: 45vh;
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+}
+
+.ring {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 30vh;
+	height: 30vh;
 	margin: 0 auto;
 	border: 4vh solid #4b9cdb;
 	border-radius: 100%;
+	box-shadow: 0 0 50px #4b9cdb;
+	transform: translate(-50%, -50%);
 }
 
 .ball-holder {
-	position: absolute;
-	width: 11vh;
-	height: 37vh;
-	left: 14vh;
+	position: relative;
 	top: 0;
+	left: 50%;
+	width: 0vh;
+	height: 30vh;
+	animation: loadingE 1.4s linear infinite;
 }
 
 .ball {
-	position: absolute;
-	top: -9vh;
-	left: 0;
-	width: 12vh;
-	height: 12vh;
+	width: 10vh;
+	height: 10vh;
 	border-radius: 100%;
 	background: radial-gradient(circle at 50%, #fff 0%, #4282B3 60%);
-}
-
-#intro .ball-holder {
-	animation: loadingE 1.7s linear infinite;
+	box-shadow: 0 0 100px #4b9cdb;
+	transform: translate(-50%, -70%);
 }
 @keyframes loadingE {
 	0 {
-		transform: rotate(0deg);
+		transform: rotateZ(0deg);
 	}
 
 	100% {
-		transform: rotate(360deg);
+		transform: rotateZ(360deg);
 	}
 }

@@ -1,13 +1,13 @@
-.loader-xbox {
+.spinner {
 	position: absolute;
 	top: calc(50% - 50px);
 	left: calc(50% - 50px);
 	z-index: 101;
 }
 
-.loader-xbox,
-.loader-xbox:after,
-.loader-xbox:before {
+.spinner,
+.spinner:after,
+.spinner:before {
 	position: absolute;
 	border: 3px solid transparent;
 	border-top: 3px solid hsl(83, 82%, 53%);
@@ -16,13 +16,13 @@
 	content: '';
 }
 
-.loader-xbox {
+.spinner {
 	height: 100px;
 	width: 100px;
 	animation-duration: 1.05s;
 }
 
-.loader-xbox:before {
+.spinner:before {
 	height: 75px;
 	width: 75px;
 	top: 10px;
@@ -30,7 +30,7 @@
 	animation-duration: 10s;
 }
 
-.loader-xbox:after {
+.spinner:after {
 	height: 50px;
 	width: 50px;
 	top: 22px;

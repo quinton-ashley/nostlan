@@ -1,8 +1,11 @@
-.gba #intro {
-	background-color: #000;
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	background: #000;
 }
 
-.gba #intro svg {
+img {
 	position: absolute;
 	width: 90vw;
 	top: 30%;

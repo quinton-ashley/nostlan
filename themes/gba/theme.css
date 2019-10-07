@@ -1,6 +1,5 @@
 /*================Nostlan gba default theme====================*/
 /*========================by qashto============================*/
-
 .gba {
 	--cover-color: #605891;
 	--cover-text-color: #3c336a;
@@ -11,14 +10,36 @@
 	font-family: Early_GameBoy;
 	src: local("Early_GameBoy"), local("Early_GameBoy"), url("../fonts/Early_GameBoy.ttf");
 }
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
 
 .gba .console .text {
 	font-family: "Early_GameBoy", "Early_GameBoy", Early_GameBoy;
 	font-weight: 900;
 	font-size: 2.3vw;
 }
-/*================GBA Game Lib Viewer====================*/
 
+.gba #view {
+	font-family: Nintender;
+	font-size: 48px;
+	line-height: 43px;
+	font-weight: bold;
+	text-align-last: center;
+	-webkit-appearance: none;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--view-text-color, var(--cover-text-color));
+	color: var(--view-text-color, var(--cover-text-color));
+	background-color: transparent;
+	border-radius: 48px;
+	padding-left: 5%;
+	padding-right: 6%;
+	padding-top: 2%;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+/*================GBA Game Lib Viewer====================*/
 game.gba .crop.coverFull {
 	width: 100%;
 	top: 0;

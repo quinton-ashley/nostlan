@@ -90,7 +90,7 @@ module.exports = async function(arg) {
 		ps2: 'PlayStation 2',
 		ps3: 'PlayStation 3'
 	};
-	if (win) {
+	if (win || arg.dev) {
 		systems.xbox360 = 'Xbox 360';
 	} else if (mac) {
 		delete systems.wiiu;
@@ -124,20 +124,37 @@ module.exports = async function(arg) {
 		outLog += msg + '\r\n';
 	};
 
+	const guestLibs = {
+		bootstrap_css: node_modules + '/bootstrap/dist/css/bootstrap.min.css',
+		jquery_js: node_modules + '/jquery/dist/jquery.min.js',
+		jquery_slim_js: node_modules + '/jquery/dist/jquery.slim.min.js',
+		material_design_icons_css: node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css',
+		three_js: node_modules + '/three/build/three.min.js'
+	};
+
+	async function loadGuestFrame(name) {
+		let fileHtml = `${__rootDir}/themes/${sysStyle}/${name}.html`;
+		let filePug = `${__rootDir}/themes/${sysStyle}/${name}.pug`;
+		if (await fs.exists(filePug)) {
+			let filePugContent = await fs.readFile(filePug, 'utf8');
+			await fs.outputFile(fileHtml, pug(filePugContent, guestLibs));
+		}
+		$('body').prepend(`<iframe id="${name}" src="${fileHtml}"></iframe>`);
+	}
+
+	async function applyGuestStyle(name) {
+		let file = `${__rootDir}/themes/${sys}/${name}.css`;
+		$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+		if (sys == 'wii') {
+			file = `${__rootDir}/themes/gcn/${name}.css`;
+			$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+		}
+	}
+
 	async function intro() {
 		$('#dialogs').show();
-		let file = `${__rootDir}/themes/${sysStyle}/intro.html`;
-		if (!(await fs.exists(file))) {
-			log(file);
-			let pugFile = file.slice(0, -4) + 'pug';
-			log(pugFile);
-			let pugFileContent = await fs.readFile(pugFile, 'utf8');
-			await fs.outputFile(file, pug(pugFileContent));
-		}
-		$('body').prepend(`<iframe id="intro" src="${file}"></iframe>`);
-
-		file = `${__rootDir}/themes/${sysStyle}/theme.css`;
-		$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+		await loadGuestFrame('intro');
+		await applyGuestStyle('theme');
 	}
 
 	async function addGame(searcher, searchTerm) {
@@ -861,7 +878,7 @@ module.exports = async function(arg) {
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#pauseMenu .uie[name="toggleCover"]');
+			let $elem = $('#pauseMenu .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text('auto-hide cover overlay');
@@ -972,11 +989,9 @@ module.exports = async function(arg) {
 				cui.change('libMain');
 				cui.scrollToCursor(0);
 				recheckImgs = false;
-			} else if (act == 'openErrorLog') {
-				opn(`${usrDir}/_usr/${sys}Log.log`);
 			} else if (act == 'showConsoleLog') {
 				electron.getCurrentWindow().toggleDevTools();
-				let $elem = $('#pauseMenu .uie[name="showConsoleLog"]');
+				let $elem = $('#pauseMenu .uie[name="showConsoleLog"] .text');
 				if ($elem.text().includes('show')) {
 					$elem.text('hide console log');
 				} else {
@@ -989,7 +1004,7 @@ module.exports = async function(arg) {
 			} else if (act == 'start') {
 				cui.doAction('back');
 			}
-			if (act == 'minimize' || act == 'openErrorLog' ||
+			if (act == 'minimize' ||
 				act == 'prefs' || act == 'y') {
 				electron.getCurrentWindow().minimize();
 			}

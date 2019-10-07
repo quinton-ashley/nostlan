@@ -31,15 +31,38 @@ html
 			.uie(name='continue') finish setup
 		#pauseMenu.menu.row-y
 			h1 Main Menu
-			.uie(name='minimize') minimize
-			.uie(name='fullscreen') fullscreen
-			.uie(name='toggleCover') auto-hide cover overlay
-			.uie(name='rescanLib') rescan game library
-			.uie(name='recheckLib') recheck for images
-			.uie(name='showConsoleLog') show console log
-			.uie(name='openErrorLog') open error log file
-			.uie(name='prefs') edit preferences
-			.uie(name='quit') quit
+			.uie(name='minimize')
+				i.material-icons.md-left call_to_action
+				.text minimize
+				i.material-icons.md-right.invis call_to_action
+			.uie(name='fullscreen')
+				i.material-icons.md-left zoom_out_map
+				.text fullscreen
+				i.material-icons.md-right.invis zoom_out_map
+			.uie(name='toggleCover')
+				i.material-icons.md-left view_comfy
+				.text auto-hide cover overlay
+				i.material-icons.md-right.invis view_comfy
+			.uie(name='rescanLib')
+				i.material-icons.md-left disc_full
+				.text rescan game library
+				i.material-icons.md-right.invis disc_full
+			.uie(name='recheckLib')
+				i.material-icons.md-left add_photo_alternate
+				.text recheck for images
+				i.material-icons.md-right.invis add_photo_alternate
+			.uie(name='showConsoleLog') 
+				i.material-icons.md-left bug_report
+				.text show console log
+				i.material-icons.md-right.invis bug_report
+			.uie(name='prefs')
+				i.material-icons.md-left perm_data_setting
+				.text edit preferences
+				i.material-icons.md-right.invis perm_data_setting
+			.uie(name='quit')
+				i.material-icons.md-left eject
+				.text quit
+				i.material-icons.md-right.invis eject
 		#sysMenu.menu.row-y
 			h1 Select System
 		#infoSelect.row-x

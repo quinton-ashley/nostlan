@@ -3,6 +3,7 @@ module.exports = async function(arg) {
 	global.log = console.log;
 	global.er = console.error;
 	global.__rootDir = arg.__rootDir;
+	global.node_modules = arg.node_modules;
 	global.pkg = require(__rootDir + '/package.json');
 
 	global.delay = require('delay');
@@ -55,7 +56,7 @@ module.exports = async function(arg) {
 
 	global.electron = require('electron').remote;
 	global.app = electron.app;
-	global.dialog = electron.dialog;
+	global.dialog = {};
 
 	dialog.select = function(opt) {
 		opt = opt || {};
@@ -84,7 +85,7 @@ module.exports = async function(arg) {
 		opt.title = opt.msg;
 		opt.message = opt.msg;
 		try {
-			files = dialog.showOpenDialog(opt);
+			files = electron.dialog.showOpenDialog(opt);
 		} catch (ror) {
 			er(ror);
 		}

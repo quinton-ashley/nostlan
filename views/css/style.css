@@ -189,7 +189,7 @@ iframe {
 
 .menu h1 {
 	font-weight: bolder;
-	margin-bottom: 2vh;
+	margin-bottom: 14px;
 }
 
 .menu * {
@@ -338,7 +338,6 @@ game.flip img.coverFull {
 	transform: translate(1.6%, 1%);
 }
 /*================Cover====================*/
-
 nav {
 	display: flex;
 	background-color: transparent;
@@ -476,4 +475,61 @@ ul.nav {
 .hide,
 .hide * {
 	filter: opacity(0) !important;
+}
+
+.uie i.material-icons {
+	font-size: inherit;
+	vertical-align: sub;
+	line-height: inherit;
+	transform: scale(1.4);
+}
+
+.uie .text {
+	display: inline;
+}
+
+.md-left {
+	float: left;
+	margin-left: 14px;
+}
+
+.md-right {
+	float: right;
+	margin-right: 14px;
+}
+
+.invis {
+	visibility: hidden;
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+	font-size: 18px;
+}
+
+.material-icons.md-24 {
+	font-size: 24px;
+}
+
+.material-icons.md-36 {
+	font-size: 36px;
+}
+
+.material-icons.md-48 {
+	font-size: 48px;
+}
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+	color: rgba(0, 0, 0, 0.26);
+}
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+	color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+	color: rgba(255, 255, 255, 0.3);
 }

@@ -4,6 +4,7 @@
 	const log = console.log;
 	let arg = require('minimist')(process.argv);
 	arg.__rootDir = __dirname.replace(/\\/g, '/');
+	arg.node_modules = arg.__rootDir + '/node_modules';
 	if (arg.h) {
 		log('info about the app');
 		return;
@@ -28,7 +29,7 @@
 		try {
 			const locals = {
 				arg: JSON.stringify(arg).replace(/\\/g, '/').replace(/\/\//g, '/'),
-				node_modules: path.join(arg.__rootDir, 'node_modules').replace(/\\/g, '/')
+				node_modules: arg.node_modules
 			};
 			log(locals);
 			let pug = await setupPug({

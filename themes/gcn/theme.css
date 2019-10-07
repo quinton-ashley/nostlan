@@ -17,10 +17,10 @@
 
 .gcn .console .text {
 	font-family: Gamecuben;
-	font-size: 52px;
+	font-size: 42px;
 	font-weight: 900;
 	text-transform: lowercase;
-	letter-spacing: -3px;
+	letter-spacing: -4px;
 }
 
 .gcn .console.power .text {

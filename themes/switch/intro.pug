@@ -1,31 +1,38 @@
-#intro: .nx
-	.body
-		.volume
-		.screen
-			.logo
-				.icon
-					.icon-part.left
-					.icon-part.right
-				h1
-					span Nintendo
-					| Switch
-	.joy-con.left
-		.button-group
-			.button.arrow.up
-			.button.arrow.right
-			.button.arrow.down
-			.button.arrow.left
-		.stick
-		.select
-		.capture
-		.shoulder.l
-	.joy-con.right
-		.button-group
-			.button.letter(data-letter='X')
-			.button.letter(data-letter='A')
-			.button.letter(data-letter='B')
-			.button.letter(data-letter='Y')
-		.stick
-		.start
-		.home
-		.shoulder.r
+doctype html
+html
+	head
+		title intro switch
+		meta(charset='utf-8')
+		link(rel='stylesheet' type='text/css' href='./intro.css')
+	body
+		.nx
+			.body
+				.volume
+				.screen
+					.logo
+						.icon
+							.icon-part.left
+							.icon-part.right
+						h1
+							span Nintendo
+							| Switch
+			.joy-con.left
+				.button-group
+					.button.arrow.up
+					.button.arrow.right
+					.button.arrow.down
+					.button.arrow.left
+				.stick
+				.select
+				.capture
+				.shoulder.l
+			.joy-con.right
+				.button-group
+					.button.letter(data-letter='X')
+					.button.letter(data-letter='A')
+					.button.letter(data-letter='B')
+					.button.letter(data-letter='Y')
+				.stick
+				.start
+				.home
+				.shoulder.r

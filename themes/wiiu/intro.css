@@ -1,9 +1,9 @@
-.wiiu #intro {
+body {
 	background-color: #000;
 	transform: translate(28vw, -10vh) scale(2);
 }
 
-.wiiu #intro svg {
+img {
 	position: absolute;
 	width: 600px;
 	height: 353px;

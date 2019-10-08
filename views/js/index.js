@@ -133,13 +133,20 @@ module.exports = async function(arg) {
 	};
 
 	async function loadGuestFrame(name) {
-		let fileHtml = `${__rootDir}/themes/${sysStyle}/${name}.html`;
-		let filePug = `${__rootDir}/themes/${sysStyle}/${name}.pug`;
-		if (await fs.exists(filePug)) {
+		let themeDir = `${prefs.nlaDir}/_themes/${sysStyle}`;
+		await fs.ensureDir(themeDir);
+		let fileHtml = `${themeDir}/${name}.html`;
+		if (!(await fs.exists(fileHtml))) {
+			themeDir = `${__rootDir}/themes/${sysStyle}`;
+			fileHtml = `${themeDir}/${name}.html`;
+		}
+		let filePug = `${themeDir}/${name}.pug`;
+		if (!(await fs.exists(fileHtml))) {
+			log('generating html from pug file');
 			let filePugContent = await fs.readFile(filePug, 'utf8');
 			await fs.outputFile(fileHtml, pug(filePugContent, guestLibs));
 		}
-		$('body').prepend(`<iframe id="${name}" src="${fileHtml}"></iframe>`);
+		$('body').prepend(`<webview id="${name}" enableremotemodule="false" src="${fileHtml}"></webview>`);
 	}
 
 	async function applyGuestStyle(name) {
@@ -162,9 +169,7 @@ module.exports = async function(arg) {
 		if (arg.v) log(results);
 		let region = prefs.region;
 		for (let i = 0; i < results.length; i++) {
-			if (results[i].title.length > searchTerm.length + 6) {
-				continue;
-			}
+			if (results[i].title.length > searchTerm.length + 6) continue;
 			// if the search term doesn't contain demo or trial
 			// skip the demo/trial version of the game
 			let demoRegex = /(Demo|Preview|Review|Trial)/i;
@@ -174,36 +179,20 @@ module.exports = async function(arg) {
 			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == 'n3ds') {
 				let gRegion = results[i].id[3];
 				// TODO: this is a temporary region filter
-				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) {
-					continue;
-				}
-				if (gRegion == 'E' && (region == 'P' || region == 'J')) {
-					continue;
-				}
-				if (gRegion == 'P' && (region == 'E' || region == 'J')) {
-					continue;
-				}
-				if (gRegion == 'J' && (region == 'E' || region == 'P')) {
-					continue;
-				}
+				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) continue;
+				if (gRegion == 'E' && (region == 'P' || region == 'J')) continue;
+				if (gRegion == 'P' && (region == 'E' || region == 'J')) continue;
+				if (gRegion == 'J' && (region == 'E' || region == 'P')) continue;
 			} else if (sys == 'switch') {
 				let gRegion = results[i].id[4];
-				if (gRegion == 'A' && (region == 'P' || region == 'J')) {
-					continue;
-				}
-				if (gRegion == 'B' && (region == 'E' || region == 'J')) {
-					continue;
-				}
-				if (gRegion == 'C' && (region == 'E' || region == 'P')) {
-					continue;
-				}
+				if (gRegion == 'A' && (region == 'P' || region == 'J')) continue;
+				if (gRegion == 'B' && (region == 'E' || region == 'J')) continue;
+				if (gRegion == 'C' && (region == 'E' || region == 'P')) continue;
 			} else if (sys == 'bsnes') {
 				let gRegion = results[i].id.split('-').splice(-2)[0];
 				log(gRegion)
 				await delay(100000);
-				if (gRegion != 'USA') {
-					continue;
-				}
+				if (gRegion != 'USA') continue;
 			}
 			return results[i];
 		}
@@ -302,9 +291,7 @@ module.exports = async function(arg) {
 				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 				// special check for ids
 				let id;
-				if (idRegex) {
-					id = term.match(idRegex);
-				}
+				if (idRegex) id = term.match(idRegex);
 				if (id) {
 					id = id[1];
 					log(id);
@@ -312,14 +299,11 @@ module.exports = async function(arg) {
 					if (game) {
 						if (sys == 'ps3') {
 							let dup = games.find(x => x.title === game.title);
-							if (dup) {
-								continue;
-							}
+							if (dup) continue;
 						}
 						olog(`match:  ${game.title}\r\n`);
 						log(game);
-						game.file = '$' + h + '/' +
-							path.relative(prefs[sys].libs[h], file);
+						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
 					}
@@ -329,7 +313,6 @@ module.exports = async function(arg) {
 				term = term.replace(/ -/g, ':');
 				let temp = term.replace(/, The/gi, '');
 				if (term != temp) {
-
 					term = 'The ' + temp;
 				}
 				// eliminations part 2
@@ -391,15 +374,12 @@ module.exports = async function(arg) {
 	}
 
 	async function reload() {
-		emu = prefs[sys].emu;
 		sysStyle = prefs[sys].style || sys;
 		cui.change('loading', sysStyle);
-		if (emu != 'mame') {
-			$('#loadDialog0').text(`loading your ${systems[sys]} game library for ${emu}`);
-		} else {
-			$('#loadDialog0').text(`loading your ${systems[sys]} game library`);
-		}
-		emu = emu.toLowerCase();
+		let ld0 = `loading your ${systems[sys]} game library`;
+		if (emu != 'MAME') ld0 += ` for ${prefs[sys].emu}`;
+		$('#loadDialog0').text(ld0);
+		emu = prefs[sys].emu.toLowerCase();
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
@@ -472,7 +452,7 @@ module.exports = async function(arg) {
 		cui.resize(true);
 	}
 
-	function osSpecificMD(data) {
+	function osmd(data) {
 		let arr = data.split(/\n(# os [^\n]*)/gm);
 		data = '';
 		for (let i = 0; i < arr.length; i++) {
@@ -498,7 +478,7 @@ module.exports = async function(arg) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
 			if (fileName == 'setupMenu') {
-				data = osSpecificMD(data);
+				data = osmd(data);
 			}
 			data = data.replace(/\t/g, '  ');
 			data = pug('.md', null, md(data));
@@ -1078,7 +1058,7 @@ module.exports = async function(arg) {
 			});
 	}
 
-	cui.bind(['command+n', 'ctrl+n'], 'select');
+	// cui.bind(['command+n', 'ctrl+n'], 'select');
 
 	cui.click('#powerBtn', 'x');
 	cui.click('#viewBtn', 'start');
@@ -1091,7 +1071,8 @@ module.exports = async function(arg) {
 		// log(img);
 		if (!img) return;
 		$img.prop('src', img);
-		let prevClass = $img.attr('class').replace('crop ', '');
+		let prevClass = $img.attr('class');
+		if (prevClass) prevClass.replace('crop ', '');
 		let $elems;
 		if (prevClass && prevClass != 'hide') {
 			$elems = [
@@ -1359,30 +1340,40 @@ module.exports = async function(arg) {
 	}
 
 	async function addCover(game, column) {
-		let cl1 = '';
-		let file = await imgExists(game, 'box');
-		if (!file) {
-			file = await imgExists(game, 'coverFull');
-			cl1 = '.coverFull';
-			if (!file) {
-				file = await imgExists(game, 'cover');
-				cl1 = '.cover';
-				if (!file) {
+		let boxSys = game.sys || sys;
+		let imgType = '';
+		let boxImgSrc = await imgExists(game, 'box');
+		let coverImgSrc = '';
+		if (!boxImgSrc) {
+			boxImgSrc = (await imgExists(themes[boxSys].default, 'box'));
+			coverImgSrc = await imgExists(game, 'coverFull');
+			imgType = '.coverFull';
+			if (!coverImgSrc) {
+				coverImgSrc = await imgExists(game, 'cover');
+				imgType = '.cover';
+				if (!coverImgSrc) {
 					log(`no images found for game: ${game.id} ${game.title}`);
 					return;
 				}
 			}
 		}
-		let cover = `
-game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.uie-disabled')}
-	${((cl1)?`img.box(src="${
-		(await imgExists(themes[game.sys || sys].default, 'box'))
-	}")`:`img.box(src="${file}")`)}
-	section.crop${cl1}
-		img${cl1 + ((cl1)?'':'.hide')}(src="${(cl1)?file:''}")
-		.shade.p-0.m-0${(cl1||(game.sys||sys)=='switch'||(game.sys||sys)=='gba')?'':'.hide'}
-`;
-		$('.reel.r' + column).append(pug(cover));
+		let box = `game#${game.id}.${boxSys}.uie`;
+		// if game is a template don't let the user select it
+		if (game.id.includes('_TEMPLATE')) {
+			box += '.uie-disabled';
+		}
+		box += '\n';
+		box += `  img.box(src="${boxImgSrc}")\n`;
+		// used to crop the cover/coverfull image
+		box += `  section.crop${imgType}\n`;
+		box += `    img${imgType}`;
+		if (!imgType) box += '.hide';
+		box += `(src="${coverImgSrc}")\n`;
+		box += `    .shade.p-0.m-0`;
+		if (!(imgType || boxSys == 'switch' || boxSys == 'gba')) {
+			box += '.hide';
+		}
+		$('.reel.r' + column).append(pug(box));
 		return true;
 	}
 
@@ -1487,7 +1478,7 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 				return emuAppPath;
 			}
 		}
-		log('couldn\'t find app at path:\n' + emuAppPath);
+		log(`couldn't find app at path:\n` + emuAppPath);
 		emuAppPath = dialog.selectFile('select emulator app');
 		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
@@ -1518,7 +1509,7 @@ game#${game.id}.${game.sys || sys}.uie${((!game.id.includes('_TEMPLATE'))?'':'.u
 		let shouldRebindMouse;
 		if (!themes) {
 			shouldRebindMouse = true;
-			let themesPath = __rootDir + '/prefs/themes.json';
+			let themesPath = __rootDir + '/themes/themes.json';
 			themes = JSON.parse(await fs.readFile(themesPath));
 			let imgTypes = [
 				`box`, // the front of the box

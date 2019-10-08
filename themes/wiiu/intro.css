@@ -1,12 +1,14 @@
 body {
 	background-color: #000;
-	transform: translate(28vw, -10vh) scale(2);
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 }
 
 img {
 	position: absolute;
-	width: 600px;
-	height: 353px;
-	top: 30%;
-	left: 20.4%;
+	width: 66vw;
+	top: 40%;
+	left:50%;
+	transform: translate(-50%, -50%);
 }

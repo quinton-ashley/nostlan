@@ -16,6 +16,7 @@
 .ps3 #view {
 	font-family: 'Sownie', sans-serif;
 	font-size: 2.6vw;
+	line-height: 2.6vw;
 	text-transform: uppercase;
 	border: none;
 	box-shadow: none;
@@ -97,6 +98,7 @@
 	transform: scale(0.65);
 }
 /*================ PS3 Game Lib Viewer ====================*/
+
 game.ps3 .crop.coverFull {
 	width: 100%;
 	height: 100%;

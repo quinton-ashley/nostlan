@@ -17,6 +17,7 @@
 .xbox360 #view {
 	font-family: X360;
 	font-size: 3.6vw;
+	line-height: 3.6vw;
 	text-transform: uppercase;
 	margin-left: -5%;
 	border: none;
@@ -24,7 +25,6 @@
 	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
 }
 /*=====Xbox 360===*/
-
 game.xbox360 .crop.coverFull {
 	width: 200.4%;
 	top: 1.2%;

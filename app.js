@@ -44,7 +44,8 @@
 
 		let windowPrms = {
 			webPreferences: {
-				nodeIntegration: true
+				nodeIntegration: true,
+				webviewTag: true
 			}
 		};
 		if (arg.scrape || arg.conv) {

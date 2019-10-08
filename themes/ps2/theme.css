@@ -16,6 +16,7 @@
 .ps2 #view {
 	font-family: 'Sownie', sans-serif;
 	font-size: 2.6vw;
+	line-height: 2.6vw;
 	text-transform: uppercase;
 	border: none;
 	box-shadow: none;
@@ -97,7 +98,6 @@
 	transform: scale(0.65);
 }
 /*===== PS2 Game Lib Viewer ===*/
-
 game.ps2 .crop.coverFull {
 	width: 200.4%;
 	top: 2.3%;

@@ -41,14 +41,18 @@
 }
 /*================Switch Game Lib Viewer====================*/
 
+game.switch .box {
+	border-radius: 1.3vh;
+}
+
 game.switch .crop.coverFull {
-	width: 200%;
+	width: 99.3%;
 	top: 2.6%;
 	left: 0.8%;
 }
 
 game.switch .crop.cover {
-	width: 100%;
+	width: 99.3%;
 	top: 0;
 	left: -2%;
 }
@@ -57,20 +61,16 @@ game.switch img.cover {
 	width: 100%;
 	height: 100%;
 	border-radius: 0;
-	transform: scale(.95);
-}
-
-game.switch .box {
-	border-radius: 2.7%;
+	transform: translate(.35%) scale(.95);
 }
 
 game.switch img.coverFull {
+	width: 201.4%;
 	transform: translate(-52.4%, 0%);
 }
 
 game.switch.flip img.coverFull {
-	width: 200%;
-	transform: translate(1.7%, -.3%);
+	transform: translate(1.7%, -.2%);
 }
 
 game.switch .shade {

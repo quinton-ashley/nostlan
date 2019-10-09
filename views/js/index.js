@@ -108,6 +108,7 @@ module.exports = async function(arg) {
 	emuChild.state = 'closed'; // status of the process
 	let cmdArgs = [];
 	let recheckImgs = false;
+	let offline = false;
 
 	let normalizeButtonLayout = {
 		map: {
@@ -1154,7 +1155,7 @@ module.exports = async function(arg) {
 
 	async function getImg(game, name, hq) {
 		let res = await imgExists(game, name);
-		if (res) return res;
+		if (res || offline) return res;
 		$('#loadDialog0').html(md(
 			`scraping for the  \n${name}  \nof  \n${game.title}`
 		));
@@ -1635,7 +1636,17 @@ module.exports = async function(arg) {
 
 	electron.getCurrentWindow().setFullScreen(true);
 	await load();
-	if (prefs.load.checkForUpdate && await checkForUpdate()) app.quit();
+	if (prefs.load.checkForUpdate) {
+		try {
+			let updateVer = await checkForUpdate();
+			if (updateVer) {
+				app.quit();
+			}
+		} catch (ror) {
+			log('running in offline mode');
+			offline = true;
+		}
+	}
 	if (prefs.donor) {
 		await reload();
 	} else if (await prefsMan.canLoad() && !prefs.donor) {

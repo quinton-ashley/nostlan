@@ -134,13 +134,11 @@ module.exports = async function(arg) {
 	};
 
 	async function loadGuestFrame(name) {
-		let themeDir = `${prefs.nlaDir}/_themes/${sysStyle}`;
-		await fs.ensureDir(themeDir);
-		let fileHtml = `${themeDir}/${name}.html`;
-		if (!(await fs.exists(fileHtml))) {
+		let themeDir = `${prefs.nlaDir}/themes/${sysStyle}`;
+		if (!(await fs.exists(`${themeDir}/${name}.html`))) {
 			themeDir = `${__rootDir}/themes/${sysStyle}`;
-			fileHtml = `${themeDir}/${name}.html`;
 		}
+		let fileHtml = `${themeDir}/${name}.html`;
 		let filePug = `${themeDir}/${name}.pug`;
 		if (!(await fs.exists(fileHtml))) {
 			log('generating html from pug file');
@@ -151,11 +149,15 @@ module.exports = async function(arg) {
 	}
 
 	async function applyGuestStyle(name) {
-		let file = `${__rootDir}/themes/${sys}/${name}.css`;
-		$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
-		if (sys == 'wii') {
-			file = `${__rootDir}/themes/gcn/${name}.css`;
+		let dirs = [__rootDir, `${prefs.nlaDir}/themes/${sysStyle}`];
+		for (let i in dirs) {
+			if (i != 0 && !(await fs.exists(dirs[i]))) return;
+			let file = `${dirs[i]}/themes/${sys}/${name}.css`;
 			$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+			if (sys == 'wii') {
+				file = `${dirs[i]}/themes/gcn/${name}.css`;
+				$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+			}
 		}
 	}
 

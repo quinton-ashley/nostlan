@@ -1407,7 +1407,7 @@ module.exports = async function(arg) {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win || (linux && (/(cemu|yuzu|rpcs3)/).test(emu)) ||
+		if (win || (linux && (/(cemu|rpcs3)/).test(emu)) ||
 			(mac && emu == 'mame')) {
 			emuDirPath = `${emuDir}/${prefs[sys].emu}/BIN`;
 			if (emu == 'citra') {
@@ -1417,13 +1417,8 @@ module.exports = async function(arg) {
 					emuDirPath += '/canary-mingw';
 				}
 			}
-			if (win && emu == 'yuzu') {
-				emuDirPath = os.homedir() + '/AppData/Local/yuzu';
-				if (await fs.exists(emuDirPath + '/canary')) {
-					emuDirPath += '/canary';
-				} else {
-					emuDirPath += '/nightly';
-				}
+			if (emu == 'yuzu') {
+				emuDirPath = os.homedir() + '/AppData/Local/yuzu/yuzu-windows-msvc';
 			}
 		} else if (mac) {
 			emuDirPath = '/Applications';

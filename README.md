@@ -16,10 +16,9 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can i
 ## Features
 
 -   unified UI for mouse/gamepad interaction
--   designed for _UHD_ displays and projectors
--   checks multiple database sites for the _highest quality_ box art
--   _nostalgic_ UI themes for each supported console
--   fancy scroll direction alternation effect on rows in cover view mode
+-   designed for UHD displays and projectors
+-   checks multiple database sites for the highest quality box art
+-   nostalgic UI themes for each supported console
 -   uses individual emulators: no cores and no controller input transfer lag
 -   most controllers connect to Nostlan automatically, no setup required
 -   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
@@ -195,55 +194,55 @@ If you do not want to use the optional template file structure, simply select "c
     │   └──┬ 📁 GALE01 (Melee's game id)
     │      └── 🖼 box.png
     ├─┬ 📁 Cemu
-    │	├─┬ 📁 BIN
-    │	│ └── 🎮 Cemu.exe
-    │	└─┬ 📁 GAMES
-    │		└── 💿 Mario Kart 8/code/Turbo.rpx
+    │ ├─┬ 📁 BIN
+    │ │ └── 🎮 Cemu.exe
+    │ └─┬ 📁 GAMES
+    │   └── 💿 Mario Kart 8/code/Turbo.rpx
     ├─┬ 📁 Citra
-    │	├─┬ 📁 BIN
-    │	│	└─┬ 📁 nightly-mingw
-    │	│		└── 🎮 citra-qt.exe
-    │	└─┬ 📁 GAMES
-    │		└── 💿 Super Mario 3D Land.3ds
+    │ ├─┬ 📁 BIN
+    │ │ └─┬ 📁 nightly-mingw
+    │ │   └── 🎮 citra-qt.exe
+    │ └─┬ 📁 GAMES
+    │   └── 💿 Super Mario 3D Land.3ds
     ├─┬ 📁 Dolphin
-    │	├─┬ 📁 BIN
-    │	│ ├── 📁 User
-    │	│ ├── 📄 portable.txt
-    │	│ └── 🎮 Dolphin.exe
-    │	└─┬ 📁 GAMES
-    │		├── 💿 Super Mario Sunshine.gcz
-    │		├── 💿 Super Smash Bros Melee.iso
-    │		└── 💿 sm64.wad
+    │ ├─┬ 📁 BIN
+    │ │ ├── 📁 User
+    │ │ ├── 📄 portable.txt
+    │ │ └── 🎮 Dolphin.exe
+    │ └─┬ 📁 GAMES
+    │   ├── 💿 Super Mario Sunshine.gcz
+    │   ├── 💿 Super Smash Bros Melee.iso
+    │   └── 💿 sm64.wad
     ├─┬ 📁 MAME
-    │	└─┬ 📁 BIN
-    │		├─┬ 📁 roms
-    │		│	├── 💿 1942.zip
-    │		│	└── 💿 spang.zip
-    │	  └── 🎮 mame64.exe
+    │ └─┬ 📁 BIN
+    │   ├─┬ 📁 roms
+    │   │ ├── 💿 1942.zip
+    │   │ └── 💿 spang.zip
+    │   └── 🎮 mame64.exe
     ├─┬ 📁 mGBA
-    │	├─┬ 📁 BIN
-    │	│ └── 🎮 mGBA.exe
-    │	└─┬ 📁 GAMES
-    │		├── 💿 Mario & Luigi - Superstar Saga.gba
-    │		└── 💿 Mario & Luigi - Superstar Saga.sav
+    │ ├─┬ 📁 BIN
+    │ │ └── 🎮 mGBA.exe
+    │ └─┬ 📁 GAMES
+    │   ├── 💿 Mario & Luigi - Superstar Saga.gba
+    │   └── 💿 Mario & Luigi - Superstar Saga.sav
     ├─┬ 📁 PCSX2
-    │	├─┬ 📁 BIN
-    │	│ └── 🎮 pcsx2.exe
-    │	└─┬ 📁 GAMES
-    │		└── 💿 Bully.iso
+    │ ├─┬ 📁 BIN
+    │ │ └── 🎮 pcsx2.exe
+    │ └─┬ 📁 GAMES
+    │   └── 💿 Bully.iso
     ├─┬ 📁 RPCS3
-    │	└─┬ 📁 BIN
-    │		├─┬ 📁 dev_hdd0
-    │ 	│	└─┬ 📁 game
-    │		│		├── 💿 BLES00760/USRDIR/EBOOT.BIN
-    │		│		└── 💿 BLUS30591/USRDIR/EBOOT.BIN
-    │	  └── 🎮 rpcs3.exe
+    │ └─┬ 📁 BIN
+    │   ├─┬ 📁 dev_hdd0
+    │   │ └─┬ 📁 game
+    │   │   ├── 💿 BLES00760/USRDIR/EBOOT.BIN
+    │   │   └── 💿 BLUS30591/USRDIR/EBOOT.BIN
+    │   └── 🎮 rpcs3.exe
     ├─┬ 📁 Xenia
-    │	├─┬ 📁 BIN
-    │	│ └── 🎮 xenia.exe
-    │	└─┬ 📁 GAMES
-    │		├── 💿 Halo 4 (disc a).iso
-    │		└── 💿 Halo 4 (disc b).iso
+    │ ├─┬ 📁 BIN
+    │ │ └── 🎮 xenia.exe
+    │ └─┬ 📁 GAMES
+    │   ├── 💿 Halo 4 (disc a).iso
+    │   └── 💿 Halo 4 (disc b).iso
     └─┬ 📁 Yuzu
       └─┬ 📁 GAMES
         └── 💿 Super Mario Odyssey.xci

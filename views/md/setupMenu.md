@@ -12,14 +12,14 @@ Windows users should not store emulator apps or games in `Program Files` or any 
     │   └──┬ 📁 GALE01 (Melee's game id)
     │      └── 🖼 box.png
     └─┬ 📁 Dolphin
-    	├─┬ 📁 BIN
-    	│ ├── 📁 User
-    	│ ├── 📄 portable.txt
-    	│ └── 🎮 Dolphin.exe
-    	└─┬ 📁 GAMES
-    		├── 💿 Super Mario Sunshine.gcz
-    		├── 💿 Super Smash Bros Melee.iso
-    		└── 💿 sm64.wad
+      ├─┬ 📁 BIN
+      │ ├── 📁 User
+      │ ├── 📄 portable.txt
+      │ └── 🎮 Dolphin.exe
+      └─┬ 📁 GAMES
+        ├── 💿 Super Mario Sunshine.gcz
+        ├── 💿 Super Smash Bros Melee.iso
+        └── 💿 sm64.wad
 
 # os mac
 
@@ -37,7 +37,7 @@ On Linux, Nostlan will look for emulator apps in their default install locations
     │   └──┬ 📁  GALE01 (Melee's game id)
     │      └── 🖼 box.png
     └─┬ 📁 Dolphin
-    	└─┬ 📁 GAMES
-    		├── 💿 Super Mario Sunshine.gcz
-    		├── 💿 Super Smash Bros Melee.iso
-    		└── 💿 sm64.wad
+      └─┬ 📁 GAMES
+        ├── 💿 Super Mario Sunshine.gcz
+        ├── 💿 Super Smash Bros Melee.iso
+        └── 💿 sm64.wad

@@ -1,7 +1,6 @@
 /*
- * index.js handles responses to user interactions with the menu and app UI
+ * index.js
  * authors: quinton-ashley
- * copyright 2018
  */
 
 module.exports = async function(arg) {
@@ -1638,7 +1637,7 @@ module.exports = async function(arg) {
 
 	electron.getCurrentWindow().setFullScreen(true);
 	await load();
-	if (prefs.load.checkForUpdate) {
+	if (prefs.load.online) {
 		try {
 			let updateVer = await checkForUpdate();
 			if (updateVer) {

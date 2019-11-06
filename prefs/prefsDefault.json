@@ -125,7 +125,7 @@
 	},
 	"load": {
 		"delay": 2000,
-		"checkForUpdate": true
+		"online": true
 	},
 	"inGame": {
 		"quit": {

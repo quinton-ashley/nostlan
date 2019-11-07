@@ -37,7 +37,8 @@ module.exports = async function(arg) {
 	// in a set location.
 	// The user's preferences and game libs json databases
 	// are stored here.
-	let usrDir = os.homedir() + '/Documents/emu/bottlenose';
+	let usrDir = '$home/Documents/emu/bottlenose';
+	usrDir = getAbsolutePath(usrDir);
 
 	if (usrDir && (await fs.exists(usrDir))) {
 		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
@@ -1015,7 +1016,8 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
-				emuDir = os.homedir() + '/Documents/emu';
+				emuDir = '$home/Documents/emu';
+				emuDir = getAbsolutePath(emuDir);
 				let templatePath = __rootDir + '/demo';
 				await fs.copy(templatePath, emuDir);
 				await createTemplate(emuDir);
@@ -1036,7 +1038,8 @@ module.exports = async function(arg) {
 					'file structure';
 			}
 			if (act == 'new-in-docs') {
-				emuDir = os.homedir() + '/Documents';
+				emuDir = '$home/Documents';
+				emuDir = getAbsolutePath(emuDir);
 			} else {
 				emuDir = dialog.selectDir(msg);
 			}
@@ -1393,7 +1396,7 @@ module.exports = async function(arg) {
 		for (tag of tags) {
 			tag = tag.substr(1);
 			if (tag == 'home') {
-				replacement = os.homedir().replace(/\\/g, '/');;
+				replacement = os.homedir().replace(/\\/g, '/');
 			}
 			file = file.replace('$' + tag, replacement);
 		}
@@ -1418,7 +1421,8 @@ module.exports = async function(arg) {
 				}
 			}
 			if (emu == 'yuzu') {
-				emuDirPath = os.homedir() + '/AppData/Local/yuzu/yuzu-windows-msvc';
+				emuDirPath = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
+				emuDirPath = getAbsolutePath(emuDirPath);
 			}
 		} else if (mac) {
 			emuDirPath = '/Applications';

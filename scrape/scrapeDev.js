@@ -26,7 +26,7 @@ module.exports = async function(arg) {
 	}
 	const deepExtend = require('deep-extend');
 	let scraper = require(`./${arg.scrape}.js`);
-	let sys = 'ps2';
+	global.sys = 'ps2';
 	if (arg.scrape == 'fly') sys = 'mame';
 	sys = arg.sys || sys;
 	if (arg.scrape == 'gfs' || arg.scrape == 'tcp') {
@@ -50,7 +50,7 @@ module.exports = async function(arg) {
 		let game = games[i];
 		log(game.title);
 		if (arg.override || !game.img || !game.img[name]) {
-			let img = await scraper.getImgUrls(sys, game, name);
+			let img = await scraper.getImgUrls(game, name);
 			if (img) {
 				if (!game.img) {
 					game.img = img;

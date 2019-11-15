@@ -1,9 +1,9 @@
 const rmDiacritics = require('diacritics').remove;
+// dl is a helper lib I made for downloading images
+const dl = require(__rootDir + '/scrape/dl.js');
 
 class Scraper {
 	constructor() {
-		// dl is a helper lib I made for downloading images
-		const dl = require(__rootDir + '/scrape/dl.js');
 		// scrapers that use dl
 		let scrapers = {
 			b: 'bmb',
@@ -21,13 +21,13 @@ class Scraper {
 		}
 	}
 
-	async getImg(sys, game, name, hq) {
-		let res = await this.imgExists(sys, game, name);
+	async getImg(game, name, hq) {
+		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
 		$('#loadDialog0').html(md(
 			`scraping for the  \n${name}  \nof  \n${game.title}`
 		));
-		let imgDir = this.getImgDir(sys, game);
+		let imgDir = this.getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
@@ -42,7 +42,7 @@ class Scraper {
 				ext = url[1];
 				url = url[0];
 			} else if (url[0] == 'q') {
-				url = this.gqa.unwrapUrl(sys, game, name);
+				url = this.gqa.unwrapUrl(game, name);
 			} else if (url[1]) {
 				// url[0] is key for the scraper
 				scraper = scrapers[url[0]];
@@ -67,20 +67,19 @@ class Scraper {
 		if (game.id.includes('_TEMPLATE')) return;
 
 		// get high quality box from Andy Decarli's site
-		res = await this.dec.dlImg(sys, game, imgDir, name);
+		res = await this.dec.dlImg(game, imgDir, name);
 		if (res) return res;
 
-		res = await this.mdo.dlImg(sys, game, imgDir, name);
+		res = await this.mdo.dlImg(game, imgDir, name);
 		if (res) return res;
 
 		if (hq) return;
 
-		return await this.tdb.dlImg(sys, game, imgDir, name);
+		return await this.tdb.dlImg(game, imgDir, name);
 	}
 
-	async loadImages(sys, sysStyle, games, themes, recheckImgs) {
+	async loadImages(games, themes, recheckImgs) {
 		let imgDir;
-		let _gamesLength = games.length;
 		let isTemplate;
 
 		// deprecated 3ds to n3ds
@@ -119,7 +118,7 @@ class Scraper {
 			if (game.title) {
 				game.title = rmDiacritics(game.title);
 			}
-			imgDir = this.getImgDir(sys, game);
+			imgDir = this.getImgDir(game);
 
 			if (sys != 'mame') {
 				// move img dir from deprecated location
@@ -134,21 +133,21 @@ class Scraper {
 				await fs.ensureDir(imgDir);
 
 				if (!isTemplate ||
-					(!(await this.imgExists(sys, game, 'coverFull')) &&
-						!(await this.imgExists(sys, game, 'cover')) && sys != 'gba')
+					(!(await this.imgExists(game, 'coverFull')) &&
+						!(await this.imgExists(game, 'cover')) && sys != 'gba')
 				) {
-					await this.getImg(sys, game, 'box', 'HQ');
+					await this.getImg(game, 'box', 'HQ');
 				}
-				res = await this.getImg(sys, game, 'coverFull');
+				res = await this.getImg(game, 'coverFull');
 				if (!res) {
-					await this.getImg(sys, game, 'coverSide');
-					if (!(await this.imgExists(sys, game, 'boxBack'))) {
-						await this.getImg(sys, game, 'coverBack');
+					await this.getImg(game, 'coverSide');
+					if (!(await this.imgExists(game, 'boxBack'))) {
+						await this.getImg(game, 'coverBack');
 					}
 				}
-				if (!res && !(await this.imgExists(sys, game, 'box'))) {
-					res = await this.getImg(sys, game, 'cover');
-					if (!res) res = await this.getImg(sys, game, 'box');
+				if (!res && !(await this.imgExists(game, 'box'))) {
+					res = await this.getImg(game, 'cover');
+					if (!res) res = await this.getImg(game, 'box');
 					if (!res) {
 						games.splice(i, 1);
 						i--;
@@ -158,33 +157,33 @@ class Scraper {
 				}
 
 				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
-					await this.getImg(sys, game, 'cart');
+					await this.getImg(game, 'cart');
 				} else if (sys != 'mame') {
-					await this.getImg(sys, game, 'disc');
+					await this.getImg(game, 'disc');
 				}
 
 				if (sys == 'mame') {
-					await this.getImg(sys, game, 'boxOpen');
+					await this.getImg(game, 'boxOpen');
 				} else if (prefs.ui.getExtraImgs || isTemplate) {
-					await this.getImg(sys, game, 'boxOpen');
-					await this.getImg(sys, game, 'boxOpenMask');
-					await this.getImg(sys, game, 'manual');
-					await this.getImg(sys, game, 'memory');
-					await this.getImg(sys, game, 'memoryBack');
+					await this.getImg(game, 'boxOpen');
+					await this.getImg(game, 'boxOpenMask');
+					await this.getImg(game, 'manual');
+					await this.getImg(game, 'memory');
+					await this.getImg(game, 'memoryBack');
 				}
 			}
 		}
-		if (_gamesLength != games.length) await outputGamesJSON();
 		if (sys != 'mame' && sys != 'gba' && (!themes[sysStyle].default ||
-				!(await this.getImg(sys, themes[sysStyle].default, 'box')))) {
-			cui.err('ERROR: No default box image found for ' + themes[sysStyle].default.title + ' in the directory ' + this.getImgDir(sys, themes[sysStyle].default));
-			return;
+				!(await this.getImg(themes[sysStyle].default, 'box')))) {
+			cui.err('ERROR: No default box image found for ' + themes[sysStyle].default.title + ' in the directory ' + this.getImgDir(themes[sysStyle].default));
+			return [];
 		}
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));
+		return games;
 	}
 
-	getImgDir(sys, game) {
+	getImgDir(game) {
 		let imgDir = `${prefs.nlaDir}/${sys}/${game.id}`;
 		if (sys == 'mame') {
 			imgDir = util.absPath('$0');
@@ -193,8 +192,8 @@ class Scraper {
 		return imgDir;
 	}
 
-	async imgExists(sys, game, name) {
-		let imgDir = this.getImgDir(sys, game);
+	async imgExists(game, name) {
+		let imgDir = this.getImgDir(game);
 		let file = `${imgDir}/${name}.png`;
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';

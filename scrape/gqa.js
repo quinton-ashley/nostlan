@@ -5,7 +5,7 @@ class GithubQuintonAshley {
 		return 'q';
 	}
 
-	unwrapUrl(sys, game, imgType) {
+	unwrapUrl(game, imgType) {
 		let url = 'https://raw.githubusercontent.com/quinton-ashley';
 		if (!game.id.includes('_TEMPLATE')) {
 			url += `/bottlenose-${sys}/master/${sys}/${game.id}`;

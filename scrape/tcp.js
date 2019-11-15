@@ -27,13 +27,13 @@ class TheCoverProjectScraper {
 		return `http://www.thecoverproject.net/download_cover.php?src=cdn&cover_id=${data[0]}.jpg`;
 	}
 
-	async getImgUrls(sys, game, name) {
+	async getImgUrls(game, name) {
 		if (!browser) {
 			er('browser not loaded');
 			return;
 		}
 		let $page, url, res, ext;
-		url = await this.getGameUrl(sys, game);
+		url = await this.getGameUrl(game);
 		if (!url) {
 			log('game not found on The Cover Project');
 			return;
@@ -83,7 +83,7 @@ class TheCoverProjectScraper {
 		return img;
 	}
 
-	async getGameUrl(sys, game) {
+	async getGameUrl(game) {
 		if (!browser) {
 			er('browser not loaded');
 			return;
@@ -129,7 +129,7 @@ class TheCoverProjectScraper {
 		return url;
 	}
 
-	async load(sys) {
+	async load() {
 		if (tcp[sys]) {
 			return;
 		}

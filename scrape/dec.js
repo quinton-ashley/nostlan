@@ -18,9 +18,9 @@ class AndyDecarli {
 		};
 	}
 
-	async _dlImg(title, dir, sys) {
-		sys = this.sysMapForAndy[sys];
-		let url = `http://andydecarli.com/Video Games/Collection/${sys}/Scans/Full Size/${sys} ${title}`;
+	async _dlImg(title, dir, _sys) {
+		_sys = this.sysMapForAndy[_sys];
+		let url = `http://andydecarli.com/Video Games/Collection/${_sys}/Scans/Full Size/${_sys} ${title}`;
 		url = url.replace(/ /g, '%20');
 		log(url);
 		let res = await dl(url + `%20Front%20Cover.jpg`, dir + '/box.jpg');
@@ -30,15 +30,15 @@ class AndyDecarli {
 		return res;
 	}
 
-	async dlImg(sys, game, dir, name) {
-		if (name != 'box' || sys == 'mame') {
+	async dlImg(game, dir, name, _sys) {
+		if (name != 'box' || _sys == 'mame') {
 			return;
 		}
 		let res;
 		let title = game.title.replace(/[\:]/g, '');
-		if (sys != 'switch') {
-			if (sys != 'wii') {
-				res = await this._dlImg(title, dir, sys);
+		if (_sys != 'switch') {
+			if (_sys != 'wii') {
+				res = await this._dlImg(title, dir, _sys);
 			} else if (game.id.length > 4) {
 				res = await this._dlImg(title, dir, 'gcn');
 				if (!res) {

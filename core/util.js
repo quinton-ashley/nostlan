@@ -1,7 +1,7 @@
 class Utility {
 	constructor() {}
 
-	absPath(file, sys) {
+	absPath(file) {
 		if (!file) return '';
 		let lib = file.match(/\$\d+/g);
 		if (lib) {

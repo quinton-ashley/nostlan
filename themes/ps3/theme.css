@@ -3,7 +3,7 @@
 	--cover-text-color: #111;
 	--button-color: #333;
 }
-/*================ PS3 Cover ========================*/
+/*================ ps3 Cover========================*/
 @font-face {
 	font-family: ryp;
 	src: url("../fonts/ryp.ttf");
@@ -33,20 +33,20 @@
 .ps3 .square span {
 	display: block;
 	font-size: 0;
-	border: 10px solid #d49ac0;
+	border: 0.5vw solid #d49ac0;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	transform: scale(.5);
+	transform: scale(.6);
 }
 
 .ps3 .circle span {
 	display: block;
 	font-size: 0;
-	border: 10px solid #eb5535;
+	border: 0.5vw solid #eb5535;
 	height: 100%;
 	width: 100%;
-	transform: scale(0.6);
+	transform: scale(0.7);
 	border-radius: inherit;
 }
 
@@ -78,11 +78,11 @@
 .ps3 .triangle span {
 	display: block;
 	font-size: 0;
-	border-left: 17px solid transparent;
-	border-right: 17px solid transparent;
-	border-bottom: 28px solid #1d6f56;
+	border-left: 1.7vw solid transparent;
+	border-right: 1.7vw solid transparent;
+	border-bottom: 2.8vw solid #1d6f56;
 	position: absolute;
-	transform: translate(55%, 60%) scale(1.3);
+	transform: translate(15%, 20%);
 }
 
 .ps3 .triangle span:after {
@@ -90,51 +90,67 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	border-left: 17px solid transparent;
-	border-right: 17px solid transparent;
-	border-bottom: 28px solid #2e3335;
-	left: -17px;
-	top: 2px;
+	border-left: 1.7vw solid transparent;
+	border-right: 1.7vw solid transparent;
+	border-bottom: 2.8vw solid #2e3335;
+	left: -1.7vw;
+	top: 0.2vw;
 	transform: scale(0.65);
 }
-/*================ PS3 Game Lib Viewer ====================*/
-
+/*===== ps3 Game Lib Viewer ===*/
 game.ps3 .crop.coverFull {
-	width: 100%;
-	height: 100%;
-	top: 3%;
+	width: 200.4%;
+	top: 2.3%;
 	left: 0;
 }
 
 game.ps3 .crop.cover {
-	width: 100%;
 	height: 100%;
-	top: 2.8%;
-	left: 0;
+	width: 100%;
+	top: -0.5%;
+	left: -1%;
 }
 
 game.ps3 img.cover {
 	height: 100%;
 	width: 100%;
-	transform: scale(.95, .885);
+	transform: scale(.966);
 }
 
 game.ps3 img.coverFull {
-	width: 100%;
-	height: 100%;
-	transform: translate(-52.5%, 0%) scale(2, .89);
+	transform: translate(-51.5%, 0%);
 }
 
 game.ps3.flip .crop.coverFull {
 	top: 1.2%;
-	height: 96%;
 }
 
 game.ps3.flip img.coverFull {
-	transform: translate(1.6%, 0%);
+	transform: translate(1.5%, 0%);
+}
+
+game.ps3 .shade {
+	width: 1.3%;
 }
 
 game.ps3.flip .shade {
-	left: 98.6%;
 	width: 2%;
+}
+
+.ps3 #gameMemory {
+	width: 29.1vh;
+	transform: translate(78%,-209%);
+}
+
+.ps3 .zoom-gameMemorySelect {
+	transform: translate(-104vh,-110vh) rotate(90deg) scale(3);
+}
+
+.ps3 #gameMedia {
+	width: 63vh;
+	transform: translate(8.5%,-29%);
+}
+
+.ps3 .zoom-gameMediaSelect {
+	transform: translate(-55vh,-20.7vh) scale(1.55);
 }

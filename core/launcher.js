@@ -6,7 +6,7 @@ class Launcher {
 		this.emuChild.state = 'closed'; // status of the process
 	}
 
-	async getEmuAppPath(emu, sys) {
+	async getEmuAppPath() {
 		let emuAppPath = util.absPath(prefs[sys].app[osType]);
 		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
@@ -100,13 +100,13 @@ class Launcher {
 		return emuAppPath;
 	}
 
-	async launch(emu, sys, game) {
+	async launch(game) {
 		let id = cui.getCur('libMain').attr('id');
 		log(id);
 		if (!prefs.session[sys]) prefs.session[sys] = {};
 		if (id) prefs.session[sys].gameID = id;
 		if (!id) id = prefs.session[sys].gameID;
-		let emuAppPath = await this.getEmuAppPath(emu, sys);
+		let emuAppPath = await this.getEmuAppPath();
 		if (!emuAppPath) return;
 		let cmdArgs = [];
 		let emuDirPath = path.join(emuAppPath, '..');
@@ -174,11 +174,11 @@ class Launcher {
 		this.emuChild.state = 'running';
 
 		this.emuChild.on('close', (code) => {
-			this.closeEmu(code, sys, cmdArgs);
+			this.closeEmu(code, cmdArgs);
 		});
 	}
 
-	async closeEmu(code, sys, cmdArgs) {
+	async closeEmu(code, cmdArgs) {
 		log(`emulator closed`);
 		if (this.emuChild.state == 'resetting') {
 			await this.powerBtn();

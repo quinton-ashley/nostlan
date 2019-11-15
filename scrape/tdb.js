@@ -10,7 +10,7 @@ let availableImgs = [
 class Gamestdb {
 	constructor() {}
 
-	async dlImg(sys, game, dir, name) {
+	async dlImg(game, dir, name) {
 		if (!availableImgs.includes(name) || sys == 'mame' || sys == 'ps2' || sys == 'gba') {
 			return;
 		}

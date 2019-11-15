@@ -11,7 +11,7 @@ class FlyerFeverScraper {
 		return `https://66.media.tumblr.com/${data[0]}/tumblr_${data[1]}_1280.png`;
 	};
 
-	async getImgUrls(sys, game, name) {
+	async getImgUrls(game, name) {
 		if (!browser) {
 			er('browser not loaded');
 			return;

@@ -33,20 +33,20 @@
 .ps2 .square span {
 	display: block;
 	font-size: 0;
-	border: 10px solid #d49ac0;
+	border: 0.5vw solid #d49ac0;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	transform: scale(.5);
+	transform: scale(.6);
 }
 
 .ps2 .circle span {
 	display: block;
 	font-size: 0;
-	border: 10px solid #eb5535;
+	border: 0.5vw solid #eb5535;
 	height: 100%;
 	width: 100%;
-	transform: scale(0.6);
+	transform: scale(0.7);
 	border-radius: inherit;
 }
 
@@ -78,11 +78,11 @@
 .ps2 .triangle span {
 	display: block;
 	font-size: 0;
-	border-left: 17px solid transparent;
-	border-right: 17px solid transparent;
-	border-bottom: 28px solid #1d6f56;
+	border-left: 1.7vw solid transparent;
+	border-right: 1.7vw solid transparent;
+	border-bottom: 2.8vw solid #1d6f56;
 	position: absolute;
-	transform: translate(55%, 60%) scale(1.3);
+	transform: translate(15%, 20%);
 }
 
 .ps2 .triangle span:after {
@@ -90,11 +90,11 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	border-left: 17px solid transparent;
-	border-right: 17px solid transparent;
-	border-bottom: 28px solid #2e3335;
-	left: -17px;
-	top: 2px;
+	border-left: 1.7vw solid transparent;
+	border-right: 1.7vw solid transparent;
+	border-bottom: 2.8vw solid #2e3335;
+	left: -1.7vw;
+	top: 0.2vw;
 	transform: scale(0.65);
 }
 /*===== PS2 Game Lib Viewer ===*/

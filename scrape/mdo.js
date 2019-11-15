@@ -3,7 +3,7 @@ const dl = require('./dl.js');
 class MrDo {
 	constructor() {}
 
-	async dlImg(sys, game, dir, name) {
+	async dlImg(game, dir, name) {
 		if (name != 'boxOpen' || sys != 'mame') {
 			return;
 		}

@@ -48,7 +48,7 @@ class Themes {
 		this.initialized = true;
 	}
 
-	async loadFrame(name, sys, sysStyle) {
+	async loadFrame(name) {
 		if (!this.initialized) await this.init();
 		let themeDir = `${prefs.nlaDir}/themes/${sysStyle}`;
 		if (!(await fs.exists(`${themeDir}/${name}.html`))) {
@@ -64,7 +64,7 @@ class Themes {
 		$('body').prepend(`<webview id="${name}" enableremotemodule="false" src="${fileHtml}"></webview>`);
 	}
 
-	async applyStyle(name, sys, sysStyle) {
+	async applyStyle(name) {
 		if (!this.initialized) await this.init();
 		let dirs = [__rootDir, `${prefs.nlaDir}/themes/${sysStyle}`];
 		for (let i in dirs) {

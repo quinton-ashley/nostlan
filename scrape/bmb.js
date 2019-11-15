@@ -10,7 +10,7 @@ let gb = {
 gb.params = `api_key=${gb.key}&format=json`;
 gb.search = `${gb.base}/search/?${gb.params}&resources=game&query=`;
 
-async function dlFromGiant(sys, game, dir, name) {
+async function dlFromGiant(game, dir, name) {
 	// TODO
 	let query;
 	if (!gb.regex['ps3']) {

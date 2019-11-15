@@ -28,13 +28,13 @@ class GameFaqsScraper {
 		return `https://gamefaqs.akamaized.net/box/${data[0]}/${data[1]}/${data[2]}/${data.substr(3)}_front.jpg`;
 	}
 
-	async getImgUrls(sys, game, name) {
+	async getImgUrls(game, name) {
 		if (!browser) {
 			er('browser not loaded');
 			return;
 		}
 		let $page, url, res, ext;
-		url = await this.getGameUrl(sys, game);
+		url = await this.getGameUrl(game);
 		if (!url) {
 			log('game not found on gamefaqs');
 			return;
@@ -77,7 +77,7 @@ class GameFaqsScraper {
 		return img;
 	}
 
-	async getGameUrl(sys, game) {
+	async getGameUrl(game) {
 		if (!browser) {
 			er('browser not loaded');
 			return;
@@ -121,7 +121,7 @@ class GameFaqsScraper {
 		return url;
 	}
 
-	async load(sys) {
+	async load() {
 		if (gfs[sys]) {
 			return;
 		}
@@ -197,7 +197,7 @@ class GameFaqsScraper {
 
 module.exports = new GameFaqsScraper();
 
-// unwrapGFUrl(sys, game) {
+// unwrapGFUrl(game) {
 // 	let system = game.sys || sys;
 // 	if (system == 'wiiu') {
 // 		system = 'wii-u';

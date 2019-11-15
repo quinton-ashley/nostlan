@@ -35,7 +35,7 @@ module.exports = async function(arg) {
 	// in a set location.
 	// The user's preferences and game libs json databases
 	// are stored here.
-	let usrDir = '$home/Documents/emu/bottlenose';
+	global.usrDir = '$home/Documents/emu/bottlenose';
 	usrDir = util.absPath(usrDir);
 	if (usrDir && (await fs.exists(usrDir))) {
 		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
@@ -48,19 +48,17 @@ module.exports = async function(arg) {
 	prefsMan.prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = await prefsMan.loadDefaultPrefs();
 
+	global.sys = ''; // current system
+	global.sysStyle = ''; // style of that system
+	global.emu = ''; // current emulator
+	global.offline = false;
+
 	const cloudSaver = require(__rootDir + '/saves/cloudSaver.js');
 	const launcher = require(__rootDir + '/core/launcher.js');
 	const updater = require(__rootDir + '/core/updater.js');
 	const themes = require(__rootDir + '/themes/themes.js');
 	const scan = require(__rootDir + '/db/scanner.js');
 	const scraper = require(__rootDir + '/scrape/scraper.js');
-
-	// I assume the user is using a smooth scroll trackpad
-	// or apple mouse with their Mac.
-	if (mac) {
-		prefs.ui.mouse.wheel.multi = 0.5;
-		prefs.ui.mouse.wheel.smooth = true;
-	}
 
 	let systems = {
 		wii: 'Wii/Gamecube',
@@ -79,14 +77,18 @@ module.exports = async function(arg) {
 		delete systems.wiiu;
 		delete systems.ps3;
 	}
-	let sys; // current system
-	let sysStyle = ''; // style of that system
-	let emuDir = ''; // nostlan dir is stored here
-	let games = []; // array of current games from the systems' db
-	let emu; // current emulator
-	let recheckImgs = false;
-	let offline = false;
 
+	let games = []; // array of current games from the systems' db
+	let emuDir = ''; // nostlan dir is stored here
+
+	// I assume the user is using a smooth scroll trackpad
+	// or apple mouse with their Mac.
+	if (mac) {
+		prefs.ui.mouse.wheel.multi = 0.5;
+		prefs.ui.mouse.wheel.smooth = true;
+	}
+	// physical layout always matches the on screen postion of x and y
+	// in the cover menu
 	let normalizeButtonLayout = {
 		map: {
 			x: 'y',
@@ -94,13 +96,11 @@ module.exports = async function(arg) {
 		},
 		disable: 'nintendo'
 	};
-	// physical layout always matches the on screen postion of x and y
-	// in the cover menu
 
 	async function intro() {
 		$('#dialogs').show();
-		await themes.loadFrame('intro', sys, sysStyle);
-		await themes.applyStyle('theme', sys, sysStyle);
+		await themes.loadFrame('intro');
+		await themes.applyStyle('theme');
 	}
 
 	async function reload() {
@@ -464,7 +464,7 @@ module.exports = async function(arg) {
 		}
 		if (ui == 'libMain' || ui == 'coverSelect') {
 			if (act == 'x') {
-				await launcher.launch(emu, sys, getCurGame());
+				await launcher.launch(getCurGame());
 			}
 		}
 		if (act == 'start' && !onMenu) {
@@ -487,31 +487,31 @@ module.exports = async function(arg) {
 				cui.change('sysMenu');
 			} else if (act == 'y') {
 				// launch without a game
-				await launcher.launch(emu, sys);
+				await launcher.launch();
 			} else if (act == 'a' || !isBtn) {
 				await coverClicked();
 			}
 		} else if (ui == 'coverSelect') {
 			if ((act == 'a' || !isBtn) &&
-				(await scraper.imgExists(sys, themes[cui.getCur().attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
+				(await scraper.imgExists(themes[cui.getCur().attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
 				// return;
 				// TODO finish open box menu
 				let game = getCurGame();
 				let template = themes[game.sys || sys].template;
 
-				$('#gameBoxOpen').prop('src', await scraper.imgExists(sys, template, 'boxOpen'));
+				$('#gameBoxOpen').prop('src', await scraper.imgExists(template, 'boxOpen'));
 				$('#gameBoxOpenMask').prop('src',
-					await scraper.imgExists(sys, template, 'boxOpenMask'));
-				$('#gameMemory').prop('src', await scraper.imgExists(sys, template, 'memory'));
-				$('#gameManual').prop('src', await scraper.imgExists(sys, template, 'manual'));
+					await scraper.imgExists(template, 'boxOpenMask'));
+				$('#gameMemory').prop('src', await scraper.imgExists(template, 'memory'));
+				$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
 
 				let mediaName = 'disc';
 				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
 					mediaName = 'cart';
 				}
-				let mediaImg = await scraper.imgExists(sys, game, mediaName);
+				let mediaImg = await scraper.imgExists(game, mediaName);
 				if (!mediaImg) {
-					mediaImg = await scraper.imgExists(sys, template, mediaName);
+					mediaImg = await scraper.imgExists(template, mediaName);
 				}
 				$('#gameMedia').prop('src', mediaImg);
 				cui.change('infoSelect');
@@ -549,7 +549,7 @@ module.exports = async function(arg) {
 					$('#infoSelect').removeClass('zoom-' + ui);
 					cui.doAction('back');
 					cui.change('libMain');
-					await launcher.launch(emu, sys, getCurGame());
+					await launcher.launch(getCurGame());
 				} else if (act == 'y') { // Texp
 
 				} else if (act == 'x') { // File
@@ -574,6 +574,7 @@ module.exports = async function(arg) {
 			} else if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'recheckLib' || act == 'rescanLib') {
+				let recheckImgs = false;
 				if (act == 'recheckLib') {
 					recheckImgs = true;
 					await fs.remove(`${usrDir}/_usr/${sys}Games.json`);
@@ -582,11 +583,10 @@ module.exports = async function(arg) {
 				cui.change('rescanning');
 				await intro();
 				games = await scan.gameLib(sys);
-				await viewerLoad();
+				await viewerLoad(recheckImgs);
 				await removeIntro();
 				cui.change('libMain');
 				cui.scrollToCursor(0);
-				recheckImgs = false;
 			} else if (act == 'showConsoleLog') {
 				electron.getCurrentWindow().toggleDevTools();
 				let $elem = $('#pauseMenu .uie[name="showConsoleLog"] .text');
@@ -687,7 +687,7 @@ module.exports = async function(arg) {
 
 	async function editImgSrc($cur, $img, game, name) {
 		if (!game) return;
-		let img = await scraper.imgExists(sys, game, name);
+		let img = await scraper.imgExists(game, name);
 		// log(img);
 		if (!img) return;
 		$img.prop('src', img);
@@ -775,14 +775,14 @@ module.exports = async function(arg) {
 	async function addCover(game, column) {
 		let boxSys = game.sys || sys;
 		let imgType = '';
-		let boxImgSrc = await scraper.imgExists(sys, game, 'box');
+		let boxImgSrc = await scraper.imgExists(game, 'box');
 		let coverImgSrc = '';
 		if (!boxImgSrc) {
-			boxImgSrc = (await scraper.imgExists(sys, themes[boxSys].default, 'box'));
-			coverImgSrc = await scraper.imgExists(sys, game, 'coverFull');
+			boxImgSrc = (await scraper.imgExists(themes[boxSys].default, 'box'));
+			coverImgSrc = await scraper.imgExists(game, 'coverFull');
 			imgType = '.coverFull';
 			if (!coverImgSrc) {
-				coverImgSrc = await scraper.imgExists(sys, game, 'cover');
+				coverImgSrc = await scraper.imgExists(game, 'cover');
 				imgType = '.cover';
 				if (!coverImgSrc) {
 					log(`no images found for game: ${game.id} ${game.title}`);
@@ -818,10 +818,12 @@ module.exports = async function(arg) {
 		}
 	}
 
-	async function viewerLoad() {
+	async function viewerLoad(recheckImgs) {
 		cui.resize(true);
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
-		await scraper.loadImages(sys, sysStyle, games, themes, recheckImgs);
+		let _gamesLength = games.length;
+		games = await scraper.loadImages(games, themes, recheckImgs);
+		if (_gamesLength != games.length) await scan.outputUsersGamesDB();
 		let cols = prefs.ui.maxColumns || 8;
 		if (games.length < 42) cols = 8;
 		if (games.length < 18) cols = 4;

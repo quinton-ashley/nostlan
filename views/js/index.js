@@ -168,7 +168,7 @@ module.exports = async function(arg) {
 				await reload();
 				return;
 			}
-			games = await scan.gameLib(sys);
+			games = await scan.gameLib();
 		}
 		emuDir = emuDir.replace(/\\/g, '/');
 		prefs.nlaDir = emuDir + '/nostlan';
@@ -443,7 +443,7 @@ module.exports = async function(arg) {
 		let id = cui.getCur('libMain').attr('id');
 		let game = games.find(x => x.id === id);
 		if (game.file) {
-			game.file = util.absPath(game.file, sys);
+			game.file = util.absPath(game.file);
 			return game;
 		}
 		cui.err('game not found: ' + id);
@@ -582,7 +582,7 @@ module.exports = async function(arg) {
 				cui.removeView('libMain');
 				cui.change('rescanning');
 				await intro();
-				games = await scan.gameLib(sys);
+				games = await scan.gameLib();
 				await viewerLoad(recheckImgs);
 				await removeIntro();
 				cui.change('libMain');
@@ -621,7 +621,11 @@ module.exports = async function(arg) {
 				let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075' +
 					'\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
 				let usrDonorPass = $('#donorPassword').val();
-				if (usrDonorPass == unicodeToChar(password)) {
+				let decodedPass = password.replace(/\\u[\dA-F]{4}/gi,
+					(match) => {
+						return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
+					});
+				if (usrDonorPass == decodedPass) {
 					prefs.donor = true;
 					await reload();
 				} else {
@@ -632,7 +636,7 @@ module.exports = async function(arg) {
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
 				emuDir = '$home/Documents/emu';
-				emuDir = util.absPath(emuDir, sys);
+				emuDir = util.absPath(emuDir);
 				let templatePath = __rootDir + '/demo';
 				await fs.copy(templatePath, emuDir);
 				await createTemplate(emuDir);
@@ -654,7 +658,7 @@ module.exports = async function(arg) {
 			}
 			if (act == 'new-in-docs') {
 				emuDir = '$home/Documents';
-				emuDir = util.absPath(emuDir, sys);
+				emuDir = util.absPath(emuDir);
 			} else {
 				emuDir = dialog.selectDir(msg);
 			}
@@ -670,15 +674,6 @@ module.exports = async function(arg) {
 			}
 		}
 	});
-
-	function unicodeToChar(text) {
-		return text.replace(/\\u[\dA-F]{4}/gi,
-			function(match) {
-				return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
-			});
-	}
-
-	// cui.bind(['command+n', 'ctrl+n'], 'select');
 
 	cui.click('#powerBtn', 'x');
 	cui.click('#viewBtn', 'start');

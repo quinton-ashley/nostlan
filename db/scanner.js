@@ -5,7 +5,7 @@ class Scanner {
 		this.outLog = '';
 	}
 
-	async gameLib(sys) {
+	async gameLib() {
 		$('#loadDialog0').text('Indexing your game library');
 		this.outLog = '';
 		let games = [];

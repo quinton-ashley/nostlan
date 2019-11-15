@@ -18,19 +18,16 @@
 .gcn .console .text {
 	font-family: Gamecuben;
 	font-size: 2.6vw;
+	line-height: 2.6vw;
 	font-weight: 900;
 	text-transform: lowercase;
-	letter-spacing: -4px;
-}
-
-.gcn .console.power .text {
-	letter-spacing: -5px;
+	letter-spacing: -.2vw;
 }
 
 .gcn #view {
 	font-family: Nintender;
-	font-size: 3.5vw;
-	line-height: 3.4vw;
+	font-size: 3vw;
+	line-height: 3vw;
 	font-weight: bold;
 	text-align-last: center;
 	-webkit-appearance: none;
@@ -39,10 +36,10 @@
 	border-color: var(--view-text-color, var(--cover-text-color));
 	color: var(--view-text-color, var(--cover-text-color));
 	background-color: transparent;
-	border-radius: 3.5vw;
+	border-radius: 3vw;
 	padding-left: 5%;
 	padding-right: 6%;
-	padding-top: 1.5%;
+	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 /*================Wii/Gamecube Box====================*/

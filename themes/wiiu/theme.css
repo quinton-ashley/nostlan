@@ -17,24 +17,26 @@
 .wiiu .console .text {
 	font-family: contb;
 	font-weight: 900;
+	font-size: 3.5vw;
+	line-height: 3.5vw;
 }
 
 .wiiu #view {
 	font-family: Nintender;
-	font-size: 48px;
-	line-height: 43px;
+	font-size: 3vw;
+	line-height: 3vw;
 	font-weight: bold;
 	text-align-last: center;
 	-webkit-appearance: none;
-	border-width: 8px;
+	border-width: 0.5vw;
 	border-style: solid;
 	border-color: var(--view-text-color, var(--cover-text-color));
 	color: var(--view-text-color, var(--cover-text-color));
 	background-color: transparent;
-	border-radius: 48px;
+	border-radius: 3vw;
 	padding-left: 5%;
 	padding-right: 6%;
-	padding-top: 2%;
+	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 /*================ Wii U Game Lib Viewer ====================*/

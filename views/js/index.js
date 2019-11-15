@@ -8,12 +8,7 @@ module.exports = async function(arg) {
 	await require(arg.__rootDir + '/core/setup.js')(arg);
 	log('version: ' + pkg.version);
 
-	const Fuse = require('fuse.js');
-	const rmDiacritics = require('diacritics').remove;
-	const {
-		urlExists
-	} = require('url-exists-promise');
-	let child = require('child_process');
+	// extract compressed folders using 7zip
 	global.fs.extract = (input, output, opt) => {
 		opt = opt || {};
 		return new Promise(async (resolve, reject) => {
@@ -30,7 +25,7 @@ module.exports = async function(arg) {
 		});
 	};
 
-	global.util = require(__rootDir + '/views/js/util.js');
+	global.util = require(__rootDir + '/core/util.js');
 
 	// Nostlan dir location cannot be changed.
 	// Only used to store small config files, no images,
@@ -42,42 +37,23 @@ module.exports = async function(arg) {
 	// are stored here.
 	let usrDir = '$home/Documents/emu/bottlenose';
 	usrDir = util.absPath(usrDir);
-
 	if (usrDir && (await fs.exists(usrDir))) {
 		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
 	}
 	usrDir = path.join(usrDir, '..') + '/nostlan';
-
-
 	log(usrDir);
-
-	// dl is a helper lib I made for downloading images
-	const dl = require(__rootDir + '/scrape/dl.js');
-	// scrapers that use dl
-	let srp = {};
-	let scrapers = {
-		b: 'bmb',
-		c: 'tcp',
-		d: 'dec',
-		f: 'fly',
-		g: 'gfs',
-		m: 'mdo',
-		q: 'gqa',
-		t: 'tdb'
-	};
-	for (let scraper in scrapers) {
-		scraper = scrapers[scraper];
-		srp[scraper] = require(__rootDir + '/scrape/' + scraper + '.js');
-	}
-
-	const cloudSave = require(__rootDir + '/saves/cloudSave.js');
 
 	// get the default prefrences
 	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
 	prefsMan.prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = await prefsMan.loadDefaultPrefs();
 
-	let themes = require(__rootDir + '/themes/themes.js');
+	const cloudSaver = require(__rootDir + '/saves/cloudSaver.js');
+	const launcher = require(__rootDir + '/core/launcher.js');
+	const updater = require(__rootDir + '/core/updater.js');
+	const themes = require(__rootDir + '/themes/themes.js');
+	const scan = require(__rootDir + '/db/scanner.js');
+	const scraper = require(__rootDir + '/scrape/scraper.js');
 
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
@@ -106,12 +82,8 @@ module.exports = async function(arg) {
 	let sys; // current system
 	let sysStyle = ''; // style of that system
 	let emuDir = ''; // nostlan dir is stored here
-	let outLog = ''; // path to the game search output log file
 	let games = []; // array of current games from the systems' db
 	let emu; // current emulator
-	let emuChild = {}; // emuChild process running an emulator
-	emuChild.state = 'closed'; // status of the process
-	let cmdArgs = [];
 	let recheckImgs = false;
 	let offline = false;
 
@@ -125,224 +97,10 @@ module.exports = async function(arg) {
 	// physical layout always matches the on screen postion of x and y
 	// in the cover menu
 
-	const olog = (msg) => {
-		log(msg.replace(/[\t\r\n]/gi, '').replace(':', ': '));
-		outLog += msg + '\r\n';
-	};
-
 	async function intro() {
 		$('#dialogs').show();
 		await themes.loadFrame('intro', sys, sysStyle);
 		await themes.applyStyle('theme', sys, sysStyle);
-	}
-
-	async function addGame(searcher, searchTerm) {
-		let results = await searcher(searchTerm.substr(0, 64));
-		if (arg.v) log(results);
-		let region = prefs.region;
-		for (let i = 0; i < results.length; i++) {
-			if (results[i].title.length > searchTerm.length + 6) continue;
-			// if the search term doesn't contain demo or trial
-			// skip the demo/trial version of the game
-			let demoRegex = /(Demo|Preview|Review|Trial)/i;
-			if (demoRegex.test(results[i].title) != demoRegex.test(searchTerm)) {
-				continue;
-			}
-			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == 'n3ds') {
-				let gRegion = results[i].id[3];
-				// TODO: this is a temporary region filter
-				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) continue;
-				if (gRegion == 'E' && (region == 'P' || region == 'J')) continue;
-				if (gRegion == 'P' && (region == 'E' || region == 'J')) continue;
-				if (gRegion == 'J' && (region == 'E' || region == 'P')) continue;
-			} else if (sys == 'switch') {
-				let gRegion = results[i].id[4];
-				if (gRegion == 'A' && (region == 'P' || region == 'J')) continue;
-				if (gRegion == 'B' && (region == 'E' || region == 'J')) continue;
-				if (gRegion == 'C' && (region == 'E' || region == 'P')) continue;
-			} else if (sys == 'bsnes') {
-				let gRegion = results[i].id.split('-').splice(-2)[0];
-				log(gRegion)
-				await delay(100000);
-				if (gRegion != 'USA') continue;
-			}
-			return results[i];
-		}
-		return;
-	}
-
-	async function rescan() {
-		$('#loadDialog0').text('Indexing your game library');
-		let _games = games;
-		games = [];
-		let gameDB = [];
-		let DBPath = `${__rootDir}/db/${sys}DB.json`;
-		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
-
-		let idRegex;
-		if (sys == 'switch') {
-			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/;
-		} else if (sys == 'ps3') {
-			idRegex = /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/;
-		} else if (sys == 'wii' || sys == 'wiiu') {
-			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/;
-		} else if (sys == 'n3ds' || sys == 'ds') {
-			idRegex = /(?:^|[\[\(])([A-Z][A-Z0-9]{2}[A-Z])(?:[\]\)]|$)/;
-		} else if (sys == 'gba') {
-			idRegex = /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/;
-		} else if (sys == 'ps2') {
-			idRegex = /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/;
-		} else if (sys == 'xbox360') {
-			idRegex = /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/;
-		} else if (sys == 'mame') {
-			idRegex = /(\S+)/;
-		}
-
-		let searcharg = {
-			shouldSort: true,
-			threshold: 0.4,
-			location: 0,
-			distance: 5,
-			maxPatternLength: 64,
-			minMatchCharLength: 1,
-			keys: [
-				'id',
-				'title'
-			]
-		};
-		let fuse = new Fuse(gameDB, searcharg);
-		let searcher = function(searchTerm) {
-			return new Promise((resolve, reject) => {
-				resolve(fuse.search(searchTerm));
-			});
-		};
-		for (let h = 0; h < prefs[sys].libs.length; h++) {
-			let files = await klaw(prefs[sys].libs[h], {
-				depthLimit: 0
-			});
-			let file;
-			// a lot of pruning is required to get good search results
-			for (let i = 0; i < files.length; i++) {
-				$('#loadDialog2').text(`${i+1}/${files.length + 1} files matched`);
-				file = files[i];
-				let term = path.parse(file);
-				// if it's a hidden file like '.DS_STORE' on macOS, skip it
-				if (term.base[0] == '.') continue;
-				// if it's the dir.txt in the mame roms folder skip it
-				if (term.base == 'dir.txt') continue;
-				// if the file is a save file skip it
-				if (term.ext == '.sav') continue;
-				// fixes an issue where folder names were split by periods
-				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
-				let isDir = (await fs.stat(file)).isDirectory();
-				if (sys != 'wiiu' && sys != 'ps3' && !isDir) {
-					term = term.name;
-				} else {
-					term = term.base;
-				}
-				olog('file:   ' + term);
-				$('#loadDialog1').text(term);
-				await delay(1);
-				// rpcs3 ignore games with these ids
-				if (term == 'TEST12345' || term == 'RPSN00001') continue;
-				// eliminations part 1
-				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
-				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
-				term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
-				if ((/Disc *[^1A ]/gi).test(term)) {
-					log('additional disc: ' + term);
-					continue;
-				}
-				term = term.replace(/[\[\(,](En|Ja|Eu|Disc)[^\]\)]*[\]\)]*/gi, '');
-				// special complete subs part 1
-				if (sys == 'wii') {
-					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
-					term = term.replace(/thousand year/gi, 'Thousand-Year');
-				}
-				term = term.replace(/s*m *64n*/gi, 'Super Mario 64');
-				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
-				// special check for ids
-				let id;
-				if (idRegex) id = term.match(idRegex);
-				if (id) {
-					id = id[1];
-					log(id);
-					let game = gameDB.find(x => x.id === id);
-					if (game) {
-						if (sys == 'ps3') {
-							let dup = games.find(x => x.title === game.title);
-							if (dup) continue;
-						}
-						olog(`match:  ${game.title}\r\n`);
-						log(game);
-						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
-						games.push(game);
-						continue;
-					}
-				}
-				// replacements
-				term = term.replace(/_/g, ' ');
-				term = term.replace(/ -/g, ':');
-				let temp = term.replace(/, The/gi, '');
-				if (term != temp) {
-					term = 'The ' + temp;
-				}
-				// eliminations part 2
-				term = term.replace(/,/g, '');
-				term = term.replace(/[\[\(](E|J|P|U)[\]\)].*/g, '');
-				// special subs part 2
-				if (sys == 'wii') {
-					term = term.replace(/ 20XX.*/gi, ': 20XX Training Pack');
-					term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
-				} else if (sys == 'switch') {
-					term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
-				} else if (sys == 'gba') {
-					term = term.replace(/ # GBA/gi, '');
-				} else if (sys == 'ps2') {
-					term = term.replace(/Marvel Vs.*/gi, 'Marvel Vs Capcom 2');
-				} else if (sys == 'ds') {
-					term = term.replace(/^\w\d\d\d: /, '');
-				}
-				// special subs part 3
-				term = term.replace(/jak *a*n*d* *daxter *the/gi, 'Jak and Daxter: The');
-				term = term.replace(/pes *(\d\d\d\d).*/gi, 'Pro Evolution Soccer $1');
-				term = term.replace(/Dragonball/gi, 'Dragon Ball');
-				term = term.replace(/Goku 2/gi, 'Goku II');
-				term = term.replace(/Yu-Gi-Oh /gi, 'Yu-Gi-Oh! ');
-				term = term.replace(/lego/gi, 'lego');
-				term = term.replace(/warioware,*/gi, 'Wario Ware');
-				term = term.replace(/ bros( |$)/gi, ' Bros. ');
-				term = term.replace(/paper *mario[^\: ]/gi, 'Paper Mario');
-				term = term.replace(/paper *mario *the/gi, 'Paper Mario: The');
-				// eliminations part 3
-				term = term.replace(/[\[\(]*(v*\d+\.|rev *\d).*/gi, '');
-				term = term.replace(/\[[^\]]*\]/g, '');
-				term = term.replace(/ *decrypted */gi, '');
-
-				term = term.trim();
-				let game = await addGame(searcher, term);
-				if (game) {
-					olog(`match:  ${game.title}\r\n`);
-					log(game);
-					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
-					games.push(game);
-				} else {
-					olog('no match found\r\n');
-				}
-			}
-		}
-		let outLogPath = `${usrDir}/_usr/${sys}Log.log`;
-		await fs.outputFile(outLogPath, outLog);
-		outLog = '';
-		await outputGamesJSON();
-		clearDialogs();
-	}
-
-	async function outputGamesJSON() {
-		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
-		await fs.outputFile(gamesPath, JSON.stringify({
-			games: games
-		}));
 	}
 
 	async function reload() {
@@ -410,7 +168,7 @@ module.exports = async function(arg) {
 				await reload();
 				return;
 			}
-			await rescan();
+			games = await scan.gameLib(sys);
 		}
 		emuDir = emuDir.replace(/\\/g, '/');
 		prefs.nlaDir = emuDir + '/nostlan';
@@ -604,140 +362,22 @@ module.exports = async function(arg) {
 		}
 	});
 
-	function clearDialogs() {
+	cui.clearDialogs = () => {
 		$('#loadDialog0').text('');
 		$('#loadDialog1').text('');
 		$('#loadDialog2').text('');
 	}
 
-	function hideDialogs() {
+	cui.hideDialogs = () => {
 		$('#dialogs').hide();
-		clearDialogs();
+		cui.clearDialogs();
 	}
 
 	async function removeIntro(time) {
 		log('time:' + time);
 		await delay(time || prefs.load.delay);
 		$('#intro').remove();
-		hideDialogs();
-	}
-
-	async function powerBtn(withoutGame) {
-		let id = cui.getCur('libMain').attr('id');
-		log(id);
-		if (!prefs.session[sys]) prefs.session[sys] = {};
-		if (id) prefs.session[sys].gameID = id;
-		if (!id) id = prefs.session[sys].gameID;
-		let emuAppPath = await getEmuAppPath();
-		if (!emuAppPath) return;
-		let game;
-		cmdArgs = [];
-		emuDirPath = path.join(emuAppPath, '..');
-		if (linux) {
-			if (emu == 'citra') {
-				emuAppPath = 'org.citra.citra-canary'
-			}
-		}
-		if (!withoutGame) {
-			game = games.find(x => x.id === id);
-			if (game.file) {
-				game.file = util.absPath(game.file, sys);
-			} else {
-				cui.err('game not found: ' + id);
-				return;
-			}
-			if (emu == 'rpcs3') {
-				game.file += '/USRDIR/EBOOT.BIN';
-			}
-			if (emu == 'cemu') {
-				let files = await klaw(game.file + '/code');
-				log(files);
-				let ext, file;
-				for (let i = 0; i < files.length; i++) {
-					file = files[i];
-					ext = path.parse(file).ext;
-					if (ext == '.rpx') {
-						game.file = file;
-						break;
-					}
-				}
-			}
-		}
-		log(emu);
-		let cmdArray = prefs[sys].cmd[osType];
-		for (let cmdArg of cmdArray) {
-			if (cmdArg == '${app}') {
-				cmdArgs.push(emuAppPath);
-				if (withoutGame) {
-					break;
-				}
-			} else if (cmdArg == '${game}' || cmdArg == '${game.file}') {
-				cmdArgs.push(game.file);
-			} else if (cmdArg == '${game.id}') {
-				cmdArgs.push(game.id);
-			} else if (cmdArg == '${game.title}') {
-				cmdArgs.push(game.title);
-			} else if (cmdArg == '${cwd}') {
-				cmdArgs.push(emuDirPath);
-			} else {
-				cmdArgs.push(cmdArg);
-			}
-		}
-
-		if (!withoutGame || emu == 'mame') {
-			// cui.removeView('libMain');
-			cui.change('playingBack');
-			$('#libMain').hide();
-			$('#dialogs').show();
-			$('#loadDialog0').text(`Starting ${prefs[sys].emu}`);
-			if (!withoutGame) $('#loadDialog1').text(game.title);
-		}
-		log(cmdArgs);
-		log(emuDirPath);
-
-		emuChild = child.spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
-			cwd: emuDirPath,
-			stdio: 'inherit',
-			detached: true
-		});
-
-		emuChild.state = 'running';
-
-		emuChild.on('close', (code) => {
-			closeEmu(code);
-		});
-	}
-
-	async function closeEmu(code) {
-		log(`emulator closed`);
-		if (emuChild.state == 'resetting') {
-			await powerBtn();
-			return;
-		}
-		$('#libMain').show();
-		hideDialogs();
-		if (cui.getCur('libMain').hasClass('selected')) {
-			cui.change('coverSelect');
-		} else if (cui.ui != 'libMain') {
-			cui.change('libMain');
-		}
-		if (code) {
-			let erMsg = `${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[sys].emu} can boot the game.\n<code>`;
-			for (let i in cmdArgs) {
-				if (i == 0) erMsg += '$ ';
-				erMsg += `${cmdArgs[i]} `;
-			}
-			erMsg += '</code>';
-			cui.err(erMsg, code);
-		}
-		log('exited with code ' + code);
-		electron.getCurrentWindow().focus();
-		electron.getCurrentWindow().setFullScreen(true);
-		emuChild.state = 'closed';
-	}
-
-	async function resetBtn() {
-		await powerBtn('withoutGame');
+		cui.hideDialogs();
 	}
 
 	async function createTemplate(emuDir) {
@@ -757,21 +397,21 @@ module.exports = async function(arg) {
 		}
 		log(act + ' held for ' + timeHeld);
 		let ui = cui.ui;
-		if (ui == 'playingBack' && emuChild.state == 'running') {
+		if (ui == 'playingBack' && launcher.emuChild.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
 			) {
 				log('shutting down emulator');
-				emuChild.state = 'closing';
-				emuChild.kill('SIGINT');
+				launcher.emuChild.state = 'closing';
+				launcher.emuChild.kill('SIGINT');
 			} else if (
 				act == prefs.inGame.reset.hold &&
 				timeHeld > prefs.inGame.reset.time
 			) {
 				log('resetting emulator');
-				emuChild.state = 'resetting';
-				emuChild.kill('SIGINT');
+				launcher.emuChild.state = 'resetting';
+				launcher.emuChild.kill('SIGINT');
 			}
 		}
 	}
@@ -801,7 +441,12 @@ module.exports = async function(arg) {
 
 	function getCurGame() {
 		let id = cui.getCur('libMain').attr('id');
-		return games.find(x => x.id === id);
+		let game = games.find(x => x.id === id);
+		if (game.file) {
+			game.file = util.absPath(game.file, sys);
+			return game;
+		}
+		cui.err('game not found: ' + id);
 	}
 
 	cui.setCustomActions(async function(act, isBtn) {
@@ -819,7 +464,7 @@ module.exports = async function(arg) {
 		}
 		if (ui == 'libMain' || ui == 'coverSelect') {
 			if (act == 'x') {
-				await powerBtn();
+				await launcher.launch(emu, sys, getCurGame());
 			}
 		}
 		if (act == 'start' && !onMenu) {
@@ -841,31 +486,32 @@ module.exports = async function(arg) {
 			if (act == 'b' && !onMenu) {
 				cui.change('sysMenu');
 			} else if (act == 'y') {
-				await resetBtn();
+				// launch without a game
+				await launcher.launch(emu, sys);
 			} else if (act == 'a' || !isBtn) {
 				await coverClicked();
 			}
 		} else if (ui == 'coverSelect') {
 			if ((act == 'a' || !isBtn) &&
-				(await imgExists(themes[cui.getCur().attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
+				(await scraper.imgExists(sys, themes[cui.getCur().attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
 				// return;
 				// TODO finish open box menu
 				let game = getCurGame();
 				let template = themes[game.sys || sys].template;
 
-				$('#gameBoxOpen').prop('src', await imgExists(template, 'boxOpen'));
+				$('#gameBoxOpen').prop('src', await scraper.imgExists(sys, template, 'boxOpen'));
 				$('#gameBoxOpenMask').prop('src',
-					await imgExists(template, 'boxOpenMask'));
-				$('#gameMemory').prop('src', await imgExists(template, 'memory'));
-				$('#gameManual').prop('src', await imgExists(template, 'manual'));
+					await scraper.imgExists(sys, template, 'boxOpenMask'));
+				$('#gameMemory').prop('src', await scraper.imgExists(sys, template, 'memory'));
+				$('#gameManual').prop('src', await scraper.imgExists(sys, template, 'manual'));
 
 				let mediaName = 'disc';
 				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
 					mediaName = 'cart';
 				}
-				let mediaImg = await imgExists(game, mediaName);
+				let mediaImg = await scraper.imgExists(sys, game, mediaName);
 				if (!mediaImg) {
-					mediaImg = await imgExists(template, mediaName);
+					mediaImg = await scraper.imgExists(sys, template, mediaName);
 				}
 				$('#gameMedia').prop('src', mediaImg);
 				cui.change('infoSelect');
@@ -885,7 +531,7 @@ module.exports = async function(arg) {
 			if (act != 'b') {
 				if (act == 'x') act = 'Manual';
 				if (act == 'y') {
-					opn(getImgDir(getCurGame()));
+					opn(scraper.getImgDir(getCurGame()));
 					return;
 				}
 				if (act == 'a') act = 'Media';
@@ -903,7 +549,7 @@ module.exports = async function(arg) {
 					$('#infoSelect').removeClass('zoom-' + ui);
 					cui.doAction('back');
 					cui.change('libMain');
-					await powerBtn();
+					await launcher.launch(emu, sys, getCurGame());
 				} else if (act == 'y') { // Texp
 
 				} else if (act == 'x') { // File
@@ -935,7 +581,7 @@ module.exports = async function(arg) {
 				cui.removeView('libMain');
 				cui.change('rescanning');
 				await intro();
-				await rescan();
+				games = await scan.gameLib(sys);
 				await viewerLoad();
 				await removeIntro();
 				cui.change('libMain');
@@ -1041,7 +687,7 @@ module.exports = async function(arg) {
 
 	async function editImgSrc($cur, $img, game, name) {
 		if (!game) return;
-		let img = await imgExists(game, name);
+		let img = await scraper.imgExists(sys, game, name);
 		// log(img);
 		if (!img) return;
 		$img.prop('src', img);
@@ -1126,204 +772,17 @@ module.exports = async function(arg) {
 		}
 	}
 
-	async function getImg(game, name, hq) {
-		let res = await imgExists(game, name);
-		if (res || offline) return res;
-		$('#loadDialog0').html(md(
-			`scraping for the  \n${name}  \nof  \n${game.title}`
-		));
-		let imgDir = getImgDir(game);
-		let file, url;
-		// check if game img is specified in the gamesDB
-		if (game.img && game.img[name]) {
-			log(name);
-			url = game.img[name].split(' ');
-			let ext, scraper;
-			// url[0] is the url and url[1] is the file type
-			if (url[1] && url[0].length != 1) {
-				// catch and ignore old method of doing this from
-				// a previous version of Bottlnose
-				if (url[1][0] == '/' || url[1][0] == '\\') return;
-				ext = url[1];
-				url = url[0];
-			} else if (url[0] == 'q') {
-				url = srp.gqa.unwrapUrl(sys, game, name);
-			} else if (url[1]) {
-				// url[0] is key for the scraper
-				scraper = scrapers[url[0]];
-				// the unique parts of the url for the site the img was scraped from
-				let data = url.slice(1);
-				// unwrap/unminify the url using the unique parts
-				url = srp[scraper].unwrapUrl(data);
-			} else {
-				// the url is just a regular old link
-				url = url[0];
-			}
-			if (!ext) ext = url.substr(-3);
-			file = `${imgDir}/${name}.${ext}`;
-			if (scraper == 'gfs') {
-				res = await srp.gfs.dlImg(url, imgDir, name);
-			} else {
-				res = await dl(url, file);
-			}
-			if (res) return res;
-		}
-
-		if (game.id.includes('_TEMPLATE')) return;
-
-		// get high quality box from Andy Decarli's site
-		res = await srp.dec.dlImg(sys, game, imgDir, name);
-		if (res) return res;
-
-		res = await srp.mdo.dlImg(sys, game, imgDir, name);
-		if (res) return res;
-
-		if (hq) return;
-
-		return await srp.tdb.dlImg(sys, game, imgDir, name);
-	}
-
-	async function loadImages() {
-		let imgDir;
-		let _gamesLength = games.length;
-		let isTemplate;
-
-		// deprecated 3ds to n3ds
-		if (sys == 'n3ds') {
-			let depDir = `${prefs.nlaDir}/3ds`;
-			if (await fs.exists(depDir)) {
-				await fs.move(depDir, `${prefs.nlaDir}/n3ds`);
-			}
-		}
-		// deprecated template dir
-		let depTemplateDir = `${prefs.nlaDir}/${sys}/_TEMPLATE`;
-		if (await fs.exists(depTemplateDir)) {
-			if (sys == 'wii') {
-				await fs.move(depTemplateDir + '/img',
-					`${prefs.nlaDir}/${sys}/_TEMPLATE_gcn`);
-			} else {
-				await fs.move(depTemplateDir + '/img',
-					`${prefs.nlaDir}/${sys}/_TEMPLATE_${sys}`);
-			}
-			await fs.remove(depTemplateDir);
-		}
-		let gamesTotal = games.length + 1;
-		for (let i = 0; i < games.length + 1; i++) {
-			$('#loadDialog2').text(`${i+1}/${gamesTotal} games`);
-			let res;
-			let game;
-			if (!isTemplate && i == games.length) {
-				game = themes[sysStyle].template;
-				isTemplate = true;
-				if (sys != sysStyle) i--;
-			} else if (isTemplate) {
-				game = themes[sys].template;
-			} else {
-				game = games[i];
-			}
-			if (game.title) {
-				game.title = rmDiacritics(game.title);
-			}
-			imgDir = getImgDir(game);
-
-			if (sys != 'mame') {
-				// move img dir from deprecated location
-				let imgDirDep = imgDir + '/img';
-				if (await fs.exists(imgDirDep)) {
-					await fs.copy(imgDirDep, imgDir);
-					await fs.remove(imgDirDep);
-				}
-			}
-
-			if (recheckImgs || !(await fs.exists(imgDir))) {
-				await fs.ensureDir(imgDir);
-
-				if (!isTemplate ||
-					(!(await imgExists(game, 'coverFull')) &&
-						!(await imgExists(game, 'cover')) && sys != 'gba')
-				) {
-					await getImg(game, 'box', 'HQ');
-				}
-				res = await getImg(game, 'coverFull');
-				if (!res) {
-					await getImg(game, 'coverSide');
-					if (!(await imgExists(game, 'boxBack'))) {
-						await getImg(game, 'coverBack');
-					}
-				}
-				if (!res && !(await imgExists(game, 'box'))) {
-					res = await getImg(game, 'cover');
-					if (!res) res = await getImg(game, 'box');
-					if (!res) {
-						games.splice(i, 1);
-						i--;
-						await fs.remove(imgDir);
-						continue;
-					}
-				}
-
-				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
-					await getImg(game, 'cart');
-				} else if (sys != 'mame') {
-					await getImg(game, 'disc');
-				}
-
-				if (sys == 'mame') {
-					await getImg(game, 'boxOpen');
-				} else if (prefs.ui.getExtraImgs || isTemplate) {
-					await getImg(game, 'boxOpen');
-					await getImg(game, 'boxOpenMask');
-					await getImg(game, 'manual');
-					await getImg(game, 'memory');
-					await getImg(game, 'memoryBack');
-				}
-			}
-		}
-		if (_gamesLength != games.length) await outputGamesJSON();
-		if (sys != 'mame' && sys != 'gba' && (!themes[sysStyle].default ||
-				!(await getImg(themes[sysStyle].default, 'box')))) {
-			cui.err('ERROR: No default box image found for ' + themes[sysStyle].default.title + ' in the directory ' + getImgDir(themes[sysStyle].default));
-			return;
-		}
-
-		games = games.sort((a, b) => a.title.localeCompare(b.title));
-	}
-
-	function getImgDir(game) {
-		let imgDir = `${prefs.nlaDir}/${sys}/${game.id}`;
-		if (emu == 'mame') {
-			imgDir = `${emuDir}/MAME/BIN/artwork/${game.id}`;
-		}
-		return imgDir;
-	}
-
-	async function imgExists(game, name) {
-		let imgDir = getImgDir(game);
-		let file = `${imgDir}/${name}.png`;
-		if (!(await fs.exists(file))) {
-			file = file.substr(0, file.length - 3) + 'jpg';
-			if (!(await fs.exists(file))) {
-				if (sys != 'mame' || name != 'boxOpen' || !(await fs.exists(`${imgDir}/default.lay`))) {
-					return;
-				} else {
-					file = `${imgDir}/default.lay`;
-				}
-			}
-		}
-		return file;
-	}
-
 	async function addCover(game, column) {
 		let boxSys = game.sys || sys;
 		let imgType = '';
-		let boxImgSrc = await imgExists(game, 'box');
+		let boxImgSrc = await scraper.imgExists(sys, game, 'box');
 		let coverImgSrc = '';
 		if (!boxImgSrc) {
-			boxImgSrc = (await imgExists(themes[boxSys].default, 'box'));
-			coverImgSrc = await imgExists(game, 'coverFull');
+			boxImgSrc = (await scraper.imgExists(sys, themes[boxSys].default, 'box'));
+			coverImgSrc = await scraper.imgExists(sys, game, 'coverFull');
 			imgType = '.coverFull';
 			if (!coverImgSrc) {
-				coverImgSrc = await imgExists(game, 'cover');
+				coverImgSrc = await scraper.imgExists(sys, game, 'cover');
 				imgType = '.cover';
 				if (!coverImgSrc) {
 					log(`no images found for game: ${game.id} ${game.title}`);
@@ -1351,100 +810,6 @@ module.exports = async function(arg) {
 		return true;
 	}
 
-	async function getEmuAppPath() {
-		let emuAppPath = util.absPath(prefs[sys].app[osType], sys);
-		if (emuAppPath && await fs.exists(emuAppPath)) {
-			return emuAppPath;
-		}
-		emuAppPath = '';
-		let emuDirPath = '';
-		if (win || (linux && (/(cemu|rpcs3)/).test(emu)) ||
-			(mac && emu == 'mame')) {
-			emuDirPath = `${emuDir}/${prefs[sys].emu}/BIN`;
-			if (emu == 'citra') {
-				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
-					emuDirPath += '/nightly-mingw';
-				} else {
-					emuDirPath += '/canary-mingw';
-				}
-			}
-			if (emu == 'yuzu') {
-				emuDirPath = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
-				emuDirPath = util.absPath(emuDirPath, sys);
-			}
-		} else if (mac) {
-			emuDirPath = '/Applications';
-		}
-		let emuNameCases = [
-			prefs[sys].emu,
-			prefs[sys].emu.toLowerCase(),
-			prefs[sys].emu.toUpperCase()
-		];
-		for (let i = 0; i < emuNameCases.length; i++) {
-			if (emuDirPath) {
-				emuAppPath = emuDirPath + '/';
-			}
-			emuAppPath += emuNameCases[i];
-			if (win) {
-				if (emu == 'citra') emuAppPath += '-qt';
-				if (emu == 'mgba') emuAppPath += '-sdl';
-				if (emu == 'mame') emuAppPath += '64';
-				emuAppPath += '.exe';
-			} else if (mac) {
-				if (emu == 'citra') {
-					emuAppPath += `/nightly/${emuNameCases[1]}-qt`;
-				} else if (emu == 'yuzu') {
-					emuAppPath += '/' + emuNameCases[1];
-				}
-				if (emu != 'mame') {
-					emuAppPath += '.app/Contents/MacOS';
-				}
-				if (emu == 'desmume') {
-					emuAppPath += '/' + emuNameCases[0];
-				} else if (emu != 'mame') {
-					emuAppPath += '/' + emuNameCases[1];
-				}
-				if (emu == 'citra') {
-					emuAppPath += '-qt-bin';
-				} else if (emu == 'yuzu') {
-					emuAppPath += '-bin';
-				}
-				if (emu == 'mame') emuAppPath += '64';
-			} else if (linux) {
-				if (emu == 'dolphin') {
-					emuAppPath = 'dolphin-emu';
-				} else if (emu == 'cemu') {
-					emuAppPath += '.exe';
-				} else if (emu == 'rpcs3') {
-					emuAppPath += '.AppImage';
-				}
-			}
-			if (
-				(linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) ||
-				await fs.exists(emuAppPath)
-			) {
-				prefs[sys].app[osType] = emuAppPath;
-				return emuAppPath;
-			}
-		}
-		log(`couldn't find app at path:\n` + emuAppPath);
-		emuAppPath = dialog.selectFile('select emulator app');
-		if (mac) {
-			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
-			if (emu == 'citra') {
-				emuAppPath += '-qt-bin';
-			} else if (emu == 'yuzu') {
-				emuAppPath += '-bin';
-			}
-		}
-		if (!(await fs.exists(emuAppPath))) {
-			cui.err('app path not valid: ' + emuAppPath);
-			return '';
-		}
-		prefs[sys].app[osType] = emuAppPath;
-		return emuAppPath;
-	}
-
 	async function addTemplates(cols) {
 		for (let i = 0; i < cols; i++) {
 			for (let j = 0; j < 4; j++) {
@@ -1456,7 +821,7 @@ module.exports = async function(arg) {
 	async function viewerLoad() {
 		cui.resize(true);
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
-		await loadImages();
+		await scraper.loadImages(sys, sysStyle, games, themes, recheckImgs);
 		let cols = prefs.ui.maxColumns || 8;
 		if (games.length < 42) cols = 8;
 		if (games.length < 18) cols = 4;
@@ -1514,62 +879,32 @@ module.exports = async function(arg) {
 		}
 	}
 
-	async function checkForUpdate() {
-		let url = 'https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v';
-		let ogVer = pkg.version.split('.');
-		let ver = ogVer;
-		let updateAvail = false;
-		while (await urlExists(url + `${++ver[0]}.${0}`)) {}
-		ver[0]--;
-		if (ver[0] != ogVer[0]) {
-			ver[1] = 1;
-			updateAvail = true;
-		}
-		while (await urlExists(url + `${ver[0]}.${++ver[1]}`)) {}
-		ver[1]--;
-		if (ver[1] != ogVer[1]) updateAvail = true;
-
-		// updateAvail = true;
-		if (!updateAvail) return;
-		let updateVer = `${ver[0]}.${ver[1]}`;
-		url += updateVer;
-		$('#dialogs').show();
-		$('#loadDialog0').text(`Update to v${updateVer} available now!`);
-		$('#loadDialog2').text(url);
-		for (let i = 5; i > 0; i--) {
-			$('#loadDialog1').text(`Opening the link to the update log in ${i} seconds`);
-			await delay(1000);
-		}
-		opn(url);
-		await delay(500);
-		return updateVer;
-	}
-
-	electron.getCurrentWindow().setFullScreen(true);
-	await load();
-	if (prefs.load.online) {
-		try {
-			let updateVer = await checkForUpdate();
-			if (updateVer) {
-				app.quit();
+	async function start() {
+		electron.getCurrentWindow().setFullScreen(true);
+		await load();
+		if (prefs.load.online) {
+			try {
+				if (await updater.check()) app.quit();
+			} catch (ror) {
+				log('running in offline mode');
+				offline = true;
 			}
-		} catch (ror) {
-			log('running in offline mode');
-			offline = true;
 		}
+		if (prefs.donor) {
+			await reload();
+		} else if (await prefsMan.canLoad() && !prefs.donor) {
+			cui.change('donateMenu');
+		} else {
+			cui.change('welcomeMenu');
+		}
+		cui.start({
+			v: true,
+			gca: prefs.ui.gamepad.gca
+		});
+		cui.rebind('mouse');
+		await delay(1000);
+		cui.resize(true);
 	}
-	if (prefs.donor) {
-		await reload();
-	} else if (await prefsMan.canLoad() && !prefs.donor) {
-		cui.change('donateMenu');
-	} else {
-		cui.change('welcomeMenu');
-	}
-	cui.start({
-		v: true,
-		gca: prefs.ui.gamepad.gca
-	});
-	cui.rebind('mouse');
-	await delay(1000);
-	cui.resize(true);
+
+	await start();
 };

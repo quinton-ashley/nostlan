@@ -17,7 +17,7 @@
 
 .gcn .console .text {
 	font-family: Gamecuben;
-	font-size: 42px;
+	font-size: 2.6vw;
 	font-weight: 900;
 	text-transform: lowercase;
 	letter-spacing: -4px;
@@ -29,24 +29,23 @@
 
 .gcn #view {
 	font-family: Nintender;
-	font-size: 48px;
-	line-height: 43px;
+	font-size: 3.5vw;
+	line-height: 3.4vw;
 	font-weight: bold;
 	text-align-last: center;
 	-webkit-appearance: none;
-	border-width: 8px;
+	border-width: 0.5vw;
 	border-style: solid;
 	border-color: var(--view-text-color, var(--cover-text-color));
 	color: var(--view-text-color, var(--cover-text-color));
 	background-color: transparent;
-	border-radius: 48px;
+	border-radius: 3.5vw;
 	padding-left: 5%;
 	padding-right: 6%;
-	padding-top: 2%;
+	padding-top: 1.5%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 /*================Wii/Gamecube Box====================*/
-
 game.gcn .crop.coverFull,
 game.wii .crop.coverFull {
 	width: 200.1%;
@@ -96,7 +95,6 @@ game.wii.flip .shade {
 	left: 98%;
 }
 /*================Wii/Gamecube Open Box====================*/
-
 .gcn .zoom-gameManualSelect {
 	transform: translate(34vh,0vh) scale(1);
 }

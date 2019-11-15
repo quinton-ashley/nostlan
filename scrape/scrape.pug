@@ -13,4 +13,4 @@ body
 	script.
 		console.log('opening scrape.pug');
 		console.log('#{node_modules}');
-		require('./scrape.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));
+		require('./scrapeDev.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

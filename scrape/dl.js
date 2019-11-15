@@ -1,10 +1,10 @@
-const req = require('requisition');
+const requisition = require('requisition');
 
 async function dlWithExt(url, file) {
 	if (!(await fs.exists(file))) {
 		let res;
 		try {
-			res = await req(url);
+			res = await requisition(url);
 		} catch (ror) {
 			er(ror);
 			return;

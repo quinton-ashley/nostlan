@@ -17,7 +17,7 @@
 	font-family: Orbitron, sans-serif;
 	text-transform: uppercase;
 	font-size: 2.4vw;
-	transform: scale(1, 2);
+	transform: scale(1, 2) translate(0%, 6%);
 	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
 }
 
@@ -28,7 +28,7 @@
 	border: none;
 	box-shadow: none;
 	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
-	transform: scale(1.3, 2.5);
+	transform: scale(1.3, 2.5) translate(0%, 12%);
 }
 
 .mame .console .nav-link {
@@ -41,7 +41,6 @@
 	background: var(--button-hover-color);
 }
 /*================MAME Game Lib Viewer====================*/
-
 game.mame .box {
 	border-radius: 0;
 }

@@ -13,6 +13,7 @@ module.exports = async function(arg) {
 	const {
 		urlExists
 	} = require('url-exists-promise');
+	let child = require('child_process');
 	global.fs.extract = (input, output, opt) => {
 		opt = opt || {};
 		return new Promise(async (resolve, reject) => {
@@ -29,6 +30,8 @@ module.exports = async function(arg) {
 		});
 	};
 
+	global.util = require(__rootDir + '/views/js/util.js');
+
 	// Nostlan dir location cannot be changed.
 	// Only used to store small config files, no images,
 	// so that it doesn't take much space on the user's
@@ -38,7 +41,7 @@ module.exports = async function(arg) {
 	// The user's preferences and game libs json databases
 	// are stored here.
 	let usrDir = '$home/Documents/emu/bottlenose';
-	usrDir = getAbsolutePath(usrDir);
+	usrDir = util.absPath(usrDir);
 
 	if (usrDir && (await fs.exists(usrDir))) {
 		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
@@ -67,10 +70,14 @@ module.exports = async function(arg) {
 		srp[scraper] = require(__rootDir + '/scrape/' + scraper + '.js');
 	}
 
+	const cloudSave = require(__rootDir + '/saves/cloudSave.js');
+
 	// get the default prefrences
 	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
 	prefsMan.prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = await prefsMan.loadDefaultPrefs();
+
+	let themes = require(__rootDir + '/themes/themes.js');
 
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
@@ -101,9 +108,7 @@ module.exports = async function(arg) {
 	let emuDir = ''; // nostlan dir is stored here
 	let outLog = ''; // path to the game search output log file
 	let games = []; // array of current games from the systems' db
-	let themes;
 	let emu; // current emulator
-	let child = require('child_process');
 	let emuChild = {}; // emuChild process running an emulator
 	emuChild.state = 'closed'; // status of the process
 	let cmdArgs = [];
@@ -125,46 +130,10 @@ module.exports = async function(arg) {
 		outLog += msg + '\r\n';
 	};
 
-	const guestLibs = {
-		bootstrap_css: node_modules + '/bootstrap/dist/css/bootstrap.min.css',
-		jquery_js: node_modules + '/jquery/dist/jquery.min.js',
-		jquery_slim_js: node_modules + '/jquery/dist/jquery.slim.min.js',
-		material_design_icons_css: node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css',
-		three_js: node_modules + '/three/build/three.min.js'
-	};
-
-	async function loadGuestFrame(name) {
-		let themeDir = `${prefs.nlaDir}/themes/${sysStyle}`;
-		if (!(await fs.exists(`${themeDir}/${name}.html`))) {
-			themeDir = `${__rootDir}/themes/${sysStyle}`;
-		}
-		let fileHtml = `${themeDir}/${name}.html`;
-		let filePug = `${themeDir}/${name}.pug`;
-		if (!(await fs.exists(fileHtml))) {
-			log('generating html from pug file');
-			let filePugContent = await fs.readFile(filePug, 'utf8');
-			await fs.outputFile(fileHtml, pug(filePugContent, guestLibs));
-		}
-		$('body').prepend(`<webview id="${name}" enableremotemodule="false" src="${fileHtml}"></webview>`);
-	}
-
-	async function applyGuestStyle(name) {
-		let dirs = [__rootDir, `${prefs.nlaDir}/themes/${sysStyle}`];
-		for (let i in dirs) {
-			if (i != 0 && !(await fs.exists(dirs[i]))) return;
-			let file = `${dirs[i]}/themes/${sys}/${name}.css`;
-			$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
-			if (sys == 'wii') {
-				file = `${dirs[i]}/themes/gcn/${name}.css`;
-				$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
-			}
-		}
-	}
-
 	async function intro() {
 		$('#dialogs').show();
-		await loadGuestFrame('intro');
-		await applyGuestStyle('theme');
+		await themes.loadFrame('intro', sys, sysStyle);
+		await themes.applyStyle('theme', sys, sysStyle);
 	}
 
 	async function addGame(searcher, searchTerm) {
@@ -672,7 +641,7 @@ module.exports = async function(arg) {
 		if (!withoutGame) {
 			game = games.find(x => x.id === id);
 			if (game.file) {
-				game.file = getAbsolutePath(game.file);
+				game.file = util.absPath(game.file, sys);
 			} else {
 				cui.err('game not found: ' + id);
 				return;
@@ -1017,7 +986,7 @@ module.exports = async function(arg) {
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
 				emuDir = '$home/Documents/emu';
-				emuDir = getAbsolutePath(emuDir);
+				emuDir = util.absPath(emuDir, sys);
 				let templatePath = __rootDir + '/demo';
 				await fs.copy(templatePath, emuDir);
 				await createTemplate(emuDir);
@@ -1039,7 +1008,7 @@ module.exports = async function(arg) {
 			}
 			if (act == 'new-in-docs') {
 				emuDir = '$home/Documents';
-				emuDir = getAbsolutePath(emuDir);
+				emuDir = util.absPath(emuDir, sys);
 			} else {
 				emuDir = dialog.selectDir(msg);
 			}
@@ -1382,29 +1351,8 @@ module.exports = async function(arg) {
 		return true;
 	}
 
-	function getAbsolutePath(file) {
-		if (!file) return '';
-		let lib = file.match(/\$\d+/g);
-		if (lib) {
-			lib = lib[0].substr(1);
-			log(lib);
-			file = file.replace(/\$\d+/g, prefs[sys].libs[lib]);
-		}
-		let tags = file.match(/\$[a-zA-Z]+/g);
-		if (!tags) return file;
-		let replacement = '';
-		for (tag of tags) {
-			tag = tag.substr(1);
-			if (tag == 'home') {
-				replacement = os.homedir().replace(/\\/g, '/');
-			}
-			file = file.replace('$' + tag, replacement);
-		}
-		return file;
-	}
-
 	async function getEmuAppPath() {
-		let emuAppPath = getAbsolutePath(prefs[sys].app[osType]);
+		let emuAppPath = util.absPath(prefs[sys].app[osType], sys);
 		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
 		}
@@ -1422,7 +1370,7 @@ module.exports = async function(arg) {
 			}
 			if (emu == 'yuzu') {
 				emuDirPath = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
-				emuDirPath = getAbsolutePath(emuDirPath);
+				emuDirPath = util.absPath(emuDirPath, sys);
 			}
 		} else if (mac) {
 			emuDirPath = '/Applications';
@@ -1497,54 +1445,16 @@ module.exports = async function(arg) {
 		return emuAppPath;
 	}
 
-	async function addTemplates(template, cols, num) {
+	async function addTemplates(cols) {
 		for (let i = 0; i < cols; i++) {
-			for (let j = 0; j < num; j++) {
-				await addCover(template, i);
+			for (let j = 0; j < 4; j++) {
+				await addCover(themes[sysStyle].template, i);
 			}
 		}
 	}
 
 	async function viewerLoad() {
 		cui.resize(true);
-		let shouldRebindMouse;
-		if (!themes) {
-			shouldRebindMouse = true;
-			let themesPath = __rootDir + '/themes/themes.json';
-			themes = JSON.parse(await fs.readFile(themesPath));
-			let imgTypes = [
-				`box`, // the front of the box
-				`boxBack`, // the back of the box
-				`boxSide`, // the side of the box
-				`boxOpen`, // the inside of the game's box
-				`boxOpenMask`, // parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
-				`cart`, // the front of the game's (first) cartridge
-				`cover`, // the front facing portion of the cover sleeve, no box
-				`coverFull`, // the entire cover sleeve, no box
-				`coverBack`, // the side facing portion of the cover sleeve, no box
-				`coverSide`, // the side facing portion of the cover sleeve, no box
-				`disc`, // the front of the game's (first) disc
-				`manual`, // the front of the game's manual
-				`memory`, // the front of a memory card
-				`memoryBack`, // the back of a memory card
-				`promo` // a promotional insert included in the game box
-			];
-			for (let system in themes) {
-				let theme = themes[system];
-				let template = {
-					id: '_TEMPLATE_' + system,
-					title: system + ' template',
-					img: theme.template,
-					sys: system
-				};
-				for (let imgType of imgTypes) {
-					if (!template.img[imgType]) {
-						template.img[imgType] = 'q';
-					}
-				}
-				theme.template = template;
-			}
-		}
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		await loadImages();
 		let cols = prefs.ui.maxColumns || 8;
@@ -1568,9 +1478,18 @@ module.exports = async function(arg) {
 }`;
 		dynColStyle += '</style>';
 		$('body').append(dynColStyle);
-		let template = themes[sysStyle].template;
-		let templateAmt = 4;
-		await addTemplates(template, cols, templateAmt);
+
+		await addTemplates(cols);
+		await addGames(cols);
+		await addTemplates(cols);
+
+		cui.addView('libMain', {
+			hoverCurDisabled: true
+		});
+		$('#view').css('margin-top', '20px');
+	}
+
+	async function addGames(cols) {
 		let mameSetRegex = /set [2-9]/i;
 		for (let i = 0, col = 0; i < games.length; i++) {
 			try {
@@ -1592,14 +1511,6 @@ module.exports = async function(arg) {
 			} catch (ror) {
 				er(ror);
 			}
-		}
-		await addTemplates(template, cols, templateAmt);
-		cui.addView('libMain', {
-			hoverCurDisabled: true
-		});
-		$('#view').css('margin-top', '20px');
-		if (shouldRebindMouse) {
-			cui.rebind('mouse');
 		}
 	}
 
@@ -1658,6 +1569,7 @@ module.exports = async function(arg) {
 		v: true,
 		gca: prefs.ui.gamepad.gca
 	});
+	cui.rebind('mouse');
 	await delay(1000);
 	cui.resize(true);
 };

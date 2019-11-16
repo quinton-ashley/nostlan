@@ -138,32 +138,30 @@ module.exports = async function(arg) {
 		return str;
 	};
 
-	try {
-		global.Mousetrap = require('mousetrap');
+	global.Mousetrap = require('mousetrap');
 
-		let toggleDev;
-		if (mac) toggleDev = ['command+option+i', 'command+shift+i'];
-		if (win) toggleDev = ['ctrl+alt+i', 'ctrl+shift+i'];
+	let toggleDev;
+	if (mac) toggleDev = ['command+option+i', 'command+shift+i'];
+	if (win) toggleDev = ['ctrl+alt+i', 'ctrl+shift+i'];
 
-		Mousetrap.bind(toggleDev, function() {
-			electron.getCurrentWindow().toggleDevTools();
-			return false;
-		});
-		Mousetrap.bind(['command+r', 'ctrl+r'], function() {
-			electron.getCurrentWindow().reload();
-			return false;
-		});
-		Mousetrap.bind('space', function() {
-			return false;
-		});
+	Mousetrap.bind(toggleDev, function() {
+		electron.getCurrentWindow().toggleDevTools();
+		return false;
+	});
+	Mousetrap.bind(['command+r', 'ctrl+r'], function() {
+		electron.getCurrentWindow().reload();
+		return false;
+	});
+	Mousetrap.bind('space', function() {
+		return false;
+	});
 
-		global.cui = require('contro-ui');
-		// global.cui = require('./contro-ui.js');
+	global.cui = require('contro-ui');
+	// global.cui = require('./contro-ui.js');
 
-		let directions = ['up', 'down', 'left', 'right'];
-		for (let direction of directions) {
-			cui.bind(direction, direction);
-		}
-		cui.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], 'quit');
-	} catch (ror) {}
+	let directions = ['up', 'down', 'left', 'right'];
+	for (let direction of directions) {
+		cui.bind(direction, direction);
+	}
+	cui.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], 'quit');
 };

@@ -266,7 +266,7 @@ module.exports = async function(arg) {
 		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
 	}
 
-	cui.setResize((adjust) => {
+	cui.onResize = (adjust) => {
 		if (!$('nav').hasClass('hide')) {
 			let $cv = $('.console.view');
 			let $cvSel = $cv.find('#view');
@@ -285,9 +285,9 @@ module.exports = async function(arg) {
 			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
 		}
-	});
+	};
 
-	cui.setUIOnChange((state, subState, gamepadConnected) => {
+	cui.onChange = (state, subState, gamepadConnected) => {
 		let labels = [' ', ' ', ' '];
 		if (state == 'coverSelect') {
 			labels = ['Play', 'Flip', 'Back'];
@@ -349,9 +349,9 @@ module.exports = async function(arg) {
 		$('#power span').text(buttons[0]);
 		$('#reset span').text(buttons[1]);
 		$('#open span').text(buttons[2]);
-	});
+	}
 
-	cui.setUIAfterChange(() => {
+	cui.afterChange = () => {
 		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack' || cui.uiPrev == 'errMenu') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
 			cui.makeCursor($cur);
@@ -360,7 +360,7 @@ module.exports = async function(arg) {
 		if (cui.ui == 'infoSelect') {
 			cui.makeCursor($('#gameMedia').eq(0));
 		}
-	});
+	}
 
 	cui.clearDialogs = () => {
 		$('#loadDialog0').text('');
@@ -391,13 +391,12 @@ module.exports = async function(arg) {
 		}
 	}
 
-	async function doHeldAction(act, isBtn, timeHeld) {
+	cui.onHeldAction = (act, isBtn, timeHeld) => {
 		if (timeHeld < 2000) {
 			return;
 		}
 		log(act + ' held for ' + timeHeld);
-		let ui = cui.ui;
-		if (ui == 'playingBack' && launcher.emuChild.state == 'running') {
+		if (cui.ui == 'playingBack' && launcher.emuChild.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
@@ -415,7 +414,6 @@ module.exports = async function(arg) {
 			}
 		}
 	}
-	cui.setCustomHeldActions(doHeldAction);
 
 	async function coverClicked(select) {
 		let $cur = cui.getCur('libMain');
@@ -449,7 +447,7 @@ module.exports = async function(arg) {
 		cui.err('game not found: ' + id);
 	}
 
-	cui.setCustomActions(async function(act, isBtn) {
+	cui.onAction = async function(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
 		if (ui == 'playingBack') {
@@ -673,7 +671,7 @@ module.exports = async function(arg) {
 				cui.change('sysMenu');
 			}
 		}
-	});
+	}
 
 	cui.click('#powerBtn', 'x');
 	cui.click('#viewBtn', 'start');
@@ -879,6 +877,11 @@ module.exports = async function(arg) {
 	async function start() {
 		electron.getCurrentWindow().setFullScreen(true);
 		await load();
+		cui.start({
+			v: true,
+			gca: prefs.ui.gamepad.gca
+		});
+		cui.bind('wheel');
 		if (prefs.load.online) {
 			try {
 				if (await updater.check()) app.quit();
@@ -894,11 +897,6 @@ module.exports = async function(arg) {
 		} else {
 			cui.change('welcomeMenu');
 		}
-		cui.start({
-			v: true,
-			gca: prefs.ui.gamepad.gca
-		});
-		cui.rebind('mouse');
 		await delay(1000);
 		cui.resize(true);
 	}

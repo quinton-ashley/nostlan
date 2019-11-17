@@ -10,5 +10,6 @@ img {
 	width: 66vw;
 	top: 40%;
 	left:50%;
+	filter: invert(1) brightness(.7) hue-rotate(180deg);
 	transform: translate(-50%, -50%);
 }

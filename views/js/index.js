@@ -114,7 +114,7 @@ module.exports = async function(arg) {
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		if (await fs.exists(gamesPath)) {
-			games = JSON.parse(await fs.readFile(gamesPath)).games;
+			games = JSON.parse(await fs.readFile(gamesPath)).games || [];
 		} else {
 			if (!emuDir) {
 				cui.change('setupMenu');
@@ -375,7 +375,7 @@ module.exports = async function(arg) {
 
 	async function removeIntro(time) {
 		log('time:' + time);
-		await delay(time || prefs.load.delay);
+		await delay(arg.testLoadingTheme || time || prefs.load.delay);
 		$('#intro').remove();
 		cui.hideDialogs();
 	}

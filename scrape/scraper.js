@@ -188,6 +188,8 @@ class Scraper {
 		if (sys == 'mame') {
 			imgDir = util.absPath('$0');
 			imgDir = path.join(imgDir, `../artwork/${game.id}`);
+			imgDir = imgDir.replace(/\\/g, '/');
+			log(imgDir);
 		}
 		return imgDir;
 	}

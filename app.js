@@ -6,7 +6,7 @@
 	arg.__rootDir = __dirname.replace(/\\/g, '/');
 	arg.node_modules = arg.__rootDir + '/node_modules';
 	if (arg.h) {
-		log('info about the app');
+		log('Nostlan command line help');
 		return;
 	} else {
 		arg.electron = true;

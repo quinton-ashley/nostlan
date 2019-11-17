@@ -17,8 +17,8 @@
 
 .gcn .console .text {
 	font-family: Gamecuben;
-	font-size: 2.6vw;
-	line-height: 2.6vw;
+	font-size: 2.5vw;
+	line-height: 2.5vw;
 	font-weight: 900;
 	text-transform: lowercase;
 	letter-spacing: -.2vw;
@@ -43,6 +43,7 @@
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 /*================Wii/Gamecube Box====================*/
+
 game.gcn .crop.coverFull,
 game.wii .crop.coverFull {
 	width: 200.1%;
@@ -92,6 +93,7 @@ game.wii.flip .shade {
 	left: 98%;
 }
 /*================Wii/Gamecube Open Box====================*/
+
 .gcn .zoom-gameManualSelect {
 	transform: translate(34vh,0vh) scale(1);
 }

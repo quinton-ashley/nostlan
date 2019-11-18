@@ -1238,7 +1238,10 @@
 			"title": "HALF-MINUTE HERO -Super Mega Neo Climax-"
 		}, {
 			"id": "4D5307E6",
-			"title": "Halo 3"
+			"title": "Halo 3",
+			"img": {
+				"box": "q"
+			}
 		}, {
 			"id": "4D530877",
 			"title": "Halo 3: ODST"

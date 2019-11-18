@@ -24,9 +24,7 @@ class Scraper {
 	async getImg(game, name, hq) {
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
-		$('#loadDialog0').html(md(
-			`scraping for the  \n${name}  \nof  \n${game.title}`
-		));
+		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
 		let imgDir = this.getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
@@ -42,7 +40,9 @@ class Scraper {
 				ext = url[1];
 				url = url[0];
 			} else if (url[0] == 'q') {
-				url = this.gqa.unwrapUrl(game, name);
+				url = await this.gqa.unwrapUrl(game, name);
+				res = await dl(url, `${imgDir}/${name}`, true);
+				if (res) return res;
 			} else if (url[1]) {
 				// url[0] is key for the scraper
 				scraper = scrapers[url[0]];
@@ -67,7 +67,7 @@ class Scraper {
 		if (game.id.includes('_TEMPLATE')) return;
 
 		// get high quality box from Andy Decarli's site
-		res = await this.dec.dlImg(game, imgDir, name);
+		res = await this.dec.dlImg(game, imgDir, name, sys);
 		if (res) return res;
 
 		res = await this.mdo.dlImg(game, imgDir, name);
@@ -173,10 +173,16 @@ class Scraper {
 				}
 			}
 		}
-		if (sys != 'mame' && sys != 'gba' && (!themes[sysStyle].default ||
-				!(await this.getImg(themes[sysStyle].default, 'box')))) {
-			cui.err('ERROR: No default box image found for ' + themes[sysStyle].default.title + ' in the directory ' + this.getImgDir(themes[sysStyle].default));
-			return [];
+		if (sys != 'mame' && !(await this.imgExists(themes[sysStyle].default, 'box'))) {
+			log(themes[sysStyle].default);
+			await this.getImg(themes[sysStyle].default, 'box');
+			await this.getImg(themes[sysStyle].default, 'boxBack');
+			await this.getImg(themes[sysStyle].default, 'boxSide');
+			if (!(await this.imgExists(themes[sysStyle].default, 'box'))) {
+				cui.err('ERROR: No default box image found in the directory ' +
+					this.getImgDir(themes[sysStyle].default));
+				return [];
+			}
 		}
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));

@@ -79,7 +79,7 @@ module.exports = async function(arg) {
 	}
 
 	let games = []; // array of current games from the systems' db
-	let emuDir = ''; // nostlan dir is stored here
+	global.emuDir = ''; // nostlan dir is stored here
 
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
@@ -133,9 +133,8 @@ module.exports = async function(arg) {
 
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
 				if (i >= 1) {
-					cui.change('setupMenu');
 					await removeIntro(0);
-					cui.err(`Game library does not exist: \n` + gameLibDir);
+					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu');
 					return;
 				}
 				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
@@ -148,11 +147,11 @@ module.exports = async function(arg) {
 				); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.change('setupMenu');
-					cui.err(`Game library has no game files`);
+					cui.err(`Game library has no game files`, 404, 'sysMenu');
 					return;
 				}
 				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
+				if (!gameLibDir) continue;
 				files = await klaw(gameLibDir);
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');
@@ -164,7 +163,7 @@ module.exports = async function(arg) {
 					prefs[sys].libs.push(gameLibDir);
 				}
 			} else {
-				cui.err(`Couldn't load game library`);
+				cui.err(`Couldn't load game library`, 404, 'sysMenu');
 				await reload();
 				return;
 			}

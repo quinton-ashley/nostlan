@@ -7352,6 +7352,7 @@
 			"id": "SB4E01",
 			"title": "Super Mario Galaxy 2",
 			"img": {
+				"box": "q",
 				"disc": "https://images.launchbox-app.com/87176b2a-d682-429c-906a-eb1cfc3c30b7.png"
 			}
 		}, {
@@ -24077,7 +24078,10 @@
 		}, {
 			"id": "GALE01",
 			"title": "Super Smash Bros. Melee",
-			"sys": "gcn"
+			"sys": "gcn",
+			"img": {
+				"box": "q"
+			}
 		}, {
 			"id": "GALJ01",
 			"title": "Dairantou Smash Brothers DX"

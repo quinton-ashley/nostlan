@@ -700,7 +700,10 @@
 		"title": "Rabbids Land"
 	}, {
 		"id": "ARDE01",
-		"title": "Super Mario 3D World"
+		"title": "Super Mario 3D World",
+		"img": {
+			"box": "q"
+		}
 	}, {
 		"id": "ARDJ01",
 		"title": "Super Mario 3D World"

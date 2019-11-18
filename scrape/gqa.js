@@ -5,15 +5,15 @@ class GithubQuintonAshley {
 		return 'q';
 	}
 
-	unwrapUrl(game, imgType) {
+	unwrapUrl(game, name) {
 		let url = 'https://raw.githubusercontent.com/quinton-ashley';
 		if (!game.id.includes('_TEMPLATE')) {
-			url += `/bottlenose-${sys}/master/${sys}/${game.id}`;
+			url += `/nostlan-${sys}/master/${sys}/${game.id}`;
 		} else {
-			url += `/bottlenose-img/master/${sys}/${game.id}`;
+			url += `/nostlan-img/master/${sys}/${game.id}`;
 		}
-		return url + `/${imgType}.png`;
-	};
+		return url + `/${name}`;
+	}
 }
 
 module.exports = new GithubQuintonAshley();

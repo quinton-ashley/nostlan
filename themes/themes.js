@@ -11,8 +11,6 @@ class Themes {
 	}
 
 	async init() {
-		let themesPath = __rootDir + '/themes/themes.json';
-		let themes = JSON.parse(await fs.readFile(themesPath));
 		let imgTypes = [
 			`box`, // the front of the box
 			`boxBack`, // the back of the box
@@ -30,12 +28,16 @@ class Themes {
 			`memoryBack`, // the back of a memory card
 			`promo` // a promotional insert included in the game box
 		];
-		for (let system in themes) {
-			this[system] = themes[system];
+		let systems = [
+			'ds', 'gba', 'gcn', 'mame', 'n3ds', 'ps2', 'ps3',
+			'snes', 'switch', 'wii', 'wiiu', 'xbox360'
+		];
+		// template game art
+		for (let system of systems) {
 			let template = {
 				id: '_TEMPLATE_' + system,
 				title: system + ' template',
-				img: this[system].template,
+				img: {},
 				sys: system
 			};
 			for (let imgType of imgTypes) {
@@ -43,8 +45,40 @@ class Themes {
 					template.img[imgType] = 'q';
 				}
 			}
+			this[system] = {};
 			this[system].template = template;
+			this[system].default = {
+				"img": {
+					"box": "q",
+					"boxBack": "q",
+					"boxSide": "q"
+				}
+			};
 		}
+		// the default game art
+		this.ds.default.id = "ASME";
+		this.ds.default.title = "Super Mario 64 DS";
+		this.gba.default.id = "84EE4776";
+		this.gba.default.title = "Pokemon: Fire Red Version";
+		this.gcn.default.id = "GALE01";
+		this.gcn.default.title = "Super Smash Bros. Melee";
+		this.n3ds.default.id = "AREE";
+		this.n3ds.default.title = "Super Mario 3D Land";
+		this.ps2.default.id = "SLUS20370";
+		this.ps2.default.title = "Kingdom Hearts";
+		this.ps3.default.id = "BCUS98154";
+		this.ps3.default.title = "inFamous";
+		this.snes.default.id = "SHVC-1A1B-06-MW-USA-0";
+		this.snes.default.title = "Super Mario World";
+		this.switch.default.id = "AAACA";
+		this.switch.default.title = "Super Mario Odyssey";
+		this.wii.default.id = "SB4E01";
+		this.wii.default.title = "Super Mario Galaxy 2";
+		this.wiiu.default.id = "ARDE01";
+		this.wiiu.default.title = "Super Mario 3D World";
+		this.xbox360.default.id = "4D5307E6";
+		this.xbox360.default.title = "Halo 3";
+
 		this.initialized = true;
 	}
 

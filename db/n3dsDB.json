@@ -2427,6 +2427,7 @@
 		"id": "AREE",
 		"title": "Super Mario 3D Land",
 		"img": {
+			"box": "q",
 			"cover": "https://images-na.ssl-images-amazon.com/images/I/91afgTs0hwL.jpg"
 		}
 	}, {

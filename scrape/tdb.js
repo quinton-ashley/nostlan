@@ -36,7 +36,6 @@ class Gamestdb {
 			}
 			let _sys = (sys != 'n3ds') ? sys : '3ds';
 			url = `https://art.gametdb.com/${_sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
-			log(url);
 			res = await dl(url, file, true);
 			if (res) {
 				return res;

@@ -91,7 +91,9 @@ class Scanner {
 				// special complete subs part 1
 				if (sys == 'wii') {
 					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
-					term = term.replace(/thousand year/gi, 'Thousand-Year');
+				} else if (sys == 'switch') {
+					if (/Banana Blitz HD/gi.test(term)) term = 'AT6CB';
+					if (/Link[^s]*s Awakening/gi.test(term)) term = 'AR3NA';
 				}
 				term = term.replace(/s*m *64n*/gi, 'Super Mario 64');
 				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
@@ -128,6 +130,7 @@ class Scanner {
 				if (sys == 'wii') {
 					term = term.replace(/ 20XX.*/gi, ': 20XX Training Pack');
 					term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
+					term = term.replace(/thousand year/gi, 'Thousand-Year');
 				} else if (sys == 'switch') {
 					term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
 				} else if (sys == 'gba') {

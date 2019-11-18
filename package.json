@@ -8,7 +8,7 @@
   },
   "build": {
     "appId": "com.qashto.nostlan",
-    "copyright": "Copyright © 2018 Quinton Ashley",
+    "copyright": "Copyright © 2019 Quinton Ashley",
     "electronVersion": "7.1.1",
     "electronDownload": {
       "version": "7.1.1"
@@ -145,5 +145,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.3.19"
+  "version": "1.4.0"
 }

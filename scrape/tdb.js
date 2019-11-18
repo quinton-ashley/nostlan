@@ -14,7 +14,6 @@ class Gamestdb {
 		if (!availableImgs.includes(name) || sys == 'mame' || sys == 'ps2' || sys == 'gba') {
 			return;
 		}
-		if (sys == 'gcn') sys = 'wii';
 		// get image from gametdb
 		let res, url;
 		let file = `${dir}/${name}`;
@@ -35,7 +34,8 @@ class Gamestdb {
 					locale = 'EN';
 				}
 			}
-			url = `https://art.gametdb.com/${sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
+			let _sys = (sys != 'n3ds') ? sys : '3ds';
+			url = `https://art.gametdb.com/${_sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
 			log(url);
 			res = await dl(url, file, true);
 			if (res) {

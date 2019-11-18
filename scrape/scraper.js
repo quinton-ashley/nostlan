@@ -2,19 +2,19 @@ const rmDiacritics = require('diacritics').remove;
 // dl is a helper lib I made for downloading images
 const dl = require(__rootDir + '/scrape/dl.js');
 
+let scrapers = {
+	b: 'bmb',
+	c: 'tcp',
+	d: 'dec',
+	f: 'fly',
+	g: 'gfs',
+	m: 'mdo',
+	q: 'gqa',
+	t: 'tdb'
+};
+
 class Scraper {
 	constructor() {
-		// scrapers that use dl
-		let scrapers = {
-			b: 'bmb',
-			c: 'tcp',
-			d: 'dec',
-			f: 'fly',
-			g: 'gfs',
-			m: 'mdo',
-			q: 'gqa',
-			t: 'tdb'
-		};
 		for (let scraper in scrapers) {
 			scraper = scrapers[scraper];
 			this[scraper] = require(__rootDir + '/scrape/' + scraper + '.js');

@@ -7,7 +7,7 @@
 			"mac": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		},
-		"emu": "DeSmuME"
+		"emu": "melonDS"
 	},
 	"gba": {
 		"app": {},

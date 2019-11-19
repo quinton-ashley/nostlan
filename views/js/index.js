@@ -113,9 +113,11 @@ module.exports = async function(arg) {
 		await intro();
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
+		games = [];
 		if (await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games || [];
-		} else {
+		}
+		if (games.length == 0) {
 			if (!emuDir) {
 				cui.change('setupMenu');
 				await removeIntro(0);
@@ -232,6 +234,8 @@ module.exports = async function(arg) {
 				prefs.ui.maxColumns = prefs.ui.maxRows;
 				delete prefs.ui.maxRows;
 			}
+			// melonDS is not available on macOS
+			if (mac) prefs.ds.emu = 'DeSmuME';
 			// move old bottlenose directory
 			if (prefs.btlDir) {
 				prefs.nlaDir = path.join(prefs.btlDir, '..') + '/nostlan';
@@ -394,7 +398,7 @@ module.exports = async function(arg) {
 		if (timeHeld < 2000) {
 			return;
 		}
-		log(act + ' held for ' + timeHeld);
+		// log(act + ' held for ' + timeHeld);
 		if (cui.ui == 'playingBack' && launcher.emuChild.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
@@ -815,7 +819,7 @@ module.exports = async function(arg) {
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		let _gamesLength = games.length;
 		games = await scraper.loadImages(games, themes, recheckImgs);
-		if (_gamesLength != games.length) await scan.outputUsersGamesDB();
+		if (_gamesLength != games.length) await scan.outputUsersGamesDB(games);
 		let cols = prefs.ui.maxColumns || 8;
 		if (games.length < 42) cols = 8;
 		if (games.length < 18) cols = 4;

@@ -10,8 +10,8 @@ class Scanner {
 		this.outLog = '';
 		let games = [];
 		let gameDB = [];
-		let DBPath = `${__rootDir}/db/${sys}DB.json`;
-		gameDB = JSON.parse(await fs.readFile(DBPath)).games;
+		let dbPath = `${__rootDir}/db/${sys}DB.json`;
+		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
 		let idRegex;
 		if (sys == 'switch') {
@@ -218,6 +218,8 @@ class Scanner {
 
 	async outputUsersGamesDB(games) {
 		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
+		log('game library saved to: ');
+		log(gamesPath);
 		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
 		}));

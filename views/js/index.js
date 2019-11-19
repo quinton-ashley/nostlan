@@ -493,8 +493,8 @@ module.exports = async function(arg) {
 				await coverClicked();
 			}
 		} else if (ui == 'coverSelect') {
-			if ((act == 'a' || !isBtn) &&
-				(await scraper.imgExists(themes[cui.getCur().attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
+			if ((act == 'a' || !isBtn) && cui.getCur('libMain').attr('class') &&
+				(await scraper.imgExists(themes[cui.getCur('libMain').attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
 				// return;
 				// TODO finish open box menu
 				let game = getCurGame();

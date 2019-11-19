@@ -53,7 +53,7 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can i
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds_LQ.png">
 </a></p>
 
-### DeSmuME (DS) [Linux, macOS & Windows]
+### melonDS (DS) [Linux & Windows] or DeSmuME [macOS]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds_LQ.png">
@@ -120,6 +120,7 @@ Coming Soon:
 
 Milestone Goals:
 
+-   support for PC games, making Nostlan able to launch all your games
 -   single click to install emulators/updates
 -   database of Dolphin texture packs
 -   batch install and auto-update texture packs for Dolphin
@@ -128,11 +129,17 @@ Milestone Goals:
 
 ## How is Nostlan different from other front-ends?
 
-The name Nostlan, is a portmanteau of "nostalgia launcher".  When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.  This is a screenshot of Emulation Station, which is a prime example of this problem.
+The name Nostlan, is a portmanteau of "nostalgia launcher".  When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.
+
+This is a screenshot of Emulation Station, which is a prime example of this problem.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
 This is Launchbox for Windows, it's the most popular frontend.  Note that a lot of screen space is wasted and the game box art is thumbnail sized.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
+
+This is Playnite, it has become really popular too.  Looks great for managing really large libraries of PC games.
+![](https://playnite.link/screen2.jpg)
+![](https://playnite.link/screen4.jpg)
 
 Windows Explorer, despite not having gamepad support, is also surprisingly popular.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
 ![](https://i.redd.it/z7zxgap037p11.png)
@@ -140,43 +147,11 @@ Windows Explorer, despite not having gamepad support, is also surprisingly popul
 Retroarch is a different kind of frontend.  It uses separate cores instead of individual emulator apps like Nostlan does.  Game art is very low res and the interface is barebones.  It runs on a lot of platforms and seems good for small devices.
 ![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
 
+This is Pegasus, a relatively new project.  It has this huge sidebar that I'm not a fan of.
+![](https://pegasus-frontend.org/img/screens/s2.jpg)
+
 OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res and grid spacing is too wide though.  It doesn't support newer emulators either.
 ![](http://openemu.org/img/intro-gb-grid.png)
-
-## Using Nostlan
-
-Nostlan auto detects controllers when you press any button.  Controller type will be automatically determined so manual button mapping is not required.  The console themed cover overlay menu displays the basic options on any given screen.  On any game library view you can press the "Start" button on your controller or click "Nostlan" on the overlay to access the settings menu.  "Open" will pull up a menu with a list of game consoles.  Select a console to open your game libraries for that console.  "Reset" will start the emulator without a game.  "Power" starts the emulator with the selected game.
-
-## What is Adaptive Button Mapping?
-
-    // Xbox/PS Adaptive profile example
-    // for an Xbox One controller:
-
-    // Nintendo: remapped to match button positions
-    //  Y B  ->  X A
-    // X A  ->  Y B
-
-    // Xbox or MAME: not remapped
-    //  Y B  ->  Y B
-    // X A  ->  X A
-
-    // Playstation: not remapped (similar btn positions)
-    //  Y B  ->  △ ○
-    // X A  ->  □ X
-
-Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the physical button layout of controllers made for the system being emulated.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers.  The B button on Nintendo systems means "no" or "back".
-
-Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
-
-I recommend using adaptive mapping in your controller settings for each emulator too.  This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
-
-The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.
-
-## System Requirements
-
-Nostlan will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Nostlan on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
-
-Warning!  If you pay for internet by bandwidth be aware that for large game libraries Nostlan will download a lot of image files and this will take a lot of bandwidth.
 
 ## Setting up Nostlan
 
@@ -219,6 +194,12 @@ If you do not want to use the optional template file structure, simply select "c
     │   │ ├── 💿 1942.zip
     │   │ └── 💿 spang.zip
     │   └── 🎮 mame64.exe
+    ├─┬ 📁 melonDS
+    │ ├─┬ 📁 BIN
+    │ │ └── 🎮 melonDS.exe
+    │ └─┬ 📁 GAMES
+    │   ├── 💿 Mario & Luigi - Partners in Time.nds
+    │   └── 💿 Mario & Luigi - Partners in Time.sav
     ├─┬ 📁 mGBA
     │ ├─┬ 📁 BIN
     │ │ └── 🎮 mGBA.exe
@@ -247,13 +228,48 @@ If you do not want to use the optional template file structure, simply select "c
       └─┬ 📁 GAMES
         └── 💿 Super Mario Odyssey.xci
 
-Nostlan was designed to OPTIONALLY use the same directory structure as WiiUSBHelper, for compatibility.  Although WiiUSBHelper is no longer maintained, Nostlan will continue to use this structure as the template.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Nostlan was designed to OPTIONALLY use this template file structure.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
 Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to.  On Windows, Nostlan will look for emulator executables in the `BIN` folder or the default install location of that emulator (no need to move Yuzu).
 
 On macOS, Nostlan will look for emulator apps in `/Applications` or `BIN`.  Nostlan needs read/write permission to the install folder you choose so do not choose to install the Nostlan image folder at `/Applications`.
 
 On Linux, Nostlan will look for emulator apps in their default install locations or `BIN`.
+
+## Using Nostlan
+
+Nostlan auto detects controllers.  The console themed cover overlay menu displays the options on any given screen.  Click "Nostlan" or press the "Start" button to view the settings menu.  Click "Open" to load another game library.  "Reset" will start the emulator without a game.  "Power" starts the emulator with the selected game.
+
+## What is Adaptive Button Mapping?
+
+    // Xbox/PS Adaptive profile example
+    // for an Xbox One controller:
+
+    // Nintendo: remapped to match button positions
+    //  Y B  ->  X A
+    // X A  ->  Y B
+
+    // Xbox or MAME: not remapped
+    //  Y B  ->  Y B
+    // X A  ->  X A
+
+    // Playstation: not remapped (similar btn positions)
+    //  Y B  ->  △ ○
+    // X A  ->  □ X
+
+Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the physical button layout of controllers made for the system being emulated.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers.  The B button on Nintendo systems means "no" or "back".
+
+Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
+
+I recommend using adaptive mapping in your controller settings for each emulator too.  This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
+
+The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.
+
+## System Requirements
+
+Nostlan will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Nostlan on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
+
+Warning!  If you pay for internet by bandwidth be aware that for large game libraries Nostlan will download a lot of image files and this will take a lot of bandwidth.
 
 ## User Preferences
 

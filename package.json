@@ -80,7 +80,7 @@
     "chrome-finder": "^1.0.6",
     "circletype": "^2.3.0",
     "contro": "^2.1.3",
-    "contro-ui": "^2.0.3",
+    "contro-ui": "^2.0.4",
     "deep-extend": "^0.6.0",
     "delay": "^4.3.0",
     "diacritics": "^1.3.0",
@@ -146,5 +146,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.5.0"
+  "version": "1.5.1"
 }

@@ -29,6 +29,10 @@ html
 			.uie(name='new-in-docs') install at ~/Documents/emu
 			.uie(name='new') choose install location
 			.uie(name='continue') finish setup
+		#themeMenu.menu.row-y
+			h1 Chance Appearance
+			.uie(name='colors') default colors
+			.uie(name='toggleCover') auto-hide cover overlay
 		#pauseMenu.menu.row-y
 			h1 Main Menu
 			.uie(name='minimize')
@@ -39,9 +43,9 @@ html
 				i.material-icons.md-left zoom_out_map
 				.text fullscreen
 				i.material-icons.md-right.invis zoom_out_map
-			.uie(name='toggleCover')
+			.uie(name='editTheme')
 				i.material-icons.md-left view_comfy
-				.text auto-hide cover overlay
+				.text chance appearance
 				i.material-icons.md-right.invis view_comfy
 			.uie(name='rescanLib')
 				i.material-icons.md-left disc_full

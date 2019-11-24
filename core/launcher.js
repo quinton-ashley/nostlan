@@ -2,8 +2,10 @@ let child = require('child_process');
 
 class Launcher {
 	constructor() {
-		this.emuChild = {}; // emuChild process running an emulator
-		this.emuChild.state = 'closed'; // status of the process
+		this.child = {}; // child process running an emulator
+		this.state = 'closed'; // status of the process
+		this.cmdArgs = [];
+		this.emuDirPath = '';
 	}
 
 	async getEmuAppPath() {
@@ -108,16 +110,18 @@ class Launcher {
 		if (!id) id = prefs.session[sys].gameID;
 		let emuAppPath = await this.getEmuAppPath();
 		if (!emuAppPath) return;
-		let cmdArgs = [];
-		let emuDirPath = path.join(emuAppPath, '..');
+		this.cmdArgs = [];
+		this.emuDirPath = path.join(emuAppPath, '..');
 		if (linux) {
 			if (emu == 'citra') {
 				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
+		let gameFile;
 		if (game) {
+			gameFile = game.file;
 			if (emu == 'rpcs3') {
-				game.file += '/USRDIR/EBOOT.BIN';
+				gameFile += '/USRDIR/EBOOT.BIN';
 			}
 			if (emu == 'cemu') {
 				let files = await klaw(game.file + '/code');
@@ -127,7 +131,7 @@ class Launcher {
 					file = files[i];
 					ext = path.parse(file).ext;
 					if (ext == '.rpx') {
-						game.file = file;
+						gameFile = file;
 						break;
 					}
 				}
@@ -137,20 +141,20 @@ class Launcher {
 		let cmdArray = prefs[sys].cmd[osType];
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
-				cmdArgs.push(emuAppPath);
+				this.cmdArgs.push(emuAppPath);
 				if (!game) {
 					break;
 				}
 			} else if (cmdArg == '${game}' || cmdArg == '${game.file}') {
-				cmdArgs.push(game.file);
+				this.cmdArgs.push(gameFile);
 			} else if (cmdArg == '${game.id}') {
-				cmdArgs.push(game.id);
+				this.cmdArgs.push(game.id);
 			} else if (cmdArg == '${game.title}') {
-				cmdArgs.push(game.title);
+				this.cmdArgs.push(game.title);
 			} else if (cmdArg == '${cwd}') {
-				cmdArgs.push(emuDirPath);
+				this.cmdArgs.push(this.emuDirPath);
 			} else {
-				cmdArgs.push(cmdArg);
+				this.cmdArgs.push(cmdArg);
 			}
 		}
 
@@ -162,40 +166,58 @@ class Launcher {
 			$('#loadDialog0').text(`Starting ${prefs[sys].emu}`);
 			if (game) $('#loadDialog1').text(game.title);
 		}
-		log(cmdArgs);
-		log(emuDirPath);
+		log(this.cmdArgs);
+		log(this.emuDirPath);
+		this._launch();
+	}
 
-		this.emuChild = child.spawn(cmdArgs[0], cmdArgs.slice(1) || [], {
-			cwd: emuDirPath,
+	_launch() {
+		this.child = child.spawn(this.cmdArgs[0], this.cmdArgs.slice(1) || [], {
+			cwd: this.emuDirPath,
 			stdio: 'inherit',
 			detached: true
 		});
 
-		this.emuChild.state = 'running';
+		this.state = 'running';
+		cui.disableSticks = true;
 
-		this.emuChild.on('close', (code) => {
-			this.closeEmu(code, cmdArgs);
+		this.child.on('close', (code) => {
+			this._close(code);
 		});
 	}
 
-	async closeEmu(code, cmdArgs) {
+	reset() {
+		this.state = 'resetting';
+		this.child.kill('SIGINT');
+	}
+
+	close() {
+		this.state = 'closing';
+		this.child.kill('SIGINT');
+	}
+
+	_close(code) {
 		log(`emulator closed`);
-		if (this.emuChild.state == 'resetting') {
-			await this.powerBtn();
+		cui.disableSticks = false;
+		if (this.state == 'resetting') {
+			this._launch();
 			return;
 		}
 		$('#libMain').show();
 		cui.hideDialogs();
-		if (cui.getCur('libMain').hasClass('selected')) {
+		let $cur = cui.getCur('libMain');
+		if ($cur.hasClass('selected')) {
 			cui.change('coverSelect');
+			let $reel = $cur.parent();
+			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 		} else if (cui.ui != 'libMain') {
 			cui.change('libMain');
 		}
 		if (code) {
 			let erMsg = `${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[sys].emu} can boot the game.\n<code>`;
-			for (let i in cmdArgs) {
+			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
-				erMsg += `${cmdArgs[i]} `;
+				erMsg += `${this.cmdArgs[i]} `;
 			}
 			erMsg += '</code>';
 			cui.err(erMsg, code);
@@ -203,7 +225,7 @@ class Launcher {
 		log('exited with code ' + code);
 		electron.getCurrentWindow().focus();
 		electron.getCurrentWindow().setFullScreen(true);
-		this.emuChild.state = 'closed';
+		this.state = 'closed';
 	}
 }
 

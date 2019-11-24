@@ -40,7 +40,6 @@
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 /*================ Wii U Game Lib Viewer ====================*/
-
 game.wiiu .crop.coverFull {
 	width: 200.4%;
 	top: 2.1%;
@@ -70,6 +69,12 @@ game.wiiu img.coverFull {
 
 game.wiiu.flip img.coverFull {
 	transform: translate(1.5%, 0%);
+}
+
+game.wiiu.flip .crop.coverFull {
+	width: 100.4%;
+	top: 2.1%;
+	left: 0;
 }
 
 game.wiiu.flip .shade {

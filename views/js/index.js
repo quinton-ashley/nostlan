@@ -87,15 +87,6 @@ module.exports = async function(arg) {
 		prefs.ui.mouse.wheel.multi = 0.5;
 		prefs.ui.mouse.wheel.smooth = true;
 	}
-	// physical layout always matches the on screen postion of x and y
-	// in the cover menu
-	let normalizeButtonLayout = {
-		map: {
-			x: 'y',
-			y: 'x'
-		},
-		disable: 'nintendo'
-	};
 
 	async function intro() {
 		$('#dialogs').show();
@@ -175,7 +166,7 @@ module.exports = async function(arg) {
 		prefs.nlaDir = emuDir + '/nostlan';
 		await fs.ensureDir(prefs.nlaDir);
 		prefs.session.sys = sys;
-		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
+		cui.mapButtons(sys);
 		await prefsMan.save();
 		await viewerLoad();
 		await removeIntro();
@@ -266,7 +257,7 @@ module.exports = async function(arg) {
 		sys = arg.sys || prefs.session.sys;
 		// deprecated system id, change to 'n3ds'
 		if (sys == '3ds') sys = 'n3ds';
-		cui.mapButtons(sys, prefs.ui.gamepad, normalizeButtonLayout);
+		cui.mapButtons(sys);
 	}
 
 	cui.onResize = (adjust) => {
@@ -305,7 +296,8 @@ module.exports = async function(arg) {
 			labels = ['Texp', 'File', 'Back'];
 		} else if (
 			state == 'sysMenu' ||
-			(/game/i).test(state)) {
+			(/game/i).test(state) ||
+			state == 'themeMenu') {
 			labels = [' ', ' ', 'Back'];
 		} else if (state == 'pauseMenu') {
 			labels = ['Quit', 'Mini', 'Back'];
@@ -399,26 +391,25 @@ module.exports = async function(arg) {
 			return;
 		}
 		// log(act + ' held for ' + timeHeld);
-		if (cui.ui == 'playingBack' && launcher.emuChild.state == 'running') {
+		if (cui.ui == 'playingBack' && launcher.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
 			) {
 				log('shutting down emulator');
-				launcher.emuChild.state = 'closing';
-				launcher.emuChild.kill('SIGINT');
+				launcher.close();
 			} else if (
 				act == prefs.inGame.reset.hold &&
 				timeHeld > prefs.inGame.reset.time
 			) {
 				log('resetting emulator');
-				launcher.emuChild.state = 'resetting';
-				launcher.emuChild.kill('SIGINT');
+				launcher.reset();
+				return true;
 			}
 		}
 	}
 
-	async function coverClicked(select) {
+	async function coverClicked() {
 		let $cur = cui.getCur('libMain');
 		if ($cur.hasClass('uie-disabled')) return false;
 		let $reel = $cur.parent();
@@ -453,7 +444,7 @@ module.exports = async function(arg) {
 	cui.onAction = async function(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
-		if (ui == 'playingBack') {
+		if (ui == 'playingBack' || launcher.state == 'running') {
 			return;
 		}
 		let onMenu = (/menu/gi).test(ui);
@@ -471,12 +462,12 @@ module.exports = async function(arg) {
 		if (act == 'start' && !onMenu) {
 			cui.change('pauseMenu');
 		} else if (act == 'b' && onMenu &&
-			ui != 'donateMenu' && ui != 'setupMenu') {
+			ui != 'donateMenu' && ui != 'setupMenu' && ui != 'pauseMenu') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#pauseMenu .uie[name="toggleCover"] .text');
+			let $elem = $('#themeMenu .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text('auto-hide cover overlay');
@@ -568,12 +559,20 @@ module.exports = async function(arg) {
 			sys = act;
 			cui.removeCursor();
 			await reload();
+		} else if (ui == 'themeMenu') {
+			if (act == 'toggleCover') {
+				cui.buttonPressed('select');
+			} else if (act == 'colors') {
+				// TODO
+			}
 		} else if (ui == 'pauseMenu') {
-			if (act == 'fullscreen') {
+			if (act == 'b' || act == 'start' || act == 'back') {
+				cui.change('libMain');
+			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
-			} else if (act == 'toggleCover') {
-				cui.buttonPressed('select');
+			} else if (act == 'editTheme') {
+				cui.change('themeMenu');
 			} else if (act == 'recheckLib' || act == 'rescanLib') {
 				let recheckImgs = false;
 				if (act == 'recheckLib') {
@@ -600,8 +599,6 @@ module.exports = async function(arg) {
 				opn(prefsMan.prefsPath);
 			} else if (act == 'x') {
 				cui.doAction('quit');
-			} else if (act == 'start') {
-				cui.doAction('back');
 			}
 			if (act == 'minimize' ||
 				act == 'prefs' || act == 'y') {
@@ -880,9 +877,19 @@ module.exports = async function(arg) {
 	async function start() {
 		electron.getCurrentWindow().setFullScreen(true);
 		await load();
+		// physical layout always matches the on screen postion of x and y
+		// in the cover menu
 		cui.start({
 			v: true,
-			gca: prefs.ui.gamepad.gca
+			gca: prefs.ui.gamepad.gca,
+			gamepadMaps: prefs.ui.gamepad,
+			normalize: {
+				map: {
+					x: 'y',
+					y: 'x'
+				},
+				disable: 'nintendo'
+			}
 		});
 		cui.bind('wheel');
 		if (prefs.load.online) {

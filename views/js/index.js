@@ -130,7 +130,7 @@ module.exports = async function(arg) {
 					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu');
 					return;
 				}
-				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
+				gameLibDir = await dialog.selectDir(`select ${sys} game directory`);
 			}
 			let files = await klaw(gameLibDir);
 			for (let i = 0; !files.length || (
@@ -143,7 +143,7 @@ module.exports = async function(arg) {
 					cui.err(`Game library has no game files`, 404, 'sysMenu');
 					return;
 				}
-				gameLibDir = dialog.selectDir(`select ${sys} game directory`);
+				gameLibDir = await dialog.selectDir(`select ${sys} game directory`);
 				if (!gameLibDir) continue;
 				files = await klaw(gameLibDir);
 			}
@@ -658,7 +658,7 @@ module.exports = async function(arg) {
 				emuDir = '$home/Documents';
 				emuDir = util.absPath(emuDir);
 			} else {
-				emuDir = dialog.selectDir(msg);
+				emuDir = await dialog.selectDir(msg);
 			}
 			if (!emuDir) return false;
 			if (act != 'old') emuDir += '/emu';

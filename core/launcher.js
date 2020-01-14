@@ -85,7 +85,7 @@ class Launcher {
 			}
 		}
 		log(`couldn't find app at path:\n` + emuAppPath);
-		emuAppPath = dialog.selectFile('select emulator app');
+		emuAppPath = await dialog.selectFile('select emulator app');
 		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {

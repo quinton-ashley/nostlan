@@ -58,7 +58,7 @@ module.exports = async function(arg) {
 	global.app = electron.app;
 	global.dialog = {};
 
-	dialog.select = function(opt) {
+	dialog.select = async function(opt) {
 		opt = opt || {};
 		let files = [];
 		if (opt.types || opt.type) {
@@ -85,7 +85,8 @@ module.exports = async function(arg) {
 		opt.title = opt.msg;
 		opt.message = opt.msg;
 		try {
-			files = electron.dialog.showOpenDialog(opt);
+			files = await electron.dialog.showOpenDialog(opt);
+			files = files.filePaths;
 		} catch (ror) {
 			er(ror);
 		}
@@ -97,26 +98,26 @@ module.exports = async function(arg) {
 		return (files && files.length == 1) ? files[0] : files;
 	};
 
-	dialog.selectFile = function(msg, opt) {
+	dialog.selectFile = async function(msg, opt) {
 		opt = opt || {};
 		opt.type = 'file';
 		opt.msg = 'Select File: ' + msg;
-		return dialog.select(opt);
+		return await dialog.select(opt);
 	};
 
-	dialog.selectFiles = function(msg, opt) {
+	dialog.selectFiles = async function(msg, opt) {
 		opt = opt || {};
 		opt.type = 'files';
 		opt.msg = 'Select Files: ' + msg;
-		return dialog.select(opt);
+		return await dialog.select(opt);
 	};
 	dialog.selectMulti = dialog.selectFiles;
 
-	dialog.selectDir = function(msg, opt) {
+	dialog.selectDir = async function(msg, opt) {
 		opt = opt || {};
 		opt.type = 'dir';
 		opt.msg = 'Select Folder: ' + msg;
-		return dialog.select(opt);
+		return await dialog.select(opt);
 	};
 	dialog.selectFolder = dialog.selectDir;
 

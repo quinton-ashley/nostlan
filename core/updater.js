@@ -6,10 +6,17 @@ class Updater {
 
 	async urlExists(url) {
 		try {
-			const res = await rp({
-				uri: url,
-				resolveWithFullResponse: true
-			});
+			const res = await Promise.race([
+				new Promise((resolve, reject) => {
+					rp({
+							uri: url,
+							resolveWithFullResponse: true
+						}).then((response) => resolve(response))
+						.catch((ror) => reject(ror));
+				}),
+				delay.reject(1000)
+			]);
+			log('update res: ' + res);
 			return (/^(?!4)\d\d/.test(res.statusCode));
 		} catch (ror) {}
 		return false;
@@ -39,8 +46,12 @@ class Updater {
 		ver[1]--;
 		if (ver[1] != ogVer[1]) updateAvail = true;
 
-		// updateAvail = true;
-		if (!updateAvail) return;
+		// update not available
+		if (!updateAvail) {
+			$('#dialogs').hide();
+			$('#loadDialog0').text('');
+			return;
+		}
 		let updateVer = `${ver[0]}.${ver[1]}.x`;
 		url += updateVer;
 		$('#loadDialog0').text(`Update to v${updateVer} available now!`);

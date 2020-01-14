@@ -1,4 +1,6 @@
-# Message From on 01/22/2019
+Messages from qashto to gameFAQs about this app, Nostlan, which was formerly called Bottlenose.
+
+# Message From qashto on 01/22/2019
 
 A Bottlenose user has informed me that Bottlenose may be violating GFAQs TOS by scraping the site to download cover images for the user's games.
 
@@ -30,7 +32,7 @@ Many emulator front-end authors in the past have attempted to offload their work
 
 Alternately, one centralized server scraping our pages on a weekly basis for images, then subsequently sharing those results in an index, is not an issue. Even image downloads are not an issue (as that happens via a CDN for us and many other resources), but distributed individualized scraping absolutely will cause problems for any site no matter how you try to code it.
 
-# Message From on 01/22/2019
+# Message From qashto on 01/22/2019
 
 Thank you for the quick response. I will remove gamefaqs scraping from the front-end and create a centralized index of direct links so Bottlenose can download images directly as you suggested. Thanks for your help with this! :)
 Message From GameFAQs on 01/22/2019

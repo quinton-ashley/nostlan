@@ -378,7 +378,12 @@ Obviously, Nostlan wouldn't exist without the developers of all the emulators it
 
 ### Databases
 
-I converted several game database text files to JSON from [gametdb](https://www.gametdb.com/).
+ds, n3ds, switch, wii, wiiu:
+[gametdb.com](https://www.gametdb.com/)
+ps1, ps2, psp:
+[psxdatacenter.com](http://psxdatacenter.com)
+xbox360:
+[gamesdatabase.org](https://www.gamesdatabase.org/xbox_360_games_list_with_title_ids)
 
 ### Game Artwork
 

@@ -6,11 +6,13 @@ head
 	meta(charset='utf-8')
 	link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
 	link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
-	link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
-	link(rel='stylesheet' type='text/css' href='./style.css')
+	stylesheet
+		body {
+			background: black;
+		}
 
 body
 	script.
 		console.log('opening scrape.pug');
 		console.log('#{node_modules}');
-		require('./scrapeDev.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));
+		require('./scrape-cli.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

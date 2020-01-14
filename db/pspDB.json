@@ -1,0 +1,6408 @@
+<html>
+<head>
+<style type="text/css">
+.sectionheader { width: 100%; border-left: 1px solid #FFFFFF; border-right: 1px solid #000000; border-top: 1px solid #FFFFFF; border-bottom: 1px solid #000000; }
+.sectionheader2 { background-color: #228b22; border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-top: 1px solid #000000; border-bottom: 1px solid #FFFFFF; font-family: Georgia; font-size: 18pt; font-weight: bold; letter-spacing: 1pt; color: #FFFF00; }
+.sectiontable {width: 100%; background-color: #666666; border-left: 1px solid #FFFFFF; border-right: 1px solid #000000; border-top: 1px solid #FFFFFF; border-bottom: 1px solid #000000; }
+.col5 { width: 33; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; font-size: 9pt; font-weight: bold; background-color: #000000; text-align: center; }
+.col6 {	width: 80; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; font-size: 9pt; font-weight: bold; background-color: #000000; text-align: center; }
+.col7 { border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; font-size: 9pt; font-weight: bold; background-color: #000000; }
+.col8 { width: 150; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; font-size: 9pt; font-weight: bold; background-color: #000000; }
+.col1 { width: 33; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #FFFFFF; font-family: Trebuchet MS; color: #FFFFFF; font-size: 9pt; font-weight: bold; background-color: #2a1ad6; text-align: center; }
+.col2 {	width: 80; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; color: #FFFFFF; font-size: 9pt; font-weight: bold; background-color: #2a1ad6; text-align: center; }
+.col3 { border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; color: #FFFFFF; font-size: 9pt; font-weight: bold; background-color: #2a1ad6; }
+.col4 { width: 150; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-top: 2px solid #FFFFFF; border-bottom: 2px solid #000000; font-family: Trebuchet MS; color: #FFFFFF; font-size: 9pt; font-weight: bold; background-color: #2a1ad6; }
+</style>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>ulist</title>
+<base target="ulist">
+</head>
+
+<body style="background-color: #666666" link="#000000" vlink="#000000" topmargin="0" leftmargin="0">
+
+<!-- Main Title -->
+
+<table border="1" width="100%" id="table300" cellpadding="1" cellspacing="2" style="border-left: 1px solid #FFFFFF; border-right: 1px solid #000000; border-top: 1px solid #FFFFFF; border-bottom: 1px solid #000000">
+	<tr>
+		<th width="31" style="border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-top: 1px solid #000000; border-bottom: 1px solid #FFFFFF; font-family: Trebuchet MS; font-size: 13pt; font-weight: bold" bgcolor="#333333">
+		<font color="#FFFFFF">?</font></th>
+		<th width="79" style="border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-top: 1px solid #000000; border-bottom: 1px solid #FFFFFF; font-family: Trebuchet MS; font-size: 13pt; font-weight: bold" bgcolor="#333333">
+		<font color="#FFFFFF">SERIAL</font></th>
+		<th style="border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-top: 1px solid #000000; border-bottom: 1px solid #FFFFFF; font-family: Trebuchet MS; font-size: 13pt; font-weight: bold" bgcolor="#333333">
+		<font color="#FFFFFF">TITLE</font></th>
+		<th width="150" style="border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-top: 1px solid #000000; border-bottom: 1px solid #FFFFFF; font-family: Trebuchet MS; font-size: 13pt; font-weight: bold" bgcolor="#333333">
+		<font color="#FFFFFF">LANGUAGE</font></th>
+	</tr>
+</table>
+
+<!-- 0-9 NTSC-U Header -->
+
+<table class="sectionheader" id="table301">
+	<tr>
+		<th class="sectionheader2"><a name="0-9 Games">[ <font face="Garamond" style="font-size: 19pt; font-weight: bold">0-9</font> ]&nbsp;  -&nbsp;  NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- 0-9 Games Listing -->
+
+<table class="sectiontable" id="table302" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10080</td>
+  <td class="col3">&nbsp;007 - From Russia With Love</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00262</td>
+  <td class="col3">&nbsp;1000 Tiny Claws</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10088</td>
+  <td class="col3">&nbsp;101-in-1 Megamix</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00189</td>
+  <td class="col3">&nbsp;3, 2, 1... SuperCrash!</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10241</td>
+  <td class="col3">&nbsp;300 - March to Glory </td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00176</td>
+  <td class="col3">&nbsp;3D Twist & Match</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00104</td>
+  <td class="col3">&nbsp;4x4 Jam</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00086</td>
+  <td class="col3">&nbsp;5 in 1 Solitaire</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00078</td>
+  <td class="col3">&nbsp;5 in 1 Arcade Hits</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10128</td>
+  <td class="col3">&nbsp;50cent – Bulletproof - G-Unit Edition</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10227</td>
+  <td class="col3">&nbsp;7 Wonders of the Ancient World</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- A NTSC-U Header -->
+
+<table class="sectionheader" id="table303">
+	<tr>
+		<th class="sectionheader2">
+		<a name="A Games">[ A ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- A Games Listing -->
+
+<table class="sectiontable" id="table304" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00190</td>
+  <td class="col3">&nbsp;A Space Shooter for 2 Bucks!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00109</td>
+  <td class="col3">&nbsp;Ace Armstrong Vs. The Alien Scumbags!</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10511</td>
+  <td class="col3">&nbsp;Ace Combat - Joint Assaul</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10176</td>
+  <td class="col3">&nbsp;Ace Combat X - Skies of Deception</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10186</td>
+  <td class="col3">&nbsp;Activision Hits Remixed</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00110</td>
+  <td class="col3">&nbsp;Actual Crimes - Jack the Ripper</td>
+  <td class="col4">&nbsp;[E][F][G][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10417</td>
+  <td class="col3">&nbsp;Adventures to Go!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10242</td>
+  <td class="col3">&nbsp;Aedis Eclipse - Generation of Chaos</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00023</td>
+  <td class="col3">&nbsp;Aero Racer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10244</td>
+  <td class="col3">&nbsp;After Burner - Black Falcon</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00178</td>
+  <td class="col3">&nbsp;Age of Hammer Wars</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00024</td>
+  <td class="col3">&nbsp;Age of Zombies</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10404</td>
+  <td class="col3">&nbsp;Air Conflicts - Aces of World War II</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30008</td>
+  <td class="col3">&nbsp;Alien Crush</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00008</td>
+  <td class="col3">&nbsp;Alien Havoc</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10245</td>
+  <td class="col3">&nbsp;Alien Syndrome</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00069</td>
+  <td class="col3">&nbsp;Alien Zombie Death</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10327</td>
+  <td class="col3">&nbsp;Aliens vs. Predator - Requiem</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00133</td>
+  <td class="col3">&nbsp;Alpha Mission</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10060</td>
+  <td class="col3">&nbsp;Alpha Mission II</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00202</td>
+  <td class="col3">&nbsp;Ancient Game Treasures - Mill</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00119</td>
+  <td class="col3">&nbsp;Angry Birds</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00098</td>
+  <td class="col3">&nbsp;Apache Overkill</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98619</td>
+  <td class="col3">&nbsp;Ape Escape Academy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98609</td>
+  <td class="col3">&nbsp;Ape Escape - On the Loose</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00182</td>
+  <td class="col3">&nbsp;Aquattack!</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00103</td>
+  <td class="col3">&nbsp;Arcade Air Hockey & Bowling</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00097</td>
+  <td class="col3">&nbsp;Arcade Darts</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00116</td>
+  <td class="col3">&nbsp;Arcade Essentials</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00258</td>
+  <td class="col3">&nbsp;Arcade Essentials Evolution</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00281</td>
+  <td class="col3">&nbsp;Arcade Pool</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10017</td>
+  <td class="col3">&nbsp;Archer Maclean's Mercury</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00115</td>
+  <td class="col3">&nbsp;Archibald's Adventures</td>
+  <td class="col4">&nbsp;[E][F][G][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00114</td>
+  <td class="col3">&nbsp;Arctic Adventures - Polar's Puzzles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10023</td>
+  <td class="col3">&nbsp;Armored Core 3 Portable</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10034</td>
+  <td class="col3">&nbsp;Armored Core - Formula Front Extreme Battle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10024</td>
+  <td class="col3">&nbsp;Armored Core - Last Raven Portable</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10025</td>
+  <td class="col3">&nbsp;Armored Core - Silent Line Portable</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10472</td>
+  <td class="col3">&nbsp;Army of Two - The 40th Day</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10061</td>
+  <td class="col3">&nbsp;Art of Fighting</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10455</td>
+  <td class="col3">&nbsp;Assassin's Creed - Bloodlines</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10083</td>
+  <td class="col3">&nbsp;Astonishia Story</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10454</td>
+  <td class="col3">&nbsp;Astro Boy - The Video Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10325</td>
+  <td class="col3">&nbsp;Atari Classics Evolved</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00151</td>
+  <td class="col3">&nbsp;Athena</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98603</td>
+  <td class="col3">&nbsp;ATV Offroad Fury - Blazin' Trails</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98648</td>
+  <td class="col3">&nbsp;ATV Offroad Fury Pro</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10069</td>
+  <td class="col3">&nbsp;Auditorium</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10165</td>
+  <td class="col3">&nbsp;Avatar - The Last Airbender</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- B NTSC-U Header -->
+
+<table class="sectionheader" id="table305">
+	<tr>
+		<th class="sectionheader2">
+		<a name="B Games">[ B ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- B Games Listing -->
+
+<table class="sectiontable" id="table306" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10363</td>
+  <td class="col3">&nbsp;B-Boy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00220</td>
+  <td class="col3">&nbsp;BABEL The King of the Blocks</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10536</td>
+  <td class="col3">&nbsp;Bakugan Battle Brawlers - Defenders of the Core</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10078</td>
+  <td class="col3">&nbsp;Baseball Stars 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10064</td>
+  <td class="col3">&nbsp;Baseball Stars Professional</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00123</td>
+  <td class="col3">&nbsp;Bashi Blocks</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00020</td>
+  <td class="col3">&nbsp;Battle Poker</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10156</td>
+  <td class="col3">&nbsp;Battle Zone</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00087</td>
+  <td class="col3">&nbsp;Beam'em Up</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10405</td>
+  <td class="col3">&nbsp;Beaterator</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80060</td>
+  <td class="col3">&nbsp;Beats</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-30038</td>
+  <td class="col3">&nbsp;Bejeweled 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10387</td>
+  <td class="col3">&nbsp;Ben 10 - Alien Force</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10488</td>
+  <td class="col3">&nbsp;Ben 10 - Alien Force - Vilgax Attacks</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10307</td>
+  <td class="col3">&nbsp;Ben 10 - Protector of Earth</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10542</td>
+  <td class="col3">&nbsp;Ben 10 - Ultimate Alien - Cosmic Destruction </td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10075</td>
+  <td class="col3">&nbsp;Ben 10 - Ultimate Alien - Cosmic Destruction </td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10329</td>
+  <td class="col3">&nbsp;Beowulf - The Game</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00152</td>
+  <td class="col3">&nbsp;Bermuda Triangle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00082</td>
+  <td class="col3">&nbsp;Best of Solitaire</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10029</td>
+  <td class="col3">&nbsp;Beta Bloc</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10126</td>
+  <td class="col3">&nbsp;Black Rock Shooter - The Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10124</td>
+  <td class="col3">&nbsp;Blade Dancer - Lineage of Light</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00021</td>
+  <td class="col3">&nbsp;Blast Off</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10519</td>
+  <td class="col3">&nbsp;BlazBlue - Calamity Trigger</td>
+  <td class="col4">&nbsp;[E][Ch][J][K]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10579</td>
+  <td class="col3">&nbsp;BlazBlue - Continuum Shift II</td>
+  <td class="col4">&nbsp;[E][Ch][J][K]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10527</td>
+  <td class="col3">&nbsp;Blazing Souls - Accelate</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00120</td>
+  <td class="col3">&nbsp;Blimp - The Flying Adventures</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10200</td>
+  <td class="col3">&nbsp;Blitz - Overtime</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00218</td>
+  <td class="col3">&nbsp;Block Cascade Fusion</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10332</td>
+  <td class="col3">&nbsp;Blokus Portable - Steambot Championship</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10516</td>
+  <td class="col3">&nbsp;Blood Bowl</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00010</td>
+  <td class="col3">&nbsp;Bloons</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00186</td>
+  <td class="col3">&nbsp;Bloons TD</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10121</td>
+  <td class="col3">&nbsp;Bomberman</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10319</td>
+  <td class="col3">&nbsp;Bomberman Land</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30012</td>
+  <td class="col3">&nbsp;Bonk's Adventure</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00194</td>
+  <td class="col3">&nbsp;Boom Beats</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10161</td>
+  <td class="col3">&nbsp;Bounty Hounds</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00002</td>
+  <td class="col3">&nbsp;Bowling 3D</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10006</td>
+  <td class="col3">&nbsp;Brain Challenge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00009</td>
+  <td class="col3">&nbsp;Brainpipe</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10279</td>
+  <td class="col3">&nbsp;Brave Story - New Traveler</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00031</td>
+  <td class="col3">&nbsp;BreakQuest</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00235</td>
+  <td class="col3">&nbsp;BreakQuest - Extra Evolution</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00225</td>
+  <td class="col3">&nbsp;Brick Breaker</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10257</td>
+  <td class="col3">&nbsp;Brooktown High</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10193</td>
+  <td class="col3">&nbsp;Brothers in Arms - D-Day</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10283</td>
+  <td class="col3">&nbsp;Brunswick Pro Bowling</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10143</td>
+  <td class="col3">&nbsp;Bubble Bobble - Evolution</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00007</td>
+  <td class="col3">&nbsp;Bubble Trubbler</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00229</td>
+  <td class="col3">&nbsp;Bunny Dodge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00083</td>
+  <td class="col3">&nbsp;Burnin' Rubber</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10236</td>
+  <td class="col3">&nbsp;Burnout Dominator</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10025</td>
+  <td class="col3">&nbsp;Burnout Legends</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10057</td>
+  <td class="col3">&nbsp;Bust-A-Move Deluxe</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80449</td>
+  <td class="col3">&nbsp;Busy Sweets Factory</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98729</td>
+  <td class="col3">&nbsp;Buzz! - Master Quiz</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80293</td>
+  <td class="col3">&nbsp;Buzz! - Quiz World</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- C NTSC-U Header -->
+
+<table class="sectionheader" id="table307">
+	<tr>
+		<th class="sectionheader2">
+		<a name="C Games">[ C ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- C Games Listing -->
+
+<table class="sectiontable" id="table308" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10175</td>
+  <td class="col3">&nbsp;Cabela's African Safari</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10106</td>
+  <td class="col3">&nbsp;Cabela's Dangerous Hunts - Ultimate Challenge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10385</td>
+  <td class="col3">&nbsp;Cabela's Legendary Adventures</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10533</td>
+  <td class="col3">&nbsp;Cabela's North American Adventures</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10362</td>
+  <td class="col3">&nbsp;Cake Mania - Baker's Challenge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10218</td>
+  <td class="col3">&nbsp;Call of Duty - Roads to Victory</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][J]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00276</td>
+  <td class="col3">&nbsp;Canabalt</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10134</td>
+  <td class="col3">&nbsp;Capcom Classics Collection Reloaded</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10097</td>
+  <td class="col3">&nbsp;Capcom Classics Collection Remixed</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10217</td>
+  <td class="col3">&nbsp;Capcom Puzzle World</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00043</td>
+  <td class="col3">&nbsp;Car Jack Streets</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00211</td>
+  <td class="col3">&nbsp;Card Shark</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10188</td>
+  <td class="col3">&nbsp;Carnage Heart EXA</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00118</td>
+  <td class="col3">&nbsp;Carnivores - Dinosaur Hunter</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00236</td>
+  <td class="col3">&nbsp;Carnivores - Ice Age</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10126</td>
+  <td class="col3">&nbsp;Carol Vorderman's Sudoku</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10277</td>
+  <td class="col3">&nbsp;Castlevania - The Dracula X Chronicles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00112</td>
+  <td class="col3">&nbsp;Caterpillar</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10267</td>
+  <td class="col3">&nbsp;Chameleon</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80433</td>
+  <td class="col3">&nbsp;Charge! Tank Squad!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10335</td>
+  <td class="col3">&nbsp;Chessmaster - The Art of Learning</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10216</td>
+  <td class="col3">&nbsp;Chili Con Carnage</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10031</td>
+  <td class="col3">&nbsp;Cho Aniki Zero</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00153</td>
+  <td class="col3">&nbsp;Chopper I</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10356</td>
+  <td class="col3">&nbsp;CID The Dummy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00028</td>
+  <td class="col3">&nbsp;Circles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10072	</td>
+  <td class="col3">&nbsp;ClaDun - This is an RPG!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10114</td>
+  <td class="col3">&nbsp;ClaDun x2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10396</td>
+  <td class="col3">&nbsp;Class of Heroes</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10653</td>
+  <td class="col3">&nbsp;Class of Heroes 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10127</td>
+  <td class="col3">&nbsp;Class of Heroes 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10444</td>
+  <td class="col3">&nbsp;Cloudy With a Chance of Meatballs</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00131</td>
+  <td class="col3">&nbsp;Coconut Dodge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10351</td>
+  <td class="col3">&nbsp;Code Lyoko - Quest for Infinity</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10019</td>
+  <td class="col3">&nbsp;Coded Arms</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10184</td>
+  <td class="col3">&nbsp;Coded Arms - Contagion</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00250</td>
+  <td class="col3">&nbsp;Cohort Chess</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10471</td>
+  <td class="col3">&nbsp;Colin McRae - DiRT 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00209</td>
+  <td class="col3">&nbsp;Core Blaster</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10117</td>
+  <td class="col3">&nbsp;Corpse Party</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10187</td>
+  <td class="col3">&nbsp;Corpse Party - Book of Shadows</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10304</td>
+  <td class="col3">&nbsp;Crash of the Titans</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10044</td>
+  <td class="col3">&nbsp;Crash Tag Team Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10377</td>
+  <td class="col3">&nbsp;Crash - Mind Over Mutant</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10273</td>
+  <td class="col3">&nbsp;Crazy Taxi - Fare Wars</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10034</td>
+  <td class="col3">&nbsp;Creature Defense</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10400</td>
+  <td class="col3">&nbsp;Crimson Gem Saga</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10037</td>
+  <td class="col3">&nbsp;Crimson Room Reverse</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10336</td>
+  <td class="col3">&nbsp;Crisis Core - Final Fantasy VII</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10238</td>
+  <td class="col3">&nbsp;Crush</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10026</td>
+  <td class="col3">&nbsp;Crystal Defenders</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10223</td>
+  <td class="col3">&nbsp;Cube</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00080</td>
+  <td class="col3">&nbsp;Cubixx</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- D NTSC-U Header -->
+
+<table class="sectionheader" id="table309">
+	<tr>
+		<th class="sectionheader2">
+		<a name="D Games">[ D ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- D Games Listing -->
+
+<table class="sectiontable" id="table310" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00027</td>
+  <td class="col3">&nbsp;D-Cube Planet</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10469</td>
+  <td class="col3">&nbsp;Dante's Inferno</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10005</td>
+  <td class="col3">&nbsp;Darkstalkers Chronicle - The Chaos Tower</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10204</td>
+  <td class="col3">&nbsp;Dave Mirra BMX Challenge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98618</td>
+  <td class="col3">&nbsp;Daxter</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80329</td>
+  <td class="col3">&nbsp;Daxter</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00185</td>
+  <td class="col3">&nbsp;Days of Thunder</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10288</td>
+  <td class="col3">&nbsp;Dead Head Fred</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10521</td>
+  <td class="col3">&nbsp;Dead or Alive Paradise</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10023</td>
+  <td class="col3">&nbsp;Dead to Rights - Reckoning</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10027</td>
+  <td class="col3">&nbsp;Death Jr.</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10157</td>
+  <td class="col3">&nbsp;Death Jr. II - Root of Evil</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10100</td>
+  <td class="col3">&nbsp;Def Jam - Fight for NY - The Takeover</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00271</td>
+  <td class="col3">&nbsp;Defenders of the Mystic Garden</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00040</td>
+  <td class="col3">&nbsp;Deflector</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00213</td>
+  <td class="col3">&nbsp;Denki Blocks!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10534</td>
+  <td class="col3">&nbsp;Despicable Me</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80407</td>
+  <td class="col3">&nbsp;Digi-Tiles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10264</td>
+  <td class="col3">&nbsp;Diner Dash - Sizzle & Serve</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10308</td>
+  <td class="col3">&nbsp;Disgaea - Afternoon of Darkness</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10461</td>
+  <td class="col3">&nbsp;Disgaea 2 - Dark Hero Days</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10522</td>
+  <td class="col3">&nbsp;Disgaea Infinite</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10437</td>
+  <td class="col3">&nbsp;Dissidia - Final Fantasy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10566</td>
+  <td class="col3">&nbsp;Dissidia 012 - Duodecim Final Fantasy</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10110</td>
+  <td class="col3">&nbsp;Dissidia 012 Prologus - Duodecim Final Fantasy</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10439</td>
+  <td class="col3">&nbsp;Disney's G-Force</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10431</td>
+  <td class="col3">&nbsp;Disney's Hannah Montana - Rock Out the Show</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10252</td>
+  <td class="col3">&nbsp;Disney's Pirates of the Caribbean - At World's End</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10111</td>
+  <td class="col3">&nbsp;Disney's Pirates of the Caribbean - Dead Man's Chest</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10548</td>
+  <td class="col3">&nbsp;Disney's TRON - Evolution</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10073</td>
+  <td class="col3">&nbsp;Disney's Pixar - Cars</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98766</td>
+  <td class="col3">&nbsp;Disney's Pixar - Cars 2</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10428</td>
+  <td class="col3">&nbsp;Disney's Pixar - Cars Race-O-Rama</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10247</td>
+  <td class="col3">&nbsp;Disney's Pixar - Ratatouille</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10507</td>
+  <td class="col3">&nbsp;Disney's Pixar - Toy Story 3</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10430</td>
+  <td class="col3">&nbsp;Disney's Pixar - Up</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10350</td>
+  <td class="col3">&nbsp;Disney's Pixar - Wall-E </td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10403</td>
+  <td class="col3">&nbsp;DJ Max Fever</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10538</td>
+  <td class="col3">&nbsp;DJ Max Portable 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00263</td>
+  <td class="col3">&nbsp;Doodle Fit</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00203</td>
+  <td class="col3">&nbsp;Doodle Pool</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10322</td>
+  <td class="col3">&nbsp;Downstream Panic!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00126</td>
+  <td class="col3">&nbsp;Dr. Maybee and the Adventures of Scarygirl</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00201</td>
+  <td class="col3">&nbsp;Dr. MiniGames</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00046</td>
+  <td class="col3">&nbsp;Dracula - Undead Awakening</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10415</td>
+  <td class="col3">&nbsp;Dragon Ball Evolution</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10081</td>
+  <td class="col3">&nbsp;Dragon Ball Z - Shin Budokai</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10234</td>
+  <td class="col3">&nbsp;Dragon Ball Z - Shin Budokai Another Road</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10537</td>
+  <td class="col3">&nbsp;Dragon Ball Z - Tenkaichi Tag Team</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10105</td>
+  <td class="col3">&nbsp;Dragon's Lair</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10291</td>
+  <td class="col3">&nbsp;Dragoneer's Aria</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10520</td>
+  <td class="col3">&nbsp;DreamWorks' Megamind - The Blue Defender</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10187</td>
+  <td class="col3">&nbsp;DreamWorks' Over the Hedge - Hammy Goes Nuts!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10248</td>
+  <td class="col3">&nbsp;DreamWorks' Shrek the Third</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10194</td>
+  <td class="col3">&nbsp;DreamWorks' Shrek - Smash n' Crash Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10235</td>
+  <td class="col3">&nbsp;Driver 76</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00214</td>
+  <td class="col3">&nbsp;Drums Challenge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10406</td>
+  <td class="col3">&nbsp;DT Carnage</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00212</td>
+  <td class="col3">&nbsp;Duael Invaders</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00285</td>
+  <td class="col3">&nbsp;Ducati Challenge</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30011</td>
+  <td class="col3">&nbsp;Dungeon Explorer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10289</td>
+  <td class="col3">&nbsp;Dungeon Explorer - Warriors of Ancient Arts</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10282</td>
+  <td class="col3">&nbsp;Dungeon Maker - Hunting Ground</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10393</td>
+  <td class="col3">&nbsp;Dungeon Maker II - The Hidden War</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10177</td>
+  <td class="col3">&nbsp;Dungeon Siege - Throne of Agony</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10232</td>
+  <td class="col3">&nbsp;Dungeons & Dragons Tactics</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10004</td>
+  <td class="col3">&nbsp;Dynasty Warriors</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10170</td>
+  <td class="col3">&nbsp;Dynasty Warriors Vol. 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10022</td>
+  <td class="col3">&nbsp;Dynasty Warriors Vol. 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10416</td>
+  <td class="col3">&nbsp;Dynasty Warriors - Strikeforce</td>
+  <td class="col4">&nbsp;[E][F][G]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00036</td>
+  <td class="col3">&nbsp;Dynogems</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+</table>
+
+<!-- E NTSC-U Header -->
+
+<table class="sectionheader" id="table311">
+	<tr>
+		<th class="sectionheader2">
+		<a name="E Games">[ E ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- E Games Listing -->
+
+<table class="sectiontable" id="table312" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10140</td>
+  <td class="col3">&nbsp;EA Replay</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80405</td>
+  <td class="col3">&nbsp;Earthshield</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80135</td>
+  <td class="col3">&nbsp;Echochrome</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00022</td>
+  <td class="col3">&nbsp;Echoes</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80303</td>
+  <td class="col3">&nbsp;Echoshift</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00251</td>
+  <td class="col3">&nbsp;EDGE</td>
+  <td class="col4">&nbsp;(E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10128</td>
+  <td class="col3">&nbsp;Elminage Original</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00272</td>
+  <td class="col3">&nbsp;Enchanted Cavern</td>
+  <td class="col4">&nbsp;(E)(F)(G)(S)(R)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10193</td>
+  <td class="col3">&nbsp;End of Serenity</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00197</td>
+  <td class="col3">&nbsp;Enigmo</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10146</td>
+  <td class="col3">&nbsp;Eragon</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10147</td>
+  <td class="col3">&nbsp;Every Extend Extra</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80224</td>
+  <td class="col3">&nbsp;Everyday Shooter</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10074</td>
+  <td class="col3">&nbsp;Exit</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00084</td>
+  <td class="col3">&nbsp;Express Raider</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98759</td>
+  <td class="col3">&nbsp;EyePet</td>
+  <td class="col4">&nbsp;(E)(F)(S)(P)</td>
+</tr>
+</table>
+
+<!-- F NTSC-U Header -->
+
+<table class="sectionheader" id="table313">
+	<tr>
+		<th class="sectionheader2">
+		<a name="F Games">[ F ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- F Games Listing -->
+
+<table class="sectiontable" id="table314" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10449</td>
+  <td class="col3">&nbsp;F-1 2009</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10344</td>
+  <td class="col3">&nbsp;Fading Shadows</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du][R][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10118</td>
+  <td class="col3">&nbsp;Fading Shadows<</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00180</td>
+  <td class="col3">&nbsp;Family Games - Pen & Paper Edition</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10185</td>
+  <td class="col3">&nbsp;Family Guy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00222</td>
+  <td class="col3">&nbsp;Farm Frenzy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00273</td>
+  <td class="col3">&nbsp;Farm Frenzy 2</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][R][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00293</td>
+  <td class="col3">&nbsp;Farm Frenzy 3</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][J][K][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00274</td>
+  <td class="col3">&nbsp;Farm Frenzy - Pizza Party</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][J][K][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98740</td>
+  <td class="col3">&nbsp;Fat Princess - Fistful of Cake</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10059</td>
+  <td class="col3">&nbsp;Fatal Fury</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10576</td>
+  <td class="col3">&nbsp;Fate/Extra</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10009</td>
+  <td class="col3">&nbsp;Fate/Unlimited Codes</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00306</td>
+  <td class="col3">&nbsp;Feisty Feet</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10088</td>
+  <td class="col3">&nbsp;Field Commander</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00014</td>
+  <td class="col3">&nbsp;Fieldrunners</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10029</td>
+  <td class="col3">&nbsp;FIFA '06 - Soccer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10112</td>
+  <td class="col3">&nbsp;FIFA '07 - Soccer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10293</td>
+  <td class="col3">&nbsp;FIFA '08 - Soccer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10655</td>
+  <td class="col3">&nbsp;FIFA 14</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10011</td>
+  <td class="col3">&nbsp;FIFA Soccer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10369</td>
+  <td class="col3">&nbsp;FIFA Soccer '09</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10464</td>
+  <td class="col3">&nbsp;FIFA Soccer '10</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10550</td>
+  <td class="col3">&nbsp;FIFA Soccer '11</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10583</td>
+  <td class="col3">&nbsp;FIFA Soccer '12</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10595</td>
+  <td class="col3">&nbsp;FIFA Soccer '13</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+</tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10655</td>
+  <td class="col3">&nbsp;FIFA Soccer '14</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10067</td>
+  <td class="col3">&nbsp;FIFA Street 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10082</td>
+  <td class="col3">&nbsp;FIFA World Cup - Germany 2006</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10504</td>
+  <td class="col3">&nbsp;FIFA World Cup - South Africa 2010</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10066</td>
+  <td class="col3">&nbsp;Fight Night Round 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00187</td>
+  <td class="col3">&nbsp;Fighting Fantasy - Talisman of Death</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00268</td>
+  <td class="col3">&nbsp;Fighting Fantasy - The Warlock of Firetop Mountain</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10251</td>
+  <td class="col3">&nbsp;Final Fantasy</td>
+  <td class="col4">&nbsp;[E][J]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10263</td>
+  <td class="col3">&nbsp;Final Fantasy II</td>
+  <td class="col4">&nbsp;[E][J]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10125</td>
+  <td class="col3">&nbsp;Final Fantasy III</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10560</td>
+  <td class="col3">&nbsp;Final Fantasy IV - Complete Collection</td>
+  <td class="col4">&nbsp;[E][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10297</td>
+  <td class="col3">&nbsp;Final Fantasy Tactics - The War of the Lions</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80423</td>
+  <td class="col3">&nbsp;Finger Connection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00204</td>
+  <td class="col3">&nbsp;Fish Tank</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10328</td>
+  <td class="col3">&nbsp;FlatOut - Head On</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00044</td>
+  <td class="col3">&nbsp;Flick Fishing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00299</td>
+  <td class="col3">&nbsp;Floating Cloud God Saves The Pilgrims</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80086</td>
+  <td class="col3">&nbsp;FlOw</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du][J][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00108</td>
+  <td class="col3">&nbsp;Fly Fu</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10036</td>
+  <td class="col3">&nbsp;Football Manager Handheld 2010</td>
+  <td class="col4">&nbsp;[E][F][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10077</td>
+  <td class="col3">&nbsp;Football Manager Handheld 2011</td>
+  <td class="col4">&nbsp;[E][F][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10159</td>
+  <td class="col3">&nbsp;Ford Bold Moves Street Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10326</td>
+  <td class="col3">&nbsp;Ford Racing - Off Road</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00121</td>
+  <td class="col3">&nbsp;Forest Puzzle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00127</td>
+  <td class="col3">&nbsp;Fort Commander - King's Gambit</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00128</td>
+  <td class="col3">&nbsp;Fort Commander II - CounterAttack</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00016</td>
+  <td class="col3">&nbsp;Fortix</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10039</td>
+  <td class="col3">&nbsp;Frantix - A Puzzle Adventure</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00013</td>
+  <td class="col3">&nbsp;Freekscape - Escape From Hell</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10026</td>
+  <td class="col3">&nbsp;Frogger - Helmet Chaos</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10220</td>
+  <td class="col3">&nbsp;Full Auto 2 - Battlelines</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00011</td>
+  <td class="col3">&nbsp;Funky Punch</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- G NTSC-U Header -->
+
+<table class="sectionheader" id="table315">
+	<tr>
+		<th class="sectionheader2">
+		<a name="G Games">[ G ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- G Games Listing -->
+
+<table class="sectiontable" id="table316" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10435</td>
+  <td class="col3">&nbsp;G.I. Joe - The Rise of Cobra</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00237</td>
+  <td class="col3">&nbsp;Galcon Labs</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00259</td>
+  <td class="col3">&nbsp;Gamocracy One - Legend of Robot</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00155</td>
+  <td class="col3">&nbsp;Gang Wars</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98617</td>
+  <td class="col3">&nbsp;Gangs of London</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10075</td>
+  <td class="col3">&nbsp;Generation of Chaos</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10184</td>
+  <td class="col3">&nbsp;Generation of Chaos - Pandora's Reflection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCES-01535</td>
+  <td class="col3">&nbsp;Geronimo Stilton in the Kingdom of Fantasy</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80850</td>
+  <td class="col3">&nbsp;Geronimo Stilton Return to the Kingdom of Fantasy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10020</td>
+  <td class="col3">&nbsp;Ghost in the Shell - Stand Alone Complex</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10210</td>
+  <td class="col3">&nbsp;Ghost Rider</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10486</td>
+  <td class="col3">&nbsp;Ghostbusters - The Video Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10207</td>
+  <td class="col3">&nbsp;Gitaroo Man Lives!</td>
+  <td class="col4">&nbsp;[E][F][G]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10528</td>
+  <td class="col3">&nbsp;Gladiator Begins</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80090</td>
+  <td class="col3">&nbsp;Go! Puzzle</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10095</td>
+  <td class="col3">&nbsp;Go! Sudoku</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98653</td>
+  <td class="col3">&nbsp;God of War - Chains of Olympus</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80325</td>
+  <td class="col3">&nbsp;God of War - Chains of Olympus</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98737</td>
+  <td class="col3">&nbsp;God of War - Ghost of Sparta</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80508</td>
+  <td class="col3">&nbsp;God of War - Ghost of Sparta</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10563</td>
+  <td class="col3">&nbsp;Gods Eater Burst</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00093</td>
+  <td class="col3">&nbsp;Gold Fever</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00156</td>
+  <td class="col3">&nbsp;Gold Medalist</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00282</td>
+  <td class="col3">&nbsp;Golf Mania</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10103</td>
+  <td class="col3">&nbsp;Gradius Collection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98632</td>
+  <td class="col3">&nbsp;Gran Turismo</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10490</td>
+  <td class="col3">&nbsp;Grand Theft Auto - Chinatown Wars</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10041</td>
+  <td class="col3">&nbsp;Grand Theft Auto - Liberty City Stories</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10160</td>
+  <td class="col3">&nbsp;Grand Theft Auto - Vice City Stories</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80321</td>
+  <td class="col3">&nbsp;Gravity Crash Portable</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98604</td>
+  <td class="col3">&nbsp;Gretzky NHL</td>
+  <td class="col4">&nbsp;[E][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98627</td>
+  <td class="col3">&nbsp;Gretzky NHL 06</td>
+  <td class="col4">&nbsp;[E][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10040</td>
+  <td class="col3">&nbsp;Gripshift</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-30015</td>
+  <td class="col3">&nbsp;Groovin' Blocks</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10593</td>
+  <td class="col3">&nbsp;Growlanser- Wayfarer of Time</td>
+  <td class="col4">&nbsp;[E][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10044</td>
+  <td class="col3">&nbsp;GTI Club - Supermini Festa!</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00157</td>
+  <td class="col3">&nbsp;Guerrilla War</td>
+  <td class="col4">&nbsp;[E][</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10104</td>
+  <td class="col3">&nbsp;Guilty Gear Judgment</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10409</td>
+  <td class="col3">&nbsp;Guilty Gear XX Accent Core Plus</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10158</td>
+  <td class="col3">&nbsp;Gun Showdown</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10592</td>
+  <td class="col3">&nbsp;Gungnir</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10182</td>
+  <td class="col3">&nbsp;Gunpey</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10228</td>
+  <td class="col3">&nbsp;Gurumin - A Monstrous Adventure</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- H NTSC-U Header -->
+
+<table class="sectionheader" id="table317">
+	<tr>
+		<th class="sectionheader2">
+		<a name="H Games">[ H ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- H Games Listing -->
+
+<table class="sectiontable" id="table318" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10577</td>
+  <td class="col3">&nbsp;Hakuoki - Demon of the Fleeting Blossom</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10651</td>
+  <td class="col3">&nbsp;Hakuoki - Warriors of the Shinsengumi</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00136</td>
+  <td class="col3">&nbsp;HAL 21</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10491</td>
+  <td class="col3">&nbsp;Half-Minute Hero</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10392</td>
+  <td class="col3">&nbsp;Hammerin' Hero</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10300</td>
+  <td class="col3">&nbsp;Hannspree Ten Kate Honda - SBK Superbike World Championship</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10181</td>
+  <td class="col3">&nbsp;Hard Rock Casino</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10032</td>
+  <td class="col3">&nbsp;Harry Potter and the Goblet of Fire</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10381</td>
+  <td class="col3">&nbsp;Harry Potter and the Half-Blood Prince</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10261</td>
+  <td class="col3">&nbsp;Harry Potter and the Order of the Phoenix</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10142</td>
+  <td class="col3">&nbsp;Harvest Moon - Boy & Girl</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10458</td>
+  <td class="col3">&nbsp;Harvest Moon - Hero of Leaf Valley</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10324</td>
+  <td class="col3">&nbsp;Harvey Birdman - Attorney at Law</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10259</td>
+  <td class="col3">&nbsp;Heatseeker</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10301</td>
+  <td class="col3">&nbsp;Hellboy - The Science of Evil</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00067</td>
+  <td class="col3">&nbsp;Hello Flowerz</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00037</td>
+  <td class="col3">&nbsp;Heracles Chariot Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00005</td>
+  <td class="col3">&nbsp;Hero of Sparta</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10506</td>
+  <td class="col3">&nbsp;Hexyz Force</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-94341</td>
+  <td class="col3">&nbsp;Hilton Garden Inn - Ultimate Team Play</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00090</td>
+  <td class="col3">&nbsp;History Channel - Egypt Engineering an Empire</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00091</td>
+  <td class="col3">&nbsp;History Channel - Ice Road Truckers</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10074</td>
+  <td class="col3">&nbsp;Hoard</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80420</td>
+  <td class="col3">&nbsp;Homerun Hitters</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10268</td>
+  <td class="col3">&nbsp;Hot Brain</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10298</td>
+  <td class="col3">&nbsp;Hot Pixel</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98614</td>
+  <td class="col3">&nbsp;Hot Shots Golf - Open Tee</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98693</td>
+  <td class="col3">&nbsp;Hot Shots Golf - Open Tee 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80527</td>
+  <td class="col3">&nbsp;Hot Shots Shorties (Blue Pack)</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80524</td>
+  <td class="col3">&nbsp;Hot Shots Shorties (Green Pack)</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80528</td>
+  <td class="col3">&nbsp;Hot Shots Shorties (Red Pack)</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80529</td>
+  <td class="col3">&nbsp;Hot Shots Shorties (Yellow Pack)</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98701</td>
+  <td class="col3">&nbsp;Hot Shots Tennis - Get a Grip</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10239</td>
+  <td class="col3">&nbsp;Hot Wheels Ultimate Racing</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00278</td>
+  <td class="col3">&nbsp;Hotel Mogul</td>
+  <td class="col4">&nbsp;[E][F][G][R][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00286</td>
+  <td class="col3">&nbsp;Hungry Giraffe</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00072</td>
+  <td class="col3">&nbsp;Hysteria Project</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00255</td>
+  <td class="col3">&nbsp;Hysteria Project 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- I NTSC-U Header -->
+
+<table class="sectionheader" id="table319">
+	<tr>
+		<th class="sectionheader2">
+		<a name="I Games">[ I ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- I Games Listing -->
+
+<table class="sectiontable" id="table320" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10122</td>
+  <td class="col3">&nbsp;I Am An Air Traffic Controller - Airport Hero Tokyo</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00305</td>
+  <td class="col3">&nbsp;I Kill Zombies</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00198</td>
+  <td class="col3">&nbsp;I Must Run!</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00279</td>
+  <td class="col3">&nbsp;Idiot Squad</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00158</td>
+  <td class="col3">&nbsp;Ikari III - The Rescue</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00159</td>
+  <td class="col3">&nbsp;Ikari Warriors</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00174</td>
+  <td class="col3">&nbsp;Ikari Warriors II - Victory Road</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10476</td>
+  <td class="col3">&nbsp;IL-2 Sturmovik - Birds of Prey</td>
+  <td class="col4">&nbsp;(E)(F)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10316</td>
+  <td class="col3">&nbsp;Indiana Jones and the Staff of Kings</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10054</td>
+  <td class="col3">&nbsp;Infected</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80453</td>
+  <td class="col3">&nbsp;INFLUENCE</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10219</td>
+  <td class="col3">&nbsp;Innocent Life - A Futuristic Harvest Moon</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98746</td>
+  <td class="col3">&nbsp;InviZimals</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98760</td>
+  <td class="col3">&nbsp;InviZimals - Shadow Zone</td>
+  <td class="col4">&nbsp;[E][F][S][[P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80893</td>
+  <td class="col3">&nbsp;InviZimals - The Lost Tribes</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10347</td>
+  <td class="col3">&nbsp;Iron Man</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10497</td>
+  <td class="col3">&nbsp;Iron Man 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- J NTSC-U Header -->
+
+<table class="sectionheader" id="table321">
+	<tr>
+		<th class="sectionheader2">
+		<a name="J Games">[ J ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- J Games Listing -->
+
+<table class="sectiontable" id="table322" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10303</td>
+  <td class="col3">&nbsp;Jackass - The Game</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98634</td>
+  <td class="col3">&nbsp;Jak and Daxter - The Lost Frontier</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80330</td>
+  <td class="col3">&nbsp;Jak and Daxter - The Lost Frontier</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10451</td>
+  <td class="col3">&nbsp;James Cameron's Avatar - The Game</td>
+  <td class="col4">&nbsp;(E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00196</td>
+  <td class="col3">&nbsp;Jane's Hotel</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98700</td>
+  <td class="col3">&nbsp;Jeanne d'Arc</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00223</td>
+  <td class="col3">&nbsp;Jelly Pops</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00076</td>
+  <td class="col3">&nbsp;Jelly Car 2</td>
+  <td class="col4">&nbsp; (E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00292</td>
+  <td class="col3">&nbsp;Jetpack Joyride + 150K Coins</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00081</td>
+  <td class="col3">&nbsp;Jewel Keepers - Easter Island</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10562</td>
+  <td class="col3">&nbsp;Jikandia - The Timeless Land</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10312</td>
+  <td class="col3">&nbsp;Juiced 2 - Hot Import Nights</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10090</td>
+  <td class="col3">&nbsp;Juiced Eliminator</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10214</td>
+  <td class="col3">&nbsp;Justice League Heroes</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+</table>
+
+<!-- K NTSC-U Header -->
+
+<table class="sectionheader" id="table323">
+	<tr>
+		<th class="sectionheader2">
+		<a name="K Games">[ K ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- K Games Listing -->
+
+<table class="sectiontable" id="table324" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00030</td>
+  <td class="col3">&nbsp;Kahoots</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00260</td>
+  <td class="col3">&nbsp;Kaleidoscope (Interactive Synaesthesia Project)</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10085</td>
+  <td class="col3">&nbsp;Kao Challengers</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00193</td>
+  <td class="col3">&nbsp;Karimogi</td>
+  <td class="col4">&nbsp;(E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPEZ-00331</td>
+  <td class="col3">&nbsp;Karoshi</td>
+  <td class="col4">&nbsp;(E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10442</td>
+  <td class="col3">&nbsp;Kenka Bancho - Badass Rumble</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98646</td>
+  <td class="col3">&nbsp;Killzone - Liberation</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du][Pl[[R[</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10053</td>
+  <td class="col3">&nbsp;King of Pool</td>
+  <td class="col4">&nbsp;[E]]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10505</td>
+  <td class="col3">&nbsp;Kingdom Hearts - Birth by Sleep</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98623</td>
+  <td class="col3">&nbsp;Kingdom of Paradise</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00300</td>
+  <td class="col3">&nbsp;Knight Fortix 2</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10539</td>
+  <td class="col3">&nbsp;Knights in the Nightmare</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10042</td>
+  <td class="col3">&nbsp;Kurulin Fusion</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+</table>
+
+<!-- L NTSC-U Header -->
+
+<table class="sectionheader" id="table325">
+	<tr>
+		<th class="sectionheader2">
+		<a name="L Games">[ L ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- L Games Listing -->
+
+<table class="sectiontable" id="table326" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00226</td>
+  <td class="col3">&nbsp;Labyrinth</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10253</td>
+  <td class="col3">&nbsp;Lara Croft - Tomb Raider - Anniversary</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10110</td>
+  <td class="col3">&nbsp;Lara Croft - Tomb Raider - Legend</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10067</td>
+  <td class="col3">&nbsp;League Bowling</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80406</td>
+  <td class="col3">&nbsp;Legend of Kunoichi</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10250</td>
+  <td class="col3">&nbsp;Legend of the Dragon</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10106</td>
+  <td class="col3">&nbsp;Legends of War - Patton's Campaign</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10380</td>
+  <td class="col3">&nbsp;LEGO Batman - The Video Game</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10500</td>
+  <td class="col3">&nbsp;LEGO Harry Potter - Years 1-4</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10580</td>
+  <td class="col3">&nbsp;LEGO Harry Potter - Years 5-7</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10365</td>
+  <td class="col3">&nbsp;LEGO Indiana Jones - Original Adventures</td>
+  <td class="col4">&nbsp;[E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10487</td>
+  <td class="col3">&nbsp;LEGO Indiana Jones 2 - The Adventure Continues</td>
+  <td class="col4">&nbsp;[E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10575</td>
+  <td class="col3">&nbsp;LEGO Pirates of the Caribbean - The Video Game</td>
+  <td class="col4">&nbsp;[E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10155</td>
+  <td class="col3">&nbsp;LEGO Star Wars II - The Original Trilogy</td>
+  <td class="col4">&nbsp;[E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10531</td>
+  <td class="col3">&nbsp;LEGO Star Wars III - The Clone Wars</td>
+  <td class="col4">&nbsp;[E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98647</td>
+  <td class="col3">&nbsp;Lemmings</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00004</td>
+  <td class="col3">&nbsp;Let's Golf</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98744</td>
+  <td class="col3">&nbsp;Little BIG Planet</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][D][Du][Fi][[Nw][P][Pl][R[[Sw]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00085</td>
+  <td class="col3">&nbsp;Lock N' Chase</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98662</td>
+  <td class="col3">&nbsp;LocoRoco</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98731</td>
+  <td class="col3">&nbsp;LocoRoco 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80318</td>
+  <td class="col3">&nbsp;LocoRoco - Midnight Carnival</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][D][Du][Fi][[Nw][P][Pl][R[[Sw]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10479</td>
+  <td class="col3">&nbsp;Lord of Arcana</td>
+  <td class="col4">&nbsp;[E)(F)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80432</td>
+  <td class="col3">&nbsp;Love Cupid</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10002</td>
+  <td class="col3">&nbsp;Lumines</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10183</td>
+  <td class="col3">&nbsp;Lumines II</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10482</td>
+  <td class="col3">&nbsp;Lunar - Silver Star Harmony</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10333</td>
+  <td class="col3">&nbsp;Luxor - Pharaoh's Challenge</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10201</td>
+  <td class="col3">&nbsp;Luxor - The Wrath of Set</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+</table>
+
+<!-- M NTSC-U Header -->
+
+<table class="sectionheader" id="table327">
+	<tr>
+		<th class="sectionheader2">
+		<a name="M Games">[ M ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- M Games Listing -->
+
+<table class="sectiontable" id="table328" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10180</td>
+  <td class="col3">&nbsp;M.A.C.H. - Modified Air Combat Heroes</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00199</td>
+  <td class="col3">&nbsp;M.O.Z.O.X. Space Salvager</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00210</td>
+  <td class="col3">&nbsp;Mad Blocker Alpha - Revenge of the Fluzzles</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10024</td>
+  <td class="col3">&nbsp;Madden NFL 06</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10117</td>
+  <td class="col3">&nbsp;Madden NFL 07</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10275</td>
+  <td class="col3">&nbsp;Madden NFL 08</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10352</td>
+  <td class="col3">&nbsp;Madden NFL 09</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10441</td>
+  <td class="col3">&nbsp;Madden NFL 10</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10541</td>
+  <td class="col3">&nbsp;Madden NFL 11</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10581</td>
+  <td class="col3">&nbsp;Madden NFL 12</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10068</td>
+  <td class="col3">&nbsp;Magician Lord</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00062</td>
+  <td class="col3">&nbsp;Mahjongg Artifacts</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00006</td>
+  <td class="col3">&nbsp;Mahjongg Artifacts - Chapter 2</td>
+  <td class="col4">&nbsp;[E)(R)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10099</td>
+  <td class="col3">&nbsp;Major League Baseball 2K6</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10229</td>
+  <td class="col3">&nbsp;Major League Baseball 2K7</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10342</td>
+  <td class="col3">&nbsp;Major League Baseball 2K8</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10413</td>
+  <td class="col3">&nbsp;Major League Baseball 2K9</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10503</td>
+  <td class="col3">&nbsp;Major League Baseball 2K10</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10573</td>
+  <td class="col3">&nbsp;Major League Baseball 2K11</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10591</td>
+  <td class="col3">&nbsp;Major League Baseball 2K12</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10408</td>
+  <td class="col3">&nbsp;Mana Khemia - Student Alliance</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10280</td>
+  <td class="col3">&nbsp;Manhunt 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00096</td>
+  <td class="col3">&nbsp;Manic Monkey Mayhem</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10033</td>
+  <td class="col3">&nbsp;Marvel Nemesis - Rise of the Imperfects</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10485</td>
+  <td class="col3">&nbsp;Marvel Super Hero Squad</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10196</td>
+  <td class="col3">&nbsp;Marvel Trading Card Game</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10167</td>
+  <td class="col3">&nbsp;Marvel Ultimate Alliance</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10421</td>
+  <td class="col3">&nbsp;Marvel Ultimate Alliance 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00141</td>
+  <td class="col3">&nbsp;Marvin's Maze</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10094</td>
+  <td class="col3">&nbsp;Me & My Katamari</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00231</td>
+  <td class="col3">&nbsp;Me Monstar - Hear Me Roar!</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00232</td>
+  <td class="col3">&nbsp;Mecho Wars</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10141</td>
+  <td class="col3">&nbsp;Medal of Honor - Heroes</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10310</td>
+  <td class="col3">&nbsp;Medal of Honor - Heroes 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98620</td>
+  <td class="col3">&nbsp;MediEvil Resurrection</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10068</td>
+  <td class="col3">&nbsp;MegaMan - Maverick Hunter X</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10091</td>
+  <td class="col3">&nbsp;MegaMan - Powered Up</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10568</td>
+  <td class="col3">&nbsp;Mercury 2-For-1 Fun Pack</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10133</td>
+  <td class="col3">&nbsp;Mercury Meltdown</td>
+  <td class="col4">&nbsp;[E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10006</td>
+  <td class="col3">&nbsp;Metal Gear Ac!d</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10077</td>
+  <td class="col3">&nbsp;Metal Gear Ac!d 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10108</td>
+  <td class="col3">&nbsp;Metal Gear Solid - Digital Graphic Novel</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10509</td>
+  <td class="col3">&nbsp;Metal Gear Solid - Peace Walker</td>
+  <td class="col4">&nbsp;[E)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10202</td>
+  <td class="col3">&nbsp;Metal Gear Solid - Portable Ops</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10290</td>
+  <td class="col3">&nbsp;Metal Gear Solid - Portable Ops Plus</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10062</td>
+  <td class="col3">&nbsp;Metal Slug</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10120</td>
+  <td class="col3">&nbsp;Metal Slug 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10154</td>
+  <td class="col3">&nbsp;Metal Slug Anthology</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10495</td>
+  <td class="col3">&nbsp;Metal Slug XX</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10109</td>
+  <td class="col3">&nbsp;Miami Vice - The Game</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10564</td>
+  <td class="col3">&nbsp;Michael Jackson - The Experience</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Pl][R[</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10129</td>
+  <td class="col3">&nbsp;Micro Machines V4</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10383</td>
+  <td class="col3">&nbsp;Midnight Club - L. A. Remix</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10021</td>
+  <td class="col3">&nbsp;Midnight Club 3 - DUB Edition</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10059</td>
+  <td class="col3">&nbsp;Midway Arcade Treasures - Extended Play</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00238</td>
+  <td class="col3">&nbsp;Mighty Flip Champs! DX</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10103</td>
+  <td class="col3">&nbsp;Military History Commander - Europe at War</td>
+  <td class="col4">&nbsp;[E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10492</td>
+  <td class="col3">&nbsp;Mimana Iyar Chronicle</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10178</td>
+  <td class="col3">&nbsp;Mind Quiz</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00122</td>
+  <td class="col3">&nbsp;Mini Squadron</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98605</td>
+  <td class="col3">&nbsp;MLB</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98624</td>
+  <td class="col3">&nbsp;MLB 06 - The Show</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98667</td>
+  <td class="col3">&nbsp;MLB 07 - The Show</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98696</td>
+  <td class="col3">&nbsp;MLB 08 - The Show</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98730</td>
+  <td class="col3">&nbsp;MLB 09 - The Show</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98742</td>
+  <td class="col3">&nbsp;MLB 10 - The Show</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98758</td>
+  <td class="col3">&nbsp;MLB 11 - The Show</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98741</td>
+  <td class="col3">&nbsp;ModNation Racers</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00221</td>
+  <td class="col3">&nbsp;Monochrome Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00033</td>
+  <td class="col3">&nbsp;Monopoly</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10084</td>
+  <td class="col3">&nbsp;Monster Hunter Freedom</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10266</td>
+  <td class="col3">&nbsp;Monster Hunter Freedom 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10391</td>
+  <td class="col3">&nbsp;Monster Hunter Freedom Unite</td>
+  <td class="col4">&nbsp;[E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10530</td>
+  <td class="col3">&nbsp;Monster Jam - Path of Destruction</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10379</td>
+  <td class="col3">&nbsp;Monster Jam - Urban Assault</td>
+  <td class="col4">&nbsp;[E)(F)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10211</td>
+  <td class="col3">&nbsp;Monster Kingdom - Jewel Summoner</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00057</td>
+  <td class="col3">&nbsp;Monsters (Probably) Stole My Princess</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10102</td>
+  <td class="col3">&nbsp;Mortal Kombat - Unchained</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10153</td>
+  <td class="col3">&nbsp;Moto GP</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98743</td>
+  <td class="col3">&nbsp;MotorStorm - Arctic Edge</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10138</td>
+  <td class="col3">&nbsp;MTX Mototrax</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80438</td>
+  <td class="col3">&nbsp;Music Quiz</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10012</td>
+  <td class="col3">&nbsp;MVP Baseball</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10071</td>
+  <td class="col3">&nbsp;MX vs. ATV On the Edge</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10429</td>
+  <td class="col3">&nbsp;MX vs. ATV Reflex</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10330</td>
+  <td class="col3">&nbsp;MX vs. ATV Untamed</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10378</td>
+  <td class="col3">&nbsp;My Spanish Coach</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10010</td>
+  <td class="col3">&nbsp;Myst</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10189</td>
+  <td class="col3">&nbsp;Mystic Chronicles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10398</td>
+  <td class="col3">&nbsp;Mytran Wars</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+</table>
+
+<!-- N NTSC-U Header -->
+
+<table class="sectionheader" id="table329">
+	<tr>
+		<th class="sectionheader2">
+		<a name="N Games">[ N ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- N Games Listing -->
+
+<table class="sectiontable" id="table330" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10340</td>
+  <td class="col3">&nbsp;N+</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00179	</td>
+  <td class="col3">&nbsp;N.O.V.A. - Near Orbit Vanguard Alliance</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10035</td>
+  <td class="col3">&nbsp;Namco Museum Battle Collection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10305</td>
+  <td class="col3">&nbsp;Napoleon Dynamite - The Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10571</td>
+  <td class="col3">&nbsp;Naruto Shippuden - Kizuna Drive</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10447</td>
+  <td class="col3">&nbsp;Naruto Shippuden - Legends - Akatsuki Rising</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10299</td>
+  <td class="col3">&nbsp;Naruto Shippuden - Ultimate Ninja Heroes</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10349</td>
+  <td class="col3">&nbsp;Naruto Shippuden - Ultimate Ninja Heroes 2 - The Phantom Fortress</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10518	</td>
+  <td class="col3">&nbsp;Naruto Shippuden - Ultimate Ninja Heroes 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10582</td>
+  <td class="col3">&nbsp;Naruto Shippuden - Ultimate Ninja Impact</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10122</td>
+  <td class="col3">&nbsp;NASCAR</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98607</td>
+  <td class="col3">&nbsp;NBA</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98626</td>
+  <td class="col3">&nbsp;NBA 06</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98644</td>
+  <td class="col3">&nbsp;NBA 07</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98699</td>
+  <td class="col3">&nbsp;NBA 08</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98715</td>
+  <td class="col3">&nbsp;NBA 09 The Inside</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98738</td>
+  <td class="col3">&nbsp;NBA 10 The Inside</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10474</td>
+  <td class="col3">&nbsp;NBA 2K10</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10552</td>
+  <td class="col3">&nbsp;NBA 2K11</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10585</td>
+  <td class="col3">&nbsp;NBA 2K12</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10598</td>
+  <td class="col3">&nbsp;NBA 2K13</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10078</td>
+  <td class="col3">&nbsp;NBA Ballers Rebound</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10030</td>
+  <td class="col3">&nbsp;NBA Live 06</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10113</td>
+  <td class="col3">&nbsp;NBA Live 07</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10294</td>
+  <td class="col3">&nbsp;NBA Live 08</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10370</td>
+  <td class="col3">&nbsp;NBA Live 09</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10465</td>
+  <td class="col3">&nbsp;NBA Live 10</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10010</td>
+  <td class="col3">&nbsp;NBA Street Showdown</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10116</td>
+  <td class="col3">&nbsp;NCAA Football 07</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10355</td>
+  <td class="col3">&nbsp;NCAA Football 09</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10440</td>
+  <td class="col3">&nbsp;NCAA Football 10</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10114</td>
+  <td class="col3">&nbsp;Need for Speed Carbon - Own the City</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10036</td>
+  <td class="col3">&nbsp;Need for Speed - Most Wanted 5-1-0</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10331</td>
+  <td class="col3">&nbsp;Need for Speed - ProStreet</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10462</td>
+  <td class="col3">&nbsp;Need for Speed - Shift</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10376</td>
+  <td class="col3">&nbsp;Need for Speed - Undercover</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10007</td>
+  <td class="col3">&nbsp;Need for Speed - Underground Rivals</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10089</td>
+  <td class="col3">&nbsp;NeoGeo Heroes - Ultimate Shooting</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98622</td>
+  <td class="col3">&nbsp;Neopets Petpet Adventures - The Wand of Wishing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30009</td>
+  <td class="col3">&nbsp;Neutopia</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10382</td>
+  <td class="col3">&nbsp;Neverland Card Battles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30014</td>
+  <td class="col3">&nbsp;New Adventure Island</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10008</td>
+  <td class="col3">&nbsp;NFL Street 2 Unleashed</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10135</td>
+  <td class="col3">&nbsp;NFL Street 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10131</td>
+  <td class="col3">&nbsp;NHL 07</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10278</td>
+  <td class="col3">&nbsp;NHRA Drag Racing - Countdown to the Championship</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00253</td>
+  <td class="col3">&nbsp;Ninjamurai</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10007</td>
+  <td class="col3">&nbsp;No Gravity - The Plague of Mind</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80460</td>
+  <td class="col3">&nbsp;No Heroes Allowed!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00071</td>
+  <td class="col3">&nbsp;Normal Tanks</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80320</td>
+  <td class="col3">&nbsp;Numblast</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- O NTSC-U Header -->
+
+<table class="sectionheader" id="table331">
+	<tr>
+		<th class="sectionheader2">
+		<a name="O Games">[ O ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- O Games Listing -->
+
+<table class="sectiontable" id="table332" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10484</td>
+  <td class="col3">&nbsp;Obscure - The Aftermath</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00217</td>
+  <td class="col3">&nbsp;OMG-Z!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00205</td>
+  <td class="col3">&nbsp;One Epic Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80431</td>
+  <td class="col3">&nbsp;One Two Boat Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10179</td>
+  <td class="col3">&nbsp;Online Chess Kingdoms</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10152</td>
+  <td class="col3">&nbsp;Open Season</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00216</td>
+  <td class="col3">&nbsp;Orbit</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10064</td>
+  <td class="col3">&nbsp;OutRun 2006 - Coast 2 Coast</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00143</td>
+  <td class="col3">&nbsp;Ozma Wars</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- P NTSC-U Header -->
+
+<table class="sectionheader" id="table333">
+	<tr>
+		<th class="sectionheader2">
+		<a name="P Games">[ P ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- P Games Listing -->
+
+<table class="sectiontable" id="table334" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00160</td>
+  <td class="col3">&nbsp;P.O.W. - Prisoners of War</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00125</td>
+  <td class="col3">&nbsp;Pac-Man Championship Edition</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10055</td>
+  <td class="col3">&nbsp;Pac-Man World 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10149</td>
+  <td class="col3">&nbsp;Pac-Man World Rally</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00099</td>
+  <td class="col3">&nbsp;Pallurikio</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00113</td>
+  <td class="col3">&nbsp;Panda Craze</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10438</td>
+  <td class="col3">&nbsp;Pangya - Fantasy Golf</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00206</td>
+  <td class="col3">&nbsp;Paper Wars - Cannon Fodder</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98702</td>
+  <td class="col3">&nbsp;Parappa the Rapper</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98711</td>
+  <td class="col3">&nbsp;Patapon</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98732</td>
+  <td class="col3">&nbsp;Patapon 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98751</td>
+  <td class="col3">&nbsp;Patapon 3</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80403</td>
+  <td class="col3">&nbsp;Patchwork Heroes</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10118</td>
+  <td class="col3">&nbsp;Payout Poker & Casino</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10386</td>
+  <td class="col3">&nbsp;PDC World Championship Darts 2008</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-30040</td>
+  <td class="col3">&nbsp;Peggle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10072</td>
+  <td class="col3">&nbsp;Peter Jackson's King Kong</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10463</td>
+  <td class="col3">&nbsp;Petz - Dogz Family</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10446</td>
+  <td class="col3">&nbsp;Petz - Hamsterz Bunch</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10402</td>
+  <td class="col3">&nbsp;Petz - Saddle Club</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10410</td>
+  <td class="col3">&nbsp;Phantasy Star Portable</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10529</td>
+  <td class="col3">&nbsp;Phantasy Star Portable 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10572</td>
+  <td class="col3">&nbsp;Phantom Brave - The Hermuda Triangle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-98775</td>
+  <td class="col3">&nbsp;Phineas and Ferb - Across the 2nd Dimension</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80448</td>
+  <td class="col3">&nbsp;Pile Up! Bakery</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10256</td>
+  <td class="col3">&nbsp;Pimp My Ride</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00054</td>
+  <td class="col3">&nbsp;Pinball Dreams</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80435</td>
+  <td class="col3">&nbsp;Pinball Duel</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00017</td>
+  <td class="col3">&nbsp;Pinball Fantasies</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10052</td>
+  <td class="col3">&nbsp;Pinball Hall of Fame - The Gottlieb Collection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10265</td>
+  <td class="col3">&nbsp;Pinball Hall of Fame - The Williams Collection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80251</td>
+  <td class="col3">&nbsp;Pinball Heroes</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00195</td>
+  <td class="col3">&nbsp;Pipe Madness</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10359</td>
+  <td class="col3">&nbsp;Pipe Mania</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00177</td>
+  <td class="col3">&nbsp;Pix'n Love Rush</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98739</td>
+  <td class="col3">&nbsp;Pixel Junk Monsters Deluxe</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80248</td>
+  <td class="col3">&nbsp;Pixel Junk Monsters Deluxe</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80413</td>
+  <td class="col3">&nbsp;Piyotama</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10203</td>
+  <td class="col3">&nbsp;Platypus</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10151</td>
+  <td class="col3">&nbsp;Pocket Pool</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10163</td>
+  <td class="col3">&nbsp;Pocket Racers</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10091</td>
+  <td class="col3">&nbsp;Pool Hall Pro</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10018</td>
+  <td class="col3">&nbsp;PoPoLoCrois</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10171</td>
+  <td class="col3">&nbsp;Power Stone Collection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10046</td>
+  <td class="col3">&nbsp;PQ - Practical Intelligence Quotient</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10258</td>
+  <td class="col3">&nbsp;PQ2 - Practical Intelligence Quotient 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00162</td>
+  <td class="col3">&nbsp;Prehistoric Isle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10063</td>
+  <td class="col3">&nbsp;Prince of Persia - Revelations</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10240</td>
+  <td class="col3">&nbsp;Prince of Persia - Rival Swords</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10480</td>
+  <td class="col3">&nbsp;Prince of Persia - The Forgotten Sands</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10407	</td>
+  <td class="col3">&nbsp;Prinny - Can I Really Be the Hero?</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10561</td>
+  <td class="col3">&nbsp;Prinny 2 - Dawn of Operation Panties, Dood!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10005</td>
+  <td class="col3">&nbsp;Pro Bull Riders - Out of the Chute</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10320</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2008</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10388</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2009</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10483</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2010</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10554</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2011</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10586</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2012</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10597</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2013</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10654</td>
+  <td class="col3">&nbsp;Pro Evolution Soccer 2014</td>
+  <td class="col4">&nbsp;[E][F][S][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10209</td>
+  <td class="col3">&nbsp;ProStroke Golf . World Tour 2007</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00163</td>
+  <td class="col3">&nbsp;Psycho Soldier</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98640</td>
+  <td class="col3">&nbsp;Pursuit Force</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98703</td>
+  <td class="col3">&nbsp;Pursuit Force - Extreme Justice</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10120</td>
+  <td class="col3">&nbsp;Puzzle Challenge - Crosswords and More!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10468</td>
+  <td class="col3">&nbsp;Puzzle Chronicles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10334</td>
+  <td class="col3">&nbsp;Puzzle Guzzle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10225</td>
+  <td class="col3">&nbsp;Puzzle Quest - Challenge of the Warlords</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10190</td>
+  <td class="col3">&nbsp;Puzzle Scape</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- Q NTSC-U Header -->
+
+<table class="sectionheader" id="table337">
+	<tr>
+		<th class="sectionheader2">
+		<a name="Q Games">[ Q ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- Q Games Listing -->
+
+<table class="sectiontable" id="table336" cellspacing="1" cellpadding="0">
+	<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80436</td>
+  <td class="col3">&nbsp;Quiz Animania</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- R NTSC-U Header -->
+
+<table class="sectionheader" id="table337">
+	<tr>
+		<th class="sectionheader2">
+		<a name="R Games">[ R ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- R Games Listing -->
+
+<table class="sectiontable" id="table338" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10343</td>
+  <td class="col3">&nbsp;R-Type Command</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10096</td>
+  <td class="col3">&nbsp;Race Driver 2006</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10594</td>
+  <td class="col3">&nbsp;Ragnarok Tactics</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10205</td>
+  <td class="col3">&nbsp;Rainbow Islands Evolution</td>
+  <td class="col4">&nbsp;(E)(F)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80434</td>
+  <td class="col3">&nbsp;Ramen Heaven</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10532</td>
+  <td class="col3">&nbsp;Rapala Pro Bass Fishing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10137</td>
+  <td class="col3">&nbsp;Rapala Trophies</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98633</td>
+  <td class="col3">&nbsp;Ratchet & Clank - Size Matters</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00048</td>
+  <td class="col3">&nbsp;Red Bull X-Fighters</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00064</td>
+  <td class="col3">&nbsp;Reef Aquarium</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10166</td>
+  <td class="col3">&nbsp;Reel Fishing - The Great Outdoors</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10013</td>
+  <td class="col3">&nbsp;Rengoku - The Tower of Purgatory</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10127</td>
+  <td class="col3">&nbsp;Rengoku II - The Stairway to H.E.A.V.E.N.</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98668</td>
+  <td class="col3">&nbsp;Resistance - Retribution</td>
+  <td class="col4">&nbsp;(E)(F)(S)(J)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00060</td>
+  <td class="col3">&nbsp;Retro Cave Flyer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00264</td>
+  <td class="col3">&nbsp;Revoltin' Youth</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10001</td>
+  <td class="col3">&nbsp;Ridge Racer</td>
+  <td class="col4">&nbsp;(E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10286</td>
+  <td class="col3">&nbsp;Riviera - The Promised Land</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00075</td>
+  <td class="col3">&nbsp;Robin Hood - The Return of Richard</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10418</td>
+  <td class="col3">&nbsp;Rock Band Unplugged</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10015</td>
+  <td class="col3">&nbsp;Rock Band Unplugged</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00023</td>
+  <td class="col3">&nbsp;Rocket Racing</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00094</td>
+  <td class="col3">&nbsp;Rocks N' Rockets</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10233</td>
+  <td class="col3">&nbsp;Rocky Balboa</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00265</td>
+  <td class="col3">&nbsp;Ronnie O'Sullivan's Snooker</td>
+  <td class="col4">&nbsp;(E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00041</td>
+  <td class="col3">&nbsp;Route 66</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00219</td>
+  <td class="col3">&nbsp;Rumble Trucks</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00242</td>
+  <td class="col3">&nbsp;Run Ghost Run</td>
+  <td class="col4">&nbsp;(E)(F)(G)(I)(S)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10174</td>
+  <td class="col3">&nbsp;Rush</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- S NTSC-U Header -->
+
+<table class="sectionheader" id="table339">
+	<tr>
+		<th class="sectionheader2">
+		<a name="S Games">[ S ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- S Games Listing -->
+
+<table class="sectiontable" id="table340" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00170</td>
+  <td class="col3">&nbsp;S.A.R. - Search And Rescue</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10063</td>
+  <td class="col3">&nbsp;Samurai Shodown</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10401</td>
+  <td class="col3">&nbsp;Samurai Shodown Anthology</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10089</td>
+  <td class="col3">&nbsp;Samurai Warriors - State of War</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00146</td>
+  <td class="col3">&nbsp;Sasuke vs. Commander</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80328</td>
+  <td class="col3">&nbsp;Savage Moon - The Hera Campaign</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10395</td>
+  <td class="col3">&nbsp;SBK - Superbike World Championship</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10148</td>
+  <td class="col3">&nbsp;Scarface - Money. Power. Respect.</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10168</td>
+  <td class="col3">&nbsp;Scooby-Doo! Who's Watching Who?</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10412</td>
+  <td class="col3">&nbsp;Scrabble - Crossword Game</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98697</td>
+  <td class="col3">&nbsp;Secret Agent Clank</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10192</td>
+  <td class="col3">&nbsp;Sega Genesis Collection</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10311</td>
+  <td class="col3">&nbsp;Sega Rally Revo</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10459</td>
+  <td class="col3">&nbsp;Shadow of Destiny</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00111</td>
+  <td class="col3">&nbsp;Shapo</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10399</td>
+  <td class="col3">&nbsp;Shaun White Snowboarding</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80421</td>
+  <td class="col3">&nbsp;Sheep Defense</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10499</td>
+  <td class="col3">&nbsp;Shepherd's Crossing</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00200</td>
+  <td class="col3">&nbsp;SHIFT extended</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10432</td>
+  <td class="col3">&nbsp;Shin Megami Tensei - Persona</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10584</td>
+  <td class="col3">&nbsp;Shin Megami Tensei - Persona 2 - Innocent Sin</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10512</td>
+  <td class="col3">&nbsp;Shin Megami Tensei - Persona 3 - Portable</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10083</td>
+  <td class="col3">&nbsp;Shock Troopers</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80439</td>
+  <td class="col3">&nbsp;Shogi</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10224</td>
+  <td class="col3">&nbsp;Sid Meier's Pirates!</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10285</td>
+  <td class="col3">&nbsp;Silent Hill Origins</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10450</td>
+  <td class="col3">&nbsp;Silent Hill - Shattered Memories</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00239</td>
+  <td class="col3">&nbsp;Sky Force</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10016</td>
+  <td class="col3">&nbsp;Smart Bomb</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10269</td>
+  <td class="col3">&nbsp;Smash Court Tennis 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80404</td>
+  <td class="col3">&nbsp;Smashbreak</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00207</td>
+  <td class="col3">&nbsp;Snake Warriors - Training</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00065</td>
+  <td class="col3">&nbsp;Sneezies</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10338</td>
+  <td class="col3">&nbsp;SNK Arcade Classics Vol.1</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10189</td>
+  <td class="col3">&nbsp;Snoopy vs the Red Baron</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00257</td>
+  <td class="col3">&nbsp;Snowy - The Bear's Adventures</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][J][K][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98615</td>
+  <td class="col3">&nbsp;SOCOM - U.S. Navy SEALs Fireteam Bravo</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98645</td>
+  <td class="col3">&nbsp;SOCOM - U.S. Navy SEALs Fireteam Bravo 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98716</td>
+  <td class="col3">&nbsp;SOCOM - U.S. Navy SEALs - Fireteam Bravo 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98649</td>
+  <td class="col3">&nbsp;SOCOM - U.S. Navy SEALs Tactical Strike</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30016</td>
+  <td class="col3">&nbsp;Soldier Blade</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00227</td>
+  <td class="col3">&nbsp;Solitaire</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10195</td>
+  <td class="col3">&nbsp;Sonic Rivals</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10323</td>
+  <td class="col3">&nbsp;Sonic Rivals 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10457</td>
+  <td class="col3">&nbsp;Soul Calibur - Broken Destiny</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10346</td>
+  <td class="col3">&nbsp;Space Invaders Extreme</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00038</td>
+  <td class="col3">&nbsp;Spaceball - Revolution</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10076</td>
+  <td class="col3">&nbsp;Spectral Souls - Resurrection of the Ethereal Empire</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00256</td>
+  <td class="col3">&nbsp;Speedball 2 Evolution</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10255</td>
+  <td class="col3">&nbsp;Spelling Challenges and More!</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10015</td>
+  <td class="col3">&nbsp;Spider-Man 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10317</td>
+  <td class="col3">&nbsp;Spider-Man 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10318</td>
+  <td class="col3">&nbsp;Spider-Man - Friend or Foe</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10389</td>
+  <td class="col3">&nbsp;Spider-Man - Web of Shadows</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULES-00693</td>
+  <td class="col3">&nbsp;Spinout</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10513</td>
+  <td class="col3">&nbsp;Split/Second</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10092</td>
+  <td class="col3">&nbsp;Spongebob SquarePants - The Yellow Avenger</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10478</td>
+  <td class="col3">&nbsp;Spongebob SquarePants Truth or Square</td>
+  <td class="col4">&nbsp;[E][G][I][Du]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00034</td>
+  <td class="col3">&nbsp;Spot the Differences!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10042</td>
+  <td class="col3">&nbsp;SSX - On Tour</td>
+  <td class="col4">&nbsp;[E][F][G]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10101</td>
+  <td class="col3">&nbsp;Stacked with Daniel Negreanu</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00029</td>
+  <td class="col3">&nbsp;Stand O' Food</td>
+  <td class="col4">&nbsp;[E][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00230</td>
+  <td class="col3">&nbsp;Star Hammer Tactics</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10374</td>
+  <td class="col3">&nbsp;Star Ocean - First Departure</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10375</td>
+  <td class="col3">&nbsp;Star Ocean - Second Evolution</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10150</td>
+  <td class="col3">&nbsp;Star Trek - Tactical Assault</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10390</td>
+  <td class="col3">&nbsp;Star Wars Battlefront - Elite Squadron</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10292</td>
+  <td class="col3">&nbsp;Star Wars Battlefront - Renegade Squadron</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10053</td>
+  <td class="col3">&nbsp;Star Wars Battlefront II</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10188</td>
+  <td class="col3">&nbsp;Star Wars - Lethal Alliance</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10477</td>
+  <td class="col3">&nbsp;Star Wars - The Clone Wars - Republic Heroes</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10345</td>
+  <td class="col3">&nbsp;Star Wars - The Force Unleashed</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10354</td>
+  <td class="col3">&nbsp;State Shift</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10470</td>
+  <td class="col3">&nbsp;Steambot Chronicles - Battle Tournament</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10215</td>
+  <td class="col3">&nbsp;Steel Horizon</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00092</td>
+  <td class="col3">&nbsp;Stellar Attack</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00234</td>
+  <td class="col3">&nbsp;Stick Man Rescue</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10062</td>
+  <td class="col3">&nbsp;Street Fighter Alpha 3 MAX</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00172</td>
+  <td class="col3">&nbsp;Street Smart</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10069</td>
+  <td class="col3">&nbsp;Street Supremacy</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10186</td>
+  <td class="col3">&nbsp;StreetKix -. Freestyle</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10020</td>
+  <td class="col3">&nbsp;Strikers 1945 Plus Portable</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00001</td>
+  <td class="col3">&nbsp;Sudoku</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10656</td>
+  <td class="col3">&nbsp;Summon Night 5</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10198</td>
+  <td class="col3">&nbsp;Summon Night 5</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10287</td>
+  <td class="col3">&nbsp;Super Collapse! 3</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10132</td>
+  <td class="col3">&nbsp;Super Monkey Ball Adventure</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10028</td>
+  <td class="col3">&nbsp;Super Pocket Tennis</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10066</td>
+  <td class="col3">&nbsp;Super Sidekicks</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30010</td>
+  <td class="col3">&nbsp;Super Star Soldier</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80221</td>
+  <td class="col3">&nbsp;Super Stardust Portable</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du][P][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00058</td>
+  <td class="col3">&nbsp;Supermarket Mania</td>
+  <td class="col4">&nbsp;[E][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10262</td>
+  <td class="col3">&nbsp;Surf's Up</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10124</td>
+  <td class="col3">&nbsp;Susume Tactics!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10314</td>
+  <td class="col3">&nbsp;SWAT - Target Liberty</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10652</td>
+  <td class="col3">&nbsp;Sweet Fuse - At Your Side</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80424</td>
+  <td class="col3">&nbsp;Sweet Reversi</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80114</td>
+  <td class="col3">&nbsp;Syphon Filter - Combat Ops</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98641	</td>
+  <td class="col3">&nbsp;Syphon Filter -  Dark Mirror</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98606</td>
+  <td class="col3">&nbsp;Syphon Filter - Logan's Shadow</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- T NTSC-U Header -->
+
+<table class="sectionheader" id="table341">
+	<tr>
+		<th class="sectionheader2">
+		<a name="T Games">[ T ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- T Games Listing -->
+
+<table class="sectiontable" id="table342" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10185</td>
+  <td class="col3">&nbsp;T.A.C. Heroes - Big Red One</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00147</td>
+  <td class="col3">&nbsp;T.N.K. III</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10565</td>
+  <td class="col3">&nbsp;Tactics Ogre - Let Us Cling Together</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10208</td>
+  <td class="col3">&nbsp;Taito Legends - Power-Up</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10271</td>
+  <td class="col3">&nbsp;Tales of the World - Radiant Mythology</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80162</td>
+  <td class="col3">&nbsp;TalkMan Travel - Paris</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80161</td>
+  <td class="col3">&nbsp;TalkMan Travel - Rome</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80155</td>
+  <td class="col3">&nbsp;TalkMan Travel - Tokyo</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00049</td>
+  <td class="col3">&nbsp;Tehra - Dark Warrior</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10466</td>
+  <td class="col3">&nbsp;Tekken 6</td>
+  <td class="col4">&nbsp;[E)[F][G][I][S][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10139</td>
+  <td class="col3">&nbsp;Tekken - Dark Resurrection</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00073</td>
+  <td class="col3">&nbsp;Telegraph Crosswords</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00074</td>
+  <td class="col3">&nbsp;Telegraph - Sudoku & Kakuro</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10419</td>
+  <td class="col3">&nbsp;Tenchu - Shadow Assassins</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10249</td>
+  <td class="col3">&nbsp;Test Drive Unlimited</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00228</td>
+  <td class="col3">&nbsp;Tetraminos</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00003</td>
+  <td class="col3">&nbsp;Tetris</td>
+  <td class="col4">&nbsp;[E)[F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00240</td>
+  <td class="col3">&nbsp;The 2D Adventures of Rotating Octopus Character</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+<td class="col5" style="background-color: #FFD700"><a target="ulist" style="text-decoration: none" href="games/ULUS-10567.html">INFO</a></td>
+		<td class="col6" style="background-color: #E8E8E8">ULUS-10567</td>
+		<td class="col7" style="background-color: #E8E8E8">&nbsp;THE 3RD BIRTHDAY</td>
+		<td class="col8" style="background-color: #E8E8E8">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10284</td>
+  <td class="col3">&nbsp;The Bigs</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10448</td>
+  <td class="col3">&nbsp;The Bigs 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98621</td>
+  <td class="col3">&nbsp;The Con</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10002</td>
+  <td class="col3">&nbsp;The Cryptics</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUG-80335</td>
+  <td class="col3">&nbsp;The Eye of Judgment - Legends</td>
+  <td class="col4">&nbsp;</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10198</td>
+  <td class="col3">&nbsp;The Fast and The Furious</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00192</td>
+  <td class="col3">&nbsp;The Flying Hamster</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][J]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10098</td>
+  <td class="col3">&nbsp;The Godfather - Mob Wars</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10315</td>
+  <td class="col3">&nbsp;The Golden Compass</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10048</td>
+  <td class="col3">&nbsp;The Hustle - Detroit Streets</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00254</td>
+  <td class="col3">&nbsp;The Impossible Game</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10065</td>
+  <td class="col3">&nbsp;The King of Fighters '94</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10119</td>
+  <td class="col3">&nbsp;The King of Fighters '96</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10360</td>
+  <td class="col3">&nbsp;The King of Fighters Collection - The Orochi Saga</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10022</td>
+  <td class="col3">&nbsp;The Legend of Heroes - A Tear of Vermillion</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10540</td>
+  <td class="col3">&nbsp;The Legend of Heroes - Trails in the Sky</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10191<br>NPUH-10197</td>
+  <td class="col3">&nbsp;The Legend of Heroes - Trails in the Sky SC</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10125</td>
+  <td class="col3">&nbsp;The Legend of Heroes II - Prophecy of the Moonlight Witch</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10144</td>
+  <td class="col3">&nbsp;The Legend of Heroes III - Song of the Ocean</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10475</td>
+  <td class="col3">&nbsp;The Lord of the Rings - Aragorn's Quest</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10038</td>
+  <td class="col3">&nbsp;The Lord of the Rings - Tactics</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00280</td>
+  <td class="col3">&nbsp;The Marbians</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00063</td>
+  <td class="col3">&nbsp;The Mystery of the Crystal Portal</td>
+  <td class="col4">&nbsp;[E][F][G][P][S][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00169</td>
+  <td class="col3">&nbsp;The Next Space</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10040</td>
+  <td class="col3">&nbsp;The Red Star</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10443</td>
+  <td class="col3">&nbsp;The Secret Saturdays - Beasts of the 5th Sun</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10295</td>
+  <td class="col3">&nbsp;The Simpsons Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10031</td>
+  <td class="col3">&nbsp;The Sims 2</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10296</td>
+  <td class="col3">&nbsp;The Sims 2 - Castaway</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][Du][P]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10130</td>
+  <td class="col3">&nbsp;The Sims 2 - Pets</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00056</td>
+  <td class="col3">&nbsp;The Terminator</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00269</td>
+  <td class="col3">&nbsp;The Treasures of Montezuma</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][R]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10213</td>
+  <td class="col3">&nbsp;The Warriors</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10019</td>
+  <td class="col3">&nbsp;Thexder Neo</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPEX-00001</td>
+  <td class="col3">&nbsp;This is Football Management</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10191</td>
+  <td class="col3">&nbsp;Thrillville</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10306</td>
+  <td class="col3">&nbsp;Thrillville - Off the Rails</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPEZ-00129</td>
+  <td class="col3">&nbsp;Tiger Trouble</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10009</td>
+  <td class="col3">&nbsp;Tiger Woods PGA Tour</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10028</td>
+  <td class="col3">&nbsp;Tiger Woods PGA Tour 06</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10115</td>
+  <td class="col3">&nbsp;Tiger Woods PGA Tour 07</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10276</td>
+  <td class="col3">&nbsp;Tiger Woods PGA Tour 08</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10367</td>
+  <td class="col3">&nbsp;Tiger Woods PGA Tour 09</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10420</td>
+  <td class="col3">&nbsp;Tiger Woods PGA Tour 10</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00173</td>
+  <td class="col3">&nbsp;Time Soldiers</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10243</td>
+  <td class="col3">&nbsp;TMNT</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10436</td>
+  <td class="col3">&nbsp;TNA Impact - Cross the Line</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10076</td>
+  <td class="col3">&nbsp;TNT Racers</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10061</td>
+  <td class="col3">&nbsp;Tokobot</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10358</td>
+  <td class="col3">&nbsp;Tom Clancy's EndWar</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10237</td>
+  <td class="col3">&nbsp;Tom Clancy's Ghost Recon - Advanced Warfighter</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10445</td>
+  <td class="col3">&nbsp;Tom Clancy's Ghost Recon - Predator</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10206</td>
+  <td class="col3">&nbsp;Tom Clancy's Rainbow Six - Vegas</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10070</td>
+  <td class="col3">&nbsp;Tom Clancy's  Splinter Cell - Essentials</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10197</td>
+  <td class="col3">&nbsp;Tony Hawk's Project 8</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10014</td>
+  <td class="col3">&nbsp;Tony Hawk's Underground 2 - Remix</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUX-80422</td>
+  <td class="col3">&nbsp;Tonzurakko</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00184</td>
+  <td class="col3">&nbsp;Top Gun</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00301</td>
+  <td class="col3">&nbsp;Top Trumps NBA All Stars</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00166</td>
+  <td class="col3">&nbsp;Touchdown Fever</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00294</td>
+  <td class="col3">&nbsp;Trailblazer</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10433</td>
+  <td class="col3">&nbsp;Transformers - Revenge of the Fallen</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10274</td>
+  <td class="col3">&nbsp;Transformers - The Game</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10272</td>
+  <td class="col3">&nbsp;Traxxpad - Portable Studio</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00188</td>
+  <td class="col3">&nbsp;Twin Blades</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98601</td>
+  <td class="col3">&nbsp;Twisted Metal - Head-On</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- U NTSC-U Header -->
+
+<table class="sectionheader" id="table343">
+	<tr>
+		<th class="sectionheader2">
+		<a name="U Games">[ U ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- U Games Listing -->
+
+<table class="sectiontable" id="table344" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10221</td>
+  <td class="col3">&nbsp;UEFA Champions League 2006-2007</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10337</td>
+  <td class="col3">&nbsp;UEFA Euro 2008</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10508</td>
+  <td class="col3">&nbsp;UFC Undisputed 2010</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10043</td>
+  <td class="col3">&nbsp;Ultimate Block Party</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10254</td>
+  <td class="col3">&nbsp;Ultimate Board Game Collection</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10105</td>
+  <td class="col3">&nbsp;Ultimate Ghosts 'n Goblins</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10008</td>
+  <td class="col3">&nbsp;Unbound Saga</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10123</td>
+  <td class="col3">&nbsp;Unchained Blades</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10453</td>
+  <td class="col3">&nbsp;Undead Knights</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10027</td>
+  <td class="col3">&nbsp;Uno</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10003</td>
+  <td class="col3">&nbsp;Untold Legends - Brotherhood of the Blade</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10086</td>
+  <td class="col3">&nbsp;Untold Legends - The Warrior's Code</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00077</td>
+  <td class="col3">&nbsp;Urbanix</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+</table>
+
+<!-- V NTSC-U Header -->
+
+<table class="sectionheader" id="table345">
+	<tr>
+		<th class="sectionheader2">
+		<a name="V Games">[ V ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- V Games Listing -->
+
+<table class="sectiontable" id="table346" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10230</td>
+  <td class="col3">&nbsp;Valhalla Knights</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10366</td>
+  <td class="col3">&nbsp;Valhalla Knights 2</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10041</td>
+  <td class="col3">&nbsp;Valhalla Knights 2 -Battle Stance</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10515</td>
+  <td class="col3">&nbsp;Valkyria Chronicles II</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10107</td>
+  <td class="col3">&nbsp;Valkyrie Profile - Lenneth</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00148</td>
+  <td class="col3">&nbsp;Vanguard</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00149</td>
+  <td class="col3">&nbsp;Vanguard II</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00066</td>
+  <td class="col3">&nbsp;Vector TD</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPEZ-00383</td>
+  <td class="col3">&nbsp;Velocity</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00015</td>
+  <td class="col3">&nbsp;Vempire</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10092</td>
+  <td class="col3">&nbsp;Vertigo</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00095</td>
+  <td class="col3">&nbsp;Vibes</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30015</td>
+  <td class="col3">&nbsp;Victory Run</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10087</td>
+  <td class="col3">&nbsp;Viewtiful Joe - Red Hot Rumble</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10246</td>
+  <td class="col3">&nbsp;Virtua Tennis 3</td>
+  <td class="col4">&nbsp;[E][F][G][I][S][J]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10037</td>
+  <td class="col3">&nbsp;Virtua Tennis - World Tour</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00068</td>
+  <td class="col3">&nbsp;VT Tennis</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- W NTSC-U Header -->
+
+<table class="sectionheader" id="table347">
+	<tr>
+		<th class="sectionheader2">
+		<a name="W Games">[ W ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- W Games Listing -->
+
+<table class="sectiontable" id="table348" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00042</td>
+  <td class="col3">&nbsp;WackyLands Boss</td>
+  <td class="col4">&nbsp;[E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10313</td>
+  <td class="col3">&nbsp;Warhammer 40,000 - Squad Command</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10123</td>
+  <td class="col3">&nbsp;Warhammer - Battle for Atluma</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10309</td>
+  <td class="col3">&nbsp;Warriors of the Lost Empire</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10341</td>
+  <td class="col3">&nbsp;Warriors Orochi</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10423</td>
+  <td class="col3">&nbsp;Warriors Orochi 2</td>
+  <td class="col4">&nbsp;(E)(F)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10456</td>
+  <td class="col3">&nbsp;What Did I Do to Deserve This, My Lord?!</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10494</td>
+  <td class="col3">&nbsp;What Did I Do to Deserve This, My Lord?! 2</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10049</td>
+  <td class="col3">&nbsp;What Did I Do to Deserve This, My Lord?! 2</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00243</td>
+  <td class="col3">&nbsp;Where is my Heart?</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00129</td>
+  <td class="col3">&nbsp;Who's That Flying?!</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00045</td>
+  <td class="col3">&nbsp;Widgets Odyssey</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00055</td>
+  <td class="col3">&nbsp;Widgets Odyssey 2</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10339</td>
+  <td class="col3">&nbsp;Wild Arms XF</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10169</td>
+  <td class="col3">&nbsp;Winning Eleven - Pro Evolution Soccer 2007</td>
+  <td class="col4">&nbsp;[E][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10212</td>
+  <td class="col3">&nbsp;WinX Club - Join the Club</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98712</td>
+  <td class="col3">&nbsp;Wipeout Pulse</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98612</td>
+  <td class="col3">&nbsp;Wipeout Pure</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00296</td>
+  <td class="col3">&nbsp;Wizorb</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10226</td>
+  <td class="col3">&nbsp;World Championship Cards</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10145</td>
+  <td class="col3">&nbsp;World Championship Poker - Howard Lederer - All In</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10060</td>
+  <td class="col3">&nbsp;World Championship Poker 2 featuring Howard Lederer</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10086</td>
+  <td class="col3">&nbsp;World Heroes</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10079</td>
+  <td class="col3">&nbsp;World Poker Tour</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10047</td>
+  <td class="col3">&nbsp;World Series of Poker</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10321</td>
+  <td class="col3">&nbsp;World Series of Poker 2008 - Battle for the Bracelets</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10162</td>
+  <td class="col3">&nbsp;World Series of Poker - Tournament of Champions - 2007 Edition</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10056</td>
+  <td class="col3">&nbsp;World Soccer Winning Eleven 9</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUF-30013</td>
+  <td class="col3">&nbsp;World Sports Competition</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98613</td>
+  <td class="col3">&nbsp;World Tour Soccer</td>
+  <td class="col4">&nbsp;[E]]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">UCUS-98631</td>
+  <td class="col3">&nbsp;World Tour Soccer 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUH-10045</td>
+  <td class="col3">&nbsp;Worms - Battle Islands</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10065</td>
+  <td class="col3">&nbsp;Worms - Open Warfare</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10260</td>
+  <td class="col3">&nbsp;Worms - Open Warfare 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10093</td>
+  <td class="col3">&nbsp;WRC - FIA World Rally Championship</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10172</td>
+  <td class="col3">&nbsp;WTF - Work Time Fun</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10544</td>
+  <td class="col3">&nbsp;WWE All Stars</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10050</td>
+  <td class="col3">&nbsp;WWE Smackdown! vs. RAW 2006</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10199</td>
+  <td class="col3">&nbsp;WWE Smackdown! vs. RAW 2007</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10281</td>
+  <td class="col3">&nbsp;WWE Smackdown! vs. RAW 2008 featuring ECW</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10384</td>
+  <td class="col3">&nbsp;WWE Smackdown! vs. RAW 2009 featuring ECW</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10452</td>
+  <td class="col3">&nbsp;WWE Smackdown! vs. RAW 2010 featuring ECW</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10543</td>
+  <td class="col3">&nbsp;WWE Smackdown! vs. RAW 2011 featuring ECW</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- X NTSC-U Header -->
+
+<table class="sectionheader" id="table349">
+	<tr>
+		<th class="sectionheader2">
+		<a name="X Games">[ X ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- X Games Listing -->
+
+<table class="sectiontable" id="table350" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10045</td>
+  <td class="col3">&nbsp;X-Men Legends II - Rise of Apocalypse</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10411</td>
+  <td class="col3">&nbsp;X-Men Origins - Wolverine</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10164</td>
+  <td class="col3">&nbsp;Xiaolin Showdown</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+
+<!-- Y NTSC-U Header -->
+
+<table class="sectionheader" id="table351">
+	<tr>
+		<th class="sectionheader2">
+		<a name="Y Games">[ Y ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- Y Games Listing -->
+
+<table class="sectiontable" id="table352" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00047</td>
+  <td class="col3">&nbsp;Yetisports</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10368</td>
+  <td class="col3">&nbsp;Yggdra Union</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00052</td>
+  <td class="col3">&nbsp;Young Thor</td>
+  <td class="col4">&nbsp;[E][F]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10547</td>
+  <td class="col3">&nbsp;Ys I & II Chronicles</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10551</td>
+  <td class="col3">&nbsp;Ys Seven</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10051</td>
+  <td class="col3">&nbsp;Ys - The Ark of Napishtim</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10558</td>
+  <td class="col3">&nbsp;Ys - The Oath in Felghana</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10481</td>
+  <td class="col3">&nbsp;Yu-Gi-Oh! 5D's Tag Force 4</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10555</td>
+  <td class="col3">&nbsp;Yu-Gi-Oh! 5D's Tag Force 5</td>
+  <td class="col4">&nbsp;[E][F][G][I][S]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10136</td>
+  <td class="col3">&nbsp;Yu-Gi-Oh! GX Tag Force</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10302</td>
+  <td class="col3">&nbsp;Yu-Gi-Oh! GX Tag Force 2</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00018</td>
+  <td class="col3">&nbsp;Yummy Yummy Cooking Jam</td>
+  <td class="col4">&nbsp;[E][F][S]</td>
+</tr>
+</table>
+
+<!-- Z NTSC-U Header -->
+
+<table class="sectionheader" id="table353">
+	<tr>
+		<th class="sectionheader2">
+		<a name="Z Games">[ Z ]&nbsp; -&nbsp; NTSC-U</a></th>
+	</tr>
+</table>
+
+<!-- Z Games Listing -->
+
+<table class="sectiontable" id="table354" cellspacing="1" cellpadding="0">
+<tr>
+  <td class="col1"></td>
+  <td class="col2">ULUS-10559</td>
+  <td class="col3">&nbsp;Z.H.P. Unlosing Ranger VS Darkdeath Evilman</td>
+  <td class="col4">&nbsp;(E)[J]</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00132</td>
+  <td class="col3">&nbsp;Zenonia</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="col2">NPUZ-00208</td>
+  <td class="col3">&nbsp;Zombie Racers</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="	"id": "NPUZ-00025",
+	"title": "Zombie Tycoon"
+}, {
+</td>
+  <td class="col4">&nbsp;(E)</td>
+</tr>
+<tr>
+  <td class="col1"></td>
+  <td class="	"id": "NPUG-30039",
+	"title": "Zuma"
+}, {
+</td>
+  <td class="col4">&nbsp;[E]</td>
+</tr>
+</table>
+</body>
+</html>

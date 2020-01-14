@@ -35,7 +35,7 @@ module.exports = async function(arg) {
 	// in a set location.
 	// The user's preferences and game libs json databases
 	// are stored here.
-	global.usrDir = '$home/Documents/emu/bottlenose';
+	global.usrDir = '$home/Documents/emu/bottlenose'; // deprecated path
 	usrDir = util.absPath(usrDir);
 	if (usrDir && (await fs.exists(usrDir))) {
 		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
@@ -891,10 +891,13 @@ module.exports = async function(arg) {
 				disable: 'nintendo'
 			}
 		});
+		process.on('uncaughtException', cui.err);
 		cui.bind('wheel');
 		if (prefs.load.online) {
 			try {
-				if (await updater.check()) app.quit();
+				if (await updater.check()) {
+					app.quit();
+				}
 			} catch (ror) {
 				log('running in offline mode');
 				offline = true;

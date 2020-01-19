@@ -105,7 +105,7 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "requisition": "^1.7.0",
-    "tabletojson": "^1.1.1",
+    "tabletojson": "^1.2.0",
     "tether": "^1.4.7",
     "three": "^0.112.1",
     "usb": "^1.6.2",
@@ -147,5 +147,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.5.3"
+  "version": "1.6.0"
 }

@@ -73,7 +73,7 @@ class GameFaqsScraper {
 		log(url);
 		let img = {};
 		img[name] = this.wrapUrl(url);
-		// await dl(url, __rootDir + '/scrape/img/' + game.id + url.substr(-4));
+		// await dl(url, __root + '/scrape/img/' + game.id + url.substr(-4));
 		return img;
 	}
 
@@ -125,7 +125,7 @@ class GameFaqsScraper {
 		if (gfs[sys]) {
 			return;
 		}
-		let gfsPath = __rootDir + `/scrape/gfs/${sys}Gfs.json`;
+		let gfsPath = __root + `/scrape/gfs/${sys}Gfs.json`;
 		if (await fs.exists(gfsPath)) {
 			gfs[sys] = JSON.parse(await fs.readFile(gfsPath));
 			return;

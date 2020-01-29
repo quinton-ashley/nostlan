@@ -86,7 +86,7 @@ class Themes {
 		if (!this.initialized) await this.init();
 		let themeDir = `${prefs.nlaDir}/themes/${sysStyle}`;
 		if (!(await fs.exists(`${themeDir}/${name}.html`))) {
-			themeDir = `${__rootDir}/themes/${sysStyle}`;
+			themeDir = `${__root}/themes/${sysStyle}`;
 		}
 		let fileHtml = `${themeDir}/${name}.html`;
 		let filePug = `${themeDir}/${name}.pug`;
@@ -100,7 +100,7 @@ class Themes {
 
 	async applyStyle(name) {
 		if (!this.initialized) await this.init();
-		let dirs = [__rootDir, `${prefs.nlaDir}/themes/${sysStyle}`];
+		let dirs = [__root, `${prefs.nlaDir}/themes/${sysStyle}`];
 		for (let i in dirs) {
 			if (i != 0 && !(await fs.exists(dirs[i]))) return;
 			let file = `${dirs[i]}/themes/${sys}/${name}.css`;

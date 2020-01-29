@@ -5,7 +5,7 @@
 
 module.exports = async function(arg) {
 	// arg.v = false; // quieter log
-	await require(arg.__rootDir + '/core/setup.js')(arg);
+	await require(arg.__root + '/core/setup.js')(arg);
 	log('version: ' + pkg.version);
 
 	// extract compressed folders using 7zip
@@ -25,7 +25,7 @@ module.exports = async function(arg) {
 		});
 	};
 
-	global.util = require(__rootDir + '/core/util.js');
+	global.util = require(__root + '/core/util.js');
 
 	// Nostlan dir location cannot be changed.
 	// Only used to store small config files, no images,
@@ -44,7 +44,7 @@ module.exports = async function(arg) {
 	log(usrDir);
 
 	// get the default prefrences
-	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
+	let prefsMan = require(__root + '/prefs/prefsManager.js');
 	prefsMan.prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = await prefsMan.loadDefaultPrefs();
 
@@ -53,12 +53,12 @@ module.exports = async function(arg) {
 	global.emu = ''; // current emulator
 	global.offline = false;
 
-	const cloudSaver = require(__rootDir + '/saves/cloudSaver.js');
-	const launcher = require(__rootDir + '/core/launcher.js');
-	const updater = require(__rootDir + '/core/updater.js');
-	const themes = require(__rootDir + '/themes/themes.js');
-	const scan = require(__rootDir + '/db/scanner.js');
-	const scraper = require(__rootDir + '/scrape/scraper.js');
+	const cloudSaver = require(__root + '/saves/cloudSaver.js');
+	const launcher = require(__root + '/core/launcher.js');
+	const updater = require(__root + '/core/updater.js');
+	const themes = require(__root + '/themes/themes.js');
+	const scan = require(__root + '/db/scanner.js');
+	const scraper = require(__root + '/scrape/scraper.js');
 
 	let systems = {
 		wii: 'Wii/Gamecube',
@@ -195,7 +195,7 @@ module.exports = async function(arg) {
 	}
 
 	async function load() {
-		let files = await klaw(__rootDir + '/views/md');
+		let files = await klaw(__root + '/views/md');
 		for (let file of files) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
@@ -635,7 +635,7 @@ module.exports = async function(arg) {
 			if (act == 'demo') {
 				emuDir = '$home/Documents/emu';
 				emuDir = util.absPath(emuDir);
-				let templatePath = __rootDir + '/demo';
+				let templatePath = __root + '/demo';
 				await fs.copy(templatePath, emuDir);
 				await createTemplate(emuDir);
 				await reload();

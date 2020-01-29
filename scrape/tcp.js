@@ -77,7 +77,7 @@ class TheCoverProjectScraper {
 		log(url);
 		if (arg.dl) {
 			await dl(url,
-				`${__rootDir}/dev/img/${game.id}/${name}.jpg`);
+				`${__root}/dev/img/${game.id}/${name}.jpg`);
 		}
 		img[name] = this.wrapUrl(url);
 		return img;
@@ -133,7 +133,7 @@ class TheCoverProjectScraper {
 		if (tcp[sys]) {
 			return;
 		}
-		let tcpPath = __rootDir + `/scrape/tcp/${sys}Tcp.json`;
+		let tcpPath = __root + `/scrape/tcp/${sys}Tcp.json`;
 		if (await fs.exists(tcpPath)) {
 			tcp[sys] = JSON.parse(await fs.readFile(tcpPath));
 			return;

@@ -3,8 +3,8 @@
 (async function() {
 	const log = console.log;
 	let arg = require('minimist')(process.argv);
-	arg.__rootDir = __dirname.replace(/\\/g, '/');
-	arg.node_modules = arg.__rootDir + '/node_modules';
+	arg.__root = __dirname.replace(/\\/g, '/');
+	arg.node_modules = arg.__root + '/node_modules';
 	if (arg.h) {
 		log('Nostlan command line help');
 		return;
@@ -48,7 +48,7 @@
 				webviewTag: true
 			}
 		};
-		if (arg.scrape || arg.conv) {
+		if (arg.scrape || arg.conv || arg.db) {
 			windowPrms.width = 3840 / 4;
 			windowPrms.height = 2160 / 2;
 		} else {
@@ -59,13 +59,15 @@
 
 		mainWindow = new BrowserWindow(windowPrms);
 
-		let url;
+		let url = 'file://' + arg.__root;
 		if (arg.scrape) {
-			url = `file://${__dirname}/scrape/scrape.pug`;
+			url += '/scrape/cli/scrape-cli.pug';
 		} else if (arg.conv) {
-			url = `file://${__dirname}/dev/convert.pug`;
+			url += '/dev/convert.pug';
+		} else if (arg.db) {
+			url += '/db/cli/db-cli.pug';
 		} else {
-			url = `file://${__dirname}/views/pug/index.pug`;
+			url += '/views/pug/index.pug';
 		}
 		mainWindow.loadURL(url);
 

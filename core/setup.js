@@ -2,9 +2,9 @@ module.exports = async function(arg) {
 	global.arg = arg;
 	global.log = console.log;
 	global.er = console.error;
-	global.__rootDir = arg.__rootDir;
+	global.__root = arg.__root;
 	global.node_modules = arg.node_modules;
-	global.pkg = require(__rootDir + '/package.json');
+	global.pkg = require(__root + '/package.json');
 
 	global.delay = require('delay');
 	global.fs = require('fs-extra');

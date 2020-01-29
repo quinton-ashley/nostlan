@@ -6,7 +6,7 @@ class PrefsManager {
 	}
 
 	async loadDefaultPrefs() {
-		let prefsDefaultPath = __rootDir + '/prefs/prefsDefault.json';
+		let prefsDefaultPath = __root + '/prefs/prefsDefault.json';
 		let prefsDefault = JSON.parse(await fs.readFile(prefsDefaultPath));
 		return prefsDefault;
 	}

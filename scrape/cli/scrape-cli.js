@@ -11,11 +11,11 @@
 
 module.exports = async function(arg) {
 	global.path = require('path');
-	arg.__rootDir = path.join(__dirname, '/..').replace(/\\/g, '/');
-	await require(arg.__rootDir + '/core/setup.js')(arg);
-	const usrDir = __rootDir;
+	arg.__root = path.join(__dirname, '/../..').replace(/\\/g, '/');
+	await require(arg.__root + '/core/setup.js')(arg);
+	const usrDir = __root;
 
-	let prefsMan = require(__rootDir + '/prefs/prefsManager.js');
+	let prefsMan = require(__root + '/prefs/prefsManager.js');
 	prefsMan.prefsPath = usrDir + '/scrape/prefs.json';
 	global.prefs = await prefsMan.loadDefaultPrefs();
 
@@ -42,7 +42,7 @@ module.exports = async function(arg) {
 	if (arg.scrape == 'tcp') name = 'coverFull';
 
 	let games = [];
-	let dbPath = `${__rootDir}/scrape/db/${sys}DB.json`;
+	let dbPath = `${__root}/scrape/db/${sys}DB.json`;
 	games = JSON.parse(await fs.readFile(dbPath)).games;
 
 	let found = 0;

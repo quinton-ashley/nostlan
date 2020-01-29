@@ -10,7 +10,7 @@ class Scanner {
 		this.outLog = '';
 		let games = [];
 		let gameDB = [];
-		let dbPath = `${__rootDir}/db/${sys}DB.json`;
+		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
 		let idRegex;

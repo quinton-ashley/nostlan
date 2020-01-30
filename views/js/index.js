@@ -591,9 +591,9 @@ module.exports = async function(arg) {
 				electron.getCurrentWindow().toggleDevTools();
 				let $elem = $('#pauseMenu .uie[name="showConsoleLog"] .text');
 				if ($elem.text().includes('show')) {
-					$elem.text('hide console log');
+					$elem.text('hide console');
 				} else {
-					$elem.text('show console log');
+					$elem.text('show console');
 				}
 			} else if (act == 'prefs') {
 				opn(prefsMan.prefsPath);

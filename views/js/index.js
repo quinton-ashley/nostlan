@@ -44,16 +44,16 @@ module.exports = async function(arg) {
 	log(usrDir);
 
 	// get the default prefrences
-	let prefsMan = require(__root + '/prefs/prefsManager.js');
-	prefsMan.prefsPath = usrDir + '/_usr/prefs.json';
-	global.prefs = await prefsMan.loadDefaultPrefs();
+	let prefsMng = require(__root + '/prefs/prefsManager.js');
+	prefsMng.prefsPath = usrDir + '/_usr/prefs.json';
+	global.prefs = await prefsMng.loadDefaultPrefs();
 
 	global.sys = ''; // current system
 	global.sysStyle = ''; // style of that system
 	global.emu = ''; // current emulator
 	global.offline = false;
 
-	const cloudSaver = require(__root + '/saves/cloudSaver.js');
+	const saves = require(__root + '/saves/saves.js');
 	const launcher = require(__root + '/core/launcher.js');
 	const updater = require(__root + '/core/updater.js');
 	const themes = require(__root + '/themes/themes.js');
@@ -167,7 +167,7 @@ module.exports = async function(arg) {
 		await fs.ensureDir(prefs.nlaDir);
 		prefs.session.sys = sys;
 		cui.mapButtons(sys);
-		await prefsMan.save();
+		await prefsMng.save();
 		await viewerLoad();
 		await removeIntro();
 		cui.change('libMain', sysStyle);
@@ -207,8 +207,8 @@ module.exports = async function(arg) {
 			file = path.parse(file);
 			$('#' + file.name).prepend(data);
 		}
-		if (await prefsMan.canLoad()) {
-			await prefsMan.load();
+		if (await prefsMng.canLoad()) {
+			await prefsMng.load();
 			// clean up deprecated versions of the prefs file
 			if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
 			if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
@@ -449,7 +449,7 @@ module.exports = async function(arg) {
 		}
 		let onMenu = (/menu/gi).test(ui);
 		if (act == 'quit') {
-			await prefsMan.save();
+			await prefsMng.save();
 			app.quit();
 			process.kill('SIGINT');
 			return;
@@ -596,7 +596,7 @@ module.exports = async function(arg) {
 					$elem.text('show console');
 				}
 			} else if (act == 'prefs') {
-				opn(prefsMan.prefsPath);
+				opn(prefsMng.prefsPath);
 			} else if (act == 'x') {
 				cui.doAction('quit');
 			}
@@ -905,7 +905,7 @@ module.exports = async function(arg) {
 		}
 		if (prefs.donor) {
 			await reload();
-		} else if (await prefsMan.canLoad() && !prefs.donor) {
+		} else if (await prefsMng.canLoad() && !prefs.donor) {
 			cui.change('donateMenu');
 		} else {
 			cui.change('welcomeMenu');

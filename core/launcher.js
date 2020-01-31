@@ -8,7 +8,8 @@ class Launcher {
 		this.emuDirPath = '';
 	}
 
-	async getEmuAppPath() {
+	async getEmuAppPath(attempt) {
+		if (!attempt) attempt = 0;
 		let emuAppPath = util.absPath(prefs[sys].app[osType]);
 		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
@@ -27,6 +28,7 @@ class Launcher {
 			}
 			if (emu == 'yuzu') {
 				emuDirPath = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
+				if (attempt == 1) emuDirPath += '-early-access';
 				emuDirPath = util.absPath(emuDirPath);
 			}
 		} else if (mac) {
@@ -83,6 +85,10 @@ class Launcher {
 				prefs[sys].app[osType] = emuAppPath;
 				return emuAppPath;
 			}
+		}
+		// attempt to auto-find the app in a different place
+		if (win && emu == 'yuzu' && attempt == 0) {
+			return this.getEmuAppPath(1);
 		}
 		log(`couldn't find app at path:\n` + emuAppPath);
 		emuAppPath = await dialog.selectFile('select emulator app');

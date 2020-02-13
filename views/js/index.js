@@ -53,7 +53,7 @@ module.exports = async function(arg) {
 	global.emu = ''; // current emulator
 	global.offline = false;
 
-	const saves = require(__root + '/saves/saves.js');
+	const saves = require(__root + '/core/saves.js');
 	const launcher = require(__root + '/core/launcher.js');
 	const updater = require(__root + '/core/updater.js');
 	const themes = require(__root + '/themes/themes.js');
@@ -565,17 +565,34 @@ module.exports = async function(arg) {
 			} else if (act == 'colors') {
 				// TODO
 			}
+		} else if (ui == 'addSavesPathMenu') {
+			if (act == 'add') {
+				let save = {
+					name: $('#saveName').text(),
+					backups: $('#saveNumOfBackups').text()
+				}
+				if (save.name && save.backups) {
+					save.backups = Number(save.backups);
+					// todo
+				}
+			}
 		} else if (ui == 'pauseMenu') {
 			if (act == 'b' || act == 'start' || act == 'back') {
 				cui.change('libMain');
+			} else if (act == 'syncSaves') {
+				if (!prefs.saves) {
+					cui.change('addSavesPathMenu');
+					return;
+				}
+				cui.change('savesMenu');
 			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
-			} else if (act == 'editTheme') {
+			} else if (act == 'editAppearance') {
 				cui.change('themeMenu');
-			} else if (act == 'recheckLib' || act == 'rescanLib') {
+			} else if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
-				if (act == 'recheckLib') {
+				if (act == 'scanForImages') {
 					recheckImgs = true;
 					await fs.remove(`${usrDir}/_usr/${sys}Games.json`);
 				}
@@ -587,15 +604,15 @@ module.exports = async function(arg) {
 				await removeIntro();
 				cui.change('libMain');
 				cui.scrollToCursor(0);
-			} else if (act == 'showConsoleLog') {
+			} else if (act == 'showConsole') {
 				electron.getCurrentWindow().toggleDevTools();
-				let $elem = $('#pauseMenu .uie[name="showConsoleLog"] .text');
+				let $elem = $('#pauseMenu .uie[name="showConsole"] .text');
 				if ($elem.text().includes('show')) {
 					$elem.text('hide console');
 				} else {
 					$elem.text('show console');
 				}
-			} else if (act == 'prefs') {
+			} else if (act == 'editPrefs') {
 				opn(prefsMng.prefsPath);
 			} else if (act == 'x') {
 				cui.doAction('quit');
@@ -616,8 +633,9 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'checkDonationMenu') {
 			if (act == 'continue') {
-				let password = '\u0074\u0068\u0061\u006e\u006b\u0079\u006f\u0075' +
-					'\u0034\u0064\u006f\u006e\u0061\u0074\u0069\u006e\u0067\u0021';
+				let password = '\u0074\u0068\u0061\u006e\u006b\u0079' +
+					'\u006f\u0075\u0034\u0064\u006f\u006e\u0061\u0074' +
+					'\u0069\u006e\u0067\u0021';
 				let usrDonorPass = $('#donorPassword').val();
 				let decodedPass = password.replace(/\\u[\dA-F]{4}/gi,
 					(match) => {

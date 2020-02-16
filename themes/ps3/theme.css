@@ -98,6 +98,7 @@
 	transform: scale(0.65);
 }
 /*===== ps3 Game Lib Viewer ===*/
+
 game.ps3 .crop.coverFull {
 	width: 200.4%;
 	top: 2.3%;
@@ -114,11 +115,11 @@ game.ps3 .crop.cover {
 game.ps3 img.cover {
 	height: 100%;
 	width: 100%;
-	transform: scale(.966);
+	transform: scale(.95, .885) translate(.6%, 3.7%);
 }
 
 game.ps3 img.coverFull {
-	transform: translate(-51.5%, 0%);
+	transform: scale(1.01) translate(-51.5%, 7.5%);
 }
 
 game.ps3.flip .crop.coverFull {

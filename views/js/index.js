@@ -54,6 +54,7 @@ module.exports = async function(arg) {
 	global.offline = false;
 
 	const saves = require(__root + '/core/saves.js');
+	const premium = require(__root + '/dev/premium.js');
 	const launcher = require(__root + '/core/launcher.js');
 	const updater = require(__root + '/core/updater.js');
 	const themes = require(__root + '/themes/themes.js');
@@ -168,6 +169,9 @@ module.exports = async function(arg) {
 		prefs.session.sys = sys;
 		cui.mapButtons(sys);
 		await prefsMng.save();
+		if (premium.verify()) {
+			await saves.update();
+		}
 		await viewerLoad();
 		await removeIntro();
 		cui.change('libMain', sysStyle);
@@ -235,6 +239,7 @@ module.exports = async function(arg) {
 				}
 				delete prefs.btlDir;
 			}
+			if (typeof prefs.donor == 'boolean') prefs.donor = {};
 			emuDir = path.join(prefs.nlaDir, '..');
 		}
 		// currently supported systems
@@ -568,23 +573,52 @@ module.exports = async function(arg) {
 		} else if (ui == 'addSavesPathMenu') {
 			if (act == 'add') {
 				let save = {
-					name: $('#saveName').text(),
-					backups: $('#saveNumOfBackups').text()
+					name: $('#saveName').val(),
+					backups: $('#saveNumOfBackups').val()
 				}
-				if (save.name && save.backups) {
-					save.backups = Number(save.backups);
-					// todo
+				if (!save.name || !save.backups) {
+					cui.err('name and number of backups required');
+					return;
 				}
+				save.backups = Number(save.backups);
+				if (save.backups < 1) {
+					cui.err('1 save backup required');
+					return;
+				}
+
+				let msg = 'Select a save sync location';
+				save.dir = await dialog.selectDir(msg);
+
+				if (!(await fs.exists(save.dir))) {
+					cui.err('Not a valid folder.');
+					return;
+				}
+				if (!prefs.saves) prefs.saves = [];
+				prefs.saves.push(save);
+				cui.change('pauseMenu');
+				// cui.doAction('syncSaves');
 			}
 		} else if (ui == 'pauseMenu') {
 			if (act == 'b' || act == 'start' || act == 'back') {
 				cui.change('libMain');
-			} else if (act == 'syncSaves') {
+			} else if (act == 'syncBackup' || act == 'syncUpdate') {
+				if (!premium.verify()) {
+					cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
+					return;
+				}
 				if (!prefs.saves) {
 					cui.change('addSavesPathMenu');
 					return;
 				}
-				cui.change('savesMenu');
+				await intro();
+				cui.change('syncingSaves');
+				if (act == 'syncBackup') {
+					await saves.backup();
+				} else {
+					await saves.update();
+				}
+				await removeIntro();
+				cui.change('pauseMenu');
 			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
@@ -633,16 +667,8 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'checkDonationMenu') {
 			if (act == 'continue') {
-				let password = '\u0074\u0068\u0061\u006e\u006b\u0079' +
-					'\u006f\u0075\u0034\u0064\u006f\u006e\u0061\u0074' +
-					'\u0069\u006e\u0067\u0021';
-				let usrDonorPass = $('#donorPassword').val();
-				let decodedPass = password.replace(/\\u[\dA-F]{4}/gi,
-					(match) => {
-						return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
-					});
-				if (usrDonorPass == decodedPass) {
-					prefs.donor = true;
+				let pass = $('#donorPassword').val();
+				if (premium.verify(pass)) {
 					await reload();
 				} else {
 					cui.change('donateMenu');
@@ -921,9 +947,9 @@ module.exports = async function(arg) {
 				offline = true;
 			}
 		}
-		if (prefs.donor) {
+		if (premium.verify()) {
 			await reload();
-		} else if (await prefsMng.canLoad() && !prefs.donor) {
+		} else if (await prefsMng.canLoad() && !premium.status) {
 			cui.change('donateMenu');
 		} else {
 			cui.change('welcomeMenu');

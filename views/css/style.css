@@ -28,7 +28,6 @@ html {
 	--box-bg-color: #000;
 }
 /*================General====================*/
-
 .hiddenRow {
 	padding: 0 !important;
 }
@@ -176,7 +175,6 @@ webview {
 	font-feature-settings: 'liga';
 }
 /*================Game Lib Viewer====================*/
-
 #libMain {
 	max-width: 100%;
 	max-height: 100%;
@@ -203,9 +201,15 @@ webview {
 }
 
 .menu code,
+.menu li,
 .menu p,
 .menu pre {
 	color: rgba(0, 0, 0, .6);
+	text-shadow: none;
+}
+
+.menu a {
+	color: rgba(2555, 255, 255, .6);
 	text-shadow: none;
 }
 
@@ -324,7 +328,6 @@ img.coverFull {
 	background-color: var(--box-bg-color);
 }
 /*================Game Lib Viewer====================*/
-
 game .crop.cover,
 game .crop.coverFull {
 	height: 100%;
@@ -345,7 +348,6 @@ game.flip img.coverFull {
 	transform: translate(1.6%, 1%);
 }
 /*================Cover====================*/
-
 nav {
 	display: flex;
 	background-color: transparent;
@@ -481,7 +483,6 @@ ul.nav {
 	height: 100%;
 }
 /*================Misc====================*/
-
 .hide,
 .hide * {
 	filter: opacity(0) !important;
@@ -512,7 +513,6 @@ ul.nav {
 	visibility: hidden;
 }
 /* Rules for sizing the icon. */
-
 .material-icons.md-18 {
 	font-size: 18px;
 }
@@ -529,7 +529,6 @@ ul.nav {
 	font-size: 48px;
 }
 /* Rules for using icons as black on a light background. */
-
 .material-icons.md-dark {
 	color: rgba(0, 0, 0, 0.54);
 }
@@ -538,7 +537,6 @@ ul.nav {
 	color: rgba(0, 0, 0, 0.26);
 }
 /* Rules for using icons as white on a dark background. */
-
 .material-icons.md-light {
 	color: rgba(255, 255, 255, 1);
 }

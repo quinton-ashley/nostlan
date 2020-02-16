@@ -16,7 +16,6 @@ html
 		#donateMenu.menu.row-y
 			.uie(name='donated') already donated
 			.uie(name='donate-monthly') support on Patreon
-			.uie(name='donate-single') donate via Paypal
 			.uie(name='donate-later') remind me later
 		#checkDonationMenu.menu.row-y
 			input#donorPassword.col-12.form-control(placeholder="donor password")
@@ -35,10 +34,18 @@ html
 			.uie(name='toggleCover') auto-hide cover overlay
 		#pauseMenu.menu.row-y
 			h1 Main Menu
-			.uie(name='syncSaves')
-				i.material-icons.md-left sync
-				.text sync saves
-				i.material-icons.md-right.invis sync
+			.uie(name='minimize')
+				i.material-icons.md-left call_to_action
+				.text minimize
+				i.material-icons.md-right.invis call_to_action
+			.uie(name='syncBackup')
+				i.material-icons.md-left cloud_upload
+				.text backup saves
+				i.material-icons.md-right.invis cloud_upload
+			.uie(name='syncUpdate')
+				i.material-icons.md-left cloud_download
+				.text update saves
+				i.material-icons.md-right.invis cloud_download
 			.uie(name='editAppearance')
 				i.material-icons.md-left view_comfy
 				.text edit appearance
@@ -59,11 +66,12 @@ html
 				i.material-icons.md-left perm_data_setting
 				.text edit preferences
 				i.material-icons.md-right.invis perm_data_setting
+			.uie(name='quit')
+				i.material-icons.md-left eject
+				.text quit
+				i.material-icons.md-right.invis eject
 		#sysMenu.menu.row-y
 			h1 Select System
-		#savesMenu.menu.row-y
-			#saves
-			.uie(name='continue')  
 		#addSavesPathMenu.menu.row-y
 			input#saveName.col-12.form-control(placeholder="Name")
 			input#saveNumOfBackups.col-12.form-control(placeholder="Number of backups")

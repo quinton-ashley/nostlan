@@ -1,3 +1,5 @@
 # Thank you for donating!
 
-Enter the donation verification password.
+[Click here to open Nostlan's Patreon page](https://www.patreon.com/nostlan)
+
+Enter this month's donation verification password:

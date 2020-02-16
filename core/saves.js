@@ -157,6 +157,10 @@ class Saves {
 	}
 
 	async update() {
+		if (!prefs.saves) {
+			log('update save sync failed, no saves folder');
+			return;
+		}
 		if (!prefs[sys].saves) {
 			await this.setup();
 			if (!prefs[sys].saves) return;

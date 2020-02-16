@@ -595,8 +595,7 @@ module.exports = async function(arg) {
 				}
 				if (!prefs.saves) prefs.saves = [];
 				prefs.saves.push(save);
-				cui.change('pauseMenu');
-				// cui.doAction('syncSaves');
+				cui.doAction('back');
 			}
 		} else if (ui == 'pauseMenu') {
 			if (act == 'b' || act == 'start' || act == 'back') {
@@ -618,7 +617,7 @@ module.exports = async function(arg) {
 					await saves.update();
 				}
 				await removeIntro();
-				cui.change('pauseMenu');
+				cui.doAction('back');
 			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
@@ -956,6 +955,9 @@ module.exports = async function(arg) {
 		}
 		await delay(1000);
 		cui.resize(true);
+		if (premium.verify() && !prefs.saves) {
+			cui.change('addSavesPathMenu');
+		}
 	}
 
 	await start();

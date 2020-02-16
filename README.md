@@ -1,7 +1,7 @@
 # Nostlan
 
-Nostlan is a _high quality_ front-end launcher for video game emulators!  Available on Linux, macOS, and Windows!  
-[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated!  [Support the development of Nostlan on patreon](https://www.patreon.com/qashto) to gain access to premium features!
+Nostlan is a _high quality_ front-end launcher for video game emulators! Available on Linux, macOS, and Windows!  
+[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated! [Support the development of Nostlan on patreon](https://www.patreon.com/qashto) to gain access to premium features!
 
 <p><a href="https://www.patreon.com/qashto">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan/master/views/img/icon.png">
@@ -9,23 +9,24 @@ Nostlan is a _high quality_ front-end launcher for video game emulators!  Availa
 
 ## A what?
 
-A front-end or user interface (UI) is the presentation and interaction layer of an app or website.  Most modern emulator apps have basic game list UIs that you can interact with using a mouse/keyboard but not a game controller.
+A front-end or user interface (UI) is the presentation and interaction layer of an app or website. Most modern emulator apps have basic game list UIs that you can interact with using a mouse/keyboard but not a game controller.
 
-Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can interact with it using a mouse or game controller.  Unlike other popular front-end launchers for video game emulators, Nostlan has a minimalistic design that prioritizes box art, not metadata.  Check out the screenshots below!
+Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can interact with it using a mouse or game controller. Unlike other popular front-end launchers for video game emulators, Nostlan has a minimalistic design that prioritizes box art, not metadata. Check out the screenshots below!
 
 ## Features
 
--   unified UI for mouse/gamepad interaction
--   designed for UHD displays and projectors
--   checks multiple database sites for the highest quality box art
--   nostalgic UI themes for each supported console
--   uses individual emulators: no cores and no controller input transfer lag
--   most controllers connect to Nostlan automatically, no setup required
--   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
--   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
--   advanced customization: edit launch commands
--   try out Nostlan in demo mode if don't have any games on your computer
--   cross-platform support for Linux, macOS, and Windows!
+- unified UI for mouse/gamepad interaction
+- designed for UHD displays and projectors
+- checks multiple database sites for the highest quality box art
+- nostalgic UI themes for each supported console
+- uses individual emulators: no cores and no controller input transfer lag
+- most controllers connect to Nostlan automatically, no setup required
+- Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
+- gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
+- advanced customization: edit launch commands
+- try out Nostlan in demo mode if don't have any games on your computer
+- cross-platform support for Linux, macOS, and Windows!
+- [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
 
 ## Supported Emulators (click an image to see it in full quality 4K)
 
@@ -97,10 +98,10 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV.  You can i
 
 ## If you like using Nostlan please donate!
 
-Hi my name is Quinton and this is the part where I beg you for money!  Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop.  If you appreciate my work so far and will continue to use Nostlan please donate an amount of your choosing.  Cloud saving is coming soon for Patreon supporters.  Thank you!
+Hi my name is Quinton and this is the part where I beg you for money! Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop. If you appreciate my work so far and will continue to use Nostlan please donate an amount of your choosing. Cloud saving is coming soon for Patreon supporters. Thank you!
 
 Support on Patreon:  
-<https://www.patreon.com/qashto>  
+<https://www.patreon.com/qashto>
 
 Donate via Paypal:  
 <https://www.paypal.me/qashto/20>
@@ -111,51 +112,52 @@ Donate via Paypal:
 
 ## Premium Features
 
-Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these upcoming features!
+Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
 
-Coming Soon:
+- backup/sync all your save data to the cloud or local storage device
+- custom ui themeing (coming soon)
 
--   UI for save file management
--   cloud saving with Nostlan will automatically sync your emulator game saves and save states to a folder in Dropbox, OneDrive, etc. play across multiple devices without losing in-game progress!
+Features that might be offered in the future:
 
-Milestone Goals:
+- support for PC games, making Nostlan able to launch all your games
+- single click to install emulators/updates
+- database of Dolphin texture packs
+- batch install and auto-update texture packs for Dolphin
+- easy way to mix and swap texture packs for Dolphin
 
--   support for PC games, making Nostlan able to launch all your games
--   single click to install emulators/updates
--   database of Dolphin texture packs
--   batch install and auto-update texture packs for Dolphin
--   easy way to mix and swap texture packs for Dolphin
--   create custom themes
+## How to access Premium Features
+
+On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features!
 
 ## How is Nostlan different from other front-ends?
 
-The name Nostlan, is a portmanteau of "nostalgia launcher".  When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI.  Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.
+The name Nostlan, is a portmanteau of "nostalgia launcher". When I created Nostlan I wanted to make box art the primary, practically singular, focus of the UI. Many other frontend apps waste a lot of screen space on metadata, menus, descriptions, or just plain empty space.
 
 This is a screenshot of Emulation Station, which is a prime example of this problem.
 ![](https://emulationstation.org/assets/featurettes/full/theming_list.png)
 
-This is Launchbox for Windows, it's the most popular frontend.  Note that a lot of screen space is wasted and the game box art is thumbnail sized.
+This is Launchbox for Windows, it's the most popular frontend. Note that a lot of screen space is wasted and the game box art is thumbnail sized.
 ![](https://www.launchbox-app.com/Resources/Images/Screenshots/Big-Box-Nintendo-GameCube.jpg)
 
-This is Playnite, it has become really popular too.  Looks great for managing really large libraries of PC games.
+This is Playnite, it has become really popular too. Looks great for managing really large libraries of PC games.
 ![](https://playnite.link/screen2.jpg)
 ![](https://playnite.link/screen4.jpg)
 
-Windows Explorer, despite not having gamepad support, is also surprisingly popular.  I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game.  I think that's a pretty bad substitute for a dedicated launcher app.
+Windows Explorer, despite not having gamepad support, is also surprisingly popular. I've seen reddit posts with tutorials on how to make individual executables that launch emulators with a particular game. I think that's a pretty bad substitute for a dedicated launcher app.
 ![](https://i.redd.it/z7zxgap037p11.png)
 
-Retroarch is a different kind of frontend.  It uses separate cores instead of individual emulator apps like Nostlan does.  Game art is very low res and the interface is barebones.  It runs on a lot of platforms and seems good for small devices.
+Retroarch is a different kind of frontend. It uses separate cores instead of individual emulator apps like Nostlan does. Game art is very low res and the interface is barebones. It runs on a lot of platforms and seems good for small devices.
 ![](https://d2.alternativeto.net/dist/s/retroarch_203397_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
 
-This is Pegasus, a relatively new project.  It has this huge sidebar that I'm not a fan of.
+This is Pegasus, a relatively new project. It has this huge sidebar that I'm not a fan of.
 ![](https://pegasus-frontend.org/img/screens/s2.jpg)
 
-OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores.  It looks like dark mode Finder.  I use it on my Macbook on plane flights and I like it.  The covers are low-res and grid spacing is too wide though.  It doesn't support newer emulators either.
+OpenEmu for macOS is a great app for making controller profiles consistent among different emulator cores. It looks like dark mode Finder. I use it on my Macbook on plane flights and I like it. The covers are low-res and grid spacing is too wide though. It doesn't support newer emulators either.
 ![](http://openemu.org/img/intro-gb-grid.png)
 
 ## Setting up Nostlan
 
-If you do not want to use the optional template file structure, simply select "continue" on the setup page.  Nostlan will prompt you for the location of your game directories.  It may also prompt for the emulator app before you launch a game with Nostlan for the first time.  Setup as you go and Nostlan will save these locations in your preferences file.
+If you do not want to use the optional template file structure, simply select "continue" on the setup page. Nostlan will prompt you for the location of your game directories. It may also prompt for the emulator app before you launch a game with Nostlan for the first time. Setup as you go and Nostlan will save these locations in your preferences file.
 
 ## Nostlan File Structure
 
@@ -228,17 +230,17 @@ If you do not want to use the optional template file structure, simply select "c
       └─┬ 📁 GAMES
         └── 💿 Super Mario Odyssey.xci
 
-Nostlan was designed to OPTIONALLY use this template file structure.  The default game library of each emulator will be its `GAMES` folder.  As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated.  For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Nostlan was designed to OPTIONALLY use this template file structure. The default game library of each emulator will be its `GAMES` folder. As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated. For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
 
-Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to.  On Windows, Nostlan will look for emulator executables in the `BIN` folder or the default install location of that emulator (no need to move Yuzu).
+Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. On Windows, Nostlan will look for emulator executables in the `BIN` folder or the default install location of that emulator (no need to move Yuzu).
 
-On macOS, Nostlan will look for emulator apps in `/Applications` or `BIN`.  Nostlan needs read/write permission to the install folder you choose so do not choose to install the Nostlan image folder at `/Applications`.
+On macOS, Nostlan will look for emulator apps in `/Applications` or `BIN`. Nostlan needs read/write permission to the install folder you choose so do not choose to install the Nostlan image folder at `/Applications`.
 
 On Linux, Nostlan will look for emulator apps in their default install locations or `BIN`.
 
 ## Using Nostlan
 
-Nostlan auto detects controllers.  The console themed cover overlay menu displays the options on any given screen.  Click "Nostlan" or press the "Start" button to view the settings menu.  Click "Open" to load another game library.  "Reset" will start the emulator without a game.  "Power" starts the emulator with the selected game.
+Nostlan auto detects controllers. The console themed cover overlay menu displays the options on any given screen. Click "Nostlan" or press the "Start" button to view the settings menu. Click "Open" to load another game library. "Reset" will start the emulator without a game. "Power" starts the emulator with the selected game.
 
 ## What is Adaptive Button Mapping?
 
@@ -257,23 +259,23 @@ Nostlan auto detects controllers.  The console themed cover overlay menu display
     //  Y B  ->  △ ○
     // X A  ->  □ X
 
-Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the physical button layout of controllers made for the system being emulated.  In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button.  Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers.  The B button on Nintendo systems means "no" or "back".
+Although some may find this confusing at first, adaptive profiles map the button layout of your controller to match the physical button layout of controllers made for the system being emulated. In the NTSC region, Xbox and Playstation use the bottom button of the face button diamond as the "yes" or "make selection" button. Starting with the SNES the B button has been at the bottom of the layout diamond on Nintendo controllers. The B button on Nintendo systems means "no" or "back".
 
 Hence by using an "Adaptive" profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use!
 
-I recommend using adaptive mapping in your controller settings for each emulator too.  This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
+I recommend using adaptive mapping in your controller settings for each emulator too. This way you can play games using the button layout that game developers intended even if you're using a controller made for a different system.
 
-The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended.  You can easily change between these options by editing your preferences file.  Set `ui.gamepad.profile` to your desired controller profile.
+The other included gamepad mapping profile types are "Consistent", for non-adaptive remapping between controller types and "None", for no mapping, which is not recommended. You can easily change between these options by editing your preferences file. Set `ui.gamepad.profile` to your desired controller profile.
 
 ## System Requirements
 
-Nostlan will probably not perform well on low-end systems.  Ultra high resolution images require more storage and animations using these images require strong GPUs.  Although, I've tested Nostlan on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
+Nostlan will probably not perform well on low-end systems. Ultra high resolution images require more storage and animations using these images require strong GPUs. Although, I've tested Nostlan on my 2016 Macbook with a 1.1GHz CPU with onboard Intel HD 515 graphics and it runs at 2304x1440 without stuttering too bad with small game libraries.
 
-Warning!  If you pay for internet by bandwidth be aware that for large game libraries Nostlan will download a lot of image files and this will take a lot of bandwidth.
+Warning! If you pay for internet by bandwidth be aware that for large game libraries Nostlan will download a lot of image files and this will take a lot of bandwidth.
 
 ## User Preferences
 
-`region` game files without game IDs in their game file name, for example "Super Smash Bros Melee.iso", will be auto assigned to a default region.  Use E for North and South America, P for European PAL, J for Japan.  Currently you must rename the file of games made for other regions with the proper game ID.
+`region` game files without game IDs in their game file name, for example "Super Smash Bros Melee.iso", will be auto assigned to a default region. Use E for North and South America, P for European PAL, J for Japan. Currently you must rename the file of games made for other regions with the proper game ID.
 
 `ui.mouse.wheel.smoothScroll` = false on Windows by default, should be true if you have a mouse that supports smooth scrolling (like an Apple Macbook trackpad)
 
@@ -291,7 +293,7 @@ Warning!  If you pay for internet by bandwidth be aware that for large game libr
 
 ## Advanced Features: Custom Launch Commands
 
-Edit your preferences file to change the default launch command for each OS.  This is an example of Cemu's command object:
+Edit your preferences file to change the default launch command for each OS. This is an example of Cemu's command object:
 
 ```JSON
 "cmd": {
@@ -306,18 +308,18 @@ Please [send me](mailto:qashto@gmail.com) a description of any errors with the r
 
 ### Mismatched or Unidentified Games
 
-If Nostlan has trouble matching your game file name, please take a look at the error log.  This can be easily accessed in the Nostlan menu.  This file will tell you which game files are unidentifiable or lead to incorrect matches.  Give these files the proper game title or game ID and Nostlan will be able to find matches in its game databases.  I know that using the file name to match the games is not ideal but it should work for most of your games.  Some other frontends read the game's header for the game id, I might implement this for certain systems in the far future.  MAME does not have this problem but Nostlan might've still downloaded the wrong cover art.  If your game was matched in the database but the cover art is wrong email me and let me know.
+If Nostlan has trouble matching your game file name, please take a look at the error log. This can be easily accessed in the Nostlan menu. This file will tell you which game files are unidentifiable or lead to incorrect matches. Give these files the proper game title or game ID and Nostlan will be able to find matches in its game databases. I know that using the file name to match the games is not ideal but it should work for most of your games. Some other frontends read the game's header for the game id, I might implement this for certain systems in the far future. MAME does not have this problem but Nostlan might've still downloaded the wrong cover art. If your game was matched in the database but the cover art is wrong email me and let me know.
 
     file:   Donkey Kong Country Tropical Freeze [ARKE01]
     match:  Donkey Kong Country: Tropical Freeze
 
 ### Missing Cover Art
 
-As of v1.2, Nostlan should be able to get nearly all of your game images.  If Nostlan can't find images for a game in the Nostlan database you can put cover art in the game's image folder.  For more info see the "Images" sections of this README.
+As of v1.2, Nostlan should be able to get nearly all of your game images. If Nostlan can't find images for a game in the Nostlan database you can put cover art in the game's image folder. For more info see the "Images" sections of this README.
 
 ## Contributing to Nostlan
 
-You can contribute to Nostlan to add to and update existing game databases, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries.  Game database JSON files can be found in the db folder.  Game entries are structured like this:
+You can contribute to Nostlan to add to and update existing game databases, make a PR or email me <mailto:qashto@gmail.com> with your new or updated entries. Game database JSON files can be found in the db folder. Game entries are structured like this:
 
 ```javascript
 {
@@ -328,53 +330,53 @@ You can contribute to Nostlan to add to and update existing game databases, make
 
 ### Game Properties
 
--   `id` is the official id of the game
--   `name` the official name of the game, subtitles are delineated using a colon
--   `texp` the array of texture pack objects
--   `img` an object with `"imgFileName": "url"` pairs
+- `id` is the official id of the game
+- `name` the official name of the game, subtitles are delineated using a colon
+- `texp` the array of texture pack objects
+- `img` an object with `"imgFileName": "url"` pairs
 
 ### Texture Packs
 
--   `authors` usernames or real names of the author(s)
--   `name` should be short and simple, such as "UHD" or "Blue Edition"
--   `png` and `dds` link(s) to direct download the pack
--   `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
--   `url` link(s) to the relevant forum post or readme
--   `version` the semantic version of the pack
--   `rate` the pack's rating 1-10
--   `patron` donation link(s) to the author(s) of pack
+- `authors` usernames or real names of the author(s)
+- `name` should be short and simple, such as "UHD" or "Blue Edition"
+- `png` and `dds` link(s) to direct download the pack
+- `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
+- `url` link(s) to the relevant forum post or readme
+- `version` the semantic version of the pack
+- `rate` the pack's rating 1-10
+- `patron` donation link(s) to the author(s) of pack
 
 ### Images
 
--   `box` the front of the box
--   `boxSide` the side of the box
--   `boxBack` the back of the box
--   `boxOpen` the inside of the game's box
--   `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
--   `cart` the front of the game's (first) cartridge
--   `coverFull` the entire cover sleeve, no box
--   `cover` the front facing portion of the cover sleeve, no box
--   `coverSide` the side facing portion of the cover sleeve, no box
--   `coverBack` the side facing portion of the cover sleeve, no box
--   `disc` the front of the game's (first) disc
--   `manual` the front of the game's manual
--   `memory` the front of a memory card
--   `memoryBack` the back of a memory card
--   `promo` a promotional insert included in the game box
+- `box` the front of the box
+- `boxSide` the side of the box
+- `boxBack` the back of the box
+- `boxOpen` the inside of the game's box
+- `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
+- `cart` the front of the game's (first) cartridge
+- `coverFull` the entire cover sleeve, no box
+- `cover` the front facing portion of the cover sleeve, no box
+- `coverSide` the side facing portion of the cover sleeve, no box
+- `coverBack` the side facing portion of the cover sleeve, no box
+- `disc` the front of the game's (first) disc
+- `manual` the front of the game's manual
+- `memory` the front of a memory card
+- `memoryBack` the back of a memory card
+- `promo` a promotional insert included in the game box
 
-Images can be `.png` or `.jpg`.  Put your images in `emu/nostlan/{sys}/{game.id}`.  You can access this folder by clicking on the game's box twice in Nostlan and then clicking on "ImgDir".  Front cover box art is prioritized in this order: box, coverFull, cover.
+Images can be `.png` or `.jpg`. Put your images in `emu/nostlan/{sys}/{game.id}`. You can access this folder by clicking on the game's box twice in Nostlan and then clicking on "ImgDir". Front cover box art is prioritized in this order: box, coverFull, cover.
 
 ## Development Info
 
-Nostlan is open source!  I loved using Electron to make Nostlan.  I highly recommend it to developers interested in creating native desktop apps with node.js.  Nostlan is written in Javascript, Pug, HTML and CSS.  It uses jQuery, Bootstrap, and Contro.
+Nostlan is open source! I loved using Electron to make Nostlan. I highly recommend it to developers interested in creating native desktop apps with node.js. Nostlan is written in Javascript, Pug, HTML and CSS. It uses jQuery, Bootstrap, and Contro.
 
 ## Contributing to Nostlan (code)
 
-PRs are welcome!  No callback pyramids, use Async/Await whenever possible.  Do not write plain JS novels when editing the DOM, just use jQuery please.  Email me if you want to collaborate on this project!
+PRs are welcome! No callback pyramids, use Async/Await whenever possible. Do not write plain JS novels when editing the DOM, just use jQuery please. Email me if you want to collaborate on this project!
 
 ## Credits
 
-Obviously, Nostlan wouldn't exist without the developers of all the emulators it acts as a frontend for.  Please support the development of the emulators you use!
+Obviously, Nostlan wouldn't exist without the developers of all the emulators it acts as a frontend for. Please support the development of the emulators you use!
 
 ### Databases
 
@@ -387,45 +389,45 @@ xbox360:
 
 ### Game Artwork
 
-Nostlan downloads publicly available images under Fair Use.  
+Nostlan downloads publicly available images under Fair Use.
 
-High quality box scans of popular games for many systems are downloaded from [Andy Decarli's image database](http://andydecarli.com/Video%20Games/Collection).  
+High quality box scans of popular games for many systems are downloaded from [Andy Decarli's image database](http://andydecarli.com/Video%20Games/Collection).
 
-Covers, boxes, and discs/carts for Wii/Gamecube, DS, Wii U, 3DS, Switch, and PlayStation 3 are downloaded from [gametdb](https://www.gametdb.com/).  
+Covers, boxes, and discs/carts for Wii/Gamecube, DS, Wii U, 3DS, Switch, and PlayStation 3 are downloaded from [gametdb](https://www.gametdb.com/).
 
-Most PS2 and GBA game artwork is downloaded from [The Cover Project](http://www.thecoverproject.net/) and [gamefaqs](https://gamefaqs.gamespot.com).  
+Most PS2 and GBA game artwork is downloaded from [The Cover Project](http://www.thecoverproject.net/) and [gamefaqs](https://gamefaqs.gamespot.com).
 
-Archival quality images of arcade game flyers for MAME are downloaded from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/).  MAME arcade cabinet artwork is downloaded from [Mr. Do's Arcade](http://www.mameworld.info/mrdo/mame_artwork_ingame.php).  
+Archival quality images of arcade game flyers for MAME are downloaded from [FlyerFever](https://www.flyerfever.com/) these images are hosted by [Tumblr](https://www.tumblr.com/). MAME arcade cabinet artwork is downloaded from [Mr. Do's Arcade](http://www.mameworld.info/mrdo/mame_artwork_ingame.php).
 
 These sites are incredible resources thanks to all the people that created them and submit game art to them.
 
 ### Template Art
 
--   Gamecube, Wii, and Wii U templates by etschannel via deviantart
--   Switch template by ponces245 via deviantart
--   PS3 template by the_prototype92 via deviantart
--   3DS template by omegaaaronyt via deviantart
--   Xbox 360 template by georgiajedward via deviantart
+- Gamecube, Wii, and Wii U templates by etschannel via deviantart
+- Switch template by ponces245 via deviantart
+- PS3 template by the_prototype92 via deviantart
+- 3DS template by omegaaaronyt via deviantart
+- Xbox 360 template by georgiajedward via deviantart
 
 ### Themes
 
 As of yet, all themes were made by me (quinton-ashley/qashto)
 
-[CSS PlayStation button icons were adapted from a CodePen by Hugo Giraudel](https://codepen.io/HugoGiraudel/pen/iJphI)  
+[CSS PlayStation button icons were adapted from a CodePen by Hugo Giraudel](https://codepen.io/HugoGiraudel/pen/iJphI)
 
 ### Loading Sequences
 
-[Gamecube Intro by MarcMalignan : MIT licensed](https://codepen.io/MarcMalignan/pen/doCth)  
+[Gamecube Intro by MarcMalignan : MIT licensed](https://codepen.io/MarcMalignan/pen/doCth)
 
-[DS by Murat Khatypov](https://codepen.io/AntonEssenetial/pen/LtBaK)  
+[DS by Murat Khatypov](https://codepen.io/AntonEssenetial/pen/LtBaK)
 
-[Switch Pure CSS by joshbader : MIT licensed](https://codepen.io/joshbader/pen/mjZzGM)  
+[Switch Pure CSS by joshbader : MIT licensed](https://codepen.io/joshbader/pen/mjZzGM)
 
-[Wii U Gamepad SVG by Tokyoship from Wikimedia Commons : Creative Commons Attribution 3.0 Unported](https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg)  
+[Wii U Gamepad SVG by Tokyoship from Wikimedia Commons : Creative Commons Attribution 3.0 Unported](https://en.wikipedia.org/wiki/File:Wii_U_controller_illustration.svg)
 
-3DS SVG image trace by me (quinton-ashley/qashto)  
+3DS SVG image trace by me (quinton-ashley/qashto)
 
-[Xbox 360 Loading Intro by Girish Sharma](https://codepen.io/grssam/pen/dLbcv)  
+[Xbox 360 Loading Intro by Girish Sharma](https://codepen.io/grssam/pen/dLbcv)
 
 [PS3 Icon Loader by Jan Machycek](https://codepen.io/machyj/pen/ENvewe)
 
@@ -442,10 +444,10 @@ MAME loader is a combination of two codepens: [Vadim Huck's](https://codepen.io/
 
 ## Legal Disclaimer
 
-Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal.  Nostlan does not condone piracy.  Nostlan is open source software that does not infringe on any copyrights of texture packers, developers, or publishers.  Nostlan is not affiliated with Nintendo, Sony, or Microsoft.  Anyone asking for or sharing information related to digital piracy on this project's Github issues will have their comments removed and flagged.
+Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal. Nostlan does not condone piracy. Nostlan is open source software that does not infringe on any copyrights of texture packers, developers, or publishers. Nostlan is not affiliated with Nintendo, Sony, or Microsoft. Anyone asking for or sharing information related to digital piracy on this project's Github issues will have their comments removed and flagged.
 
 ## COPYRIGHT AND TRADEMARK INFO
 
 MAME and the MAME Logo are Copyright © 1997-2019 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
 
-Nostlan and the Nostlan logo images are Copyright © 2019 Quinton Ashley.  The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/).  The Nostlan software itself is fully open source MIT licensed.
+Nostlan and the Nostlan logo images are Copyright © 2019 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Nostlan software itself is fully open source MIT licensed.

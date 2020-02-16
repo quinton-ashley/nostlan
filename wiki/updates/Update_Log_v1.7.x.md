@@ -8,11 +8,19 @@ Nostlan is a _high quality_ front-end launcher for video game emulators! Availab
 
 ## Summary
 
-- backup/sync all your save data to the cloud or local drive!
-- can automatically find the default install location of Yuzu Early Access
-- custom theming
+- backup/sync all your save data to the cloud or local storage device!
+- support for Yuzu Early Access builds
+- custom theming (coming soon)
 
-## Custom Theming
+## New Premium Feature: Cloud Saves!
+
+If you support Nostlan on Patreon for just $1/month you can access this new premium feature! Nostlan can automatically sync all of your emulator game saves and save states to a folder in your Dropbox, OneDrive, etc. so you can play across multiple devices without losing in-game progress! This feature has never been implemented in an emulator launcher before. I've been working on this feature for a while and I'm really excited that people will finally be able to use it!
+
+## How to access Premium Features
+
+On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features!
+
+## Coming Soon: Custom Theming
 
 Custom theming is coming to Nostlan. Want to help me make the default color palettes for each system? Edit the `theme.css` files in the `themes` folder of this project and submit a pull request!
 
@@ -54,20 +62,18 @@ Nostlan is no longer an "experimental" project and is ready for public use! If s
 
 ## Premium Features
 
-Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these upcoming features!
+Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
 
-Coming Soon:
+- backup/sync all your save data to the cloud or local storage device
+- custom ui themeing (coming soon)
 
-- UI for save file management
-- cloud saving with Nostlan will automatically sync your emulator game saves and save states to a folder in Dropbox, OneDrive, etc. play across multiple devices without losing in-game progress!
+Features that might be offered in the future:
 
-Milestone Goals:
-
+- support for PC games, making Nostlan able to launch all your games
 - single click to install emulators/updates
 - database of Dolphin texture packs
 - batch install and auto-update texture packs for Dolphin
 - easy way to mix and swap texture packs for Dolphin
-- create custom themes
 
 ## If you like using Nostlan please donate!
 

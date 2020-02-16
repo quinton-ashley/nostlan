@@ -21,6 +21,9 @@ class Saves {
 			prefs.n3ds.saves.dirs = [dir];
 		} else if (emu == 'dolphin') {
 			dir += '/User';
+			if (mac && !(await fs.exists(dir))) {
+				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';
+			}
 			if (!(await fs.exists(dir))) {
 				cui.err('"User" folder not found, saves could not be located.  ' +
 					'"User" folder needs to be in the same folder as "Dolphin.exe"');
@@ -106,7 +109,7 @@ class Saves {
 		}
 	}
 
-	async _update() {
+	async _update(forced) {
 		let save = prefs.saves[0];
 		let dir = `${save.dir}/nostlan_saves/${emu}`;
 		if (!(await fs.exists(dir))) return;
@@ -124,7 +127,8 @@ class Saves {
 
 		log(`${prefs[sys].saves.date} : last saved locally`);
 		log(`${latest} : last saved in ${save.name}`);
-		if (latest <= prefs[sys].saves.date) return;
+		if (forced) log('save sync update forced!');
+		if (!forced && latest <= prefs[sys].saves.date) return;
 
 		dir += '/' + latest;
 
@@ -156,7 +160,7 @@ class Saves {
 		log('sync complete!');
 	}
 
-	async update() {
+	async update(forced) {
 		if (!prefs.saves) {
 			log('update save sync failed, no saves folder');
 			return;
@@ -164,14 +168,14 @@ class Saves {
 		if (!prefs[sys].saves) {
 			await this.setup();
 			if (!prefs[sys].saves) return;
-			if (!(await this._update())) {
+			if (!(await this._update(forced))) {
 				await this._backup();
 			}
 			return;
 		}
 
 		log('update save sync starting...');
-		if (await this._update()) {
+		if (await this._update(forced)) {
 			log('update save sync complete!');
 		} else {
 			log('local save data already the most current');

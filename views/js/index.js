@@ -446,6 +446,28 @@ module.exports = async function(arg) {
 		cui.err('game not found: ' + id);
 	}
 
+	async function saveSync(act) {
+		if (!premium.verify()) {
+			cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
+			return;
+		}
+		if (!prefs.saves) {
+			cui.change('addSavesPathMenu');
+			return;
+		}
+		await intro();
+		cui.change('syncingSaves');
+		if (act == 'syncBackup') {
+			await saves.backup();
+		} else if (act == 'forceUpdate') {
+			await saves.update('forced');
+		} else {
+			await saves.update();
+		}
+		await removeIntro();
+		cui.doAction('back');
+	}
+
 	cui.onAction = async function(act, isBtn) {
 		log(act);
 		let ui = cui.ui;
@@ -454,6 +476,9 @@ module.exports = async function(arg) {
 		}
 		let onMenu = (/menu/gi).test(ui);
 		if (act == 'quit') {
+			if (premium.verify()) {
+				await saveSync('syncBackup');
+			}
 			await prefsMng.save();
 			app.quit();
 			process.kill('SIGINT');
@@ -595,29 +620,13 @@ module.exports = async function(arg) {
 				}
 				if (!prefs.saves) prefs.saves = [];
 				prefs.saves.push(save);
-				cui.doAction('back');
+				await saveSync('syncUpdate');
 			}
 		} else if (ui == 'pauseMenu') {
 			if (act == 'b' || act == 'start' || act == 'back') {
 				cui.change('libMain');
-			} else if (act == 'syncBackup' || act == 'syncUpdate') {
-				if (!premium.verify()) {
-					cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
-					return;
-				}
-				if (!prefs.saves) {
-					cui.change('addSavesPathMenu');
-					return;
-				}
-				await intro();
-				cui.change('syncingSaves');
-				if (act == 'syncBackup') {
-					await saves.backup();
-				} else {
-					await saves.update();
-				}
-				await removeIntro();
-				cui.doAction('back');
+			} else if (act == 'syncBackup' || act == 'forceUpdate') {
+				await saveSync(act);
 			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
@@ -669,6 +678,9 @@ module.exports = async function(arg) {
 				let pass = $('#donorPassword').val();
 				if (premium.verify(pass)) {
 					await reload();
+					if (premium.verify() && !prefs.saves) {
+						cui.change('addSavesPathMenu');
+					}
 				} else {
 					cui.change('donateMenu');
 					cui.err('incorrect donor password');
@@ -948,6 +960,9 @@ module.exports = async function(arg) {
 		}
 		if (premium.verify()) {
 			await reload();
+			if (!prefs.saves) {
+				cui.change('addSavesPathMenu');
+			}
 		} else if (await prefsMng.canLoad() && !premium.status) {
 			cui.change('donateMenu');
 		} else {
@@ -955,9 +970,6 @@ module.exports = async function(arg) {
 		}
 		await delay(1000);
 		cui.resize(true);
-		if (premium.verify() && !prefs.saves) {
-			cui.change('addSavesPathMenu');
-		}
 	}
 
 	await start();

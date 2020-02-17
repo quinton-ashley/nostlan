@@ -116,6 +116,9 @@ class Launcher {
 		if (!id) id = prefs.session[sys].gameID;
 		let emuAppPath = await this.getEmuAppPath();
 		if (!emuAppPath) return;
+		if (emu == 'mgba' && !game) {
+			emuAppPath = emuAppPath.replace('-sdl', '');
+		}
 		this.cmdArgs = [];
 		this.emuDirPath = path.join(emuAppPath, '..');
 		if (linux) {

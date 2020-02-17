@@ -465,7 +465,7 @@ module.exports = async function(arg) {
 			await saves.update();
 		}
 		await removeIntro();
-		cui.doAction('back');
+		cui.change('libMain');
 	}
 
 	cui.onAction = async function(act, isBtn) {
@@ -492,7 +492,7 @@ module.exports = async function(arg) {
 		if (act == 'start' && !onMenu) {
 			cui.change('pauseMenu');
 		} else if (act == 'b' && onMenu &&
-			ui != 'donateMenu' && ui != 'setupMenu' && ui != 'pauseMenu') {
+			ui != 'donateMenu' && ui != 'setupMenu') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
@@ -623,8 +623,8 @@ module.exports = async function(arg) {
 				await saveSync('syncUpdate');
 			}
 		} else if (ui == 'pauseMenu') {
-			if (act == 'b' || act == 'start' || act == 'back') {
-				cui.change('libMain');
+			if (act == 'start') {
+				cui.doAction('back');
 			} else if (act == 'syncBackup' || act == 'forceUpdate') {
 				await saveSync(act);
 			} else if (act == 'fullscreen') {

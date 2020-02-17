@@ -87,13 +87,18 @@ class Saves {
 				$('#loadDialog1').text(src);
 				await fs.ensureDir(dest);
 				if (emu == 'melonds' || emu == 'mgba') {
-					await fs.copy(src, dest, {
-						filter: (src, dest) => {
-							let ext = path.parse(src).ext;
-							if (ext == '.nds' || ext == '.gba') return;
-							return true;
-						}
+					let files = await klaw(src, {
+						depthLimit: 0
 					});
+					for (let file of files) {
+						await fs.copy(file, dest + '/' + path.parse(file).base, {
+							filter: function(file) {
+								let ext = path.parse(file).ext.toLowerCase();
+								if (ext == '.nds' || ext == '.gba' || ext == '') return;
+								return true;
+							}
+						});
+					}
 				} else {
 					await fs.copy(src, dest);
 				}

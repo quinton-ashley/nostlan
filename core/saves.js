@@ -8,7 +8,7 @@ class Saves {
 
 		if (emu == 'melonds' || emu == 'mgba') {
 			prefs[sys].saves.dirs = prefs[sys].libs;
-			return;
+			return true;
 		}
 
 		let dir = path.join(prefs[sys].app[osType], '..');
@@ -19,6 +19,13 @@ class Saves {
 		} else if (emu == 'citra') {
 			dir = util.absPath('$home') + '/AppData/Roaming/Citra/sdmc';
 			prefs.n3ds.saves.dirs = [dir];
+		} else if (emu == 'desmume') {
+			if (mac) dir = util.absPath('$home') + '/Library/Application Support/DeSmuME/0.9.11';
+			prefs.ds.saves.dirs = [
+				dir + '/Battery',
+				dir + '/Cheats',
+				dir + '/States'
+			];
 		} else if (emu == 'dolphin') {
 			dir += '/User';
 			if (mac && !(await fs.exists(dir))) {
@@ -57,7 +64,12 @@ class Saves {
 			dir = util.absPath('$home') + '/AppData/Roaming/yuzu/nand/user/save';
 			dir += '/0000000000000000';
 			prefs.switch.saves.dirs = [dir];
+		} else {
+			prefs[sys].saves = undefined;
+			log('save sync not supported for this emu: ' + emu);
+			return false;
 		}
+		return true;
 	}
 
 	async _backup() {
@@ -146,28 +158,13 @@ class Saves {
 		return true;
 	}
 
-	async sync() {
-		log('sync starting...');
-		if (!prefs[sys].saves) {
-			await this.setup();
-		}
-		if (!prefs[sys].saves) return;
-
-		if (!(await this._update())) {
-			await this._backup();
-		}
-
-		log('sync complete!');
-	}
-
 	async update(forced) {
 		if (!prefs.saves) {
 			log('update save sync failed, no saves folder');
 			return;
 		}
 		if (!prefs[sys].saves) {
-			await this.setup();
-			if (!prefs[sys].saves) return;
+			if (!(await this.setup())) return;
 			if (!(await this._update(forced))) {
 				await this._backup();
 			}
@@ -184,8 +181,7 @@ class Saves {
 
 	async backup() {
 		if (!prefs[sys].saves) {
-			await this.setup();
-			if (!prefs[sys].saves) return;
+			if (!(await this.setup())) return;
 		}
 		log('backup save sync starting...');
 		await this._backup();

@@ -1,16 +1,9 @@
-.switch {
-	--reset-color: rgb(10, 185, 230);
-	--reset-border-color: rgb(45, 210, 255);
-	--reset-text-color: rgb(0, 125, 160);
-	--open-color: rgb(255, 60, 40);
-	--open-border-color: rgb(255, 90, 60);
-	--open-text-color: rgb(210, 50, 25);
-}
 /*================Switch Cover====================*/
 @font-face {
 	font-family: theboldfont;
 	src: url("../fonts/theboldfont.ttf");
 }
+
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -39,6 +32,7 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
+
 /*================Switch Game Lib Viewer====================*/
 game.switch .box {
 	border-radius: 1.3vh;

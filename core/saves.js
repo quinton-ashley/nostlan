@@ -72,10 +72,15 @@ class Saves {
 		return true;
 	}
 
-	async _backup() {
+	async _backup(onQuit) {
 		let date = Math.trunc(Date.now() / 10000);
 
 		for (let save of prefs.saves) {
+
+			if (save.noSaveOnQuit) {
+				log('no save on quit for ' + save.name);
+				continue;
+			}
 
 			let dir = `${save.dir}/nostlan_saves/${emu}/${date}`;
 

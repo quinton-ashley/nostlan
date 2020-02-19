@@ -1,13 +1,9 @@
-.ps2 {
-	--cover-color: #333;
-	--cover-text-color: #111;
-	--button-color: #333;
-}
 /*================ PS2 Cover========================*/
 @font-face {
 	font-family: ryp;
 	src: url("../fonts/ryp.ttf");
 }
+
 @font-face {
 	font-family: 'Sownie';
 	src: url("../fonts/sownie.ttf");
@@ -97,6 +93,7 @@
 	top: 0.2vw;
 	transform: scale(0.65);
 }
+
 /*===== PS2 Game Lib Viewer ===*/
 game.ps2 .crop.coverFull {
 	width: 200.4%;
@@ -139,18 +136,18 @@ game.ps2.flip .shade {
 
 .ps2 #gameMemory {
 	width: 29.1vh;
-	transform: translate(78%,-209%);
+	transform: translate(78%, -209%);
 }
 
 .ps2 .zoom-gameMemorySelect {
-	transform: translate(-104vh,-110vh) rotate(90deg) scale(3);
+	transform: translate(-104vh, -110vh) rotate(90deg) scale(3);
 }
 
 .ps2 #gameMedia {
 	width: 63vh;
-	transform: translate(8.5%,-29%);
+	transform: translate(8.5%, -29%);
 }
 
 .ps2 .zoom-gameMediaSelect {
-	transform: translate(-55vh,-20.7vh) scale(1.55);
+	transform: translate(-55vh, -20.7vh) scale(1.55);
 }

@@ -1,0 +1,8 @@
+.switch {
+	--reset-color: rgb(10, 185, 230);
+	--reset-border-color: rgb(45, 210, 255);
+	--reset-text-color: rgb(0, 125, 160);
+	--open-color: rgb(255, 60, 40);
+	--open-border-color: rgb(255, 90, 60);
+	--open-text-color: rgb(210, 50, 25);
+}

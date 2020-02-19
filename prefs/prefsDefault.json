@@ -58,7 +58,7 @@
 	"switch": {
 		"app": {
 			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
-			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
+			"win": "$home/AppData/Local/yuzu/yuzu-windows-msvc/yuzu.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],

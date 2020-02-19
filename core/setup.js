@@ -60,7 +60,6 @@ module.exports = async function(arg) {
 
 	dialog.select = async function(opt) {
 		opt = opt || {};
-		let files = [];
 		if (opt.types || opt.type) {
 			let types = opt.types || opt.type;
 			let properties = [];
@@ -84,12 +83,9 @@ module.exports = async function(arg) {
 		}
 		opt.title = opt.msg;
 		opt.message = opt.msg;
-		try {
-			files = await electron.dialog.showOpenDialog(opt);
-			files = files.filePaths;
-		} catch (ror) {
-			er(ror);
-		}
+		let files = await electron.dialog.showOpenDialog(opt);
+		if (files.canceled) return;
+		files = files.filePaths;
 		if (win) {
 			for (let i in files) {
 				files[i] = files[i].replace(/\\/g, '/');

@@ -100,17 +100,20 @@ class Themes {
 
 	async applyStyle(name) {
 		if (!this.initialized) await this.init();
-		let dirs = [__root, `${prefs.nlaDir}/themes/${sysStyle}`];
+		let dirs = [__root, prefs.nlaDir];
+		let systems = [sys];
+		if (sys == 'wii') systems.push('gcn');
 		for (let i in dirs) {
-			if (i != 0 && !(await fs.exists(dirs[i]))) return;
-			let file = `${dirs[i]}/themes/${sys}/${name}.css`;
-			$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
-			if (sys == 'wii') {
-				file = `${dirs[i]}/themes/gcn/${name}.css`;
+			for (let _sys of systems) {
+				let file = `${dirs[i]}/themes/${_sys}/${name}.css`;
+				if (i != 0 && !(await fs.exists(file))) {
+					await fs.ensureFile(file);
+				}
 				$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
 			}
 		}
 	}
+
 }
 
 module.exports = new Themes();

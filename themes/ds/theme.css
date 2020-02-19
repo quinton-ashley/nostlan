@@ -1,13 +1,9 @@
-.ds {
-	--cover-color: #d0d4d7;
-	--cover-text-color: #7a7e81;
-	--powerBtn-color: #515256;
-}
 /*================ DS Cover ====================*/
 @font-face {
 	font-family: nDS;
 	src: url("../fonts/nDS.ttf");
 }
+
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -37,6 +33,7 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
+
 /*================ DS Game Lib Viewer ====================*/
 game.ds .crop.coverFull {
 	width: 100%;
@@ -83,27 +80,27 @@ game.ds.flip .shade {
 
 .ds #gameManual {
 	width: 85vh;
-	transform: translate(-109%,-46%);
+	transform: translate(-109%, -46%);
 }
 
 .ds #gameMedia {
 	width: 26.6vh;
-	transform: translate(137%,-2.5%);
+	transform: translate(137%, -2.5%);
 	border-radius: 0;
 }
 
 .ds #infoSelect.zoom-gameManualSelect {
-	transform: translate(48vh,-4vh) scale(1.17);
+	transform: translate(48vh, -4vh) scale(1.17);
 }
 
 .ds #infoSelect.zoom-gameMediaSelect {
-	transform: translate(-95vh,-24vh) scale(2);
+	transform: translate(-95vh, -24vh) scale(2);
 }
 
 .ds #infoSelect.zoom-gameMemorySelect {
-	transform: translate(-146vh,129vh) scale(4);
+	transform: translate(-146vh, 129vh) scale(4);
 }
 
 .ds #infoSelect.zoom-gameTexpSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }

@@ -61,6 +61,13 @@ module.exports = async function(arg) {
 	const scan = require(__root + '/db/scanner.js');
 	const scraper = require(__root + '/scrape/scraper.js');
 
+	try {
+		global.kb = require('robotjs');
+		kb.setKeyboardDelay(0);
+	} catch (ror) {
+		er(ror);
+	}
+
 	let systems = {
 		wii: 'Wii/Gamecube',
 		wiiu: 'Wii U',
@@ -92,6 +99,7 @@ module.exports = async function(arg) {
 	async function intro() {
 		$('#dialogs').show();
 		await themes.loadFrame('intro');
+		await themes.applyStyle('colors');
 		await themes.applyStyle('theme');
 	}
 
@@ -145,6 +153,7 @@ module.exports = async function(arg) {
 					return;
 				}
 				gameLibDir = await dialog.selectDir(`select ${sys} game directory`);
+				log(gameLibDir);
 				if (!gameLibDir) continue;
 				files = await klaw(gameLibDir);
 			}
@@ -240,6 +249,11 @@ module.exports = async function(arg) {
 				delete prefs.btlDir;
 			}
 			if (typeof prefs.donor == 'boolean') prefs.donor = {};
+			if (prefs.saves) {
+				for (let save of prefs.saves) {
+					if (!save.noSaveOnQuit) save.noSaveOnQuit = false;
+				}
+			}
 			emuDir = path.join(prefs.nlaDir, '..');
 		}
 		// currently supported systems
@@ -382,10 +396,10 @@ module.exports = async function(arg) {
 
 	async function createTemplate(emuDir) {
 		for (let _sys in systems) {
-			if (win && (/(yuzu)/).test(prefs[_sys].emu)) {
+			if (win && !/(yuzu)/i.test(prefs[_sys].emu)) {
 				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/BIN`);
 			}
-			if ((/(mame|rpcs3)/).test(prefs[_sys].emu)) {
+			if (!/(mame|rpcs3)/i.test(prefs[_sys].emu)) {
 				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/GAMES`);
 			}
 		}
@@ -459,6 +473,8 @@ module.exports = async function(arg) {
 		cui.change('syncingSaves');
 		if (act == 'syncBackup') {
 			await saves.backup();
+		} else if (act == 'quit') {
+			await saves.backup('quit');
 		} else if (act == 'forceUpdate') {
 			await saves.update('forced');
 		} else {
@@ -477,9 +493,14 @@ module.exports = async function(arg) {
 		let onMenu = (/menu/gi).test(ui);
 		if (act == 'quit') {
 			if (premium.verify()) {
-				await saveSync('syncBackup');
+				for (let save of prefs.saves) {
+					if (!save.noSaveOnQuit) {
+						await saveSync('quit');
+						break;
+					}
+				}
 			}
-			await prefsMng.save();
+			if (prefs.nlaDir) await prefsMng.save();
 			app.quit();
 			process.kill('SIGINT');
 			return;
@@ -688,8 +709,7 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'demo') {
-				emuDir = '$home/Documents/emu';
-				emuDir = util.absPath(emuDir);
+				emuDir = util.absPath('$home') + '/Documents/emu';
 				let templatePath = __root + '/demo';
 				await fs.copy(templatePath, emuDir);
 				await createTemplate(emuDir);
@@ -699,32 +719,24 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'setupMenu') {
 			if (act == 'continue') {
-				if (!(await fs.exists(emuDir))) return false;
-				await createTemplate(emuDir);
+				if (!(await fs.exists(emuDir))) {
+					cui.err('you must choose an install location!');
+					return false;
+				}
 				cui.change('sysMenu');
 				return;
 			}
-			let msg = 'choose the folder you want to template to go in';
-			if (act == 'old') {
-				msg = 'choose the folder EMULATORS from your WiiUSBHelper ' +
-					'file structure';
-			}
 			if (act == 'new-in-docs') {
-				emuDir = '$home/Documents';
-				emuDir = util.absPath(emuDir);
+				emuDir = util.absPath('$home') + '/Documents'
 			} else {
+				let msg = 'choose the folder you want the template to go in';
 				emuDir = await dialog.selectDir(msg);
 			}
+			emuDir += '/emu';
 			if (!emuDir) return false;
-			if (act != 'old') emuDir += '/emu';
 			await createTemplate(emuDir);
-			if (act != 'old') {
-				opn(emuDir);
-			} else {
-				if (!(await fs.exists(emuDir))) return false;
-				await createTemplate(emuDir);
-				cui.change('sysMenu');
-			}
+			opn(emuDir);
+			if (!(await fs.exists(emuDir))) return false;
 		}
 	}
 

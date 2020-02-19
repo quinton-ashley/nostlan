@@ -1,15 +1,9 @@
-.gcn {
-	--cover-color: #6a56b9;
-	--cover-text-color: #56429c;
-	--button-color: #6a56b9;
-	--powerBtn-color: #c0c0c0;
-	--openBtn-color: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
-}
 /*================ Gamecube Cover ====================*/
 @font-face {
 	font-family: Gamecuben;
 	src: url("../fonts/Gamecuben.ttf");
 }
+
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -42,8 +36,8 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-/*================Wii/Gamecube Box====================*/
 
+/*================Wii/Gamecube Box====================*/
 game.gcn .crop.coverFull,
 game.wii .crop.coverFull {
 	width: 200.1%;
@@ -92,57 +86,57 @@ game.wii.flip .shade {
 	width: 3%;
 	left: 98%;
 }
-/*================Wii/Gamecube Open Box====================*/
 
+/*================Wii/Gamecube Open Box====================*/
 .gcn .zoom-gameManualSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }
 
 .gcn .zoom-gameMediaSelect {
-	transform: translate(-71vh,-11vh) scale(2);
+	transform: translate(-71vh, -11vh) scale(2);
 }
 
 .gcn .zoom-gameMemorySelect {
-	transform: translate(-146vh,129vh) scale(4);
+	transform: translate(-146vh, 129vh) scale(4);
 }
 
 .gcn .zoom-gameTexpSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }
 
 .wii #gameMemory {
 	width: 16vh;
-	transform: translate(32%,-256%);
+	transform: translate(32%, -256%);
 }
 
 .wii #gameMedia {
 	width: 60.8vh;
 	border-radius: 50%;
-	transform: translate(11%,-50%);
+	transform: translate(11%, -50%);
 }
 
 .wii #gameTexp {
 	width: 94vh;
-	transform: translate(-110%,-50.5%);
+	transform: translate(-110%, -50.5%);
 }
 
 .wii #gameManual {
 	width: 57vh;
-	transform: translate(-119%,-50%);
+	transform: translate(-119%, -50%);
 }
 
 .wii .zoom-gameManualSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }
 
 .wii .zoom-gameMediaSelect {
-	transform: translate(-59vh,0vh) scale(1.6);
+	transform: translate(-59vh, 0vh) scale(1.6);
 }
 
 .wii .zoom-gameMemorySelect {
-	transform: translate(-52vh,140vh) scale(4);
+	transform: translate(-52vh, 140vh) scale(4);
 }
 
 .wii .zoom-gameTexpSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }

@@ -1,0 +1,6 @@
+.mame {
+	--cover-color: #11426C;
+	--cover-text-color: #00274f;
+	--button-color: radial-gradient(circle at 50%, #00274f 0%, #00274f 5%, #11426C 40%, #11426C 45%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
+	--button-hover-color: radial-gradient(circle at 50%, #00274f 0%, #00274f 15%, #11426C 40%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
+}

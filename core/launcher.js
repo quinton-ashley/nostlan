@@ -178,6 +178,10 @@ class Launcher {
 		log(this.cmdArgs);
 		log(this.emuDirPath);
 		this._launch();
+		await delay(1500);
+		if ((win || linux) && emu == 'yuzu') {
+			if (kb) kb.keyTap('f11');
+		}
 	}
 
 	_launch() {

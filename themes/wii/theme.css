@@ -1,18 +1,9 @@
-.wii {
-	--cover-color: #caccd1;
-	--cover-text-color: #999999;
-	--button-color: radial-gradient(circle at 40% 40%, #e5e5e5 30%, #d2d2d2 50%);
-	--button-border-color: #4bc4ed;
-	--power-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
-	--view-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
-	--powerBtn-border-color: #d2d2d2;
-	--powerBtn-color: radial-gradient(circle at 50%, #f7f7f7 0%, #f7f7f7 15%, #d2d2d2 15%, #d2d2d2 20%, #f7f7f7 20%, #f7f7f7 25%, #d2d2d2 25%, #d2d2d2 65%, #f7f7f7 65%, #f7f7f7 100%);
-}
 /*================ Wii Cover ====================*/
 @font-face {
 	font-family: contb;
 	src: url("../fonts/contb.ttf");
 }
+
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -70,6 +61,7 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
+
 /*================Wii Box====================*/
 game.wii .crop.coverFull {
 	width: 200.1%;
@@ -109,41 +101,41 @@ game.wii.flip .shade {
 	width: 3%;
 	left: 98%;
 }
-/*================Wii Open Box====================*/
 
+/*================Wii Open Box====================*/
 .wii #gameMemory {
 	width: 16vh;
-	transform: translate(32%,-256%);
+	transform: translate(32%, -256%);
 }
 
 .wii #gameMedia {
 	width: 60.8vh;
 	border-radius: 50%;
-	transform: translate(11%,-50%);
+	transform: translate(11%, -50%);
 }
 
 .wii #gameTexp {
 	width: 94vh;
-	transform: translate(-110%,-50.5%);
+	transform: translate(-110%, -50.5%);
 }
 
 .wii #gameManual {
 	width: 57vh;
-	transform: translate(-119%,-50%);
+	transform: translate(-119%, -50%);
 }
 
 .wii .zoom-gameManualSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }
 
 .wii .zoom-gameMediaSelect {
-	transform: translate(-59vh,0vh) scale(1.6);
+	transform: translate(-59vh, 0vh) scale(1.6);
 }
 
 .wii .zoom-gameMemorySelect {
-	transform: translate(-52vh,140vh) scale(4);
+	transform: translate(-52vh, 140vh) scale(4);
 }
 
 .wii .zoom-gameTexpSelect {
-	transform: translate(34vh,0vh) scale(1);
+	transform: translate(34vh, 0vh) scale(1);
 }

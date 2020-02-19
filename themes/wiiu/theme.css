@@ -1,14 +1,9 @@
-.wiiu {
-	--cover-color: #3f4044;
-	--cover-text-color: #202125;
-	--button-color: #3f4044;
-	--powerBtn-text-color: #9c333a;
-}
 /*================ Wii U Cover ====================*/
 @font-face {
 	font-family: contb;
 	src: url("../fonts/contb.ttf");
 }
+
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -39,6 +34,7 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
+
 /*================ Wii U Game Lib Viewer ====================*/
 game.wiiu .crop.coverFull {
 	width: 200.4%;

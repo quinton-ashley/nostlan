@@ -105,6 +105,7 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "requisition": "^1.7.0",
+    "robotjs": "^0.6.0",
     "tabletojson": "^1.2.0",
     "tether": "^1.4.7",
     "three": "^0.112.1",
@@ -135,7 +136,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --runtime=electron --target=7.1.1 --disturl=https://atom.io/download/atom-shell --abi=75",
+    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=7.1.1 --disturl=https://atom.io/download/atom-shell --abi=75",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m && electron-builder -w && electron-builder -l",
     "gh-publish": "electron-builder -m -l -w -p always",
@@ -147,5 +148,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.3"
+  "version": "1.7.4"
 }

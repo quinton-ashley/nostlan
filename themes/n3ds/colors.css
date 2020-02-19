@@ -1,0 +1,29 @@
+.n3ds {
+	--cover-color: #3f4044;
+	--cover-text-color: #202125;
+	--powerBtn-color: #5A86C7;
+	--resetBtn-color: #009a6d;
+	--openBtn-color: #DDBB62;
+}
+
+.n3ds.blue {
+	--cover-color: #557eaa;
+	--cover-text-color: #3a465e;
+	--powerBtn-color: #3a465e;
+	--resetBtn-color: #3a465e;
+	--openBtn-color: #3a465e;
+	--powerBtn-text-color: #5A86C7;
+	--resetBtn-text-color: #009a6d;
+	--openBtn-text-color: #DDBB62;
+}
+
+.n3ds.white {
+	--cover-color: #ebebeb;
+	--cover-text-color: #949494;
+	--powerBtn-color: #ffa93a;
+	--resetBtn-color: #ffa93a;
+	--openBtn-color: #ffa93a;
+	--powerBtn-text-color: #5A86C7;
+	--resetBtn-text-color: #009a6d;
+	--openBtn-text-color: #DDBB62;
+}

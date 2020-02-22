@@ -139,7 +139,7 @@ module.exports = async function(arg) {
 
 	let toggleDev;
 	if (mac) toggleDev = ['command+option+i', 'command+shift+i'];
-	if (win) toggleDev = ['ctrl+alt+i', 'ctrl+shift+i'];
+	if (win || linux) toggleDev = ['ctrl+alt+i', 'ctrl+shift+i'];
 
 	Mousetrap.bind(toggleDev, function() {
 		electron.getCurrentWindow().toggleDevTools();
@@ -160,5 +160,9 @@ module.exports = async function(arg) {
 	for (let direction of directions) {
 		cui.bind(direction, direction);
 	}
-	cui.bind(['command+w', 'ctrl+w', 'command+q', 'ctrl+q'], 'quit');
+	let toggleQuit;
+	if (mac) toggleQuit = ['command+w', 'command+q'];
+	if (win || linux) toggleQuit = ['ctrl+w', 'ctrl+q'];
+	cui.bind(toggleQuit, 'quit');
+	cui.bind('enter', 'enter');
 };

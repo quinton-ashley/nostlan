@@ -4,7 +4,6 @@
  */
 
 module.exports = async function(arg) {
-	// arg.v = false; // quieter log
 	await require(arg.__root + '/core/setup.js')(arg);
 	log('version: ' + pkg.version);
 
@@ -69,21 +68,22 @@ module.exports = async function(arg) {
 	}
 
 	let systems = {
-		wii: 'Wii/Gamecube',
+		wii: 'Wii',
 		wiiu: 'Wii U',
 		switch: 'Switch',
-		gba: 'Game Boy Advance',
+		gba: 'GBA',
 		ds: 'DS',
 		n3ds: '3DS',
 		mame: 'MAME',
-		ps2: 'PlayStation 2',
-		ps3: 'PlayStation 3'
+		ps2: 'PS2',
+		ps3: 'PS3'
 	};
 	if (win || arg.dev) {
 		systems.xbox360 = 'Xbox 360';
 	} else if (mac) {
 		delete systems.wiiu;
 		delete systems.ps3;
+		delete systems.switch;
 	}
 
 	let games = []; // array of current games from the systems' db
@@ -257,10 +257,18 @@ module.exports = async function(arg) {
 			emuDir = path.join(prefs.nlaDir, '..');
 		}
 		// currently supported systems
-		let sysMenuHTML = '.row-y\n';
+		let sysMenuHTML = '';
+		let i = 0;
+		let half = Math.ceil(Object.keys(systems).length / 2);
 		for (let _sys in systems) {
-			sysMenuHTML += `\t.uie(name="${_sys}") ${systems[_sys]}\n`;
+			if (i % 2 == 0) {
+				sysMenuHTML += `.row.row-x\n`;
+			}
+			sysMenuHTML += `\t.col.uie(name="${_sys}") ${systems[_sys]}\n`;
+			i++;
 		}
+		delete i;
+		delete half;
 		$('#sysMenu').append(pug(sysMenuHTML));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
@@ -899,7 +907,7 @@ module.exports = async function(arg) {
 			dynColStyle += `.reel.r${i} {left:  ${i / cols * 100}%;}`;
 		}
 		dynColStyle += `
-.cui-gamepadConnected .reel .uie.cursor {
+.reel .uie.cursor {
 	outline: ${Math.abs(7-cols)}px dashed white;
 	outline-offset: ${ 9-cols}px;
 }`;

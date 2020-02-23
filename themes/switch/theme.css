@@ -35,7 +35,7 @@
 
 /*================Switch Game Lib Viewer====================*/
 game.switch .box {
-	border-radius: 1.3vh;
+	border-radius: 4%;
 }
 
 game.switch .crop.coverFull {

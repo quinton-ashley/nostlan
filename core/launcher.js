@@ -109,11 +109,11 @@ class Launcher {
 	}
 
 	async launch(game) {
-		let id = cui.getCur('libMain').attr('id');
-		log(id);
-		if (!prefs.session[sys]) prefs.session[sys] = {};
-		if (id) prefs.session[sys].gameID = id;
-		if (!id) id = prefs.session[sys].gameID;
+		if (game && game.id) {
+			log(game.id);
+			if (!prefs.session[sys]) prefs.session[sys] = {};
+			prefs.session[sys].gameID = game.id;
+		}
 		let emuAppPath = await this.getEmuAppPath();
 		if (!emuAppPath) return;
 		if (emu == 'mgba' && !game) {
@@ -167,7 +167,7 @@ class Launcher {
 			}
 		}
 
-		if (game || emu == 'mame') {
+		if (game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
 			cui.change('playingBack');
 			$('#libMain').hide();
@@ -185,17 +185,39 @@ class Launcher {
 	}
 
 	_launch() {
-		this.child = child.spawn(this.cmdArgs[0], this.cmdArgs.slice(1) || [], {
+		let spawnOpt = {
 			cwd: this.emuDirPath,
 			stdio: 'inherit',
 			detached: true
-		});
+		};
+
+		this.child = child.spawn(
+			this.cmdArgs[0],
+			this.cmdArgs.slice(1) || [],
+			spawnOpt
+		);
 
 		this.state = 'running';
 		cui.disableSticks = true;
 
 		this.child.on('close', (code) => {
 			this._close(code);
+		});
+	}
+
+	async identifyGame(game) {
+		return new Promise(async (resolve, reject) => {
+			await this.launch(game);
+			let out = '';
+			this.child.stdout.on('data', (data) => {
+				if (this.state == 'closing') return;
+				out += data.toString();
+				log(out);
+				if (sys == 'snes' && out.match(/InlineBinary/)) {
+					this.close();
+					resolve(id);
+				}
+			});
 		});
 	}
 

@@ -107,7 +107,12 @@ class Themes {
 			for (let _sys of systems) {
 				let file = `${dirs[i]}/themes/${_sys}/${name}.css`;
 				if (i != 0 && !(await fs.exists(file))) {
-					await fs.ensureFile(file);
+					try {
+						await fs.ensureFile(file);
+					} catch (ror) {
+						er(ror);
+						continue;
+					}
 				}
 				$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
 			}

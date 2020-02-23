@@ -54,7 +54,7 @@ module.exports = async function(arg) {
 
 	const saves = require(__root + '/core/saves.js');
 	const premium = require(__root + '/dev/premium.js');
-	const launcher = require(__root + '/core/launcher.js');
+	global.launcher = require(__root + '/core/launcher.js');
 	const updater = require(__root + '/core/updater.js');
 	const themes = require(__root + '/themes/themes.js');
 	const scan = require(__root + '/db/scanner.js');
@@ -403,13 +403,18 @@ module.exports = async function(arg) {
 	}
 
 	async function createTemplate(emuDir) {
-		for (let _sys in systems) {
-			if (win && !/(yuzu)/i.test(prefs[_sys].emu)) {
-				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/BIN`);
+		try {
+			for (let _sys in systems) {
+				if (win && !/(yuzu)/i.test(prefs[_sys].emu)) {
+					await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/BIN`);
+				}
+				if (!/(mame|rpcs3)/i.test(prefs[_sys].emu)) {
+					await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/GAMES`);
+				}
 			}
-			if (!/(mame|rpcs3)/i.test(prefs[_sys].emu)) {
-				await fs.ensureDir(`${emuDir}/${prefs[_sys].emu}/GAMES`);
-			}
+		} catch (ror) {
+			er(ror);
+			cui.err('you must have write permissions to: ' + emuDir);
 		}
 	}
 

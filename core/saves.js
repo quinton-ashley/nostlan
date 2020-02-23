@@ -51,8 +51,8 @@ class Saves {
 		} else if (emu == 'ppsspp') {
 			dir += '/memstick/PSP';
 			prefs.psp.saves.dirs = [
-				dir + '/PPSSPP_STATE',
-				dir + '/SAVEDATA'
+				dir + '/SAVEDATA',
+				dir + '/PPSSPP_STATE'
 			];
 		} else if (emu == 'rpcs3') {
 			dir += '/dev_hdd0/home/00000001/savedata';
@@ -61,9 +61,13 @@ class Saves {
 			dir = util.absPath('$home') + '/Documents/Xenia/content';
 			prefs.xbox360.saves.dirs = [dir];
 		} else if (emu == 'yuzu') {
-			dir = util.absPath('$home') + '/AppData/Roaming/yuzu/nand/user/save';
-			dir += '/0000000000000000';
-			prefs.switch.saves.dirs = [dir];
+			let dir0 = util.absPath('$home') + '/AppData/Roaming/yuzu';
+			let dir1 = path.join(prefs.nlaDir, '../Yuzu/BIN');
+			if (await fs.exists(dir1 + '/nand')) dir = dir1;
+			prefs.switch.saves.dirs = [
+				dir + '/nand/user/save',
+				dir0 + '/load' // mods
+			];
 		} else {
 			prefs[sys].saves = undefined;
 			log('save sync not supported for this emu: ' + emu);

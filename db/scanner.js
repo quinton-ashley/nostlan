@@ -1,5 +1,30 @@
 const Fuse = require('fuse.js');
 
+const idRegex = {
+	switch: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/,
+	ps3: /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/,
+	wii: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
+	wiiu: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
+	ds: /(?:^|[\[\(])([A-Z][A-Z0-9]{2}[A-Z])(?:[\]\)]|$)/,
+	gba: /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/,
+	ps2: /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/,
+	xbox360: /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/,
+	mame: /(\S+)/
+};
+
+let searcharg = {
+	shouldSort: true,
+	threshold: 0.4,
+	location: 0,
+	distance: 5,
+	maxPatternLength: 64,
+	minMatchCharLength: 1,
+	keys: [
+		'id',
+		'title'
+	]
+};
+
 class Scanner {
 	constructor() {
 		this.outLog = '';
@@ -8,48 +33,20 @@ class Scanner {
 	async gameLib() {
 		$('#loadDialog0').text('Indexing your game library');
 		this.outLog = '';
+		let noMatch = 0;
 		let games = [];
 		let gameDB = [];
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
-
-		let idRegex;
-		if (sys == 'switch') {
-			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/;
-		} else if (sys == 'ps3') {
-			idRegex = /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/;
-		} else if (sys == 'wii' || sys == 'wiiu') {
-			idRegex = /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/;
-		} else if (sys == 'n3ds' || sys == 'ds') {
-			idRegex = /(?:^|[\[\(])([A-Z][A-Z0-9]{2}[A-Z])(?:[\]\)]|$)/;
-		} else if (sys == 'gba') {
-			idRegex = /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/;
-		} else if (sys == 'ps2') {
-			idRegex = /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/;
-		} else if (sys == 'xbox360') {
-			idRegex = /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/;
-		} else if (sys == 'mame') {
-			idRegex = /(\S+)/;
+		let fuse, searcher;
+		if (sys != 'snes') {
+			fuse = new Fuse(gameDB, searcharg);
+			searcher = function(searchTerm) {
+				return new Promise((resolve, reject) => {
+					resolve(fuse.search(searchTerm));
+				});
+			};
 		}
-
-		let searcharg = {
-			shouldSort: true,
-			threshold: 0.4,
-			location: 0,
-			distance: 5,
-			maxPatternLength: 64,
-			minMatchCharLength: 1,
-			keys: [
-				'id',
-				'title'
-			]
-		};
-		let fuse = new Fuse(gameDB, searcharg);
-		let searcher = function(searchTerm) {
-			return new Promise((resolve, reject) => {
-				resolve(fuse.search(searchTerm));
-			});
-		};
 		for (let h = 0; h < prefs[sys].libs.length; h++) {
 			let files = await klaw(prefs[sys].libs[h], {
 				depthLimit: 0
@@ -77,6 +74,19 @@ class Scanner {
 				this.olog('file:   ' + term);
 				$('#loadDialog1').text(term);
 				await delay(1);
+				if (sys == 'snes') {
+					let game = {
+						title: term,
+						file: file
+					};
+					game = await launcher.identifyGame(game);
+					if (!game) continue;
+					this.olog(`match:  ${game.title}\r\n`);
+					log(game);
+					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
+					games.push(game);
+					continue;
+				}
 				// rpcs3 ignore games with these ids
 				if (term == 'TEST12345' || term == 'RPSN00001') continue;
 				// eliminations part 1
@@ -99,7 +109,7 @@ class Scanner {
 				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 				// special check for ids
 				let id;
-				if (idRegex) id = term.match(idRegex);
+				if (idRegex[sys]) id = term.match(idRegex[sys]);
 				if (id) {
 					id = id[1];
 					log(id);
@@ -157,15 +167,21 @@ class Scanner {
 				term = term.replace(/ *decrypted */gi, '');
 
 				term = term.trim();
-				let game = await this.addGame(searcher, term);
+				let game = await this.searchForGame(searcher, term);
+				let gameFound = false;
+				if (game) gameFound = true;
+				if (!game) game = {};
+				game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 				if (game) {
 					this.olog(`match:  ${game.title}\r\n`);
-					log(game);
-					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 					games.push(game);
 				} else {
 					this.olog('no match found\r\n');
+					game.id = 'NOMATCH' + noMatch;
+					game.title = term;
+					noMatch++;
 				}
+				log(game);
 			}
 		}
 		let outLogPath = `${usrDir}/_usr/${sys}Log.log`;
@@ -176,7 +192,7 @@ class Scanner {
 		return games;
 	}
 
-	async addGame(searcher, searchTerm) {
+	async searchForGame(searcher, searchTerm) {
 		let results = await searcher(searchTerm.substr(0, 64));
 		if (arg.v) log(results);
 		let region = prefs.region;

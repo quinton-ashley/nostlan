@@ -41,9 +41,9 @@ class Scanner {
 		let fuse, searcher;
 		if (sys != 'snes') {
 			fuse = new Fuse(gameDB, searcharg);
-			searcher = function(searchTerm) {
+			searcher = function(term) {
 				return new Promise((resolve, reject) => {
-					resolve(fuse.search(searchTerm));
+					resolve(fuse.search(term));
 				});
 			};
 		}
@@ -192,16 +192,17 @@ class Scanner {
 		return games;
 	}
 
-	async searchForGame(searcher, searchTerm) {
-		let results = await searcher(searchTerm.substr(0, 64));
+	async searchForGame(searcher, term) {
+		log('term:  ' + term);
+		let results = await searcher(term.substr(0, 64));
 		if (arg.v) log(results);
 		let region = prefs.region;
 		for (let i = 0; i < results.length; i++) {
-			if (results[i].title.length > searchTerm.length + 6) continue;
+			if (results[i].title.length > term.length + 6) continue;
 			// if the search term doesn't contain demo or trial
 			// skip the demo/trial version of the game
 			let demoRegex = /(Demo|Preview|Review|Trial)/i;
-			if (demoRegex.test(results[i].title) != demoRegex.test(searchTerm)) {
+			if (demoRegex.test(results[i].title) != demoRegex.test(term)) {
 				continue;
 			}
 			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == 'n3ds') {

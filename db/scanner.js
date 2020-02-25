@@ -47,8 +47,8 @@ class Scanner {
 				});
 			};
 		}
-		for (let h = 0; h < prefs[sys].libs.length; h++) {
-			let files = await klaw(prefs[sys].libs[h], {
+		for (let h = 0; h < prefs[emu].libs.length; h++) {
+			let files = await klaw(prefs[emu].libs[h], {
 				depthLimit: 0
 			});
 			let file;
@@ -83,7 +83,7 @@ class Scanner {
 					if (!game) continue;
 					this.olog(`match:  ${game.title}\r\n`);
 					log(game);
-					game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
+					game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
 					games.push(game);
 					continue;
 				}
@@ -121,7 +121,7 @@ class Scanner {
 						}
 						this.olog(`match:  ${game.title}\r\n`);
 						log(game);
-						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
+						game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
 						games.push(game);
 						continue;
 					}
@@ -171,7 +171,7 @@ class Scanner {
 				let gameFound = false;
 				if (game) gameFound = true;
 				if (!game) game = {};
-				game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
+				game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
 				if (game) {
 					this.olog(`match:  ${game.title}\r\n`);
 					games.push(game);

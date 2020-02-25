@@ -6,7 +6,7 @@ class Utility {
 		let lib = file.match(/\$\d+/g);
 		if (lib) {
 			lib = lib[0].substr(1);
-			file = file.replace(/\$\d+/g, prefs[sys].libs[lib]);
+			file = file.replace(/\$\d+/g, prefs[emu].libs[lib]);
 		}
 		let tags = file.match(/\$[a-zA-Z]+/g);
 		if (!tags) return file;

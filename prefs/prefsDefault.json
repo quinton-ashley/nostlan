@@ -1,24 +1,40 @@
 {
 	"nlaDir": "",
 	"region": "E",
-	"ds": {
+	"bsnes": {
+		"name": "bsnes",
 		"app": {},
 		"cmd": {
-			"mac": ["${app}", "${game}"],
+			"linux": ["wine", "${app}", "${game}"],
+			"mac": ["wine", "${app}", "${game}"],
 			"win": ["${app}", "${game}"]
-		},
-		"emu": "melonDS"
+		}
 	},
-	"gba": {
+	"desmume": {
+		"name": "DeSmuME",
+		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}"]
+		}
+	},
+	"melonds": {
+		"name": "melonDS",
+		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}"]
+		}
+	},
+	"mgba": {
+		"name": "mGBA",
 		"app": {},
 		"cmd": {
 			"linux": ["${app}", "-f", "${game}"],
 			"mac": ["${app}", "-f", "${game}"],
 			"win": ["${app}", "-f", "${game}"]
-		},
-		"emu": "mGBA"
+		}
 	},
-	"n3ds": {
+	"citra": {
+		"name": "Citra",
 		"app": {
 			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
 		},
@@ -26,36 +42,36 @@
 			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
 			"mac": ["${app}", "${game}", "-f"],
 			"win": ["${app}", "${game}", "-f"]
-		},
-		"emu": "Citra"
+		}
 	},
 	"mame": {
+		"name": "MAME",
 		"app": {},
 		"cmd": {
 			"linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
 			"mac": ["${app}", "-inipath", "${cwd}", "${game.id}"],
 			"win": ["${app}", "-inipath", "${cwd}", "${game.id}"]
-		},
-		"emu": "MAME"
+		}
 	},
-	"ps2": {
+	"pcsx2": {
+		"name": "PCSX2",
 		"app": {},
 		"cmd": {
 			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
 			"mac": ["${app}", "${game}", "--nogui", "--fullscreen"],
 			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
-		},
-		"emu": "PCSX2"
+		}
 	},
-	"ps3": {
+	"rpcs3": {
+		"name": "RPCS3",
 		"app": {},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
-		},
-		"emu": "RPCS3"
+		}
 	},
-	"switch": {
+	"yuzu": {
+		"name": "Yuzu",
 		"app": {
 			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
 			"win": "$home/AppData/Local/yuzu/yuzu-windows-msvc/yuzu.exe"
@@ -64,33 +80,31 @@
 			"linux": ["${app}", "${game}"],
 			"mac": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
-		},
-		"emu": "Yuzu"
+		}
 	},
-	"wii": {
+	"dolphin": {
+		"name": "Dolphin",
 		"app": {},
 		"cmd": {
 			"linux": ["${app}", "${game}", "-b"],
 			"mac": ["${app}", "${game}", "-b"],
 			"win": ["${app}", "${game}", "-b"]
-		},
-		"emu": "Dolphin",
-		"style": "gcn"
+		}
 	},
-	"wiiu": {
+	"cemu": {
+		"name": "Cemu",
 		"app": {},
 		"cmd": {
 			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
 			"win": ["${app}", "-g", "${game}", "-f"]
-		},
-		"emu": "Cemu"
+		}
 	},
-	"xbox360": {
+	"xenia": {
+		"name": "Xenia",
 		"app": {},
 		"cmd": {
 			"win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]
-		},
-		"emu": "Xenia"
+		}
 	},
 	"ui": {
 		"mouse": {

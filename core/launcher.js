@@ -10,7 +10,7 @@ class Launcher {
 
 	async getEmuAppPath(attempt) {
 		if (!attempt) attempt = 0;
-		let emuAppPath = util.absPath(prefs[sys].app[osType]);
+		let emuAppPath = util.absPath(prefs[emu].app[osType]);
 		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
 		}
@@ -18,7 +18,7 @@ class Launcher {
 		let emuDirPath = '';
 		if (win || (linux && (/(cemu|rpcs3)/).test(emu)) ||
 			(mac && emu == 'mame')) {
-			emuDirPath = `${emuDir}/${prefs[sys].emu}/BIN`;
+			emuDirPath = `${emuDir}/${prefs[emu].name}/BIN`;
 			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
 					emuDirPath += '/nightly-mingw';
@@ -35,9 +35,9 @@ class Launcher {
 			emuDirPath = '/Applications';
 		}
 		let emuNameCases = [
-			prefs[sys].emu,
-			prefs[sys].emu.toLowerCase(),
-			prefs[sys].emu.toUpperCase()
+			prefs[emu].name,
+			prefs[emu].name.toLowerCase(),
+			prefs[emu].name.toUpperCase()
 		];
 		for (let i = 0; i < emuNameCases.length; i++) {
 			if (emuDirPath) {
@@ -82,7 +82,7 @@ class Launcher {
 				(linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) ||
 				await fs.exists(emuAppPath)
 			) {
-				prefs[sys].app[osType] = emuAppPath;
+				prefs[emu].app[osType] = emuAppPath;
 				return emuAppPath;
 			}
 		}
@@ -104,7 +104,7 @@ class Launcher {
 			cui.err('app path not valid: ' + emuAppPath);
 			return '';
 		}
-		prefs[sys].app[osType] = emuAppPath;
+		prefs[emu].app[osType] = emuAppPath;
 		return emuAppPath;
 	}
 
@@ -147,7 +147,7 @@ class Launcher {
 			}
 		}
 		log(emu);
-		let cmdArray = prefs[sys].cmd[osType];
+		let cmdArray = prefs[emu].cmd[osType];
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
 				this.cmdArgs.push(emuAppPath);
@@ -172,7 +172,7 @@ class Launcher {
 			cui.change('playingBack');
 			$('#libMain').hide();
 			$('#dialogs').show();
-			$('#loadDialog0').text(`Starting ${prefs[sys].emu}`);
+			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
 			if (game) $('#loadDialog1').text(game.title);
 		}
 		log(this.cmdArgs);
@@ -249,7 +249,7 @@ class Launcher {
 			cui.change('libMain');
 		}
 		if (code) {
-			let erMsg = `${prefs[sys].emu} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[sys].emu} can boot the game.\n<code>`;
+			let erMsg = `${prefs[emu].name} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[emu].name} can boot the game.\n<code>`;
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
 				erMsg += `${this.cmdArgs[i]} `;

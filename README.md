@@ -433,6 +433,8 @@ As of yet, all themes were made by me (quinton-ashley/qashto)
 
 MAME loader is a combination of two codepens: [Vadim Huck's](https://codepen.io/M4TERIAL/pen/gavvQL) and [Matt J Roberts'](https://codepen.io/mattjroberts/pen/pazNdx)
 
+[SNES Loading Intro](https://codepen.io/servinnissen/pen/ogxjdK)
+
 ### Fonts
 
 [nintender](http://www.fontspace.com/lyric-type/nintender)  

@@ -1,5 +1,7 @@
 let child = require('child_process');
 
+identify = false;
+
 class Launcher {
 	constructor() {
 		this.child = {}; // child process running an emulator
@@ -48,6 +50,7 @@ class Launcher {
 				if (emu == 'citra') emuAppPath += '-qt';
 				if (emu == 'mgba') emuAppPath += '-sdl';
 				if (emu == 'mame') emuAppPath += '64';
+				if (emu == 'yuzu' && identify) emuAppPath += '-cmd';
 				emuAppPath += '.exe';
 			} else if (mac) {
 				if (emu == 'citra') {
@@ -110,11 +113,20 @@ class Launcher {
 
 	async launch(game) {
 		if (game && game.id) {
+			identify = false;
 			log(game.id);
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
 		}
+		let _emu = emu;
+		if (identify && sys == 'snes') {
+			emu = 'higan';
+		}
 		let emuAppPath = await this.getEmuAppPath();
+		if (identify && sys == 'snes') {
+			emuAppPath = path.join(emuAppPath, '/..') + '/icarus.exe';
+			emu = _emu;
+		}
 		if (!emuAppPath) return;
 		if (emu == 'mgba' && !game) {
 			emuAppPath = emuAppPath.replace('-sdl', '');
@@ -148,6 +160,18 @@ class Launcher {
 		}
 		log(emu);
 		let cmdArray = prefs[emu].cmd[osType];
+
+		if (identify && sys == 'snes') {
+			let cmdIcarus = [
+				"${app}",
+				"--system",
+				"Super Famicom",
+				"--manifest",
+				"${game}",
+			];
+			if (mac || linux) cmdIcarus.unshift("wine");
+			cmdArray = cmdIcarus;
+		}
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
 				this.cmdArgs.push(emuAppPath);
@@ -178,9 +202,9 @@ class Launcher {
 		log(this.cmdArgs);
 		log(this.emuDirPath);
 		this._launch();
-		await delay(1500);
-		if ((win || linux) && emu == 'yuzu') {
-			if (kb) kb.keyTap('f11');
+		if ((win || linux) && emu == 'yuzu' && kb) {
+			await delay(1500);
+			kb.keyTap('f11');
 		}
 	}
 
@@ -190,6 +214,7 @@ class Launcher {
 			stdio: 'inherit',
 			detached: true
 		};
+		if (identify) delete spawnOpt.stdio;
 
 		this.child = child.spawn(
 			this.cmdArgs[0],
@@ -206,17 +231,36 @@ class Launcher {
 	}
 
 	async identifyGame(game) {
-		return new Promise(async (resolve, reject) => {
-			await this.launch(game);
+		identify = true;
+		let finished = false;
+		await this.launch(game);
+
+		return new Promise((resolve, reject) => {
 			let out = '';
+			let id = '';
 			this.child.stdout.on('data', (data) => {
-				if (this.state == 'closing') return;
+				if (this.state == 'closing' || finished) return;
 				out += data.toString();
 				log(out);
-				if (sys == 'snes' && out.match(/InlineBinary/)) {
-					this.close();
-					resolve(id);
+				if (emu == 'yuzu' &&
+					(id = /title_id=(\w{16})/.exec(out))) {
+					game.id = id[1];
+					if (this.state == 'running') this.close();
+					resolve(game);
+					finished = true;
 				}
+			});
+
+			this.child.on('close', (code) => {
+				this._close(code);
+				if (finished) return;
+				if (sys == 'snes') {
+					let m = /game\n[^\n]*\n[^\n]*\n[^:\n]*: *[^\n]*\n[^\-\n]*\-[^\-\n]*\-*([^\n]*)\n[^\-\n]*\-([^\-\n]*)\-([^\n]*)\n[^:\n]*: *([^\n]*)\n/.exec(out);
+					if (m) {
+						game.id = `${m[4]}-${m[2]}-${m[1]}-${m[3]}`;
+					}
+				}
+				resolve(game);
 			});
 		});
 	}

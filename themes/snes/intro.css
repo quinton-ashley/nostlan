@@ -1,0 +1,1086 @@
+@-webkit-keyframes body {
+	80% {
+		top: -5px;
+	}
+
+	100% {
+		top: 0px;
+		background: #d5e1bb;
+	}
+}
+
+@-moz-keyframes body {
+	80% {
+		top: -5px;
+	}
+
+	100% {
+		top: 0px;
+		background: #d5e1bb;
+	}
+}
+
+@-ms-keyframes body {
+	80% {
+		top: -5px;
+	}
+
+	100% {
+		top: 0px;
+		background: #d5e1bb;
+	}
+}
+
+@keyframes body {
+	80% {
+		top: -5px;
+	}
+
+	100% {
+		top: 0px;
+		background: #d5e1bb;
+	}
+}
+
+@-webkit-keyframes cicle {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@-moz-keyframes cicle {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@-ms-keyframes cicle {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@keyframes cicle {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@-webkit-keyframes ciclesss {
+	0% {
+		transform: rotate(34deg) scale(0);
+	}
+
+	80% {
+		transform: rotate(34deg) scale(1.1);
+	}
+
+	100% {
+		transform: rotate(34deg) scale(1);
+	}
+}
+
+@-moz-keyframes ciclesss {
+	0% {
+		transform: rotate(34deg) scale(0);
+	}
+
+	80% {
+		transform: rotate(34deg) scale(1.1);
+	}
+
+	100% {
+		transform: rotate(34deg) scale(1);
+	}
+}
+
+@-ms-keyframes ciclesss {
+	0% {
+		transform: rotate(34deg) scale(0);
+	}
+
+	80% {
+		transform: rotate(34deg) scale(1.1);
+	}
+
+	100% {
+		transform: rotate(34deg) scale(1);
+	}
+}
+
+@keyframes ciclesss {
+	0% {
+		transform: rotate(34deg) scale(0);
+	}
+
+	80% {
+		transform: rotate(34deg) scale(1.1);
+	}
+
+	100% {
+		transform: rotate(34deg) scale(1);
+	}
+}
+
+@-webkit-keyframes select {
+	0% {
+		transform: translate(-50%, -50%) scale(0) rotate(55deg);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1) rotate(55deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1) rotate(55deg);
+	}
+}
+
+@-moz-keyframes select {
+	0% {
+		transform: translate(-50%, -50%) scale(0) rotate(55deg);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1) rotate(55deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1) rotate(55deg);
+	}
+}
+
+@-ms-keyframes select {
+	0% {
+		transform: translate(-50%, -50%) scale(0) rotate(55deg);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1) rotate(55deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1) rotate(55deg);
+	}
+}
+
+@keyframes select {
+	0% {
+		transform: translate(-50%, -50%) scale(0) rotate(55deg);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) scale(1.1) rotate(55deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1) rotate(55deg);
+	}
+}
+
+@-webkit-keyframes ciclerotate {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -56px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -56px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -60px;
+	}
+}
+
+@-moz-keyframes ciclerotate {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -56px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -56px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -60px;
+	}
+}
+
+@-ms-keyframes ciclerotate {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -56px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -56px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -60px;
+	}
+}
+
+@keyframes ciclerotate {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -56px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -56px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -60px;
+	}
+}
+
+@-webkit-keyframes ciclerotate2 {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -21px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -21px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -25px;
+	}
+}
+
+@-moz-keyframes ciclerotate2 {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -21px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -21px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -25px;
+	}
+}
+
+@-ms-keyframes ciclerotate2 {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -21px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -21px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -25px;
+	}
+}
+
+@keyframes ciclerotate2 {
+	0% {
+		transform: rotate(0deg);
+		margin-top: -21px;
+	}
+
+	97% {
+		transform: rotate(1080deg);
+		box-shadow: 0 0px 0px 0px #27376a;
+		margin-top: -21px;
+	}
+
+	100% {
+		transform: rotate(1080deg);
+		box-shadow: 0 4px 0px 0px #27376a;
+		margin-top: -25px;
+	}
+}
+
+@-webkit-keyframes op {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes op {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-ms-keyframes op {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes op {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+body {
+	background: #000;
+}
+
+.controler {
+	height: 300px;
+	width: 700px;
+	margin: 100px auto 0 auto;
+	position: relative;
+}
+
+.controler .left {
+	height: 280px;
+	width: 280px;
+	border-radius: 50%;
+	background: #b1a1a3;
+	display: inline-block;
+	margin-top: 40px;
+}
+
+.controler .right {
+	height: 280px;
+	width: 280px;
+	border-radius: 50%;
+	background: #b1a1a3;
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+}
+
+.controler .middle {
+	width: 430px;
+	height: 250px;
+	position: absolute;
+	display: inline-block;
+	left: 140px;
+	background: #b1a1a3;
+	margin-top: 40px;
+}
+
+.controler .left2 {
+	height: 280px;
+	width: 280px;
+	border-radius: 50%;
+	background: #b1a1a3;
+	display: inline-block;
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-name: body;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 0s;
+	-moz-animation-duration: 0.4s;
+	-moz-animation-name: body;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 0s;
+	-o-animation-duration: 0.4s;
+	-o-animation-name: body;
+	-o-animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 0.4s;
+	animation-name: body;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .left2 .circle {
+	height: 160px;
+	width: 160px;
+	border-radius: 50%;
+	background: #b1a1a3;
+	border: 1px solid #f8fcfa;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	z-index: 1;
+	box-shadow: inset 0 2px 0 1px #82859d;
+	transform: translate(-50%, -50%) scale(0, 0);
+	-webkit-animation-delay: 1.8s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: cicle;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 1.8s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: cicle;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 1.8s;
+	-o-animation-duration: 1s;
+	-o-animation-name: cicle;
+	-o-animation-iteration-count: 1;
+	animation-delay: 1.8s;
+	animation-duration: 1s;
+	animation-name: cicle;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .left2 .circle .horizontal {
+	width: 120px;
+	height: 50px;
+	border-radius: 4px;
+	background: #3e4a78;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -25px;
+	margin-left: -60px;
+	box-shadow: inset 0 -4px 0px 0px #27376a;
+	-webkit-animation-delay: 1.8s;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-name: ciclerotate2;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 1.8s;
+	-moz-animation-duration: 5s;
+	-moz-animation-name: ciclerotate2;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 1.8s;
+	-o-animation-duration: 5s;
+	-o-animation-name: ciclerotate2;
+	-o-animation-iteration-count: 1;
+	animation-delay: 1.8s;
+	animation-duration: 5s;
+	animation-name: ciclerotate2;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .left2 .circle .vertical {
+	width: 50px;
+	height: 120px;
+	border-radius: 4px;
+	background: #3e4a78;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -60px;
+	margin-left: -25px;
+	box-shadow: inset 0 -4px 0px 0px #27376a;
+	-webkit-animation-delay: 1.8s;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-name: ciclerotate;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 1.8s;
+	-moz-animation-duration: 5s;
+	-moz-animation-name: ciclerotate;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 1.8s;
+	-o-animation-duration: 5s;
+	-o-animation-name: ciclerotate;
+	-o-animation-iteration-count: 1;
+	animation-delay: 1.8s;
+	animation-duration: 5s;
+	animation-name: ciclerotate;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 {
+	height: 280px;
+	width: 280px;
+	border-radius: 50%;
+	background: #b1a1a3;
+	display: inline-block;
+	right: 0;
+	position: absolute;
+	top: 20px;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-name: body;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 0s;
+	-moz-animation-duration: 0.4s;
+	-moz-animation-name: body;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 0s;
+	-o-animation-duration: 0.4s;
+	-o-animation-name: body;
+	-o-animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 0.4s;
+	animation-name: body;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle {
+	height: 250px;
+	width: 250px;
+	border-radius: 50%;
+	background: #91899d;
+	border: 1px solid #f8fcfa;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	transform: translate(-50%, -50%) scale(0, 0);
+	-webkit-animation-delay: 1s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: cicle;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 1s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: cicle;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 1s;
+	-o-animation-duration: 1s;
+	-o-animation-name: cicle;
+	-o-animation-iteration-count: 1;
+	animation-delay: 1s;
+	animation-duration: 1s;
+	animation-name: cicle;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .top {
+	height: 59px;
+	width: 140px;
+	border-radius: 34px;
+	border: 1px solid #f8fcfa;
+	transform: rotate(-34deg);
+	position: absolute;
+	top: 70px;
+	left: 24px;
+	background: #d5e1bb;
+	opacity: 0;
+	-webkit-animation-delay: 2s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: op;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 2s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: op;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 2s;
+	-o-animation-duration: 1s;
+	-o-animation-name: op;
+	-o-animation-iteration-count: 1;
+	animation-delay: 2s;
+	animation-duration: 1s;
+	animation-name: op;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .top .green {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+	background: #539f89;
+	position: relative;
+	top: 0px;
+	left: 5px;
+	cursor: pointer;
+	transform: rotate(34deg) scale(0);
+	box-shadow: 0 4px 0px 0px #2c8475;
+	-webkit-animation-delay: 3.6s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: ciclesss;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 3.6s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: ciclesss;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 3.6s;
+	-o-animation-duration: 1s;
+	-o-animation-name: ciclesss;
+	-o-animation-iteration-count: 1;
+	animation-delay: 3.6s;
+	animation-duration: 1s;
+	animation-name: ciclesss;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .top .green:active {
+	top: 5px;
+	left: 2px;
+	box-shadow: 0 0px 0px 0px #2c8475;
+	outline: none;
+}
+
+.controler .right2 .circle .top .green:visited, .controler .right2 .circle .top .green:focus {
+	outline: none;
+}
+
+.controler .right2 .circle .top .blue {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+	background: #4e83c7;
+	position: relative;
+	top: 0px;
+	left: 35px;
+	cursor: pointer;
+	transform: rotate(34deg) scale(0);
+	box-shadow: 0 4px 0px 0px #2868a7;
+	-webkit-animation-delay: 3.2s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: ciclesss;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 3.2s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: ciclesss;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 3.2s;
+	-o-animation-duration: 1s;
+	-o-animation-name: ciclesss;
+	-o-animation-iteration-count: 1;
+	animation-delay: 3.2s;
+	animation-duration: 1s;
+	animation-name: ciclesss;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .top .blue:active {
+	top: 5px;
+	left: 32px;
+	box-shadow: 0 0px 0px 0px #2868a7;
+	outline: none;
+}
+
+.controler .right2 .circle .top .blue:visited, .controler .right2 .circle .top .blue:focus {
+	outline: none;
+}
+
+.controler .right2 .circle .bottom {
+	height: 59px;
+	width: 140px;
+	border-radius: 34px;
+	border: 1px solid #f8fcfa;
+	transform: rotate(-34deg);
+	position: absolute;
+	top: 120px;
+	left: 84px;
+	background: #d5e1bb;
+	opacity: 0;
+	-webkit-animation-delay: 2.5s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: op;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 2.5s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: op;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 2.5s;
+	-o-animation-duration: 1s;
+	-o-animation-name: op;
+	-o-animation-iteration-count: 1;
+	animation-delay: 2.5s;
+	animation-duration: 1s;
+	animation-name: op;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .bottom .orange {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+	background: #e1a14c;
+	position: relative;
+	top: 0px;
+	left: 5px;
+	cursor: pointer;
+	transform: rotate(34deg) scale(0);
+	box-shadow: 0 4px 0px 0px #da7e46;
+	-webkit-animation-delay: 2.8s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: ciclesss;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 2.8s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: ciclesss;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 2.8s;
+	-o-animation-duration: 1s;
+	-o-animation-name: ciclesss;
+	-o-animation-iteration-count: 1;
+	animation-delay: 2.8s;
+	animation-duration: 1s;
+	animation-name: ciclesss;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .bottom .orange:active {
+	top: 5px;
+	left: 2px;
+	box-shadow: 0 0px 0px 0px #da7e46;
+	outline: none;
+}
+
+.controler .right2 .circle .bottom .orange:visited, .controler .right2 .circle .bottom .orange:focus {
+	outline: none;
+}
+
+.controler .right2 .circle .bottom .red {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+	background: #b3586e;
+	position: relative;
+	top: 0px;
+	left: 35px;
+	cursor: pointer;
+	transform: rotate(34deg) scale(0);
+	box-shadow: 0 4px 0px 0px #882644;
+	-webkit-animation-delay: 2.4s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: ciclesss;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 2.4s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: ciclesss;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 2.4s;
+	-o-animation-duration: 1s;
+	-o-animation-name: ciclesss;
+	-o-animation-iteration-count: 1;
+	animation-delay: 2.4s;
+	animation-duration: 1s;
+	animation-name: ciclesss;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .right2 .circle .bottom .red:active {
+	top: 5px;
+	left: 32px;
+	box-shadow: 0 0px 0px 0px #882644;
+	outline: none;
+}
+
+.controler .right2 .circle .bottom .red:visited, .controler .right2 .circle .bottom .red:focus {
+	outline: none;
+}
+
+.controler .middle2 {
+	width: 430px;
+	height: 250px;
+	position: absolute;
+	display: inline-block;
+	left: 140px;
+	background: #b1a1a3;
+	top: 20px;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-name: body;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 0s;
+	-moz-animation-duration: 0.4s;
+	-moz-animation-name: body;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 0s;
+	-o-animation-duration: 0.4s;
+	-o-animation-name: body;
+	-o-animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 0.4s;
+	animation-name: body;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+}
+
+.controler .middle2 .select {
+	height: 50px;
+	width: 17px;
+	display: inline-block;
+	border-radius: 8px;
+	background: #3e4a78;
+	border: 1px solid #f8fcfa;
+	position: relative;
+	top: 140px;
+	left: 140px;
+	box-shadow: inset -1px -1px 0px 1px #0a1a51;
+	transform: rotate(55deg) scale(0, 0);
+	-webkit-animation-delay: 2.8s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: select;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 2.8s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: select;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 2.8s;
+	-o-animation-duration: 1s;
+	-o-animation-name: select;
+	-o-animation-iteration-count: 1;
+	animation-delay: 2.8s;
+	animation-duration: 1s;
+	animation-name: select;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+	cursor: pointer;
+}
+
+.controler .middle2 .select:active {
+	box-shadow: inset 0px 0px 0px 0px #0a1a51;
+	top: 141px;
+}
+
+.controler .middle2 .start {
+	height: 50px;
+	width: 17px;
+	display: inline-block;
+	border-radius: 8px;
+	background: #3e4a78;
+	border: 1px solid #f8fcfa;
+	position: relative;
+	top: 140px;
+	left: 190px;
+	-webkit-box-shadow: inset -1px -1px 0px 1px #0a1a51;
+	box-shadow: inset -1px -1px 0px 1px #0a1a51;
+	transform: rotate(55deg) scale(0, 0);
+	-webkit-animation-delay: 1.8s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: select;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-delay: 1.8s;
+	-moz-animation-duration: 1s;
+	-moz-animation-name: select;
+	-moz-animation-iteration-count: 1;
+	-o-animation-delay: 1.8s;
+	-o-animation-duration: 1s;
+	-o-animation-name: select;
+	-o-animation-iteration-count: 1;
+	animation-delay: 1.8s;
+	animation-duration: 1s;
+	animation-name: select;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	/*Chrome 16+, Safari 4+*/
+	-moz-animation-fill-mode: forwards;
+	/*FF 5+*/
+	-o-animation-fill-mode: forwards;
+	/*Not implemented yet*/
+	-ms-animation-fill-mode: forwards;
+	/*IE 10+*/
+	animation-fill-mode: forwards;
+	/*when the spec is finished*/
+	cursor: pointer;
+}
+
+.controler .middle2 .start:active {
+	box-shadow: inset 0px 0px 0px 0px #0a1a51;
+	top: 141px;
+}

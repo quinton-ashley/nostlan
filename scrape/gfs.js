@@ -20,12 +20,20 @@ class GameFaqsScraper {
 	constructor() {}
 
 	wrapUrl(url) {
-		return url.replace(/https\:\/\/gamefaqs.akamaized.net\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/, 'g $1$2$3$4');
+		let regex;
+		if (sys != 'snes') {
+			regex = /https\:\/\/gamefaqs.akamaized.net\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/;
+		} else {
+			regex = /https\:\/\/gamefaqs1.cbsistatic.com\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/;
+		}
+		return url.replace(regex, 'g $1$2$3$4');
 	}
 
 	unwrapUrl(data) {
-		data = data[0];
-		return `https://gamefaqs.akamaized.net/box/${data[0]}/${data[1]}/${data[2]}/${data.substr(3)}_front.jpg`;
+		let d = data[0];
+		let url = 'https://gamefaqs.akamaized.net/box';
+		if (sys == 'snes') url = 'https://gamefaqs1.cbsistatic.com/box';
+		return `${url}/${d[0]}/${d[1]}/${d[2]}/${d.substr(3)}_front.jpg`;
 	}
 
 	async getImgUrls(game, name) {
@@ -132,13 +140,13 @@ class GameFaqsScraper {
 		}
 
 		gfs[sys] = {};
-		let system = sys;
+		let _sys = sys;
 		if (sys == 'wiiu') {
-			system = 'wii-u';
+			_sys = 'wii-u';
 		} else if (sys == 'gcn') {
-			system = 'gamecube';
+			_sys = 'gamecube';
 		}
-		let urlBase = `https://sitemap.gamefaqs.com/game/${system}/`;
+		let urlBase = `https://sitemap.gamefaqs.com/game/${_sys}/`;
 		let url;
 		for (let idx of "0abcdefghijklmnopqrstuvwxyz") {
 			if (idx == '0') {
@@ -196,22 +204,3 @@ class GameFaqsScraper {
 }
 
 module.exports = new GameFaqsScraper();
-
-// unwrapGFUrl(game) {
-// 	let system = game.sys || sys;
-// 	if (system == 'wiiu') {
-// 		system = 'wii-u';
-// 	} else if (system == 'gcn') {
-// 		system = 'gamecube';
-// 	}
-// 	let url = 'https://gamefaqs.gamespot.com';
-// 	url += `/${sys}/${game.gf}-${game.title.replace(/ /g, '-')}`;
-// 	return url;
-// }
-
-// if (name == 'cover' || name == 'coverSide') {
-// 	res = await this.dlFromGamefaqs(title, dir, name, game);
-// 	if (res) {
-// 		return res;
-// 	}
-// }

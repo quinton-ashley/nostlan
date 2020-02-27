@@ -30,8 +30,8 @@ module.exports = async function(arg) {
 		return;
 	}
 	const deepExtend = require('deep-extend');
-	let scraper = require(`./${arg.scrape}.js`);
-	global.sys = 'ps2';
+	let scraper = require(`../${arg.scrape}.js`);
+	global.sys = 'snes'; // sys default
 	if (arg.scrape == 'fly') sys = 'mame';
 	sys = arg.sys || sys;
 	if (arg.scrape == 'gfs' || arg.scrape == 'tcp') {
@@ -42,7 +42,7 @@ module.exports = async function(arg) {
 	if (arg.scrape == 'tcp') name = 'coverFull';
 
 	let games = [];
-	let dbPath = `${__root}/scrape/db/${sys}DB.json`;
+	let dbPath = `${__root}/db/${sys}DB.json`;
 	games = JSON.parse(await fs.readFile(dbPath)).games;
 
 	let found = 0;

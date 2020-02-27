@@ -54,6 +54,7 @@ class Scanner {
 			let file;
 			// a lot of pruning is required to get good search results
 			for (let i = 0; i < files.length; i++) {
+				let id;
 				$('#loadDialog2').text(`${i+1}/${files.length + 1} files matched`);
 				file = files[i];
 				let term = path.parse(file);
@@ -81,6 +82,8 @@ class Scanner {
 					};
 					game = await launcher.identifyGame(game);
 					if (!game) continue;
+					id = game.id;
+					game = gameDB.find(x => x.id === id);
 					this.olog(`match:  ${game.title}\r\n`);
 					log(game);
 					game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
@@ -108,7 +111,6 @@ class Scanner {
 				term = term.replace(/s*m *64n*/gi, 'Super Mario 64');
 				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
 				// special check for ids
-				let id;
 				if (idRegex[sys]) id = term.match(idRegex[sys]);
 				if (id) {
 					id = id[1];

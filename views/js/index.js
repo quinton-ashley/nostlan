@@ -99,6 +99,11 @@ module.exports = async function(arg) {
 			fullName: 'Nintendo 3DS',
 			emus: ['citra']
 		},
+		snes: {
+			name: 'SNES',
+			fullName: 'Super Nintendo',
+			emus: ['bsnes']
+		},
 		mame: {
 			name: 'MAME',
 			fullName: 'Multiple Arcade Machine Emulator',
@@ -113,11 +118,15 @@ module.exports = async function(arg) {
 			name: 'PS3',
 			fullName: 'Sony PlayStation 3',
 			emus: ['rpcs3']
+		},
+		xbox360: {
+			name: 'Xbox 360',
+			fullName: 'Microsoft Xbox 360',
+			emus: ['xenia']
 		}
 	};
-	if (win || arg.dev) {
-		systems.xbox360 = 'Xbox 360';
-	} else if (mac) {
+	if (mac && !arg.dev) {
+		delete systems.xbox360;
 		delete systems.wiiu;
 		delete systems.ps3;
 		delete systems.switch;
@@ -311,16 +320,12 @@ module.exports = async function(arg) {
 		// currently supported systems
 		let sysMenuHTML = '';
 		let i = 0;
-		let half = Math.ceil(Object.keys(systems).length / 2);
 		for (let _sys in systems) {
-			if (i % 2 == 0) {
-				sysMenuHTML += `.row.row-x\n`;
-			}
-			sysMenuHTML += `\t.col.uie(name="${_sys}") ${systems[_sys]}\n`;
+			if (i % 2 == 0) sysMenuHTML += `.row.row-x\n`;
+			sysMenuHTML += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
 			i++;
 		}
 		delete i;
-		delete half;
 		$('#sysMenu').append(pug(sysMenuHTML));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
@@ -449,8 +454,9 @@ module.exports = async function(arg) {
 	}
 
 	async function removeIntro(time) {
-		log('time:' + time);
-		await delay(arg.testLoadingTheme || time || prefs.load.delay);
+		time = arg.testLoadingTheme || time || prefs.load.delay;
+		log('removing intro: ' + time);
+		await delay(time);
 		$('#intro').remove();
 		cui.hideDialogs();
 	}
@@ -902,7 +908,7 @@ module.exports = async function(arg) {
 		let boxImgSrc = await scraper.imgExists(game, 'box');
 		let coverImgSrc = '';
 		if (!boxImgSrc) {
-			boxImgSrc = (await scraper.imgExists(themes[boxSys].default, 'box'));
+			boxImgSrc = await scraper.imgExists(themes[boxSys].default, 'box');
 			coverImgSrc = await scraper.imgExists(game, 'coverFull');
 			imgType = '.coverFull';
 			if (!coverImgSrc) {
@@ -945,9 +951,7 @@ module.exports = async function(arg) {
 	async function viewerLoad(recheckImgs) {
 		cui.resize(true);
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
-		let _gamesLength = games.length;
 		games = await scraper.loadImages(games, themes, recheckImgs);
-		if (_gamesLength != games.length) await scan.outputUsersGamesDB(games);
 		let cols = prefs.ui.maxColumns || 8;
 		if (games.length < 42) cols = 8;
 		if (games.length < 18) cols = 4;

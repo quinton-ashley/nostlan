@@ -143,6 +143,11 @@ class TheCoverProjectScraper {
 		let catID;
 		if (sys == 'ps2') catID = 6;
 		if (sys == 'gba') catID = 13;
+		if (sys == 'snes') catID = 8;
+		if (!catID) {
+			er('no category id for sys: ' + sys);
+			return;
+		}
 		let urlBase = `http://www.thecoverproject.net/view.php?cat_id=${catID}&view=`;
 		let url;
 		for (let idx of "9abcdefghijklmnopqrstuvwxyz") {

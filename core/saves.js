@@ -32,8 +32,7 @@ class Saves {
 				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';
 			}
 			if (!(await fs.exists(dir))) {
-				cui.err('"User" folder not found, saves could not be located.  ' +
-					'"User" folder needs to be in the same folder as "Dolphin.exe"');
+				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local user directory, create a text file named "portable" next to the executable files of the build (Dolphin.exe). With the extension it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use the global user directory, instead it will create and use the local user directory in the same directory.`);
 				return;
 			}
 			prefs.wii.saves.dirs = [

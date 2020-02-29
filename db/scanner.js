@@ -38,6 +38,37 @@ class Scanner {
 		let gameDB = [];
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
+
+		// if (emu == 'dolphin' && kb) {
+		if (false) {
+			let app = await launcher.getEmuAppPath();
+			let dir = path.join(app, '../User');
+			if (mac && !(await fs.exists(dir))) {
+				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';
+			}
+			if (!(await fs.exists(dir))) {
+				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local user directory, create a text file named "portable" next to the executable files of the build (Dolphin.exe). With the extension it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use the global user directory, instead it will create and use the local user directory in the same directory.`);
+				continue;
+			}
+			let config = await fs.readFile(dir + '/Config/Dolphin.ini');
+			let ogConfig = config;
+			config.replace(/(Column[^ ]*)[^\n]*/g, '$1 = False');
+			config.replace(/ColumnTitle[^\n]*/, 'ColumnTitle = True');
+			config.replace(/ColumnFileName[^\n]*/, 'ColumnFileName = True');
+			config.replace(/ColumnID[^\n]*/, 'ColumnID = True');
+			await fs.outputFile(dir + '/Config/Dolphin.ini', config);
+
+			$('#loadDialog0').text('Do not close Dolphin while game indexing is in progress');
+
+			await delay(1000);
+
+
+
+			await this.outputUsersGamesDB(games);
+			cui.clearDialogs();
+			return games;
+		}
+
 		let fuse, searcher;
 		if (sys != 'snes') {
 			fuse = new Fuse(gameDB, searcharg);

@@ -2,7 +2,6 @@
  * index.js
  * authors: quinton-ashley
  */
-
 module.exports = async function(arg) {
 	await require(arg.__root + '/core/setup.js')(arg);
 	log('version: ' + pkg.version);
@@ -32,7 +31,7 @@ module.exports = async function(arg) {
 	// main hard drive.  I don't give users a choice
 	// to move this folder elsewhere because it needs to be
 	// in a set location.
-	// The user's preferences and game libs json databases
+	// Only the user's preferences and game libs json databases
 	// are stored here.
 	global.usrDir = '$home/Documents/emu/bottlenose'; // deprecated path
 	usrDir = util.absPath(usrDir);

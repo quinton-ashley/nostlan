@@ -64,6 +64,9 @@ class Scanner {
 				if (term.base == 'dir.txt') continue;
 				// if the file is a save file skip it
 				if (term.ext == '.sav') continue;
+				if (sys == 'snes' && !/\.(sfc|smc)/.test(term.ext)) continue;
+				if (sys == 'ds' && term.ext != '.ds') continue;
+				if (sys == 'gba' && term.ext != '.gba') continue;
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
 				let isDir = (await fs.stat(file)).isDirectory();

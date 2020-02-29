@@ -10,7 +10,7 @@ class Saves {
 			prefs[emu].saves.dirs = prefs[emu].libs;
 			return true;
 		}
-
+		if (!prefs[emu].app[osType]) return;
 		let dir = path.join(prefs[emu].app[osType], '..');
 		dir = dir.replace(/\\/g, '/');
 

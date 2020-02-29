@@ -18,8 +18,8 @@ class Launcher {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win || (linux && (/(cemu|rpcs3)/).test(emu)) ||
-			(mac && emu == 'mame')) {
+		if (win || (linux && /(cemu|rpcs3|bsnes|higan)/.test(emu)) ||
+			(mac && /(mame|bsnes|higan)/.test(emu))) {
 			emuDirPath = `${emuDir}/${prefs[emu].name}/BIN`;
 			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
@@ -46,7 +46,7 @@ class Launcher {
 				emuAppPath = emuDirPath + '/';
 			}
 			emuAppPath += emuNameCases[i];
-			if (win) {
+			if (win || /(bsnes|higan)/.test(emu)) {
 				if (emu == 'citra') emuAppPath += '-qt';
 				if (emu == 'mgba') emuAppPath += '-sdl';
 				if (emu == 'mame') emuAppPath += '64';
@@ -95,7 +95,7 @@ class Launcher {
 		}
 		log(`couldn't find app at path:\n` + emuAppPath);
 		emuAppPath = await dialog.selectFile('select emulator app');
-		if (mac) {
+		if (mac && !/(bsnes|higan)/.test(emu)) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {
 				emuAppPath += '-qt-bin';

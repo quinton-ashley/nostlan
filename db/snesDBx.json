@@ -1,0 +1,3584 @@
+{
+"version": "2018-09-20",
+"games": [{
+	"id": "SNSN-AZ4K-KOR-0",
+	"title": "드래곤볼Z 초무투전3",
+	"label": "Dragon Ball Z - Chomutujeon"
+}, {
+	"id": "SNSN-3D-KOR-0",
+	"title": "한국프로야구",
+	"label": "Hanguk Pro Yagu"
+}, {
+	"id": "SNSN-II-KOR-0",
+	"title": "태권도",
+	"label": "Taekwondo"
+}, {
+	"id": "SNSN-YI-HKG-1",
+	"title": "Super Mario World 2: Yoshi's Island"
+}, {
+	"id": "SHVC-ASPJ-JPN-0",
+	"title": "スパイダーマン リーサルフォーズ",
+	"label": "Amazing Spider-Man, The - Lethal Foes"
+}, {
+	"id": "SHVC-AAZJ-JPN-0",
+	"title": "アンジェリーク プレミアムBox",
+	"label": "Angelique - Premium Box"
+}, {
+	"id": "SHVC-AQLJ-JPN-0",
+	"title": "アンジェリーク ヴォイス・ファンタジー",
+	"label": "Angelique - Voice Fantasy"
+}, {
+	"id": "SHVC-AAGJ-JPN-0",
+	"title": "ボール・ブレット・ガン",
+	"label": "Ball Bullet Gun"
+}, {
+	"id": "SHVC-8T-0",
+	"title": "バトルトードインバトルマニアック",
+	"label": "Battletoads in Battlemaniacs"
+}, {
+	"id": "SHVC-BV-0",
+	"title": "バイオメタル",
+	"label": "Bio Metal"
+}, {
+	"id": "SHVC-AH9J-JPN-0",
+	"title": "ボンバーマン ビーダマン",
+	"label": "Bomberman B-Daman"
+}, {
+	"id": "SHVC-ZBSJ-JPN-1",
+	"title": "BS-X それは名前を盗まれた街の物語",
+	"label": "BS-X - Sore wa Namae o Nusumareta Machi no Monogatari"
+}, {
+	"id": "SHVC-QM-0",
+	"title": "キャプテンコマンドー",
+	"label": "Captain Commando"
+}, {
+	"id": "SHVC-ACTJ-JPN-0",
+	"title": "クロノ・トリガー",
+	"label": "Chrono Trigger"
+}, {
+	"id": "SHVC-AC9J-JPN-0",
+	"title": "クロノ・トリガー 体験版サンプルROM",
+	"label": "Chrono Trigger - Taikenban Sample ROM"
+}, {
+	"id": "SHVC-B5-0",
+	"title": "Conveni Wars Barcode Battler 戦記 スーパー戦士 出撃せよ!",
+	"label": "Conveni Wars - Barcode Battler Senki - Super Senshi Shutsugeki seyo!"
+}, {
+	"id": "SHVC-ADTJ-JPN-0",
+	"title": "であえ殿さま あっぱれ一番",
+	"label": "Deae Tonosama Appare Ichiban"
+}, {
+	"id": "SHVC-3Z-0",
+	"title": "デモンズ・ブレイゾン 魔界村紋章編",
+	"label": "Demon's Blazon - Makaimura Monshou Hen"
+}, {
+	"id": "SHVC-ALGJ-JPN-1",
+	"title": "デア ラングリッサー",
+	"label": "Der Langrisser"
+}, {
+	"id": "SHVC-ZDBJ-JPN-0",
+	"title": "ダービースタリオン96",
+	"label": "Derby Stallion '96"
+}, {
+	"id": "SHVC-AM4J-JPN-0",
+	"title": "ドレミファンタジー ミロンのドキドキ大冒険",
+	"label": "DoReMi Fantasy - Milon no Dokidoki Daibouken"
+}, {
+	"id": "SHVC-AEMJ-JPN-0",
+	"title": "エミット Vol. 1 時の迷子",
+	"label": "Emit Vol. 1 - Toki no Maigo"
+}, {
+	"id": "SHVC-AEIJ-JPN-0",
+	"title": "エミット Vol. 2 命がけの旅",
+	"label": "Emit Vol. 2 - Inochigake no Tabi"
+}, {
+	"id": "SHVC-AETJ-JPN-0",
+	"title": "エミット Vol. 3 私にさよならを",
+	"label": "Emit Vol. 3 - Watashi ni Sayonara o"
+}, {
+	"id": "SHVC-AZQJ-JPN-0",
+	"title": "Far East of Eden 天外魔境Zero 少年ジャンプの章",
+	"label": "Far East of Eden - Tengai Makyou Zero - Shounen Jump no Shou"
+}, {
+	"id": "SHVC-F4-0",
+	"title": "ファイナルファンタジーIV",
+	"label": "Final Fantasy IV"
+}, {
+	"id": "SHVC-AFZJ-JPN-0",
+	"title": "ファイナルファイト タフ",
+	"label": "Final Fight Tough"
+}, {
+	"id": "SHVC-BFRJ-JPN-0",
+	"title": "ファイアーエムブレム トラキア776",
+	"label": "Fire Emblem - Thracia 776"
+}, {
+	"id": "SHVC-AGHJ-JPN-0",
+	"title": "ゲットインザホール",
+	"label": "Get in the Hole"
+}, {
+	"id": "SHVC-ET-0",
+	"title": "ゴーストチェイサー電精",
+	"label": "Ghost Chaser Densei"
+}, {
+	"id": "SHVC-AGJJ-JPN-0",
+	"title": "グール・パトロール",
+	"label": "Ghoul Patrol"
+}, {
+	"id": "SHVC-A3LJ-JPN-0",
+	"title": "ごきんじょ冒険隊",
+	"label": "Gokinjo Boukentai"
+}, {
+	"id": "SHVC-AV6J-JPN-0",
+	"title": "美食戦隊 薔薇野郎",
+	"label": "Gourmet Sentai - Bara Yarou"
+}, {
+	"id": "SHVC-AG5J-JPN-0",
+	"title": "ザ・グレイトバトルV",
+	"label": "Great Battle V, The"
+}, {
+	"id": "SHVC-AHGJ-JPN-0",
+	"title": "鋼",
+	"label": "Hagane"
+}, {
+	"id": "SHVC-AICJ-JPN-0",
+	"title": "アイアンコマンドー 鋼鉄の戦士",
+	"label": "Iron Commando - Koutetsu no Senshi"
+}, {
+	"id": "SHVC-ZBPJ-JPN-0",
+	"title": "糸井重里のバス釣りNo. 1",
+	"label": "Itoi Shigesato no Bass Tsuri No. 1"
+}, {
+	"id": "SHVC-ZTMJ-JPN-0",
+	"title": "常勝麻雀天牌",
+	"label": "Joushou Mahjong Tenpai"
+}, {
+	"id": "SHVC-HV-0",
+	"title": "化学者ハリーの波乱万丈",
+	"label": "Kagakusha Harley no Haran Banjou"
+}, {
+	"id": "SHVC-OH-0",
+	"title": "迦楼羅王",
+	"label": "Karuraou"
+}, {
+	"id": "SHVC-KK-0",
+	"title": "奇々怪界 謎の黒マント",
+	"label": "Kiki Kaikai - Nazo no Kuro Manto"
+}, {
+	"id": "SHVC-3N-0",
+	"title": "奇々快界 月夜草子",
+	"label": "Kiki Kaikai - Tsukiyo Soushi"
+}, {
+	"id": "SHVC-BKKJ-JPN-0",
+	"title": "カービイのきらきらきっず",
+	"label": "Kirby no Kirakira Kids"
+}, {
+	"id": "SHVC-ALNJ-JPN-0",
+	"title": "レナスII 封印の使徒",
+	"label": "Lennus II - Fuuin no Shito"
+}, {
+	"id": "SHVC-LK-0",
+	"title": "リーサルエンフォーサーズ",
+	"label": "Lethal Enforcers"
+}, {
+	"id": "SHVC-AOQJ-JPN-0",
+	"title": "マジカルドロップ2 文化放送スペシャルバージョン",
+	"label": "Magical Drop 2 - Bunka Housou Special Version"
+}, {
+	"id": "SHVC-AIAJ-JPN-0",
+	"title": "マジカルポップン",
+	"label": "Magical Pop'n"
+}, {
+	"id": "SHVC-AOHJ-JPN-0",
+	"title": "魔獣王",
+	"label": "Majuuou"
+}, {
+	"id": "SHVC-WE-0",
+	"title": "マリオとワリオ",
+	"label": "Mario & Wario"
+}, {
+	"id": "SHVC-MP-0",
+	"title": "マリオペイント",
+	"label": "Mario Paint"
+}, {
+	"id": "SHVC-52-0",
+	"title": "マイティ・モーフィン・パワーレンジャー",
+	"label": "Mighty Morphin Power Rangers"
+}, {
+	"id": "SHVC-A4WJ-JPN-0",
+	"title": "ミニ四駆シャイニングスコーピオン レッツ&ゴー!!",
+	"label": "Mini Yonku Shining Scorpion - Let's & Go!!"
+}, {
+	"id": "SHVC-WK-0",
+	"title": "もと子ちゃんのワンダーキッチン",
+	"label": "Motoko-chan no Wonder Kitchen"
+}, {
+	"id": "SHVC-ANRJ-JPN-0",
+	"title": "忍者龍剣伝巴",
+	"label": "Ninja Ryuukenden Tomoe"
+}, {
+	"id": "SHVC-NI-0",
+	"title": "ザ・ニンジャウォリアーズアゲイン",
+	"label": "Ninja Warriors, The - Again"
+}, {
+	"id": "SHVC-AAPJ-JPN-0",
+	"title": "ノーマーク暴牌党 史上最強の雀士達",
+	"label": "Nomark Baku Haitou - Shijou Saikyou no Janshi-tachi"
+}, {
+	"id": "SHVC-ZMCJ-JPN-0",
+	"title": "音楽ツクールかなでーる",
+	"label": "Ongaku Tsukuuru Kanadeeru"
+}, {
+	"id": "SHVC-APSJ-JPN-1",
+	"title": "パチンコファン 勝利宣言",
+	"label": "Pachinko Fan - Shouri Sengen"
+}, {
+	"id": "SHVC-A77J-JPN-0",
+	"title": "パチンコ鉄人 七番勝負",
+	"label": "Pachinko Tetsujin - Nanaban Shoubu"
+}, {
+	"id": "SHVC-APAJ-JPN-0",
+	"title": "ピットフォール マヤの大冒険",
+	"label": "Pitfall - Maya no Daibouken"
+}, {
+	"id": "SHVC-P4-0",
+	"title": "プロック",
+	"label": "Plok!"
+}, {
+	"id": "SHVC-APOJ-JPN-0",
+	"title": "ポコニャン! へんぽこりんアドベンチャー",
+	"label": "Pokonyan! - Henpokorin Adventure"
+}, {
+	"id": "SHVC-AVCJ-JPN-0",
+	"title": "レンダリング・レンジャーR²",
+	"label": "Rendering Ranger R2"
+}, {
+	"id": "SHVC-AR6J-JPN-0",
+	"title": "ロックマン&フォルテ",
+	"label": "Rockman & Forte"
+}, {
+	"id": "SHVC-RX-0",
+	"title": "ロックマンエックス",
+	"label": "Rockman X"
+}, {
+	"id": "SHVC-RX-1",
+	"title": "ロックマンエックス",
+	"label": "Rockman X"
+}, {
+	"id": "SHVC-AL9J-JPN-0",
+	"title": "ロマンシング サ・ガ3 体験版サンプルROM",
+	"label": "Romancing SaGa 3 - Taikenban Sample ROM"
+}, {
+	"id": "SHVC-ZR2J-JPN-0",
+	"title": "RPGツクール2",
+	"label": "RPG Tsukuuru 2"
+}, {
+	"id": "SHVC-R6-0",
+	"title": "ラッシング・ビート修羅",
+	"label": "Rushing Beat Shura"
+}, {
+	"id": "SHVC-ZS5J-JPN-0",
+	"title": "鮫亀",
+	"label": "Same Game"
+}, {
+	"id": "SHVC-ZX3J-JPN-0",
+	"title": "SDガンダム ジーネクスト",
+	"label": "SD Gundam G Next"
+}, {
+	"id": "SHVC-A3EJ-JPN-0",
+	"title": "聖剣伝説3 体験版サンプルROM",
+	"label": "Seiken Densetsu 3 - Taikenban Sample ROM"
+}, {
+	"id": "SHVC-EO-0",
+	"title": "少年忍者サスケ",
+	"label": "Shounen Ninja Sasuke"
+}, {
+	"id": "SHVC-2C-0",
+	"title": "ソニックブラストマンII",
+	"label": "Sonic Blast Man II"
+}, {
+	"id": "SHVC-ZSNJ-JPN-0",
+	"title": "サウンドノベルツクール",
+	"label": "Sound Novel Tsukuuru"
+}, {
+	"id": "SHVC-ARFJ-JPN-0",
+	"title": "スターオーシャン",
+	"label": "Star Ocean"
+}, {
+	"id": "SHVC-ASOJ-JPN-0",
+	"title": "ストーンプロテクターズ",
+	"label": "Stone Protectors"
+}, {
+	"id": "SHVC-AUZJ-JPN-0",
+	"title": "ストリートファイターZero 2",
+	"label": "Street Fighter Zero 2"
+}, {
+	"id": "SHVC-A9PJ-JPN-0",
+	"title": "スーファミターボ",
+	"label": "Sufami Turbo"
+}, {
+	"id": "SHVC-B2-0",
+	"title": "スーパー・バック・トゥ・ザ・フューチャーII",
+	"label": "Super Back to the Future - Part II"
+}, {
+	"id": "SHVC-9B-0",
+	"title": "スーパーボンバーマン2 体験版",
+	"label": "Super Bomberman 2 - Taikenban"
+}, {
+	"id": "SHVC-AK8J-JPN-0",
+	"title": "スーパーボンバーマン5 コロコロコミック",
+	"label": "Super Bomberman 5 - CoroCoro Comic"
+}, {
+	"id": "SHVC-ADEJ-JPN-0",
+	"title": "スーパーフォーメーションサッカー95 デッラセリエA ザクア",
+	"label": "Super Formation Soccer '95 - della Serie A - Xaqua"
+}, {
+	"id": "SHVC-SGB-2",
+	"title": "スーパーゲームボーイ",
+	"label": "Super Game Boy"
+}, {
+	"id": "SHVC-SGB2-JPN-10",
+	"title": "スーパーゲームボーイ2",
+	"label": "Super Game Boy 2"
+}, {
+	"id": "SHVC-IQ-0",
+	"title": "スーパー麻雀大会",
+	"label": "Super Mahjong Taikai"
+}, {
+	"id": "SHVC-IQ-1",
+	"title": "スーパー麻雀大会",
+	"label": "Super Mahjong Taikai"
+}, {
+	"id": "SHVC-IQ-2",
+	"title": "スーパー麻雀大会",
+	"label": "Super Mahjong Taikai"
+}, {
+	"id": "SHVC-IQ-3",
+	"title": "スーパー麻雀大会",
+	"label": "Super Mahjong Taikai"
+}, {
+	"id": "SHVC-ANWJ-JPN-0",
+	"title": "スーパー桃太郎電鉄DX JR西日本Presents",
+	"label": "Super Momotarou Dentetsu DX - JR Nishi Nihon Presents"
+}, {
+	"id": "SHVC-8Q-0",
+	"title": "す～ぱ～忍者くん",
+	"label": "Super Ninja-kun"
+}, {
+	"id": "SHVC-XL-1",
+	"title": "スーパー三国志II 復刻版",
+	"label": "Super Sangokushi II"
+}, {
+	"id": "SHVC-LR-0",
+	"title": "スーパースコープ6",
+	"label": "Super Scope 6"
+}, {
+	"id": "SHVC-T2-0",
+	"title": "Super Tetris 2 + Bombliss",
+	"label": "Super Tetris 2 + Bombliss"
+}, {
+	"id": "SHVC-T9-0",
+	"title": "スーパータリカン",
+	"label": "Super Turrican"
+}, {
+	"id": "SHVC-BSHJ-JPN-0",
+	"title": "すってはっくん",
+	"label": "Sutte Hakkun"
+}, {
+	"id": "SHVC-J3-0",
+	"title": "戦え原始人3 主役はやっぱりジョーアンドマック",
+	"label": "Tatakae Genshijin 3 - Shuyaku wa Yappari Joe & Mac"
+}, {
+	"id": "SHVC-TM-0",
+	"title": "ティーンエージ ミュータント ニンジャ タートルズ／タートルズ イン タイム",
+	"label": "Teenage Mutant Ninja Turtles - Turtles in Time"
+}, {
+	"id": "SHVC-Y7-0",
+	"title": "UFO仮面ヤキソバン ケトラーの黒い陰謀 景品版",
+	"label": "UFO Kamen Yakisoban - Kettler no Kuroi Inbou - Keihinban"
+}, {
+	"id": "SHVC-ANZJ-JPN-0",
+	"title": "Undake 30 鮫亀大作戦 マリオバージョン",
+	"label": "Undake 30 - Same Game Daisakusen - Mario Version"
+}, {
+	"id": "SHVC-AUCJ-JPN-0",
+	"title": "アンダーカバーコップス",
+	"label": "Undercover Cops"
+}, {
+	"id": "SHVC-4W-0",
+	"title": "ワイルドガンズ",
+	"label": "Wild Guns"
+}, {
+	"id": "SHVC-BWCJ-JPN-0",
+	"title": "レッキングクルー'98",
+	"label": "Wrecking Crew '98"
+}, {
+	"id": "SHVC-UY-0",
+	"title": "やまねこバブジーの大冒険",
+	"label": "Yamaneko Bubsy no Daibouken"
+}, {
+	"id": "SHVC-YO-0",
+	"title": "ヨッシーのクッキー クルッポンオーブンでクッキー",
+	"label": "Yoshi no Cookie - Kuruppon Oven de Cookie"
+}, {
+	"id": "SHVC-AYOJ-JPN-0",
+	"title": "妖怪バスター ルカの大冒険",
+	"label": "Youkai Buster - Ruka no Daibouken"
+}, {
+	"id": "SNSN-S3-ROC-0",
+	"title": "三国志III",
+	"label": "Sanguozhi III"
+}, {
+	"id": "SNSP-ANIP-AUS-0",
+	"title": "Lufia"
+}, {
+	"id": "SNSP-IC-AUS-0",
+	"title": "Space Invaders"
+}, {
+	"id": "SNSP-QT-AUS-0",
+	"title": "Super Chase HQ"
+}, {
+	"id": "SNS-A8FB-BRA-0",
+	"title": "FIFA: A Caminho da Copa '98"
+}, {
+	"id": "SNS-ZF-CAN-0",
+	"title": "The Legend of Zelda: A Link to the Past"
+}, {
+	"id": "SNSP-AH-ESP-0",
+	"title": "The Addams Family: Pugsley's Scavenger Hunt"
+}, {
+	"id": "SNSP-5D-ESP-0",
+	"title": "Bram Stoker's Dracula"
+}, {
+	"id": "SNSP-CD-ESP-0",
+	"title": "Cool World"
+}, {
+	"id": "SNSP-JN-ESP-0",
+	"title": "Jack Nicklaus Golf"
+}, {
+	"id": "SNSP-J8-ESP-0",
+	"title": "Jurassic Park"
+}, {
+	"id": "SNSP-SK-ESP-0",
+	"title": "Sonic Blast Man"
+}, {
+	"id": "SNSP-J5-ESP-0",
+	"title": "Super James Pond"
+}, {
+	"id": "SNSP-SY-ESP-0",
+	"title": "Syvalion"
+}, {
+	"id": "SNSP-SH-ESP-0",
+	"title": "Whirlo"
+}, {
+	"id": "SNSP-U4-ESP-0",
+	"title": "World Cup USA '94"
+}, {
+	"id": "SNSP-Y6-ESP-0",
+	"title": "Young Merlin"
+}, {
+	"id": "SNSP-ANNP-EUR-0",
+	"title": "Aaahh!!! Real Monsters"
+}, {
+	"id": "SNSP-ABTP-EUR-0",
+	"title": "The Adventures of Batman & Robin"
+}, {
+	"id": "SNSP-AMOP-EUR-0",
+	"title": "The Adventures of Mighty Max"
+}, {
+	"id": "SNSP-ACCP-EUR-0",
+	"title": "Air Cavalry"
+}, {
+	"id": "SNSP-A3-EUR-0",
+	"title": "Alien 3"
+}, {
+	"id": "SNSP-ANCP-EUR-0",
+	"title": "Animaniacs"
+}, {
+	"id": "SNSP-ASDP-EUR-0",
+	"title": "Archer Maclean's Super Dropzone"
+}, {
+	"id": "SNSP-A9-EUR-0",
+	"title": "Ardy Lightfoot"
+}, {
+	"id": "SNSP-A9BP-EUR-0",
+	"title": "Bass Masters Classic: Pro Edition"
+}, {
+	"id": "SNSP-A3BP-EUR-0",
+	"title": "Batman Forever"
+}, {
+	"id": "SNSP-ABUP-EUR-0",
+	"title": "Beavis and Butt-Head"
+}, {
+	"id": "SNSP-AB4P-EUR-0",
+	"title": "Boogerman: A Pick and Flick Adventure"
+}, {
+	"id": "SNSP-AF2P-EUR-0",
+	"title": "Breath of Fire II"
+}, {
+	"id": "SNSP-ABLP-EUR-0",
+	"title": "Brutal: Paws of Fury"
+}, {
+	"id": "SNSP-ABBP-EUR-0",
+	"title": "Bubsy II"
+}, {
+	"id": "SNSP-ACNP-EUR-0",
+	"title": "Cannon Fodder"
+}, {
+	"id": "SNSP-QM-EUR-0",
+	"title": "Captain Commando"
+}, {
+	"id": "SNSP-ACAP-EUR-0",
+	"title": "Carrier Aces"
+}, {
+	"id": "SNSP-ADZP-EUR-0",
+	"title": "Castlevania: Vampire's Kiss"
+}, {
+	"id": "SNSP-ACZP-EUR-0",
+	"title": "Clay Fighter 2: Judgment Clay"
+}, {
+	"id": "SNSP-AC8P-EUR-0",
+	"title": "CutThroat Island"
+}, {
+	"id": "SNSP-AD6P-EUR-0",
+	"title": "Demolition Man"
+}, {
+	"id": "SNSP-3Z-EUR-0",
+	"title": "Demon's Crest"
+}, {
+	"id": "SNSP-ADSP-EUR-0",
+	"title": "Dino Dini's Soccer"
+}, {
+	"id": "SNSP-A3CP-EUR-0",
+	"title": "Donkey Kong Country 3: Dixie Kong's Double Trouble"
+}, {
+	"id": "SNSP-4N-EUR-0",
+	"title": "Dragon: The Bruce Lee Story"
+}, {
+	"id": "SNSP-AZIF-EUR-0",
+	"title": "Dragon Ball Z: Hyper Dimension"
+}, {
+	"id": "SNSP-AEJP-EUR-0",
+	"title": "Earthworm Jim"
+}, {
+	"id": "SNSP-A2EP-EUR-0",
+	"title": "Earthworm Jim 2"
+}, {
+	"id": "SNSP-DJ-EUR-0",
+	"title": "Fatal Fury 2"
+}, {
+	"id": "SNSP-3R-EUR-0",
+	"title": "Fatal Fury Special"
+}, {
+	"id": "SNSP-AVSP-EUR-0",
+	"title": "Fever Pitch Soccer"
+}, {
+	"id": "SNSP-A7IP-EUR-0",
+	"title": "FIFA '97"
+}, {
+	"id": "SNSP-AFZP-EUR-0",
+	"title": "Final Fight 3"
+}, {
+	"id": "SNSP-AFMP-EUR-0",
+	"title": "The Firemen"
+}, {
+	"id": "SNSP-AFKP-EUR-0",
+	"title": "Frank Thomas' Big Hurt Baseball"
+}, {
+	"id": "SNSP-AF8P-EUR-0",
+	"title": "Frantic Flea"
+}, {
+	"id": "SNSP-AGJP-EUR-0",
+	"title": "Ghoul Patrol"
+}, {
+	"id": "SNSP-AHGP-EUR-0",
+	"title": "Hagane"
+}, {
+	"id": "SNSP-AHUP-EUR-0",
+	"title": "Hurricanes"
+}, {
+	"id": "SNSP-AIYP-EUR-0",
+	"title": "Incantation"
+}, {
+	"id": "SNSP-AIJP-EUR-0",
+	"title": "Indiana Jones' Greatest Adventures"
+}, {
+	"id": "SNSP-3U-EUR-0",
+	"title": "International Superstar Soccer"
+}, {
+	"id": "SNSP-AIZP-EUR-0",
+	"title": "Izzy's Quest for the Olympic Rings"
+}, {
+	"id": "SNSP-AJDP-EUR-0",
+	"title": "Judge Dredd"
+}, {
+	"id": "SNSP-AJGP-EUR-0",
+	"title": "Jungle Strike"
+}, {
+	"id": "SNSP-A2JP-EUR-0",
+	"title": "Jurassic Park Part 2: The Chaos Continues"
+}, {
+	"id": "SNSP-AJLP-EUR-0",
+	"title": "Justice League Task Force"
+}, {
+	"id": "SNSP-L2-EUR-0",
+	"title": "Lemmings 2: The Tribes"
+}, {
+	"id": "SNSP-AMRP-EUR-0",
+	"title": "Marko's Magic Football"
+}, {
+	"id": "SNSP-AHZP-EUR-0",
+	"title": "Marvel Super Heroes in War of the Gems"
+}, {
+	"id": "SNSP-A35P-EUR-0",
+	"title": "MechWarrior 3050"
+}, {
+	"id": "SNSP-A7RP-EUR-0",
+	"title": "Mega Man 7"
+}, {
+	"id": "SNSP-ARXP-EUR-0",
+	"title": "Mega Man X2"
+}, {
+	"id": "SNSP-AR3P-EUR-0",
+	"title": "Mega Man X3"
+}, {
+	"id": "SNSP-AJYP-EUR-0",
+	"title": "Mohawk & Headphone Jack"
+}, {
+	"id": "SNSP-A3MP-EUR-0",
+	"title": "Mortal Kombat 3"
+}, {
+	"id": "SNSP-28-EUR-1",
+	"title": "Mortal Kombat II"
+}, {
+	"id": "SNSP-AUNP-EUR-0",
+	"title": "Mr. Do!"
+}, {
+	"id": "SNSP-AJTP-EUR-0",
+	"title": "NBA Jam: Tournament Edition"
+}, {
+	"id": "SNSP-A6HP-EUR-0",
+	"title": "NHL '96"
+}, {
+	"id": "SNSP-NI-EUR-0",
+	"title": "Ninja Warriors: The New Generation"
+}, {
+	"id": "SNSP-AO9P-EUR-0",
+	"title": "Olympic Summer Games"
+}, {
+	"id": "SNSP-AOSP-EUR-0",
+	"title": "Operation Starfi5h"
+}, {
+	"id": "SNSP-A24P-EUR-0",
+	"title": "Phantom 2040"
+}, {
+	"id": "SNSP-APFP-EUR-0",
+	"title": "Pinball Fantasies"
+}, {
+	"id": "SNSP-AR9P-EUR-0",
+	"title": "Primal Rage"
+}, {
+	"id": "SNSP-ARQP-EUR-0",
+	"title": "Realm"
+}, {
+	"id": "SNSP-AROP-EUR-0",
+	"title": "Rise of the Robots"
+}, {
+	"id": "SNSP-VR-EUR-0",
+	"title": "RoboCop vs. The Terminator"
+}, {
+	"id": "SNSP-JA-EUR-0",
+	"title": "Smash Tennis"
+}, {
+	"id": "SNSP-AMCP-EUR-0",
+	"title": "Spider-Man & Venom: Maximum Carnage"
+}, {
+	"id": "SNSP-AUZP-EUR-0",
+	"title": "Street Fighter Alpha 2"
+}, {
+	"id": "SNSP-ZH-EUR-0",
+	"title": "Super B.C. Kid"
+}, {
+	"id": "SNSP-RI-EUR-0",
+	"title": "Super Metroid"
+}, {
+	"id": "SNSP-FS-EUR-0",
+	"title": "Super Soccer"
+}, {
+	"id": "SNSP-ARJP-EUR-0",
+	"title": "Super Star Wars III: Return of the Jedi"
+}, {
+	"id": "SNSP-XW-EUR-0",
+	"title": "Super Street Fighter II: The New Challengers"
+}, {
+	"id": "SNSP-ST-EUR-1",
+	"title": "Super Tennis"
+}, {
+	"id": "SNSP-AQTP-EUR-0",
+	"title": "Terranigma"
+}, {
+	"id": "SNSP-5Z-EUR-0",
+	"title": "Tiny Toon Adventures: Wild & Wacky Sports"
+}, {
+	"id": "SNSP-ATTP-EUR-0",
+	"title": "Turbo Toons"
+}, {
+	"id": "SNSP-A3ZP-EUR-0",
+	"title": "Ultimate Mortal Kombat 3"
+}, {
+	"id": "SNSP-AUSP-EUR-0",
+	"title": "Urban Strike"
+}, {
+	"id": "SNSP-8Z-EUR-0",
+	"title": "Val d'isére Championship"
+}, {
+	"id": "SNSP-4V-EUR-0",
+	"title": "Vortex"
+}, {
+	"id": "SNSP-4W-EUR-0",
+	"title": "Wild Guns"
+}, {
+	"id": "SNSP-AXSP-EUR-0",
+	"title": "Winter Gold"
+}, {
+	"id": "SNSP-X7-EUR-0",
+	"title": "X-Kaliber 2097"
+}, {
+	"id": "SNSP-AE2P-FAH-0",
+	"title": "Aero the Acro-Bat 2"
+}, {
+	"id": "SNSP-8A-FAH-0",
+	"title": "Alfred Chicken"
+}, {
+	"id": "SNSP-XE-FAH-0",
+	"title": "Astérix"
+}, {
+	"id": "SNSP-AXOP-FAH-0",
+	"title": "Astérix & Obelix"
+}, {
+	"id": "SNSP-LW-FAH-0",
+	"title": "Le Cobaye"
+}, {
+	"id": "SNSP-8X-FAH-0",
+	"title": "Donkey Kong Country"
+}, {
+	"id": "SNSP-ADNP-FAH-1",
+	"title": "Donkey Kong Country 2: Diddy's Kong Quest"
+}, {
+	"id": "SNSP-84-FAH-0",
+	"title": "FIFA International Soccer"
+}, {
+	"id": "SNSP-JN-FAH-0",
+	"title": "Jack Nicklaus Golf"
+}, {
+	"id": "SNSP-LV-FAH-0",
+	"title": "The Lost Vikings"
+}, {
+	"id": "SNSP-ALYP-FAH-0",
+	"title": "Lucky Luke"
+}, {
+	"id": "SNSP-RX-FAH-0",
+	"title": "Mega Man X"
+}, {
+	"id": "SNSP-LR-FAH-0",
+	"title": "Nintendo Scope 6"
+}, {
+	"id": "SNSP-PD-FAH-0",
+	"title": "Parodius"
+}, {
+	"id": "SNSP-P4-FAH-0",
+	"title": "Plok"
+}, {
+	"id": "SNSP-ER-FAH-0",
+	"title": "R-Type III: The Third Lightning"
+}, {
+	"id": "SNSP-FO-FAH-0",
+	"title": "Starwing"
+}, {
+	"id": "SNSP-S2-FAH-0",
+	"title": "Street Fighter II: The World Warrior"
+}, {
+	"id": "SNSP-TI-FAH-1",
+	"title": "Street Fighter II Turbo: Hyper Fighting"
+}, {
+	"id": "SNSP-CQ-FAH-0",
+	"title": "Stunt Race FX"
+}, {
+	"id": "SNSP-NH-FAH-0",
+	"title": "Super Hockey"
+}, {
+	"id": "SNSP-4M-FAH-0",
+	"title": "Super Mario All-Stars"
+}, {
+	"id": "SNSP-MK-FAH-0",
+	"title": "Super Mario Kart"
+}, {
+	"id": "SNSP-MW-FAH-1",
+	"title": "Super Mario World"
+}, {
+	"id": "SNSP-YI-FAH-1",
+	"title": "Super Mario World 2: Yoshi's Island"
+}, {
+	"id": "SNSP-RI-FAH-0",
+	"title": "Super Metroid"
+}, {
+	"id": "SNSP-A2VP-FAH-0",
+	"title": "Tintin: Le Temple du Soleil"
+}, {
+	"id": "SNSP-AT6P-FAH-0",
+	"title": "Tintin au Tibet"
+}, {
+	"id": "SNSP-RJ-FRA-0",
+	"title": "Aladdin"
+}, {
+	"id": "SNSP-WY-FRA-0",
+	"title": "Blanco World Class Rugby"
+}, {
+	"id": "SNSP-EF-FRA-0",
+	"title": "Dragon Ball Z: La Légende Saien"
+}, {
+	"id": "SNSP-Z2-FRA-0",
+	"title": "Dragon Ball Z: Super Butouden"
+}, {
+	"id": "SNSP-AZ4F-FRA-0",
+	"title": "Dragon Ball Z: Ultime Menace"
+}, {
+	"id": "SNSP-G6-FRA-0",
+	"title": "Goof Troop"
+}, {
+	"id": "SNSP-JG-FRA-0",
+	"title": "Illusion of Time"
+}, {
+	"id": "SNSP-JC-FRA-0",
+	"title": "Jimmy Connors Pro Tennis Tour"
+}, {
+	"id": "SNSP-J8-FRA-0",
+	"title": "Jurassic Park"
+}, {
+	"id": "SNSP-ZL-FRA-0",
+	"title": "The Legend of Zelda: A Link to the Past"
+}, {
+	"id": "SNSP-7K-FRA-0",
+	"title": "Le Livre de la Jungle"
+}, {
+	"id": "SNSP-MU-FRA-0",
+	"title": "Mario is Missing!"
+}, {
+	"id": "SNSP-WM-FRA-0",
+	"title": "MechWarrior"
+}, {
+	"id": "SNSP-MQ-FRA-0",
+	"title": "Mystic Quest Legend"
+}, {
+	"id": "SNSP-25-FRA-0",
+	"title": "Pac-Man 2: The New Adventures"
+}, {
+	"id": "SNSP-R2-FRA-0",
+	"title": "Ranma ½"
+}, {
+	"id": "SNSP-ALKP-FRA-0",
+	"title": "Le Roi Lion"
+}, {
+	"id": "SNSP-AE-FRA-0",
+	"title": "Sailor Moon"
+}, {
+	"id": "SNSP-SC-FRA-0",
+	"title": "SimCity"
+}, {
+	"id": "SNSP-3C-FRG-0",
+	"title": "Choplifter III"
+}, {
+	"id": "SNSP-Y5-FRG-0",
+	"title": "Claymates"
+}, {
+	"id": "SNSP-AKLP-FRG-0",
+	"title": "Killer Instinct"
+}, {
+	"id": "SNSP-NH-GPS-0",
+	"title": "Super Hockey"
+}, {
+	"id": "SNSP-ANIH-HOL-0",
+	"title": "Lufia"
+}, {
+	"id": "SNSP-SG-ITA-0",
+	"title": "Super Strike Gunner"
+}, {
+	"id": "SNS-9D-LTN-1",
+	"title": "The Death and Return of Superman"
+}, {
+	"id": "SNSP-VY-NOE-0",
+	"title": "Addams Family Values"
+}, {
+	"id": "SNSP-AF-NOE-0",
+	"title": "The Addams Family"
+}, {
+	"id": "SNSP-XB-NOE-0",
+	"title": "Aero the Acro-Bat"
+}, {
+	"id": "SNSP-8A-NOE-0",
+	"title": "Alfred Chicken"
+}, {
+	"id": "SNSP-AP-NOE-0",
+	"title": "Alien vs. Predator"
+}, {
+	"id": "SNSP-9W-NOE-0",
+	"title": "An American Tail: Fievel Goes West"
+}, {
+	"id": "SNSP-TW-NOE-0",
+	"title": "Another World"
+}, {
+	"id": "SNSP-XE-NOE-0",
+	"title": "Asterix"
+}, {
+	"id": "SNSP-AX-NOE-0",
+	"title": "Axelay"
+}, {
+	"id": "SNSP-BJ-NOE-0",
+	"title": "Batman Returns"
+}, {
+	"id": "SNSP-NX-NOE-0",
+	"title": "Battletoads in Battlemaniacs"
+}, {
+	"id": "SNSP-2V-NOE-0",
+	"title": "Beethoven: The Ultimate Canine Caper!"
+}, {
+	"id": "SNSP-6Z-NOE-0",
+	"title": "Blackhawk"
+}, {
+	"id": "SNSP-B6-NOE-0",
+	"title": "The Blues Brothers"
+}, {
+	"id": "SNSP-B4-NOE-0",
+	"title": "B.O.B."
+}, {
+	"id": "SNSP-RE-NOE-0",
+	"title": "Brawl Brothers: Rival Turf! 2"
+}, {
+	"id": "SNSP-YN-NOE-0",
+	"title": "Bubsy in Claws Encounters of the Furred Kind"
+}, {
+	"id": "SNSP-R7-NOE-0",
+	"title": "Bugs Bunny: Rabbit Rampage"
+}, {
+	"id": "SNSP-C2-NOE-0",
+	"title": "California Games II"
+}, {
+	"id": "SNSP-6A-NOE-0",
+	"title": "Captain America and The Avengers"
+}, {
+	"id": "SNSP-5P-NOE-0",
+	"title": "Championship Pool"
+}, {
+	"id": "SNSP-UD-NOE-0",
+	"title": "The Chaos Engine"
+}, {
+	"id": "SNSP-CH-NOE-0",
+	"title": "The Chessmaster"
+}, {
+	"id": "SNSP-CK-NOE-0",
+	"title": "Chuck Rock"
+}, {
+	"id": "SNSP-8C-NOE-0",
+	"title": "Clay Fighter"
+}, {
+	"id": "SNSP-6C-NOE-0",
+	"title": "Cliffhanger"
+}, {
+	"id": "SNSP-J2-NOE-0",
+	"title": "Congo's Caper"
+}, {
+	"id": "SNSP-C8-NOE-0",
+	"title": "Cool Spot"
+}, {
+	"id": "SNSP-AV-NOE-0",
+	"title": "Cybernator"
+}, {
+	"id": "SNSP-YF-NOE-0",
+	"title": "Daffy Duck: The Marvin Missions"
+}, {
+	"id": "SNSP-ADCP-NOE-0",
+	"title": "Daze Before Christmas"
+}, {
+	"id": "SNSP-4D-NOE-0",
+	"title": "Dennis"
+}, {
+	"id": "SNSP-DW-NOE-0",
+	"title": "DinoCity"
+}, {
+	"id": "SNSP-DI-NOE-0",
+	"title": "Dragon's Lair"
+}, {
+	"id": "SNSP-FZ-NOE-0",
+	"title": "F-Zero"
+}, {
+	"id": "SNSP-GN-NOE-0",
+	"title": "Fatal Fury"
+}, {
+	"id": "SNSP-F2-NOE-0",
+	"title": "Final Fight 2"
+}, {
+	"id": "SNSP-FK-NOE-0",
+	"title": "First Samurai"
+}, {
+	"id": "SNSP-5F-NOE-0",
+	"title": "Flashback"
+}, {
+	"id": "SNSP-9F-NOE-0",
+	"title": "The Flintstones: The Treasure of Sierra Madrock"
+}, {
+	"id": "SNSP-GK-NOE-0",
+	"title": "George Foreman's KO Boxing"
+}, {
+	"id": "SNSP-HV-NOE-0",
+	"title": "Harley's Humongous Adventure"
+}, {
+	"id": "SNSP-HA-NOE-0",
+	"title": "Home Alone"
+}, {
+	"id": "SNSP-HN-NOE-0",
+	"title": "Home Alone 2: Lost in New York"
+}, {
+	"id": "SNSP-HO-NOE-0",
+	"title": "Hook"
+}, {
+	"id": "SNSP-HZ-NOE-0",
+	"title": "Hyper Zone"
+}, {
+	"id": "SNSP-JG-NOE-1",
+	"title": "Illusion of Time"
+}, {
+	"id": "SNSP-C7-NOE-0",
+	"title": "The Incredible Crash Dummies"
+}, {
+	"id": "SNSP-JJ-NOE-0",
+	"title": "James Bond Jr."
+}, {
+	"id": "SNSP-JT-NOE-0",
+	"title": "Joe & Mac: Caveman Ninja"
+}, {
+	"id": "SNSP-PJ-NOE-0",
+	"title": "Kevin Keegan's Player Manager"
+}, {
+	"id": "SNSP-ZI-NOE-0",
+	"title": "Kid Klown in Crazy Chase"
+}, {
+	"id": "SNSP-KM-NOE-0",
+	"title": "King of the Monsters"
+}, {
+	"id": "SNSP-LO-NOE-0",
+	"title": "Knights of the Round"
+}, {
+	"id": "SNSP-L5-NOE-0",
+	"title": "Last Action Hero"
+}, {
+	"id": "SNSP-ALTP-NOE-0",
+	"title": "Looney Tunes Basketball"
+}, {
+	"id": "SNSP-AOMD-NOE-0",
+	"title": "Lothar Matthäus Super Soccer"
+}, {
+	"id": "SNSP-ALYP-NOE-0",
+	"title": "Lucky Luke"
+}, {
+	"id": "SNSP-YG-NOE-0",
+	"title": "Magic Boy"
+}, {
+	"id": "SNSP-WM-NOE-0",
+	"title": "MechWarrior"
+}, {
+	"id": "SNSP-AWCP-NOE-0",
+	"title": "Michael Jordan: Chaos in the Windy City"
+}, {
+	"id": "SNSP-KX-NOE-0",
+	"title": "Mortal Kombat"
+}, {
+	"id": "SNSP-N8-NOE-0",
+	"title": "Mr. Nutz"
+}, {
+	"id": "SNSP-PD-NOE-0",
+	"title": "Parodius"
+}, {
+	"id": "SNSP-PH-NOE-0",
+	"title": "Phalanx: The Enforce Fighter A-144"
+}, {
+	"id": "SNSP-8P-NOE-0",
+	"title": "The Pirates of Dark Water"
+}, {
+	"id": "SNSP-AXRD-NOE-0",
+	"title": "Revolution X"
+}, {
+	"id": "SNSP-RB-NOE-0",
+	"title": "Rival Turf"
+}, {
+	"id": "SNSP-A7SP-NOE-0",
+	"title": "Samurai Shodown"
+}, {
+	"id": "SNSP-AEOD-NOE-0",
+	"title": "Secret of Evermore"
+}, {
+	"id": "SNSP-K2-NOE-0",
+	"title": "Secret of Mana"
+}, {
+	"id": "SNSP-FO-NOE-0",
+	"title": "Starwing"
+}, {
+	"id": "SNSP-FU-NOE-0",
+	"title": "Starwing Competition"
+}, {
+	"id": "SNSP-S2-NOE-0",
+	"title": "Street Fighter II: The World Warrior"
+}, {
+	"id": "SNSP-TI-NOE-1",
+	"title": "Street Fighter II Turbo: Hyper Fighting"
+}, {
+	"id": "SNSP-AZ-NOE-0",
+	"title": "Super Air Diver"
+}, {
+	"id": "SNSP-8B-NOE-0",
+	"title": "Super Battleship"
+}, {
+	"id": "SNSP-AD-NOE-0",
+	"title": "Super Castlevania IV"
+}, {
+	"id": "SNSP-WD-NOE-0",
+	"title": "Super Double Dragon"
+}, {
+	"id": "SNSP-A-SG-NOE-2",
+	"title": "Super Game Boy"
+}, {
+	"id": "SNSP-OX-NOE-0",
+	"title": "Super Ice Hockey"
+}, {
+	"id": "SNSP-CS-NOE-0",
+	"title": "Super Probotector: Alien Rebels"
+}, {
+	"id": "SNSP-SR-NOE-0",
+	"title": "Super R-Type"
+}, {
+	"id": "SNSP-WV-NOE-0",
+	"title": "Super SWIV"
+}, {
+	"id": "SNSP-TU-NOE-0",
+	"title": "Super Turrican"
+}, {
+	"id": "SNSP-A2TP-NOE-0",
+	"title": "Super Turrican 2"
+}, {
+	"id": "SNSP-AFYP-NOE-0",
+	"title": "Syndicate"
+}, {
+	"id": "SNSP-8F-NOE-0",
+	"title": "Teenage Mutant Hero Turtles V: Tournament Fighters"
+}, {
+	"id": "SNSP-XV-NOE-0",
+	"title": "Terminator 2: The Arcade Game"
+}, {
+	"id": "SNSP-AQTD-NOE-0",
+	"title": "Terranigma"
+}, {
+	"id": "SNSP-AQTD-NOE-1",
+	"title": "Terranigma"
+}, {
+	"id": "SNSP-TA-NOE-0",
+	"title": "Tiny Toon Adventures: Buster Busts Loose!"
+}, {
+	"id": "SNSP-4L-NOE-0",
+	"title": "Unirally"
+}, {
+	"id": "SNSP-ADWP-NOE-0",
+	"title": "WeaponLord"
+}, {
+	"id": "SNSP-W4-NOE-0",
+	"title": "Winter Olympics: Lillehammer '94"
+}, {
+	"id": "SNSP-WZ-NOE-0",
+	"title": "World Heroes"
+}, {
+	"id": "SNSP-AW3P-NOE-0",
+	"title": "Worms"
+}, {
+	"id": "SNSP-ZA-NOE-0",
+	"title": "Zombies"
+}, {
+	"id": "SNSP-GZ-SCN-0",
+	"title": "Gods"
+}, {
+	"id": "SNSP-ALKP-SCN-0",
+	"title": "The Lion King"
+}, {
+	"id": "SNSP-SO-SCN-0",
+	"title": "Soul Blazer"
+}, {
+	"id": "SNSP-XZ-SCN-0",
+	"title": "X-Zone"
+}, {
+	"id": "SNSP-6F-UKV-0",
+	"title": "The Adventures of Dr. Franken"
+}, {
+	"id": "SNSP-UL-UKV-0",
+	"title": "Battletoads & Double Dragon"
+}, {
+	"id": "SNSP-YN-UKV-0",
+	"title": "Bubsy in Claws Encounters of the Furred Kind"
+}, {
+	"id": "SNSP-OS-UKV-0",
+	"title": "Desert Fighter"
+}, {
+	"id": "SNSP-AD8P-UKV-0",
+	"title": "Doom"
+}, {
+	"id": "SNSP-E7-UKV-0",
+	"title": "Eek! The Cat"
+}, {
+	"id": "SNSP-FZ-UKV-0",
+	"title": "F-Zero"
+}, {
+	"id": "SNSP-D8-UKV-0",
+	"title": "Family Dog"
+}, {
+	"id": "SNSP-AFNP-UKV-0",
+	"title": "The Flintstones"
+}, {
+	"id": "SNSP-7N-UKV-0",
+	"title": "fun 'n games"
+}, {
+	"id": "SNSP-8U-UKV-0",
+	"title": "The Incredible Hulk"
+}, {
+	"id": "SNSP-8S-UKV-1",
+	"title": "International Sensible Soccer: World Champions"
+}, {
+	"id": "SNSP-JX-UKV-0",
+	"title": "James Pond's Crazy Sports"
+}, {
+	"id": "SNSP-AJBP-UKV-0",
+	"title": "Jelly Boy"
+}, {
+	"id": "SNSP-J8-UKV-0",
+	"title": "Jurassic Park"
+}, {
+	"id": "SNSP-AKLP-UKV-0",
+	"title": "Killer Instinct"
+}, {
+	"id": "SNSP-6L-UKV-0",
+	"title": "Legend"
+}, {
+	"id": "SNSP-ZL-UKV-0",
+	"title": "The Legend of Zelda: A Link to the Past"
+}, {
+	"id": "SNSP-LK-UKV-0",
+	"title": "Lethal Enforcers"
+}, {
+	"id": "SNSP-L3-UKV-0",
+	"title": "Lethal Weapon"
+}, {
+	"id": "SNSP-RX-UKV-0",
+	"title": "Mega Man X"
+}, {
+	"id": "SNSP-A3RP-UKV-0",
+	"title": "Mighty Morphin Power Rangers: The Fighting Edition"
+}, {
+	"id": "SNSP-PW-UKV-0",
+	"title": "Pilotwings"
+}, {
+	"id": "SNSP-K2-UKV-1",
+	"title": "Secret of Mana"
+}, {
+	"id": "SNSP-8S-UKV-0",
+	"title": "Sensible Soccer: European Champions"
+}, {
+	"id": "SNSP-4P-UKV-0",
+	"title": "Side Pocket"
+}, {
+	"id": "SNSP-7Q-UKV-0",
+	"title": "Spectre"
+}, {
+	"id": "SNSP-XN-UKV-0",
+	"title": "Star Trek: The Next Generation - Future's Past"
+}, {
+	"id": "SNSP-FO-UKV-1",
+	"title": "Starwing"
+}, {
+	"id": "SNSP-FU-UKV-0",
+	"title": "Starwing Competition"
+}, {
+	"id": "SNSP-TI-UKV-0",
+	"title": "Street Fighter II Turbo: Hyper Fighting"
+}, {
+	"id": "SNSP-KE-UKV-0",
+	"title": "Striker"
+}, {
+	"id": "SNSP-AT-UKV-0",
+	"title": "Super Aleste"
+}, {
+	"id": "SNSP-2X-UKV-0",
+	"title": "Super Battletank 2"
+}, {
+	"id": "SNSP-ACIP-UKV-0",
+	"title": "Super International Cricket"
+}, {
+	"id": "SNSP-4M-UKV-0",
+	"title": "Super Mario All-Stars"
+}, {
+	"id": "SNSP-MK-UKV-0",
+	"title": "Super Mario Kart"
+}, {
+	"id": "SNSP-RI-UKV-0",
+	"title": "Super Metroid"
+}, {
+	"id": "SNSP-4Q-UKV-0",
+	"title": "Super Punch-Out!!"
+}, {
+	"id": "SNSP-SR-UKV-0",
+	"title": "Super R-Type"
+}, {
+	"id": "SNSP-XW-UKV-0",
+	"title": "Super Street Fighter II: The New Challengers"
+}, {
+	"id": "SNSP-TP-UKV-0",
+	"title": "Terminator 2: Judgment Day"
+}, {
+	"id": "SNSP-ATQP-UKV-0",
+	"title": "Theme Park"
+}, {
+	"id": "SNSP-XC-UKV-0",
+	"title": "Total Carnage"
+}, {
+	"id": "SNSP-TE-UKV-0",
+	"title": "Tuff E Nuff"
+}, {
+	"id": "SNS-A3NE-USA-0",
+	"title": "3 Ninjas Kick Back"
+}, {
+	"id": "SNS-EL-USA-0",
+	"title": "The 7th Saga"
+}, {
+	"id": "SNS-ANNE-USA-0",
+	"title": "Aaahh!!! Real Monsters"
+}, {
+	"id": "SNS-N5-USA-0",
+	"title": "ABC Monday Night Football"
+}, {
+	"id": "SNS-ACME-USA-0",
+	"title": "ACME Animation Factory"
+}, {
+	"id": "SNS-AR-USA-0",
+	"title": "ActRaiser"
+}, {
+	"id": "SNS-A8-USA-0",
+	"title": "ActRaiser 2"
+}, {
+	"id": "SNS-VY-USA-0",
+	"title": "Addams Family Values"
+}, {
+	"id": "SNS-AF-USA-0",
+	"title": "The Addams Family"
+}, {
+	"id": "SNS-AH-USA-0",
+	"title": "The Addams Family: Pugsley's Scavenger Hunt"
+}, {
+	"id": "SNS-IB-USA-0",
+	"title": "Advanced Dungeons & Dragons: Eye of the Beholder"
+}, {
+	"id": "SNS-ABTE-USA-0",
+	"title": "The Adventures of Batman & Robin"
+}, {
+	"id": "SNS-6F-USA-0",
+	"title": "The Adventures of Dr. Franken"
+}, {
+	"id": "SNS-YK-USA-0",
+	"title": "The Adventures of Kid Kleets"
+}, {
+	"id": "SNS-AMOE-USA-0",
+	"title": "The Adventures of Mighty Max"
+}, {
+	"id": "SNS-RZ-USA-0",
+	"title": "The Adventures of Rocky and Bullwinkle and Friends"
+}, {
+	"id": "SNS-Y8-USA-0",
+	"title": "Adventures of Yogi Bear"
+}, {
+	"id": "SNS-AERE-USA-0",
+	"title": "Aero Fighters"
+}, {
+	"id": "SNS-XB-USA-0",
+	"title": "Aero the Acro-Bat"
+}, {
+	"id": "SNS-AE2E-USA-0",
+	"title": "Aero the Acro-Bat 2"
+}, {
+	"id": "SNS-AL-USA-0",
+	"title": "Aerobiz"
+}, {
+	"id": "SNS-AG-USA-0",
+	"title": "Aerobiz Supersonic"
+}, {
+	"id": "SNS-ACCE-USA-0",
+	"title": "Air Cavalry"
+}, {
+	"id": "SNS-4A-USA-0",
+	"title": "Air Strike Patrol"
+}, {
+	"id": "SNS-AUJE-USA-0",
+	"title": "Al Unser Jr.'s Road to the Top"
+}, {
+	"id": "SNS-RJ-USA-0",
+	"title": "Aladdin"
+}, {
+	"id": "SNS-A3-USA-0",
+	"title": "Alien 3"
+}, {
+	"id": "SNS-AP-USA-0",
+	"title": "Alien vs. Predator"
+}, {
+	"id": "SNS-AA-USA-0",
+	"title": "American Gladiators"
+}, {
+	"id": "SNS-9W-USA-0",
+	"title": "An American Tail: Fievel Goes West"
+}, {
+	"id": "SNS-7A-USA-0",
+	"title": "Andre Agassi Tennis"
+}, {
+	"id": "SNS-ANCE-USA-0",
+	"title": "Animaniacs"
+}, {
+	"id": "SNS-AW7E-USA-0",
+	"title": "Arcade's Greatest Hits: The Atari Collection 1"
+}, {
+	"id": "SNS-RF-USA-0",
+	"title": "Arcana"
+}, {
+	"id": "SNS-A9-USA-0",
+	"title": "Ardy Light Foot"
+}, {
+	"id": "SNS-A6-USA-0",
+	"title": "Arkanoid: Doh It Again!"
+}, {
+	"id": "SNS-RW-USA-0",
+	"title": "Art of Fighting"
+}, {
+	"id": "SNS-AX-USA-0",
+	"title": "Axelay"
+}, {
+	"id": "SNS-ABZE-USA-0",
+	"title": "Ballz 3D"
+}, {
+	"id": "SNS-8L-USA-0",
+	"title": "Barbie Super Model"
+}, {
+	"id": "SNS-U5-USA-0",
+	"title": "Barkley Shut Up and Jam!"
+}, {
+	"id": "SNS-ABAE-USA-0",
+	"title": "Bass Masters Classic"
+}, {
+	"id": "SNS-A9BE-USA-0",
+	"title": "Bass Masters Classic: Pro Edition"
+}, {
+	"id": "SNS-AB2E-USA-0",
+	"title": "Bassin's Black Bass"
+}, {
+	"id": "SNS-A3BE-USA-0",
+	"title": "Batman Forever"
+}, {
+	"id": "SNS-BJ-USA-0",
+	"title": "Batman Returns"
+}, {
+	"id": "SNS-BZ-USA-0",
+	"title": "Battle Blaze"
+}, {
+	"id": "SNS-4B-USA-0",
+	"title": "Battle Cars"
+}, {
+	"id": "SNS-BT-USA-0",
+	"title": "Battle Clash"
+}, {
+	"id": "SNS-BG-USA-0",
+	"title": "Battle Grand Prix"
+}, {
+	"id": "SNS-UL-USA-0",
+	"title": "Battletoads & Double Dragon"
+}, {
+	"id": "SNS-NX-USA-0",
+	"title": "Battletoads in Battlemaniacs"
+}, {
+	"id": "SNS-BY-USA-0",
+	"title": "Bazooka Blitzkrieg"
+}, {
+	"id": "SNS-EW-USA-0",
+	"title": "Beauty and the Beast"
+}, {
+	"id": "SNS-ABUE-USA-0",
+	"title": "Beavis and Butt-Head"
+}, {
+	"id": "SNS-6B-USA-0",
+	"title": "Bebe's Kids"
+}, {
+	"id": "SNS-2V-USA-0",
+	"title": "Beethoven: The Ultimate Canine Caper!"
+}, {
+	"id": "SNS-BE-USA-0",
+	"title": "Best of the Best: Championship Karate"
+}, {
+	"id": "SNS-AB9E-USA-0",
+	"title": "Big Sky Trooper"
+}, {
+	"id": "SNS-ABME-USA-0",
+	"title": "Biker Mice from Mars"
+}, {
+	"id": "SNS-7F-USA-0",
+	"title": "Bill Walsh College Football"
+}, {
+	"id": "SNS-BV-USA-0",
+	"title": "Bio Metal"
+}, {
+	"id": "SNS-6Z-USA-0",
+	"title": "Blackthorne"
+}, {
+	"id": "SNS-BL-USA-0",
+	"title": "BlaZeon: The Bio-Cyborg Challenge"
+}, {
+	"id": "SNS-B6-USA-0",
+	"title": "The Blues Brothers"
+}, {
+	"id": "SNS-B4-USA-0",
+	"title": "B.O.B."
+}, {
+	"id": "SNS-ABNE-USA-0",
+	"title": "Bonkers"
+}, {
+	"id": "SNS-AB4E-USA-0",
+	"title": "Boogerman: A Pick and Flick Adventure"
+}, {
+	"id": "SNS-LL-USA-0",
+	"title": "Boxing Legends of the Ring"
+}, {
+	"id": "SNS-3B-USA-0",
+	"title": "Brain Lord"
+}, {
+	"id": "SNS-B7-USA-0",
+	"title": "The Brainies"
+}, {
+	"id": "SNS-5D-USA-0",
+	"title": "Bram Stoker's Dracula"
+}, {
+	"id": "SNS-QF-USA-0",
+	"title": "Brandish"
+}, {
+	"id": "SNS-RE-USA-0",
+	"title": "Brawl Brothers"
+}, {
+	"id": "SNS-ABXE-USA-0",
+	"title": "BreakThru!"
+}, {
+	"id": "SNS-BF-USA-0",
+	"title": "Breath of Fire"
+}, {
+	"id": "SNS-AF2E-USA-0",
+	"title": "Breath of Fire II"
+}, {
+	"id": "SNS-5Y-USA-0",
+	"title": "Brett Hull Hockey"
+}, {
+	"id": "SNS-ABHE-USA-0",
+	"title": "Brett Hull Hockey '95"
+}, {
+	"id": "SNS-AB6E-USA-0",
+	"title": "Bronkie the Bronchiasaurus"
+}, {
+	"id": "SNS-AWUE-USA-0",
+	"title": "Brunswick World Tournament of Champions"
+}, {
+	"id": "SNS-ABLE-USA-0",
+	"title": "Brutal: Paws of Fury"
+}, {
+	"id": "SNS-ABBE-USA-0",
+	"title": "Bubsy II"
+}, {
+	"id": "SNS-UY-USA-0",
+	"title": "Bubsy in Claws Encounters of the Furred Kind"
+}, {
+	"id": "SNS-R7-USA-0",
+	"title": "Bugs Bunny: Rabbit Rampage"
+}, {
+	"id": "SNS-BU-USA-0",
+	"title": "Bulls vs. Blazers and the NBA Playoffs"
+}, {
+	"id": "SNS-BU-USA-1",
+	"title": "Bulls vs. Blazers and the NBA Playoffs"
+}, {
+	"id": "SNS-AYKE-USA-0",
+	"title": "Bust-a-Move"
+}, {
+	"id": "SNS-CC-USA-0",
+	"title": "Cacoma Knight in Bizyland"
+}, {
+	"id": "SNS-CJ-USA-0",
+	"title": "Cal Ripken Jr. Baseball"
+}, {
+	"id": "SNS-C2-USA-0",
+	"title": "California Games II"
+}, {
+	"id": "SNS-ASCE-USA-0",
+	"title": "Cannondale Cup"
+}, {
+	"id": "SNS-NL-USA-0",
+	"title": "Capcom's MVP Football"
+}, {
+	"id": "SNS-JL-USA-0",
+	"title": "Capcom's Soccer Shootout"
+}, {
+	"id": "SNS-6A-USA-0",
+	"title": "Captain America and The Avengers"
+}, {
+	"id": "SNS-QM-USA-0",
+	"title": "Captain Commando"
+}, {
+	"id": "SNS-CP-USA-0",
+	"title": "Captain Novolin"
+}, {
+	"id": "SNS-ACAE-USA-0",
+	"title": "Carrier Aces"
+}, {
+	"id": "SNS-AXCE-USA-0",
+	"title": "Casper"
+}, {
+	"id": "SNS-ADZE-USA-0",
+	"title": "Castlevania: Dracula X"
+}, {
+	"id": "SNS-8W-USA-0",
+	"title": "Champions World Class Soccer"
+}, {
+	"id": "SNS-5P-USA-0",
+	"title": "Championship Pool"
+}, {
+	"id": "SNS-67-USA-0",
+	"title": "Championship Soccer '94"
+}, {
+	"id": "SNS-ZV-USA-0",
+	"title": "Chavez"
+}, {
+	"id": "SNS-AC2E-USA-0",
+	"title": "Chavez II"
+}, {
+	"id": "SNS-CH-USA-0",
+	"title": "The Chessmaster"
+}, {
+	"id": "SNS-CE-USA-0",
+	"title": "Chester Cheetah: Too Cool to Fool"
+}, {
+	"id": "SNS-7C-USA-0",
+	"title": "Chester Cheetah: Wild, Wild Quest"
+}, {
+	"id": "SNS-3C-USA-0",
+	"title": "Choplifter III"
+}, {
+	"id": "SNS-ACTE-USA-0",
+	"title": "Chrono Trigger"
+}, {
+	"id": "SNS-CK-USA-0",
+	"title": "Chuck Rock"
+}, {
+	"id": "SNS-8C-USA-0",
+	"title": "Clay Fighter"
+}, {
+	"id": "SNS-7E-USA-0",
+	"title": "Clay Fighter: Tournament Edition"
+}, {
+	"id": "SNS-ACZE-USA-0",
+	"title": "Clay Fighter 2: Judgment Clay"
+}, {
+	"id": "SNS-Y5-USA-0",
+	"title": "Claymates"
+}, {
+	"id": "SNS-6C-USA-0",
+	"title": "Cliffhanger"
+}, {
+	"id": "SNS-CL-USA-0",
+	"title": "Clue"
+}, {
+	"id": "SNS-AC7E-USA-0",
+	"title": "College Football USA '97"
+}, {
+	"id": "SNS-ANYE-USA-0",
+	"title": "College Slam"
+}, {
+	"id": "SNS-CR-USA-0",
+	"title": "The Combatribes"
+}, {
+	"id": "SNS-J2-USA-0",
+	"title": "Congo's Caper"
+}, {
+	"id": "SNS-CS-USA-0",
+	"title": "Contra III: The Alien Wars"
+}, {
+	"id": "SNS-C8-USA-0",
+	"title": "Cool Spot"
+}, {
+	"id": "SNS-CD-USA-0",
+	"title": "Cool World"
+}, {
+	"id": "SNS-AC8E-USA-0",
+	"title": "CutThroat Island"
+}, {
+	"id": "SNS-CF-USA-0",
+	"title": "Cyber Spin"
+}, {
+	"id": "SNS-AV-USA-0",
+	"title": "Cybernator"
+}, {
+	"id": "SNS-DF-USA-0",
+	"title": "D-Force"
+}, {
+	"id": "SNS-YF-USA-0",
+	"title": "Daffy Duck: The Marvin Missions"
+}, {
+	"id": "SNS-DT-USA-0",
+	"title": "Darius Twin"
+}, {
+	"id": "SNS-ZT-USA-0",
+	"title": "David Crane's Amazing Tennis"
+}, {
+	"id": "SNS-9D-USA-0",
+	"title": "The Death and Return of Superman"
+}, {
+	"id": "SNS-AD6E-USA-0",
+	"title": "Demolition Man"
+}, {
+	"id": "SNS-3Z-USA-0",
+	"title": "Demon's Crest"
+}, {
+	"id": "SNS-4D-USA-0",
+	"title": "Dennis the Menace"
+}, {
+	"id": "SNS-RG-USA-0",
+	"title": "Desert Strike: Return to the Gulf"
+}, {
+	"id": "SNS-VH-USA-0",
+	"title": "Dig & Spike Volleyball"
+}, {
+	"id": "SNS-DW-USA-0",
+	"title": "DinoCity"
+}, {
+	"id": "SNS-AF9E-USA-0",
+	"title": "Dirt Trax FX"
+}, {
+	"id": "SNS-8X-USA-0",
+	"title": "Donkey Kong Country"
+}, {
+	"id": "SNS-8X-USA-1",
+	"title": "Donkey Kong Country"
+}, {
+	"id": "SNS-8X-USA-2",
+	"title": "Donkey Kong Country"
+}, {
+	"id": "SNS-8E-USA-0",
+	"title": "Donkey Kong Country: Competition Cartridge"
+}, {
+	"id": "SNS-ADNE-USA-0",
+	"title": "Donkey Kong Country 2: Diddy's Kong Quest"
+}, {
+	"id": "SNS-ADNE-USA-1",
+	"title": "Donkey Kong Country 2: Diddy's Kong Quest"
+}, {
+	"id": "SNS-A3CE-USA-0",
+	"title": "Donkey Kong Country 3: Dixie Kong's Double Trouble"
+}, {
+	"id": "SNS-AD8E-USA-0",
+	"title": "Doom"
+}, {
+	"id": "SNS-DM-USA-0",
+	"title": "Doomsday Warrior"
+}, {
+	"id": "SNS-5E-USA-0",
+	"title": "Double Dragon V: The Shadow Falls"
+}, {
+	"id": "SNS-AD5E-USA-0",
+	"title": "Dragon: The Bruce Lee Story"
+}, {
+	"id": "SNS-ADVE-USA-0",
+	"title": "Dragon View"
+}, {
+	"id": "SNS-DI-USA-0",
+	"title": "Dragon's Lair"
+}, {
+	"id": "SNS-DK-USA-0",
+	"title": "Drakkhen"
+}, {
+	"id": "SNS-VE-USA-0",
+	"title": "Dream T.V."
+}, {
+	"id": "SNS-V2-USA-0",
+	"title": "Dungeon Master"
+}, {
+	"id": "SNS-ED-USA-0",
+	"title": "Earth Defense Force"
+}, {
+	"id": "SNS-MB-USA-0",
+	"title": "EarthBound"
+}, {
+	"id": "SNS-AEJE-USA-0",
+	"title": "Earthworm Jim"
+}, {
+	"id": "SNS-A2EE-USA-0",
+	"title": "Earthworm Jim 2"
+}, {
+	"id": "SNS-E7-USA-0",
+	"title": "Eek! The Cat"
+}, {
+	"id": "SNS-L7-USA-0",
+	"title": "Elite Soccer"
+}, {
+	"id": "SNS-AESE-USA-0",
+	"title": "Emmitt Smith Football"
+}, {
+	"id": "SNS-EX-USA-0",
+	"title": "Equinox"
+}, {
+	"id": "SNS-EV-USA-0",
+	"title": "ESPN Baseball Tonight"
+}, {
+	"id": "SNS-AEHE-USA-0",
+	"title": "ESPN National Hockey Night"
+}, {
+	"id": "SNS-ASWE-USA-0",
+	"title": "ESPN Speed World"
+}, {
+	"id": "SNS-ASNE-USA-0",
+	"title": "ESPN Sunday Night NFL"
+}, {
+	"id": "SNS-46-USA-0",
+	"title": "E.V.O.: Search for Eden"
+}, {
+	"id": "SNS-9X-USA-0",
+	"title": "Exertainment Mountain Bike Rally"
+}, {
+	"id": "SNS-ALFE-USA-0",
+	"title": "Exertainment Mountain Bike Rally + Speed Racer"
+}, {
+	"id": "SNS-GL-USA-0",
+	"title": "Extra Innings"
+}, {
+	"id": "SNS-FZ-USA-0",
+	"title": "F-Zero"
+}, {
+	"id": "SNS-6P-USA-0",
+	"title": "F1 Pole Position"
+}, {
+	"id": "SNS-EH-USA-0",
+	"title": "F1 Race of Champions"
+}, {
+	"id": "SNS-E2-USA-0",
+	"title": "F1 Race of Champions II"
+}, {
+	"id": "SNS-2F-USA-0",
+	"title": "Faceball 2000"
+}, {
+	"id": "SNS-D8-USA-0",
+	"title": "Family Dog"
+}, {
+	"id": "SNS-FN-USA-0",
+	"title": "Family Feud"
+}, {
+	"id": "SNS-FN-USA-1",
+	"title": "Family Feud"
+}, {
+	"id": "SNS-GN-USA-0",
+	"title": "Fatal Fury"
+}, {
+	"id": "SNS-DJ-USA-0",
+	"title": "Fatal Fury 2"
+}, {
+	"id": "SNS-3R-USA-0",
+	"title": "Fatal Fury Special"
+}, {
+	"id": "SNS-84-USA-0",
+	"title": "FIFA International Soccer"
+}, {
+	"id": "SNS-A6SE-USA-0",
+	"title": "FIFA Soccer '96"
+}, {
+	"id": "SNS-A7IE-USA-0",
+	"title": "FIFA Soccer '97"
+}, {
+	"id": "SNS-YH-USA-1",
+	"title": "Fighter's History"
+}, {
+	"id": "SNS-MQ-USA-0",
+	"title": "Final Fantasy: Mystic Quest"
+}, {
+	"id": "SNS-F4-USA-0",
+	"title": "Final Fantasy II"
+}, {
+	"id": "SNS-F6-USA-0",
+	"title": "Final Fantasy III"
+}, {
+	"id": "SNS-FT-USA-0",
+	"title": "Final Fight"
+}, {
+	"id": "SNS-F2-USA-0",
+	"title": "Final Fight 2"
+}, {
+	"id": "SNS-AFZE-USA-0",
+	"title": "Final Fight 3"
+}, {
+	"id": "SNS-FY-USA-0",
+	"title": "Final Fight Guy"
+}, {
+	"id": "SNS-FW-USA-0",
+	"title": "Firepower 2000"
+}, {
+	"id": "SNS-3S-USA-0",
+	"title": "Firestriker"
+}, {
+	"id": "SNS-FK-USA-0",
+	"title": "First Samurai"
+}, {
+	"id": "SNS-5F-USA-0",
+	"title": "Flashback: The Quest for Identity"
+}, {
+	"id": "SNS-AFNE-USA-0",
+	"title": "The Flintstones"
+}, {
+	"id": "SNS-9F-USA-0",
+	"title": "The Flintstones: The Treasure of Sierra Madrock"
+}, {
+	"id": "SNS-UF-USA-0",
+	"title": "Football Fury"
+}, {
+	"id": "SNS-AFEE-USA-0",
+	"title": "Foreman For Real"
+}, {
+	"id": "SNS-AFKE-USA-0",
+	"title": "Frank Thomas' Big Hurt Baseball"
+}, {
+	"id": "SNS-AF8E-USA-0",
+	"title": "Frantic Flea"
+}, {
+	"id": "SNS-AF7E-USA-0",
+	"title": "Frogger"
+}, {
+	"id": "SNS-7N-USA-0",
+	"title": "fun 'n games"
+}, {
+	"id": "SNS-RL-USA-0",
+	"title": "Gemfire"
+}, {
+	"id": "SNS-6G-USA-0",
+	"title": "Genghis Khan II: Clan of the Gray Wolf"
+}, {
+	"id": "SNS-GK-USA-0",
+	"title": "George Foreman's KO Boxing"
+}, {
+	"id": "SNS-AGJE-USA-0",
+	"title": "Ghoul Patrol"
+}, {
+	"id": "SNS-SU-USA-0",
+	"title": "Goal!"
+}, {
+	"id": "SNS-GZ-USA-0",
+	"title": "Gods"
+}, {
+	"id": "SNS-G6-USA-0",
+	"title": "Goof Troop"
+}, {
+	"id": "SNS-G7-USA-0",
+	"title": "GP-1"
+}, {
+	"id": "SNS-AGRE-USA-0",
+	"title": "GP-1: Part II"
+}, {
+	"id": "SNS-G3-USA-0",
+	"title": "Gradius III"
+}, {
+	"id": "SNS-4C-USA-0",
+	"title": "The Great Circus Mystery: Starring Micky & Minnie"
+}, {
+	"id": "SNS-GW-USA-0",
+	"title": "The Great Waldo Search"
+}, {
+	"id": "SNS-GU-USA-0",
+	"title": "GunForce"
+}, {
+	"id": "SNS-AHGE-USA-0",
+	"title": "Hagane"
+}, {
+	"id": "SNS-JO-USA-0",
+	"title": "Hal's Hole in One Golf"
+}, {
+	"id": "SNS-LJ-USA-0",
+	"title": "Hammer Lock Wrestling"
+}, {
+	"id": "SNS-3Y-USA-0",
+	"title": "Hard Ball III"
+}, {
+	"id": "SNS-HV-USA-0",
+	"title": "Harley's Humongous Adventure"
+}, {
+	"id": "SNS-AYWE-USA-0",
+	"title": "Harvest Moon"
+}, {
+	"id": "SNS-AVSE-USA-0",
+	"title": "Head-On Soccer"
+}, {
+	"id": "SNS-HC-USA-0",
+	"title": "Hit the Ice"
+}, {
+	"id": "SNS-HA-USA-0",
+	"title": "Home Alone"
+}, {
+	"id": "SNS-HN-USA-0",
+	"title": "Home Alone 2: Lost in New York"
+}, {
+	"id": "SNS-AHIE-USA-0",
+	"title": "Home Improvement"
+}, {
+	"id": "SNS-HO-USA-0",
+	"title": "Hook"
+}, {
+	"id": "SNS-RO-USA-0",
+	"title": "The Hunt for Red October"
+}, {
+	"id": "SNS-AHUE-USA-0",
+	"title": "Hurricanes"
+}, {
+	"id": "SNS-HQ-USA-0",
+	"title": "Hyper V-Ball"
+}, {
+	"id": "SNS-HZ-USA-0",
+	"title": "Hyper Zone"
+}, {
+	"id": "SNS-AIFE-USA-0",
+	"title": "The Ignition Factor"
+}, {
+	"id": "SNS-JG-USA-0",
+	"title": "Illusion of Gaia"
+}, {
+	"id": "SNS-DN-USA-0",
+	"title": "Imperium"
+}, {
+	"id": "SNS-AIYE-USA-0",
+	"title": "Incantation"
+}, {
+	"id": "SNS-C7-USA-0",
+	"title": "The Incredible Crash Dummies"
+}, {
+	"id": "SNS-8U-USA-0",
+	"title": "The Incredible Hulk"
+}, {
+	"id": "SNS-AIJE-USA-0",
+	"title": "Indiana Jones' Greatest Adventures"
+}, {
+	"id": "SNS-IN-USA-0",
+	"title": "Inindo: Way of the Ninja"
+}, {
+	"id": "SNS-5G-USA-0",
+	"title": "Inspector Gadget"
+}, {
+	"id": "SNS-3U-USA-0",
+	"title": "International Superstar Soccer"
+}, {
+	"id": "SNS-AWJE-USA-0",
+	"title": "International Superstar Soccer Deluxe"
+}, {
+	"id": "SNS-IT-USA-0",
+	"title": "International Tennis Tour"
+}, {
+	"id": "SNS-MT-USA-0",
+	"title": "The Irem Skins Game"
+}, {
+	"id": "SNS-AISE-USA-0",
+	"title": "The Itchy & Scratchy Game"
+}, {
+	"id": "SNS-AIZE-USA-0",
+	"title": "Izzy's Quest for the Olympic Rings"
+}, {
+	"id": "SNS-JN-USA-0",
+	"title": "Jack Nicklaus Golf"
+}, {
+	"id": "SNS-JJ-USA-0",
+	"title": "James Bond Jr."
+}, {
+	"id": "SNS-J6-USA-0",
+	"title": "Jammit"
+}, {
+	"id": "SNS-JY-USA-0",
+	"title": "Jeopardy!"
+}, {
+	"id": "SNS-7J-USA-0",
+	"title": "Jeopardy! - Deluxe Edition"
+}, {
+	"id": "SNS-8Y-USA-0",
+	"title": "Jeopardy! - Sports Edition"
+}, {
+	"id": "SNS-8J-USA-0",
+	"title": "The Jetsons: Invasion of the Planet Pirates"
+}, {
+	"id": "SNS-AWIE-USA-0",
+	"title": "Jim Lee's Wild Covert Action Teams"
+}, {
+	"id": "SNS-6J-USA-0",
+	"title": "Jim Power: The Lost Dimension in 3D"
+}, {
+	"id": "SNS-JC-USA-0",
+	"title": "Jimmy Connors' Pro Tennis Tour"
+}, {
+	"id": "SNS-AFUE-USA-0",
+	"title": "Jimmy Houston's Bass Tournament, U.S.A."
+}, {
+	"id": "SNS-JT-USA-0",
+	"title": "Joe & Mac"
+}, {
+	"id": "SNS-J3-USA-0",
+	"title": "Joe & Mac 2: Lost in the Tropics"
+}, {
+	"id": "SNS-JM-USA-0",
+	"title": "John Madden Football"
+}, {
+	"id": "SNS-MF-USA-0",
+	"title": "John Madden Football '93"
+}, {
+	"id": "SNS-AJDE-USA-0",
+	"title": "Judge Dredd"
+}, {
+	"id": "SNS-7K-USA-0",
+	"title": "The Jungle Book"
+}, {
+	"id": "SNS-AJGE-USA-0",
+	"title": "Jungle Strike"
+}, {
+	"id": "SNS-J8-USA-0",
+	"title": "Jurassic Park"
+}, {
+	"id": "SNS-J8-USA-1",
+	"title": "Jurassic Park"
+}, {
+	"id": "SNS-A2JE-USA-0",
+	"title": "Jurassic Park 2: The Chaos Continues"
+}, {
+	"id": "SNS-AJLE-USA-0",
+	"title": "Justice League Task Force"
+}, {
+	"id": "SNS-BB-USA-0",
+	"title": "Ka-Blooey"
+}, {
+	"id": "SNS-KC-USA-0",
+	"title": "Kawasaki Caribbean Challenge"
+}, {
+	"id": "SNS-AKEE-USA-0",
+	"title": "Kawasaki Superbike Challenge"
+}, {
+	"id": "SNS-JR-USA-0",
+	"title": "Ken Griffey Jr. Presents Major League Baseball"
+}, {
+	"id": "SNS-JR-USA-1",
+	"title": "Ken Griffey Jr. Presents Major League Baseball"
+}, {
+	"id": "SNS-A9GE-USA-0",
+	"title": "Ken Griffey Jr.'s Winning Run"
+}, {
+	"id": "SNS-M7-USA-0",
+	"title": "Kendo Rage"
+}, {
+	"id": "SNS-ZI-USA-0",
+	"title": "Kid Klown in Crazy Chase"
+}, {
+	"id": "SNS-AKLE-USA-0",
+	"title": "Killer Instinct"
+}, {
+	"id": "SNS-AAKE-USA-0",
+	"title": "King Arthur & The Knights of Justice"
+}, {
+	"id": "SNS-RC-USA-0",
+	"title": "King Arthur's World"
+}, {
+	"id": "SNS-EI-USA-0",
+	"title": "King of Dragons"
+}, {
+	"id": "SNS-KM-USA-0",
+	"title": "King of the Monsters"
+}, {
+	"id": "SNS-KT-USA-0",
+	"title": "King of the Monsters 2"
+}, {
+	"id": "SNS-AKFE-USA-0",
+	"title": "Kirby Super Star"
+}, {
+	"id": "SNS-PQ-USA-0",
+	"title": "Kirby's Avalanche"
+}, {
+	"id": "SNS-CG-USA-0",
+	"title": "Kirby's Dream Course"
+}, {
+	"id": "SNS-AFJE-USA-0",
+	"title": "Kirby's Dream Land 3"
+}, {
+	"id": "SNS-LO-USA-0",
+	"title": "Knights of the Round"
+}, {
+	"id": "SNS-FH-USA-0",
+	"title": "Krusty's Super Fun House"
+}, {
+	"id": "SNS-FH-USA-1",
+	"title": "Krusty's Super Fun House"
+}, {
+	"id": "SNS-AKPE-USA-0",
+	"title": "Kyle Petty's No Fear Racing"
+}, {
+	"id": "SNS-LA-USA-0",
+	"title": "Lagoon"
+}, {
+	"id": "SNS-L8-USA-0",
+	"title": "Lamborghini American Challenge"
+}, {
+	"id": "SNS-L5-USA-0",
+	"title": "Last Action Hero"
+}, {
+	"id": "SNS-LW-USA-0",
+	"title": "The Lawnmower Man"
+}, {
+	"id": "SNS-6L-USA-0",
+	"title": "Legend"
+}, {
+	"id": "SNS-GG-USA-0",
+	"title": "The Legend of the Mystical Ninja"
+}, {
+	"id": "SNS-ZL-USA-0",
+	"title": "The Legend of Zelda: A Link to the Past"
+}, {
+	"id": "SNS-LE-USA-0",
+	"title": "Lemmings"
+}, {
+	"id": "SNS-LE-USA-1",
+	"title": "Lemmings"
+}, {
+	"id": "SNS-L2-USA-0",
+	"title": "Lemmings 2: The Tribes"
+}, {
+	"id": "SNS-LY-USA-0",
+	"title": "Lester the Unlikely"
+}, {
+	"id": "SNS-LK-USA-0",
+	"title": "Lethal Enforcers"
+}, {
+	"id": "SNS-L3-USA-0",
+	"title": "Lethal Weapon"
+}, {
+	"id": "SNS-7L-USA-0",
+	"title": "Liberty or Death"
+}, {
+	"id": "SNS-ALKE-USA-0",
+	"title": "The Lion King"
+}, {
+	"id": "SNS-AZ-USA-0",
+	"title": "Lock On"
+}, {
+	"id": "SNS-ALTE-USA-0",
+	"title": "Looney Tunes B-Ball"
+}, {
+	"id": "SNS-64-USA-0",
+	"title": "The Lord of the Rings: Volume 1"
+}, {
+	"id": "SNS-ALVE-USA-0",
+	"title": "Lost Vikings 2"
+}, {
+	"id": "SNS-LV-USA-0",
+	"title": "The Lost Vikings"
+}, {
+	"id": "SNS-ES-USA-0",
+	"title": "Lufia & The Fortress of Doom"
+}, {
+	"id": "SNS-ANIE-USA-0",
+	"title": "Lufia II: Rise of the Sinistrals"
+}, {
+	"id": "SNS-9M-USA-0",
+	"title": "Madden NFL '94"
+}, {
+	"id": "SNS-ANLE-USA-0",
+	"title": "Madden NFL '95"
+}, {
+	"id": "SNS-A6FE-USA-0",
+	"title": "Madden NFL '96"
+}, {
+	"id": "SNS-A7NE-USA-0",
+	"title": "Madden NFL '97"
+}, {
+	"id": "SNS-A8NE-USA-0",
+	"title": "Madden NFL '98"
+}, {
+	"id": "SNS-YG-USA-0",
+	"title": "Magic Boy"
+}, {
+	"id": "SNS-MD-USA-0",
+	"title": "Magic Sword"
+}, {
+	"id": "SNS-MI-USA-0",
+	"title": "The Magical Quest Starring Mickey Mouse"
+}, {
+	"id": "SNS-MU-USA-0",
+	"title": "Mario is Missing!"
+}, {
+	"id": "SNS-MP-USA-0",
+	"title": "Mario Paint"
+}, {
+	"id": "SNS-AMYE-USA-0",
+	"title": "Mario's Early Years: Fun with Letters"
+}, {
+	"id": "SNS-YR-USA-0",
+	"title": "Mario's Early Years: Fun with Numbers"
+}, {
+	"id": "SNS-AMEE-USA-0",
+	"title": "Mario's Early Years: Preschool Fun"
+}, {
+	"id": "SNS-8M-USA-0",
+	"title": "Mario's Time Machine"
+}, {
+	"id": "SNS-AOAE-USA-0",
+	"title": "Mark Davis' The Fishing Master"
+}, {
+	"id": "SNS-AHZE-USA-0",
+	"title": "Marvel Super Heroes in War of the Gems"
+}, {
+	"id": "SNS-AFRE-USA-0",
+	"title": "Mary Shelley's Frankenstein"
+}, {
+	"id": "SNS-AMGE-USA-0",
+	"title": "The Mask"
+}, {
+	"id": "SNS-AMME-USA-0",
+	"title": "Math Blaster: Episode One"
+}, {
+	"id": "SNS-AZBE-USA-0",
+	"title": "Maui Mallard in Cold Shadow"
+}, {
+	"id": "SNS-TS-USA-0",
+	"title": "Mecarobot Golf"
+}, {
+	"id": "SNS-WM-USA-0",
+	"title": "MechWarrior"
+}, {
+	"id": "SNS-A35E-USA-0",
+	"title": "MechWarrior 3050"
+}, {
+	"id": "SNS-A7RE-USA-0",
+	"title": "Mega Man 7"
+}, {
+	"id": "SNS-RQ-USA-0",
+	"title": "Mega Man Soccer"
+}, {
+	"id": "SNS-RX-USA-0",
+	"title": "Mega Man X"
+}, {
+	"id": "SNS-RX-USA-1",
+	"title": "Mega Man X"
+}, {
+	"id": "SNS-ARXE-USA-0",
+	"title": "Mega Man X2"
+}, {
+	"id": "SNS-AR3E-USA-0",
+	"title": "Mega Man X3"
+}, {
+	"id": "SNS-KD-USA-0",
+	"title": "Metal Combat: Falcon's Revenge"
+}, {
+	"id": "SNS-6M-USA-0",
+	"title": "Metal Marines"
+}, {
+	"id": "SNS-AMHE-USA-0",
+	"title": "Metal Morph"
+}, {
+	"id": "SNS-AWME-USA-0",
+	"title": "Metal Warriors"
+}, {
+	"id": "SNS-AMAE-USA-0",
+	"title": "Michael Andretti's Indy Car Challenge"
+}, {
+	"id": "SNS-AWCE-USA-0",
+	"title": "Michael Jordan: Chaos in the Windy City"
+}, {
+	"id": "SNS-AMIE-USA-0",
+	"title": "Mickey Mania: The Timeless Adventures of Mickey Mouse"
+}, {
+	"id": "SNS-6U-USA-0",
+	"title": "Mickey's Ultimate Challenge"
+}, {
+	"id": "SNS-AH3E-USA-0",
+	"title": "Micro Machines"
+}, {
+	"id": "SNS-3H-USA-0",
+	"title": "Might & Magic III: Isles of Terra"
+}, {
+	"id": "SNS-52-USA-0",
+	"title": "Mighty Morphin Power Rangers"
+}, {
+	"id": "SNS-A3RE-USA-0",
+	"title": "Mighty Morphin Power Rangers: The Fighting Edition"
+}, {
+	"id": "SNS-A2RE-USA-0",
+	"title": "Mighty Morphin Power Rangers: The Movie"
+}, {
+	"id": "SNS-MR-USA-0",
+	"title": "The Miracle Piano Teaching System"
+}, {
+	"id": "SNS-XH-USA-0",
+	"title": "MLBPA Baseball"
+}, {
+	"id": "SNS-AJYE-USA-0",
+	"title": "Mohawk & Headphone Jack"
+}, {
+	"id": "SNS-ML-USA-0",
+	"title": "Monopoly"
+}, {
+	"id": "SNS-ML-USA-1",
+	"title": "Monopoly"
+}, {
+	"id": "SNS-KX-USA-0",
+	"title": "Mortal Kombat"
+}, {
+	"id": "SNS-A3ME-USA-0",
+	"title": "Mortal Kombat 3"
+}, {
+	"id": "SNS-28-USA-0",
+	"title": "Mortal Kombat II"
+}, {
+	"id": "SNS-28-USA-1",
+	"title": "Mortal Kombat II"
+}, {
+	"id": "SNS-AUNE-USA-0",
+	"title": "Mr. Do!"
+}, {
+	"id": "SNS-N8-USA-0",
+	"title": "Mr. Nutz"
+}, {
+	"id": "SNS-AN8E-USA-0",
+	"title": "Ms. Pac-Man"
+}, {
+	"id": "SNS-MY-USA-0",
+	"title": "Musya: The Classic Japanese Tale of Horror"
+}, {
+	"id": "SNS-AM9E-USA-0",
+	"title": "Mutant Chronicles: Doom Troopers"
+}, {
+	"id": "SNS-7W-USA-0",
+	"title": "Natsume Championship Wrestling"
+}, {
+	"id": "SNS-NB-USA-0",
+	"title": "NBA All-Star Challenge"
+}, {
+	"id": "SNS-ANJE-USA-0",
+	"title": "NBA Give 'n Go"
+}, {
+	"id": "SNS-AXGE-USA-0",
+	"title": "NBA Hang Time"
+}, {
+	"id": "SNS-8N-USA-0",
+	"title": "NBA Jam"
+}, {
+	"id": "SNS-AJTE-USA-0",
+	"title": "NBA Jam: Tournament Edition"
+}, {
+	"id": "SNS-ANBE-USA-0",
+	"title": "NBA Live '95"
+}, {
+	"id": "SNS-A6BE-USA-0",
+	"title": "NBA Live '96"
+}, {
+	"id": "SNS-A7LE-USA-0",
+	"title": "NBA Live '97"
+}, {
+	"id": "SNS-A8LE-USA-0",
+	"title": "NBA Live '98"
+}, {
+	"id": "SNS-6N-USA-0",
+	"title": "NBA Showdown"
+}, {
+	"id": "SNS-DU-USA-0",
+	"title": "NCAA Basketball"
+}, {
+	"id": "SNS-DU-USA-1",
+	"title": "NCAA Basketball"
+}, {
+	"id": "SNS-AFIE-USA-0",
+	"title": "NCAA Final Four Basketball"
+}, {
+	"id": "SNS-AFBE-USA-0",
+	"title": "NCAA Football"
+}, {
+	"id": "SNS-ANME-USA-0",
+	"title": "Newman-Haas IndyCar featuring Nigel Mansell"
+}, {
+	"id": "SNS-NF-USA-0",
+	"title": "NFL Football"
+}, {
+	"id": "SNS-Q9-USA-0",
+	"title": "NFL Quarterback Club"
+}, {
+	"id": "SNS-AQBE-USA-0",
+	"title": "NFL Quarterback Club '96"
+}, {
+	"id": "SNS-4H-USA-0",
+	"title": "NHL '94"
+}, {
+	"id": "SNS-ANHE-USA-0",
+	"title": "NHL '95"
+}, {
+	"id": "SNS-A6HE-USA-0",
+	"title": "NHL '96"
+}, {
+	"id": "SNS-AH7E-USA-0",
+	"title": "NHL '97"
+}, {
+	"id": "SNS-AH7E-USA-1",
+	"title": "NHL '97"
+}, {
+	"id": "SNS-A8HE-USA-0",
+	"title": "NHL '98"
+}, {
+	"id": "SNS-NH-USA-0",
+	"title": "NHL Stanley Cup"
+}, {
+	"id": "SNS-HY-USA-0",
+	"title": "NHLPA Hockey '93"
+}, {
+	"id": "SNS-ANGE-USA-0",
+	"title": "Nickelodeon GUTS"
+}, {
+	"id": "SNS-M8-USA-0",
+	"title": "Nigel Mansell's World Championship Racing"
+}, {
+	"id": "SNS-ANRE-USA-0",
+	"title": "Ninja Gaiden Trilogy"
+}, {
+	"id": "SNS-NI-USA-0",
+	"title": "Ninja Warriors"
+}, {
+	"id": "SNS-ANOE-USA-0",
+	"title": "No Escape"
+}, {
+	"id": "SNS-NZ-USA-0",
+	"title": "Nobunga's Ambition"
+}, {
+	"id": "SNS-IZ-USA-0",
+	"title": "Nobunga's Ambition: Lord of Darkness"
+}, {
+	"id": "SNS-NR-USA-0",
+	"title": "Nolan Ryan's Baseball"
+}, {
+	"id": "SNS-NS-USA-0",
+	"title": "Nosferatu"
+}, {
+	"id": "SNS-7B-USA-0",
+	"title": "Obitus"
+}, {
+	"id": "SNS-OB-USA-0",
+	"title": "Ogre Battle: The March of the Black Queen"
+}, {
+	"id": "SNS-AO9E-USA-0",
+	"title": "Olympic Summer Games"
+}, {
+	"id": "SNS-CT-USA-0",
+	"title": "On the Ball"
+}, {
+	"id": "SNS-YP-USA-0",
+	"title": "Operation Europe: Path to Victory 1939-45"
+}, {
+	"id": "SNS-IY-USA-0",
+	"title": "Operation Logic Bomb"
+}, {
+	"id": "SNS-36-USA-0",
+	"title": "Operation Thunderbolt"
+}, {
+	"id": "SNS-AOZE-USA-0",
+	"title": "Oscar"
+}, {
+	"id": "SNS-TW-USA-0",
+	"title": "Out of This World"
+}, {
+	"id": "SNS-P8-USA-0",
+	"title": "Out to Lunch"
+}, {
+	"id": "SNS-LD-USA-0",
+	"title": "Outlander"
+}, {
+	"id": "SNS-P9-USA-0",
+	"title": "Pac-Attack"
+}, {
+	"id": "SNS-APTE-USA-0",
+	"title": "Pac-in-Time"
+}, {
+	"id": "SNS-25-USA-0",
+	"title": "Pac-Man 2: The New Adventures"
+}, {
+	"id": "SNS-TK-USA-0",
+	"title": "P.T.O.: Pacific Theater of Operations"
+}, {
+	"id": "SNS-ATEE-USA-0",
+	"title": "P.T.O. II: Pacific Theater of Operations"
+}, {
+	"id": "SNS-APYE-USA-0",
+	"title": "Packy & Marlon"
+}, {
+	"id": "SNS-APME-USA-0",
+	"title": "The Pagemaster"
+}, {
+	"id": "SNS-LN-USA-0",
+	"title": "Paladin's Quest"
+}, {
+	"id": "SNS-P2-USA-0",
+	"title": "Paperboy 2"
+}, {
+	"id": "SNS-R6-USA-0",
+	"title": "The Peace Keepers"
+}, {
+	"id": "SNS-AEPE-USA-0",
+	"title": "PGA European Tour"
+}, {
+	"id": "SNS-A3GE-USA-0",
+	"title": "PGA Tour '96"
+}, {
+	"id": "SNS-PG-USA-0",
+	"title": "PGA Tour Golf"
+}, {
+	"id": "SNS-PH-USA-0",
+	"title": "Phalanx: The Enforce Fighter A-144"
+}, {
+	"id": "SNS-A24E-USA-0",
+	"title": "Phantom 2040"
+}, {
+	"id": "SNS-Z5-USA-0",
+	"title": "Pieces"
+}, {
+	"id": "SNS-PW-USA-0",
+	"title": "Pilotwings"
+}, {
+	"id": "SNS-7D-USA-0",
+	"title": "Pinball Dreams"
+}, {
+	"id": "SNS-APFE-USA-0",
+	"title": "Pinball Fantasies"
+}, {
+	"id": "SNS-YW-USA-0",
+	"title": "Pink Goes to Hollywood"
+}, {
+	"id": "SNS-ACGE-USA-0",
+	"title": "Pinocchio"
+}, {
+	"id": "SNS-8P-USA-0",
+	"title": "The Pirates of Dark Water"
+}, {
+	"id": "SNS-PF-USA-0",
+	"title": "Pit-Fighter"
+}, {
+	"id": "SNS-APAE-USA-0",
+	"title": "Pitfall: The Mayan Adventure"
+}, {
+	"id": "SNS-P4-USA-0",
+	"title": "Plok"
+}, {
+	"id": "SNS-KK-USA-0",
+	"title": "Pocky & Rocky"
+}, {
+	"id": "SNS-29-USA-0",
+	"title": "Pocky & Rocky 2"
+}, {
+	"id": "SNS-PO-USA-0",
+	"title": "Populous"
+}, {
+	"id": "SNS-APPE-USA-0",
+	"title": "Porky Pig's Haunted Holiday"
+}, {
+	"id": "SNS-AGKE-USA-0",
+	"title": "Power Instinct"
+}, {
+	"id": "SNS-P3-USA-0",
+	"title": "Power Moves"
+}, {
+	"id": "SNS-AOTE-USA-0",
+	"title": "Power Piggs of the Dark Age"
+}, {
+	"id": "SNS-A4RE-USA-0",
+	"title": "Power Rangers Zeo: Battle Racers"
+}, {
+	"id": "SNS-APUE-USA-0",
+	"title": "Prehistorik Man"
+}, {
+	"id": "SNS-AR9E-USA-0",
+	"title": "Primal Rage"
+}, {
+	"id": "SNS-PR-USA-0",
+	"title": "Prince of Persia"
+}, {
+	"id": "SNS-AUPE-USA-0",
+	"title": "Prince of Persia 2: The Shadow and the Flame"
+}, {
+	"id": "SNS-QB-USA-0",
+	"title": "Pro Quarterback"
+}, {
+	"id": "SNS-UI-USA-0",
+	"title": "Pro Sport Hockey"
+}, {
+	"id": "SNS-PV-USA-0",
+	"title": "Push-Over"
+}, {
+	"id": "SNS-Q3-USA-0",
+	"title": "Q*bert 3"
+}, {
+	"id": "SNS-ER-USA-0",
+	"title": "R-Type III: The Third Lightning"
+}, {
+	"id": "SNS-RV-USA-0",
+	"title": "Race Drivin'"
+}, {
+	"id": "SNS-RP-USA-0",
+	"title": "Radical Psycho Machine Racing"
+}, {
+	"id": "SNS-ARRE-USA-0",
+	"title": "Radical Rex"
+}, {
+	"id": "SNS-RD-USA-0",
+	"title": "Raiden Trad"
+}, {
+	"id": "SNS-RM-USA-0",
+	"title": "Rampart"
+}, {
+	"id": "SNS-R2-USA-0",
+	"title": "Ranma ½: Hard Battle"
+}, {
+	"id": "SNS-ARVE-USA-0",
+	"title": "Rap Jam: Volume One"
+}, {
+	"id": "SNS-ARQE-USA-0",
+	"title": "Realm"
+}, {
+	"id": "SNS-6R-USA-0",
+	"title": "Red Line: F-1 Racer"
+}, {
+	"id": "SNS-5R-USA-0",
+	"title": "Relief Pitcher"
+}, {
+	"id": "SNS-ARBE-USA-0",
+	"title": "The Ren & Stimpy Show: Buckeroo$!"
+}, {
+	"id": "SNS-6Y-USA-0",
+	"title": "The Ren & Stimpy Show: Fire Dogs"
+}, {
+	"id": "SNS-ARTE-USA-0",
+	"title": "The Ren & Stimpy Show: Time Warp"
+}, {
+	"id": "SNS-V8-USA-0",
+	"title": "The Ren & Stimpy Show: Veediots!"
+}, {
+	"id": "SNS-AXRE-USA-0",
+	"title": "Revolution X: Music is the Weapon"
+}, {
+	"id": "SNS-XR-USA-0",
+	"title": "Rex Ronan: Experimental Surgeon"
+}, {
+	"id": "SNS-XG-USA-0",
+	"title": "Riddick Bowe Boxing"
+}, {
+	"id": "SNS-QG-USA-0",
+	"title": "Rise of the Phoenix"
+}, {
+	"id": "SNS-AROE-USA-0",
+	"title": "Rise of the Robots"
+}, {
+	"id": "SNS-RB-USA-0",
+	"title": "Rival Turf!"
+}, {
+	"id": "SNS-RR-USA-0",
+	"title": "Road Riot 4WD"
+}, {
+	"id": "SNS-DV-USA-0",
+	"title": "Road Runner's Death Valley Rally"
+}, {
+	"id": "SNS-R3-USA-0",
+	"title": "RoboCop 3"
+}, {
+	"id": "SNS-VR-USA-0",
+	"title": "RoboCop versus The Terminator"
+}, {
+	"id": "SNS-E9-USA-0",
+	"title": "Robotrek"
+}, {
+	"id": "SNS-RN-USA-0",
+	"title": "Rock n' Roll Racing"
+}, {
+	"id": "SNS-RK-USA-0",
+	"title": "The Rocketeer"
+}, {
+	"id": "SNS-8D-USA-0",
+	"title": "Rocko's Modern Life: Spunky's Dangerous Day"
+}, {
+	"id": "SNS-NP-USA-0",
+	"title": "Rocky Rodent"
+}, {
+	"id": "SNS-VP-USA-0",
+	"title": "Roger Clemens' MVP Baseball"
+}, {
+	"id": "SNS-VP-USA-1",
+	"title": "Roger Clemens' MVP Baseball"
+}, {
+	"id": "SNS-XL-USA-0",
+	"title": "Romance of the Three Kingdoms II"
+}, {
+	"id": "SNS-S3-USA-0",
+	"title": "Romance of the Three Kingdoms III: Dragon of Destiny"
+}, {
+	"id": "SNS-AS4E-USA-0",
+	"title": "Romance of the Three Kingdoms IV: Wall of Fire"
+}, {
+	"id": "SNS-RU-USA-0",
+	"title": "Run Saber"
+}, {
+	"id": "SNS-A7SE-USA-0",
+	"title": "Samurai Shodown"
+}, {
+	"id": "SNS-ZW-USA-0",
+	"title": "Saturday Night Slam Masters"
+}, {
+	"id": "SNS-AXDE-USA-0",
+	"title": "Scooby-Doo Mystery"
+}, {
+	"id": "SNS-ASQE-USA-0",
+	"title": "SeaQuest DSV"
+}, {
+	"id": "SNS-AEOE-USA-0",
+	"title": "Secret of Evermore"
+}, {
+	"id": "SNS-K2-USA-0",
+	"title": "Secret of Mana"
+}, {
+	"id": "SNS-WR-USA-0",
+	"title": "Shadowrun"
+}, {
+	"id": "SNS-DE-USA-0",
+	"title": "Shanghai II: Dragon's Eye"
+}, {
+	"id": "SNS-AQFE-USA-0",
+	"title": "Shaq-Fu"
+}, {
+	"id": "SNS-OO-USA-0",
+	"title": "Shien's Revenge"
+}, {
+	"id": "SNS-EQ-USA-0",
+	"title": "Sid Meier's Civilization"
+}, {
+	"id": "SNS-4P-USA-0",
+	"title": "Side Pocket"
+}, {
+	"id": "SNS-AN-USA-0",
+	"title": "SimAnt: The Electronic Ant Colony"
+}, {
+	"id": "SNS-SC-USA-0",
+	"title": "SimCity"
+}, {
+	"id": "SNS-AWWE-USA-0",
+	"title": "SimCity 2000"
+}, {
+	"id": "SNS-SE-USA-0",
+	"title": "SimEarth: The Living Planet"
+}, {
+	"id": "SNS-BN-USA-0",
+	"title": "The Simpsons: Bart's Nightmare"
+}, {
+	"id": "SNS-AVBE-USA-0",
+	"title": "The Simpsons: Virtual Bart"
+}, {
+	"id": "SNS-9J-USA-0",
+	"title": "S.O.S.: Sink or Swim"
+}, {
+	"id": "SNS-SL-USA-0",
+	"title": "Skuljagger: Revolt of the Westicans"
+}, {
+	"id": "SNS-LZ-USA-0",
+	"title": "Skyblazer"
+}, {
+	"id": "SNS-JB-USA-0",
+	"title": "Smart Ball"
+}, {
+	"id": "SNS-ASHE-USA-0",
+	"title": "Snow White in Happily Ever After"
+}, {
+	"id": "SNS-UD-USA-0",
+	"title": "Soldiers of Fortune"
+}, {
+	"id": "SNS-SK-USA-0",
+	"title": "Sonic Blast Man"
+}, {
+	"id": "SNS-2C-USA-0",
+	"title": "Sonic Blast Man II"
+}, {
+	"id": "SNS-TT-USA-0",
+	"title": "SOS"
+}, {
+	"id": "SNS-SO-USA-0",
+	"title": "Soul Blazer"
+}, {
+	"id": "SNS-5A-USA-0",
+	"title": "Space Ace"
+}, {
+	"id": "SNS-FL-USA-0",
+	"title": "Space Football: One on One"
+}, {
+	"id": "SNS-IC-USA-0",
+	"title": "Space Invaders"
+}, {
+	"id": "SNS-AT-USA-0",
+	"title": "Space Megaforce"
+}, {
+	"id": "SNS-HJ-USA-0",
+	"title": "Spanky's Quest"
+}, {
+	"id": "SNS-ASSE-USA-0",
+	"title": "Sparkster"
+}, {
+	"id": "SNS-A9WE-USA-0",
+	"title": "Spawn"
+}, {
+	"id": "SNS-7Q-USA-0",
+	"title": "Spectre"
+}, {
+	"id": "SNS-9S-USA-0",
+	"title": "Speed Racer in My Most Dangerous Adventures"
+}, {
+	"id": "SNS-ASEE-USA-0",
+	"title": "Speedy Gonzales: Los Gatos Bandidos"
+}, {
+	"id": "SNS-ASEE-USA-1",
+	"title": "Speedy Gonzales: Los Gatos Bandidos"
+}, {
+	"id": "SNS-AMCE-USA-0",
+	"title": "Spider-Man & Venom: Maximum Carnage"
+}, {
+	"id": "SNS-A2CE-USA-0",
+	"title": "Spider-Man & Venom: Separation Anxiety"
+}, {
+	"id": "SNS-MN-USA-0",
+	"title": "Spider-Man & X-Men: Arcade's Revenge"
+}, {
+	"id": "SNS-ADME-USA-0",
+	"title": "Spider-Man: The Animated Series"
+}, {
+	"id": "SNS-SX-USA-0",
+	"title": "Spindizzy Worlds"
+}, {
+	"id": "SNS-AWBE-USA-0",
+	"title": "The Sporting News Baseball"
+}, {
+	"id": "SNS-LU-USA-0",
+	"title": "Sports Illustrated: Championship Football & Baseball"
+}, {
+	"id": "SNS-FO-USA-0",
+	"title": "Star Fox"
+}, {
+	"id": "SNS-FO-USA-2",
+	"title": "Star Fox"
+}, {
+	"id": "SNS-FU-USA-0",
+	"title": "Star Fox: Super Weekend"
+}, {
+	"id": "SNS-A9DE-USA-0",
+	"title": "Star Trek: Deep Space Nine - Crossroads of Time"
+}, {
+	"id": "SNS-ASTE-USA-0",
+	"title": "Star Trek: Starfleet Academy - Starship Bridge Simulator"
+}, {
+	"id": "SNS-XN-USA-0",
+	"title": "Star Trek: The Next Generation - Future's Past"
+}, {
+	"id": "SNS-AGTE-USA-0",
+	"title": "Stargate"
+}, {
+	"id": "SNS-5S-USA-0",
+	"title": "Steel Talons"
+}, {
+	"id": "SNS-AS2E-USA-0",
+	"title": "Sterling Sharpe: End 2 End"
+}, {
+	"id": "SNS-ASOE-USA-0",
+	"title": "Stone Protectors"
+}, {
+	"id": "SNS-RA-USA-0",
+	"title": "Street Combat"
+}, {
+	"id": "SNS-AUZE-USA-0",
+	"title": "Street Fighter Alpha 2"
+}, {
+	"id": "SNS-S2-USA-0",
+	"title": "Street Fighter II: The World Warrior"
+}, {
+	"id": "SNS-TI-USA-0",
+	"title": "Street Fighter II Turbo: Hyper Fighting"
+}, {
+	"id": "SNS-AHYE-USA-0",
+	"title": "Street Hockey '95"
+}, {
+	"id": "SNS-ASRE-USA-0",
+	"title": "Street Racer"
+}, {
+	"id": "SNS-SG-USA-0",
+	"title": "Strike Gunner S.T.G."
+}, {
+	"id": "SNS-CQ-USA-1",
+	"title": "Stunt Race FX"
+}, {
+	"id": "SNS-6S-USA-0",
+	"title": "Sunset Riders"
+}, {
+	"id": "SNS-H2-USA-0",
+	"title": "Super Adventure Island"
+}, {
+	"id": "SNS-E4-USA-0",
+	"title": "Super Adventure Island II"
+}, {
+	"id": "SNS-8A-USA-0",
+	"title": "Super Alfred Chicken"
+}, {
+	"id": "SNS-AU-USA-0",
+	"title": "The Super Aquatic Games starring the Aquabats"
+}, {
+	"id": "SNS-SA-USA-0",
+	"title": "Super Baseball 2020"
+}, {
+	"id": "SNS-UB-USA-0",
+	"title": "Super Baseball Simulator 1.000"
+}, {
+	"id": "SNS-SP-USA-0",
+	"title": "Super Bases Loaded"
+}, {
+	"id": "SNS-3D-USA-0",
+	"title": "Super Bases Loaded 2"
+}, {
+	"id": "SNS-AB3E-USA-0",
+	"title": "Super Bases Loaded 3: License to Steal"
+}, {
+	"id": "SNS-FA-USA-0",
+	"title": "Super Batter Up"
+}, {
+	"id": "SNS-8B-USA-0",
+	"title": "Super Battleship"
+}, {
+	"id": "SNS-SB-USA-0",
+	"title": "Super Battletank: War in the Gulf"
+}, {
+	"id": "SNS-2X-USA-0",
+	"title": "Super Battletank 2"
+}, {
+	"id": "SNS-BQ-USA-0",
+	"title": "Super Black Bass"
+}, {
+	"id": "SNS-H6-USA-0",
+	"title": "Super Bomberman"
+}, {
+	"id": "SNS-M4-USA-0",
+	"title": "Super Bomberman 2"
+}, {
+	"id": "SNS-ANKE-USA-0",
+	"title": "Super Bonk"
+}, {
+	"id": "SNS-BW-USA-0",
+	"title": "Super Bowling"
+}, {
+	"id": "SNS-SN-USA-0",
+	"title": "Super Buster Brothers"
+}, {
+	"id": "SNS-C6-USA-0",
+	"title": "Super Caesers Palace"
+}, {
+	"id": "SNS-AD-USA-0",
+	"title": "Super Castlevania IV"
+}, {
+	"id": "SNS-QT-USA-0",
+	"title": "Super Chase H.Q."
+}, {
+	"id": "SNS-CN-USA-0",
+	"title": "Super Conflict"
+}, {
+	"id": "SNS-75-USA-0",
+	"title": "Super Copa"
+}, {
+	"id": "SNS-WD-USA-0",
+	"title": "Super Double Dragon"
+}, {
+	"id": "SNS-A-SG-USA-2",
+	"title": "Super Game Boy"
+}, {
+	"id": "SNS-CM-USA-0",
+	"title": "Super Ghouls 'n Ghosts"
+}, {
+	"id": "SNS-JV-USA-0",
+	"title": "Super Goal! 2"
+}, {
+	"id": "SNS-7G-USA-0",
+	"title": "Super Godzilla"
+}, {
+	"id": "SNS-HX-USA-0",
+	"title": "Super High Impact"
+}, {
+	"id": "SNS-J5-USA-0",
+	"title": "Super James Pond"
+}, {
+	"id": "SNS-4M-USA-0",
+	"title": "Super Mario All-Stars"
+}, {
+	"id": "SNS-5M-USA-0",
+	"title": "Super Mario All-Stars + Super Mario World"
+}, {
+	"id": "SNS-MK-USA-0",
+	"title": "Super Mario Kart"
+}, {
+	"id": "SNS-ARWE-USA-0",
+	"title": "Super Mario RPG: Legend of the Seven Stars"
+}, {
+	"id": "SNS-MW-USA-0",
+	"title": "Super Mario World",
+	"img": {
+		"box": ""
+	}
+}, {
+	"id": "SNS-YI-USA-0",
+	"title": "Super Mario World 2: Yoshi's Island"
+}, {
+	"id": "SNS-YI-USA-1",
+	"title": "Super Mario World 2: Yoshi's Island"
+}, {
+	"id": "SNS-RI-USA-0",
+	"title": "Super Metroid"
+}, {
+	"id": "SNS-CW-USA-0",
+	"title": "Super Ninja Boy"
+}, {
+	"id": "SNS-DH-USA-0",
+	"title": "Super Nova"
+}, {
+	"id": "SNS-OR-USA-0",
+	"title": "Super Off Road"
+}, {
+	"id": "SNS-R8-USA-0",
+	"title": "Super Off Road: The Baja"
+}, {
+	"id": "SNS-XP-USA-0",
+	"title": "Super Pinball: Behind the Mask"
+}, {
+	"id": "SNS-XP-USA-1",
+	"title": "Super Pinball: Behind the Mask"
+}, {
+	"id": "SNS-SF-USA-0",
+	"title": "Super Play Action Football"
+}, {
+	"id": "SNS-4Q-USA-0",
+	"title": "Super Punch-Out!!"
+}, {
+	"id": "SNS-YU-USA-0",
+	"title": "Super Putty"
+}, {
+	"id": "SNS-SR-USA-0",
+	"title": "Super R-Type"
+}, {
+	"id": "SNS-ARLE-USA-0",
+	"title": "Super R.B.I Baseball"
+}, {
+	"id": "SNS-LR-USA-0",
+	"title": "Super Scope 6"
+}, {
+	"id": "SNS-D9-USA-0",
+	"title": "Super Slam Dunk"
+}, {
+	"id": "SNS-ZX-USA-0",
+	"title": "Super Slap Shot"
+}, {
+	"id": "SNS-TV-USA-0",
+	"title": "Super Smash T.V."
+}, {
+	"id": "SNS-FS-USA-0",
+	"title": "Super Soccer"
+}, {
+	"id": "SNS-HT-USA-0",
+	"title": "Super Soccer Champ"
+}, {
+	"id": "SNS-LT-USA-0",
+	"title": "Super Solitaire"
+}, {
+	"id": "SNS-V4-USA-0",
+	"title": "Super Star Wars: A New Hope"
+}, {
+	"id": "SNS-E5-USA-0",
+	"title": "Super Star Wars II: The Empire Strikes Back"
+}, {
+	"id": "SNS-E5-USA-1",
+	"title": "Super Star Wars II: The Empire Strikes Back"
+}, {
+	"id": "SNS-ARJE-USA-0",
+	"title": "Super Star Wars III: Return of the Jedi"
+}, {
+	"id": "SNS-ARJE-USA-1",
+	"title": "Super Star Wars III: Return of the Jedi"
+}, {
+	"id": "SNS-XW-USA-0",
+	"title": "Super Street Fighter II: The New Challengers"
+}, {
+	"id": "SNS-EG-USA-0",
+	"title": "Super Strike Eagle"
+}, {
+	"id": "SNS-ST-USA-0",
+	"title": "Super Tennis"
+}, {
+	"id": "SNS-5L-USA-0",
+	"title": "Super Troll Islands"
+}, {
+	"id": "SNS-TU-USA-0",
+	"title": "Super Turrican"
+}, {
+	"id": "SNS-A2TE-USA-0",
+	"title": "Super Turrican 2"
+}, {
+	"id": "SNS-VA-USA-0",
+	"title": "Super Valis IV"
+}, {
+	"id": "SNS-WI-USA-0",
+	"title": "Super Widget"
+}, {
+	"id": "SNS-8H-USA-0",
+	"title": "Suzuka 8 Hours"
+}, {
+	"id": "SNS-AK9E-USA-0",
+	"title": "SWAT Kats: The Radical Squadron"
+}, {
+	"id": "SNS-AFYE-USA-0",
+	"title": "Syndicate"
+}, {
+	"id": "SNS-TZ-USA-1",
+	"title": "Taz-Mania"
+}, {
+	"id": "SNS-AQ-USA-0",
+	"title": "Tecmo Secret of the Stars"
+}, {
+	"id": "SNS-ATBE-USA-0",
+	"title": "Tecmo Super Baseball"
+}, {
+	"id": "SNS-7T-USA-0",
+	"title": "Tecmo Super Bowl"
+}, {
+	"id": "SNS-ASBE-USA-0",
+	"title": "Tecmo Super Bowl II: Special Edition"
+}, {
+	"id": "SNS-AW4E-USA-0",
+	"title": "Tecmo Super Bowl III: Final Edition"
+}, {
+	"id": "SNS-XM-USA-0",
+	"title": "Tecmo Super NBA Basketball"
+}, {
+	"id": "SNS-TM-USA-0",
+	"title": "Teenage Mutant Ninja Turtles IV: Turtles in Time"
+}, {
+	"id": "SNS-KY-USA-0",
+	"title": "Teenage Mutant Ninja Turtles V: Tournament Fighters"
+}, {
+	"id": "SNS-TN-USA-0",
+	"title": "The Terminator"
+}, {
+	"id": "SNS-TP-USA-0",
+	"title": "Terminator 2: Judgment Day"
+}, {
+	"id": "SNS-XV-USA-0",
+	"title": "Terminator 2: The Arcade Game"
+}, {
+	"id": "SNS-DL-USA-0",
+	"title": "Test Drive II: The Duel"
+}, {
+	"id": "SNS-AFTE-USA-0",
+	"title": "Tetris & Dr. Mario"
+}, {
+	"id": "SNS-27-USA-0",
+	"title": "Tetris 2"
+}, {
+	"id": "SNS-27-USA-1",
+	"title": "Tetris 2"
+}, {
+	"id": "SNS-AYLE-USA-0",
+	"title": "Tetris Attack"
+}, {
+	"id": "SNS-6T-USA-0",
+	"title": "Thomas the Tank Engine & Friends"
+}, {
+	"id": "SNS-TH-USA-0",
+	"title": "Thunder Spirits"
+}, {
+	"id": "SNS-ATHE-USA-0",
+	"title": "The Tick"
+}, {
+	"id": "SNS-ATCE-USA-0",
+	"title": "Time Cop"
+}, {
+	"id": "SNS-XT-USA-0",
+	"title": "Time Slip"
+}, {
+	"id": "SNS-X8-USA-0",
+	"title": "Time Trax"
+}, {
+	"id": "SNS-AJ9E-USA-0",
+	"title": "Timon & Pumbaa's Jungle Games"
+}, {
+	"id": "SNS-9N-USA-0",
+	"title": "Tin Star"
+}, {
+	"id": "SNS-TA-USA-0",
+	"title": "Tiny Toon Adventures: Buster Busts Loose!"
+}, {
+	"id": "SNS-5Z-USA-0",
+	"title": "Tiny Toon Adventures: Wacky Sports Challenge"
+}, {
+	"id": "SNS-BX-USA-0",
+	"title": "TKO Super Championship Boxing"
+}, {
+	"id": "SNS-ATNE-USA-0",
+	"title": "TNN Bass Tournament of Champions"
+}, {
+	"id": "SNS-TJ-USA-0",
+	"title": "Tom and Jerry"
+}, {
+	"id": "SNS-XS-USA-0",
+	"title": "Tommy Moe's Winter Extreme: Skiing and Snowboarding"
+}, {
+	"id": "SNS-6K-USA-0",
+	"title": "Tony Meola's Sidekicks Soccer"
+}, {
+	"id": "SNS-TR-USA-0",
+	"title": "Top Gear"
+}, {
+	"id": "SNS-2P-USA-0",
+	"title": "Top Gear 2"
+}, {
+	"id": "SNS-A3TE-USA-0",
+	"title": "Top Gear 3000"
+}, {
+	"id": "SNS-XC-USA-0",
+	"title": "Total Carnage"
+}, {
+	"id": "SNS-AQHE-USA-0",
+	"title": "Toy Story"
+}, {
+	"id": "SNS-YT-USA-0",
+	"title": "Toys: Let the Toy Wars Begin!"
+}, {
+	"id": "SNS-TX-USA-0",
+	"title": "Troddlers"
+}, {
+	"id": "SNS-YQ-USA-0",
+	"title": "Troy Aikman Football"
+}, {
+	"id": "SNS-W8-USA-0",
+	"title": "True Golf: Wicked 18"
+}, {
+	"id": "SNS-GB-USA-0",
+	"title": "True Golf Classics: Pebble Beach Golf Links"
+}, {
+	"id": "SNS-TG-USA-0",
+	"title": "True Golf Classics: Waialae Country Club"
+}, {
+	"id": "SNS-ATLE-USA-0",
+	"title": "True Lies"
+}, {
+	"id": "SNS-TE-USA-0",
+	"title": "Tuff E Nuff"
+}, {
+	"id": "SNS-ZN-USA-0",
+	"title": "Turn and Burn: No-Fly Zone"
+}, {
+	"id": "SNS-83-USA-0",
+	"title": "The Twisted Tales of Spike McFang"
+}, {
+	"id": "SNS-7U-USA-0",
+	"title": "Ultima: Runes of Virtue II"
+}, {
+	"id": "SNS-U6-USA-0",
+	"title": "Ultima VI: The False Prophet"
+}, {
+	"id": "SNS-7I-USA-0",
+	"title": "Ultima VII: The Black Gate"
+}, {
+	"id": "SNS-HP-USA-0",
+	"title": "Ultimate Fighter"
+}, {
+	"id": "SNS-A3ZE-USA-0",
+	"title": "Ultimate Mortal Kombat 3"
+}, {
+	"id": "SNS-UM-USA-0",
+	"title": "Ultraman: Towards the Future"
+}, {
+	"id": "SNS-E8-USA-0",
+	"title": "U.N. Squadron"
+}, {
+	"id": "SNS-QK-USA-0",
+	"title": "Uncharted Waters"
+}, {
+	"id": "SNS-QL-USA-0",
+	"title": "Uncharted Waters: New Horizons"
+}, {
+	"id": "SNS-4L-USA-0",
+	"title": "Uniracers"
+}, {
+	"id": "SNS-UC-USA-0",
+	"title": "The Untouchables"
+}, {
+	"id": "SNS-AUSE-USA-0",
+	"title": "Urban Strike"
+}, {
+	"id": "SNS-UP-USA-0",
+	"title": "Utopia: The Creation of a Nation"
+}, {
+	"id": "SNS-VS-USA-0",
+	"title": "Vegas Stakes"
+}, {
+	"id": "SNS-4V-USA-0",
+	"title": "Vortex"
+}, {
+	"id": "SNS-YS-USA-0",
+	"title": "Wanderers from Ys III"
+}, {
+	"id": "SNS-A2AE-USA-0",
+	"title": "War 2410"
+}, {
+	"id": "SNS-AZNE-USA-0",
+	"title": "War 3010: The Revolution"
+}, {
+	"id": "SNS-65-USA-0",
+	"title": "Wario's Woods"
+}, {
+	"id": "SNS-AWKE-USA-0",
+	"title": "Warlock"
+}, {
+	"id": "SNS-WP-USA-0",
+	"title": "Warp Speed"
+}, {
+	"id": "SNS-AWZE-USA-0",
+	"title": "Wayne Gretzky and the NHLPA All-Stars"
+}, {
+	"id": "SNS-WW-USA-0",
+	"title": "Wayne's World"
+}, {
+	"id": "SNS-AWRE-USA-0",
+	"title": "WCW Super Brawl Wrestling"
+}, {
+	"id": "SNS-6D-USA-0",
+	"title": "We're Back!: A Dinosaur's Story"
+}, {
+	"id": "SNS-AWDE-USA-0",
+	"title": "WeaponLord"
+}, {
+	"id": "SNS-WL-USA-0",
+	"title": "Wheel of Fortune"
+}, {
+	"id": "SNS-XF-USA-0",
+	"title": "Wheel of Fortune: Deluxe Edition"
+}, {
+	"id": "SNS-WX-USA-0",
+	"title": "Where in the World is Carmen Sandiego?"
+}, {
+	"id": "SNS-WN-USA-0",
+	"title": "Where in Time is Carmen Sandiego?"
+}, {
+	"id": "SNS-AZWE-USA-0",
+	"title": "Whizz"
+}, {
+	"id": "SNS-4W-USA-0",
+	"title": "Wild Guns"
+}, {
+	"id": "SNS-AWSE-USA-0",
+	"title": "Wild Snake"
+}, {
+	"id": "SNS-AW8E-USA-0",
+	"title": "Williams Arcade's Greatest Hits"
+}, {
+	"id": "SNS-WC-USA-0",
+	"title": "Wing Commander"
+}, {
+	"id": "SNS-2W-USA-0",
+	"title": "Wing Commander: The Secret Missions"
+}, {
+	"id": "SNS-WG-USA-0",
+	"title": "Wings 2: Aces High"
+}, {
+	"id": "SNS-W4-USA-0",
+	"title": "Winter Olympic Games: Lillehammer '94"
+}, {
+	"id": "SNS-W6-USA-0",
+	"title": "The Wizard of Oz"
+}, {
+	"id": "SNS-W5-USA-0",
+	"title": "Wizardry V: Heart of the Maelstrom"
+}, {
+	"id": "SNS-WH-USA-0",
+	"title": "Wolf Child"
+}, {
+	"id": "SNS-6W-USA-0",
+	"title": "Wolfenstein 3D"
+}, {
+	"id": "SNS-AWXE-USA-0",
+	"title": "Wolverine: Adamantium Rage"
+}, {
+	"id": "SNS-WT-USA-0",
+	"title": "Wordtris"
+}, {
+	"id": "SNS-U4-USA-0",
+	"title": "World Cup USA '94"
+}, {
+	"id": "SNS-WZ-USA-0",
+	"title": "World Heroes"
+}, {
+	"id": "SNS-JI-USA-0",
+	"title": "World Heroes 2"
+}, {
+	"id": "SNS-WS-USA-0",
+	"title": "World League Soccer"
+}, {
+	"id": "SNS-WO-USA-0",
+	"title": "World Soccer '94: Road to Glory"
+}, {
+	"id": "SNS-AWFE-USA-0",
+	"title": "WWF Raw"
+}, {
+	"id": "SNS-WU-USA-0",
+	"title": "WWF Royal Rumble"
+}, {
+	"id": "SNS-WF-USA-0",
+	"title": "WWF Super Wrestlemania"
+}, {
+	"id": "SNS-AWVE-USA-0",
+	"title": "WWF Wrestlemania: The Arcade Game"
+}, {
+	"id": "SNS-X7-USA-0",
+	"title": "X-Kaliber 2097"
+}, {
+	"id": "SNS-AXME-USA-0",
+	"title": "X-Men: Mutant Apocalypse"
+}, {
+	"id": "SNS-XZ-USA-0",
+	"title": "X-Zone"
+}, {
+	"id": "SNS-XA-USA-0",
+	"title": "Xardion"
+}, {
+	"id": "SNS-YC-USA-0",
+	"title": "Yoshi's Cookie"
+}, {
+	"id": "SNS-RH-USA-0",
+	"title": "Yoshi's Safari"
+}, {
+	"id": "SNS-Y6-USA-0",
+	"title": "Young Merlin"
+}, {
+	"id": "SNS-AZKE-USA-0",
+	"title": "Zero the Kamikaze Squirrel"
+}, {
+	"id": "SNS-ZA-USA-0",
+	"title": "Zombies Ate My Neighbors"
+}, {
+	"id": "SNS-Z8-USA-0",
+	"title": "Zool: Ninja of the \"Nth\" Dimension"
+}, {
+	"id": "SNS-AZPE-USA-0",
+	"title": "Zoop"
+}]
+}

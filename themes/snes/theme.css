@@ -9,10 +9,22 @@
 	src: url("../fonts/Nintender.ttf");
 }
 
+.snes .menu .uie,
+.snes .text {
+	text-shadow: none;
+}
+
 .snes .console .text {
 	font-family: "SNES_Italic", "SNES_Italic", SNES_Italic;
-	font-weight: 900;
-	font-size: 2.3vw;
+	font-weight: 1000;
+	letter-spacing: 1px;
+	transform: scale(1.6);
+	font-size: 3vw;
+}
+
+.menu .cursor,
+.menu .cursor * {
+	filter: brightness(20);
 }
 
 .snes #view {
@@ -31,7 +43,7 @@
 	padding-left: 5%;
 	padding-right: 6%;
 	padding-top: 1%;
-	box-shadow: 0 1px 0 rsnes(255, 255, 255, .5);
+	text-shadow: none;
 }
 
 /*================snes Game Lib Viewer====================*/

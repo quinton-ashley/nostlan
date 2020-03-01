@@ -48,7 +48,7 @@ class Scanner {
 			}
 			if (!(await fs.exists(dir))) {
 				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local user directory, create a text file named "portable" next to the executable files of the build (Dolphin.exe). With the extension it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use the global user directory, instead it will create and use the local user directory in the same directory.`);
-				continue;
+				return;
 			}
 			let config = await fs.readFile(dir + '/Config/Dolphin.ini');
 			let ogConfig = config;
@@ -93,11 +93,12 @@ class Scanner {
 				if (term.base[0] == '.') continue;
 				// if it's the dir.txt in the mame roms folder skip it
 				if (term.base == 'dir.txt') continue;
-				// if the file is a save file skip it
+				// if the file is not a game file, skip it
 				if (term.ext == '.sav') continue;
-				if (sys == 'snes' && !/\.(sfc|smc)/.test(term.ext)) continue;
+				if (sys == 'snes' && !/\.(sfc|smc)/i.test(term.ext)) continue;
 				if (sys == 'ds' && term.ext != '.ds') continue;
 				if (sys == 'gba' && term.ext != '.gba') continue;
+				if (sys == 'wii' && !/\.(gcm|iso|tgc|iso|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) continue;
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
 				let isDir = (await fs.stat(file)).isDirectory();
@@ -116,13 +117,19 @@ class Scanner {
 					};
 					game = await launcher.identifyGame(game);
 					if (!game) continue;
-					id = game.id;
-					game = gameDB.find(x => x.id === id);
-					this.olog(`match:  ${game.title}\r\n`);
-					log(game);
-					game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
-					games.push(game);
-					continue;
+					if (sys == 'switch') {
+						game = gameDB.find(x => x.tid === game.tid);
+					} else {
+						game = gameDB.find(x => x.id === game.id);
+					}
+					if (game.title) {
+						this.olog(`exact match:  ${game.title}\r\n`);
+						log(game);
+						game.file = '$' + h + '/' +
+							path.relative(prefs[emu].libs[h], file);
+						games.push(game);
+						continue;
+					}
 				}
 				// rpcs3 ignore games with these ids
 				if (term == 'TEST12345' || term == 'RPSN00001') continue;
@@ -155,7 +162,7 @@ class Scanner {
 							let dup = games.find(x => x.title === game.title);
 							if (dup) continue;
 						}
-						this.olog(`match:  ${game.title}\r\n`);
+						this.olog(`exact match:  ${game.title}\r\n`);
 						log(game);
 						game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
 						games.push(game);
@@ -209,7 +216,7 @@ class Scanner {
 				if (!game) game = {};
 				game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
 				if (game) {
-					this.olog(`match:  ${game.title}\r\n`);
+					this.olog(`potential match:  ${game.title}\r\n`);
 					games.push(game);
 				} else {
 					this.olog('no match found\r\n');
@@ -253,11 +260,6 @@ class Scanner {
 				if (gRegion == 'A' && (region == 'P' || region == 'J')) continue;
 				if (gRegion == 'B' && (region == 'E' || region == 'J')) continue;
 				if (gRegion == 'C' && (region == 'E' || region == 'P')) continue;
-			} else if (sys == 'bsnes') {
-				let gRegion = results[i].id.split('-').splice(-2)[0];
-				log(gRegion)
-				await delay(100000);
-				if (gRegion != 'USA') continue;
 			}
 			return results[i];
 		}

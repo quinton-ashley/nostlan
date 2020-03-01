@@ -68,7 +68,7 @@ class Themes {
 		this.ps2.default.title = "Kingdom Hearts";
 		this.ps3.default.id = "BCUS98154";
 		this.ps3.default.title = "inFamous";
-		this.snes.default.id = "SHVC-1A1B-06-MW-USA-0";
+		this.snes.default.id = "SNSP-MW-FAH-1";
 		this.snes.default.title = "Super Mario World";
 		this.switch.default.id = "AAACA";
 		this.switch.default.title = "Super Mario Odyssey";

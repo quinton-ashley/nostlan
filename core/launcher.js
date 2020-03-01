@@ -18,8 +18,8 @@ class Launcher {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win || (linux && /(cemu|rpcs3|bsnes|higan)/.test(emu)) ||
-			(mac && /(mame|bsnes|higan)/.test(emu))) {
+		if (win || (linux && /(cemu|rpcs3|bsnes)/.test(emu)) ||
+			(mac && /(mame|bsnes)/.test(emu))) {
 			emuDirPath = `${emuDir}/${prefs[emu].name}/BIN`;
 			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
@@ -46,7 +46,7 @@ class Launcher {
 				emuAppPath = emuDirPath + '/';
 			}
 			emuAppPath += emuNameCases[i];
-			if (win || /(bsnes|higan)/.test(emu)) {
+			if (win || /(bsnes)/.test(emu)) {
 				if (emu == 'citra') emuAppPath += '-qt';
 				if (emu == 'mgba') emuAppPath += '-sdl';
 				if (emu == 'mame') emuAppPath += '64';
@@ -95,7 +95,7 @@ class Launcher {
 		}
 		log(`couldn't find app at path:\n` + emuAppPath);
 		emuAppPath = await dialog.selectFile('select emulator app');
-		if (mac && !/(bsnes|higan)/.test(emu)) {
+		if (mac && !/(bsnes)/.test(emu)) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {
 				emuAppPath += '-qt-bin';
@@ -118,14 +118,11 @@ class Launcher {
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
 		}
-		let _emu = emu;
+		let emuAppPath;
 		if (identify && sys == 'snes') {
-			emu = 'higan';
-		}
-		let emuAppPath = await this.getEmuAppPath();
-		if (identify && sys == 'snes') {
-			emuAppPath = path.join(emuAppPath, '/..') + '/icarus.exe';
-			emu = _emu;
+			emuAppPath = __root + '/bin/icarus/icarus.exe';
+		} else {
+			emuAppPath = await this.getEmuAppPath();
 		}
 		if (!emuAppPath) return;
 		if (emu == 'mgba' && !game) {
@@ -166,9 +163,15 @@ class Launcher {
 				"${app}",
 				"--system",
 				"Super Famicom",
-				"--manifest",
+				"--import",
 				"${game}",
 			];
+			// await spawn(cmdIcarus[0], cmdIcarus.slice(1), {
+			// 	cwd: ,
+			// 	stdio: 'inherit',
+			// 	detached: true
+			// });
+			cmdIcarus[3] = "--manifest";
 			if (mac || linux) cmdIcarus.unshift("wine");
 			cmdArray = cmdIcarus;
 		}
@@ -191,7 +194,7 @@ class Launcher {
 			}
 		}
 
-		if (game && game.id || emu == 'mame') {
+		if (!identify && game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
 			cui.change('playingBack');
 			$('#libMain').hide();
@@ -238,29 +241,34 @@ class Launcher {
 		return new Promise((resolve, reject) => {
 			let out = '';
 			let id = '';
+
+			function idGame() {
+				if (emu == 'yuzu' &&
+					(id = /title_id=(\w{16})/.exec(out))) {
+					game.tid = id[1];
+					if (this.state == 'running') this.close();
+				}
+				if (sys == 'snes') {
+					let m = /game(\n[^\n]*){3}\n[^:]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)/.exec(out);
+					if (m) {
+						game.id = `${m[2]}-${m[3]}`;
+					}
+				}
+				resolve(game);
+				finished = true;
+			}
+
 			this.child.stdout.on('data', (data) => {
 				if (this.state == 'closing' || finished) return;
 				out += data.toString();
 				log(out);
-				if (emu == 'yuzu' &&
-					(id = /title_id=(\w{16})/.exec(out))) {
-					game.id = id[1];
-					if (this.state == 'running') this.close();
-					resolve(game);
-					finished = true;
-				}
+				idGame();
 			});
 
 			this.child.on('close', (code) => {
 				this._close(code);
 				if (finished) return;
-				if (sys == 'snes') {
-					let m = /game\n[^\n]*\n[^\n]*\n[^:\n]*: *[^\n]*\n[^\-\n]*\-[^\-\n]*\-*([^\n]*)\n[^\-\n]*\-([^\-\n]*)\-([^\n]*)\n[^:\n]*: *([^\n]*)\n/.exec(out);
-					if (m) {
-						game.id = `${m[4]}-${m[2]}-${m[1]}-${m[3]}`;
-					}
-				}
-				resolve(game);
+				idGame();
 			});
 		});
 	}

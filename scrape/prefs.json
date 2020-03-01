@@ -1,7 +1,89 @@
 {
-	"btlDir": "",
+	"nlaDir": "",
 	"region": "E",
-	"3ds": {
+	"bsnes": {
+		"name": "bsnes",
+		"app": {},
+		"cmd": {
+			"linux": [
+				"wine",
+				"${app}",
+				"${game}"
+			],
+			"mac": [
+				"wine",
+				"${app}",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		}
+	},
+	"higan": {
+		"name": "higan",
+		"app": {},
+		"cmd": {
+			"linux": [
+				"wine",
+				"${app}",
+				"${game}"
+			],
+			"mac": [
+				"wine",
+				"${app}",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		}
+	},
+	"desmume": {
+		"name": "DeSmuME",
+		"app": {},
+		"cmd": {
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		}
+	},
+	"melonds": {
+		"name": "melonDS",
+		"app": {},
+		"cmd": {
+			"win": [
+				"${app}",
+				"${game}"
+			]
+		}
+	},
+	"mgba": {
+		"name": "mGBA",
+		"app": {},
+		"cmd": {
+			"linux": [
+				"${app}",
+				"-f",
+				"${game}"
+			],
+			"mac": [
+				"${app}",
+				"-f",
+				"${game}"
+			],
+			"win": [
+				"${app}",
+				"-f",
+				"${game}"
+			]
+		}
+	},
+	"citra": {
+		"name": "Citra",
 		"app": {
 			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
 		},
@@ -23,46 +105,10 @@
 				"${game}",
 				"-f"
 			]
-		},
-		"emu": "Citra",
-		"style": "n3ds"
-	},
-	"ds": {
-		"app": {},
-		"cmd": {
-			"mac": [
-				"${app}",
-				"${game}"
-			],
-			"win": [
-				"${app}",
-				"${game}"
-			]
-		},
-		"emu": "DeSmuME"
-	},
-	"gba": {
-		"app": {},
-		"cmd": {
-			"linux": [
-				"${app}",
-				"-f",
-				"${game}"
-			],
-			"mac": [
-				"${app}",
-				"-f",
-				"${game}"
-			],
-			"win": [
-				"${app}",
-				"-f",
-				"${game}"
-			]
-		},
-		"emu": "mGBA"
+		}
 	},
 	"mame": {
+		"name": "MAME",
 		"app": {},
 		"cmd": {
 			"linux": [
@@ -83,10 +129,10 @@
 				"${cwd}",
 				"${game.id}"
 			]
-		},
-		"emu": "MAME"
+		}
 	},
-	"ps2": {
+	"pcsx2": {
+		"name": "PCSX2",
 		"app": {},
 		"cmd": {
 			"linux": [
@@ -107,10 +153,10 @@
 				"--nogui",
 				"--fullscreen"
 			]
-		},
-		"emu": "PCSX2"
+		}
 	},
-	"ps3": {
+	"rpcs3": {
+		"name": "RPCS3",
 		"app": {},
 		"cmd": {
 			"linux": [
@@ -121,13 +167,13 @@
 				"${app}",
 				"${game}"
 			]
-		},
-		"emu": "RPCS3"
+		}
 	},
-	"switch": {
+	"yuzu": {
+		"name": "Yuzu",
 		"app": {
 			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
-			"win": "$home/AppData/Local/yuzu/canary/yuzu.exe"
+			"win": "$home/AppData/Local/yuzu/yuzu-windows-msvc/yuzu.exe"
 		},
 		"cmd": {
 			"linux": [
@@ -142,10 +188,10 @@
 				"${app}",
 				"${game}"
 			]
-		},
-		"emu": "Yuzu"
+		}
 	},
-	"wii": {
+	"dolphin": {
+		"name": "Dolphin",
 		"app": {},
 		"cmd": {
 			"linux": [
@@ -163,11 +209,10 @@
 				"${game}",
 				"-b"
 			]
-		},
-		"emu": "Dolphin",
-		"style": "gcn"
+		}
 	},
-	"wiiu": {
+	"cemu": {
+		"name": "Cemu",
 		"app": {},
 		"cmd": {
 			"linux": [
@@ -183,10 +228,10 @@
 				"${game}",
 				"-f"
 			]
-		},
-		"emu": "Cemu"
+		}
 	},
-	"xbox360": {
+	"xenia": {
+		"name": "Xenia",
 		"app": {},
 		"cmd": {
 			"win": [
@@ -195,8 +240,7 @@
 				"--d3d12_resolution_scale=2",
 				"--fullscreen"
 			]
-		},
-		"emu": "Xenia"
+		}
 	},
 	"ui": {
 		"mouse": {
@@ -224,13 +268,14 @@
 				"map": {}
 			}
 		},
+		"maxColumns": 8,
 		"getBackCoverHQ": false,
 		"getExtraImgs": false,
-		"recheckImgs": false,
 		"autoHideCover": false
 	},
 	"load": {
-		"delay": 2000
+		"delay": 2000,
+		"online": true
 	},
 	"inGame": {
 		"quit": {
@@ -242,6 +287,7 @@
 			"time": 5000
 		}
 	},
+	"donor": {},
 	"session": {
 		"sys": "wii"
 	},

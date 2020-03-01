@@ -16,7 +16,7 @@ module.exports = async function(arg) {
 	const usrDir = __root;
 
 	let prefsMan = require(__root + '/prefs/prefsManager.js');
-	prefsMan.prefsPath = usrDir + '/scrape/prefs.json';
+	// prefsMan.prefsPath = usrDir + '/scrape/prefs.json';
 	global.prefs = await prefsMan.loadDefaultPrefs();
 
 	global.browser = require('./browser.js');
@@ -94,7 +94,6 @@ module.exports = async function(arg) {
 	}
 
 	async function quit() {
-		await prefsMan.save();
 		log('scrape completed!');
 	}
 	await quit();

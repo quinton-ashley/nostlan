@@ -48,7 +48,7 @@
 				webviewTag: true
 			}
 		};
-		if (arg.scrape || arg.conv || arg.db) {
+		if (arg.cli) {
 			windowPrms.width = 3840 / 4;
 			windowPrms.height = 2160 / 2;
 		} else {
@@ -60,19 +60,17 @@
 		mainWindow = new BrowserWindow(windowPrms);
 
 		let url = 'file://' + arg.__root;
-		if (arg.scrape) {
-			url += '/scrape/cli/scrape-cli.pug';
-		} else if (arg.conv) {
-			url += '/dev/convert.pug';
-		} else if (arg.db) {
-			url += '/db/cli/db-cli.pug';
-		} else {
+		if (!arg.cli) {
 			url += '/views/pug/index.pug';
+		} else if (!arg.cli.includes('.')) {
+			url += `/${arg.cli}/cli/${arg.cli}-cli.pug`;
+		} else {
+			url += arg.cli.slice(1);
 		}
 		mainWindow.loadURL(url);
 
 		// Open the DevTools.
-		if (arg.dev || arg.scrape || arg.conv) {
+		if (arg.dev || arg.cli) {
 			mainWindow.webContents.openDevTools();
 		}
 

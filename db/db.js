@@ -3,58 +3,81 @@ const tbl2json = require('tabletojson');
 // mame db retrieved from the app itself
 let sources = {
 	ds: "https://www.gametdb.com/dstdb.txt?LANG=EN",
-	mame: "$ ./mame64 --list",
+	mame: {
+		win: ['${app}', '--list']
+	},
 	n3ds: "https://www.gametdb.com/3dstdb.txt?LANG=EN",
 	ps1: "http://psxdatacenter.com/ulist.html",
 	ps2: "https://psxdatacenter.com/psx2/ulist2.html",
 	ps3: "https://www.gametdb.com/ps3tdb.txt?LANG=EN",
 	psp: "http://psxdatacenter.com/psp/ulist.html",
-	switch: "https://www.gametdb.com/switchtdb.txt?LANG=EN",
+	switch: [
+		"https://switchbrew.org/wiki/Title_list/Games",
+		"https://www.gametdb.com/switchtdb.txt?LANG=EN"
+	],
 	wii: "https://www.gametdb.com/wiitdb.txt?LANG=EN",
 	wiiu: "https://www.gametdb.com/wiiutdb.txt?LANG=EN",
 	xbox360: "https://www.gamesdatabase.org/xbox_360_games_list_with_title_ids"
 };
 let regionFilter = {
 	wii: {
-		E: `\t\t\["\w\w\w[^e][^\n]*\n`
+		E: /\t\t\["\w\w\w[^e][^\n]*\n/
 	}
 };
 let format = {
 	gba: [{
-		regex: `<game name="([^"]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+<crc>([^<]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n`,
+		regex: /<game name="([^"]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+<crc>([^<]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n/g,
 		replace: `"id": "$2",\n\t"title": "$1"\n}, {\n`
 	}],
 	mame: [{
-		regex: `(\S+)\s*("[^\n]+)`,
+		regex: /(\S+)\s*("[^\n]+)/g,
 		replace: `"id": "$1",\n\t"title": $2\n}, {`
 	}],
 	ps2: [{
-		regex: `\|([^\|]*)\|([^\|]*)\|[^\|]*[^\|\n]*\n`,
+		regex: /\|([^\|]*)\|([^\|]*)\|[^\|]*[^\|\n]*\n/g,
 		replace: `\t"id": "$1",\n\t"title": "$2"\n}, {\n`
 	}],
 	snes: [{
-		regex: `game\n[^\n]*\n[^\n]*\n[^:\n]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-*([^\n]*)\n[^\-\n]*\-([^\-\n]*)\-([^\n]*)\n[^:\n]*: *([^\n]*)\n`,
-		replace: `}, {\n\t"id": "$5-$3-$2-$4",\n\t"title": "$1"`
+		regex: /game\n[^\n]*\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)(\n[^g\n][^\n]*|\n)*/g,
+		replace: `}, {\n\t"id": "$3-$4",\n\t"title": "$1",\n\t"label": "$2"\n`
 	}, {
-		regex: `\/\/[^\-]*[^\n]*\n[^\n]*\n`,
-		replace: ``
+		regex: /database\n *revision: ([^\n]*)[^\}]*}, /g,
+		replace: `{\n"version": "$1",\n"games": [`
+	}, {
+		regex: /\n$/,
+		replace: `}]\n}`
+	}],
+	switch: [{
+		regex: /\n\s*(\{[^\s]*)\s*"[^"]*("[^\n]*\n[^\s]*)\s*"[^"]*([^"]*"[^"]*"[^"]*")([^\}]*\} \w+)*[^\}]*\s+\}/g,
+		replace: `$1\n\t"id$2\t"title$3\n}, `
 	}],
 	wii: [{
-		regex: `\n([^\n ]*) = ([^\n]*)`,
+		regex: /\n([^\n ]*) = ([^\n]*)/g,
 		replace: `}, {\n\t"id": "$1",\n\t"title": "$2"`
 	}],
 	xbox360: [{
-		regex: `([^\|]*)\|([^\|]*)\|[^\|]*\|[^\|]*\|[^\|\n]*\n`,
+		regex: /([^\|]*)\|([^\|]*)\|[^\|]*\|[^\|]*\|[^\|\n]*\n/g,
 		replace: `\t"id": "$1",\n\t"title": "$2"\n}, {\n`
 	}]
 };
+
+let strip = [{
+	regex: /("[^\n"]*)"([^:"\n]*)"([^"\n]*")/g,
+	replace: `$1\"$2\"$3`
+}, {
+	regex: /(™|©|®|℗)/g,
+	replace: ``
+}, {
+	regex: / - /g,
+	replace: `: `
+}];
 
 class GenDB {
 	constructor() {}
 
 	async generate() {
 
-		if (sys != 'mame') {
+		if (typeof sources[sys] == 'string') {
 			let res = await requisition(sources[sys]);
 			let file = __root + `/db/${sys}DB`;
 			await res.saveTo(file);

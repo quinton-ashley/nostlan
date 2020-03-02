@@ -116,13 +116,17 @@ class TheCoverProjectScraper {
 		if (!url && sys == 'wii') {
 			if (game.id.length > 4) {
 				url = await this.getGameUrl('gcn', game);
+				if (url) game.sys = 'gcn';
 			} else {
 				url = await this.getGameUrl('n64', game);
+				if (url) game.sys = 'n64';
 				if (!url) {
 					url = await this.getGameUrl('snes', game);
+					if (url) game.sys = 'snes';
 				}
 				if (!url) {
 					url = await this.getGameUrl('nes', game);
+					if (url) game.sys = 'nes';
 				}
 			}
 		}
@@ -138,8 +142,8 @@ class TheCoverProjectScraper {
 			tcp[sys] = JSON.parse(await fs.readFile(tcpPath));
 			return;
 		}
-
 		tcp[sys] = {};
+
 		let catID;
 		if (sys == 'ps2') catID = 6;
 		if (sys == 'gba') catID = 13;
@@ -173,7 +177,7 @@ class TheCoverProjectScraper {
 						url: id
 					});
 				}
-				log($elems.length);
+				log($elems.length + ' games on page');
 			}
 			tcp[sys][idx] = links;
 			log(links);

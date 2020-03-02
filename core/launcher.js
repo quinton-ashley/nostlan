@@ -290,15 +290,17 @@ class Launcher {
 			this._launch();
 			return;
 		}
-		$('#libMain').show();
-		cui.hideDialogs();
-		let $cur = cui.getCur('libMain');
-		if ($cur.hasClass('selected')) {
-			cui.change('coverSelect');
-			let $reel = $cur.parent();
-			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
-		} else if (cui.ui != 'libMain') {
-			cui.change('libMain');
+		if (!identify) {
+			$('#libMain').show();
+			cui.hideDialogs();
+			let $cur = cui.getCur('libMain');
+			if ($cur.hasClass('selected')) {
+				cui.change('coverSelect');
+				let $reel = $cur.parent();
+				$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+			} else if (cui.ui != 'libMain') {
+				cui.change('libMain');
+			}
 		}
 		if (code) {
 			let erMsg = `${prefs[emu].name} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[emu].name} can boot the game.\n<code>`;

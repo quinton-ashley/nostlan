@@ -8,38 +8,41 @@
 //
 // If you have any questions email me:
 // qashto@gmail.com
-
+//
 module.exports = async function(arg) {
 	global.path = require('path');
 	arg.__root = path.join(__dirname, '/../..').replace(/\\/g, '/');
 	await require(arg.__root + '/core/setup.js')(arg);
-	const usrDir = __root;
+
+	let scrapers = ['gfs', 'fly', 'tcp', 'dec'];
+	let scrape = arg.scrape;
+	if (!scrapers.includes(scrape)) {
+		er('invalid scraper use one of the following: ' + scrapers.toString());
+		return;
+	}
 
 	let prefsMan = require(__root + '/prefs/prefsManager.js');
-	// prefsMan.prefsPath = usrDir + '/scrape/prefs.json';
-	global.prefs = await prefsMan.loadDefaultPrefs();
+	prefsMan.prefsPath = __root + '/scrape/cli/prefs.json';
+	global.prefs = {};
+	prefs = await prefsMan.load();
 
 	global.browser = require('./browser.js');
 	await browser.load({
 		user: 'qashto@gmail.com'
 	});
+	await prefsMan.save();
 
-	let scrapers = ['gfs', 'fly', 'tcp'];
-	if (!scrapers.includes(arg.scrape)) {
-		er('invalid scraper use one of the following: ' + scrapers.toString());
-		return;
-	}
 	const deepExtend = require('deep-extend');
-	let scraper = require(`../${arg.scrape}.js`);
-	global.sys = 'snes'; // sys default
-	if (arg.scrape == 'fly') sys = 'mame';
-	sys = arg.sys || sys;
-	if (arg.scrape == 'gfs' || arg.scrape == 'tcp') {
+	let scraper = require(`../${scrape}.js`);
+	global.sys = arg.sys || 'snes'; // sys default
+	if (scrape == 'fly') sys = 'mame';
+
+	if (/(tcp|gfs|dec)/.test(scrape)) {
 		await scraper.load(sys);
 	}
 	let name = 'cover';
-	if (sys == 'gba' || sys == 'mame') name = 'box';
-	if (arg.scrape == 'tcp') name = 'coverFull';
+	if (/(mame|gba)/.test(sys) || scrape == 'dec') name = 'box';
+	if (scrape == 'tcp') name = 'coverFull';
 
 	let games = [];
 	let dbPath = `${__root}/db/${sys}DB.json`;
@@ -56,7 +59,7 @@ module.exports = async function(arg) {
 		log(game.title);
 		if (arg.override || !game.img || !game.img[name]) {
 			let img = await scraper.getImgUrls(game, name);
-			if (img) {
+			if (img && Object.keys(img).length) {
 				if (!game.img) {
 					game.img = img;
 				} else if (!arg.override) {

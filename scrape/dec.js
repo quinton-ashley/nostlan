@@ -1,13 +1,15 @@
 const dl = require('./dl.js');
+let dec = {};
 
 class AndyDecarli {
 	constructor() {
-		this.sysMapForAndy = {
+		this.sysMap = {
 			wiiu: 'Nintendo Wii U',
 			'3ds': 'Nintendo 3DS',
 			ds: 'Nintendo DS',
 			ps3: 'Sony PlayStation 3',
 			ps2: 'Sony PlayStation 2',
+			psp: 'Sony PSP',
 			xbox360: 'Xbox 360',
 			gba: 'Game Boy Advance',
 			wii: 'Nintendo Wii',
@@ -18,10 +20,20 @@ class AndyDecarli {
 		};
 	}
 
-	async _dlImg(title, dir, _sys) {
-		_sys = this.sysMapForAndy[_sys];
+	wrapUrl(url) {
+		return 'd';
+	}
+
+	unwrapUrl(data) {
+		let _sys = this.sysMap[data[0]];
+		let title = data[1];
 		let url = `http://andydecarli.com/Video Games/Collection/${_sys}/Scans/Full Size/${_sys} ${title}`;
 		url = url.replace(/ /g, '%20');
+		return url;
+	}
+
+	async _dlImg(title, dir, _sys) {
+		this.unwrapUrl([_sys, title]);
 		log(url);
 		let res = await dl(url + `%20Front%20Cover.jpg`, dir + '/box.jpg');
 		if (res && prefs.ui.getBackCoverHQ) {
@@ -57,6 +69,48 @@ class AndyDecarli {
 				return res;
 			}
 		}
+	}
+
+	async load() {
+		if (dec[sys]) {
+			return;
+		}
+		if (!browser) {
+			er('browser not loaded');
+			return;
+		}
+		let tcpPath = __root + `/scrape/tcp/${sys}Tcp.json`;
+		if (await fs.exists(tcpPath)) {
+			dec[sys] = JSON.parse(await fs.readFile(tcpPath));
+			return;
+		}
+		dec[sys] = {};
+
+		let url = `https://andydecarli.com/Video Games/Collection Pages/Collection ${this.sysMap[sys]}.html`;
+		url = url.replace(/ /g, '%20');
+
+		let $elems;
+		if (!$elems) $elems = await browser.goTo(url);
+		if (!$elems) return;
+		$elems = $elems.find('table tbody tr td table tbody').eq(2);
+		if (!$elems.length) return;
+		$elems = $elems.find('tr');
+
+		for (let i = 0; i < $elems.length; i++) {
+			let title = $elems.eq(i).find('td').eq(0).text();
+			dec[sys][title] = 1;
+		}
+		log(dec[sys]);
+
+		await fs.outputFile(tcpPath, JSON.stringify(dec[sys]));
+	}
+
+	async getImgUrls(game, name) {
+		let img = {};
+		if (dec[sys][game.title]) {
+			img[name] = 'd';
+		}
+		return img;
 	}
 }
 

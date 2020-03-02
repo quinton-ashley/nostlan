@@ -5,7 +5,9 @@ class GithubQuintonAshley {
 		return 'q';
 	}
 
-	unwrapUrl(game, name) {
+	unwrapUrl(data) {
+		let game = data[0];
+		let name = data[1];
 		let url = 'https://raw.githubusercontent.com/quinton-ashley';
 		if (!game.id.includes('_TEMPLATE')) {
 			url += `/nostlan-${sys}/master/${sys}/${game.id}`;

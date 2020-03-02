@@ -40,9 +40,11 @@ class Scraper {
 				ext = url[1];
 				url = url[0];
 			} else if (url[0] == 'q') {
-				url = await this.gqa.unwrapUrl(game, name);
+				url = await this.gqa.unwrapUrl([game, name]);
 				res = await dl(url, `${imgDir}/${name}`, true);
 				if (res) return res;
+			} else if (url[1] == 'd') {
+				scraper = 'dec';
 			} else if (url[1]) {
 				// url[0] is key for the scraper
 				scraper = scrapers[url[0]];
@@ -58,6 +60,8 @@ class Scraper {
 			file = `${imgDir}/${name}.${ext}`;
 			if (scraper == 'gfs') {
 				res = await this.gfs.dlImg(url, imgDir, name);
+			} else if (scraper == 'dec') {
+				res = await this.dec.dlImg(game, imgDir, name, sys);
 			} else {
 				res = await dl(url, file);
 			}
@@ -66,16 +70,13 @@ class Scraper {
 
 		if (game.id.includes('_TEMPLATE')) return;
 
-		// get high quality box from Andy Decarli's site
-		res = await this.dec.dlImg(game, imgDir, name, sys);
-		if (res) return res;
-
 		res = await this.mdo.dlImg(game, imgDir, name);
 		if (res) return res;
 
 		if (hq) return;
 
-		return await this.tdb.dlImg(game, imgDir, name);
+		res = await this.tdb.dlImg(game, imgDir, name);
+		return res;
 	}
 
 	async loadImages(games, themes, recheckImgs) {

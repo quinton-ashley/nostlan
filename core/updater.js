@@ -1,4 +1,3 @@
-const request = require('request');
 const rp = require('request-promise-native');
 
 class Updater {
@@ -24,7 +23,7 @@ class Updater {
 
 	async check() {
 		$('#dialogs').show();
-		$('#loadDialog0').text(`Checking for an update...`);
+		$('#loadDialog0').text('Checking for an update...');
 		let url = 'https://github.com/quinton-ashley/nostlan/releases/tag/';
 		let ogVer = pkg.version.split('.');
 		for (let i in ogVer) {
@@ -45,6 +44,11 @@ class Updater {
 		}
 		ver[1]--;
 		if (ver[1] != ogVer[1]) updateAvail = true;
+
+		// TODO auto-update
+		// log(app.getAppPath());
+		//
+		// await delay(100000);
 
 		// update not available
 		if (!updateAvail) {

@@ -1,0 +1,4255 @@
+{
+	"games": [{
+			"id": "SLUS-01272",
+			"title": "007: THE WORLD IS NOT ENOUGH"
+		}, {
+			"id": "SLUS-00975",
+			"title": "007: TOMORROW NEVER DIES"
+		}, {
+			"id": "SLUS-01300",
+			"title": "007: RACING"
+		}, {
+			"id": "SCUS-94508",
+			"title": "2XTREME"
+		}, {
+			"id": "SLUS-00066",
+			"title": "3D BASEBALL: THE MAJORS"
+		}, {
+			"id": "SCUS-94231",
+			"title": "3XTREME"
+		}, {
+			"id": "SLUS-00874",
+			"title": "40 WINKS"
+		}, {
+			"id": "SLUS-01449",
+			"title": "2002 FIFA WORLD CUP"
+		}, {
+			"id": "SLUS-00003",
+			"title": "A-TRAIN"
+		}, {
+			"id": "SLUS-00404",
+			"title": "ACE COMBAT 2"
+		}, {
+			"id": "SLUS-00972",
+			"title": "ACE COMBAT 3: ELECTROSPHERE"
+		}, {
+			"id": "SLUS-01470",
+			"title": "ACES OF THE AIR"
+		}, {
+			"id": "SLUS-01248",
+			"title": "ACTION BASS"
+		}, {
+			"id": "SLUS-00887",
+			"title": "ACTION MAN: OPERATION EXTREME"
+		}, {
+			"id": "SLUS-00777",
+			"title": "ACTIVISION CLASSICS"
+		}, {
+			"id": "SCUS-94502",
+			"title": "ADIDAS POWER SOCCER"
+		}, {
+			"id": "SLUS-00547",
+			"title": "ADIDAS POWER SOCCER '98"
+		}, {
+			"id": "SLUS-00023",
+			"title": "AGILE WARRIOR F-111X"
+		}, {
+			"id": "SLUS-00001",
+			"title": "AIR COMBAT"
+		}, {
+			"id": "SLUS-01467",
+			"title": "AIR HOCKEY"
+		}, {
+			"id": "SLUS-00715",
+			"title": "AKUJI THE HEARTLESS"
+		}, {
+			"id": "SLUS-00872",
+			"title": "ALEXI LALAS INTERNATIONAL SOCCER"
+		}, {
+			"id": "SLUS-00633",
+			"title": "ALIEN RESURRECTION"
+		}, {
+			"id": "SLUS-00007",
+			"title": "ALIEN TRILOGY"
+		}, {
+			"id": "SLUS-00392",
+			"title": "ALL-STAR BASEBALL '97 FEATURING FRANK THOMAS"
+		}, {
+			"id": "SLUS-01460",
+			"title": "ALL STAR RACING"
+		}, {
+			"id": "SLUS-01510",
+			"title": "ALL STAR RACING 2"
+		}, {
+			"id": "SLUS-01431",
+			"title": "ALL-STAR SLAMMIN' D-BALL"
+		}, {
+			"id": "SLUS-00303",
+			"title": "ALLIED GENERAL"
+		}, {
+			"id": "SLUS-00239",
+			"title": "ALONE IN THE DARK 2: ONE EYED JACK'S REVENGE"
+		}, {
+			"id": "SLUS-01201\nSLUS-01377",
+			"title": "ALONE IN THE DARK: THE NEW NIGHTMARE :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00553",
+			"title": "ALUNDRA"
+		}, {
+			"id": "SLUS-01017",
+			"title": "ALUNDRA 2"
+		}, {
+			"id": "SLUS-01488",
+			"title": "AMERICAN POOL"
+		}, {
+			"id": "SLUS-00264",
+			"title": "ANDRETTI RACING"
+		}, {
+			"id": "SLUS-00784",
+			"title": "ANIMANIACS IN TEN PIN ALLEY"
+		}, {
+			"id": "SLUS-01010",
+			"title": "ANIMORPHS: SHATTERED REALITY"
+		}, {
+			"id": "SCUS-94423",
+			"title": "APE ESCAPE"
+		}, {
+			"id": "SLUS-00373",
+			"title": "APOCALYPSE: STARRING BRUCE WILLIS"
+		}, {
+			"id": "SCUS-94603",
+			"title": "AQUANAUT'S HOLIDAY"
+		}, {
+			"id": "SLUS-01224\nSLUS-01252\nSLUS-01253\nSLUS-01254\nSLUS-01255\nSLUS-01256",
+			"title": "ARC THE LAD COLLECTION :  [ 6 DISCS ]\n \t\t  Includes:  Arc The Lad   \t\t-  Arc The Lad  \t\tII :  Arc The Lad III (2 Discs)\n                  Arc The Lad: Monster Tournament: Battle  \t\tArena  &  Arc The Lad: The Making Of Disc"
+		}, {
+			"id": "SLUS-00952",
+			"title": "ARCADE PARTY PAK"
+		}, {
+			"id": "SLUS-00399",
+			"title": "ARCADE'S GREATEST HITS: THE ATARI COLLECTION 1"
+		}, {
+			"id": "SLUS-00449",
+			"title": "ARCADE'S GREATEST HITS: THE ATARI COLLECTION 2"
+		}, {
+			"id": "SLUS-00450",
+			"title": "ARCADE'S GREATEST HITS: THE MIDWAY COLLECTION 2"
+		}, {
+			"id": "SLUS-00164",
+			"title": "AREA 51"
+		}, {
+			"id": "SCUS-94182",
+			"title": "ARMORED CORE"
+		}, {
+			"id": "SLUS-01323",
+			"title": "ARMORED CORE [REPRINT]"
+		}, {
+			"id": "SLUS-01030\nSLUS-01081",
+			"title": "ARMORED CORE: MASTER OF ARENA :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00670",
+			"title": "ARMORED CORE: PROJECT PHANTASMA"
+		}, {
+			"id": "SLUS-01022",
+			"title": "ARMORINES: PROJECT SWARM"
+		}, {
+			"id": "SLUS-00491",
+			"title": "ARMY MEN 3D"
+		}, {
+			"id": "SLUS-00913",
+			"title": "ARMY MEN: AIR ATTACK"
+		}, {
+			"id": "SLUS-01132",
+			"title": "ARMY MEN: AIR ATTACK 2"
+		}, {
+			"id": "SLUS-01330",
+			"title": "ARMY MEN: GREEN ROGUE"
+		}, {
+			"id": "SLUS-00914",
+			"title": "ARMY MEN: SARGE'S HEROES"
+		}, {
+			"id": "SLUS-01202",
+			"title": "ARMY MEN: SARGE'S HEROES 2"
+		}, {
+			"id": "SLUS-01435",
+			"title": "ARMY MEN: TEAM ASSAULT"
+		}, {
+			"id": "SLUS-01079",
+			"title": "ARMY MEN: WORLD WAR"
+		}, {
+			"id": "SLUS-01327",
+			"title": "ARMY MEN: WORLD WAR: FINAL FRONT"
+		}, {
+			"?": "INFO",
+			"SERIAL": "SLUS-01203",
+			"TITLE": "ARMY MEN: WORLD WAR: LAND, SEA & AIR",
+			"LANGUAGE": "[E]"
+		},
+		{
+			"id": "SLUS-01090",
+			"title": "ARTHUR!: READY TO RACE"
+		}, {
+			"id": "SLUS-00713",
+			"title": "ASSAULT RETRIBUTION"
+		}, {
+			"id": "SCUS-94405",
+			"title": "ASSAULT RIGS"
+		}, {
+			"id": "SLUS-00773",
+			"title": "ASTEROIDS"
+		}, {
+			"id": "SLUS-01427",
+			"title": "ATARI ANNIVERSARY EDITION REDUX"
+		}, {
+			"id": "SLUS-01137",
+			"title": "ATV QUAD POWER RACING"
+		}, {
+			"id": "SLUS-01545",
+			"title": "ATV MANIA"
+		}, {
+			"id": "SLUS-01572",
+			"title": "ATV RACERS"
+		}, {
+			"id": "SLUS-01456",
+			"title": "AUSTIN POWERS PINBALL"
+		}, {
+			"id": "SLUS-00522",
+			"title": "AUTO DESTRUCT"
+		}, {
+			"id": "SLUS-00614",
+			"title": "AZURE DREAMS"
+		}, {
+			"id": "SLUS-00659",
+			"title": "BACKSTREET BILLIARDS"
+		}, {
+			"id": "SLUS-01094",
+			"title": "BACKYARD SOCCER"
+		}, {
+			"id": "SLUS-01567",
+			"title": "BALDIES"
+		}, {
+			"id": "SLUS-01037\nSLUS-01037\nSLUS-01037",
+			"title": "BALDUR'S GATE [3 DISCS]"
+		}, {
+			"id": "SLUS-01249",
+			"title": "BALL BREAKERS"
+		}, {
+			"id": "SLUS-00068",
+			"title": "BALLBAZER CHAMPIONS"
+		}, {
+			"id": "SLUS-01568",
+			"title": "BALLERBURG: CASTLE CHAOS"
+		}, {
+			"id": "SLUS-00966",
+			"title": "BALLISTIC"
+		}, {
+			"id": "SLUS-01361",
+			"title": "BARBIE EXPLORER"
+		}, {
+			"id": "SLUS-01569",
+			"title": "BARBIE GOTTA HAVE GAMES"
+		}, {
+			"id": "SLUS-00981",
+			"title": "BARBIE RACE & RIDE"
+		}, {
+			"id": "SLUS-00946",
+			"title": "BARBIE SUPER SPORTS"
+		}, {
+			"id": "SLUS-00086",
+			"title": "BASES LOADED '96: DOUBLE HEADER"
+		}, {
+			"id": "SLUS-00873",
+			"title": "BASS LANDING"
+		}, {
+			"id": "SLUS-00905",
+			"title": "BASS RISE"
+		}, {
+			"id": "SLUS-01141",
+			"title": "BATMAN: GOTHAM CITY RACER"
+		}, {
+			"id": "SLUS-00393",
+			"title": "BATMAN & ROBIN"
+		}, {
+			"id": "SLUS-01207",
+			"title": "BATMAN BEYOND: RETURN OF THE JOKER"
+		}, {
+			"id": "SLUS-00387",
+			"title": "BATMAN FOREVER: THE ARCADE GAME"
+		}, {
+			"id": "SCUS-94003",
+			"title": "BATTLE ARENA TOSHINDEN"
+		}, {
+			"id": "SCUS-94200",
+			"title": "BATTLE ARENA TOSHINDEN"
+		}, {
+			"id": "SLUS-00220",
+			"title": "BATTLE ARENA TOSHINDEN 2"
+		}, {
+			"id": "SLUS-00483",
+			"title": "BATTLE ARENA TOSHINDEN 3"
+		}, {
+			"id": "SLUS-01335",
+			"title": "BATTLE HUNTER"
+		}, {
+			"id": "SLUS-00389",
+			"title": "BATTLESPORT"
+		}, {
+			"id": "SLUS-00456",
+			"title": "BATTLESTATIONS"
+		}, {
+			"id": "SLUS-01044",
+			"title": "BATTLETANX: GLOBAL ASSAULT"
+		}, {
+			"id": "SLUS-01524",
+			"title": "BEAR IN THE BIG BLUE HOUSE"
+		}, {
+			"id": "SLUS-00508",
+			"title": "BEAST WARS: TRANSFORMERS"
+		}, {
+			"id": "SLUS-01160",
+			"title": "BEAST WARS: TRANSFORMERS: TRANSMETAL"
+		}, {
+			"id": "SLUS-01489",
+			"title": "BEYBLADE: LET IT RIP!"
+		}, {
+			"id": "SCUS-94702",
+			"title": "BEYOND THE BEYOND"
+		}, {
+			"id": "SLUS-00645",
+			"title": "BIG AIR"
+		}, {
+			"id": "SLUS-01442",
+			"title": "BIG BASS FISHING"
+		}, {
+			"id": "SLUS-00228",
+			"title": "BIG BASS WORLD CHAMPIONSHIP"
+		}, {
+			"id": "SLUS-01527",
+			"title": "BIG LEAGUE SLUGGERS BASEBALL"
+		}, {
+			"id": "SLUS-01259",
+			"title": "BIG OL' BASS 2"
+		}, {
+			"id": "SLUS-01478",
+			"title": "BIG STRIKE BOWLING"
+		}, {
+			"id": "SLUS-01289",
+			"title": "BILLIARDS"
+		}, {
+			"id": "SLUS-00502",
+			"title": "BIO F.R.E.A.K.S"
+		}, {
+			"id": "SLUS-00648",
+			"title": "BLACK BASS WITH BLUE MARLIN"
+		}, {
+			"id": "SLUS-00321",
+			"title": "BLACK DAWN"
+		}, {
+			"id": "SLUS-01215",
+			"title": "BLADE"
+		}, {
+			"id": "SLUS-00219",
+			"title": "BLAST CHAMBER"
+		}, {
+			"id": "SLUS-01380",
+			"title": "BLAST LACROSSE"
+		}, {
+			"id": "SLUS-00642",
+			"title": "BLAST RADIUS"
+		}, {
+			"id": "SLUS-01031",
+			"title": "BLASTER MASTER: BLASTING AGAIN"
+		}, {
+			"id": "SCUS-94412",
+			"title": "BLASTO"
+		}, {
+			"id": "SLUS-00100",
+			"title": "BLAZING DRAGONS"
+		}, {
+			"id": "SLUS-01496",
+			"title": "BLOCKIDS"
+		}, {
+			"id": "SLUS-00027",
+			"title": "BLOOD OMEN: LEGACY OF KAIN"
+		}, {
+			"id": "SCUS-94199",
+			"title": "BLOODY ROAR"
+		}, {
+			"id": "SCUS-94424",
+			"title": "BLOODY ROAR 2"
+		}, {
+			"id": "SLUS-01198",
+			"title": "BLUE'S CLUES: BLUE'S BIG MUSICAL"
+		}, {
+			"id": "SLUS-01333",
+			"title": "BOARD GAME: TOP SHOP"
+		}, {
+			"id": "SLUS-01407",
+			"title": "BOB THE BUILDER: CAN WE FIX IT?"
+		}, {
+			"id": "SCUS-94307",
+			"title": "BOGEY DEAD 6"
+		}, {
+			"id": "SLUS-00823",
+			"title": "BOMBERMAN FANTASY RACE"
+		}, {
+			"id": "SLUS-01189",
+			"title": "BOMBERMAN PARTY EDITION"
+		}, {
+			"id": "SLUS-00680",
+			"title": "BOMBERMAN WORLD"
+		}, {
+			"id": "SLUS-00968",
+			"title": "BOOM BOTS"
+		}, {
+			"id": "SLUS-00049",
+			"title": "BOTTOM OF THE NINTH"
+		}, {
+			"id": "SLUS-00296",
+			"title": "BOTTOM OF THE NINTH '97"
+		}, {
+			"id": "SLUS-00678",
+			"title": "BOTTOM OF THE NINTH '99"
+		}, {
+			"id": "SLUS-01288",
+			"title": "BOWLING"
+		}, {
+			"id": "SLUS-01309",
+			"title": "BOXING"
+		}, {
+			"id": "SLUS-00444",
+			"title": "BRAHMA FORCE: THE ASSAULT ON BELTLOGGER 9"
+		}, {
+			"id": "SLUS-00083\nSLUS-00171",
+			"title": "BRAIN DEAD 13 :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01508",
+			"title": "BRATZ"
+		}, {
+			"id": "SLUS-00726\nSLUS-90029",
+			"title": "BRAVE FENCER MUSASHI :  [ 2 DISCS ]\n \t\t Includes:  \t\tSquareSoft '98 Collector's CD Vol.2: Final Fantasy VIII (DEMO)"
+		}, {
+			"id": "SLUS-00488",
+			"title": "BRAVO AIR RACE"
+		}, {
+			"id": "SLUS-01170",
+			"title": "BREAKOUT"
+		}, {
+			"id": "SLUS-00422",
+			"title": "BREATH OF FIRE III"
+		}, {
+			"id": "SLUS-01324",
+			"title": "BREATH OF FIRE IV"
+		}, {
+			"id": "SLUS-00687",
+			"title": "BRIGANDINE: THE LEGEND OF FORSENA"
+		}, {
+			"id": "SLUS-00289",
+			"title": "BROKEN HELIX"
+		}, {
+			"id": "SLUS-00484",
+			"title": "BROKEN SWORD: THE SHADOW OF THE TEMPLARS"
+		}, {
+			"id": "SLUS-00812",
+			"title": "BROKEN SWORD 2: THE SMOKING MIRROR"
+		}, {
+			"id": "SLUS-00571",
+			"title": "BRUNSWICK CIRCUIT PRO BOWLING"
+		}, {
+			"id": "SLUS-00856",
+			"title": "BRUNSWICK CIRCUIT PRO BOWLING 2"
+		}, {
+			"id": "SLUS-00370",
+			"title": "BUBBLE BOBBLE FEAT. RAINBOW ISLANDS"
+		}, {
+			"id": "SLUS-00110",
+			"title": "BUBSY 3D"
+		}, {
+			"id": "SLUS-00354",
+			"title": "BUGRIDERS: THE RACE OF KINGS"
+		}, {
+			"id": "SLUS-00838",
+			"title": "BUGS BUNNY: LOST IN TIME"
+		}, {
+			"id": "SLUS-01144",
+			"title": "BUGS BUNNY & TAZ: TIME BUSTERS"
+		}, {
+			"id": "SLUS-01086",
+			"title": "BUILDER'S BLOCK"
+		}, {
+			"id": "SLUS-00324",
+			"title": "BURNING ROAD"
+		}, {
+			"id": "SLUS-01317",
+			"title": "BURSTRICK WAKE BOARDING!!"
+		}, {
+			"id": "SCUS-94180",
+			"title": "BUSHIDO BLADE"
+		}, {
+			"id": "SLUS-00663",
+			"title": "BUSHIDO BLADE 2"
+		}, {
+			"id": "SCUS-94263",
+			"title": "BUST A GROOVE"
+		}, {
+			"id": "SLUS-01159",
+			"title": "BUST A GROOVE 2"
+		}, {
+			"id": "SLUS-00233",
+			"title": "BUST-A-MOVE 2: ARCADE EDITION"
+		}, {
+			"id": "SLUS-00754",
+			"title": "BUST-A-MOVE 4"
+		}, {
+			"id": "SLUS-00725",
+			"title": "BUST-A-MOVE '99"
+		}, {
+			"id": "SLUS-00208",
+			"title": "BUSTER BROS. COLLECTION"
+		}, {
+			"id": "SLUS-00499",
+			"title": "C: THE CONTRA ADVENTURE"
+		}, {
+			"id": "SCUS-94666",
+			"title": "C-12: FINAL RESISTANCE"
+		}, {
+			"id": "SLUS-01391",
+			"title": "CABELA'S BIG GAME HUNTER: ULTIMATE CHALLENGE"
+		}, {
+			"id": "SLUS-01474",
+			"title": "CABELA'S ULTIMATE DEER HUNT: OPEN SEASON"
+		}, {
+			"id": "SLUS-00285",
+			"title": "CAESAR'S PALACE"
+		}, {
+			"id": "SLUS-00780",
+			"title": "CAESAR'S PALACE II"
+		}, {
+			"id": "SLUS-01089",
+			"title": "CAESAR'S PALACE 2000: MILLENNIUM GOLD EDITION"
+		}, {
+			"id": "SLUS-01476",
+			"title": "CAPCOM VS SNK: MILLENNIUM FIGHT 2000 PRO"
+		}, {
+			"id": "SLUS-00494",
+			"title": "CAR & DRIVER PRESENTS: GRAND TOUR RACING '98"
+		}, {
+			"id": "SLUS-01379",
+			"title": "CARD GAMES"
+		}, {
+			"id": "SCUS-94156",
+			"title": "CARDINAL SYN"
+		}, {
+			"id": "SCUS-94604\nSCUS-94964",
+			"title": "CARNAGE HEART :  [ 2 DISCS ]"
+		}, {
+			"id": "SCUS-94416",
+			"title": "CART WORLD SERIES"
+		}, {
+			"id": "SLUS-00162",
+			"title": "CASPER"
+		}, {
+			"id": "SLUS-01245",
+			"title": "CASPER: FRIENDS AROUND THE WORLD"
+		}, {
+			"id": "SLUS-00067",
+			"title": "CASTLEVANIA: SYMPHONY OF THE NIGHT"
+		}, {
+			"id": "SLUS-01384",
+			"title": "CASTLEVANIA: CHRONICLES"
+		}, {
+			"id": "SLUS-00882",
+			"title": "CASTROL HONDA SUPERBIKE RACING"
+		}, {
+			"id": "SLUS-00807",
+			"title": "CENTIPEDE"
+		}, {
+			"id": "SLUS-01084",
+			"title": "CHAMPIONSHIP BASS"
+		}, {
+			"id": "SLUS-00790",
+			"title": "CHAMPIONSHIP MOTOCROSS: FEATURING RICKY CARMICHAEL"
+		}, {
+			"id": "SLUS-01230",
+			"title": "CHAMPIONSHIP MOTOCROSS 2001: FEATURING RICKY CARMICHAEL"
+		}, {
+			"id": "SLUS-01216",
+			"title": "CHAMPIONSHIP SURFER"
+		}, {
+			"id": "SLUS-01400",
+			"title": "CHESS"
+		}, {
+			"id": "SLUS-00886",
+			"title": "CHESSMASTER II"
+		}, {
+			"id": "SLUS-01304",
+			"title": "CHICKEN RUN"
+		}, {
+			"id": "SLUS-00844",
+			"title": "CHOCOBO RACING"
+		}, {
+			"id": "SLUS-00814",
+			"title": "CHOCOBO'S DUNGEON 2"
+		}, {
+			"id": "SCUS-94700\nSCUS-94701",
+			"title": "CHRONICLES OF THE SWORD :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01041\nSLUS-01080",
+			"title": "CHRONO CROSS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00697",
+			"title": "CIRCUIT BREAKERS"
+		}, {
+			"id": "SLUS-00792",
+			"title": "CIVILIZATION II"
+		}, {
+			"id": "SLUS-01491",
+			"title": "CLEOPATRA'S FORTUNE"
+		}, {
+			"id": "SLUS-00539",
+			"title": "CLOCK TOWER"
+		}, {
+			"id": "SLUS-00695",
+			"title": "CLOCK TOWER 2: THE STRUGGLE WITHIN"
+		}, {
+			"id": "SCUS-94409",
+			"title": "CODENAME TENKA"
+		}, {
+			"id": "SCUS-94474",
+			"title": "COLIN MCRAE RALLY"
+		}, {
+			"id": "SLUS-01222",
+			"title": "COLIN MCRAE RALLY 2.0"
+		}, {
+			"id": "SLUS-00196",
+			"title": "COLLEGE SLAM"
+		}, {
+			"id": "SLUS-00543\nSLUS-00554",
+			"title": "COLONY WARS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00722",
+			"title": "COLONY WARS: VENGEANCE"
+		}, {
+			"id": "SLUS-00866",
+			"title": "COLONY WARS: RED SUN"
+		}, {
+			"id": "SLUS-00379\nSLUS-00410",
+			"title": "COMMAND & CONQUER :  [ 2 DISCS ]\n \t\t Includes:  \t\tGDI + NOD discs"
+		}, {
+			"id": "SLUS-00431\nSLUS-00485",
+			"title": "COMMAND & CONQUER: RED ALERT :  [ 2 DISCS ]\n \t\t Includes:  \t\tAllied + Soviet discs"
+		}, {
+			"id": "SLUS-00665\nSLUS-00667",
+			"title": "COMMAND & CONQUER: RED ALERT: RETALIATION :  [ 2 DISCS ]\n \t\t Includes:  \t\tAllied + Soviet discs"
+		}, {
+			"id": "SCUS-94294",
+			"title": "CONTENDER"
+		}, {
+			"id": "SCUS-94494",
+			"title": "CONTENDER 2"
+		}, {
+			"id": "SLUS-01305",
+			"title": "CONTENDER 2"
+		}, {
+			"id": "SLUS-00288",
+			"title": "CONTRA: LEGACY OF WAR"
+		}, {
+			"id": "SCUS-94356",
+			"title": "COOL BOARDERS"
+		}, {
+			"id": "SCUS-94358",
+			"title": "COOL BOARDERS 2"
+		}, {
+			"id": "SCUS-94251",
+			"title": "COOL BOARDERS 3"
+		}, {
+			"id": "SCUS-94559",
+			"title": "COOL BOARDERS 4"
+		}, {
+			"id": "SCUS-94597",
+			"title": "COOL BOARDERS 2001"
+		}, {
+			"id": "SLUS-00898\nSLUS-01199",
+			"title": "COUNTDOWN VAMPIRES :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00442",
+			"title": "COURIER CRISIS"
+		}, {
+			"id": "SLUS-01151\nSLUS-01157",
+			"title": "COVERT OPS: NUCLEAR DAWN : [ 2 DISCS ]"
+		}, {
+			"id": "SCUS-94900",
+			"title": "CRASH BANDICOOT"
+		}, {
+			"id": "SCUS-94154",
+			"title": "CRASH BANDICOOT 2: CORTEX STRIKES BACK"
+		}, {
+			"id": "SCUS-94244",
+			"title": "CRASH BANDICOOT 3: WARPED"
+		}, {
+			"id": "SCUS-94570",
+			"title": "CRASH BASH"
+		}, {
+			"id": "SCUS-94426",
+			"title": "CRASH TEAM RACING"
+		}, {
+			"id": "SLUS-01438",
+			"title": "CREATURES"
+		}, {
+			"id": "SLUS-01553",
+			"title": "CREATURES: RAISED IN SPACE"
+		}, {
+			"id": "SLUS-00576",
+			"title": "CRIME KILLER"
+		}, {
+			"id": "SLUS-00428",
+			"title": "CRITICAL DEPTH"
+		}, {
+			"id": "SLUS-00046",
+			"title": "CRITICOM: CRITICAL COMBAT"
+		}, {
+			"id": "SLUS-00530",
+			"title": "CROC: LEGEND OF THE GOBBOS"
+		}, {
+			"id": "SLUS-00634",
+			"title": "CROC 2"
+		}, {
+			"id": "SLUS-01342",
+			"title": "CROSSROAD CRISIS"
+		}, {
+			"id": "SLUS-00268",
+			"title": "CRUSADER: NO REMORSE"
+		}, {
+			"id": "SLUS-00799",
+			"title": "CRUSADERS OF MIGHT & MAGIC"
+		}, {
+			"id": "SLUS-00335",
+			"title": "CRYPT KILLER"
+		}, {
+			"id": "SLUS-01422",
+			"title": "CUBIX ROBOTS FOR EVERYONE: RACE'N ROBOTS"
+		}, {
+			"id": "SLUS-00116",
+			"title": "CYBER SPEED"
+		}, {
+			"id": "SLUS-00053",
+			"title": "CYBERIA"
+		}, {
+			"id": "SLUS-00008",
+			"title": "CYBER SLED"
+		}, {
+			"id": "SLUS-01004",
+			"title": "CYBERTIGER"
+		}, {
+			"id": "SLUS-00128\nSLUS-00173\nSLUS-00174",
+			"title": "D :  [ 3 DISCS ]"
+		}, {
+			"id": "SLUS-01280",
+			"title": "DANCE DANCE REVOLUTION"
+		}, {
+			"id": "SLUS-01281",
+			"title": "DANCE DANCE REVOLUTION: DISNEY MIX"
+		}, {
+			"id": "SLUS-01446",
+			"title": "DANCE DANCE REVOLUTION: KONAMIX"
+		}, {
+			"id": "SLUS-00881",
+			"title": "DANGER GIRL"
+		}, {
+			"id": "SLUS-00300",
+			"title": "DARE DEVIL DERBY 3D"
+		}, {
+			"id": "SLUS-00457",
+			"title": "DARKLIGHT CONFLICT"
+		}, {
+			"id": "SLUS-00036",
+			"title": "DARKSTALKERS: THE NIGHT WARRIORS"
+		}, {
+			"id": "SLUS-00745",
+			"title": "DARKSTALKERS 3"
+		}, {
+			"id": "SLUS-01182",
+			"title": "DARKSTONE"
+		}, {
+			"id": "SLUS-01026",
+			"title": "DAVE MIRRA FREESTYLE BMX"
+		}, {
+			"id": "SLUS-01347",
+			"title": "DAVE MIRRA FREESTYLE BMX: MAXIMUM REMIX"
+		}, {
+			"id": "SLUS-01455",
+			"title": "DAVID BECKHAM SOCCER"
+		}, {
+			"id": "SLUS-00658",
+			"title": "DEAD BALL ZONE"
+		}, {
+			"id": "SLUS-00693",
+			"title": "DEAD IN THE WATER"
+		}, {
+			"id": "SLUS-00606",
+			"title": "DEAD OR ALIVE"
+		}, {
+			"id": "SLUS-01067",
+			"title": "DECEPTION III: DARK DELUSION"
+		}, {
+			"id": "SLUS-00009",
+			"title": "DEFCON 5: PEACE HAS A PRICE"
+		}, {
+			"id": "SLUS-01429",
+			"title": "DELTA FORCE: URBAN WARFARE"
+		}, {
+			"id": "SLUS-00969",
+			"title": "DEMOLITION RACER"
+		}, {
+			"id": "SLUS-00037",
+			"title": "DESCENT"
+		}, {
+			"id": "SLUS-00460",
+			"title": "DESCENT MAXIMUM"
+		}, {
+			"id": "SLUS-00732",
+			"title": "DESTREGA"
+		}, {
+			"id": "SCUS-94302",
+			"title": "DESTRUCTION DERBY"
+		}, {
+			"id": "SCUS-94350",
+			"title": "DESTRUCTION DERBY 2"
+		}, {
+			"id": "SLUS-00912",
+			"title": "DESTRUCTION DERBY RAW"
+		}, {
+			"id": "SLUS-01221",
+			"title": "DETECTIVE BARBIE: THE MYSTERY CRUISE"
+		}, {
+			"id": "SLUS-00672",
+			"title": "DEVIL DICE"
+		}, {
+			"id": "SLUS-01421",
+			"title": "DEXTER'S LABORATORY: MANDARK'S LAB"
+		}, {
+			"id": "SLUS-00619",
+			"title": "DIABLO"
+		}, {
+			"id": "SLUS-00119",
+			"title": "DIE HARD TRILOGY"
+		}, {
+			"id": "SLUS-01015",
+			"title": "DIE HARD TRILOGY 2: VIVA LAS VEGAS"
+		}, {
+			"id": "SLUS-01328",
+			"title": "DIGIMON: DIGITAL CARD BATTLE"
+		}, {
+			"id": "SLUS-01404",
+			"title": "DIGIMON RUMBLE ARENA"
+		}, {
+			"id": "SLUS-01032",
+			"title": "DIGIMON WORLD"
+		}, {
+			"id": "SLUS-01193",
+			"title": "DIGIMON WORLD 2"
+		}, {
+			"id": "SLUS-01436",
+			"title": "DIGIMON WORLD 3"
+		}, {
+			"id": "SLUS-00922\nSLUS-90064",
+			"title": "DINO CRISIS :  [ 2 DISCS ]\n \t\t Includes:  \t\tResident Evil 3: Nemesis (DEMO)"
+		}, {
+			"id": "SLUS-01279",
+			"title": "DINO CRISIS 2"
+		}, {
+			"id": "SLUS-01552",
+			"title": "DIRT JOCKEY: HEAVY EQUIPMENT OPERATOR"
+		}, {
+			"id": "SCUS-94600",
+			"title": "DISCWORLD"
+		}, {
+			"id": "SCUS-94605",
+			"title": "DISCWORLD II: MORTALITY BYTES!"
+		}, {
+			"id": "SLUS-01574",
+			"title": "DISNEY'S 101 DALMATIANS II: PATCH'S LONDON ADVENTURE"
+		}, {
+			"id": "SLUS-01152",
+			"title": "DISNEY'S 102 DALMATIANS: PUPPIES TO THE RESCUE"
+		}, {
+			"id": "SLUS-07013CE",
+			"title": "DISNEY ACTION GAMES COLLECTORS' EDITION"
+		}, {
+			"id": "SCUS-94569",
+			"title": "DISNEY'S ALADDIN: NASIRA'S REVENGE"
+		}, {
+			"id": "SCUS-94636",
+			"title": "DISNEY'S ATLANTIS: THE LOST EMPIRE"
+		}, {
+			"id": "SLUS-01167",
+			"title": "DISNEY'S DINOSAUR"
+		}, {
+			"id": "SLUS-01242",
+			"title": "DISNEY'S DONALD DUCK: GOIN' QUACKERS"
+		}, {
+			"id": "SLUS-01209",
+			"title": "DISNEY'S GOOFY'S FUN HOUSE"
+		}, {
+			"id": "SLUS-00529",
+			"title": "DISNEY'S HERCULES: THE ACTION GAME"
+		}, {
+			"id": "SLUS-01029",
+			"title": "DISNEY'S HERCULES: THE ACTION GAME [RERELEASE]"
+		}, {
+			"id": "SCUS-94646",
+			"title": "DISNEY'S LILO & STITCH"
+		}, {
+			"id": "SLUS-01038",
+			"title": "DISNEY'S MULAN STORY STUDIO"
+		}, {
+			"id": "SCUS-94643",
+			"title": "DISNEY'S PETER PAN IN RETURN TO NEVERLAND"
+		}, {
+			"id": "SLUS-01583",
+			"title": "DISNEY'S PETER PAN IN RETURN TO NEVERLAND"
+		}, {
+			"id": "SLUS-01437",
+			"title": "DISNEY'S POOH'S PARTY GAME: IN SEARCH OF THE TREASURE"
+		}, {
+			"id": "SCUS-94456",
+			"title": "DISNEY'S TARZAN"
+		}, {
+			"id": "SCUS-94571",
+			"title": "DISNEY'S THE EMPEROR'S NEW GROOVE"
+		}, {
+			"id": "SLUS-01282",
+			"title": "DISNEY'S THE LION KING: SIMBA'S MIGHTY ADVENTURE"
+		}, {
+			"id": "SLUS-01286",
+			"title": "DISNEY'S THE LITTLE MERMAID II"
+		}, {
+			"id": "SLUS-01210",
+			"title": "DISNEY'S TIGGER'S HONEY HUNT"
+		}, {
+			"id": "SCUS-94647",
+			"title": "DISNEY'S TREASURE PLANET"
+		}, {
+			"id": "SLUS-01513",
+			"title": "DISNEY'S WINNIE THE POOH: KINDERGARTEN"
+		}, {
+			"id": "SLUS-01514",
+			"title": "DISNEY'S WINNIE THE POOH: PRESCHOOL"
+		}, {
+			"id": "SCUS-94288",
+			"title": "DISNEY / PIXAR: A BUG'S LIFE"
+		}, {
+			"id": "SLUS-01192",
+			"title": "DISNEY / PIXAR: BUZZ LIGHTYEAR OF STAR COMMAND"
+		}, {
+			"id": "SCUS-94635",
+			"title": "DISNEY / PIXAR: MONSTERS INC.: SCREAM TEAM"
+		}, {
+			"id": "SLUS-00893",
+			"title": "DISNEY / PIXAR: TOY STORY 2: BUZZ LIGHTYEAR TO THE RESCUE"
+		}, {
+			"id": "SLUS-01214",
+			"title": "DISNEY / PIXAR: TOY STORY RACER"
+		}, {
+			"id": "SLUS-00224",
+			"title": "DISRUPTOR"
+		}, {
+			"id": "SLUS-00077",
+			"title": "DOOM"
+		}, {
+			"id": "SLUS-01576",
+			"title": "DORA THE EXPLORER: BARNYARD BUDDIES"
+		}, {
+			"id": "SLUS-01579",
+			"title": "DR. SEUSS: THE CAT IN THE HAT"
+		}, {
+			"id": "SLUS-01284\nSLUS-01316",
+			"title": "DRACULA: THE RESURRECTION :  [2 DISCS ]"
+		}, {
+			"id": "SLUS-01440\nSLUS-01443",
+			"title": "DRACULA 2: THE LAST SANCTUARY :  [2 DISCS ]"
+		}, {
+			"id": "SLUS-00493",
+			"title": "DRAGON BALL GT: FINAL BOUT"
+		}, {
+			"id": "SLUS-01550",
+			"title": "DRAGON BALL Z: ULTIMATE BATTLE 22"
+		}, {
+			"id": "SLUS-00734",
+			"title": "DRAGON SEEDS"
+		}, {
+			"id": "SLUS-01176",
+			"title": "DRAGON TALES: DRAGON SEEK"
+		}, {
+			"id": "SLUS-01092\nSLUS-01164",
+			"title": "DRAGON VALOR :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01206\nSLUS-01346",
+			"title": "DRAGON WARRIOR VII :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00226",
+			"title": "DRAGONHEART: FIRE & STEEL"
+		}, {
+			"id": "SLUS-01312",
+			"title": "DREAMWORKS: GOLD & GLORY: THE ROAD TO EL DORADO"
+		}, {
+			"id": "SLUS-00842",
+			"title": "DRIVER: YOU ARE THE WHEELMAN"
+		}, {
+			"id": "SLUS-01161\nSLUS-01318",
+			"title": "DRIVER 2: THE WHEELMAN IS BACK :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01025",
+			"title": "DUCATI WORLD: RACING CHALLENGE"
+		}, {
+			"id": "SLUS-01002",
+			"title": "DUKE NUKEM: LAND OF THE BABES"
+		}, {
+			"id": "SLUS-00583",
+			"title": "DUKE NUKEM: TIME TO KILL"
+		}, {
+			"id": "SLUS-00355",
+			"title": "DUKE NUKEM: TOTAL MELTDOWN"
+		}, {
+			"id": "SLUS-00973",
+			"title": "DUNE 2000"
+		}, {
+			"id": "SLUS-00438",
+			"title": "DYNASTY WARRIORS"
+		}, {
+			"id": "SLUS-01385",
+			"title": "E.T. THE EXTRA TERRESTRIAL: INTERPLANETARY MISSION"
+		}, {
+			"id": "SLUS-01319",
+			"title": "EA SPORTS SUPERCROSS 2001"
+		}, {
+			"id": "SLUS-00943",
+			"title": "EAGLE ONE: HARRIER ATTACK"
+		}, {
+			"id": "SLUS-01551",
+			"title": "EASTER BUNNY'S BIG DAY"
+		}, {
+			"id": "SLUS-00820",
+			"title": "ECHO NIGHT"
+		}, {
+			"id": "SLUS-01169",
+			"title": "ECW: ANARCHY RULZ"
+		}, {
+			"id": "SLUS-01045",
+			"title": "ECW: HARDCORE REVOLUTION"
+		}, {
+			"id": "SLUS-00751",
+			"title": "EGGS OF STEEL: CHARLIE'S EGGCELLENT ADVENTURE"
+		}, {
+			"id": "SLUS-00809",
+			"title": "EHRGEIZ: GOD BLESS THE RING"
+		}, {
+			"id": "SCUS-94243",
+			"title": "EINH?NDER"
+		}, {
+			"id": "SLUS-00654",
+			"title": "ELEMENTAL GEARBOLT"
+		}, {
+			"id": "SLUS-00699",
+			"title": "ELIMINATOR"
+		}, {
+			"id": "SCUS-94152",
+			"title": "EPIDEMIC"
+		}, {
+			"id": "SLUS-01462",
+			"title": "EQUESTRIAN SHOWCASE"
+		}, {
+			"id": "SCUS-94503",
+			"title": "ESPN EXTREME GAMES"
+		}, {
+			"id": "SLUS-01186",
+			"title": "ESPN MLS GAMENIGHT"
+		}, {
+			"id": "SLUS-00704",
+			"title": "ESPN X-GAMES PRO BOARDER"
+		}, {
+			"id": "SLUS-01034",
+			"title": "ETERNAL EYES"
+		}, {
+			"id": "SLUS-01072\nSLUS-01326",
+			"title": "EVIL DEAD: HAIL TO THE KING :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00855",
+			"title": "EVIL ZONE"
+		}, {
+			"id": "SLUS-00541",
+			"title": "EXCALIBUR 2555 A.D."
+		}, {
+			"id": "SLUS-01075",
+			"title": "EXPENDABLE"
+		}, {
+			"id": "SLUS-01530",
+			"title": "EXTREME GO-KART RACING"
+		}, {
+			"id": "SLUS-00200",
+			"title": "EXTREME PINBALL"
+		}, {
+			"id": "SLUS-01120",
+			"title": "F1 2000"
+		}, {
+			"id": "SLUS-01290",
+			"title": "F1 CHAMPIONSHIP SEASON 2000"
+		}, {
+			"id": "SLUS-01088",
+			"title": "F1 RACING CHAMPIONSHIP"
+		}, {
+			"id": "SLUS-01036",
+			"title": "F1 WORLD GRAND PRIX: 1999 SEASON"
+		}, {
+			"id": "SLUS-01344",
+			"title": "F1 WORLD GRAND PRIX 2000"
+		}, {
+			"id": "SLUS-00236",
+			"title": "FADE TO BLACK"
+		}, {
+			"id": "SLUS-01454",
+			"title": "FAMILY CARD GAME FUN PACK"
+		}, {
+			"id": "SLUS-01171",
+			"title": "FAMILY FEUD"
+		}, {
+			"id": "SLUS-01049",
+			"title": "FAMILY GAME PACK"
+		}, {
+			"id": "SLUS-00395",
+			"title": "FANTASTIC FOUR"
+		}, {
+			"id": "SLUS-01001",
+			"title": "FATAL FURY: WILD AMBITION"
+		}, {
+			"id": "SLUS-00920\nSLUS-01056\nSLUS-01057\nSLUS-01058",
+			"title": "FEAR EFFECT :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-01266\nSLUS-01275\nSLUS-01276\nSLUS-01277",
+			"title": "FEAR EFFECT 2: RETRO HELIX :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-00533",
+			"title": "FELONY 11-79"
+		}, {
+			"id": "SLUS-00782",
+			"title": "FIFA '99"
+		}, {
+			"id": "SLUS-00994",
+			"title": "FIFA 2000"
+		}, {
+			"id": "SLUS-01262",
+			"title": "FIFA 2001: MAJOR LEAGUE SOCCER"
+		}, {
+			"id": "SLUS-01408",
+			"title": "FIFA 2002: MAJOR LEAGUE SOCCER"
+		}, {
+			"id": "SLUS-00520",
+			"title": "FIFA: ROAD TO WORLD CUP '98"
+		}, {
+			"id": "SLUS-00038",
+			"title": "FIFA SOCCER '96"
+		}, {
+			"id": "SLUS-00269",
+			"title": "FIFA SOCCER '97"
+		}, {
+			"id": "SLUS-01504",
+			"title": "FIFA SOCCER 2003"
+		}, {
+			"id": "SLUS-01578",
+			"title": "FIFA SOCCER 2004"
+		}, {
+			"id": "SLUS-01585",
+			"title": "FIFA SOCCER 2005"
+		}, {
+			"id": "SLUS-00641",
+			"title": "FIGHTER MAKER"
+		}, {
+			"id": "SLUS-00433",
+			"title": "FIGHTING FORCE"
+		}, {
+			"id": "SLUS-00934",
+			"title": "FIGHTING FORCE 2"
+		}, {
+			"id": "SLUS-00331",
+			"title": "FINAL DOOM"
+		}, {
+			"id": "SCUS-94163\nSCUS-94164\nSCUS-94165",
+			"title": "FINAL FANTASY VII :  [ 3 DISCS ]"
+		}, {
+			"id": "SLUS-00892\nSLUS-00908\nSLUS-00909\nSLUS-00910",
+			"title": "FINAL FANTASY VIII :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-01251\nSLUS-01295\nSLUS-01296\nSLUS-01297",
+			"title": "FINAL FANTASY IX :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-00879\nSLUS-00900",
+			"title": "FINAL FANTASY ANTHOLOGY :  [ 2 DISCS ]\n \t\t Includes:  \t\tFinal Fantasy V and Final Fantasy VI"
+		}, {
+			"id": "SLUS-01360\nSLUS-01363",
+			"title": "FINAL FANTASY CHRONICLES :  [ 2 DISCS ]\n \t\t Includes:  \t\tFinal Fantasy IV and Chrono Trigger"
+		}, {
+			"id": "SLUS-01541",
+			"title": "FINAL FANTASY ORIGINS\n \t\t Includes:  \t\tFinal Fantasy + Final Fantasy II"
+		}, {
+			"id": "SCUS-94221",
+			"title": "FINAL FANTASY TACTICS"
+		}, {
+			"id": "SLUS-00802",
+			"title": "FISHERMAN'S BAIT"
+		}, {
+			"id": "SLUS-00999",
+			"title": "FISHERMAN'S BAIT 2: BIG OL' BASS"
+		}, {
+			"id": "SLUS-00231",
+			"title": "FLOATING RUNNER: QUEST FOR THE 7 CRYSTALS"
+		}, {
+			"id": "SLUS-01301",
+			"title": "FORD RACING"
+		}, {
+			"id": "SLUS-01540",
+			"title": "FORD TRUCK MANIA"
+		}, {
+			"id": "SCUS-94353",
+			"title": "FORMULA 1"
+		}, {
+			"id": "SLUS-00744",
+			"title": "FORMULA 1 '98"
+		}, {
+			"id": "SLUS-00546",
+			"title": "FORMULA 1: CHAMPIONSHIP EDITION"
+		}, {
+			"id": "SLUS-00870",
+			"title": "FORMULA ONE 99"
+		}, {
+			"id": "SLUS-01134",
+			"title": "FORMULA ONE 2000"
+		}, {
+			"id": "SLUS-00458",
+			"title": "FORSAKEN"
+		}, {
+			"id": "SLUS-00101\nSLUS-00175\nSLUS-00176",
+			"title": "FOX HUNT :  [ 3 DISCS ]"
+		}, {
+			"id": "SLUS-00636",
+			"title": "FOX SPORTS GOLF '99"
+		}, {
+			"id": "SLUS-00925",
+			"title": "FOX SPORTS NHL CHAMPIONSHIP 2000"
+		}, {
+			"id": "SLUS-00635",
+			"title": "FOX SPORTS SOCCER '99"
+		}, {
+			"id": "SLUS-00010",
+			"title": "FRANK THOMAS BIG HURT BASEBALL"
+		}, {
+			"id": "SLUS-00767",
+			"title": "FREESTYLE BOARDIN' '99"
+		}, {
+			"id": "SLUS-01122",
+			"title": "FREESTYLE MOTOCROSS: MCGRATH VS. PASTRANA"
+		}, {
+			"id": "SLUS-00506",
+			"title": "FROGGER"
+		}, {
+			"id": "SLUS-01172",
+			"title": "FROGGER 2: SWAMPY'S REVENGE"
+		}, {
+			"id": "SLUS-01011",
+			"title": "FRONT MISSION 3"
+		}, {
+			"id": "SLUS-00739",
+			"title": "FUTURE COP L.A.P.D."
+		}, {
+			"id": "SLUS-00690",
+			"title": "G.DARIUS"
+		}, {
+			"id": "SLUS-00544\nSLUS-00556",
+			"title": "G-POLICE :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00798",
+			"title": "G-POLICE: WEAPONS OF JUSTICE"
+		}, {
+			"id": "SLUS-01258",
+			"title": "GALAGA: DESTINATION EARTH"
+		}, {
+			"id": "SLUS-00986\nSLUS-01098\nSLUS-01099",
+			"title": "GALERIANS :  [3 DISCS ]"
+		}, {
+			"id": "SLUS-00942",
+			"title": "GALLOP RACER"
+		}, {
+			"id": "SLUS-00624",
+			"title": "GAUNTLET LEGENDS"
+		}, {
+			"id": "SLUS-00970",
+			"title": "GEKIDO: URBAN FIGHTERS"
+		}, {
+			"id": "SLUS-01498",
+			"title": "GEKIOH SHOOTING KING"
+		}, {
+			"id": "SLUS-00024",
+			"title": "GEOM CUBE"
+		}, {
+			"id": "SLUS-00042",
+			"title": "GEX"
+		}, {
+			"id": "SLUS-00598",
+			"title": "GEX: ENTER THE GECKO"
+		}, {
+			"id": "SLUS-00806",
+			"title": "GEX 3: DEEP COVER GECKO"
+		}, {
+			"id": "SLUS-00552",
+			"title": "GHOST IN THE SHELL"
+		}, {
+			"id": "SLUS-00890",
+			"title": "GLOVER"
+		}, {
+			"id": "SLUS-00055",
+			"title": "GOAL STORM"
+		}, {
+			"id": "SLUS-00295",
+			"title": "GOAL STORM '97"
+		}, {
+			"id": "SLUS-00319\nSLUS-00555",
+			"title": "GOLDEN NUGGET :  [ 2 DISCS ]"
+		}, {
+			"id": "SCUS-94194",
+			"title": "GRAN TURISMO: THE REAL DRIVING SIMULATOR"
+		}, {
+			"id": "SCUS-94455\nSCUS-94488\nSCUS-94588",
+			"title": "GRAN TURISMO 2: THE REAL DRIVING SIMULATOR :  [ 3 DISCS ]\n \t\t Includes:  \t\tArcade Disc + Simulation Disc + Bonus PlayStation Disc"
+		}, {
+			"id": "SLUS-00127",
+			"title": "GRAND SLAM"
+		}, {
+			"id": "SLUS-00106",
+			"title": "GRAND THEFT AUTO"
+		}, {
+			"id": "SLUS-00106\nSLUS-00789\nSLUS-00846",
+			"title": "GRAND THEFT AUTO: COLLECTOR'S EDITION :  [ 3 DISCS ]"
+		}, {
+			"id": "SLUS-00106\nSLUS-00846",
+			"title": "GRAND THEFT AUTO DIRECTOR'S CUT  :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00789",
+			"title": "GRAND THEFT AUTO 2"
+		}, {
+			"id": "SLUS-00846",
+			"title": "GRAND THEFT AUTO: MISSION PACK #1: LONDON 1969"
+		}, {
+			"id": "SCUS-94457\nSCUS-94465",
+			"title": "GRANDIA  :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00323",
+			"title": "GRID RUNNER"
+		}, {
+			"id": "SCUS-94568",
+			"title": "GRIND SESSION"
+		}, {
+			"id": "SLUS-01150",
+			"title": "GRUDGE WARRIORS"
+		}, {
+			"id": "SLUS-00811",
+			"title": "GUARDIAN'S CRUSADE"
+		}, {
+			"id": "SLUS-01466",
+			"title": "GUBBLE"
+		}, {
+			"id": "SLUS-00772",
+			"title": "GUILTY GEAR"
+		}, {
+			"id": "SLUS-01226",
+			"title": "GUNDAM BATTLE ASSAULT"
+		}, {
+			"id": "SLUS-01418",
+			"title": "GUNDAM BATTLE ASSAULT 2"
+		}, {
+			"id": "SLUS-01398",
+			"title": "GUNFIGHTER: THE LEGEND OF JESSE JAMES"
+		}, {
+			"id": "SLUS-00313",
+			"title": "GUNSHIP"
+		}, {
+			"id": "SLUS-00108",
+			"title": "HARDBALL 5"
+		}, {
+			"id": "SLUS-00651",
+			"title": "HARDBALL 99"
+		}, {
+			"id": "SLUS-01503",
+			"title": "HARRY POTTER & THE CHAMBER OF SECRETS"
+		}, {
+			"id": "SLUS-01415",
+			"title": "HARRY POTTER & THE SORCERER'S STONE"
+		}, {
+			"id": "SLUS-01115",
+			"title": "HARVEST MOON: BACK TO NATURE"
+		}, {
+			"id": "SLUS-01027",
+			"title": "HBO BOXING"
+		}, {
+			"id": "SLUS-00696\nSLUS-00741",
+			"title": "HEART OF DARKNESS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01414",
+			"title": "HELLBOY: ASYLUM SEEKER"
+		}, {
+			"id": "SLUS-00778",
+			"title": "HELLO KITTY: CUBE FRENZY"
+		}, {
+			"id": "SLUS-00298",
+			"title": "HERC'S ADVENTURES"
+		}, {
+			"id": "SLUS-00348",
+			"title": "HEXEN"
+		}, {
+			"id": "SLUS-00157",
+			"title": "HI-OCTANE"
+		}, {
+			"id": "SLUS-01244",
+			"title": "HIGH HEAT MAJOR LEAGUE BASEBALL 2002"
+		}, {
+			"id": "SLUS-00830",
+			"title": "HIGH HEAT BASEBALL 2000"
+		}, {
+			"id": "SLUS-01195",
+			"title": "HOGS OF WAR"
+		}, {
+			"id": "SLUS-01394",
+			"title": "HOOTERS ROAD TRIP"
+		}, {
+			"id": "SLUS-01375",
+			"title": "HOSHIGAMI: RUINING BLUE EARTH"
+		}, {
+			"id": "SCUS-94188",
+			"title": "HOT SHOTS GOLF"
+		}, {
+			"id": "SCUS-94476",
+			"title": "HOT SHOTS GOLF 2"
+		}, {
+			"id": "SLUS-01293",
+			"title": "HOT WHEELS: EXTREME RACING"
+		}, {
+			"id": "SLUS-00964",
+			"title": "HOT WHEELS: TURBO RACING"
+		}, {
+			"id": "SLUS-01559",
+			"title": "HUGO 6: THE EVIL MIRROR"
+		}, {
+			"id": "SLUS-00847",
+			"title": "HYDRO THUNDER"
+		}, {
+			"id": "SLUS-00566",
+			"title": "IAN LIVINGSTONE'S DEATHTRAP DUNGEON"
+		}, {
+			"id": "SLUS-01097",
+			"title": "IHRA DRAG RACING"
+		}, {
+			"id": "SLUS-00225",
+			"title": "IMPACT RACING"
+		}, {
+			"id": "SLUS-01294\nSLUS-01314",
+			"title": "IN COLD BLOOD :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00172",
+			"title": "IN THE HUNT"
+		}, {
+			"id": "SLUS-01225",
+			"title": "INCREDIBLE CRISIS"
+		}, {
+			"id": "SLUS-00221",
+			"title": "INDEPENDENCE DAY"
+		}, {
+			"id": "SLUS-01267",
+			"title": "INSPECTOR GADGET: GADGET'S CRAZY MAZE"
+		}, {
+			"id": "SCUS-94181",
+			"title": "INTELLIGENT QUBE"
+		}, {
+			"id": "SLUS-00906",
+			"title": "INTELLIVISION CLASSICS"
+		}, {
+			"id": "SLUS-00238",
+			"title": "INTERNATIONAL TRACK & FIELD"
+		}, {
+			"id": "SLUS-00987",
+			"title": "INTERNATIONAL TRACK & FIELD 2000"
+		}, {
+			"id": "SLUS-00850",
+			"title": "INTERPLAY SPORTS BASEBALL 2000"
+		}, {
+			"id": "SLUS-01534",
+			"title": "INUYASHA: A FEUDAL FAIRY TALE"
+		}, {
+			"id": "SLUS-00709",
+			"title": "INVASION FROM BEYOND"
+		}, {
+			"id": "SLUS-00378",
+			"title": "IRON & BLOOD: WARRIORS OF RAVENLOFT"
+		}, {
+			"id": "SLUS-00235",
+			"title": "IRON MAN X-O MANOWAR IN HEAVY METAL"
+		}, {
+			"id": "SLUS-01061",
+			"title": "IRON SOLDIER 3"
+		}, {
+			"id": "SLUS-00775",
+			"title": "IRRITATING STICK"
+		}, {
+			"id": "SLUS-00674",
+			"title": "ISS PRO 98"
+		}, {
+			"id": "SLUS-01014",
+			"title": "ISS PRO EVOLUTION"
+		}, {
+			"id": "SLUS-00684",
+			"title": "JACKIE CHAN'S STUNTMASTER"
+		}, {
+			"id": "SLUS-00854",
+			"title": "JADE COCOON: THE STORY OF THE TAMAMAYU"
+		}, {
+			"id": "SLUS-01139",
+			"title": "JARRETT & LABONTE STOCK CAR RACING"
+		}, {
+			"id": "SLUS-00682",
+			"title": "JEOPARDY!"
+		}, {
+			"id": "SLUS-01173",
+			"title": "JEOPARDY!: 2ND EDITION"
+		}, {
+			"id": "SLUS-00479",
+			"title": "JEREMY MCGRATH SUPERCROSS '98"
+		}, {
+			"id": "SLUS-00832",
+			"title": "JEREMY MCGRATH SUPERCROSS 2000"
+		}, {
+			"id": "SCUS-94907",
+			"title": "JERSEY DEVIL"
+		}, {
+			"id": "SCUS-94309",
+			"title": "JET MOTO"
+		}, {
+			"id": "SCUS-94167",
+			"title": "JET MOTO 2"
+		}, {
+			"id": "SCUS-94555",
+			"title": "JET MOTO 3"
+		}, {
+			"id": "SLUS-01509",
+			"title": "JIGSAW MADNESS"
+		}, {
+			"id": "SLUS-00500",
+			"title": "JIMMY JOHNSON'S VR FOOTBALL '98"
+		}, {
+			"id": "SLUS-01313",
+			"title": "JIMMY WHITE'S 2: CUEBALL"
+		}, {
+			"id": "SLUS-00194",
+			"title": "JOHNNY BAZOOKATONE"
+		}, {
+			"id": "SLUS-01060",
+			"title": "JOJO'S BIZARRE ADVENTURE"
+		}, {
+			"id": "SLUS-00630",
+			"title": "JUDGE DREDD"
+		}, {
+			"id": "SLUS-00894\nSLUS-00988\nSLUS-00989",
+			"title": "JUGGERNAUT :  [ 3 DISCS ]"
+		}, {
+			"id": "SCUS-94103",
+			"title": "JUMPING FLASH!"
+		}, {
+			"id": "SCUS-94108",
+			"title": "JUMPING FLASH! 2"
+		}, {
+			"id": "SLUS-01383",
+			"title": "JUMPSTART: WILDLIFE SAFARI"
+		}, {
+			"id": "SLUS-00177",
+			"title": "JUPITER STRIKE"
+		}, {
+			"id": "SLUS-00941",
+			"title": "K-1: GRAND PRIX"
+		}, {
+			"id": "SLUS-00766",
+			"title": "K-1: REVENGE"
+		}, {
+			"id": "SLUS-00414",
+			"title": "K-1: THE ARENA FIGHTERS"
+		}, {
+			"id": "SLUS-00677",
+			"title": "KAGERO: DECEPTION II"
+		}, {
+			"id": "SLUS-00631",
+			"title": "KARTIA: THE WORD OF FATE"
+		}, {
+			"id": "SLUS-00600",
+			"title": "KENSEI SACRED FIST"
+		}, {
+			"id": "SLUS-01412",
+			"title": "KICKBOXING"
+		}, {
+			"id": "SCUS-94102",
+			"title": "KILEAK: THE DNA IMPERATIVE"
+		}, {
+			"id": "SLUS-00938",
+			"title": "KILLER LOOP"
+		}, {
+			"id": "SLUS-00369",
+			"title": "KILLING ZONE"
+		}, {
+			"id": "SLUS-00158",
+			"title": "KING'S FIELD"
+		}, {
+			"id": "SLUS-00255",
+			"title": "KING'S FIELD II"
+		}, {
+			"id": "SLUS-00801",
+			"title": "KINGSLEY'S ADVENTURE"
+		}, {
+			"id": "SLUS-01366",
+			"title": "KISS PINBALL"
+		}, {
+			"id": "SLUS-00585",
+			"title": "KLONOA: DOOR TO PHANTOMILE"
+		}, {
+			"id": "SLUS-00737",
+			"title": "KNOCKOUT KINGS"
+		}, {
+			"id": "SLUS-00993",
+			"title": "KNOCKOUT KINGS 2000"
+		}, {
+			"id": "SLUS-01269",
+			"title": "KNOCKOUT KINGS 2001"
+		}, {
+			"id": "SLUS-00945",
+			"title": "KONAMI ARCADE CLASSICS"
+		}, {
+			"id": "SLUS-01051\nSLUS-01100\nSLUS-01101\nSLUS-01102",
+			"title": "KOUDELKA :  [ 4 DISCS ]"
+		}, {
+			"id": "SCUS-94303",
+			"title": "KRAZY IVAN"
+		}, {
+			"id": "SLUS-01125",
+			"title": "KURT WARNER'S ARENA FOOTBALL UNLEASHED"
+		}, {
+			"id": "SLUS-01441",
+			"title": "LARGO WINCH: COMMANDO SAR"
+		}, {
+			"id": "SLUS-00708",
+			"title": "LEGACY OF KAIN: SOUL REAVER"
+		}, {
+			"id": "SCUS-94254",
+			"title": "LEGEND OF LEGAIA"
+		}, {
+			"id": "SLUS-01013",
+			"title": "LEGEND OF MANA"
+		}, {
+			"id": "SLUS-01246",
+			"title": "LEGO ISLAND 2: THE BRICKSTER'S REVENGE"
+		}, {
+			"id": "SLUS-00581",
+			"title": "LEGO RACERS"
+		}, {
+			"id": "SLUS-00937",
+			"title": "LEGO ROCK RAIDERS"
+		}, {
+			"id": "SCUS-94601",
+			"title": "LEMMINGS 3D"
+		}, {
+			"id": "SLUS-00760",
+			"title": "LEMMINGS & OH NO MORE LEMMINGS"
+		}, {
+			"id": "SLUS-00293",
+			"title": "LETHAL ENFORCES I & II"
+		}, {
+			"id": "LSP-990121",
+			"title": "Lightspan: 16 Tales 1"
+		}, {
+			"id": "LSP-990122",
+			"title": "LIGHTSPAN: 16 TALES 2"
+		}, {
+			"id": "LSP-990123",
+			"title": "Lightspan: 16 Tales 3"
+		}, {
+			"id": "LSP-990124",
+			"title": "Lightspan: 16 Tales 4"
+		}, {
+			"id": "LSP-010170",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: COSMIC QUEST 1: CITY SIGHTS"
+		}, {
+			"id": "LSP-010270",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: COSMIC QUEST 2: FAIRY TALE ISLAND"
+		}, {
+			"id": "LSP-010370",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: COSMIC QUEST 3: RACE THROUGH FRANCE"
+		}, {
+			"id": "LSP-010160",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: STAY & PLAY 1: IN THE CLUBHOUSE"
+		}, {
+			"id": "LSP-010260",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: STAY & PLAY 2: IN MARS' BEDROOM"
+		}, {
+			"id": "LSP-010360",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: STAY & PLAY 3: IN LONNIE'S CLASSROOM"
+		}, {
+			"id": "LSP-010180",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: WALKABOUT 1: THE NATURAL HISTORY MUSEUM"
+		}, {
+			"id": "LSP-010280",
+			"title": "Lightspan: A Mars Moose Adventure: Walkabout 2: The Shakespeare Festival"
+		}, {
+			"id": "LSP-010380",
+			"title": "LIGHTSPAN: A MARS MOOSE ADVENTURE: WALKABOUT 3: WORLD SPORTS DAY"
+		}, {
+			"id": "LSP-200110",
+			"title": "LIGHTSPAN: CALAMITY 1: THE NATURAL WORLD"
+		}, {
+			"id": "LSP-200220",
+			"title": "LIGHTSPAN: CALAMITY 2: PEOPLE AND TRADITIONS"
+		}, {
+			"id": "LSP-200330",
+			"title": "LIGHTSPAN: CALAMITY 3: AROUND THE WORLD"
+		}, {
+			"id": "LSP-903426",
+			"title": "Lightspan: Cali's Geo Tools 1"
+		}, {
+			"id": "LSP-080240",
+			"title": "LIGHTSPAN: COSMIC COOKOFF: MATHEMATICS"
+		}, {
+			"id": "LSP-905154",
+			"title": "Lightspan: Cosmic Cookoff 2: Language Arts"
+		}, {
+			"id": "LSP-130110",
+			"title": "LIGHTSPAN: CREATIVE CAMP"
+		}, {
+			"id": "LSP-903167",
+			"title": "Lightspan: Creative Isle 1"
+		}, {
+			"id": "LSP-905109",
+			"title": "Lightspan: Creative Journey 1"
+		}, {
+			"id": "LSP-907097",
+			"title": "Lightspan: Creative Yoyage 1"
+		}, {
+			"id": "LSP-990191",
+			"title": "Lightspan: Every Child Can Succeed 1"
+		}, {
+			"id": "LSP-990192",
+			"title": "Lightspan: Every Child Can Succeed 2"
+		}, {
+			"id": "LSP-990193",
+			"title": "Lightspan: Every Child Can Succeed 3"
+		}, {
+			"id": "LSP-990194",
+			"title": "Lightspan: Every Child Can Succeed 4"
+		}, {
+			"id": "LSP-990195",
+			"title": "Lightspan: Every Child Can Succeed 5"
+		}, {
+			"id": "LSP-990196",
+			"title": "Lightspan: Every Child Can Succeed 6"
+		}, {
+			"id": "LSP-990197",
+			"title": "Lightspan: Every Child Can Succeed 7"
+		}, {
+			"id": "LSP-080130",
+			"title": "LIGHTSPAN: FAIRE GAMES: LANGUAGE ARTS"
+		}, {
+			"id": "LSP-905420",
+			"title": "Lightspan: Faire Games: Mathematics"
+		}, {
+			"id": "LSP-150200",
+			"title": "Lightspan: Family Connection: A Guide to Lightspan"
+		}, {
+			"id": "LSP-990131",
+			"title": "Lightspan: Head to Toe 1"
+		}, {
+			"id": "LSP-990132",
+			"title": "Lightspan: Head to Toe 2"
+		}, {
+			"id": "LSP-990133",
+			"title": "Lightspan: Head to Toe 3"
+		}, {
+			"id": "LSP-905062",
+			"title": "Lightspan: K9.5 1: Live in Airdale"
+		}, {
+			"id": "LSP-905079",
+			"title": "Lightspan: K9.5 2: We are the Dogs"
+		}, {
+			"id": "LSP-905086",
+			"title": "Lightspan: K9.5 3: Webtunes"
+		}, {
+			"id": "LSP-905093",
+			"title": "Lightspan: K9.5 4: The Tail-Wag Tour"
+		}, {
+			"id": "LSP-907103",
+			"title": "Lightspan: K9.5 5: The Howlywood Premiere"
+		}, {
+			"id": "LSP-905123",
+			"title": "Lightspan: KazMania 1: Trail of Gems"
+		}, {
+			"id": "LSP-905130",
+			"title": "Lightspan: KazMania 2: Chaos in Kazmania"
+		}, {
+			"id": "LSP-010150",
+			"title": "Lightspan: Liquid Books 1: Lety's Favorite Stories"
+		}, {
+			"id": "LSP-010250",
+			"title": "LIGHTSPAN: LIQUID BOOKS ADVENTURE 2: AMRITA'S TREES AND CERDITO AND THE COYOTE"
+		}, {
+			"id": "LSP-010350",
+			"title": "Lightspan: Liquid Books 3:  Far-Fetched Frontier Tales"
+		}, {
+			"id": "LSP-903136",
+			"title": "Lightspan: Liquid Books 4:  The Adventures of Adelita and Bo"
+		}, {
+			"id": "LSP-903143",
+			"title": "Lightspan: Liquid Books 5:  Pop-0ut Prose"
+		}, {
+			"id": "LSP-905147",
+			"title": "Lightspan: Liquid Books 6:  The Wandering Path"
+		}, {
+			"id": "LSP-903433",
+			"title": "Lightspan: Math Gallery 1: Collection 1"
+		}, {
+			"id": "LSP-903440",
+			"title": "Lightspan: Math Gallery 2: Collection 2"
+		}, {
+			"id": "LSP-100112",
+			"title": "Lightspan: Math on the Move! 1: Addition / Subtraction Advanced"
+		}, {
+			"id": "LSP-905390",
+			"title": "Lightspan: Math on the Move! 1: Addition / Subtraction Intermediate"
+		}, {
+			"id": "LSP-100113",
+			"title": "Lightspan: Math on the Move! 2: Multiplication / Division Advanced"
+		}, {
+			"id": "LSP-905406",
+			"title": "Lightspan: Math on the Move! 2: Multiplication / Division Intermediate"
+		}, {
+			"id": "LSP-050101",
+			"title": "Lightspan: Mona & Moki 1: Drive Me Wild"
+		}, {
+			"id": "LSP-050102",
+			"title": "Lightspan: Mona & Moki 2: Drive Me Wilder!"
+		}, {
+			"id": "LSP-905383",
+			"title": "Lightspan: P.K.'s Math Studio 1"
+		}, {
+			"id": "LSP-905345",
+			"title": "Lightspan: P.K.'s Place 1: Party on the Patio!"
+		}, {
+			"id": "LSP-905352",
+			"title": "Lightspan: P.K.'s Place 2: Hoopo at Sea!"
+		}, {
+			"id": "LSP-905369",
+			"title": "Lightspan: P.K.'s Place 3: Carlos at the Races!"
+		}, {
+			"id": "LSP-180410",
+			"title": "Lightspan: P.K.'s Place 4: Daphne and the Seventh Wonder!"
+		}, {
+			"id": "LSP-907127",
+			"title": "Lightspan: Road Writer 1"
+		}, {
+			"id": "LSP-990161",
+			"title": "Lightspan: Science is Elementary 1"
+		}, {
+			"id": "LSP-990162",
+			"title": "Lightspan: Science is Elementary 2"
+		}, {
+			"id": "LSP-990163",
+			"title": "Lightspan: Science is Elementary 3"
+		}, {
+			"id": "LSP-990141",
+			"title": "Lightspan: Story Lane Theater 1"
+		}, {
+			"id": "LSP-990142",
+			"title": "Lightspan: Story Lane Theater 2"
+		}, {
+			"id": "LSP-990143",
+			"title": "Lightspan: Story Lane Theater 3"
+		}, {
+			"id": "LSP-990144",
+			"title": "Lightspan: Story Lane Theater 4"
+		}, {
+			"id": "LSP-990145",
+			"title": "Lightspan: Story Lane Theater 5"
+		}, {
+			"id": "LSP-030101",
+			"title": "Lightspan: Str.at.e.s. 1: Match a Batch"
+		}, {
+			"id": "LSP-030102",
+			"title": "Lightspan: Str.at.e.s. 2: Matchamania!"
+		}, {
+			"id": "LSP-030103",
+			"title": "Lightspan: Str.at.e.s. 3: Title This! Title That!"
+		}, {
+			"id": "LSP-030104",
+			"title": "Lightspan: Str.at.e.s. 4: Titlerama!"
+		}, {
+			"id": "LSP-030105",
+			"title": "Lightspan: Str.at.e.s. 5: Parallel Lives!"
+		}, {
+			"id": "LSP-030106",
+			"title": "Lightspan: Str.at.e.s. 6: Analogy-ology!"
+		}, {
+			"id": "LSP-030107",
+			"title": "Lightspan: Str.at.e.s. 7: Riddle Roundup!"
+		}, {
+			"id": "LSP-030108",
+			"title": "Lightspan: Str.at.e.s. 8: Riddle Wrangler"
+		}, {
+			"id": "LSP-060101",
+			"title": "LIGHTSPAN: THE QUADDLE FAMILY MYSTERIES 1: THE CASE OF THE SCARCE SCARAB: LOBBY: KITCHEN"
+		}, {
+			"id": "LSP-060102",
+			"title": "LIGHTSPAN: THE QUADDLE FAMILY MYSTERIES 2: THE CASE OF THE SCARCE SCARAB: GARDEN"
+		}, {
+			"id": "LSP-060103",
+			"title": "LIGHTSPAN: THE QUADDLE FAMILY MYSTERIES 3: THE CASE OF THE SCARCE SCARAB: PARLOR: FAMILY ROOM"
+		}, {
+			"id": "LSP-020160",
+			"title": "LIGHTSPAN: THE SECRET OF GOOGOL: 1A: RESHAPING GOOGOL: THE SUBMARINE"
+		}, {
+			"id": "LSP-020150",
+			"title": "LIGHTSPAN: THE SECRET OF GOOGOL: 1B: RESHAPING GOOGOL: THE TOWER"
+		}, {
+			"id": "LSP-020180",
+			"title": "Lightspan: The Secret of Googol: Reshaping Googol 2a: Castle"
+		}, {
+			"id": "LSP-020170",
+			"title": "Lightspan: The Secret of Googol: Reshaping Googol 2b: Under the Ocean"
+		}, {
+			"id": "LSP-020260",
+			"title": "Lightspan: The Secret of Googol: The Google Counting Fair 3: Midways"
+		}, {
+			"id": "LSP-020280",
+			"title": "Lightspan: The Secret of Googol: The Google Counting Fair 4: Corral * Fun House"
+		}, {
+			"id": "LSP-020450",
+			"title": "Lightspan: The Secret of Googol: Googolfest 5"
+		}, {
+			"id": "LSP-020570",
+			"title": "Lightspan: The Secret of Googol: Googolfest 6"
+		}, {
+			"id": "LSP-020650",
+			"title": "Lightspan: The Secret of Googol: Eggs All Around 7"
+		}, {
+			"id": "LSP-020780",
+			"title": "Lightspan: The Secret of Googol: Googol Gulch 8"
+		}, {
+			"id": "LSP-903174",
+			"title": "Lightspan: The Three Decoders 1: Riddle of the Ring"
+		}, {
+			"id": "LSP-903181",
+			"title": "Lightspan: The Three Decoders 2: Key to the Carousel"
+		}, {
+			"?": "",
+			"SERIAL": "LSP-040110",
+			"TITLE": "Lightspan: Timeless Math 1: Maya, Search and Rescue",
+			"LANGUAGE": ""
+		},
+		{
+			"?": "",
+			"SERIAL": "LSP-040210",
+			"TITLE": "Lightspan: Timeless Math 2: Maya, Observatory",
+			"LANGUAGE": ""
+		},
+		{
+			"?": "",
+			"SERIAL": "LSP-040310",
+			"TITLE": "Lightspan: Timeless Math 3: Maya, King Jaguar's Village",
+			"LANGUAGE": ""
+		},
+		{
+			"id": "LSP-040410",
+			"title": "Lightspan: Timeless Math 4: Lunar Base"
+		}, {
+			"id": "LSP-040510",
+			"title": "Lightspan: Timeless Math 5: Space Flight Rescue"
+		}, {
+			"id": "LSP-040610",
+			"title": "Lightspan: Timeless Math 6: Brainswarm"
+		}, {
+			"id": "LSP-040710",
+			"title": "Lightspan: Timeless Math 7: Rover Recovery"
+		}, {
+			"id": "LSP-909015",
+			"title": "Lightspan: Unknown Variable 1: Masque Manor"
+		}, {
+			"id": "LSP-909022",
+			"title": "LIGHTSPAN: UNKNOWN VARIABLE 2: RAVEN'S RIDGE"
+		}, {
+			"id": "LSP-170110",
+			"title": "Lightspan: Write Away 1"
+		}, {
+			"id": "LSP-170111",
+			"title": "Lightspan: Write Away 2"
+		}, {
+			"id": "LSP-170112",
+			"title": "Lightspan: Write Away 3"
+		}, {
+			"id": "LSP-170113",
+			"title": "Lightspan: Write Away 4"
+		}, {
+			"id": "LSP-170114",
+			"title": "Lightspan: Write Away 5"
+		}, {
+			"id": "LSP-170115",
+			"title": "Lightspan: Write Away 6"
+		}, {
+			"id": "LSP-170116",
+			"title": "Lightspan: Write Away 7"
+		}, {
+			"id": "LSP-170117",
+			"title": "Lightspan: Write Away 8"
+		}, {
+			"id": "LSP-170118",
+			"title": "Lightspan: Write Away 9"
+		}, {
+			"id": "LSP-170119",
+			"title": "Lightspan: Write Away 10"
+		}, {
+			"id": "SLUS-00076",
+			"title": "LOADED"
+		}, {
+			"id": "SLUS-00557",
+			"title": "LODE RUNNER"
+		}, {
+			"id": "SLUS-01369",
+			"title": "LOONEY TUNES: SHEEP RAIDER"
+		}, {
+			"id": "SLUS-01145",
+			"title": "LOONEY TUNES RACING"
+		}, {
+			"id": "SLUS-00719",
+			"title": "LUCKY LUKE"
+		}, {
+			"id": "SLUS-00628\nSLUS-00899\nSLUS-00921",
+			"title": "LUNAR: SILVER STAR STORY COMPLETE :  [ 3 DISCS ]\n \t\t Includes:  \t\tLunar Silver Star Story + The Making Of"
+		}, {
+			"id": "SLUS-01071\nSLUS-01239\nSLUS-01240\nSLUS-01257",
+			"title": "LUNAR 2: ETERNAL BLUE COMPLETE :  [ 4 DISCS ]\n \t\t Includes:  \t\tLunar Eternal Blue + The Making Of"
+		}, {
+			"id": "SLUS-01306",
+			"title": "M&M'S SHELL SHOCKED"
+		}, {
+			"id": "SLUS-00383",
+			"title": "MACHINE HEAD"
+		}, {
+			"id": "SLUS-00470",
+			"title": "MACHINE HUNTER"
+		}, {
+			"id": "SLUS-00018",
+			"title": "MADDEN NFL 97"
+		}, {
+			"id": "SLUS-00516",
+			"title": "MADDEN NFL 98"
+		}, {
+			"id": "SLUS-00729",
+			"title": "MADDEN NFL 99"
+		}, {
+			"id": "SLUS-00961",
+			"title": "MADDEN NFL 2000"
+		}, {
+			"id": "SLUS-01241",
+			"title": "MADDEN NFL 2001"
+		}, {
+			"id": "SLUS-01402",
+			"title": "MADDEN NFL 2002"
+		}, {
+			"id": "SLUS-01482",
+			"title": "MADDEN NFL 2003"
+		}, {
+			"id": "SLUS-01570",
+			"title": "MADDEN NFL 2004"
+		}, {
+			"id": "SLUS-01584",
+			"title": "MADDEN NFL 2005"
+		}, {
+			"id": "SLUS-00029",
+			"title": "MAGIC CARPET"
+		}, {
+			"id": "SLUS-00247",
+			"title": "MAGIC THE GATHERING: BATTLEMAGE"
+		}, {
+			"id": "SLUS-01471",
+			"title": "MARBLE MASTER"
+		}, {
+			"id": "SLUS-01148",
+			"title": "MARTIAN GOTHIC: UNIFICATION"
+		}, {
+			"id": "SLUS-00257",
+			"title": "MARVEL SUPER HEROES"
+		}, {
+			"id": "SLUS-00793",
+			"title": "MARVEL SUPER HEROES VS. STREET FIGHTER"
+		}, {
+			"id": "SLUS-01059",
+			"title": "MARVEL VS. CAPCOM: CLASH OF SUPER HEROES"
+		}, {
+			"id": "SLUS-01386",
+			"title": "MARY-KATE & AHSLEY: CRUSH COURSE"
+		}, {
+			"id": "SLUS-01121",
+			"title": "MARY-KATE & AHSLEY: MAGICAL MYSTERY MALL"
+		}, {
+			"id": "SLUS-01362",
+			"title": "MARY-KATE & AHSLEY: WINNERS CIRCLE"
+		}, {
+			"id": "SLUS-00462",
+			"title": "MASS DESTRUCTION"
+		}, {
+			"id": "SLUS-00595",
+			"title": "MASTER OF MONSTERS: DISCIPLES OF GAIA"
+		}, {
+			"id": "SLUS-01113",
+			"title": "MAT HOFFMAN'S PRO BMX"
+		}, {
+			"id": "SLUS-00503",
+			"title": "MAXIMUM FORCE: PULL THE TRIGGER"
+		}, {
+			"id": "SLUS-00426",
+			"title": "MDK"
+		}, {
+			"id": "SLUS-00401",
+			"title": "MECHWARRIOR 2"
+		}, {
+			"id": "SLUS-00974",
+			"title": "MEDAL OF HONOR"
+		}, {
+			"id": "SLUS-01270",
+			"title": "MEDAL OF HONOR: UNDERGROUND"
+		}, {
+			"id": "SCUS-94227",
+			"title": "MEDIEVIL"
+		}, {
+			"id": "SCUS-94564",
+			"title": "MEDIEVIL II"
+		}, {
+			"id": "SLUS-00453",
+			"title": "MEGAMAN 8"
+		}, {
+			"id": "SLUS-00603",
+			"title": "MEGAMAN LEGENDS"
+		}, {
+			"id": "SLUS-01140",
+			"title": "MEGAMAN LEGENDS 2"
+		}, {
+			"id": "SLUS-00561",
+			"title": "MEGAMAN X4"
+		}, {
+			"id": "SLUS-01334",
+			"title": "MEGAMAN X5"
+		}, {
+			"id": "SLUS-01395",
+			"title": "MEGAMAN X6"
+		}, {
+			"id": "SLUS-01387",
+			"title": "MEN IN BLACK: THE SERIES: CRASHDOWN"
+		}, {
+			"id": "SLUS-00594\nSLUS-00776",
+			"title": "METAL GEAR SOLID :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00957",
+			"title": "METAL GEAR SOLID: VR MISSIONS"
+		}, {
+			"id": "SLUS-01212",
+			"title": "METAL SLUG X"
+		}, {
+			"id": "SLUS-01229",
+			"title": "MICHELIN RALLY MASTERS: RACE OF CHAMPIONS"
+		}, {
+			"id": "SLUS-00559",
+			"title": "MICRO MACHINES V3"
+		}, {
+			"id": "SLUS-01129",
+			"title": "MICRO MANIACS RACING"
+		}, {
+			"id": "SLUS-01162",
+			"title": "MIKE TYSON BOXING"
+		}, {
+			"id": "SLUS-01556",
+			"title": "MIRACLE SPACE RACE"
+		}, {
+			"id": "SLUS-01123",
+			"title": "MISS SPIDER'S TEA PARTY"
+		}, {
+			"id": "SLUS-00992",
+			"title": "MISSILE COMMAND"
+		}, {
+			"id": "SLUS-01016",
+			"title": "MISSION IMPOSSIBLE"
+		}, {
+			"id": "SCUS-94170",
+			"title": "MLB 98"
+		}, {
+			"id": "SCUS-94233",
+			"title": "MLB 99"
+		}, {
+			"id": "SCUS-94359",
+			"title": "MLB 2000"
+		}, {
+			"id": "SCUS-94478",
+			"title": "MLB 2001"
+		}, {
+			"id": "SCUS-94638",
+			"title": "MLB 2002"
+		}, {
+			"id": "SCUS-94653",
+			"title": "MLB 2003"
+		}, {
+			"id": "SCUS-94689",
+			"title": "MLB 2004"
+		}, {
+			"id": "SCUS-94692",
+			"title": "MLB 2005"
+		}, {
+			"id": "SCUS-94507",
+			"title": "MLB PENNANT RACE"
+		}, {
+			"id": "SLUS-01103",
+			"title": "MOBIL 1 RALLY CHAMPIONSHIP"
+		}, {
+			"id": "SLUS-01469",
+			"title": "MOBILE ARMOR"
+		}, {
+			"id": "SLUS-01525",
+			"title": "MOBILE LIGHT FORCE"
+		}, {
+			"id": "SLUS-00834",
+			"title": "MONACO GRAND PRIX"
+		}, {
+			"id": "SLUS-00765",
+			"title": "MONKEY HERO"
+		}, {
+			"id": "SLUS-00930",
+			"title": "MONKEY MAGIC"
+		}, {
+			"id": "SLUS-00507",
+			"title": "MONOPOLY"
+		}, {
+			"id": "SLUS-01490",
+			"title": "MONSTER BASS"
+		}, {
+			"id": "SLUS-00568",
+			"title": "MONSTER RANCHER"
+		}, {
+			"id": "SLUS-01178",
+			"title": "MONSTER RANCHER: BATTLE CARD: EPISODE II"
+		}, {
+			"id": "SLUS-01325",
+			"title": "MONSTER RANCHER: HOP-A-BOUT"
+		}, {
+			"id": "SLUS-00917",
+			"title": "MONSTER RANCHER 2"
+		}, {
+			"id": "SLUS-00743",
+			"title": "MONSTERSEED"
+		}, {
+			"id": "SLUS-01021",
+			"title": "MORT THE CHICKEN"
+		}, {
+			"id": "SCUS-94201",
+			"title": "MORTAL KOMBAT 3"
+		}, {
+			"id": "SLUS-01126",
+			"title": "MORTAL KOMBAT 3"
+		}, {
+			"id": "SLUS-00605",
+			"title": "MORTAL KOMBAT 4"
+		}, {
+			"id": "SLUS-00476",
+			"title": "MORTAL KOMBAT MYTHOLOGIES: SUB-ZERO"
+		}, {
+			"id": "SLUS-00824",
+			"title": "MORTAL KOMBAT: SPECIAL FORCES"
+		}, {
+			"id": "SLUS-00330",
+			"title": "MORTAL KOMBAT TRILOGY"
+		}, {
+			"id": "SLUS-00498",
+			"title": "MOTO RACER"
+		}, {
+			"id": "SLUS-00738",
+			"title": "MOTO RACER 2"
+		}, {
+			"id": "SLUS-01321",
+			"title": "MOTO RACER WORLD TOUR"
+		}, {
+			"id": "SLUS-01357",
+			"title": "MOTOCROSS MANIA"
+		}, {
+			"id": "SLUS-01531",
+			"title": "MOTOCROSS MANIA 2"
+		}, {
+			"id": "SCUS-94355",
+			"title": "MOTOR TOON GRAND PRIX"
+		}, {
+			"id": "SLUS-00717",
+			"title": "MOTORHEAD"
+		}, {
+			"id": "SLUS-01111",
+			"title": "MR. DRILLER"
+		}, {
+			"id": "SLUS-01018",
+			"title": "MS. PACMAN: MAZE MADNESS"
+		}, {
+			"id": "SLUS-01453",
+			"title": "MTV'S CELEBRITY DEATHMATCH"
+		}, {
+			"id": "SLUS-01006",
+			"title": "MTV MUSIC GENERATOR"
+		}, {
+			"id": "SLUS-01231",
+			"title": "MTV SPORTS: PURE RIDE"
+		}, {
+			"id": "SLUS-01232",
+			"title": "MTV SPORTS: SKATEBOARDING FEATURING ANDY MACDONALD"
+		}, {
+			"id": "SLUS-00990",
+			"title": "MTV SPORTS: SNOWBOARDING"
+		}, {
+			"id": "SLUS-01233",
+			"title": "MTV SPORTS: TJ LAVIN'S ULTIMATE BMX"
+		}, {
+			"id": "SLUS-01238",
+			"title": "MUPPET MONSTER ADVENTURE"
+		}, {
+			"id": "SLUS-01237",
+			"title": "MUPPET RACE MANIA"
+		}, {
+			"id": "SLUS-01512",
+			"title": "MY DISNEY KITCHEN"
+		}, {
+			"id": "SCUS-94602",
+			"title": "MYST"
+		}, {
+			"id": "SLUS-00637",
+			"title": "N2O: NITROUS OXIDE"
+		}, {
+			"id": "SLUS-00591",
+			"title": "NAGANO WINTER OLYMPICS '98"
+		}, {
+			"id": "SLUS-00215",
+			"title": "NAMCO MUSEUM VOL.1"
+		}, {
+			"id": "SLUS-00216",
+			"title": "NAMCO MUSEUM VOL.2"
+		}, {
+			"id": "SLUS-00398",
+			"title": "NAMCO MUSEUM VOL.3"
+		}, {
+			"id": "SLUS-00416",
+			"title": "NAMCO MUSEUM VOL.4"
+		}, {
+			"id": "SLUS-00417",
+			"title": "NAMCO MUSEUM VOL.5"
+		}, {
+			"id": "SLUS-00325",
+			"title": "NANOTEK WARRIOR"
+		}, {
+			"id": "SLUS-00521",
+			"title": "NASCAR 98"
+		}, {
+			"id": "SLUS-00647",
+			"title": "NASCAR 98: COLLECTOR'S EDITION"
+		}, {
+			"id": "SLUS-00740",
+			"title": "NASCAR 99"
+		}, {
+			"id": "SLUS-00883",
+			"title": "NASCAR 99: LEGACY"
+		}, {
+			"id": "SLUS-00962",
+			"title": "NASCAR 2000"
+		}, {
+			"id": "SLUS-01263",
+			"title": "NASCAR 2001"
+		}, {
+			"id": "SLUS-01166",
+			"title": "NASCAR HEAT"
+		}, {
+			"id": "SLUS-00374",
+			"title": "NASCAR RACING"
+		}, {
+			"id": "SLUS-01068",
+			"title": "NASCAR RUMBLE"
+		}, {
+			"id": "SLUS-01403",
+			"title": "NASCAR THUNDER 2002"
+		}, {
+			"id": "SLUS-01502",
+			"title": "NASCAR THUNDER 2003"
+		}, {
+			"id": "SLUS-01571",
+			"title": "NASCAR THUNDER 2004"
+		}, {
+			"id": "SLUS-00926",
+			"title": "NBA BASKETBALL 2000"
+		}, {
+			"id": "SLUS-00492",
+			"title": "NBA FASTBREAK '98"
+		}, {
+			"id": "SLUS-00329",
+			"title": "NBA HANG TIME"
+		}, {
+			"id": "SLUS-01331",
+			"title": "NBA HOOPZ"
+		}, {
+			"id": "SLUS-00048",
+			"title": "NBA IN THE ZONE"
+		}, {
+			"id": "SLUS-00294",
+			"title": "NBA IN THE ZONE 2"
+		}, {
+			"id": "SLUS-00445",
+			"title": "NBA IN THE ZONE '98"
+		}, {
+			"id": "SLUS-00791",
+			"title": "NBA IN THE ZONE '99"
+		}, {
+			"id": "SLUS-01028",
+			"title": "NBA IN THE ZONE 2000"
+		}, {
+			"id": "SLUS-00388",
+			"title": "NBA JAM EXTREME"
+		}, {
+			"id": "SLUS-00002",
+			"title": "NBA JAM T.E."
+		}, {
+			"id": "SLUS-00060",
+			"title": "NBA LIVE 96"
+		}, {
+			"id": "SLUS-00267",
+			"title": "NBA LIVE 97"
+		}, {
+			"id": "SLUS-00523",
+			"title": "NBA LIVE 98"
+		}, {
+			"id": "SLUS-00736",
+			"title": "NBA LIVE '99"
+		}, {
+			"id": "SLUS-00998",
+			"title": "NBA LIVE 2000"
+		}, {
+			"id": "SLUS-01271",
+			"title": "NBA LIVE 2001"
+		}, {
+			"id": "SLUS-01416",
+			"title": "NBA LIVE 2002"
+		}, {
+			"id": "SLUS-01483",
+			"title": "NBA LIVE 2003"
+		}, {
+			"id": "SCUS-94500",
+			"title": "NBA SHOOTOUT"
+		}, {
+			"id": "SCUS-94552",
+			"title": "NBA SHOOTOUT '97"
+		}, {
+			"id": "SCUS-94171",
+			"title": "NBA SHOOTOUT '98"
+		}, {
+			"id": "SCUS-94561",
+			"title": "NBA SHOOTOUT 2000"
+		}, {
+			"id": "SCUS-94581",
+			"title": "NBA SHOOTOUT 2001"
+		}, {
+			"id": "SCUS-94641",
+			"title": "NBA SHOOTOUT 2002"
+		}, {
+			"id": "SCUS-94673",
+			"title": "NBA SHOOTOUT 2003"
+		}, {
+			"id": "SCUS-94691",
+			"title": "NBA SHOOTOUT 2004"
+		}, {
+			"id": "SLUS-00948",
+			"title": "NBA SHOWTIME: NBA ON NBC"
+		}, {
+			"id": "SLUS-00142",
+			"title": "NCAA BASKETBALL: FINAL FOUR '97"
+		}, {
+			"id": "SCUS-94264",
+			"title": "NCAA FINAL FOUR 99"
+		}, {
+			"id": "SCUS-94562",
+			"title": "NCAA FINAL FOUR 2000"
+		}, {
+			"id": "SCUS-94579",
+			"title": "NCAA FINAL FOUR 2001"
+		}, {
+			"id": "SLUS-00514",
+			"title": "NCAA FOOTBALL 98"
+		}, {
+			"id": "SLUS-00688",
+			"title": "NCAA FOOTBALL 99"
+		}, {
+			"id": "SLUS-00932",
+			"title": "NCAA FOOTBALL 2000"
+		}, {
+			"id": "SLUS-01219",
+			"title": "NCAA FOOTBALL 2001"
+		}, {
+			"id": "SCUS-94509",
+			"title": "NCAA FOOTBALL: GAME BREAKER"
+		}, {
+			"id": "SCUS-94172",
+			"title": "NCAA GAMEBREAKER 98"
+		}, {
+			"id": "SCUS-94246",
+			"title": "NCAA GAMEBREAKER 99"
+		}, {
+			"id": "SCUS-94557",
+			"title": "NCAA GAMEBREAKER 2000"
+		}, {
+			"id": "SCUS-94573",
+			"title": "NCAA GAMEBREAKER 2001"
+		}, {
+			"id": "SLUS-00526",
+			"title": "NCAA MARCH MADNESS '98"
+		}, {
+			"id": "SLUS-00805",
+			"title": "NCAA MARCH MADNESS '99"
+		}, {
+			"id": "SLUS-01023",
+			"title": "NCAA MARCH MADNESS 2000"
+		}, {
+			"id": "SLUS-01320",
+			"title": "NCAA MARCH MADNESS 2001"
+		}, {
+			"id": "SLUS-00764",
+			"title": "NECTARIS: MILITARY MADNESS"
+		}, {
+			"id": "SLUS-00826",
+			"title": "NEED FOR SPEED: HIGH STAKES"
+		}, {
+			"id": "SLUS-01104",
+			"title": "NEED FOR SPEED: PORSCHE UNLEASHED"
+		}, {
+			"id": "SLUS-00590",
+			"title": "NEED FOR SPEED: V-RALLY"
+		}, {
+			"id": "SLUS-00276",
+			"title": "NEED FOR SPEED II"
+		}, {
+			"id": "SLUS-00620",
+			"title": "NEED FOR SPEED III: HOT PURSUIT"
+		}, {
+			"id": "SLUS-00602",
+			"title": "NEWMAN-HAAS RACING"
+		}, {
+			"id": "SLUS-00617",
+			"title": "NFL BLITZ"
+		}, {
+			"id": "SLUS-00861",
+			"title": "NFL BLITZ 2000"
+		}, {
+			"id": "SLUS-01146",
+			"title": "NFL BLITZ 2001"
+		}, {
+			"id": "SLUS-00047",
+			"title": "NFL FULL CONTACT"
+		}, {
+			"id": "SCUS-94505",
+			"title": "NFL GAMEDAY"
+		}, {
+			"id": "SCUS-94510",
+			"title": "NFL GAMEDAY 97"
+		}, {
+			"id": "SCUS-94173",
+			"title": "NFL GAMEDAY 98"
+		}, {
+			"id": "SCUS-94234",
+			"title": "NFL GAMEDAY 99"
+		}, {
+			"id": "SCUS-94556",
+			"title": "NFL GAMEDAY 2000"
+		}, {
+			"id": "SCUS-94575",
+			"title": "NFL GAMEDAY 2001"
+		}, {
+			"id": "SCUS-94639",
+			"title": "NFL GAMEDAY 2002"
+		}, {
+			"id": "SCUS-94665",
+			"title": "NFL GAMEDAY 2003"
+		}, {
+			"id": "SCUS-94690",
+			"title": "NFL GAMEDAY 2004"
+		}, {
+			"id": "SCUS-94695",
+			"title": "NFL GAMEDAY 2005"
+		}, {
+			"id": "SLUS-00011",
+			"title": "NFL QUARTERBACK CLUB '97"
+		}, {
+			"id": "SCUS-94245",
+			"title": "NFL XTREME"
+		}, {
+			"id": "SCUS-94420",
+			"title": "NFL XTREME 2"
+		}, {
+			"id": "SLUS-01155",
+			"title": "N-GEN RACING"
+		}, {
+			"id": "SLUS-00030",
+			"title": "NHL 97"
+		}, {
+			"id": "SLUS-00519",
+			"title": "NHL 98"
+		}, {
+			"id": "SLUS-00735",
+			"title": "NHL 99"
+		}, {
+			"id": "SLUS-00965",
+			"title": "NHL 2000"
+		}, {
+			"id": "SLUS-01264",
+			"title": "NHL 2001"
+		}, {
+			"id": "SLUS-00825",
+			"title": "NHL BLADES OF STEEL 2000"
+		}, {
+			"id": "SLUS-00391",
+			"title": "NHL BREAKAWAY 98"
+		}, {
+			"id": "SCUS-94504",
+			"title": "NHL FACE OFF"
+		}, {
+			"id": "SCUS-94550",
+			"title": "NHL FACE OFF '97"
+		}, {
+			"id": "SCUS-94174",
+			"title": "NHL FACE OFF 98"
+		}, {
+			"id": "SCUS-94235",
+			"title": "NHL FACE OFF 99"
+		}, {
+			"id": "SCUS-94558",
+			"title": "NHL FACE OFF 2000"
+		}, {
+			"id": "SCUS-94577",
+			"title": "NHL FACE OFF 2001"
+		}, {
+			"id": "SLUS-00327",
+			"title": "NHL OPEN ICE 2 ON 2 CHALLENGE"
+		}, {
+			"id": "SLUS-00227",
+			"title": "NHL POWERPLAY '96"
+		}, {
+			"id": "SLUS-00528",
+			"title": "NHL POWERPLAY 98"
+		}, {
+			"id": "SLUS-01085",
+			"title": "NHL ROCK THE RINK"
+		}, {
+			"id": "SLUS-01047",
+			"title": "NICKTOONS RACING"
+		}, {
+			"id": "SLUS-00582",
+			"title": "NIGHTMARE CREATURES"
+		}, {
+			"id": "SLUS-01112",
+			"title": "NIGHTMARE CREATURES II"
+		}, {
+			"id": "SLUS-00435",
+			"title": "NINJA: SHADOW OF DARKNESS"
+		}, {
+			"id": "SLUS-00804",
+			"title": "NO ONE CAN STOP MR. DOMINO"
+		}, {
+			"id": "SLUS-01000",
+			"title": "NO FEAR DOWNHILL MOUNTAIN BIKING"
+		}, {
+			"id": "SLUS-00466",
+			"title": "NORSE BY NORSEWEST: THE RETURN OF THE LOST VIKINGS"
+		}, {
+			"id": "SCUS-94404\nSCUS-94407",
+			"title": "NOVASTORM :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00518",
+			"title": "NUCLEAR STRIKE"
+		}, {
+			"id": "SLUS-00710\nSLUS-00731",
+			"title": "ODDWORLD: ABE'S EXODDUS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00190",
+			"title": "ODDWORLD: ABE'S ODDYSEE"
+		}, {
+			"id": "SLUS-00698",
+			"title": "ODT: ESCAPE OR DIE TRYING"
+		}, {
+			"id": "SLUS-00020",
+			"title": "OFF-WORLD INTERCEPTOR EXTREME"
+		}, {
+			"id": "SLUS-00467",
+			"title": "OGRE BATTLE: THE MARCH OF THE BLACK QUEEN"
+		}, {
+			"id": "SLUS-00156",
+			"title": "OLYMPIC SOCCER: ATLANTA '96"
+		}, {
+			"id": "SLUS-00148",
+			"title": "OLYMPIC SUMMER GAMES: ATLANTA '96"
+		}, {
+			"id": "SCUS-94449",
+			"title": "OMEGA BOOST"
+		}, {
+			"id": "SLUS-00469",
+			"title": "ONE"
+		}, {
+			"id": "SLUS-01406",
+			"title": "ONE PIECE MANSION"
+		}, {
+			"id": "SLUS-00464",
+			"title": "OVERBLOOD: A 3D SCI-FI ADVENTURE"
+		}, {
+			"id": "SLUS-00439",
+			"title": "PAC-MAN WORLD"
+		}, {
+			"id": "SLUS-01389",
+			"title": "PAJAMA SAM: YOU ARE WHAT YOU EAT FROM YOUR HEAD TO YOUR FEET"
+		}, {
+			"id": "SLUS-00232",
+			"title": "PANDEMONIUM!"
+		}, {
+			"id": "SLUS-00578",
+			"title": "PANDEMONIUM! 2"
+		}, {
+			"id": "SLUS-01399",
+			"title": "PANZER FRONT"
+		}, {
+			"id": "SLUS-00132",
+			"title": "PANZER GENERAL"
+		}, {
+			"id": "SCUS-94183",
+			"title": "PARAPPA THE RAPPER"
+		}, {
+			"id": "SLUS-00662\nSLUS-00668\nSLUS-90028",
+			"title": "PARASITE EVE :  [ 3 DISCS ]\n \t\t Includes:  \t\tParasite Eve + SquareSoft '98 Collector's CD Vol.1: Xenogears (DEMO)"
+		}, {
+			"id": "SLUS-01042\nSLUS-01055\nSLUS-90028",
+			"title": "PARASITE EVE 2 :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01539",
+			"title": "PATRIOTIC PINBALL"
+		}, {
+			"id": "SLUS-00400",
+			"title": "PEAK PERFORMANCE"
+		}, {
+			"id": "SLUS-00341",
+			"title": "PERFECT WEAPON"
+		}, {
+			"id": "SLUS-00339",
+			"title": "PERSONA REVELATIONS"
+		}, {
+			"id": "SLUS-01158\nSLUS-01339",
+			"title": "PERSONA 2: ETERNAL PUNISHMENT :  [ 3 DISCS ]\n \t\t Includes:  \t\tPersona 2: Eternal Punishment + Bonus Disc"
+		}, {
+			"id": "SLUS-01130",
+			"title": "PETER JACOBSEN'S: GOLDEN TEE GOLF"
+		}, {
+			"id": "SLUS-00016",
+			"title": "PGA TOUR GOLF '96"
+		}, {
+			"id": "SLUS-00261",
+			"title": "PGA TOUR GOLF '97"
+		}, {
+			"id": "SLUS-00517",
+			"title": "PGA TOUR GOLF 98"
+		}, {
+			"id": "SCUS-94403",
+			"title": "PHILOSOMA"
+		}, {
+			"id": "SLUS-01523",
+			"title": "PHIX: THE ADVENTURE"
+		}, {
+			"id": "SLUS-01451",
+			"title": "PINK PANTHER: PINKADELIC PURSUIT"
+		}, {
+			"id": "SLUS-01494",
+			"title": "PINOBEE"
+		}, {
+			"id": "SLUS-01409",
+			"title": "PIPE DREAMS 3D"
+		}, {
+			"id": "SLUS-00146",
+			"title": "PITBALL"
+		}, {
+			"id": "SLUS-00254",
+			"title": "PITFALL 3D: BEYOND THE JUNGLE"
+		}, {
+			"id": "SLUS-01468",
+			"title": "PLANET OF THE APES"
+		}, {
+			"id": "SLUS-00653",
+			"title": "POCKET FIGHTER"
+		}, {
+			"id": "SLUS-00097",
+			"title": "PO'ED"
+		}, {
+			"id": "SLUS-00481",
+			"title": "POINT BLANK"
+		}, {
+			"id": "SLUS-00796",
+			"title": "POINT BLANK 2"
+		}, {
+			"id": "SLUS-01354",
+			"title": "POINT BLANK 3"
+		}, {
+			"id": "SLUS-00072",
+			"title": "POINT BLANK 3 [SOLD WITH ORANGE GUNCON]"
+		}, {
+			"id": "SLUS-01033",
+			"title": "POLARIS SNOCROSS"
+		}, {
+			"id": "SLUS-00889",
+			"title": "PONG: THE NEXT LEVEL"
+		}, {
+			"id": "SLUS-00758",
+			"title": "POOL HUSTLER"
+		}, {
+			"id": "SLUS-00277",
+			"title": "POPULOUS: THE BEGINNING"
+		}, {
+			"id": "SCUS-94187",
+			"title": "PORSCHE CHALLENGE"
+		}, {
+			"id": "SLUS-00408",
+			"title": "POWER MOVE PRO WRESTLING"
+		}, {
+			"id": "SLUS-01445",
+			"title": "POWER PLAY: SPORTS TRIVIA"
+		}, {
+			"id": "SLUS-01114",
+			"title": "POWER RANGERS: LIGHTSPEED RESCUE"
+		}, {
+			"id": "SLUS-01351",
+			"title": "POWER RANGERS: TIME FORCE"
+		}, {
+			"id": "SLUS-00256",
+			"title": "POWER RANGERS ZEO: FULL TILT BATTLE PINBALL"
+		}, {
+			"id": "SLUS-00105",
+			"title": "POWER SERVE 3D TENNIS"
+		}, {
+			"id": "SLUS-01343",
+			"title": "POWER SHOVEL"
+		}, {
+			"id": "SLUS-01196",
+			"title": "POWER SPIKE PRO BEACH VOLLEYBALL"
+		}, {
+			"id": "SLUS-00102",
+			"title": "POWERSLAVE"
+		}, {
+			"id": "SLUS-00486",
+			"title": "POY POY"
+		}, {
+			"id": "SLUS-00126",
+			"title": "PRIMAL RAGE"
+		}, {
+			"id": "SLUS-00817",
+			"title": "PRO 18 WORLD TOUR GOLF"
+		}, {
+			"id": "SLUS-00371",
+			"title": "PRO PINBALL"
+		}, {
+			"id": "SLUS-01260",
+			"title": "PRO PINBALL: BIG RACE USA"
+		}, {
+			"id": "SLUS-01261",
+			"title": "PRO PINBALL: FANTASTIC JOURNEY"
+		}, {
+			"id": "SLUS-00639",
+			"title": "PRO PINBALL: TIMESHOCK!"
+		}, {
+			"id": "SCUS-94551",
+			"title": "PROFESSIONAL UNDERGROUND LEAGUE OF PAIN"
+		}, {
+			"id": "SCUS-94408",
+			"title": "PROJECT: HORNED OWL"
+		}, {
+			"id": "SLUS-00045",
+			"title": "PROJECT OVERKILL"
+		}, {
+			"id": "SLUS-00730",
+			"title": "PSYBADEK"
+		}, {
+			"id": "SLUS-00165\nSLUS-00166\nSLUS-00167",
+			"title": "PSYCHIC DETECTIVE :  [ 3 DISCS ]"
+		}, {
+			"id": "SLUS-00419",
+			"title": "PSYCHIC FORCE"
+		}, {
+			"id": "SLUS-00579",
+			"title": "PUNKY SKUNK"
+		}, {
+			"id": "SLUS-01371",
+			"title": "PUTTER GOLF"
+		}, {
+			"id": "SLUS-01307",
+			"title": "PUZZLE: STAR SWEEP"
+		}, {
+			"id": "SLUS-01492",
+			"title": "PUZZNIC"
+		}, {
+			"id": "SLUS-00904",
+			"title": "Q*BERT"
+		}, {
+			"id": "SLUS-01561",
+			"title": "QIX NEO"
+		}, {
+			"id": "SLUS-00757",
+			"title": "QUAKE II"
+		}, {
+			"id": "SLUS-00797\nSLUS-90049",
+			"title": "R4: RIDGE RACER TYPE 4 :  [ 2 DISCS ]\n \t\t Includes:  \t\tRidge Racer Type 4 + Bonus Disc"
+		}, {
+			"id": "SLUS-01291",
+			"title": "RACING"
+		}, {
+			"id": "SLUS-00403",
+			"title": "RAGE RACER"
+		}, {
+			"id": "SLUS-01461",
+			"title": "RAGEBALL"
+		}, {
+			"id": "SLUS-00808",
+			"title": "RAILROAD TYCOON II"
+		}, {
+			"id": "SCUS-94308",
+			"title": "RALLY CROSS"
+		}, {
+			"id": "SCUS-94247",
+			"title": "RALLY CROSS 2"
+		}, {
+			"id": "SLUS-01065",
+			"title": "RAMPAGE THROUGH TIME"
+		}, {
+			"id": "SLUS-00549",
+			"title": "RAMPAGE WORLD TOUR"
+		}, {
+			"id": "SLUS-00742",
+			"title": "RAMPAGE 2: UNIVERSAL TOUR"
+		}, {
+			"id": "SLUS-00542",
+			"title": "RASCAL"
+		}, {
+			"id": "SLUS-01575",
+			"title": "RASCAL RACERS"
+		}, {
+			"id": "SLUS-00656",
+			"title": "RAT ATTACK!"
+		}, {
+			"id": "SLUS-00534",
+			"title": "RAY TRACERS"
+		}, {
+			"id": "SLUS-01217",
+			"title": "RAYCRISIS: SERIES TERMINATION"
+		}, {
+			"id": "SLUS-00005",
+			"title": "RAYMAN"
+		}, {
+			"id": "SLUS-01235",
+			"title": "RAYMAN 2: THE GREAT ESCAPE"
+		}, {
+			"id": "SLUS-01265",
+			"title": "RAYMAN BRAIN GAMES"
+		}, {
+			"id": "SLUS-01458",
+			"title": "RAYMAN RUSH"
+		}, {
+			"id": "SLUS-00482",
+			"title": "RAYSTORM"
+		}, {
+			"id": "SLUS-01322",
+			"title": "RAZOR FREESTYLE SCOOTER"
+		}, {
+			"id": "SLUS-01410",
+			"title": "RAZOR RACING"
+		}, {
+			"id": "SLUS-01285",
+			"title": "RC DE GO!"
+		}, {
+			"id": "SLUS-01376",
+			"title": "RC HELICOPTER"
+		}, {
+			"id": "SLUS-01168",
+			"title": "RC REVENGE"
+		}, {
+			"id": "SLUS-00954",
+			"title": "R/C STUNT COPTER"
+		}, {
+			"id": "SLUS-00857",
+			"title": "READY 2 RUMBLE BOXING"
+		}, {
+			"id": "SLUS-01147",
+			"title": "READY 2 RUMBLE BOXING: ROUND 2"
+		}, {
+			"id": "SLUS-00274",
+			"title": "REBOOT"
+		}, {
+			"id": "SLUS-00282",
+			"title": "RED ASPHALT: ROCK'N' ROLL RACING II"
+		}, {
+			"id": "SLUS-00440",
+			"title": "REEL FISHING"
+		}, {
+			"id": "SLUS-00843",
+			"title": "REEL FISHING II"
+		}, {
+			"id": "SLUS-00382",
+			"title": "RE-LOADED: THE HARDCORE SEQUEL"
+		}, {
+			"id": "SLUS-01012",
+			"title": "RENEGADE RACERS"
+		}, {
+			"id": "SLUS-01507",
+			"title": "RESCUE COPTER"
+		}, {
+			"id": "SLUS-01373",
+			"title": "RESCUE HEROES: MOLTEN MENACE"
+		}, {
+			"id": "SLUS-00170",
+			"title": "RESIDENT EVIL"
+		}, {
+			"id": "SLUS-00551\nSLUS-90009",
+			"title": "RESIDENT EVIL: DIRECTOR'S CUT :  [ 2 DISCS ]\n \t\t Includes:  \t\tResident Evil: Director's Cut + Bonus Disc (Resident Evil 2 Demo)"
+		}, {
+			"id": "SLUS-00747",
+			"title": "RESIDENT EVIL: DIRECTOR'S CUT (DUAL SHOCK VERSION)"
+		}, {
+			"id": "SLUS-00421\nSLUS-00592",
+			"title": "RESIDENT EVIL 2 :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00748\nSLUS-00756",
+			"title": "RESIDENT EVIL 2 (DUAL SHOCK VERSION) :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00923",
+			"title": "RESIDENT EVIL 3: NEMESIS"
+		}, {
+			"id": "SLUS-01087",
+			"title": "RESIDENT EVIL: SURVIVOR"
+		}, {
+			"id": "SLUS-00184",
+			"title": "RETURN FIRE"
+		}, {
+			"id": "SLUS-00851",
+			"title": "RE-VOLT"
+		}, {
+			"id": "SLUS-00012",
+			"title": "REVOLUTION X"
+		}, {
+			"id": "SLUS-01073",
+			"title": "RHAPSODY: A MUSICAL ADVENTURE"
+		}, {
+			"id": "SCUS-94300",
+			"title": "RIDGE RACER"
+		}, {
+			"id": "SLUS-00540",
+			"title": "RIDGE RACER [GREATEST HITS]"
+		}, {
+			"id": "SLUS-00214",
+			"title": "RIDGE RACER REVOLUTION"
+		}, {
+			"id": "SLUS-00186",
+			"title": "RISE 2 RESURRECTION"
+		}, {
+			"id": "SLUS-00829",
+			"title": "RISING ZAN: THE SAMURAI GUNMAN"
+		}, {
+			"id": "SLUS-00616",
+			"title": "RISK"
+		}, {
+			"id": "SLUS-00681\nSLUS-00771",
+			"title": "RIVAL SCHOOLS: UNITED BY FATE :  [ 2 DISCS ]\n \t\t Includes:  \t\tArcade Disc + Evolution Disc"
+		}, {
+			"id": "SLUS-00535\nSLUS-00563\nSLUS-00564\nSLUS-00565\nSLUS-00580",
+			"title": "RIVEN: THE SEQUEL TO MYST :  [ 5 DISCS ]"
+		}, {
+			"id": "SLUS-00204",
+			"title": "ROAD & TRACKS PRESENTS: THE NEED FOR SPEED"
+		}, {
+			"id": "SLUS-00035",
+			"title": "ROAD RASH"
+		}, {
+			"id": "SLUS-00524",
+			"title": "ROAD RASH 3D"
+		}, {
+			"id": "SLUS-01053",
+			"title": "ROAD RASH: JAILBREAK"
+		}, {
+			"id": "SLUS-01024",
+			"title": "ROADSTERS"
+		}, {
+			"id": "SLUS-00316",
+			"title": "ROBO PIT"
+		}, {
+			"id": "SLUS-01563",
+			"title": "ROBO-PIT 2"
+		}, {
+			"id": "SLUS-00252",
+			"title": "ROBOTRON X"
+		}, {
+			"id": "SLUS-01124",
+			"title": "ROCK'EM SOCK'EM ROBOTS ARENA"
+		}, {
+			"id": "SLUS-01353",
+			"title": "ROCKET POWER: TEAM ROCKET RESCUE"
+		}, {
+			"id": "SLUS-00643",
+			"title": "ROGUE TRIP: VACATION 2012"
+		}, {
+			"id": "SLUS-00724",
+			"title": "ROLL AWAY"
+		}, {
+			"id": "SLUS-00800",
+			"title": "ROLLCAGE"
+		}, {
+			"id": "SLUS-00867",
+			"title": "ROLLCAGE: STAGE II"
+		}, {
+			"id": "SLUS-00195",
+			"title": "ROMANCE OF THE THREE KINGDOMS IV: WALL OF FIRE"
+		}, {
+			"id": "SLUS-00918",
+			"title": "ROMANCE OF THE THREE KINGDOMS VI: AWAKENING OF THE DRAGON"
+		}, {
+			"id": "SLUS-00750",
+			"title": "ROSCO MCQUEEN FIREFIGHTER EXTREME"
+		}, {
+			"?": "INFO",
+			"SERIAL": "SLUS-01062",
+			"TITLE": "ROSWELL CONSPIRACIES: ALIENS, MYTHS & LEGENDS",
+			"LANGUAGE": "[E]"
+		},
+		{
+			"id": "SLUS-00640",
+			"title": "RPG MAKER"
+		}, {
+			"id": "SLUS-00877",
+			"title": "R-TYPE DELTA"
+		}, {
+			"id": "SLUS-00753",
+			"title": "R-TYPES"
+		}, {
+			"id": "SLUS-01116",
+			"title": "RUGRATS IN PARIS THE MOVIE"
+		}, {
+			"id": "SLUS-00650",
+			"title": "RUGRATS THE SEARCH FOR REPTAR"
+		}, {
+			"id": "SLUS-00880",
+			"title": "RUGRATS STUDIO TOUR"
+		}, {
+			"id": "SLUS-01364",
+			"title": "RUGRATS TOTALLY ANGELICA"
+		}, {
+			"id": "SLUS-01135",
+			"title": "RUNABOUT 2"
+		}, {
+			"id": "SCUS-94272",
+			"title": "RUNNING WILD"
+		}, {
+			"id": "SCUS-94417",
+			"title": "RUSH HOUR"
+		}, {
+			"id": "SLUS-00828",
+			"title": "RUSHDOWN"
+		}, {
+			"id": "SLUS-00692",
+			"title": "S.C.A.R.S."
+		}, {
+			"id": "SLUS-01208",
+			"title": "SABRINA THE TEENAGE WITCH: A TWITCH IN TIME"
+		}, {
+			"id": "SCUS-94230",
+			"title": "SAGA FRONTIER"
+		}, {
+			"id": "SLUS-00933",
+			"title": "SAGA FRONTIER II"
+		}, {
+			"id": "SLUS-01381",
+			"title": "SAIYUKI: JOURNEY WEST"
+		}, {
+			"id": "SLUS-01397",
+			"title": "SALTWATER SPORTFISHING"
+		}, {
+			"id": "SLUS-01063",
+			"title": "SAMMY SOSA HIGH HEAT BASEBALL 2001"
+		}, {
+			"id": "SLUS-01064",
+			"title": "SAMMY SOSA SOFTBALL SLAM"
+		}, {
+			"id": "SCUS-94206",
+			"title": "SAMURAI SHOWDOWN III: BLADES OF BLOOD"
+		}, {
+			"id": "SLUS-01039",
+			"title": "SAMURAI SHOWDOWN: WARRIOR'S RAGE"
+		}, {
+			"id": "SLUS-00505",
+			"title": "SAN FRANCISCO RUSH: EXTREME RACING"
+		}, {
+			"id": "SLUS-01396",
+			"title": "SCOOBY-DOO & THE CYBER CHASE"
+		}, {
+			"id": "SLUS-00903",
+			"title": "SCRABBLE"
+		}, {
+			"id": "SLUS-01149",
+			"title": "SEA-DOO HYDROCROSS"
+		}, {
+			"id": "SCUS-94110",
+			"title": "SENTIENT"
+		}, {
+			"id": "SLUS-00604",
+			"title": "SENTINEL RETURNS"
+		}, {
+			"id": "SLUS-00621",
+			"title": "SESAME STREET: ELMO'S LETTER ADVENTURE"
+		}, {
+			"id": "SLUS-00622",
+			"title": "SESAME STREET: ELMO'S NUMBER JOURNEY"
+		}, {
+			"id": "SLUS-01180",
+			"title": "SESAME STREET SPORTS"
+		}, {
+			"id": "SLUS-00468\nSLUS-00718",
+			"title": "SHADOW MADNESS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00895",
+			"title": "SHADOW MAN"
+		}, {
+			"id": "SLUS-00545",
+			"title": "SHADOW MASTER"
+		}, {
+			"id": "SLUS-00863",
+			"title": "SHADOW TOWER"
+		}, {
+			"id": "SLUS-00795",
+			"title": "SHANGHAI: TRUE VALOR"
+		}, {
+			"id": "SLUS-01298",
+			"title": "SHEEP"
+		}, {
+			"id": "SLUS-00031",
+			"title": "SHELLSHOCK"
+		}, {
+			"id": "SLUS-00558",
+			"title": "SHIPWRECKERS!"
+		}, {
+			"id": "SLUS-00028\nSLUS-00137",
+			"title": "SHOCKWAVE ASSAULT :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01308",
+			"title": "SHOOTER: SPACE SHOT"
+		}, {
+			"id": "SLUS-01302",
+			"title": "SHOOTER: STARFIGHTER SANVEIN"
+		}, {
+			"id": "SLUS-01463",
+			"title": "SHREK TREASURE HUNT"
+		}, {
+			"id": "SLUS-00902",
+			"title": "SILENT BOMBER"
+		}, {
+			"id": "SLUS-00707",
+			"title": "SILENT HILL"
+		}, {
+			"id": "SLUS-00728",
+			"title": "SILHOUETTE MIRAGE"
+		}, {
+			"id": "SLUS-00050",
+			"title": "SILVERLOAD"
+		}, {
+			"id": "SLUS-01069",
+			"title": "SIM THEME PARK"
+		}, {
+			"id": "SLUS-00113",
+			"title": "SIMCITY 2000"
+		}, {
+			"id": "SLUS-00209",
+			"title": "SKELETON WARRIORS"
+		}, {
+			"id": "SLUS-00601",
+			"title": "SKULLMONKEYS"
+		}, {
+			"id": "SLUS-01392",
+			"title": "SKYDIVING EXTREME"
+		}, {
+			"id": "SLUS-00022",
+			"title": "SLAM'N'JAM '96 FEATURING MAGIC & KAREEM"
+		}, {
+			"id": "SLUS-00080",
+			"title": "SLAMSCAPE"
+		}, {
+			"id": "SLUS-00955",
+			"title": "SLED STORM"
+		}, {
+			"id": "SLUS-01555",
+			"title": "SLOTS"
+		}, {
+			"id": "SLUS-00781",
+			"title": "SMALL SOLDIERS"
+		}, {
+			"id": "SLUS-01359",
+			"title": "SMURF RACER"
+		}, {
+			"id": "SLUS-01093",
+			"title": "SNO CROSS CHAMPIONSHIP RACING"
+		}, {
+			"id": "SLUS-01287",
+			"title": "SNOWBOARDING"
+		}, {
+			"id": "SLUS-01519",
+			"title": "SOL DIVIDE"
+		}, {
+			"id": "SLUS-01495",
+			"title": "SORCERER'S MAZE"
+		}, {
+			"id": "SLUS-00240",
+			"title": "SOUL BLADE"
+		}, {
+			"id": "SLUS-00822",
+			"title": "SOUL OF THE SAMURAI"
+		}, {
+			"id": "SLUS-00936",
+			"title": "SOUTH PARK"
+		}, {
+			"id": "SLUS-00997",
+			"title": "SOUTH PARK: CHEF'S LUV SHACK"
+		}, {
+			"id": "SLUS-00984",
+			"title": "SOUTH PARK RALLY"
+		}, {
+			"id": "SLUS-00061",
+			"title": "SOVIET STRIKE"
+		}, {
+			"id": "SLUS-00153",
+			"title": "SPACE GRIFFON VF-9"
+		}, {
+			"id": "SLUS-00205",
+			"title": "SPACE HULK: VENGEANCE OF THE BLOOD ANGELS"
+		}, {
+			"id": "SLUS-00928",
+			"title": "SPACE INVADERS"
+		}, {
+			"id": "SLUS-00243",
+			"title": "SPACE JAM"
+		}, {
+			"id": "SCUS-94204",
+			"title": "SPAWN THE ETERNAL"
+		}, {
+			"id": "SLUS-01447",
+			"title": "SPEC OPS: AIRBORNE COMMANDO"
+		}, {
+			"id": "SLUS-01420",
+			"title": "SPEC OPS: COVER ASSAULT"
+		}, {
+			"id": "SLUS-01299",
+			"title": "SPEC OPS: RANGER ELITE"
+		}, {
+			"id": "SLUS-01131",
+			"title": "SPEC OPS: STEALTH PATROL"
+		}, {
+			"id": "SCUS-94563",
+			"title": "SPEED PUNKS"
+		}, {
+			"id": "SLUS-00613",
+			"title": "SPEED RACER"
+		}, {
+			"id": "SLUS-01218",
+			"title": "SPEEDBALL 2100"
+		}, {
+			"id": "SLUS-00723",
+			"title": "SPICE WORLD"
+		}, {
+			"id": "SLUS-00230",
+			"title": "SPIDER THE VIDEO GAME"
+		}, {
+			"id": "SLUS-00875",
+			"title": "SPIDER-MAN"
+		}, {
+			"id": "SLUS-01378",
+			"title": "SPIDER-MAN 2: ENTER: ELECTRO"
+		}, {
+			"id": "SLUS-01250",
+			"title": "SPIN JAM"
+		}, {
+			"id": "SLUS-01352",
+			"title": "SPONGEBOB SQUAREPANTS: SUPERSPONGE"
+		}, {
+			"id": "SLUS-00655",
+			"title": "SPORTS CAR GT"
+		}, {
+			"id": "SLUS-01459",
+			"title": "SPORTS SUPERBIKE 2"
+		}, {
+			"id": "SLUS-00014",
+			"title": "SPOT GOES TO HOLLYWOOD"
+		}, {
+			"id": "SCUS-94228",
+			"title": "SPYRO THE DRAGON"
+		}, {
+			"id": "SCUS-94425",
+			"title": "SPYRO 2: RIPTO'S RAGE"
+		}, {
+			"id": "SCUS-94467",
+			"title": "SPYRO 3: YEAR OF THE DRAGON"
+		}, {
+			"id": "SLUS-00241",
+			"title": "STAR FIGHTER"
+		}, {
+			"id": "SLUS-00372",
+			"title": "STAR GLADIATOR: EPISODE 1: FINAL CRUSADE"
+		}, {
+			"id": "SCUS-94421\nSCUS-94422",
+			"title": "STAR OCEAN: THE SECOND STORY :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00924",
+			"title": "STAR TREK: INVASION"
+		}, {
+			"id": "SLUS-00297",
+			"title": "STAR WARS: DARK FORCES"
+		}, {
+			"id": "SLUS-01183",
+			"title": "STAR WARS: DEMOLITION"
+		}, {
+			"id": "SLUS-01046",
+			"title": "STAR WARS: EPISODE I: JEDI POWER BATTLES"
+		}, {
+			"id": "SLUS-00884",
+			"title": "STAR WARS: EPISODE I: THE PHANTOM MENACE"
+		}, {
+			"id": "SLUS-00562",
+			"title": "STAR WARS: MASTER OF TER?S K?SI"
+		}, {
+			"id": "SLUS-00381\nSLUS-00386",
+			"title": "STAR WARS: REBEL ASSAULT II :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00057",
+			"title": "STARBLADE ALPHA"
+		}, {
+			"id": "SLUS-0XXXX",
+			"title": "STARCON (PROTOTYPE)"
+		}, {
+			"id": "SLUS-00094",
+			"title": "STARWINDER: THE ULTIMATE SPACE RACE"
+		}, {
+			"id": "SLUS-00093",
+			"title": "STEEL HARBINGER"
+		}, {
+			"id": "SCUS-94902",
+			"title": "STEEL REIGN"
+		}, {
+			"id": "SLUS-00629",
+			"title": "STREAK: HOVERBOARD RACING"
+		}, {
+			"id": "SLUS-00041",
+			"title": "STREET FIGHTER: THE MOVIE"
+		}, {
+			"id": "SLUS-00197",
+			"title": "STREET FIGHTER ALPHA: WARRIORS' DREAMS"
+		}, {
+			"id": "SLUS-00258",
+			"title": "STREET FIGHTER ALPHA 2"
+		}, {
+			"id": "SLUS-00821",
+			"title": "STREET FIGHTER ALPHA 3"
+		}, {
+			"id": "SLUS-00423\nSLUS-00584",
+			"title": "STREET FIGHTER COLLECTION :  [ 2 DISCS ]\n \t\t Includes:  \t\tStreet Fighter Collection + Street Fighter Alpha 2 Gold"
+		}, {
+			"id": "SLUS-00746",
+			"title": "STREET FIGHTER COLLECTION 2"
+		}, {
+			"id": "SLUS-00548",
+			"title": "STREET FIGHTER EX PLUS ALPHA"
+		}, {
+			"id": "SLUS-01105",
+			"title": "STREET FIGHTER EX 2 PLUS"
+		}, {
+			"id": "SLUS-00099",
+			"title": "STREET RACER"
+		}, {
+			"id": "SLUS-01450",
+			"title": "STREET RACQUETBALL"
+		}, {
+			"id": "SLUS-00818",
+			"title": "STREET SK8ER"
+		}, {
+			"id": "SLUS-01083",
+			"title": "STREET SK8ER 2"
+		}, {
+			"id": "SLUS-01142\nSLUS-01163",
+			"title": "STRIDER 2 [2 DISCS]"
+		}, {
+			"id": "SLUS-00139",
+			"title": "STRIKE POINT"
+		}, {
+			"id": "SLUS-00210",
+			"title": "STRIKER '96"
+		}, {
+			"id": "SLUS-01078",
+			"title": "STRIKER PRO 2000"
+		}, {
+			"id": "SLUS-01337",
+			"title": "STRIKERS 1945"
+		}, {
+			"id": "SCUS-94669",
+			"title": "STUART LITTLE 2"
+		}, {
+			"id": "SLUS-00292",
+			"title": "SUIKODEN"
+		}, {
+			"id": "SLUS-00958",
+			"title": "SUIKODEN II"
+		}, {
+			"id": "SLUS-01528",
+			"title": "SUPER BUBBLE POP"
+		}, {
+			"id": "SLUS-00418",
+			"title": "SUPER PUZZLE FIGHTER II TURBO"
+		}, {
+			"id": "SLUS-01464",
+			"title": "SUPER SHOT SOCCER"
+		}, {
+			"id": "SLUS-01052",
+			"title": "SUPERBIKE 2000"
+		}, {
+			"id": "SLUS-01005",
+			"title": "SUPERCROSS 2000"
+		}, {
+			"id": "SCUS-94453",
+			"title": "SUPERCROSS CIRCUIT"
+		}, {
+			"id": "SLUS-01493",
+			"title": "SUPERSTARS DANCE CLUB #1 HITS"
+		}, {
+			"id": "SLUS-01190",
+			"title": "SURF RIDERS"
+		}, {
+			"id": "SLUS-00151",
+			"title": "SWAGMAN"
+		}, {
+			"id": "SLUS-01177",
+			"title": "SYDNEY 2000"
+		}, {
+			"id": "SLUS-00262",
+			"title": "SYNDICATE WARS"
+		}, {
+			"id": "SCUS-94240",
+			"title": "SYPHON FILTER"
+		}, {
+			"id": "SCUS-94451\nSCUS-94492",
+			"title": "SYPHON FILTER 2 :  [ 2 DISCS ]"
+		}, {
+			"id": "SCUS-94640",
+			"title": "SYPHON FILTER 3"
+		}, {
+			"id": "SLUS-00813",
+			"title": "T.R.A.G.: TACTICAL RESCUE ASSAULT GROUP: MISSION OF MERCY"
+		}, {
+			"id": "SLUS-00787",
+			"title": "T'AI FU: WRATH OF THE TIGER"
+		}, {
+			"id": "SLUS-00560",
+			"title": "TACTICS OGRE: LET US CLING TOGETHER"
+		}, {
+			"id": "SLUS-00660",
+			"title": "TAIL CONCERTO"
+		}, {
+			"?": "INFO",
+			"SERIAL": "SCUS-94607",
+			"TITLE": "TAIL OF THE SUN: WILD, PURE, SIMPLE LIFE",
+			"LANGUAGE": "[E]"
+		},
+		{
+			"id": "SLUS-00626",
+			"title": "TALES OF DESTINY"
+		}, {
+			"id": "SLUS-01355\nSLUS-01367\nSLUS-01368",
+			"title": "TALES OF DESTINY II :  [ 3 DISCS ]"
+		}, {
+			"id": "SLUS-01547",
+			"title": "TALL INFINITY: THE TOWER OF WISDOM"
+		}, {
+			"id": "SLUS-00869",
+			"title": "TEAM BUDDIES"
+		}, {
+			"id": "SLUS-00666",
+			"title": "TEAM LOSI RC RACER"
+		}, {
+			"id": "SLUS-00340",
+			"title": "TECMO'S DECEPTION: INVITATION TO DARKNESS"
+		}, {
+			"id": "SLUS-00315",
+			"title": "TECMO STACKERS"
+		}, {
+			"id": "SLUS-00070",
+			"title": "TECMO SUPER BOWL"
+		}, {
+			"id": "SLUS-00299",
+			"title": "TECMO WORLD GOLF"
+		}, {
+			"id": "SLUS-00006",
+			"title": "TEKKEN"
+		}, {
+			"id": "SLUS-00213",
+			"title": "TEKKEN 2"
+		}, {
+			"id": "SLUS-00402",
+			"title": "TEKKEN 3"
+		}, {
+			"id": "SLUS-00959",
+			"title": "TELETUBBIES: PLAY WITH THE TELETUBBIES"
+		}, {
+			"id": "SLUS-00283",
+			"title": "TEMPEST X3"
+		}, {
+			"id": "SLUS-00377",
+			"title": "TEN PIN ALLEY"
+		}, {
+			"id": "SLUS-00706",
+			"title": "TENCHU: STEALTH ASSASSINS"
+		}, {
+			"id": "SLUS-00939",
+			"title": "TENCHU 2: BIRTH OF THE STEALTH ASSASSINS"
+		}, {
+			"id": "SLUS-01348",
+			"title": "TENNIS"
+		}, {
+			"id": "SLUS-00596",
+			"title": "TENNIS ARENA"
+		}, {
+			"id": "SLUS-00487",
+			"title": "TEST DRIVE 4"
+		}, {
+			"id": "SLUS-00610",
+			"title": "TEST DRIVE 5"
+		}, {
+			"id": "SLUS-00839",
+			"title": "TEST DRIVE 6"
+		}, {
+			"id": "SLUS-01077",
+			"title": "TEST DRIVE LE MANS"
+		}, {
+			"id": "SLUS-00396",
+			"title": "TEST DRIVE OFF-ROAD"
+		}, {
+			"id": "SLUS-00609",
+			"title": "TEST DRIVE OFF-ROAD 2"
+		}, {
+			"id": "SLUS-00840",
+			"title": "TEST DRIVE OFF-ROAD 3"
+		}, {
+			"id": "SLUS-00338",
+			"title": "TETRIS PLUS"
+		}, {
+			"id": "SCUS-94906",
+			"title": "THE ADVENTURES OF LOMAX"
+		}, {
+			"id": "SLUS-01475",
+			"title": "THE AMAZING VIRTUAL SEA MONKEYS"
+		}, {
+			"id": "SLUS-01292",
+			"title": "THE BOMBING ISLANDS"
+		}, {
+			"id": "SLUS-00052",
+			"title": "THE CHESSMASTER 3-D"
+		}, {
+			"id": "SCUS-94150",
+			"title": "THE CITY OF LOST CHILDREN"
+		}, {
+			"id": "SLUS-00242",
+			"title": "THE CROW: CITY OF ANGELS"
+		}, {
+			"id": "SLUS-00317",
+			"title": "THE DIVIDE: ENEMIES WITHIN"
+		}, {
+			"id": "SLUS-00859",
+			"title": "THE DUKES OF HAZZARD: RACING FOR HOME"
+		}, {
+			"id": "SLUS-01243",
+			"title": "THE DUKES OF HAZZARD II: DAISY DUKES IT OUT"
+		}, {
+			"id": "SLUS-00711",
+			"title": "THE FIFTH ELEMENT"
+		}, {
+			"id": "SLUS-00064",
+			"title": "THE FINAL ROUND"
+		}, {
+			"id": "SLUS-00931",
+			"title": "THE FLINSTONES: BEDROCK BOWLING"
+		}, {
+			"id": "SLUS-00769",
+			"title": "THE GAME OF LIFE"
+		}, {
+			"id": "SLUS-00597",
+			"title": "THE GRANSTREAM SAGA"
+		}, {
+			"id": "SLUS-01197",
+			"title": "THE GRINCH"
+		}, {
+			"id": "SLUS-00120\nSLUS-00182",
+			"title": "THE HIVE :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00150",
+			"title": "THE INCREDIBLE HULK: THE PANTHEON SAGA"
+		}, {
+			"id": "SLUS-01457",
+			"title": "THE ITALIAN JOB"
+		}, {
+			"id": "SCUS-94205",
+			"title": "THE KING OF FIGHTERS '95"
+		}, {
+			"id": "SLUS-01332",
+			"title": "THE KING OF FIGHTERS '99"
+		}, {
+			"id": "SLUS-01481",
+			"title": "THE LAND BEFORE TIME: BIG WATER ADVENTURE"
+		}, {
+			"id": "SLUS-01213",
+			"title": "THE LAND BEFORE TIME: GREAT VALLEY RACING ADVENTURE"
+		}, {
+			"id": "SLUS-01043",
+			"title": "THE LAND BEFORE TIME: RETURN TO GREAT VALLEY"
+		}, {
+			"id": "SCUS-94491\nSCUS-94584\nSCUS-94585\nSCUS-94586",
+			"title": "THE LEGEND OF DRAGOON :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-00515",
+			"title": "THE LOST WORLD: JURASSIC PARK"
+		}, {
+			"id": "SLUS-00896",
+			"title": "THE MISADVENTURES OF TRON BONNE"
+		}, {
+			"id": "SLUS-01187",
+			"title": "THE MUMMY"
+		}, {
+			"id": "SLUS-00862",
+			"title": "THE NEXT TETRIS"
+		}, {
+			"id": "SLUS-01423",
+			"title": "THE POWERPUFF GIRLS: CHEMICAL X-TRACTION"
+		}, {
+			"id": "SCUS-94402",
+			"title": "THE RAIDEN PROJECT"
+		}, {
+			"id": "SLUS-01008",
+			"title": "THE SMURFS"
+		}, {
+			"id": "SLUS-01227",
+			"title": "THE SIMPSONS WRESTLING"
+		}, {
+			"id": "SLUS-01486",
+			"title": "THE THREE STOOGES"
+		}, {
+			"id": "SLUS-00676",
+			"title": "THE UNHOLY WAR"
+		}, {
+			"id": "SLUS-01413",
+			"title": "THE WEAKEST LINK"
+		}, {
+			"id": "SLUS-01128",
+			"title": "THE WILD THORNBERRYS: ANIMAL ADVENTURES"
+		}, {
+			"id": "SLUS-00915\nSLUS-00949\nSLUS-00950\nSLUS-00951",
+			"title": "THE X-FILES :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-00275",
+			"title": "THEME HOSPITAL"
+		}, {
+			"id": "SLUS-00017",
+			"title": "THEME PARK"
+		}, {
+			"id": "SLUS-00845\nSLUS-00858",
+			"title": "THOUSAND ARMS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00935",
+			"title": "THRASHER PRESENTS SKATE & DESTROY"
+		}, {
+			"id": "SLUS-01019",
+			"title": "THREADS OF FATE"
+		}, {
+			"id": "SLUS-00727",
+			"title": "THUNDER FORCE V: PERFECT SYSTEM"
+		}, {
+			"id": "SCUS-94352",
+			"title": "THUNDER TRUCK RALLY"
+		}, {
+			"id": "SLUS-00191",
+			"title": "THUNDER STRIKE 2"
+		}, {
+			"id": "SLUS-01273",
+			"title": "TIGER WOODS: PGA TOUR GOLF"
+		}, {
+			"id": "SLUS-00785",
+			"title": "TIGER WOODS 99: PGA TOUR GOLF"
+		}, {
+			"id": "SLUS-01054",
+			"title": "TIGER WOODS PGA TOUR 2000"
+		}, {
+			"id": "SLUS-00346",
+			"title": "TIGERSHARK"
+		}, {
+			"id": "SLUS-00342",
+			"title": "TIME COMMANDO"
+		}, {
+			"id": "SLUS-00405",
+			"title": "TIME CRISIS"
+		}, {
+			"id": "SLUS-01336",
+			"title": "TIME CRISIS: PROJECT TITAN"
+		}, {
+			"id": "SCUS-94427",
+			"title": "TINY TANK"
+		}, {
+			"id": "SLUS-01393",
+			"title": "TINY TOON ADVENTURES: PLUCKY'S BIG ADVENTURE"
+		}, {
+			"id": "SLUS-00638",
+			"title": "TINY TOON ADVENTURES: THE GREAT BEANSTALK"
+		}, {
+			"id": "SLUS-00967",
+			"title": "TINY TOON ADVENTURES: TOONENSTEIN: DARE TO SCARE!"
+		}, {
+			"id": "SLUS-00089",
+			"title": "TNN MOTORSPORTS HARDCORE 4X4"
+		}, {
+			"id": "SLUS-00980",
+			"title": "TNN MOTORSPORTS HARDCORE TR"
+		}, {
+			"id": "SCUS-94208\nSCUS-94961",
+			"title": "TOBAL No.1 :  [ 2 DISCS ]\n \t\t Includes: Tobal No.1+ Final Fantasy VII: Interactive Sampler CD (DEMO)"
+		}, {
+			"id": "SLUS-00611",
+			"title": "TOCA CHAMPIONSHIP RACING"
+		}, {
+			"id": "SLUS-00996",
+			"title": "TOCA 2: TOURING CAR CHALLENGE"
+		}, {
+			"id": "SLUS-00229",
+			"title": "TOKYO HIGHWAY BATTLE"
+		}, {
+			"id": "SLUS-01191",
+			"title": "TOM & JERRY IN HOUSE TRAP"
+		}, {
+			"id": "SLUS-00947",
+			"title": "TOM CLANCY'S RAINBOW SIX"
+		}, {
+			"id": "SLUS-01473",
+			"title": "TOM CLANCY'S RAINBOW SIX: LONE WOLF"
+		}, {
+			"id": "SLUS-01108",
+			"title": "TOM CLANCY'S RAINBOW SIX: ROGUE SPEAR"
+		}, {
+			"id": "SLUS-00152",
+			"title": "TOMB RAIDER"
+		}, {
+			"id": "SLUS-00437",
+			"title": "TOMB RAIDER II"
+		}, {
+			"id": "SLUS-00691",
+			"title": "TOMB RAIDER III: ADVENTURES OF LARA CROFT"
+		}, {
+			"id": "SLUS-00885",
+			"title": "TOMB RAIDER: THE LAST REVELATION"
+		}, {
+			"id": "SLUS-01311",
+			"title": "TOMB RAIDER: CHRONICLES"
+		}, {
+			"id": "SCUS-94236",
+			"title": "TOMBA!"
+		}, {
+			"id": "SCUS-94454",
+			"title": "TOMBA! 2: THE EVIL SWINE RETURNS"
+		}, {
+			"id": "SLUS-01007",
+			"title": "TONKA SPACE STATION"
+		}, {
+			"id": "SLUS-00860",
+			"title": "TONY HAWK'S PRO SKATER"
+		}, {
+			"id": "SLUS-01066",
+			"title": "TONY HAWK'S PRO SKATER 2"
+		}, {
+			"id": "SLUS-01419",
+			"title": "TONY HAWK'S PRO SKATER 3"
+		}, {
+			"id": "SLUS-01485",
+			"title": "TONY HAWK'S PRO SKATER 4"
+		}, {
+			"id": "SLUS-00032",
+			"title": "TOP GUN FIRE AT WILL"
+		}, {
+			"id": "SLUS-01181",
+			"title": "TORNEKO: THE LAST HOPE"
+		}, {
+			"id": "SLUS-00021",
+			"title": "TOTAL ECLIPSE TURBO"
+		}, {
+			"id": "SLUS-00679",
+			"title": "TRAP GUNNER: COUNTDOWN TO OBLIVION"
+		}, {
+			"id": "SLUS-00430",
+			"title": "TREASURES OF THE DEEP"
+		}, {
+			"id": "SLUS-00979",
+			"title": "TRICK'N SNOWBOARDER"
+		}, {
+			"id": "SLUS-00237",
+			"title": "TRIPLE PLAY '97"
+		}, {
+			"id": "SLUS-00465",
+			"title": "TRIPLE PLAY '98"
+		}, {
+			"id": "SLUS-00618",
+			"title": "TRIPLE PLAY '99"
+		}, {
+			"id": "SLUS-00827",
+			"title": "TRIPLE PLAY 2000"
+		}, {
+			"id": "SLUS-01082",
+			"title": "TRIPLE PLAY 2001"
+		}, {
+			"id": "SLUS-01345",
+			"title": "TRIPLE PLAY BASEBALL"
+		}, {
+			"id": "SLUS-00337",
+			"title": "TRUE PINBALL"
+		}, {
+			"id": "SLUS-00188",
+			"title": "TUNNEL B1"
+		}, {
+			"id": "SCUS-94229",
+			"title": "TURBO PROP RACING"
+		}, {
+			"id": "SLUS-01499",
+			"title": "TURNABOUT"
+		}, {
+			"id": "SCUS-94304",
+			"title": "TWISTED METAL"
+		}, {
+			"id": "SCUS-94306",
+			"title": "TWISTED METAL 2"
+		}, {
+			"id": "SCUS-94249",
+			"title": "TWISTED METAL 3"
+		}, {
+			"id": "SCUS-94560",
+			"title": "TWISTED METAL 4"
+		}, {
+			"id": "SCUS-94642",
+			"title": "TWISTED METAL: SMALL BRAWL"
+		}, {
+			"id": "SLUS-01074",
+			"title": "TYCO R/C ASSAULT WITH A BATTERY"
+		}, {
+			"id": "SLUS-00864",
+			"title": "ULTIMATE 8 BALL"
+		}, {
+			"id": "SLUS-01577",
+			"title": "ULTIMATE BRAIN GAMES"
+		}, {
+			"id": "SLUS-01143",
+			"title": "ULTIMATE FIGHTING CHAMPIONSHIP"
+		}, {
+			"id": "SCUS-94448",
+			"title": "UM JAMMER LAMMY"
+		}, {
+			"id": "SLUS-00686",
+			"title": "UPRISING-X"
+		}, {
+			"id": "SLUS-01091",
+			"title": "URBAN CHAOS"
+		}, {
+			"id": "SLUS-01228",
+			"title": "V.I.P."
+		}, {
+			"id": "SLUS-01003",
+			"title": "V-RALLY 2: NEED FOR SPEED"
+		}, {
+			"id": "SLUS-00218",
+			"title": "V-TENNIS"
+		}, {
+			"id": "SLUS-01040",
+			"title": "VAGRANT STORY"
+		}, {
+			"id": "SLUS-01156\nSLUS-01179",
+			"title": "VALKYRIE PROFILE :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01138",
+			"title": "VAMPIRE HUNTER D"
+		}, {
+			"id": "SLUS-01035",
+			"title": "VANARK"
+		}, {
+			"id": "SLUS-00447",
+			"title": "VANDAL HEARTS"
+		}, {
+			"id": "SLUS-00940",
+			"title": "VANDAL HEARTS II"
+		}, {
+			"id": "SLUS-01070",
+			"title": "VANGUARD BANDITS"
+		}, {
+			"id": "SLUS-01109",
+			"title": "VANISHING POINT"
+		}, {
+			"id": "SLUS-00836",
+			"title": "VEGAS GAMES 2000"
+		}, {
+			"id": "SLUS-00033",
+			"title": "VIEWPOINT"
+		}, {
+			"id": "SLUS-00510",
+			"title": "VIGILANTE 8"
+		}, {
+			"id": "SLUS-00868",
+			"title": "VIGILANTE 8: 2ND OFFENSE"
+		}, {
+			"id": "SLUS-01341",
+			"title": "VIRTUAL KASPAROV"
+		}, {
+			"id": "SLUS-00034",
+			"title": "VIRTUAL POOL"
+		}, {
+			"id": "SLUS-01374",
+			"title": "VIRTUAL POOL 3"
+		}, {
+			"id": "SLUS-00657",
+			"title": "VIVA SOCCER"
+		}, {
+			"id": "SLUS-00953",
+			"title": "VIVA SOCCER"
+		}, {
+			"id": "SLUS-00123",
+			"title": "VMX RACING"
+		}, {
+			"id": "SLUS-00281",
+			"title": "VR BASEBALL '97"
+		}, {
+			"id": "SLUS-00632",
+			"title": "VR BASEBALL '99"
+		}, {
+			"id": "SLUS-00198",
+			"title": "VR GOLF '97"
+		}, {
+			"id": "SLUS-00625",
+			"title": "VR SPORTS POWERBOAT RACING"
+		}, {
+			"id": "SLUS-00199",
+			"title": "VR SOCCER '96"
+		}, {
+			"id": "SLUS-00513",
+			"title": "VS."
+		}, {
+			"id": "SLUS-01278",
+			"title": "WALT DISNEY THE JUNGLE BOOK: RHYTHM N'GROOVE"
+		}, {
+			"id": "SLUS-01106",
+			"title": "WALT DISNEY'S WORLD QUEST: MAGICAL RACING TOUR"
+		}, {
+			"id": "SLUS-00328",
+			"title": "WAR GODS"
+		}, {
+			"id": "SLUS-00480",
+			"title": "WARCRAFT II: THE DARK SAGA"
+		}, {
+			"id": "SLUS-00599",
+			"title": "WARGAMES: DEFCON 1"
+		}, {
+			"id": "SLUS-00550",
+			"title": "WARHAMMER: DARK OMEN"
+		}, {
+			"id": "SLUS-00117",
+			"title": "WARHAMMER: SHADOW OF THE HORNED RAT"
+		}, {
+			"id": "SCUS-94305",
+			"title": "WARHAWK: THE RED MERCURY MISSIONS"
+		}, {
+			"id": "SLUS-00976",
+			"title": "WARPATH: JURASSIC PARK"
+		}, {
+			"id": "SLUS-01204",
+			"title": "WARRIORS OF MIGHT & MAGIC"
+		}, {
+			"id": "SLUS-00819",
+			"title": "WARZONE 2100"
+		}, {
+			"id": "SLUS-00147",
+			"title": "WAYNE GRETZKY'S 3D HOCKEY '98"
+		}, {
+			"id": "SLUS-01274",
+			"title": "WCW: BACKSTAGE ASSAULT"
+		}, {
+			"id": "SLUS-00963",
+			"title": "WCW: MAYHEM"
+		}, {
+			"id": "SLUS-00397",
+			"title": "WCW: NITRO"
+		}, {
+			"id": "SLUS-00779",
+			"title": "WCW/NWO THUNDER"
+		}, {
+			"id": "SLUS-00455",
+			"title": "WCW VS. THE WORLD"
+		}, {
+			"id": "SLUS-00683",
+			"title": "WHEEL OF FORTUNE"
+		}, {
+			"id": "SLUS-01174",
+			"title": "WHEEL OF FORTUNE: 2ND EDITION"
+		}, {
+			"id": "SCUS-94567",
+			"title": "WHO WANTS TO BE A MILLIONAIRE: 2ND EDITION"
+		}, {
+			"id": "SCUS-94644",
+			"title": "WHO WANTS TO BE A MILLIONAIRE: 3RD EDITION"
+		}, {
+			"id": "SLUS-00425",
+			"title": "WILD 9"
+		}, {
+			"id": "SCUS-94608",
+			"title": "WILD ARMS"
+		}, {
+			"id": "SCUS-94484\nSCUS-94498",
+			"title": "WILD ARMS 2 :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00201",
+			"title": "WILLIAMS ARCADE'S GREATEST HITS"
+		}, {
+			"id": "SLUS-00019\nSLUS-00134\nSLUS-00135\nSLUS-00136",
+			"title": "WING COMMANDER III: HEART OF THE TIGER :  [ 4 DISCS ]"
+		}, {
+			"id": "SLUS-00270\nSLUS-00271\nSLUS-00272\nSLUS-00273",
+			"title": "WING COMMANDER IV: THE PRICE OF FREEDOM :  [ 4 DISCS ]"
+		}, {
+			"id": "SCUS-94301",
+			"title": "WIPEOUT"
+		}, {
+			"id": "SLUS-00865",
+			"title": "WIPEOUT 3"
+		}, {
+			"id": "SCUS-94351",
+			"title": "WIPEOUT XL"
+		}, {
+			"id": "SLUS-01188",
+			"title": "WOODY WOODPECKER RACING"
+		}, {
+			"id": "SLUS-00644",
+			"title": "WORLD CUP '98"
+		}, {
+			"id": "SLUS-00063",
+			"title": "WORLD CUP GOLF"
+		}, {
+			"id": "SLUS-01175",
+			"title": "WORLD DESTRUCTION LEAGUE: THUNDER TANKS"
+		}, {
+			"id": "SLUS-01247",
+			"title": "WORLD DESTRUCTION LEAGUE: WAR JETZ"
+		}, {
+			"id": "SLUS-01165",
+			"title": "WORLD'S SCARIEST POLICE CHASES"
+		}, {
+			"id": "SLUS-00336",
+			"title": "WORMS"
+		}, {
+			"id": "SLUS-00888",
+			"title": "WORMS ARMAGEDDON"
+		}, {
+			"id": "SLUS-01448",
+			"title": "WORMS WORLD PARTY"
+		}, {
+			"id": "SLUS-00587",
+			"title": "WRECKIN' CREW"
+		}, {
+			"id": "SLUS-00929",
+			"title": "WU-TANG: SHAOLIN STYLE"
+		}, {
+			"id": "SLUS-00831",
+			"title": "WWF: ATTITUDE"
+		}, {
+			"id": "SLUS-00246",
+			"title": "WWF IN YOUR HOUSE"
+		}, {
+			"id": "SLUS-00927",
+			"title": "WWF SMACKDOWN!"
+		}, {
+			"id": "SLUS-01234",
+			"title": "WWF SMACKDOWN! 2: KNOW YOUR ROLE"
+		}, {
+			"id": "SLUS-00495",
+			"title": "WWF WAR ZONE"
+		}, {
+			"id": "SLUS-00013",
+			"title": "WWF WRESTLEMANIA: THE ARCADE GAME"
+		}, {
+			"id": "SLUS-01444",
+			"title": "X-BLADEZ: INLINE SKATER"
+		}, {
+			"id": "SLUS-00141",
+			"title": "X-COM: UFO DEFENSE"
+		}, {
+			"id": "SLUS-00044",
+			"title": "X-MEN: CHILDREN OF THE ATOM"
+		}, {
+			"id": "SLUS-00774",
+			"title": "X-MEN: MUTANT ACADEMY"
+		}, {
+			"id": "SLUS-01382",
+			"title": "X-MEN: MUTANT ACADEMY 2"
+		}, {
+			"id": "SLUS-00627",
+			"title": "X-MEN VS STREET FIGHTER"
+		}, {
+			"id": "SLUS-00977",
+			"title": "XENA: WARRIOR PRINCESS"
+		}, {
+			"id": "SLUS-00664\nSLUS-00669",
+			"title": "XENOGEARS :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-00461",
+			"title": "XEVIOUS 3D-G+"
+		}, {
+			"id": "SLUS-01566",
+			"title": "XS AIRBOAT RACING"
+		}, {
+			"id": "SLUS-01560",
+			"title": "XS JUNIOR LEAGUE DODGEBALL"
+		}, {
+			"id": "SLUS-01554",
+			"title": "XS JUNIOR LEAGUE FOOTBALL"
+		}, {
+			"id": "SLUS-01520",
+			"title": "XS JUNIOR LEAGUE SOCCER"
+		}, {
+			"id": "SLUS-01506",
+			"title": "XS MOTO"
+		}, {
+			"id": "SLUS-00716\nSLUS-00762",
+			"title": "YOU DON'T KNOW JACK :  [ 2 DISCS ]"
+		}, {
+			"id": "SLUS-01194",
+			"title": "YOU DON'T KNOW JACK: MOCK 2"
+		}, {
+			"id": "SLUS-01411",
+			"title": "YU-GI-OH! FORBIDDEN MEMORIES"
+		}, {
+			"id": "SLUS-00183",
+			"title": "ZERO DIVIDE"
+		}, {
+			"id": "SLUS-01401",
+			"title": "ZOBOOMAFOO: LEAPIN' LEMURS"
+		}, {
+			"id": "SLUS-00078",
+			"title": "ZOOP"
+		}
+	]
+}

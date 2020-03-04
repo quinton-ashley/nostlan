@@ -33,6 +33,10 @@ let format = {
 		regex: /(\S+)\s*("[^\n]+)/g,
 		replace: `"id": "$1",\n\t"title": $2\n}, {`
 	}],
+	ps1: [{
+		regex: /\s*"\?[^\n]*(\s*")[^"]*([^\n]*\s*")[^"]*([^,]*),\n[^\n]*\s*\},\s*{/g,
+		replace: `$1id$2title$3\n\t}, {`
+	}],
 	ps2: [{
 		regex: /\|([^\|]*)\|([^\|]*)\|[^\|]*[^\|\n]*\n/g,
 		replace: `\t"id": "$1",\n\t"title": "$2"\n}, {\n`

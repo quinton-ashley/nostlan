@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.nostlan",
     "copyright": "Copyright © 2019 Quinton Ashley",
-    "electronVersion": "7.1.1",
+    "electronVersion": "7.1.14",
     "electronDownload": {
-      "version": "7.1.1"
+      "version": "7.1.14"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -81,7 +81,7 @@
     "chrome-finder": "^1.0.6",
     "circletype": "^2.3.0",
     "contro": "^2.1.3",
-    "contro-ui": "^2.0.8",
+    "contro-ui": "^2.0.9",
     "deep-extend": "^0.6.0",
     "delay": "^4.3.0",
     "diacritics": "^1.3.0",
@@ -135,13 +135,12 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "premiere": "O='{\"name\":\"'$npm_package_name'\",\"description\":\"'$npm_package_description'\",\"license_template\":\"'$npm_package_license'\"}' && echo \"${O}\" && curl -u $npm_package_author_name https://api.github.com/user/repos -d \"${O}\" && git init && git add -A && git commit -m $npm_package_version && git remote add origin 'https://github.com/'$npm_package_author_name'/'$npm_package_name'.git' && git pull origin master --allow-unrelated-histories --no-edit -q && git push --set-upstream origin master && git push && git push --tags",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=7.1.1 --disturl=https://atom.io/download/atom-shell --abi=75",
+    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=7.1.14 --disturl=https://atom.io/download/atom-shell --abi=75",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m && electron-builder -w && electron-builder -l",
     "gh-publish": "electron-builder -m -l -w -p always",
-    "postinstall": "electron-builder install-app-deps -c.electronVersion 7.1.1 | electron-rebuild",
+    "postinstall": "electron-builder install-app-deps -c.electronVersion 7.1.14 | electron-rebuild",
     "delete-tags": "git tag | xargs git tag -d",
     "delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
     "v": "npm version patch --force",
@@ -149,5 +148,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.15"
+  "version": "1.7.16"
 }

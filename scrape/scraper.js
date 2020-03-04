@@ -40,7 +40,7 @@ class Scraper {
 				ext = url[1];
 				url = url[0];
 			} else if (url[0] == 'q') {
-				url = await this.gqa.unwrapUrl([game, name]);
+				url = await this.gqa.unwrapUrl(game, name);
 				res = await dl(url, `${imgDir}/${name}`, true);
 				if (res) return res;
 			} else if (url[1] == 'd') {

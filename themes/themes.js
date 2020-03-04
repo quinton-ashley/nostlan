@@ -41,9 +41,7 @@ class Themes {
 				sys: system
 			};
 			for (let imgType of imgTypes) {
-				if (!template.img[imgType]) {
-					template.img[imgType] = 'q';
-				}
+				template.img[imgType] = 'q';
 			}
 			this[system] = {};
 			this[system].template = template;
@@ -68,8 +66,7 @@ class Themes {
 		this.ps2.default.title = "Kingdom Hearts";
 		this.ps3.default.id = "BCUS98154";
 		this.ps3.default.title = "inFamous";
-		this.snes.default.id = "SNSP-MW-FAH-1";
-		this.snes.default.title = "Super Mario World";
+		this.snes.default = this.snes.template;
 		this.switch.default.id = "AAACA";
 		this.switch.default.title = "Super Mario Odyssey";
 		this.wii.default.id = "SB4E01";

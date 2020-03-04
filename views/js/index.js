@@ -359,9 +359,7 @@ module.exports = async function(arg) {
 		}
 		let $cur = cui.getCur();
 		if ($cur.hasClass('selected')) {
-			let $reel = $cur.parent();
-			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
-			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
+			fitCoverToScreen($cur, $cur.parent());
 		}
 	};
 
@@ -496,6 +494,12 @@ module.exports = async function(arg) {
 		}
 	}
 
+	function fitCoverToScreen($cur, $reel) {
+		$reel.css('position', 'fixed');
+		$reel.css('transform', `scale(${$(window).height()/$cur.height()})`);
+		$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+	}
+
 	async function coverClicked() {
 		let $cur = cui.getCur('libMain');
 		if ($cur.hasClass('uie-disabled')) return false;
@@ -508,12 +512,12 @@ module.exports = async function(arg) {
 			let gameSys = $cur.attr('class').split(/\s+/)[0];
 			cui.change('coverSelect', gameSys);
 			cui.scrollToCursor(500, 0);
-			$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
-			$cur.css('transform', `scale(${$(window).height()/$cur.height()})`);
+			fitCoverToScreen($cur, $reel);
 		} else {
 			cui.change('libMain', sysStyle);
+			$reel.css('position', '');
 			$reel.css('left', '');
-			$cur.css('transform', '');
+			$reel.css('transform', '');
 		}
 		cui.resize(true);
 	}
@@ -906,7 +910,8 @@ module.exports = async function(arg) {
 		let imgType = '';
 		let boxImgSrc = await scraper.imgExists(game, 'box');
 		let coverImgSrc = '';
-		if (!boxImgSrc) {
+		// if box isn't found or if template
+		if (!boxImgSrc || game.id.substring(0, 9) == '_TEMPLATE') {
 			boxImgSrc = await scraper.imgExists(themes[boxSys].default, 'box');
 			coverImgSrc = await scraper.imgExists(game, 'coverFull');
 			imgType = '.coverFull';

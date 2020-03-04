@@ -2,9 +2,8 @@
 	--cover-color: #000000;
 	--cover-text-color: #fc0c19;
 	--cover-border-color: #fc0c19;
-	--button-color: repeating-linear-gradient(#626763, #626763 5%,
-		#000000 4px, #000000 10%);
+	--button-color: repeating-linear-gradient(#626763, #626763 5%, #000000 4px, #000000 10%);
 	--button-border-color: #b82899;
-	--powerBtn-border-color: #ffb22f;
-	--resetBtn-border-color: #357f7e;
+	--powerBtn-border-color: #fea12a;
+	--resetBtn-border-color: #019973;
 }

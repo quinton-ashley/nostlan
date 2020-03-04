@@ -238,19 +238,15 @@ img {
 	border-radius: 2%;
 }
 
-.reel.reverse {
-	position: fixed;
-	bottom: 0;
-}
-
-.reel:not(.reverse) {
-	top: 0;
+#libMain {
+	display: inline-flex;
 }
 
 .reel {
-	position: absolute;
+	height: 100vh;
 	width: 12.5%;
 	z-index: 1;
+	overflow: auto;
 }
 
 .reel .uie.selected {

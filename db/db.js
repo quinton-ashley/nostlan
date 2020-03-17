@@ -1,11 +1,11 @@
 const requisition = require('requisition');
 const tbl2json = require('tabletojson');
-// mame db retrieved from the app itself
+// mame arcade db retrieved from the app itself
 let sources = {
-	ds: "https://www.gametdb.com/dstdb.txt?LANG=EN",
-	mame: {
+	arcade: {
 		win: ['${app}', '--list']
 	},
+	ds: "https://www.gametdb.com/dstdb.txt?LANG=EN",
 	n3ds: "https://www.gametdb.com/3dstdb.txt?LANG=EN",
 	ps1: "http://psxdatacenter.com/ulist.html",
 	ps2: "https://psxdatacenter.com/psx2/ulist2.html",
@@ -25,13 +25,13 @@ let regionFilter = {
 	}
 };
 let format = {
+	arcade: [{
+		regex: /(\S+)\s*("[^\n]+)/g,
+		replace: `"id": "$1",\n\t"title": $2\n}, {`
+	}],
 	gba: [{
 		regex: /<game name="([^"]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+<crc>([^<]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n/g,
 		replace: `"id": "$2",\n\t"title": "$1"\n}, {\n`
-	}],
-	mame: [{
-		regex: /(\S+)\s*("[^\n]+)/g,
-		replace: `"id": "$1",\n\t"title": $2\n}, {`
 	}],
 	ps1: [{
 		regex: /\s*"\?[^\n]*(\s*")[^"]*([^\n]*\s*")[^"]*([^,]*),\n[^\n]*\s*\},\s*{/g,

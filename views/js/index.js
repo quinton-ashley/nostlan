@@ -67,46 +67,26 @@ module.exports = async function(arg) {
 		er(ror);
 	}
 
-	let systems = {
-		wii: {
-			name: 'Wii',
-			fullName: 'Nintendo Wii',
-			emus: ['dolphin']
-		},
-		wiiu: {
-			name: 'Wii U',
-			fullName: 'Nintendo Wii U',
-			emus: ['cemu']
-		},
-		switch: {
-			name: 'Switch',
-			fullName: 'Nintendo Switch',
-			emus: ['yuzu']
-		},
-		gba: {
-			name: 'GBA',
-			fullName: 'Nintendo Game Boy Advance',
-			emus: ['mgba']
+	global.systems = {
+		arcade: {
+			name: 'MAME',
+			fullName: 'Multiple Arcade Machine Emulator',
+			emus: ['mame']
 		},
 		ds: {
 			name: 'DS',
 			fullName: 'Nintendo DS',
 			emus: ['melonds', 'desmume']
 		},
+		gba: {
+			name: 'GBA',
+			fullName: 'Nintendo Game Boy Advance',
+			emus: ['mgba']
+		},
 		n3ds: {
 			name: '3DS',
 			fullName: 'Nintendo 3DS',
 			emus: ['citra']
-		},
-		snes: {
-			name: 'SNES',
-			fullName: 'Super Nintendo',
-			emus: ['bsnes']
-		},
-		mame: {
-			name: 'MAME',
-			fullName: 'Multiple Arcade Machine Emulator',
-			emus: ['mame']
 		},
 		ps2: {
 			name: 'PS2',
@@ -117,6 +97,26 @@ module.exports = async function(arg) {
 			name: 'PS3',
 			fullName: 'Sony PlayStation 3',
 			emus: ['rpcs3']
+		},
+		snes: {
+			name: 'SNES',
+			fullName: 'Super Nintendo',
+			emus: ['bsnes']
+		},
+		switch: {
+			name: 'Switch',
+			fullName: 'Nintendo Switch',
+			emus: ['yuzu']
+		},
+		wii: {
+			name: 'Wii',
+			fullName: 'Nintendo Wii',
+			emus: ['dolphin']
+		},
+		wiiu: {
+			name: 'Wii U',
+			fullName: 'Nintendo Wii U',
+			emus: ['cemu']
 		},
 		xbox360: {
 			name: 'Xbox 360',
@@ -157,7 +157,7 @@ module.exports = async function(arg) {
 		emu = syst.emus[0];
 		if (mac && sys == 'ds') emu = 'desmume';
 		await intro();
-		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
+		let gamesPath = `${emuDir}/${sys}/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		games = [];
 		if (await fs.exists(gamesPath)) {
@@ -170,11 +170,11 @@ module.exports = async function(arg) {
 				return;
 			}
 			log(emu);
-			let gameLibDir = `${emuDir}/${prefs[emu].name}/GAMES`;
+			let gameLibDir = `${emuDir}/${sys}/GAMES`;
 			if (emu == 'rpcs3') {
-				gameLibDir = `${emuDir}/${prefs[emu].name}/BIN/dev_hdd0/game`;
+				gameLibDir = `${emuDir}/${sys}/rpcs3/dev_hdd0/game`;
 			} else if (emu == 'mame') {
-				gameLibDir = `${emuDir}/${prefs[emu].name}/BIN/roms`;
+				gameLibDir = `${emuDir}/${sys}/mame/roms`;
 			}
 
 			log(gameLibDir);
@@ -257,6 +257,128 @@ module.exports = async function(arg) {
 		return data;
 	}
 
+	async function updatePrefs() {
+
+		// only keeps the app path for the current os
+		for (let _sys in systems) {
+			let _syst = systems[_sys];
+			for (let _emu of _syst.emus) {
+				if (typeof prefs[_emu].app == 'string') continue;
+				if (prefs[_emu].app[osType]) {
+					prefs[_emu].app = prefs[_emu].app[osType];
+				} else {
+					delete prefs[_emu].app;
+				}
+			}
+		}
+
+		// prefs version added in 1.8.x
+		if (prefs.version) {
+			prefs.version = pkg.version;
+			return;
+		}
+		// update older versions of the prefs file
+		if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
+		if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
+		if (prefs.ui.gamepad.profile) {
+			prefs.ui.gamepad.default.profile = prefs.ui.gamepad.profile;
+			delete prefs.ui.gamepad.profile;
+		}
+		if (prefs.ui.gamepad.map) {
+			prefs.ui.gamepad.default.map = prefs.ui.gamepad.map;
+			delete prefs.ui.gamepad.map;
+		}
+		if (prefs['3ds']) prefs.n3ds = prefs['3ds'];
+		delete prefs['3ds'];
+		if (prefs.ui.maxRows) {
+			prefs.ui.maxColumns = prefs.ui.maxRows;
+			delete prefs.ui.maxRows;
+		}
+		// move old bottlenose directory
+		if (prefs.btlDir) {
+			prefs.nlaDir = path.join(prefs.btlDir, '..') + '/nostlan';
+			if (await fs.exists(prefs.btlDir)) {
+				await fs.move(prefs.btlDir, prefs.nlaDir);
+			}
+			delete prefs.btlDir;
+			emuDir = path.join(prefs.nlaDir, '..');
+		}
+		if (typeof prefs.donor == 'boolean') prefs.donor = {};
+		if (prefs.saves) {
+			for (let save of prefs.saves) {
+				if (!save.noSaveOnQuit) save.noSaveOnQuit = false;
+			}
+		}
+		for (let _sys in systems) {
+			if (prefs[_sys]) {
+				delete prefs[_sys].style;
+				if (prefs[_sys].emu) prefs[_sys].name = prefs[_sys].emu;
+				delete prefs[_sys].emu;
+				if (_sys == 'arcade') continue;
+				let _emu = prefs[_sys].name.toLowerCase();
+				prefs[_emu] = prefs[_sys];
+				delete prefs[_sys];
+			}
+		}
+
+		// in 1.8.x the file structure of emuDir was changed
+		for (let _sys in systems) {
+			let _syst = systems[_sys];
+			let _emu = _syst.emus[0];
+			let moveDirs = [{
+				src: `${emuDir}/${prefs[_emu].name}`,
+				dest: `${emuDir}/${_sys}`
+			}, {
+				src: `${emuDir}/nostlan/${_sys}`,
+				dest: `${emuDir}/${_sys}/images`
+			}, {
+				src: `${emuDir}/${_sys}/BIN`,
+				dest: `${emuDir}/${_sys}/${_emu}`
+			}, {
+				src: `${emuDir}/${_sys}/GAMES`, // make lowercase
+				dest: `${emuDir}/${_sys}/_games` // temp folder
+			}, {
+				src: `${emuDir}/${_sys}/temp/_games`,
+				dest: `${emuDir}/${_sys}/games`
+			}];
+			if (_sys != 'arcade') {
+				moveDirs.push({
+					src: `${usrDir}/_usr/${_sys}Games.json`,
+					dest: `${emuDir}/${_sys}/${_sys}Games.json`
+				});
+			} else {
+				moveDirs.push({
+					src: `${usrDir}/_usr/mameGames.json`,
+					dest: `${emuDir}/arcade/arcadeGames.json`
+				});
+			}
+			for (let moveDir of moveDirs) {
+				let srcExists = await fs.exists(moveDir.src);
+				let destExists = await fs.exists(moveDir.dest);
+
+				if (srcExists && !destExists) {
+					await fs.move(moveDir.src, moveDir.dest);
+					delete prefs[_emu].libs;
+					if (prefs[_emu].saves) {
+						delete prefs[_emu].saves.dirs;
+					}
+					await fs.remove(moveDir.src);
+				}
+			}
+			await fs.remove(`${emuDir}/nostlan/${_sys}`);
+
+			if (prefs[_emu].app) {
+				let emuApp = util.absPath(prefs[_emu].app);
+				if (emuApp &&
+					!(await fs.exists(emuApp))) {
+					delete prefs[_emu].app;
+				}
+			}
+		}
+
+		prefs.version = pkg.version;
+	}
+
 	async function load() {
 		let files = await klaw(__root + '/views/md');
 		for (let file of files) {
@@ -272,49 +394,9 @@ module.exports = async function(arg) {
 		}
 		if (await prefsMng.canLoad()) {
 			await prefsMng.load();
-			// clean up deprecated versions of the prefs file
-			if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
-			if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
-			if (prefs.ui.gamepad.profile) {
-				prefs.ui.gamepad.default.profile = prefs.ui.gamepad.profile;
-				delete prefs.ui.gamepad.profile;
-			}
-			if (prefs.ui.gamepad.map) {
-				prefs.ui.gamepad.default.map = prefs.ui.gamepad.map;
-				delete prefs.ui.gamepad.map;
-			}
-			if (prefs['3ds']) prefs.n3ds = prefs['3ds'];
-			delete prefs['3ds'];
-			if (prefs.ui.maxRows) {
-				prefs.ui.maxColumns = prefs.ui.maxRows;
-				delete prefs.ui.maxRows;
-			}
-			// move old bottlenose directory
-			if (prefs.btlDir) {
-				prefs.nlaDir = path.join(prefs.btlDir, '..') + '/nostlan';
-				if (await fs.exists(prefs.btlDir)) {
-					await fs.move(prefs.btlDir, prefs.nlaDir);
-				}
-				delete prefs.btlDir;
-			}
-			if (typeof prefs.donor == 'boolean') prefs.donor = {};
-			if (prefs.saves) {
-				for (let save of prefs.saves) {
-					if (!save.noSaveOnQuit) save.noSaveOnQuit = false;
-				}
-			}
-			for (let _sys in systems) {
-				if (prefs[_sys]) {
-					delete prefs[_sys].style;
-					if (prefs[_sys].emu) prefs[_sys].name = prefs[_sys].emu;
-					delete prefs[_sys].emu;
-					if (_sys == 'mame') continue;
-					let _emu = prefs[_sys].name.toLowerCase();
-					prefs[_emu] = prefs[_sys];
-					delete prefs[_sys];
-				}
-			}
 			emuDir = path.join(prefs.nlaDir, '..');
+			await updatePrefs();
+			await createTemplate();
 		}
 		// currently supported systems
 		let sysMenuHTML = '';
@@ -410,7 +492,7 @@ module.exports = async function(arg) {
 			}
 		}
 		let buttons = ['X', 'Y', 'B'];
-		if ((/(xbox|mame)/i).test(subState)) {
+		if ((/(xbox|arcade)/i).test(subState)) {
 			buttons = ['Y', 'X', 'B'];
 			adjust(true);
 		} else if ((/ps/i).test(subState)) {
@@ -458,14 +540,15 @@ module.exports = async function(arg) {
 		cui.hideDialogs();
 	}
 
-	async function createTemplate(emuDir) {
-		for (let _syst of systems) {
+	async function createTemplate() {
+		for (let _sys in systems) {
+			let _syst = systems[_sys];
 			for (let _emu of _syst.emus) {
-				if (win && !/(yuzu)/i.test(_emu)) {
-					await fs.ensureDir(`${emuDir}/${prefs[emu].name}/BIN`);
-				}
-				if (!/(mame|rpcs3)/i.test(_emu)) {
-					await fs.ensureDir(`${emuDir}/${prefs[emu].name}/GAMES`);
+				// emu dir
+				await fs.ensureDir(`${emuDir}/${_sys}/${_emu}`);
+				// games dir
+				if (!/(rpcs3|mame)/.test(_emu)) {
+					await fs.ensureDir(`${emuDir}/${_sys}/games`);
 				}
 			}
 		}
@@ -621,7 +704,7 @@ module.exports = async function(arg) {
 				$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
 
 				let mediaName = 'disc';
-				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
+				if (sys == 'snes' || sys == 'nes' || sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
 					mediaName = 'cart';
 				}
 				let mediaImg = await scraper.imgExists(game, mediaName);
@@ -646,7 +729,7 @@ module.exports = async function(arg) {
 			if (act != 'b') {
 				if (act == 'x') act = 'Manual';
 				if (act == 'y') {
-					opn(scraper.getImgDir(getCurGame()));
+					opn(await scraper.getImgDir(getCurGame()));
 					return;
 				}
 				if (act == 'a') act = 'Media';
@@ -730,7 +813,7 @@ module.exports = async function(arg) {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
 					recheckImgs = true;
-					await fs.remove(`${usrDir}/_usr/${sys}Games.json`);
+					await fs.remove(`${emuDir}/${sys}/${sys}Games.json`);
 				}
 				cui.removeView('libMain');
 				cui.change('rescanning');
@@ -781,13 +864,7 @@ module.exports = async function(arg) {
 				}
 			}
 		} else if (ui == 'welcomeMenu') {
-			if (act == 'demo') {
-				emuDir = util.absPath('$home') + '/Documents/emu';
-				let templatePath = __root + '/demo';
-				await fs.copy(templatePath, emuDir);
-				await createTemplate(emuDir);
-				await reload();
-			} else if (act == 'full') {
+			if (act == 'full') {
 				cui.change('setupMenu');
 			}
 		} else if (ui == 'setupMenu') {
@@ -800,14 +877,14 @@ module.exports = async function(arg) {
 				return;
 			}
 			if (act == 'new-in-docs') {
-				emuDir = util.absPath('$home') + '/Documents'
+				emuDir = util.absPath('$home') + '/Documents';
 			} else {
 				let msg = 'choose the folder you want the template to go in';
 				emuDir = await dialog.selectDir(msg);
 			}
 			emuDir += '/emu';
 			if (!emuDir) return false;
-			await createTemplate(emuDir);
+			await createTemplate();
 			opn(emuDir);
 			if (!(await fs.exists(emuDir))) return false;
 		}
@@ -911,7 +988,7 @@ module.exports = async function(arg) {
 		let boxImgSrc = await scraper.imgExists(game, 'box');
 		let coverImgSrc = '';
 		// if box isn't found or if template
-		if (!boxImgSrc || game.id.substring(0, 9) == '_TEMPLATE') {
+		if (!boxImgSrc || (themes[boxSys].default && game.id.substring(0, 9) == '_TEMPLATE')) {
 			boxImgSrc = await scraper.imgExists(themes[boxSys].default, 'box');
 			coverImgSrc = await scraper.imgExists(game, 'coverFull');
 			imgType = '.coverFull';
@@ -997,7 +1074,7 @@ module.exports = async function(arg) {
 						// temp code for hiding other game versions
 						// the ability to select different versions of MAME games
 						// aka "sets" will be added in the future
-						if (sys == 'mame') {
+						if (sys == 'arcade') {
 							if (mameSetRegex.test(games[i].title)) break;
 							if (i != 0 && games[i - 1].img && games[i].img &&
 								games[i - 1].img.box == games[i].img.box) break;

@@ -1,15 +1,15 @@
 const Fuse = require('fuse.js');
 
 const idRegex = {
-	switch: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/,
-	ps3: /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/,
-	wii: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
-	wiiu: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
+	arcade: /(\S+)/,
 	ds: /(?:^|[\[\(])([A-Z][A-Z0-9]{2}[A-Z])(?:[\]\)]|$)/,
 	gba: /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/,
 	ps2: /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/,
+	ps3: /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/,
+	switch: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/,
+	wii: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
+	wiiu: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
 	xbox360: /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/,
-	mame: /(\S+)/
 };
 
 let searcharg = {
@@ -272,12 +272,12 @@ class Scanner {
 	}
 
 	async outputUsersGamesDB(games) {
-		let gamesPath = `${usrDir}/_usr/${sys}Games.json`;
+		let gamesPath = `${emuDir}/${sys}/${sys}Games.json`;
 		log('game library saved to: ');
 		log(gamesPath);
 		await fs.outputFile(gamesPath, JSON.stringify({
 			games: games
-		}));
+		}, null, '\t'));
 	}
 }
 

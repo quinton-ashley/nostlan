@@ -28,24 +28,22 @@ class Themes {
 			`memoryBack`, // the back of a memory card
 			`promo` // a promotional insert included in the game box
 		];
-		let systems = [
-			'ds', 'gba', 'gcn', 'mame', 'n3ds', 'ps2', 'ps3',
-			'snes', 'switch', 'wii', 'wiiu', 'xbox360'
-		];
 		// template game art
-		for (let system of systems) {
+		let _systems = Object.keys(systems);
+		_systems.push('gcn');
+		for (let _sys of _systems) {
 			let template = {
-				id: '_TEMPLATE_' + system,
-				title: system + ' template',
+				id: '_TEMPLATE_' + _sys,
+				title: _sys + ' template',
 				img: {},
-				sys: system
+				sys: _sys
 			};
 			for (let imgType of imgTypes) {
 				template.img[imgType] = 'q';
 			}
-			this[system] = {};
-			this[system].template = template;
-			this[system].default = {
+			this[_sys] = {};
+			this[_sys].template = template;
+			this[_sys].default = {
 				"img": {
 					"box": "q",
 					"boxBack": "q",
@@ -66,7 +64,6 @@ class Themes {
 		this.ps2.default.title = "Kingdom Hearts";
 		this.ps3.default.id = "BCUS98154";
 		this.ps3.default.title = "inFamous";
-		this.snes.default = this.snes.template;
 		this.switch.default.id = "AAACA";
 		this.switch.default.title = "Super Mario Odyssey";
 		this.wii.default.id = "SB4E01";
@@ -75,6 +72,9 @@ class Themes {
 		this.wiiu.default.title = "Super Mario 3D World";
 		this.xbox360.default.id = "4D5307E6";
 		this.xbox360.default.title = "Halo 3";
+
+		this.arcade.default = undefined;
+		this.snes.default = undefined;
 
 		this.initialized = true;
 	}
@@ -97,13 +97,12 @@ class Themes {
 
 	async applyStyle(name) {
 		if (!this.initialized) await this.init();
-		let dirs = [__root, prefs.nlaDir];
-		let systems = [sys];
-		if (sys == 'wii') systems.push('gcn');
-		for (let i in dirs) {
-			for (let _sys of systems) {
-				let file = `${dirs[i]}/themes/${_sys}/${name}.css`;
-				if (i != 0 && !(await fs.exists(file))) {
+		let _systems = [sys];
+		if (sys == 'wii') _systems.push('gcn');
+		for (let dir of [__root, prefs.nlaDir]) {
+			for (let _sys of _systems) {
+				let file = `${dir}/themes/${_sys}/${name}.css`;
+				if (dir != __root && !(await fs.exists(file))) {
 					try {
 						await fs.ensureFile(file);
 					} catch (ror) {

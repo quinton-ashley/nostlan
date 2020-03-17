@@ -43,7 +43,7 @@ class AndyDecarli {
 	}
 
 	async dlImg(game, dir, name, _sys) {
-		if (name != 'box' || _sys == 'mame') {
+		if (name != 'box' || _sys == 'arcade') {
 			return;
 		}
 		let res;

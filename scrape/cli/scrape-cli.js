@@ -35,13 +35,13 @@ module.exports = async function(arg) {
 	const deepExtend = require('deep-extend');
 	let scraper = require(`../${scrape}.js`);
 	global.sys = arg.sys || 'snes'; // sys default
-	if (scrape == 'fly') sys = 'mame';
+	if (scrape == 'fly') sys = 'arcade';
 
 	if (/(tcp|gfs|dec)/.test(scrape)) {
 		await scraper.load(sys);
 	}
 	let name = 'cover';
-	if (/(mame|gba)/.test(sys) || scrape == 'dec') name = 'box';
+	if (/(arcade|gba)/.test(sys) || scrape == 'dec') name = 'box';
 	if (scrape == 'tcp') name = 'coverFull';
 
 	let games = [];

@@ -12,7 +12,7 @@ class Launcher {
 
 	async getEmuAppPath(attempt) {
 		if (!attempt) attempt = 0;
-		let emuAppPath = util.absPath(prefs[emu].app[osType]);
+		let emuAppPath = util.absPath(prefs[emu].app);
 		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
 		}
@@ -20,7 +20,7 @@ class Launcher {
 		let emuDirPath = '';
 		if (win || (linux && /(cemu|rpcs3|bsnes)/.test(emu)) ||
 			(mac && /(mame|bsnes)/.test(emu))) {
-			emuDirPath = `${emuDir}/${prefs[emu].name}/BIN`;
+			emuDirPath = `${emuDir}/${sys}/${emu}`;
 			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
 					emuDirPath += '/nightly-mingw';
@@ -85,7 +85,7 @@ class Launcher {
 				(linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) ||
 				await fs.exists(emuAppPath)
 			) {
-				prefs[emu].app[osType] = emuAppPath;
+				prefs[emu].app = emuAppPath;
 				return emuAppPath;
 			}
 		}
@@ -107,7 +107,7 @@ class Launcher {
 			cui.err('app path not valid: ' + emuAppPath);
 			return '';
 		}
-		prefs[emu].app[osType] = emuAppPath;
+		prefs[emu].app = emuAppPath;
 		return emuAppPath;
 	}
 
@@ -303,7 +303,7 @@ class Launcher {
 			}
 		}
 		if (code) {
-			let erMsg = `${prefs[emu].name} was unable to start the game or crashed.  This is probably not an issue with Nostlan.  Check online to make sure ${prefs[emu].name} can boot the game.\n<code>`;
+			let erMsg = `${prefs[emu].name} crashed!  If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator.  Search the internet for instructions on how to fully setup ${prefs[emu].name}.\n<code>`;
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
 				erMsg += `${this.cmdArgs[i]} `;

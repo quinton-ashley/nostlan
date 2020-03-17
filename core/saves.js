@@ -10,8 +10,11 @@ class Saves {
 			prefs[emu].saves.dirs = prefs[emu].libs;
 			return true;
 		}
-		if (!prefs[emu].app[osType]) return;
-		let dir = path.join(prefs[emu].app[osType], '..');
+		let emuAppPath = util.absPath(prefs[emu].app);
+		if (!emuAppPath || !(await fs.exists(emuAppPath))) {
+			return;
+		}
+		let dir = path.join(emuAppPath, '..');
 		dir = dir.replace(/\\/g, '/');
 
 		if (emu == 'cemu') {
@@ -32,7 +35,7 @@ class Saves {
 				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';
 			}
 			if (!(await fs.exists(dir))) {
-				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local user directory, create a text file named "portable" next to the executable files of the build (Dolphin.exe). With the extension it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use the global user directory, instead it will create and use the local user directory in the same directory.`);
+				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local "User" directory, create a text file named "portable" next to the executable files of the app (Dolphin.exe). Including the file extension, it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use a global "User" directory, instead it will create and use the local "User" directory in the same directory. For more info look at: https://dolphin-emu.org/docs/guides/controlling-global-user-directory/`);
 				return;
 			}
 			prefs.wii.saves.dirs = [
@@ -61,14 +64,14 @@ class Saves {
 			prefs.xbox360.saves.dirs = [dir];
 		} else if (emu == 'yuzu') {
 			let dir0 = util.absPath('$home') + '/AppData/Roaming/yuzu';
-			let dir1 = path.join(prefs.nlaDir, '../Yuzu/BIN');
+			let dir1 = path.join(prefs.nlaDir, '../switch/yuzu');
 			if (await fs.exists(dir1 + '/nand')) dir = dir1;
 			prefs.switch.saves.dirs = [
 				dir + '/nand/user/save',
 				dir0 + '/load' // mods
 			];
 		} else {
-			prefs[emu].saves = undefined;
+			delete prefs[emu].saves;
 			log('save sync not supported for this emu: ' + emu);
 			return false;
 		}

@@ -15,119 +15,96 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can in
 
 ## Features
 
-- unified UI for mouse/gamepad interaction
-- designed for UHD displays and projectors
-- checks multiple database sites for the highest quality box art
-- nostalgic UI themes for each supported console
-- uses individual emulators: no cores and no controller input transfer lag
-- most controllers connect to Nostlan automatically, no setup required
-- Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
-- gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
-- advanced customization: edit launch commands
-- try out Nostlan in demo mode if don't have any games on your computer
-- cross-platform support for Linux, macOS, and Windows!
-- [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
+-   unified UI for mouse/gamepad interaction
+-   designed for UHD displays and projectors
+-   checks multiple database sites for the highest quality box art
+-   nostalgic UI themes for each supported console
+-   uses individual emulators: no cores and no controller input transfer lag
+-   most controllers connect to Nostlan automatically, no setup required
+-   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
+-   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
+-   advanced customization: edit launch commands
+-   cross-platform support for Linux, macOS, and Windows!
+-   [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
 
-## Supported Emulators (click an image to see it in full quality 4K)
+## Supported Systems and Emulators
 
-### Dolphin (Wii, Gamecube, Virtual Console) [Linux, macOS, & Windows]
+(click an image to see it in full quality 4K)
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn_LQ.png">
-</a></p>
-
-### Cemu (Wii U) [Windows & Linux* using Wine]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_LQ.png">
-</a></p>
-
-### Yuzu (Switch) [Linux & Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_LQ.png">
-</a></p>
-
-### Citra (3DS) [Linux, macOS, & Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds_LQ.png">
-</a></p>
-
-### melonDS (DS) [Linux & Windows] or DeSmuME [macOS]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds_LQ.png">
-</a></p>
-
-### MAME [Linux, macOS, & Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame_LQ.png">
-</a></p>
-
-### mGBA (GBA) [Linux, macOS, & Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba_LQ.png">
-</a></p>
-
-### PCSX2 (PS2) [Linux, macOS, & Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps2.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps2_LQ.png">
-</a></p>
-
-### RPCS3 (PS3) [Linux & Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps3.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps3_LQ.png">
-</a></p>
-
-### Xenia (Xbox 360) [Windows]
-
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360_LQ.png">
-</a></p>
-
-### Dolphin + Wii Theme
+### Wii, Gamecube, Virtual Console [Dolphin]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wii.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wii_LQ.png">
 </a></p>
 
-## If you like using Nostlan please donate!
+### Wii U [Cemu]
 
-Hi my name is Quinton and this is the part where I beg you for money! Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop. If you appreciate my work so far and will continue to use Nostlan please donate an amount of your choosing. Cloud saving is coming soon for Patreon supporters. Thank you!
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_LQ.png">
+</a></p>
 
-Support on Patreon:  
-<https://www.patreon.com/qashto>
+### Switch [Yuzu]
 
-Donate via Paypal:  
-<https://www.paypal.me/qashto/20>
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_LQ.png">
+</a></p>
 
-<p><a href="https://www.patreon.com/qashto">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
+### 3DS [Citra]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds_LQ.png">
+</a></p>
+
+### DS [melonDS, DeSmuME]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds_LQ.png">
+</a></p>
+
+### Arcade Machines [MAME]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame_LQ.png">
+</a></p>
+
+### GBA [mGBA]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba_LQ.png">
+</a></p>
+
+### PS2 [PCSX2]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps2.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps2_LQ.png">
+</a></p>
+
+### PS3 [RPCS3]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps3.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ps3_LQ.png">
+</a></p>
+
+### Xbox 360 [Xenia]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360_LQ.png">
 </a></p>
 
 ## Premium Features
 
 Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
 
-- backup/sync all your save data to the cloud or local storage device
-- custom ui themeing (coming soon)
+-   backup/sync all your save data to the cloud or local storage device
+-   custom ui theme-ing (coming soon)
 
-Features that might be offered in the future:
-
-- support for PC games, making Nostlan able to launch all your games
-- single click to install emulators/updates
-- database of Dolphin texture packs
-- batch install and auto-update texture packs for Dolphin
-- easy way to mix and swap texture packs for Dolphin
+<p><a href="https://www.patreon.com/qashto">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
+</a></p>
 
 ## How to access Premium Features
 
-On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features!
+On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features!  Passwords are automatically posted each month.
 
 ## How is Nostlan different from other front-ends?
 
@@ -157,7 +134,7 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 
 ## Setting up Nostlan
 
-If you do not want to use the optional template file structure, simply select "continue" on the setup page. Nostlan will prompt you for the location of your game directories. It may also prompt for the emulator app before you launch a game with Nostlan for the first time. Setup as you go and Nostlan will save these locations in your preferences file.
+Nostlan is meant to be really easy to setup if you use the Nostlan file structure for your emulators and I recommend it!  It is entirely OPTIONAL though, if you don't use it you can pick the locations of your emulators and game libraries as you use Nostlan.
 
 ## Nostlan File Structure
 
@@ -166,23 +143,57 @@ If you do not want to use the optional template file structure, simply select "c
     │ ├─┬ 📁 usr
     │ │ ├─── 📄 pref.json (user's preferences)
     │ │ ├─── 📄 wiiGamesDB.json (user's wii game database)
-    │ │ └─── 📄 wiiLog.json (error log check for mismatched game names)
+    │ │ └─── 📄 wiiLog.json (error log for game matching)
     │ └─┬ 📁 wii
     │   └──┬ 📁 GALE01 (Melee's game id)
     │      └── 🖼 box.png
-    ├─┬ 📁 Cemu
-    │ ├─┬ 📁 BIN
-    │ │ └── 🎮 Cemu.exe
+    ├─┬ 📁 arcade
+    │ └─┬ 📁 mame
+    │   ├─┬ 📁 roms
+    │   │ ├── 💿 1942.zip
+    │   │ └── 💿 spang.zip
+    │   └── 🎮 mame64.exe
+    ├─┬ 📁 ds
+    │ ├─┬ 📁 melonds
+    │ │ └── 🎮 melonDS.exe
     │ └─┬ 📁 GAMES
-    │   └── 💿 Mario Kart 8/code/Turbo.rpx
-    ├─┬ 📁 Citra
-    │ ├─┬ 📁 BIN
+    │   ├── 💿 Mario & Luigi - Partners in Time.nds
+    │   └── 💿 Mario & Luigi - Partners in Time.sav
+    ├─┬ 📁 gba
+    │ ├─┬ 📁 mgba
+    │ │ └── 🎮 mGBA.exe
+    │ └─┬ 📁 GAMES
+    │   ├── 💿 Mario & Luigi - Superstar Saga.gba
+    │   └── 💿 Mario & Luigi - Superstar Saga.sav
+    ├─┬ 📁 n3ds
+    │ ├─┬ 📁 citra
     │ │ └─┬ 📁 nightly-mingw
     │ │   └── 🎮 citra-qt.exe
     │ └─┬ 📁 GAMES
     │   └── 💿 Super Mario 3D Land.3ds
-    ├─┬ 📁 Dolphin
-    │ ├─┬ 📁 BIN
+    ├─┬ 📁 ps2
+    │ ├─┬ 📁 pcsx2
+    │ │ └── 🎮 pcsx2.exe
+    │ └─┬ 📁 GAMES
+    │   └── 💿 Bully.iso
+    ├─┬ 📁 ps3
+    │ └─┬ 📁 rpcs3
+    │   ├─┬ 📁 dev_hdd0
+    │   │ └─┬ 📁 game
+    │   │   ├── 💿 BLES00760/USRDIR/EBOOT.BIN
+    │   │   └── 💿 BLUS30591/USRDIR/EBOOT.BIN
+    │   └── 🎮 rpcs3.exe
+    ├─┬ 📁 snes
+    │ ├─┬ 📁 bsnes
+    │ │ └── 🎮 bsnes.exe
+    │ └─┬ 📁 GAMES
+    │   └── 💿 Super Mario World.sfc
+    ├─┬ 📁 switch
+    │ ├── 📁 yuzu
+    │ └─┬ 📁 GAMES
+    │ 	└── 💿 Super Mario Odyssey.xci
+    ├─┬ 📁 wii
+    │ ├─┬ 📁 dolphin
     │ │ ├── 📁 User
     │ │ ├── 📄 portable.txt
     │ │ └── 🎮 Dolphin.exe
@@ -190,53 +201,25 @@ If you do not want to use the optional template file structure, simply select "c
     │   ├── 💿 Super Mario Sunshine.gcz
     │   ├── 💿 Super Smash Bros Melee.iso
     │   └── 💿 sm64.wad
-    ├─┬ 📁 MAME
-    │ └─┬ 📁 BIN
-    │   ├─┬ 📁 roms
-    │   │ ├── 💿 1942.zip
-    │   │ └── 💿 spang.zip
-    │   └── 🎮 mame64.exe
-    ├─┬ 📁 melonDS
-    │ ├─┬ 📁 BIN
-    │ │ └── 🎮 melonDS.exe
+    ├─┬ 📁 wiiu
+    │ ├─┬ 📁 cemu
+    │ │ └── 🎮 Cemu.exe
     │ └─┬ 📁 GAMES
-    │   ├── 💿 Mario & Luigi - Partners in Time.nds
-    │   └── 💿 Mario & Luigi - Partners in Time.sav
-    ├─┬ 📁 mGBA
-    │ ├─┬ 📁 BIN
-    │ │ └── 🎮 mGBA.exe
-    │ └─┬ 📁 GAMES
-    │   ├── 💿 Mario & Luigi - Superstar Saga.gba
-    │   └── 💿 Mario & Luigi - Superstar Saga.sav
-    ├─┬ 📁 PCSX2
-    │ ├─┬ 📁 BIN
-    │ │ └── 🎮 pcsx2.exe
-    │ └─┬ 📁 GAMES
-    │   └── 💿 Bully.iso
-    ├─┬ 📁 RPCS3
-    │ └─┬ 📁 BIN
-    │   ├─┬ 📁 dev_hdd0
-    │   │ └─┬ 📁 game
-    │   │   ├── 💿 BLES00760/USRDIR/EBOOT.BIN
-    │   │   └── 💿 BLUS30591/USRDIR/EBOOT.BIN
-    │   └── 🎮 rpcs3.exe
-    ├─┬ 📁 Xenia
-    │ ├─┬ 📁 BIN
-    │ │ └── 🎮 xenia.exe
-    │ └─┬ 📁 GAMES
-    │   ├── 💿 Halo 4 (disc a).iso
-    │   └── 💿 Halo 4 (disc b).iso
-    └─┬ 📁 Yuzu
-      └─┬ 📁 GAMES
-        └── 💿 Super Mario Odyssey.xci
+    │   └── 💿 Mario Kart 8/code/Turbo.rpx
+    └─┬ 📁 xbox360
+    	├─┬ 📁 xenia
+    	│ └── 🎮 xenia.exe
+    	└─┬ 📁 GAMES
+      	├── 💿 Halo 4 (disc a).iso
+      	└── 💿 Halo 4 (disc b).iso
 
-Nostlan was designed to OPTIONALLY use this template file structure. The default game library of each emulator will be its `GAMES` folder. As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated. For example, RPCS3 has an internal game library that will be located at `emu/RPCS3/BIN/dev_hdd0/game`.
+Nostlan was designed to OPTIONALLY use this template file structure. The default game library for every system will be its `GAMES` folder. As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated. For example, RPCS3 has an internal game library that will be located at `emu/ps3/rpcs3/dev_hdd0/game`.
 
-Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. On Windows, Nostlan will look for emulator executables in the `BIN` folder or the default install location of that emulator (no need to move Yuzu).
+Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. Nostlan will look for emulator executables in the `emu/${sys}/${emu}` folder or the default install location of that emulator (no need to move Yuzu).
 
-On macOS, Nostlan will look for emulator apps in `/Applications` or `BIN`. Nostlan needs read/write permission to the install folder you choose so do not choose to install the Nostlan image folder at `/Applications`.
+On macOS, Nostlan will look for emulator apps in `/Applications` or `emu/${sys}/${emu}`. Nostlan needs read/write permission to the install folder.  You can have the nostlan.app in `/Applications` but don't install your emulator folder `emu` there.
 
-On Linux, Nostlan will look for emulator apps in their default install locations or `BIN`.
+On Linux, Nostlan will look for emulator apps in their default install locations or in `emu/${sys}/${emu}`.
 
 ## Using Nostlan
 
@@ -330,39 +313,39 @@ You can contribute to Nostlan to add to and update existing game databases, make
 
 ### Game Properties
 
-- `id` is the official id of the game
-- `name` the official name of the game, subtitles are delineated using a colon
-- `texp` the array of texture pack objects
-- `img` an object with `"imgFileName": "url"` pairs
+-   `id` is the official id of the game
+-   `name` the official name of the game, subtitles are delineated using a colon
+-   `texp` the array of texture pack objects
+-   `img` an object with `"imgFileName": "url"` pairs
 
 ### Texture Packs
 
-- `authors` usernames or real names of the author(s)
-- `name` should be short and simple, such as "UHD" or "Blue Edition"
-- `png` and `dds` link(s) to direct download the pack
-- `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
-- `url` link(s) to the relevant forum post or readme
-- `version` the semantic version of the pack
-- `rate` the pack's rating 1-10
-- `patron` donation link(s) to the author(s) of pack
+-   `authors` usernames or real names of the author(s)
+-   `name` should be short and simple, such as "UHD" or "Blue Edition"
+-   `png` and `dds` link(s) to direct download the pack
+-   `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
+-   `url` link(s) to the relevant forum post or readme
+-   `version` the semantic version of the pack
+-   `rate` the pack's rating 1-10
+-   `patron` donation link(s) to the author(s) of pack
 
 ### Images
 
-- `box` the front of the box
-- `boxSide` the side of the box
-- `boxBack` the back of the box
-- `boxOpen` the inside of the game's box
-- `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
-- `cart` the front of the game's (first) cartridge
-- `coverFull` the entire cover sleeve, no box
-- `cover` the front facing portion of the cover sleeve, no box
-- `coverSide` the side facing portion of the cover sleeve, no box
-- `coverBack` the side facing portion of the cover sleeve, no box
-- `disc` the front of the game's (first) disc
-- `manual` the front of the game's manual
-- `memory` the front of a memory card
-- `memoryBack` the back of a memory card
-- `promo` a promotional insert included in the game box
+-   `box` the front of the box
+-   `boxSide` the side of the box
+-   `boxBack` the back of the box
+-   `boxOpen` the inside of the game's box
+-   `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
+-   `cart` the front of the game's (first) cartridge
+-   `coverFull` the entire cover sleeve, no box
+-   `cover` the front facing portion of the cover sleeve, no box
+-   `coverSide` the side facing portion of the cover sleeve, no box
+-   `coverBack` the side facing portion of the cover sleeve, no box
+-   `disc` the front of the game's (first) disc
+-   `manual` the front of the game's manual
+-   `memory` the front of a memory card
+-   `memoryBack` the back of a memory card
+-   `promo` a promotional insert included in the game box
 
 Images can be `.png` or `.jpg`. Put your images in `emu/nostlan/{sys}/{game.id}`. You can access this folder by clicking on the game's box twice in Nostlan and then clicking on "ImgDir". Front cover box art is prioritized in this order: box, coverFull, cover.
 
@@ -403,11 +386,11 @@ These sites are incredible resources thanks to all the people that created them 
 
 ### Template Art
 
-- Gamecube, Wii, and Wii U templates by etschannel via deviantart
-- Switch template by ponces245 via deviantart
-- PS3 template by the_prototype92 via deviantart
-- 3DS template by omegaaaronyt via deviantart
-- Xbox 360 template by georgiajedward via deviantart
+-   Gamecube, Wii, and Wii U templates by etschannel via deviantart
+-   Switch template by ponces245 via deviantart
+-   PS3 template by the_prototype92 via deviantart
+-   3DS template by omegaaaronyt via deviantart
+-   Xbox 360 template by georgiajedward via deviantart
 
 ### Themes
 
@@ -452,4 +435,6 @@ Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating ga
 
 MAME and the MAME Logo are Copyright © 1997-2019 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
 
-Nostlan and the Nostlan logo images are Copyright © 2019 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Nostlan software itself is fully open source MIT licensed.
+Nostlan and the Nostlan logo images are Copyright © 2019 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Nostlan software itself is fully open source and licensed under the copyleft [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+
+![GNU GPLv3 logo](https://www.gnu.org/graphics/gpl-v3-logo.svg)

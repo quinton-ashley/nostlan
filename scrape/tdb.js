@@ -11,7 +11,7 @@ class Gamestdb {
 	constructor() {}
 
 	async dlImg(game, dir, name) {
-		if (!availableImgs.includes(name) || sys == 'mame' || sys == 'ps2' || sys == 'gba') {
+		if (!availableImgs.includes(name) || sys == 'arcade' || sys == 'ps2' || sys == 'gba') {
 			return;
 		}
 		// get image from gametdb

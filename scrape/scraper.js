@@ -25,7 +25,7 @@ class Scraper {
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
-		let imgDir = this.getImgDir(game);
+		let imgDir = await this.getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
@@ -90,18 +90,6 @@ class Scraper {
 				await fs.move(depDir, `${prefs.nlaDir}/n3ds`);
 			}
 		}
-		// deprecated template dir
-		let depTemplateDir = `${prefs.nlaDir}/${sys}/_TEMPLATE`;
-		if (await fs.exists(depTemplateDir)) {
-			if (sys == 'wii') {
-				await fs.move(depTemplateDir + '/img',
-					`${prefs.nlaDir}/${sys}/_TEMPLATE_gcn`);
-			} else {
-				await fs.move(depTemplateDir + '/img',
-					`${prefs.nlaDir}/${sys}/_TEMPLATE_${sys}`);
-			}
-			await fs.remove(depTemplateDir);
-		}
 		let gamesTotal = games.length + 1;
 		for (let i = 0; i < games.length + 1; i++) {
 			$('#loadDialog2').text(`${i+1}/${gamesTotal} games`);
@@ -119,9 +107,9 @@ class Scraper {
 			if (game.title) {
 				game.title = rmDiacritics(game.title);
 			}
-			imgDir = this.getImgDir(game);
+			imgDir = await this.getImgDir(game);
 
-			if (sys != 'mame') {
+			if (sys != 'arcade') {
 				// move img dir from deprecated location
 				let imgDirDep = imgDir + '/img';
 				if (await fs.exists(imgDirDep)) {
@@ -166,11 +154,11 @@ class Scraper {
 
 				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
 					await this.getImg(game, 'cart');
-				} else if (sys != 'mame') {
+				} else if (sys != 'arcade') {
 					await this.getImg(game, 'disc');
 				}
 
-				if (sys == 'mame') {
+				if (sys == 'arcade') {
 					await this.getImg(game, 'boxOpen');
 				} else if (prefs.ui.getExtraImgs || isTemplate) {
 					await this.getImg(game, 'boxOpen');
@@ -181,14 +169,14 @@ class Scraper {
 				}
 			}
 		}
-		if (sys != 'mame' && !(await this.imgExists(themes[sysStyle].default, 'box'))) {
+		if (themes[sysStyle].default && !(await this.imgExists(themes[sysStyle].default, 'box'))) {
 			log(themes[sysStyle].default);
 			await this.getImg(themes[sysStyle].default, 'box');
 			await this.getImg(themes[sysStyle].default, 'boxBack');
 			await this.getImg(themes[sysStyle].default, 'boxSide');
 			if (!(await this.imgExists(themes[sysStyle].default, 'box'))) {
 				cui.err('ERROR: No default box image found in the directory ' +
-					this.getImgDir(themes[sysStyle].default));
+					await this.getImgDir(themes[sysStyle].default));
 				return [];
 			}
 		}
@@ -197,27 +185,26 @@ class Scraper {
 		return games;
 	}
 
-	getImgDir(game) {
-		let imgDir = `${prefs.nlaDir}/${sys}/${game.id}`;
-		if (sys == 'mame') {
-			imgDir = util.absPath('$0');
-			imgDir = path.join(imgDir, `../artwork/${game.id}`);
+	async getImgDir(game) {
+		let imgDir = `${emuDir}/${sys}/images/${game.id}`;
+		if (sys == 'arcade') {
+			imgDir = await launcher.getEmuAppPath();
+			imgDir = path.join(imgDir, '..');
+			imgDir += `/artwork/${game.id}`;
 			imgDir = imgDir.replace(/\\/g, '/');
-			log(imgDir);
 		}
 		return imgDir;
 	}
 
 	async imgExists(game, name) {
-		let imgDir = this.getImgDir(game);
+		let imgDir = await this.getImgDir(game);
 		let file = `${imgDir}/${name}.png`;
 		if (!(await fs.exists(file))) {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
-				if (sys != 'mame' || name != 'boxOpen' || !(await fs.exists(`${imgDir}/default.lay`))) {
+				file = `${imgDir}/default.lay`;
+				if (sys != 'arcade' || name != 'boxOpen' || !(await fs.exists(file))) {
 					return;
-				} else {
-					file = `${imgDir}/default.lay`;
 				}
 			}
 		}

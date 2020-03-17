@@ -4,15 +4,15 @@ Choose the location of the `nostlan` image folder and a template file structure 
 
 # os win
 
-Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to.  On Windows, Nostlan will look for emulator executables in the `BIN` folder or the default install location of that emulator (no need to move Yuzu).
+Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. Nostlan will look for emulator executables in the `emu/${sys}/${emu}` folder or the default install location of that emulator (no need to move Yuzu).
 
     📁 emu (root folder can have any name)
     ├─┬ 📁 nostlan (image folder)
     │ └─┬ 📁 wii
     │   └──┬ 📁 GALE01 (Melee's game id)
     │      └── 🖼 box.png
-    └─┬ 📁 Dolphin
-      ├─┬ 📁 BIN
+    └─┬ 📁 wii
+      ├─┬ 📁 dolphin
       │ ├── 📁 User
       │ ├── 📄 portable.txt
       │ └── 🎮 Dolphin.exe
@@ -23,11 +23,11 @@ Windows users should not store emulator apps or games in `Program Files` or any 
 
 # os mac
 
-On macOS, Nostlan will look for emulator apps in `/Applications`.  Nostlan needs read/write permission to the install folder you choose so do not choose to install the Nostlan image folder at `/Applications`.
+On macOS, Nostlan will look for emulator apps in `/Applications` or `emu/${sys}/${emu}`. Nostlan needs read/write permission to the install folder.  You can have the nostlan.app in `/Applications` but don't install your emulator folder `emu` there.
 
 # os linux
 
-On Linux, Nostlan will look for emulator apps in their default install locations.
+On Linux, Nostlan will look for emulator apps in their default install locations or in `emu/${sys}/${emu}`.
 
 # os mac linux
 
@@ -36,7 +36,7 @@ On Linux, Nostlan will look for emulator apps in their default install locations
     │ └─┬ 📁 wii
     │   └──┬ 📁  GALE01 (Melee's game id)
     │      └── 🖼 box.png
-    └─┬ 📁 Dolphin
+    └─┬ 📁 wii
       └─┬ 📁 GAMES
         ├── 💿 Super Mario Sunshine.gcz
         ├── 💿 Super Smash Bros Melee.iso

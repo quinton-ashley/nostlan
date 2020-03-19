@@ -170,7 +170,7 @@ module.exports = async function(arg) {
 				return;
 			}
 			log(emu);
-			let gameLibDir = `${emuDir}/${sys}/GAMES`;
+			let gameLibDir = `${emuDir}/${sys}/games`;
 			if (emu == 'rpcs3') {
 				gameLibDir = `${emuDir}/${sys}/rpcs3/dev_hdd0/game`;
 			} else if (emu == 'mame') {
@@ -323,6 +323,8 @@ module.exports = async function(arg) {
 
 		// in 1.8.x the file structure of emuDir was changed
 		for (let _sys in systems) {
+			// TODO fix moving MAME folder
+			if (_sys == 'arcade') continue;
 			let _syst = systems[_sys];
 			let _emu = _syst.emus[0];
 			let moveDirs = [{
@@ -341,23 +343,20 @@ module.exports = async function(arg) {
 				src: `${emuDir}/${_sys}/temp/_games`,
 				dest: `${emuDir}/${_sys}/games`
 			}];
-			if (_sys != 'arcade') {
-				moveDirs.push({
-					src: `${usrDir}/_usr/${_sys}Games.json`,
-					dest: `${emuDir}/${_sys}/${_sys}Games.json`
-				});
-			} else {
-				moveDirs.push({
-					src: `${usrDir}/_usr/mameGames.json`,
-					dest: `${emuDir}/arcade/arcadeGames.json`
-				});
-			}
+			// remove old game lib files, rescanning must be done
+			await fs.remove(`${usrDir}/_usr/${_sys}Games.json`);
+
 			for (let moveDir of moveDirs) {
 				let srcExists = await fs.exists(moveDir.src);
 				let destExists = await fs.exists(moveDir.dest);
 
 				if (srcExists && !destExists) {
-					await fs.move(moveDir.src, moveDir.dest);
+					try {
+						await fs.move(moveDir.src, moveDir.dest);
+					} catch (ror) {
+						er(ror);
+						continue;
+					}
 					delete prefs[_emu].libs;
 					if (prefs[_emu].saves) {
 						delete prefs[_emu].saves.dirs;

@@ -15,17 +15,17 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can in
 
 ## Features
 
--   unified UI for mouse/gamepad interaction
--   designed for UHD displays and projectors
--   checks multiple database sites for the highest quality box art
--   nostalgic UI themes for each supported console
--   uses individual emulators: no cores and no controller input transfer lag
--   most controllers connect to Nostlan automatically, no setup required
--   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
--   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
--   advanced customization: edit launch commands
--   cross-platform support for Linux, macOS, and Windows!
--   [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
+- unified UI for mouse/gamepad interaction
+- designed for UHD displays and projectors
+- checks multiple database sites for the highest quality box art
+- nostalgic UI themes for each supported console
+- uses individual emulators: no cores and no controller input transfer lag
+- most controllers connect to Nostlan automatically, no setup required
+- Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
+- gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
+- advanced customization: edit launch commands
+- cross-platform support for Linux, macOS, and Windows!
+- [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
 
 ## Supported Systems and Emulators
 
@@ -95,8 +95,8 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can in
 
 Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
 
--   backup/sync all your save data to the cloud or local storage device
--   custom ui theme-ing (coming soon)
+- backup/sync all your save data to the cloud or local storage device
+- custom ui theme-ing (coming soon)
 
 <p><a href="https://www.patreon.com/qashto">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
@@ -104,7 +104,7 @@ Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) 
 
 ## How to access Premium Features
 
-On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features!  Passwords are automatically posted each month.
+On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features! Passwords are automatically posted each month.
 
 ## How is Nostlan different from other front-ends?
 
@@ -134,19 +134,13 @@ OpenEmu for macOS is a great app for making controller profiles consistent among
 
 ## Setting up Nostlan
 
-Nostlan is meant to be really easy to setup if you use the Nostlan file structure for your emulators and I recommend it!  It is entirely OPTIONAL though, if you don't use it you can pick the locations of your emulators and game libraries as you use Nostlan.
+Nostlan is meant to be really easy to setup if you use the Nostlan file structure for your emulators and I recommend it! It is entirely OPTIONAL though, if you don't use it you can pick the locations of your emulators and game libraries as you use Nostlan.
 
 ## Nostlan File Structure
 
     📁 emu (root folder can have any name)
-    ├─┬ 📁 nostlan (image folder)
-    │ ├─┬ 📁 usr
-    │ │ ├─── 📄 pref.json (user's preferences)
-    │ │ ├─── 📄 wiiGamesDB.json (user's wii game database)
-    │ │ └─── 📄 wiiLog.json (error log for game matching)
-    │ └─┬ 📁 wii
-    │   └──┬ 📁 GALE01 (Melee's game id)
-    │      └── 🖼 box.png
+    ├─┬ 📁 nostlan
+    │ └── 📁 themes
     ├─┬ 📁 arcade
     │ └─┬ 📁 mame
     │   ├─┬ 📁 roms
@@ -156,25 +150,25 @@ Nostlan is meant to be really easy to setup if you use the Nostlan file structur
     ├─┬ 📁 ds
     │ ├─┬ 📁 melonds
     │ │ └── 🎮 melonDS.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   ├── 💿 Mario & Luigi - Partners in Time.nds
     │   └── 💿 Mario & Luigi - Partners in Time.sav
     ├─┬ 📁 gba
     │ ├─┬ 📁 mgba
     │ │ └── 🎮 mGBA.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   ├── 💿 Mario & Luigi - Superstar Saga.gba
     │   └── 💿 Mario & Luigi - Superstar Saga.sav
     ├─┬ 📁 n3ds
     │ ├─┬ 📁 citra
     │ │ └─┬ 📁 nightly-mingw
     │ │   └── 🎮 citra-qt.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   └── 💿 Super Mario 3D Land.3ds
     ├─┬ 📁 ps2
     │ ├─┬ 📁 pcsx2
     │ │ └── 🎮 pcsx2.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   └── 💿 Bully.iso
     ├─┬ 📁 ps3
     │ └─┬ 📁 rpcs3
@@ -186,38 +180,38 @@ Nostlan is meant to be really easy to setup if you use the Nostlan file structur
     ├─┬ 📁 snes
     │ ├─┬ 📁 bsnes
     │ │ └── 🎮 bsnes.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   └── 💿 Super Mario World.sfc
     ├─┬ 📁 switch
     │ ├── 📁 yuzu
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │ 	└── 💿 Super Mario Odyssey.xci
     ├─┬ 📁 wii
     │ ├─┬ 📁 dolphin
     │ │ ├── 📁 User
     │ │ ├── 📄 portable.txt
     │ │ └── 🎮 Dolphin.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   ├── 💿 Super Mario Sunshine.gcz
     │   ├── 💿 Super Smash Bros Melee.iso
     │   └── 💿 sm64.wad
     ├─┬ 📁 wiiu
     │ ├─┬ 📁 cemu
     │ │ └── 🎮 Cemu.exe
-    │ └─┬ 📁 GAMES
+    │ └─┬ 📁 games
     │   └── 💿 Mario Kart 8/code/Turbo.rpx
     └─┬ 📁 xbox360
     	├─┬ 📁 xenia
     	│ └── 🎮 xenia.exe
-    	└─┬ 📁 GAMES
+    	└─┬ 📁 games
       	├── 💿 Halo 4 (disc a).iso
       	└── 💿 Halo 4 (disc b).iso
 
-Nostlan was designed to OPTIONALLY use this template file structure. The default game library for every system will be its `GAMES` folder. As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated. For example, RPCS3 has an internal game library that will be located at `emu/ps3/rpcs3/dev_hdd0/game`.
+Nostlan was designed to OPTIONALLY use this template file structure. The default game library for every system will be its `games` folder. As an exception, Nostlan will default to the internal game library of emulators that store games in file structures meant to mimic the system being emulated. For example, RPCS3 has an internal game library that will be located at `emu/ps3/rpcs3/dev_hdd0/game`.
 
 Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. Nostlan will look for emulator executables in the `emu/${sys}/${emu}` folder or the default install location of that emulator (no need to move Yuzu).
 
-On macOS, Nostlan will look for emulator apps in `/Applications` or `emu/${sys}/${emu}`. Nostlan needs read/write permission to the install folder.  You can have the nostlan.app in `/Applications` but don't install your emulator folder `emu` there.
+On macOS, Nostlan will look for emulator apps in `/Applications` or `emu/${sys}/${emu}`. Nostlan needs read/write permission to the install folder. You can have the nostlan.app in `/Applications` but don't install your emulator folder `emu` there.
 
 On Linux, Nostlan will look for emulator apps in their default install locations or in `emu/${sys}/${emu}`.
 
@@ -313,39 +307,39 @@ You can contribute to Nostlan to add to and update existing game databases, make
 
 ### Game Properties
 
--   `id` is the official id of the game
--   `name` the official name of the game, subtitles are delineated using a colon
--   `texp` the array of texture pack objects
--   `img` an object with `"imgFileName": "url"` pairs
+- `id` is the official id of the game
+- `name` the official name of the game, subtitles are delineated using a colon
+- `texp` the array of texture pack objects
+- `img` an object with `"imgFileName": "url"` pairs
 
 ### Texture Packs
 
--   `authors` usernames or real names of the author(s)
--   `name` should be short and simple, such as "UHD" or "Blue Edition"
--   `png` and `dds` link(s) to direct download the pack
--   `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
--   `url` link(s) to the relevant forum post or readme
--   `version` the semantic version of the pack
--   `rate` the pack's rating 1-10
--   `patron` donation link(s) to the author(s) of pack
+- `authors` usernames or real names of the author(s)
+- `name` should be short and simple, such as "UHD" or "Blue Edition"
+- `png` and `dds` link(s) to direct download the pack
+- `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
+- `url` link(s) to the relevant forum post or readme
+- `version` the semantic version of the pack
+- `rate` the pack's rating 1-10
+- `patron` donation link(s) to the author(s) of pack
 
 ### Images
 
--   `box` the front of the box
--   `boxSide` the side of the box
--   `boxBack` the back of the box
--   `boxOpen` the inside of the game's box
--   `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
--   `cart` the front of the game's (first) cartridge
--   `coverFull` the entire cover sleeve, no box
--   `cover` the front facing portion of the cover sleeve, no box
--   `coverSide` the side facing portion of the cover sleeve, no box
--   `coverBack` the side facing portion of the cover sleeve, no box
--   `disc` the front of the game's (first) disc
--   `manual` the front of the game's manual
--   `memory` the front of a memory card
--   `memoryBack` the back of a memory card
--   `promo` a promotional insert included in the game box
+- `box` the front of the box
+- `boxSide` the side of the box
+- `boxBack` the back of the box
+- `boxOpen` the inside of the game's box
+- `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
+- `cart` the front of the game's (first) cartridge
+- `coverFull` the entire cover sleeve, no box
+- `cover` the front facing portion of the cover sleeve, no box
+- `coverSide` the side facing portion of the cover sleeve, no box
+- `coverBack` the side facing portion of the cover sleeve, no box
+- `disc` the front of the game's (first) disc
+- `manual` the front of the game's manual
+- `memory` the front of a memory card
+- `memoryBack` the back of a memory card
+- `promo` a promotional insert included in the game box
 
 Images can be `.png` or `.jpg`. Put your images in `emu/nostlan/{sys}/{game.id}`. You can access this folder by clicking on the game's box twice in Nostlan and then clicking on "ImgDir". Front cover box art is prioritized in this order: box, coverFull, cover.
 
@@ -386,11 +380,11 @@ These sites are incredible resources thanks to all the people that created them 
 
 ### Template Art
 
--   Gamecube, Wii, and Wii U templates by etschannel via deviantart
--   Switch template by ponces245 via deviantart
--   PS3 template by the_prototype92 via deviantart
--   3DS template by omegaaaronyt via deviantart
--   Xbox 360 template by georgiajedward via deviantart
+- Gamecube, Wii, and Wii U templates by etschannel via deviantart
+- Switch template by ponces245 via deviantart
+- PS3 template by the_prototype92 via deviantart
+- 3DS template by omegaaaronyt via deviantart
+- Xbox 360 template by georgiajedward via deviantart
 
 ### Themes
 

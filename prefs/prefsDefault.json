@@ -10,15 +10,6 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
-	"higan": {
-		"name": "higan",
-		"app": {},
-		"cmd": {
-			"linux": ["wine", "${app}", "${game}"],
-			"mac": ["wine", "${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		}
-	},
 	"desmume": {
 		"name": "DeSmuME",
 		"app": {},

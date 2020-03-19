@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.nostlan",
     "copyright": "Copyright © 2019 Quinton Ashley",
-    "electronVersion": "7.1.14",
+    "electronVersion": "8.1.1",
     "electronDownload": {
-      "version": "7.1.14"
+      "version": "8.1.1"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -136,11 +136,11 @@
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=7.1.14 --disturl=https://atom.io/download/atom-shell --abi=75",
+    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=8.1.1 --disturl=https://atom.io/download/atom-shell --abi=75",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -m && electron-builder -w && electron-builder -l",
     "gh-publish": "electron-builder -m -l -w -p always",
-    "postinstall": "electron-builder install-app-deps -c.electronVersion 7.1.14 | electron-rebuild",
+    "postinstall": "electron-builder install-app-deps -c.electronVersion 8.1.1 | electron-rebuild",
     "delete-tags": "git tag | xargs git tag -d",
     "delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
     "v": "npm version patch --force",
@@ -148,5 +148,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.18"
+  "version": "1.7.19"
 }

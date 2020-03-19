@@ -648,7 +648,7 @@ module.exports = async function(arg) {
 		if (act == 'quit') {
 			if (premium.verify()) {
 				for (let save of prefs.saves) {
-					if (!save.noSaveOnQuit) {
+					if (arg.dev || !save.noSaveOnQuit) {
 						await saveSync('quit');
 						break;
 					}

@@ -18,6 +18,7 @@ class Utility {
 			}
 			file = file.replace('$' + tag, replacement);
 		}
+		if (win) file = file.replace(/\\/g, '/');
 		return file;
 	}
 }

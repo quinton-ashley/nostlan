@@ -18,13 +18,13 @@ class Saves {
 		dir = dir.replace(/\\/g, '/');
 
 		if (emu == 'cemu') {
-			prefs.wiiu.saves.dirs = [dir + '/mlc01/usr/save'];
+			prefs[emu].saves.dirs = [dir + '/mlc01/usr/save'];
 		} else if (emu == 'citra') {
 			dir = util.absPath('$home') + '/AppData/Roaming/Citra/sdmc';
-			prefs.n3ds.saves.dirs = [dir];
+			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'desmume') {
 			if (mac) dir = util.absPath('$home') + '/Library/Application Support/DeSmuME/0.9.11';
-			prefs.ds.saves.dirs = [
+			prefs[emu].saves.dirs = [
 				dir + '/Battery',
 				dir + '/Cheats',
 				dir + '/States'
@@ -38,35 +38,35 @@ class Saves {
 				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local "User" directory, create a text file named "portable" next to the executable files of the app (Dolphin.exe). Including the file extension, it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use a global "User" directory, instead it will create and use the local "User" directory in the same directory. For more info look at: https://dolphin-emu.org/docs/guides/controlling-global-user-directory/`);
 				return;
 			}
-			prefs.wii.saves.dirs = [
+			prefs[emu].saves.dirs = [
 				dir + '/GC',
 				dir + '/Wii/title',
 				dir + '/StateSaves'
 			];
 		} else if (emu == 'mame') {
-			prefs.mame.saves.dirs = [dir + '/sta'];
+			prefs[emu].saves.dirs = [dir + '/sta'];
 		} else if (emu == 'pcsx2') {
-			prefs.ps2.saves.dirs = [
+			prefs[emu].saves.dirs = [
 				dir + '/memcards',
 				dir + '/sstates'
 			];
 		} else if (emu == 'ppsspp') {
 			dir += '/memstick/PSP';
-			prefs.psp.saves.dirs = [
+			prefs[emu].saves.dirs = [
 				dir + '/SAVEDATA',
 				dir + '/PPSSPP_STATE'
 			];
 		} else if (emu == 'rpcs3') {
 			dir += '/dev_hdd0/home/00000001/savedata';
-			prefs.ps3.saves.dirs = [dir];
+			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'xenia') {
 			dir = util.absPath('$home') + '/Documents/Xenia/content';
-			prefs.xbox360.saves.dirs = [dir];
+			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'yuzu') {
 			let dir0 = util.absPath('$home') + '/AppData/Roaming/yuzu';
 			let dir1 = path.join(prefs.nlaDir, '../switch/yuzu');
 			if (await fs.exists(dir1 + '/nand')) dir = dir1;
-			prefs.switch.saves.dirs = [
+			prefs[emu].saves.dirs = [
 				dir + '/nand/user/save',
 				dir0 + '/load' // mods
 			];
@@ -185,7 +185,9 @@ class Saves {
 			log('update save sync failed, no saves folder');
 			return;
 		}
-		if (!prefs[emu].saves) {
+		if (!prefs[emu].saves ||
+			!prefs[emu].saves.dirs ||
+			!prefs[emu].saves.dirs.length) {
 			if (!(await this.setup())) return;
 			if (!(await this._update(forced))) {
 				await this._backup();
@@ -202,7 +204,9 @@ class Saves {
 	}
 
 	async backup() {
-		if (!prefs[emu].saves) {
+		if (!prefs[emu].saves ||
+			!prefs[emu].saves.dirs ||
+			!prefs[emu].saves.dirs.length) {
 			if (!(await this.setup())) return;
 		}
 		log('backup save sync starting...');

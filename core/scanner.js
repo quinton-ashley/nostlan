@@ -33,7 +33,7 @@ class Scanner {
 	async gameLib() {
 		$('#loadDialog0').text('Indexing your game library');
 		this.outLog = '';
-		let noMatch = 0;
+		let noMatchAmt = 0;
 		let games = [];
 		let gameDB = [];
 		let dbPath = `${__root}/db/${sys}DB.json`;
@@ -216,9 +216,11 @@ class Scanner {
 					this.olog(`potential match:  ${game.title}\r\n`);
 				} else {
 					this.olog('no match found\r\n');
-					game.id = 'NOMATCH' + noMatch;
-					game.title = term;
-					noMatch++;
+					game = {
+						id: sys + '-NO-MATCH-' + noMatchAmt,
+						title: term
+					};
+					noMatchAmt++;
 				}
 				game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
 				games.push(game);

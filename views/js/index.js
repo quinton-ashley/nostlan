@@ -69,8 +69,8 @@ module.exports = async function(arg) {
 
 	global.systems = {
 		arcade: {
-			name: 'MAME',
-			fullName: 'Multiple Arcade Machine Emulator',
+			name: 'Arcade',
+			fullName: 'Arcade',
 			emus: ['mame']
 		},
 		ds: {
@@ -996,17 +996,29 @@ module.exports = async function(arg) {
 		let imgType = '';
 		let boxImgSrc = await scraper.imgExists(game, 'box');
 		let coverImgSrc = '';
-		// if box isn't found or if template
-		if (!boxImgSrc || (themes[boxSys].default && game.id.substring(0, 9) == '_TEMPLATE')) {
+		// if box img is found
+		let noBox = false;
+		// if template and a default exists (soon to be deprecated in favor of
+		// just using the template to store default box)
+		let isTemplate = (themes[boxSys].default && game.id.substring(0, 9) == '_TEMPLATE');
+		if (!boxImgSrc) {
+			noBox = true;
 			boxImgSrc = await scraper.imgExists(themes[boxSys].default, 'box');
+		}
+		if (noBox || isTemplate) {
 			coverImgSrc = await scraper.imgExists(game, 'coverFull');
 			imgType = '.coverFull';
 			if (!coverImgSrc) {
 				coverImgSrc = await scraper.imgExists(game, 'cover');
 				imgType = '.cover';
 				if (!coverImgSrc) {
-					log(`no images found for game: ${game.id} ${game.title}`);
-					return;
+					if (!isTemplate) {
+						log(`no images found for game: ${game.id} ${game.title}`);
+						return;
+					} else {
+						imgType = '';
+						coverImgSrc = '';
+					}
 				}
 			}
 		}

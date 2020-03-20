@@ -20,19 +20,16 @@ class GameFaqsScraper {
 	constructor() {}
 
 	wrapUrl(url) {
-		let regex;
-		if (sys != 'snes') {
-			regex = /https\:\/\/gamefaqs.akamaized.net\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/;
-		} else {
-			regex = /https\:\/\/gamefaqs1.cbsistatic.com\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/;
-		}
+		// the site that gamefaqs stores images on might change in the
+		// future, it used to be gamefaqs.akamaized.net but this was changed
+		// at some point before March 2020 to gamefaqs1.cbsistatic.com
+		let regex = /https\:\/\/gamefaqs1.cbsistatic.com\/box\/(\d)\/(\d)\/(\d)\/(\d+)_front.jpg/;
 		return url.replace(regex, 'g $1$2$3$4');
 	}
 
 	unwrapUrl(data) {
 		let d = data[0];
-		let url = 'https://gamefaqs.akamaized.net/box';
-		if (sys == 'snes') url = 'https://gamefaqs1.cbsistatic.com/box';
+		let url = 'https://gamefaqs1.cbsistatic.com/box';
 		return `${url}/${d[0]}/${d[1]}/${d[2]}/${d.substr(3)}_front.jpg`;
 	}
 

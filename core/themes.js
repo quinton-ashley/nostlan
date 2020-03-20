@@ -44,34 +44,34 @@ class Themes {
 			this[_sys] = {};
 			this[_sys].template = template;
 			this[_sys].default = {
-				"img": {
-					"box": "q",
-					"boxBack": "q",
-					"boxSide": "q"
+				img: {
+					box: 'q',
+					boxBack: 'q',
+					boxSide: 'q'
 				}
 			};
 		}
 		// the default game art
-		this.ds.default.id = "ASME";
-		this.ds.default.title = "Super Mario 64 DS";
-		this.gba.default.id = "84EE4776";
-		this.gba.default.title = "Pokemon: Fire Red Version";
-		this.gcn.default.id = "GALE01";
-		this.gcn.default.title = "Super Smash Bros. Melee";
-		this.n3ds.default.id = "AREE";
-		this.n3ds.default.title = "Super Mario 3D Land";
-		this.ps2.default.id = "SLUS20370";
-		this.ps2.default.title = "Kingdom Hearts";
-		this.ps3.default.id = "BCUS98154";
-		this.ps3.default.title = "inFamous";
-		this.switch.default.id = "AAACA";
-		this.switch.default.title = "Super Mario Odyssey";
-		this.wii.default.id = "SB4E01";
-		this.wii.default.title = "Super Mario Galaxy 2";
-		this.wiiu.default.id = "ARDE01";
-		this.wiiu.default.title = "Super Mario 3D World";
-		this.xbox360.default.id = "4D5307E6";
-		this.xbox360.default.title = "Halo 3";
+		this.ds.default.id = 'ASME';
+		this.ds.default.title = 'Super Mario 64 DS';
+		this.gba.default.id = '84EE4776';
+		this.gba.default.title = 'Pokemon: Fire Red Version';
+		this.gcn.default.id = 'GALE01';
+		this.gcn.default.title = 'Super Smash Bros. Melee';
+		this.n3ds.default.id = 'AREE';
+		this.n3ds.default.title = 'Super Mario 3D Land';
+		this.ps2.default.id = 'SLUS20370';
+		this.ps2.default.title = 'Kingdom Hearts';
+		this.ps3.default.id = 'BCUS98154';
+		this.ps3.default.title = 'inFamous';
+		this.switch.default.id = 'AAACA';
+		this.switch.default.title = 'Super Mario Odyssey';
+		this.wii.default.id = 'SB4E01';
+		this.wii.default.title = 'Super Mario Galaxy 2';
+		this.wiiu.default.id = 'ARDE01';
+		this.wiiu.default.title = 'Super Mario 3D World';
+		this.xbox360.default.id = '4D5307E6';
+		this.xbox360.default.title = 'Halo 3';
 
 		this.arcade.default = undefined;
 		this.snes.default = undefined;

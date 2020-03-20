@@ -209,6 +209,16 @@ class Saves {
 			!prefs[emu].saves.dirs.length) {
 			if (!(await this.setup())) return;
 		}
+		// check if any require saving
+		let saveOnQuit = false;
+		for (let save of prefs.saves) {
+			if (!save.noSaveOnQuit) {
+				saveOnQuit = true;
+				break;
+			}
+		}
+		if (!saveOnQuit) return;
+
 		log('backup save sync starting...');
 		await this._backup();
 		log('backup save sync completed!');

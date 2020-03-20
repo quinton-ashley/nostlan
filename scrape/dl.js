@@ -4,9 +4,21 @@ async function dlWithExt(url, file) {
 	if (!(await fs.exists(file))) {
 		let res;
 		try {
-			res = await requisition(url);
+			res = await Promise.race([
+				new Promise((resolve, reject) => {
+					requisition(url)
+						.then((response) => resolve(response))
+						.catch((ror) => reject(ror));
+				}),
+				new Promise((resolve, reject) => {
+					delay(2000).then(() => {
+						reject('request timed out');
+					});
+				})
+			]);
 		} catch (ror) {
-			er(ror);
+			if (ror) er(ror);
+			er('failed to download img: \n' + url);
 			return;
 		}
 		if (res.status == 404) {

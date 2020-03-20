@@ -52,13 +52,13 @@ module.exports = async function(arg) {
 	global.emu = ''; // current emulator
 	global.offline = false;
 
-	const saves = require(__root + '/core/saves.js');
 	const premium = require(__root + '/dev/premium.js');
+	const saves = require(__root + '/core/saves.js');
 	global.launcher = require(__root + '/core/launcher.js');
 	const updater = require(__root + '/core/updater.js');
-	const themes = require(__root + '/themes/themes.js');
-	const scan = require(__root + '/db/scanner.js');
-	const scraper = require(__root + '/scrape/scraper.js');
+	const themes = require(__root + '/core/themes.js');
+	const scan = require(__root + '/core/scanner.js');
+	const scraper = require(__root + '/core/scraper.js');
 
 	try {
 		global.kb = require('robotjs');
@@ -259,7 +259,7 @@ module.exports = async function(arg) {
 
 	async function updatePrefs() {
 
-		// only keeps the app path for the current os
+		// only keeps the emu app path for the current os
 		for (let _sys in systems) {
 			let _syst = systems[_sys];
 			for (let _emu of _syst.emus) {
@@ -272,11 +272,12 @@ module.exports = async function(arg) {
 			}
 		}
 
-		// prefs version added in 1.8.x
+		// prefs version added in v1.8.x
 		if (prefs.version) {
 			prefs.version = pkg.version;
 			return;
 		}
+		// if prefs file is pre-v1.8.x
 		// update older versions of the prefs file
 		if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
 		if (prefs.ui.recheckImgs) delete prefs.ui.recheckImgs;
@@ -321,10 +322,9 @@ module.exports = async function(arg) {
 			}
 		}
 
-		// in 1.8.x the file structure of emuDir was changed
+		// in v1.8.x the file structure of emuDir was changed
+		let errCount = 0;
 		for (let _sys in systems) {
-			// TODO fix moving MAME folder
-			if (_sys == 'arcade') continue;
 			let _syst = systems[_sys];
 			let _emu = _syst.emus[0];
 			let moveDirs = [{
@@ -355,6 +355,7 @@ module.exports = async function(arg) {
 						await fs.move(moveDir.src, moveDir.dest);
 					} catch (ror) {
 						er(ror);
+						errCount++;
 						continue;
 					}
 					delete prefs[_emu].libs;
@@ -376,6 +377,15 @@ module.exports = async function(arg) {
 		}
 
 		prefs.version = pkg.version;
+
+		if (errCount > 0) {
+			await cui.err('failed to automatically move some game library folders ' +
+				'to conform to the new template structure (introduced in v1.8.x). ' + 'You must change them manually.  Read the update log to find out ' +
+				'why these changes were made.' +
+				'https://github.com/quinton-ashley/nostlan#nostlan-file-structure\n' +
+				'https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v1.8.x',
+				400, 'quit');
+		}
 	}
 
 	async function load() {
@@ -639,21 +649,21 @@ module.exports = async function(arg) {
 	}
 
 	cui.onAction = async function(act, isBtn) {
-		log(act);
 		let ui = cui.ui;
+		log(act + ' on ' + ui);
 		if (ui == 'playingBack' || launcher.state == 'running') {
 			return;
 		}
 		let onMenu = (/menu/gi).test(ui);
 		if (act == 'quit') {
-			if (premium.verify()) {
-				for (let save of prefs.saves) {
-					if (arg.dev || !save.noSaveOnQuit) {
-						await saveSync('quit');
-						break;
-					}
-				}
+			// don't try to sync saves on quit
+			// if there was an error
+			// if developing nostlan
+			// if user is not a patreon supporter
+			if (ui != 'errMenu' && !arg.dev && premium.verify()) {
+				await saveSync('quit');
 			}
+			// save the prefs file
 			if (prefs.nlaDir) await prefsMng.save();
 			app.quit();
 			process.kill('SIGINT');

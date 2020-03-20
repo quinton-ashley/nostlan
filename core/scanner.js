@@ -59,11 +59,8 @@ class Scanner {
 			await fs.outputFile(dir + '/Config/Dolphin.ini', config);
 
 			$('#loadDialog0').text('Do not close Dolphin while game indexing is in progress');
-
+			// TODO
 			await delay(1000);
-
-
-
 			await this.outputUsersGamesDB(games);
 			cui.clearDialogs();
 			return games;
@@ -96,9 +93,12 @@ class Scanner {
 				// if the file is not a game file, skip it
 				if (term.ext == '.sav') continue;
 				if (sys == 'snes' && !/\.(sfc|smc)/i.test(term.ext)) continue;
-				if (sys == 'ds' && term.ext != '.ds') continue;
-				if (sys == 'gba' && term.ext != '.gba') continue;
-				if (sys == 'wii' && !/\.(gcm|iso|tgc|iso|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) continue;
+				if (sys == 'ds' && !/\.ds/i.test(term.ext)) continue;
+				if (sys == 'gba' && !/\.gba/i.test(term.ext)) continue;
+				if (sys == 'wii' &&
+					!/\.(gcm|iso|tgc|iso|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) {
+					continue;
+				}
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
 				let isDir = (await fs.stat(file)).isDirectory();
@@ -211,23 +211,21 @@ class Scanner {
 
 				term = term.trim();
 				let game = await this.searchForGame(searcher, term);
-				let gameFound = false;
-				if (game) gameFound = true;
-				if (!game) game = {};
-				game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
+
 				if (game) {
 					this.olog(`potential match:  ${game.title}\r\n`);
-					games.push(game);
 				} else {
 					this.olog('no match found\r\n');
 					game.id = 'NOMATCH' + noMatch;
 					game.title = term;
 					noMatch++;
 				}
+				game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
+				games.push(game);
 				log(game);
 			}
 		}
-		let outLogPath = `${usrDir}/_usr/${sys}Log.log`;
+		let outLogPath = `${emuDir}/${sys}/${sys}Log.txt`;
 		await fs.outputFile(outLogPath, this.outLog);
 		this.outLog = '';
 		await this.outputUsersGamesDB(games);

@@ -5,24 +5,6 @@
 module.exports = async function(arg) {
 	await require(arg.__root + '/core/setup.js')(arg);
 	log('version: ' + pkg.version);
-
-	// extract compressed folders using 7zip
-	global.fs.extract = (input, output, opt) => {
-		opt = opt || {};
-		return new Promise(async (resolve, reject) => {
-			opt.$bin = require('7zip-bin').path7za;
-			require('node-7z').extractFull(input, output, opt)
-				.on('end', () => {
-					fs.remove(input);
-					resolve(output);
-				})
-				.on('error', (ror) => {
-					// er(ror);
-					resolve();
-				});
-		});
-	};
-
 	global.util = require(__root + '/core/util.js');
 
 	// Nostlan dir location cannot be changed.
@@ -149,6 +131,61 @@ module.exports = async function(arg) {
 		await themes.applyStyle('theme');
 	}
 
+	async function removeIntro(time) {
+		time = arg.testLoadingTheme || time || prefs.load.delay;
+		log('removing intro: ' + time);
+		await delay(time);
+		$('#intro').remove();
+		cui.hideDialogs();
+	}
+
+	async function load() {
+		let files = await klaw(__root + '/views/md');
+		for (let file of files) {
+			let data = await fs.readFile(file, 'utf8');
+			let fileName = path.parse(file).name;
+			if (fileName == 'setupMenu') {
+				data = util.osmd(data);
+			}
+			data = data.replace(/\t/g, '  ');
+			data = pug('.md', null, md(data));
+			file = path.parse(file);
+			$('#' + file.name).prepend(data);
+		}
+		if (await prefsMng.canLoad()) {
+			await prefsMng.load();
+			emuDir = path.join(prefs.nlaDir, '..');
+			await prefsMng.update();
+			await createTemplate();
+		}
+		// currently supported systems
+		let sysMenuHTML = '';
+		let i = 0;
+		for (let _sys in systems) {
+			if (i % 2 == 0) sysMenuHTML += `.row.row-x\n`;
+			sysMenuHTML += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
+			i++;
+		}
+		delete i;
+		$('#sysMenu').append(pug(sysMenuHTML));
+		if (prefs.ui.autoHideCover) {
+			$('nav').toggleClass('hide');
+		}
+		$('nav').hover(function() {
+			if (prefs.ui.autoHideCover) {
+				$('nav').toggleClass('hide');
+				if (!$('nav').hasClass('hide')) {
+					cui.resize(true);
+				}
+			}
+		});
+		sys = arg.sys || prefs.session.sys;
+		// deprecated system id, change to 'n3ds'
+		if (sys == '3ds') sys = 'n3ds';
+		syst = systems[sys];
+		cui.mapButtons(sys);
+	}
+
 	async function reload() {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
@@ -236,73 +273,6 @@ module.exports = async function(arg) {
 		await removeIntro();
 		cui.change('libMain', sysStyle);
 		cui.resize(true);
-	}
-
-	function osmd(data) {
-		let arr = data.split(/\n(# os [^\n]*)/gm);
-		data = '';
-		for (let i = 0; i < arr.length; i++) {
-			if (arr[i].slice(0, 5) == '# os ') {
-				if (win && arr[i].includes('win')) {
-					data += arr[i + 1];
-				} else if (linux && arr[i].includes('linux')) {
-					data += arr[i + 1];
-				} else if (mac && arr[i].includes('mac')) {
-					data += arr[i + 1];
-				}
-				i++;
-			} else {
-				data += arr[i];
-			}
-		}
-		return data;
-	}
-
-	async function load() {
-		let files = await klaw(__root + '/views/md');
-		for (let file of files) {
-			let data = await fs.readFile(file, 'utf8');
-			let fileName = path.parse(file).name;
-			if (fileName == 'setupMenu') {
-				data = osmd(data);
-			}
-			data = data.replace(/\t/g, '  ');
-			data = pug('.md', null, md(data));
-			file = path.parse(file);
-			$('#' + file.name).prepend(data);
-		}
-		if (await prefsMng.canLoad()) {
-			await prefsMng.load();
-			emuDir = path.join(prefs.nlaDir, '..');
-			await prefsMng.update();
-			await createTemplate();
-		}
-		// currently supported systems
-		let sysMenuHTML = '';
-		let i = 0;
-		for (let _sys in systems) {
-			if (i % 2 == 0) sysMenuHTML += `.row.row-x\n`;
-			sysMenuHTML += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
-			i++;
-		}
-		delete i;
-		$('#sysMenu').append(pug(sysMenuHTML));
-		if (prefs.ui.autoHideCover) {
-			$('nav').toggleClass('hide');
-		}
-		$('nav').hover(function() {
-			if (prefs.ui.autoHideCover) {
-				$('nav').toggleClass('hide');
-				if (!$('nav').hasClass('hide')) {
-					cui.resize(true);
-				}
-			}
-		});
-		sys = arg.sys || prefs.session.sys;
-		// deprecated system id, change to 'n3ds'
-		if (sys == '3ds') sys = 'n3ds';
-		syst = systems[sys];
-		cui.mapButtons(sys);
 	}
 
 	cui.onResize = (adjust) => {
@@ -411,28 +381,6 @@ module.exports = async function(arg) {
 		cui.clearDialogs();
 	}
 
-	async function removeIntro(time) {
-		time = arg.testLoadingTheme || time || prefs.load.delay;
-		log('removing intro: ' + time);
-		await delay(time);
-		$('#intro').remove();
-		cui.hideDialogs();
-	}
-
-	async function createTemplate() {
-		for (let _sys in systems) {
-			let _syst = systems[_sys];
-			for (let _emu of _syst.emus) {
-				// emu dir
-				await fs.ensureDir(`${emuDir}/${_sys}/${_emu}`);
-				// games dir
-				if (!/(rpcs3|mame)/.test(_emu)) {
-					await fs.ensureDir(`${emuDir}/${_sys}/games`);
-				}
-			}
-		}
-	}
-
 	cui.onHeldAction = (act, isBtn, timeHeld) => {
 		if (timeHeld < 2000) {
 			return;
@@ -452,6 +400,20 @@ module.exports = async function(arg) {
 				log('resetting emulator');
 				launcher.reset();
 				return true;
+			}
+		}
+	}
+
+	async function createTemplate() {
+		for (let _sys in systems) {
+			let _syst = systems[_sys];
+			for (let _emu of _syst.emus) {
+				// emu dir
+				await fs.ensureDir(`${emuDir}/${_sys}/${_emu}`);
+				// games dir
+				if (!/(rpcs3|mame)/.test(_emu)) {
+					await fs.ensureDir(`${emuDir}/${_sys}/games`);
+				}
 			}
 		}
 	}

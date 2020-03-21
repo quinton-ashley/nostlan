@@ -1,3 +1,20 @@
+// extract compressed folders using 7zip
+global.fs.extract = (input, output, opt) => {
+	opt = opt || {};
+	return new Promise(async (resolve, reject) => {
+		opt.$bin = require('7zip-bin').path7za;
+		require('node-7z').extractFull(input, output, opt)
+			.on('end', () => {
+				fs.remove(input);
+				resolve(output);
+			})
+			.on('error', (ror) => {
+				// er(ror);
+				resolve();
+			});
+	});
+};
+
 class Utility {
 	constructor() {}
 
@@ -21,6 +38,27 @@ class Utility {
 		if (win) file = file.replace(/\\/g, '/');
 		return file;
 	}
+
+	osmd(data) {
+		let arr = data.split(/\n(# os [^\n]*)/gm);
+		data = '';
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i].slice(0, 5) == '# os ') {
+				if (win && arr[i].includes('win')) {
+					data += arr[i + 1];
+				} else if (linux && arr[i].includes('linux')) {
+					data += arr[i + 1];
+				} else if (mac && arr[i].includes('mac')) {
+					data += arr[i + 1];
+				}
+				i++;
+			} else {
+				data += arr[i];
+			}
+		}
+		return data;
+	}
+
 }
 
 module.exports = new Utility();

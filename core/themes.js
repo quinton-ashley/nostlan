@@ -1,3 +1,8 @@
+/*
+ * themes.js : Nostlan : Quinton Ashley
+ *
+ * Theming for all supported systems.
+ */
 class Themes {
 	constructor() {
 		this.guestLibs = {
@@ -7,10 +12,7 @@ class Themes {
 			material_design_icons_css: node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css',
 			three_js: node_modules + '/three/build/three.min.js'
 		};
-		this.initialized = false;
-	}
 
-	async init() {
 		let imgTypes = [
 			`box`, // the front of the box
 			`boxBack`, // the back of the box
@@ -75,12 +77,9 @@ class Themes {
 
 		this.arcade.default = undefined;
 		this.snes.default = undefined;
-
-		this.initialized = true;
 	}
 
 	async loadFrame(name) {
-		if (!this.initialized) await this.init();
 		let themeDir = `${prefs.nlaDir}/themes/${sysStyle}`;
 		if (!(await fs.exists(`${themeDir}/${name}.html`))) {
 			themeDir = `${__root}/themes/${sysStyle}`;
@@ -96,7 +95,6 @@ class Themes {
 	}
 
 	async applyStyle(name) {
-		if (!this.initialized) await this.init();
 		let _systems = [sys];
 		if (sys == 'wii') _systems.push('gcn');
 		for (let dir of [__root, prefs.nlaDir]) {

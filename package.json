@@ -76,6 +76,7 @@
   "dependencies": {
     "7zip-bin": "^5.0.3",
     "@popperjs/core": "^2.1.1",
+    "acorn": "^7.1.1",
     "await-spawn": "^3.0.0",
     "bootstrap": "^4.4.1",
     "chrome-finder": "^1.0.6",
@@ -95,6 +96,7 @@
     "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
     "material-design-icons-iconfont": "^5.0.1",
+    "minimist": "^1.2.5",
     "moment": "^2.24.0",
     "mousetrap": "^1.6.5",
     "node-7z": "^2.1.1",
@@ -148,5 +150,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.25"
+  "version": "1.7.26"
 }

@@ -1,3 +1,9 @@
+/*
+ * db.js : Nostlan : Quinton Ashley
+ *
+ * NOTE: Not used by Nostlan yet, incomplete.
+ * Converts database files to Nostlan's json db format.
+ */
 const requisition = require('requisition');
 const tbl2json = require('tabletojson');
 // mame arcade db retrieved from the app itself

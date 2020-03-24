@@ -1,3 +1,8 @@
+/*
+ * scanner.js : Quinton Ashley
+ *
+ * Quinton's basecode setup file for electron apps.
+ */
 module.exports = async function(arg) {
 	global.arg = arg;
 	global.log = console.log;

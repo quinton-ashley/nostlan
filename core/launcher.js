@@ -1,3 +1,9 @@
+/*
+ * launcher.js : Nostlan : Quinton Ashley
+ *
+ * Launches emulator apps with the command line args specified
+ * in the user's prefs.json file.
+ */
 let child = require('child_process');
 
 identify = false;

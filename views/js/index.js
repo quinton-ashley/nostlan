@@ -1,6 +1,7 @@
 /*
- * index.js
- * authors: quinton-ashley
+ * index.js : Nostlan : quinton-ashley
+ *
+ * Main file. Handles user interaction with the UI.
  */
 module.exports = async function(arg) {
 	await require(arg.__root + '/core/setup.js')(arg);
@@ -34,21 +35,6 @@ module.exports = async function(arg) {
 	global.sysStyle = ''; // style of that system
 	global.emu = ''; // current emulator
 	global.offline = false;
-
-	const premium = require(__root + '/dev/premium.js');
-	const saves = require(__root + '/core/saves.js');
-	global.launcher = require(__root + '/core/launcher.js');
-	const updater = require(__root + '/core/updater.js');
-	const themes = require(__root + '/core/themes.js');
-	const scan = require(__root + '/core/scanner.js');
-	const scraper = require(__root + '/core/scraper.js');
-
-	try {
-		global.kb = require('robotjs');
-		kb.setKeyboardDelay(0);
-	} catch (ror) {
-		er(ror);
-	}
 
 	global.systems = {
 		arcade: {
@@ -122,6 +108,21 @@ module.exports = async function(arg) {
 	if (mac) {
 		prefs.ui.mouse.wheel.multi = 0.5;
 		prefs.ui.mouse.wheel.smooth = true;
+	}
+
+	const premium = require(__root + '/dev/premium.js');
+	const saves = require(__root + '/core/saves.js');
+	global.launcher = require(__root + '/core/launcher.js');
+	const updater = require(__root + '/core/updater.js');
+	const themes = require(__root + '/core/themes.js');
+	const scan = require(__root + '/core/scanner.js');
+	const scraper = require(__root + '/core/scraper.js');
+
+	try {
+		global.kb = require('robotjs');
+		kb.setKeyboardDelay(0);
+	} catch (ror) {
+		er(ror);
 	}
 
 	async function intro() {
@@ -498,7 +499,6 @@ module.exports = async function(arg) {
 			// save the prefs file
 			if (prefs.nlaDir) await prefsMng.save();
 			app.quit();
-			process.kill('SIGINT');
 			return;
 		}
 		if (ui == 'libMain' || ui == 'coverSelect') {

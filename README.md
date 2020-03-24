@@ -15,17 +15,17 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can in
 
 ## Features
 
-- unified UI for mouse/gamepad interaction
-- designed for UHD displays and projectors
-- checks multiple database sites for the highest quality box art
-- nostalgic UI themes for each supported console
-- uses individual emulators: no cores and no controller input transfer lag
-- most controllers connect to Nostlan automatically, no setup required
-- Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
-- gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
-- advanced customization: edit launch commands
-- cross-platform support for Linux, macOS, and Windows!
-- [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
+-   unified UI for mouse/gamepad interaction
+-   designed for UHD displays and projectors
+-   checks multiple database sites for the highest quality box art
+-   nostalgic UI themes for each supported console
+-   uses individual emulators: no cores and no controller input transfer lag
+-   most controllers connect to Nostlan automatically, no setup required
+-   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
+-   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
+-   advanced customization: edit launch commands
+-   cross-platform support for Linux, macOS, and Windows!
+-   [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
 
 ## Supported Systems and Emulators
 
@@ -95,8 +95,8 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can in
 
 Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
 
-- backup/sync all your save data to the cloud or local storage device
-- custom ui theme-ing (coming soon)
+-   backup/sync all your save data to the cloud or local storage device
+-   custom ui theme-ing (coming soon)
 
 <p><a href="https://www.patreon.com/qashto">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
@@ -307,39 +307,39 @@ You can contribute to Nostlan to add to and update existing game databases, make
 
 ### Game Properties
 
-- `id` is the official id of the game
-- `name` the official name of the game, subtitles are delineated using a colon
-- `texp` the array of texture pack objects
-- `img` an object with `"imgFileName": "url"` pairs
+-   `id` is the official id of the game
+-   `name` the official name of the game, subtitles are delineated using a colon
+-   `texp` the array of texture pack objects
+-   `img` an object with `"imgFileName": "url"` pairs
 
 ### Texture Packs
 
-- `authors` usernames or real names of the author(s)
-- `name` should be short and simple, such as "UHD" or "Blue Edition"
-- `png` and `dds` link(s) to direct download the pack
-- `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
-- `url` link(s) to the relevant forum post or readme
-- `version` the semantic version of the pack
-- `rate` the pack's rating 1-10
-- `patron` donation link(s) to the author(s) of pack
+-   `authors` usernames or real names of the author(s)
+-   `name` should be short and simple, such as "UHD" or "Blue Edition"
+-   `png` and `dds` link(s) to direct download the pack
+-   `pngRP` and `ddsRP` link(s) to resource pack for Dolphin
+-   `url` link(s) to the relevant forum post or readme
+-   `version` the semantic version of the pack
+-   `rate` the pack's rating 1-10
+-   `patron` donation link(s) to the author(s) of pack
 
 ### Images
 
-- `box` the front of the box
-- `boxSide` the side of the box
-- `boxBack` the back of the box
-- `boxOpen` the inside of the game's box
-- `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
-- `cart` the front of the game's (first) cartridge
-- `coverFull` the entire cover sleeve, no box
-- `cover` the front facing portion of the cover sleeve, no box
-- `coverSide` the side facing portion of the cover sleeve, no box
-- `coverBack` the side facing portion of the cover sleeve, no box
-- `disc` the front of the game's (first) disc
-- `manual` the front of the game's manual
-- `memory` the front of a memory card
-- `memoryBack` the back of a memory card
-- `promo` a promotional insert included in the game box
+-   `box` the front of the box
+-   `boxSide` the side of the box
+-   `boxBack` the back of the box
+-   `boxOpen` the inside of the game's box
+-   `boxOpenMask` parts of the game's box, such as manual clips, that should appear above the game media, manual, and memory card
+-   `cart` the front of the game's (first) cartridge
+-   `coverFull` the entire cover sleeve, no box
+-   `cover` the front facing portion of the cover sleeve, no box
+-   `coverSide` the side facing portion of the cover sleeve, no box
+-   `coverBack` the side facing portion of the cover sleeve, no box
+-   `disc` the front of the game's (first) disc
+-   `manual` the front of the game's manual
+-   `memory` the front of a memory card
+-   `memoryBack` the back of a memory card
+-   `promo` a promotional insert included in the game box
 
 Images can be `.png` or `.jpg`. Put your images in `emu/nostlan/{sys}/{game.id}`. You can access this folder by clicking on the game's box twice in Nostlan and then clicking on "ImgDir". Front cover box art is prioritized in this order: box, coverFull, cover.
 
@@ -355,7 +355,7 @@ PRs are welcome! No callback pyramids, use Async/Await whenever possible. Do not
 
 Obviously, Nostlan wouldn't exist without the developers of all the emulators it acts as a frontend for. Please support the development of the emulators you use!
 
-### Databases
+### Game Databases
 
 ds, n3ds, switch, wii, wiiu:
 [gametdb.com](https://www.gametdb.com/)
@@ -378,13 +378,16 @@ Archival quality images of arcade game flyers for MAME are downloaded from [Flye
 
 These sites are incredible resources thanks to all the people that created them and submit game art to them.
 
-### Template Art
+### Template Cover Art
 
-- Gamecube, Wii, and Wii U templates by etschannel via deviantart
-- Switch template by ponces245 via deviantart
-- PS3 template by the_prototype92 via deviantart
-- 3DS template by omegaaaronyt via deviantart
-- Xbox 360 template by georgiajedward via deviantart
+-   Gamecube, Wii, and Wii U templates by etschannel via deviantart
+-   Switch template by ponces245 via deviantart
+-   PS3 template by the_prototype92 via deviantart
+-   3DS template by omegaaaronyt via deviantart
+-   Xbox 360 template by georgiajedward via deviantart
+
+[nostlan-img repository](https://github.com/quinton-ashley/nostlan-img)
+[dvd backside](https://commons.wikimedia.org/wiki/File:DVD-Video_bottom-side.jpg)
 
 ### Themes
 

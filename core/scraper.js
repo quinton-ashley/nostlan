@@ -1,3 +1,8 @@
+/*
+ * scraper.js : Nostlan : Quinton Ashley
+ *
+ * Scrapes for box art, disc/cart, and other images.
+ */
 const rmDiacritics = require('diacritics').remove;
 // dl is a helper lib I made for downloading images
 const dl = require(__root + '/scrape/dl.js');

@@ -1,21 +1,37 @@
 #!/usr/bin/env node
 
+/*
+ * app.js : Nostlan : quinton-ashley
+ *
+ * Parses command line args. Starts the app.
+ */
 (async function() {
 	const log = console.log;
 	let arg = require('minimist')(process.argv);
 	arg.__root = __dirname.replace(/\\/g, '/');
 	arg.node_modules = arg.__root + '/node_modules';
-	if (arg.h) {
-		log('Nostlan command line help');
-		return;
-	} else {
-		arg.electron = true;
-	}
 
 	const {
 		app,
 		BrowserWindow
 	} = require('electron');
+
+	let loadApp = false;
+
+	if (arg.h || arg.help) {
+		log('-h|--help : print command line options');
+		log('-v|--version : get the version of the app');
+	} else if (arg.v || arg.version) {
+		log('v' + require(arg.__root + '/package.json').version);
+	} else {
+		loadApp = true;
+	}
+
+	if (!loadApp) {
+		app.quit();
+		return;
+	}
+
 	const fs = require('fs');
 	const path = require('path');
 	const url = require('url');

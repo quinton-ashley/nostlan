@@ -1,3 +1,8 @@
+/*
+ * util.js : Nostlan : Quinton Ashley
+ *
+ * Utility functions.
+ */
 // extract compressed folders using 7zip
 global.fs.extract = (input, output, opt) => {
 	opt = opt || {};

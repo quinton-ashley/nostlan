@@ -1,3 +1,9 @@
+/*
+ * saves.js : Nostlan : Quinton Ashley
+ *
+ * Backup/sync save data to the cloud or local storage device.
+ * This is a premium feature for Patreon supporters.
+ */
 const path = require('path');
 
 class Saves {

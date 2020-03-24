@@ -1,3 +1,9 @@
+/*
+ * updater.js : Nostlan : Quinton Ashley
+ *
+ * Checks if there is a minor/major update to Nostlan
+ * and prompts the user to download it.
+ */
 const rp = require('request-promise-native');
 
 class Updater {

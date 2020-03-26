@@ -39,7 +39,7 @@ class Scanner {
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
-		// if (emu == 'dolphin' && kb) {
+		// if (sys == 'wii' && kb) {
 		if (false) {
 			let app = await launcher.getEmuAppPath();
 			let dir = path.join(app, '../User');

@@ -1,6 +1,7 @@
 // DEVELOPMENT USE ONLY!
 // This code is not for end users, it's for creating the
-// game art database files. These files find direct download
+// game art database files.
+// Finds direct download
 // links to images so that end users will not have to
 // individually scrape for images.
 // Even though I have decided to open source these files please

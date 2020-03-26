@@ -30,10 +30,10 @@ module.exports = async function(arg) {
 	prefsMng.prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = await prefsMng.loadDefaultPrefs();
 
-	global.sys = ''; // current system
-	global.syst = {};
+	global.sys = ''; // current system (name)
+	global.syst = {}; // current system (object)
 	global.sysStyle = ''; // style of that system
-	global.emu = ''; // current emulator
+	global.emu = ''; // current emulator (name)
 	global.offline = false;
 
 	global.systems = {
@@ -75,7 +75,7 @@ module.exports = async function(arg) {
 		switch: {
 			name: 'Switch',
 			fullName: 'Nintendo Switch',
-			emus: ['yuzu']
+			emus: ['yuzu', 'ryujinx']
 		},
 		wii: {
 			name: 'Wii',
@@ -97,7 +97,6 @@ module.exports = async function(arg) {
 		delete systems.xbox360;
 		delete systems.wiiu;
 		delete systems.ps3;
-		delete systems.switch;
 	}
 
 	let games = []; // array of current games from the systems' db

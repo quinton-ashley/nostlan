@@ -11,6 +11,7 @@ class Gamestdb {
 	constructor() {}
 
 	async dlImg(game, dir, name) {
+		// TODO change to just the systems on gametdb
 		if (!availableImgs.includes(name) || sys == 'arcade' || sys == 'ps2' || sys == 'gba') {
 			return;
 		}

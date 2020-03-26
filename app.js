@@ -16,18 +16,17 @@
 		BrowserWindow
 	} = require('electron');
 
-	let loadApp = false;
-
+	// command line options
 	if (arg.h || arg.help) {
 		log('-h|--help : print command line options');
 		log('-v|--version : get the version of the app');
 	} else if (arg.v || arg.version) {
 		log('v' + require(arg.__root + '/package.json').version);
 	} else {
-		loadApp = true;
+		arg.electron = true;
 	}
 
-	if (!loadApp) {
+	if (!arg.electron) {
 		app.quit();
 		return;
 	}

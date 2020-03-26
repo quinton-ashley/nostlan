@@ -82,6 +82,15 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
+	"ryujinx": {
+		"name": "Ryujinx",
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}"],
+			"mac": ["${app}", "${game}"],
+			"win": ["${app}", "${game}"]
+		}
+	},
 	"dolphin": {
 		"name": "Dolphin",
 		"app": {},

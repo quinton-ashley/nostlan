@@ -8,9 +8,9 @@ Nostlan is an open source _high quality_ front-end launcher for video game emula
 
 ## Summary
 
--   backup/sync all your save data to the cloud or local storage device!
--   support for Yuzu Early Access builds
--   custom theming (coming soon)
+- backup/sync all your save data to the cloud or local storage device!
+- support for Yuzu Early Access builds
+- custom theming (coming soon)
 
 ## New Premium Feature: Cloud Save Sync!
 
@@ -82,16 +82,16 @@ Nostlan is an experimental project but I want to make it useful for the general 
 
 Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
 
--   backup/sync all your save data to the cloud or local storage device
--   custom ui themeing (coming soon)
+- backup/sync all your save data to the cloud or local storage device
+- custom ui themeing (coming soon)
 
 Features that might be offered in the future:
 
--   support for PC games, making Nostlan able to launch all your games
--   single click to install emulators/updates
--   database of Dolphin texture packs
--   batch install and auto-update texture packs for Dolphin
--   easy way to mix and swap texture packs for Dolphin
+- support for PC games, making Nostlan able to launch all your games
+- single click to install emulators/updates
+- database of Dolphin texture packs
+- batch install and auto-update texture packs for Dolphin
+- easy way to mix and swap texture packs for Dolphin
 
 ## If you like using Nostlan please donate!
 

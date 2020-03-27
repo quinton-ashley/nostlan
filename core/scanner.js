@@ -96,7 +96,7 @@ class Scanner {
 				if (sys == 'ds' && !/\.ds/i.test(term.ext)) continue;
 				if (sys == 'gba' && !/\.gba/i.test(term.ext)) continue;
 				if (sys == 'wii' &&
-					!/\.(gcm|iso|tgc|iso|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) {
+					!/\.(gcm|iso|tgc|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) {
 					continue;
 				}
 				// fixes an issue where folder names were split by periods

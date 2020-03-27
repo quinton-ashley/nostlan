@@ -93,11 +93,6 @@ module.exports = async function(arg) {
 			emus: ['xenia']
 		}
 	};
-	if (mac && !arg.dev) {
-		delete systems.xbox360;
-		delete systems.wiiu;
-		delete systems.ps3;
-	}
 
 	let games = []; // array of current games from the systems' db
 	global.emuDir = ''; // nostlan dir is stored here
@@ -831,7 +826,7 @@ module.exports = async function(arg) {
 		let noBox = false;
 		// if template and a default exists (soon to be deprecated in favor of
 		// just using the template to store default box)
-		let isTemplate = (themes[boxSys].default && game.id.substring(0, 9) == '_TEMPLATE');
+		let isTemplate = (themes[boxSys].default && game.id.substring(1, 9) == 'TEMPLATE');
 		if (!boxImgSrc) {
 			noBox = true;
 			boxImgSrc = await scraper.imgExists(themes[boxSys].default, 'box');

@@ -43,7 +43,7 @@ Nostlan looks similar to media viewers like Kaleidescape and AppleTV. You can in
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_LQ.png">
 </a></p>
 
-### Switch [Yuzu]
+### Switch [Yuzu, Ryujinx]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_LQ.png">
@@ -416,6 +416,12 @@ MAME loader is a combination of two codepens: [Vadim Huck's](https://codepen.io/
 [SNES Loading Intro](https://codepen.io/servinnissen/pen/ogxjdK)
 
 ### Fonts
+
+[TrashHand](https://www.dafont.com/trashhand.font)
+[Edo sz](https://www.dafont.com/edo-sz.font)
+[fawn script](https://www.dafont.com/fawn-script.font)
+[Gemelli](https://www.dafont.com/gemelli.font)
+[maxine](https://www.dafont.com/maxine-script.font)
 
 [nintender](http://www.fontspace.com/lyric-type/nintender)  
 [Gamecuben](https://www.dafont.com/gamecube.font)  

@@ -1,5 +1,5 @@
 /*
- * scanner.js : Quinton Ashley
+ * setup.js : quinton-ashley
  *
  * Quinton's basecode setup file for electron apps.
  */

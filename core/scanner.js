@@ -1,3 +1,9 @@
+/*
+ * scanner.js : Nostlan : quinton-ashley
+ *
+ * Attempts to automatically indentify games in the user's game
+ * libraries, creates a games array, and saves array to a json file.
+ */
 const Fuse = require('fuse.js');
 
 const idRegex = {

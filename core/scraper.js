@@ -1,5 +1,5 @@
 /*
- * scraper.js : Nostlan : Quinton Ashley
+ * scraper.js : Nostlan : quinton-ashley
  *
  * Scrapes for box art, disc/cart, and other images.
  */

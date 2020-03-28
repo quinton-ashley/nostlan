@@ -1,5 +1,5 @@
 /*
- * themes.js : Nostlan : Quinton Ashley
+ * themes.js : Nostlan : quinton-ashley
  *
  * Theming for all supported systems.
  */

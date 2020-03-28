@@ -1,5 +1,5 @@
 /*
- * db.js : Nostlan : Quinton Ashley
+ * db.js : Nostlan : quinton-ashley
  *
  * NOTE: Not used by Nostlan yet, incomplete.
  * Converts database files to Nostlan's json db format.

@@ -1,5 +1,5 @@
 /*
- * launcher.js : Nostlan : Quinton Ashley
+ * launcher.js : Nostlan : quinton-ashley
  *
  * Launches emulator apps with the command line args specified
  * in the user's prefs.json file.

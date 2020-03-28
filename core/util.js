@@ -1,5 +1,5 @@
 /*
- * util.js : Nostlan : Quinton Ashley
+ * util.js : Nostlan : quinton-ashley
  *
  * Utility functions.
  */

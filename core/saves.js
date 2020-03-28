@@ -1,5 +1,5 @@
 /*
- * saves.js : Nostlan : Quinton Ashley
+ * saves.js : Nostlan : quinton-ashley
  *
  * Backup/sync save data to the cloud or local storage device.
  * This is a premium feature for Patreon supporters.

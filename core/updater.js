@@ -1,5 +1,5 @@
 /*
- * updater.js : Nostlan : Quinton Ashley
+ * updater.js : Nostlan : quinton-ashley
  *
  * Checks if there is a minor/major update to Nostlan
  * and prompts the user to download it.

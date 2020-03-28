@@ -93,7 +93,7 @@ class Scanner {
 				// if the file is not a game file, skip it
 				if (term.ext == '.sav') continue;
 				if (sys == 'snes' && !/\.(sfc|smc)/i.test(term.ext)) continue;
-				if (sys == 'ds' && !/\.ds/i.test(term.ext)) continue;
+				if (sys == 'ds' && !/\.nds/i.test(term.ext)) continue;
 				if (sys == 'gba' && !/\.gba/i.test(term.ext)) continue;
 				if (sys == 'wii' &&
 					!/\.(gcm|iso|tgc|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) {

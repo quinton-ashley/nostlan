@@ -76,3 +76,15 @@ game.gba.flip .shade {
 game.gba .box {
 	border-radius: 1.6%;
 }
+
+game.gba .label {
+	max-width: 90%;
+}
+
+game.gba .title.label {
+	top: 5%;
+}
+
+game.gba .file.label {
+	top: 70%;
+}

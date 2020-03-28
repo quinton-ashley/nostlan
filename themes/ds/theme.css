@@ -74,6 +74,18 @@ game.ds.flip .shade {
 	left: 98%;
 }
 
+game.ds .label {
+	max-width: 90%;
+}
+
+game.ds .title.label {
+	top: 5%;
+}
+
+game.ds .file.label {
+	top: 70%;
+}
+
 .ds #infoSelect {
 	transform: scale(.6);
 }

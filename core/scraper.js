@@ -27,7 +27,6 @@ class Scraper {
 	}
 
 	async getImg(game, name, hq) {
-		if (game.id.substring(1, 13) == 'UNIDENTIFIED') return;
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
@@ -110,6 +109,7 @@ class Scraper {
 			} else {
 				game = games[i];
 			}
+			if (game.id.substring(1, 13) == 'UNIDENTIFIED') continue;
 			if (game.title) {
 				game.title = rmDiacritics(game.title);
 			}

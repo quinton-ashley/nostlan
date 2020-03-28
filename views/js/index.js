@@ -306,13 +306,10 @@ module.exports = async function(arg) {
 			cui.getCur(state).removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
 			labels = ['Texp', 'File', 'Back'];
-		} else if (
-			state == 'sysMenu' ||
-			(/game/i).test(state) ||
-			state == 'themeMenu') {
-			labels = [' ', ' ', 'Back'];
 		} else if (state == 'pauseMenu') {
 			labels = ['Quit', 'Mini', 'Back'];
+		} else if (/(game|menu)/i.test(state)) {
+			labels = [' ', ' ', 'Back'];
 		}
 		$('.text.power').text(labels[0]);
 		$('.text.reset').text(labels[1]);
@@ -512,7 +509,7 @@ module.exports = async function(arg) {
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#themeMenu .uie[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu_1 .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text('auto-hide cover overlay');
@@ -605,7 +602,7 @@ module.exports = async function(arg) {
 			syst = systems[sys];
 			cui.removeCursor();
 			await reload();
-		} else if (ui == 'themeMenu') {
+		} else if (ui == 'interfaceMenu_1') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'colors') {
@@ -827,15 +824,18 @@ module.exports = async function(arg) {
 		let isUnidentified = (game.id.substring(1, 13) == 'UNIDENTIFIED');
 		let hasNoImages = isUnidentified;
 
-		let boxImg = await scraper.imgExists(game, 'box');
-		// if box img is found
-		let noBox = (!boxImg);
-		// if template and a default exists (soon to be deprecated in favor of
-		// just using the template to store default box)
-		if (noBox && themes[_sys].default) {
-			boxImg = await scraper.imgExists(themes[_sys].default, 'box');
+		let boxImg, noBox, coverImg, coverType;
+
+		async function getBoxImg() {
+			boxImg = await scraper.imgExists(game, 'box');
+			// if box img is found
+			noBox = (!boxImg);
+			// if template and a default exists (soon to be deprecated in favor of
+			// just using the template to store default box)
+			if (noBox && themes[_sys].default) {
+				boxImg = await scraper.imgExists(themes[_sys].default, 'box');
+			}
 		}
-		let coverImg, coverType;
 
 		async function getCoverImg() {
 			coverImg = await scraper.imgExists(game, 'coverFull');
@@ -854,12 +854,14 @@ module.exports = async function(arg) {
 			}
 		}
 
+		await getBoxImg();
 		if ((noBox && !isUnidentified) || (themes[_sys].default && isTemplate)) {
 			await getCoverImg();
 		}
 		if (hasNoImages) {
 			let id = game.id;
 			game.id = '_TEMPLATE_' + _sys;
+			await getBoxImg();
 			await getCoverImg();
 			game.id = id;
 		}

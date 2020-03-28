@@ -119,6 +119,10 @@ module.exports = async function(arg) {
 		er(ror);
 	}
 
+	document.body.addEventListener('mousemove', function(e) {
+		document.exitPointerLock();
+	});
+
 	async function intro() {
 		$('#dialogs').show();
 		await themes.loadFrame('intro');
@@ -127,7 +131,7 @@ module.exports = async function(arg) {
 	}
 
 	async function removeIntro(time) {
-		time = arg.testLoadingTheme || time || prefs.load.delay;
+		time = arg.testIntro || time || prefs.load.delay;
 		log('removing intro: ' + time);
 		await delay(time);
 		$('#intro').remove();
@@ -298,7 +302,7 @@ module.exports = async function(arg) {
 			labels = ['Manual', 'ImgDir', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'libMain') {
-			labels = ['Power', 'Reset', 'Open'];
+			labels = ['Play', 'Setup', 'Systems'];
 			cui.getCur(state).removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
 			labels = ['Texp', 'File', 'Back'];
@@ -643,7 +647,7 @@ module.exports = async function(arg) {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'editAppearance') {
-				cui.change('themeMenu');
+				cui.change('interfaceMenu_1');
 			} else if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
@@ -818,54 +822,87 @@ module.exports = async function(arg) {
 	}
 
 	async function addGameBox(game, column) {
-		let boxSys = game.sys || sys;
-		let imgType = '';
-		let boxImgSrc = await scraper.imgExists(game, 'box');
-		let coverImgSrc = '';
+		let _sys = game.sys || sys;
+		let isTemplate = (game.id.substring(1, 9) == 'TEMPLATE');
+		let isUnidentified = (game.id.substring(1, 13) == 'UNIDENTIFIED');
+		let hasNoImages = isUnidentified;
+
+		let boxImg = await scraper.imgExists(game, 'box');
 		// if box img is found
-		let noBox = false;
+		let noBox = (!boxImg);
 		// if template and a default exists (soon to be deprecated in favor of
 		// just using the template to store default box)
-		let isTemplate = (themes[boxSys].default && game.id.substring(1, 9) == 'TEMPLATE');
-		if (!boxImgSrc) {
-			noBox = true;
-			boxImgSrc = await scraper.imgExists(themes[boxSys].default, 'box');
+		if (noBox && themes[_sys].default) {
+			boxImg = await scraper.imgExists(themes[_sys].default, 'box');
 		}
-		if (noBox || isTemplate) {
-			coverImgSrc = await scraper.imgExists(game, 'coverFull');
-			imgType = '.coverFull';
-			if (!coverImgSrc) {
-				coverImgSrc = await scraper.imgExists(game, 'cover');
-				imgType = '.cover';
-				if (!coverImgSrc) {
-					if (!isTemplate) {
-						log(`no images found for game: ${game.id} ${game.title}`);
-						return;
-					} else {
-						imgType = '';
-						coverImgSrc = '';
-					}
+		let coverImg, coverType;
+
+		async function getCoverImg() {
+			coverImg = await scraper.imgExists(game, 'coverFull');
+			coverType = '.coverFull';
+			if (!coverImg) {
+				coverImg = await scraper.imgExists(game, 'cover');
+				coverType = '.cover';
+			}
+			if (!coverImg) {
+				if (!isTemplate) {
+					log(`no images found for game: ${game.id} ${game.title}`);
+					hasNoImages = true;
 				}
+				coverImg = '';
+				coverType = '';
 			}
 		}
-		let box = `game#${game.id}.${boxSys}.uie`;
+
+		if ((noBox && !isUnidentified) || (themes[_sys].default && isTemplate)) {
+			await getCoverImg();
+		}
+		if (hasNoImages) {
+			let id = game.id;
+			game.id = '_TEMPLATE_' + _sys;
+			await getCoverImg();
+			game.id = id;
+		}
+		let box = `game#${game.id}.${_sys}.uie`;
 		// if game is a template don't let the user select it
-		if (game.id.includes('_TEMPLATE')) {
+		if (isTemplate) {
 			box += '.uie-disabled';
 		}
 		box += '\n';
-		box += `  img.box(src="${boxImgSrc}")\n`;
+		box += `  img.box(src="${boxImg}")\n`;
 		// used to crop the cover/coverfull image
-		box += `  section.crop${imgType}\n`;
-		box += `    img${imgType}`;
-		if (!imgType) box += '.hide';
-		box += `(src="${coverImgSrc}")\n`;
+		box += `  section.crop${coverType}\n`;
+		box += `    img${coverType}`;
+		if (!coverType) box += '.hide';
+		box += `(src="${coverImg}")\n`;
 		box += `    .shade.p-0.m-0`;
-		if (!(imgType || boxSys == 'switch' || boxSys == 'gba')) {
+		if (!(coverType || _sys == 'switch' || _sys == 'gba')) {
 			box += '.hide';
 		}
+		if (hasNoImages) {
+			if (game.title == '') game.title = ' ';
+			if (!game.lblColor) game.lblColor = randomColor();
+			box += `\n    .title.label.editable(contenteditable="true" style="background-color: #${game.lblColor}") ${game.title}`;
+			box += `\n    .file.label(style="background-color: #${game.lblColor}") ${path.parse(game.file).base}`;
+		}
 		$('.reel.r' + column).append(pug(box));
-		return true;
+	}
+
+	function randomColor() {
+		// creates random saturated colors, no grays
+		let color = '';
+		let brighter = Math.floor(Math.random() * 3);
+		for (let i = 0; i < 3; i++) {
+			let num;
+			if (i != brighter) {
+				num = Math.random() * 155 + 100;
+			} else {
+				num = Math.random() * 200 + 55;
+			}
+			let hex = Math.floor(num).toString(16);
+			color += hex;
+		}
+		return color;
 	}
 
 	async function addTemplateBoxes(cols) {
@@ -930,6 +967,25 @@ module.exports = async function(arg) {
 		await addTemplateBoxes(cols);
 		await addGameBoxes(cols);
 		await addTemplateBoxes(cols);
+
+		$('#libMain game .label').click(function(e) {
+			e.stopPropagation();
+			if ($(this).hasClass('file')) {
+				let game = getCurGame();
+				opn(path.parse(game.file).dir);
+			}
+		});
+
+		$('#libMain game .title.label').on('keydown', function(e) {
+			if (e.key == 'Enter') {
+				e.preventDefault();
+				let game = getCurGame();
+				game.title = $(this).text();
+				log('user edited game title: ');
+				log(game);
+				scan.outputUsersGamesDB(games);
+			}
+		});
 
 		cui.addView('libMain', {
 			hoverCurDisabled: true

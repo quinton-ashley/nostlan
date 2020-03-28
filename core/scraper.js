@@ -27,6 +27,7 @@ class Scraper {
 	}
 
 	async getImg(game, name, hq) {
+		if (game.id.substring(1, 13) == 'UNIDENTIFIED') return;
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
@@ -152,7 +153,7 @@ class Scraper {
 						log('images not found for game: ' + game.title);
 						// games.splice(i, 1);
 						// i--;
-						await fs.remove(imgDir);
+						// await fs.remove(imgDir);
 						continue;
 					}
 				}

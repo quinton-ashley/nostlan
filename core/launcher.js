@@ -141,6 +141,9 @@ class Launcher {
 				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
+		log(emu);
+		let cmdArray = prefs[emu].cmd[osType];
+
 		let gameFile;
 		if (game) {
 			gameFile = game.file;
@@ -161,8 +164,14 @@ class Launcher {
 				}
 			}
 		}
-		log(emu);
-		let cmdArray = prefs[emu].cmd[osType];
+		if (!game && emu == 'yuzu' && win) {
+			// update yuzu with maintenancetool when it's run without a game
+			// $home\AppData\Local\yuzu\maintenancetool.exe --launcher $app
+			cmdArray.unshift('--launcher');
+			let maintenancetool = util.absPath('$home');
+			maintenancetool += '/AppData/Local/yuzu/maintenancetool.exe';
+			cmdArray.unshift(maintenancetool);
+		}
 
 		if (identify && sys == 'snes') {
 			let cmdIcarus = [

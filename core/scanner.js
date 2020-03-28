@@ -210,7 +210,7 @@ class Scanner {
 				term = term.replace(/ *decrypted */gi, '');
 
 				term = term.trim();
-				let game = await this.searchForGame(searcher, term);
+				let game = await this.searchForGame(searcher, term, games);
 
 				if (game) {
 					this.olog(`potential match:  ${game.title}\r\n`);
@@ -235,33 +235,36 @@ class Scanner {
 		return games;
 	}
 
-	async searchForGame(searcher, term) {
+	async searchForGame(searcher, term, games) {
 		log('term:  ' + term);
 		let results = await searcher(term.substr(0, 64));
 		if (arg.v) log(results);
 		let region = prefs.region;
 		for (let i = 0; i < results.length; i++) {
-			if (results[i].title.length > term.length + 6) continue;
+			let game = results[i];
+			if (game.title.length > term.length + 6) continue;
 			// if the search term doesn't contain demo or trial
 			// skip the demo/trial version of the game
 			let demoRegex = /(Demo|Preview|Review|Trial)/i;
-			if (demoRegex.test(results[i].title) != demoRegex.test(term)) {
+			if (demoRegex.test(game.title) != demoRegex.test(term)) {
 				continue;
 			}
 			if (sys == 'wii' || sys == 'ds' || sys == 'wiiu' || sys == 'n3ds') {
-				let gRegion = results[i].id[3];
+				let gRegion = game.id[3];
 				// TODO: this is a temporary region filter
 				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) continue;
 				if (gRegion == 'E' && (region == 'P' || region == 'J')) continue;
 				if (gRegion == 'P' && (region == 'E' || region == 'J')) continue;
 				if (gRegion == 'J' && (region == 'E' || region == 'P')) continue;
 			} else if (sys == 'switch') {
-				let gRegion = results[i].id[4];
+				let gRegion = game.id[4];
 				if (gRegion == 'A' && (region == 'P' || region == 'J')) continue;
 				if (gRegion == 'B' && (region == 'E' || region == 'J')) continue;
 				if (gRegion == 'C' && (region == 'E' || region == 'P')) continue;
 			}
-			return results[i];
+			// skip if it's already in the games array
+			if (games.find(x => x.id == game.id)) continue;
+			return game;
 		}
 		return;
 	}
@@ -272,6 +275,7 @@ class Scanner {
 	}
 
 	async outputUsersGamesDB(games) {
+		if (!games) return;
 		let gamesPath = `${emuDir}/${sys}/${sys}Games.json`;
 		log('game library saved to: ');
 		log(gamesPath);

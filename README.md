@@ -217,7 +217,7 @@ On Linux, Nostlan will look for emulator apps in their default install locations
 
 ## Using Nostlan
 
-Nostlan auto detects controllers. The console themed cover overlay menu displays the options on any given screen. Click "Nostlan" or press the "Start" button to view the settings menu. Click "Open" to load another game library. "Reset" will start the emulator without a game. "Power" starts the emulator with the selected game.
+Nostlan auto detects controllers. The console themed cover overlay menu displays the options on any given screen. Click "Nostlan" or press the "Start" button to view the settings menu. Clicking "Systems" will open a submenu where you can choose to load another system's game library. "Setup" will start the emulator without a game so you can update the emulator, setup controls, etc. "Play" starts the emulator with the game that the cursor is on.
 
 ## What is Adaptive Button Mapping?
 

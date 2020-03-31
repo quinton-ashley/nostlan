@@ -77,3 +77,41 @@ game.wiiu.flip .shade {
 	width: 1.4%;
 	left: 98.7%;
 }
+
+/*================Wii Open Box====================*/
+.wiiu #gameMemory {
+	width: 16vh;
+	transform: translate(32%, -256%);
+}
+
+.wiiu #gameMedia {
+	width: 60.8vh;
+	border-radius: 50%;
+	transform: translate(11%, -50%);
+}
+
+.wiiu #gameTexp {
+	width: 94vh;
+	transform: translate(-110%, -50.5%);
+}
+
+.wiiu #gameManual {
+	width: 62vh;
+	transform: translate(-108%, -50%);
+}
+
+.wiiu .zoom-gameManualSelect {
+	transform: translate(34vh, 0vh) scale(1);
+}
+
+.wiiu .zoom-gameMediaSelect {
+	transform: translate(-59vh, 0vh) scale(1.6);
+}
+
+.wiiu .zoom-gameMemorySelect {
+	transform: translate(-52vh, 140vh) scale(4);
+}
+
+.wiiu .zoom-gameTexpSelect {
+	transform: translate(34vh, 0vh) scale(1);
+}

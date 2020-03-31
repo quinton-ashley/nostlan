@@ -97,14 +97,14 @@ module.exports = async function() {
 				} catch (ror) {
 					er(ror);
 					errCount++;
-					continue;
-				}
-				delete prefs[_emu].libs;
-				if (prefs[_emu].saves) {
-					delete prefs[_emu].saves.dirs;
+					break;
 				}
 				await fs.remove(moveDir.src);
 			}
+		}
+		delete prefs[_emu].libs;
+		if (prefs[_emu].saves) {
+			delete prefs[_emu].saves.dirs;
 		}
 		await fs.remove(`${emuDir}/nostlan/${_sys}`);
 

@@ -167,10 +167,10 @@ class Launcher {
 		if (!game && emu == 'yuzu' && win) {
 			// update yuzu with maintenancetool when it's run without a game
 			// $home\AppData\Local\yuzu\maintenancetool.exe --launcher $app
-			cmdArray.unshift('--launcher');
 			let maintenancetool = util.absPath('$home');
 			maintenancetool += '/AppData/Local/yuzu/maintenancetool.exe';
-			cmdArray.unshift(maintenancetool);
+			this.cmdArgs.push(maintenancetool);
+			this.cmdArgs.push('--launcher');
 		}
 
 		if (identify && sys == 'snes') {

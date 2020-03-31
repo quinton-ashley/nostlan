@@ -96,6 +96,8 @@ module.exports = async function(arg) {
 
 	let games = []; // array of current games from the systems' db
 	global.emuDir = ''; // nostlan dir is stored here
+	// changes if the user wants to load emu without game
+	launchEmuWithGame = true;
 
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
@@ -158,15 +160,15 @@ module.exports = async function(arg) {
 			await createTemplate();
 		}
 		// currently supported systems
-		let sysMenuHTML = '';
+		let sysMenu = 'h1 Select a System\n';
 		let i = 0;
 		for (let _sys in systems) {
-			if (i % 2 == 0) sysMenuHTML += `.row.row-x\n`;
-			sysMenuHTML += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
+			if (i % 2 == 0) sysMenu += `.row.row-x\n`;
+			sysMenu += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
 			i++;
 		}
 		delete i;
-		$('#sysMenu').append(pug(sysMenuHTML));
+		$('#sysMenu').append(pug(sysMenu));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
 		}
@@ -185,7 +187,7 @@ module.exports = async function(arg) {
 		cui.mapButtons(sys);
 	}
 
-	async function reload() {
+	async function loadGameLib() {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
 		cui.change('loading', sysStyle);
@@ -250,7 +252,7 @@ module.exports = async function(arg) {
 				}
 			} else {
 				cui.err(`Couldn't load game library`, 404, 'sysMenu');
-				await reload();
+				await loadGameLib();
 				return;
 			}
 			games = await scan.gameLib();
@@ -269,6 +271,15 @@ module.exports = async function(arg) {
 			await saves.update();
 		}
 		await viewerLoad();
+
+		cui.removeView('emuMenu');
+		let emuMenu = 'h1 Select an Emulator\n';
+		for (let _emu of syst.emus) {
+			emuMenu += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
+		}
+		$('#emuMenu').append(pug(emuMenu));
+		cui.addView('emuMenu');
+
 		await removeIntro();
 		cui.change('libMain', sysStyle);
 		cui.resize(true);
@@ -498,7 +509,13 @@ module.exports = async function(arg) {
 		}
 		if (ui == 'libMain' || ui == 'coverSelect') {
 			if (act == 'x') {
-				await launcher.launch(getCurGame());
+				launchEmuWithGame = true;
+				if (syst.emus.length > 1) {
+					cui.change('emuMenu');
+				} else {
+					await launcher.launch(getCurGame());
+				}
+				return;
 			}
 		}
 		if (act == 'start' && !onMenu) {
@@ -520,14 +537,19 @@ module.exports = async function(arg) {
 			if (act == 'b' && !onMenu) {
 				cui.change('sysMenu');
 			} else if (act == 'y') {
-				// launch without a game
-				await launcher.launch();
+				launchEmuWithGame = false;
+				if (syst.emus > 1) {
+					cui.change('emuMenu');
+				} else {
+					// launch without a game
+					await launcher.launch();
+				}
 			} else if (act == 'a' || !isBtn) {
 				await coverClicked();
 			}
 		} else if (ui == 'coverSelect') {
 			if ((act == 'a' || !isBtn) && cui.getCur('libMain').attr('class') &&
-				(await scraper.imgExists(themes[cui.getCur('libMain').attr('class').split(/\s+/)[0] || sysStyle].template, 'boxOpen'))) {
+				(await scraper.getExtraImgs(themes[cui.getCur('libMain').attr('class').split(/\s+/)[0] || sysStyle].template))) {
 				// return;
 				// TODO finish open box menu
 				let game = getCurGame();
@@ -601,7 +623,7 @@ module.exports = async function(arg) {
 			sys = act;
 			syst = systems[sys];
 			cui.removeCursor();
-			await reload();
+			await loadGameLib();
 		} else if (ui == 'interfaceMenu_1') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
@@ -682,7 +704,7 @@ module.exports = async function(arg) {
 			} else if (act == 'donate-single') {
 				opn('https://www.paypal.me/qashto/20');
 			} else if (act == 'donate-later') {
-				await reload();
+				await loadGameLib();
 			} else if (act == 'donated') {
 				cui.change('checkDonationMenu');
 			}
@@ -690,7 +712,7 @@ module.exports = async function(arg) {
 			if (act == 'continue') {
 				let pass = $('#donorPassword').val();
 				if (premium.verify(pass)) {
-					await reload();
+					await loadGameLib();
 					if (premium.verify() && !prefs.saves) {
 						cui.change('addSavesPathMenu');
 					}
@@ -723,6 +745,21 @@ module.exports = async function(arg) {
 			await createTemplate();
 			opn(emuDir);
 			if (!(await fs.exists(emuDir))) return false;
+		} else if (ui == 'emuMenu') {
+			// change emu to the selected emu
+			// or run with the previously selected emu
+			// by double clicking/pressing x or y
+			if (syst.emus.includes(act)) {
+				emu = act;
+			} else if (act != 'x' && act != 'y') {
+				return;
+			}
+			if (launchEmuWithGame) {
+				await launcher.launch(getCurGame());
+			} else {
+				// launch without a game
+				await launcher.launch();
+			}
 		}
 	}
 
@@ -884,8 +921,8 @@ module.exports = async function(arg) {
 		if (hasNoImages) {
 			if (game.title == '') game.title = ' ';
 			if (!game.lblColor) game.lblColor = randomColor();
-			box += `\n    .title.label.editable(contenteditable="true" style="background-color: #${game.lblColor}") ${game.title}`;
-			box += `\n    .file.label(style="background-color: #${game.lblColor}") ${path.parse(game.file).base}`;
+			box += `\n  .title.label.editable(contenteditable="true" style="background-color: #${game.lblColor}") ${game.title}`;
+			box += `\n  .file.label(style="background-color: #${game.lblColor}") ${path.parse(game.file).base}`;
 		}
 		$('.reel.r' + column).append(pug(box));
 	}
@@ -1025,7 +1062,7 @@ module.exports = async function(arg) {
 			}
 		}
 		if (premium.verify()) {
-			await reload();
+			await loadGameLib();
 			if (!prefs.saves) {
 				cui.change('addSavesPathMenu');
 			}

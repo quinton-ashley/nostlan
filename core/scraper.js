@@ -167,11 +167,7 @@ class Scraper {
 				if (sys == 'arcade') {
 					await this.getImg(game, 'boxOpen');
 				} else if (prefs.ui.getExtraImgs || isTemplate) {
-					await this.getImg(game, 'boxOpen');
-					await this.getImg(game, 'boxOpenMask');
-					await this.getImg(game, 'manual');
-					await this.getImg(game, 'memory');
-					await this.getImg(game, 'memoryBack');
+					await this.getExtraImgs(game);
 				}
 			}
 		}
@@ -189,6 +185,15 @@ class Scraper {
 
 		games = games.sort((a, b) => a.title.localeCompare(b.title));
 		return games;
+	}
+
+	async getExtraImgs(game) {
+		let res = await this.getImg(game, 'boxOpen');
+		await this.getImg(game, 'boxOpenMask');
+		await this.getImg(game, 'manual');
+		await this.getImg(game, 'memory');
+		await this.getImg(game, 'memoryBack');
+		return res;
 	}
 
 	async getImgDir(game) {

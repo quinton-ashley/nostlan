@@ -10,27 +10,12 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
-	"desmume": {
-		"name": "DeSmuME",
+	"cemu": {
+		"name": "Cemu",
 		"app": {},
 		"cmd": {
-			"win": ["${app}", "${game}"]
-		}
-	},
-	"melonds": {
-		"name": "melonDS",
-		"app": {},
-		"cmd": {
-			"win": ["${app}", "${game}"]
-		}
-	},
-	"mgba": {
-		"name": "mGBA",
-		"app": {},
-		"cmd": {
-			"linux": ["${app}", "-f", "${game}"],
-			"mac": ["${app}", "-f", "${game}"],
-			"win": ["${app}", "-f", "${game}"]
+			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
+			"win": ["${app}", "-g", "${game}", "-f"]
 		}
 	},
 	"citra": {
@@ -44,6 +29,22 @@
 			"win": ["${app}", "${game}", "-f"]
 		}
 	},
+	"desmume": {
+		"name": "DeSmuME",
+		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}"]
+		}
+	},
+	"dolphin": {
+		"name": "Dolphin",
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}", "-b"],
+			"mac": ["${app}", "${game}", "-b"],
+			"win": ["${app}", "${game}", "-b"]
+		}
+	},
 	"mame": {
 		"name": "MAME",
 		"app": {},
@@ -51,6 +52,22 @@
 			"linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
 			"mac": ["${app}", "-inipath", "${cwd}", "${game.id}"],
 			"win": ["${app}", "-inipath", "${cwd}", "${game.id}"]
+		}
+	},
+	"mgba": {
+		"name": "mGBA",
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "-f", "${game}"],
+			"mac": ["${app}", "-f", "${game}"],
+			"win": ["${app}", "-f", "${game}"]
+		}
+	},
+	"melonds": {
+		"name": "melonDS",
+		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}"]
 		}
 	},
 	"pcsx2": {
@@ -70,18 +87,6 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
-	"yuzu": {
-		"name": "Yuzu",
-		"app": {
-			"mac": "/Applications/yuzu/yuzu.app/Contents/MacOS/yuzu-bin",
-			"win": "$home/AppData/Local/yuzu/yuzu-windows-msvc/yuzu.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"mac": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		}
-	},
 	"ryujinx": {
 		"name": "Ryujinx",
 		"app": {},
@@ -91,21 +96,15 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
-	"dolphin": {
-		"name": "Dolphin",
-		"app": {},
+	"yuzu": {
+		"name": "Yuzu",
+		"app": {
+			"win": "$home/AppData/Local/yuzu/yuzu-windows-msvc/yuzu.exe"
+		},
 		"cmd": {
-			"linux": ["${app}", "${game}", "-b"],
-			"mac": ["${app}", "${game}", "-b"],
-			"win": ["${app}", "${game}", "-b"]
-		}
-	},
-	"cemu": {
-		"name": "Cemu",
-		"app": {},
-		"cmd": {
-			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
-			"win": ["${app}", "-g", "${game}", "-f"]
+			"linux": ["wine", "${app}", "${game}"],
+			"mac": ["wine", "${app}", "${game}"],
+			"win": ["${app}", "${game}"]
 		}
 	},
 	"xenia": {

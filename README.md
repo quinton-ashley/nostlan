@@ -112,22 +112,22 @@ On startup Nostlan will prompt you to become a Patreon supporter. Every month, P
 
 I've put a good amount of effort into documenting Nostlan on the wiki. I hope you find it helpful! Go to the wiki to find out more info on these topics:
 
-Adaptive Button Mapping
-Copyright, Trademark, and Open Source Licensing Info
-Credits
-Custom Themes
-Development Info
-Features
-Game Identification
-Hardware Compatibility
-How is Nostlan different from other front ends?
-Image Names to use for Game Art
-Premium Features
-Screenshots
-Setting up Nostlan
-Supported Systems and Emulators
-Update Logs
-User Preferences
+Adaptive Button Mapping  
+Copyright, Trademark, and Open Source Licensing Info  
+Credits  
+Custom Themes  
+Development Info  
+Features  
+Game Identification  
+Hardware Compatibility  
+How is Nostlan different from other front ends?  
+Image Names to use for Game Art  
+Premium Features  
+Screenshots  
+Setting up Nostlan  
+Supported Systems and Emulators  
+Update Logs  
+User Preferences  
 Using Nostlan
 
 ## Error Reporting

@@ -101,6 +101,7 @@
     "moment": "^2.24.0",
     "mousetrap": "^1.6.5",
     "node-7z": "^2.1.1",
+    "node-abi": "^2.15.0",
     "open": "^7.0.3",
     "popper.js": "^1.16.1",
     "probe-image-size": "^5.0.0",
@@ -151,5 +152,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.33"
+  "version": "1.7.34"
 }

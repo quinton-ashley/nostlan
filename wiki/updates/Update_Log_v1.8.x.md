@@ -27,7 +27,7 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read th
 #### Development
 
 - updated open source license to GNU GPLv3
-- cui (contro-ui) uses numbered submenus
+- contro-ui (my controller ui framework) now uses numbered submenus
 
 ## Coming Soon
 

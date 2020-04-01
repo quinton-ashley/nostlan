@@ -313,7 +313,7 @@ module.exports = async function(arg) {
 			labels = ['Manual', 'ImgDir', 'Back'];
 			cui.getCur().addClass('no-outline');
 		} else if (state == 'libMain') {
-			labels = ['Play', 'Setup', 'Systems'];
+			labels = ['Play', 'Emu', 'Sys'];
 			cui.getCur(state).removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
 			labels = ['Texp', 'File', 'Back'];

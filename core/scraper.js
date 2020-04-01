@@ -167,7 +167,7 @@ class Scraper {
 				if (sys == 'arcade') {
 					await this.getImg(game, 'boxOpen');
 				} else if (prefs.ui.getExtraImgs || isTemplate) {
-					await this.getExtraImgs(game);
+					await this.getExtraImgs(game, recheckImgs);
 				}
 			}
 		}
@@ -187,12 +187,17 @@ class Scraper {
 		return games;
 	}
 
-	async getExtraImgs(game) {
-		let res = await this.getImg(game, 'boxOpen');
-		await this.getImg(game, 'boxOpenMask');
-		await this.getImg(game, 'manual');
-		await this.getImg(game, 'memory');
-		await this.getImg(game, 'memoryBack');
+	async getExtraImgs(game, recheckImgs) {
+		let res = this.imgExists(game, 'boxOpen');
+		// only check for images if boxOpen didn't exist
+		// or recheckImgs is true
+		if (!res || recheckImgs) {
+			res = await this.getImg(game, 'boxOpen');
+			await this.getImg(game, 'boxOpenMask');
+			await this.getImg(game, 'manual');
+			await this.getImg(game, 'memory');
+			await this.getImg(game, 'memoryBack');
+		}
 		return res;
 	}
 

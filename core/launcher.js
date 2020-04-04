@@ -24,8 +24,8 @@ class Launcher {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
-		if (win || (linux && /(cemu|rpcs3|bsnes)/.test(emu)) ||
-			(mac && /(mame|bsnes)/.test(emu))) {
+		if (win || (linux && /(cemu|rpcs3)/.test(emu)) ||
+			(mac && /(mame)/.test(emu))) {
 			emuDirPath = `${emuDir}/${sys}/${emu}`;
 			if (emu == 'citra') {
 				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
@@ -59,7 +59,9 @@ class Launcher {
 				if (emu == 'yuzu' && identify) emuAppPath += '-cmd';
 				emuAppPath += '.exe';
 			} else if (mac) {
-				if (emu == 'citra') {
+				if (emu == 'bsnes') {
+					emuAppPath += '_hd';
+				} else if (emu == 'citra') {
 					emuAppPath += `/nightly/${emuNameCases[1]}-qt`;
 				} else if (emu == 'yuzu') {
 					emuAppPath += '/' + emuNameCases[1];
@@ -181,13 +183,8 @@ class Launcher {
 				"--import",
 				"${game}",
 			];
-			// await spawn(cmdIcarus[0], cmdIcarus.slice(1), {
-			// 	cwd: ,
-			// 	stdio: 'inherit',
-			// 	detached: true
-			// });
 			cmdIcarus[3] = "--manifest";
-			if (mac || linux) cmdIcarus.unshift("wine");
+			if (mac || linux) cmdIcarus.unshift("wine64");
 			cmdArray = cmdIcarus;
 		}
 		for (let cmdArg of cmdArray) {
@@ -248,8 +245,12 @@ class Launcher {
 		});
 	}
 
-	async identifyGame(game) {
-		identify = true;
+	async identifyGame(game, attempt) {
+		if (typeof attempt == 'number') {
+			identify = attempt;
+		} else {
+			identify = 1;
+		}
 		let finished = false;
 		await this.launch(game);
 

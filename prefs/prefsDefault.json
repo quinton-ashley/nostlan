@@ -5,8 +5,8 @@
 		"name": "bsnes",
 		"app": {},
 		"cmd": {
-			"linux": ["wine", "${app}", "${game}"],
-			"mac": ["wine", "${app}", "${game}"],
+			"linux": ["${app}", "${game}"],
+			"mac": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		}
 	},
@@ -103,7 +103,7 @@
 		},
 		"cmd": {
 			"linux": ["wine", "${app}", "${game}"],
-			"mac": ["wine", "${app}", "${game}"],
+			"mac": ["wine64", "${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		}
 	},

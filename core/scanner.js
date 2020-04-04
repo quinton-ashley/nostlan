@@ -45,6 +45,7 @@ class Scanner {
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
+		// TODO exact match indexing for wii games with Dolphin using kb
 		// if (sys == 'wii' && kb) {
 		if (false) {
 			let app = await launcher.getEmuAppPath();
@@ -73,14 +74,12 @@ class Scanner {
 		}
 
 		let fuse, searcher;
-		if (sys != 'snes') {
-			fuse = new Fuse(gameDB, searcharg);
-			searcher = function(term) {
-				return new Promise((resolve, reject) => {
-					resolve(fuse.search(term));
-				});
-			};
-		}
+		fuse = new Fuse(gameDB, searcharg);
+		searcher = function(term) {
+			return new Promise((resolve, reject) => {
+				resolve(fuse.search(term));
+			});
+		};
 		for (let h = 0; h < prefs[emu].libs.length; h++) {
 			let files = await klaw(prefs[emu].libs[h], {
 				depthLimit: 0
@@ -116,25 +115,37 @@ class Scanner {
 				this.olog('file:   ' + term);
 				$('#loadDialog1').text(term);
 				await delay(1);
-				if (sys == 'snes') {
+
+				// exact match identification
+				if (sys == 'snes' || sys == 'switch') {
 					let game = {
 						title: term,
 						file: file
 					};
+					// gives the game an id or not if it fails
 					game = await launcher.identifyGame(game);
-					if (!game) continue;
-					if (sys == 'switch') {
-						game = gameDB.find(x => x.tid === game.tid);
-					} else {
-						game = gameDB.find(x => x.id === game.id);
+					if (!game.id && sys == 'snes' && win) {
+						// TODO if on Windows import the game
+						// get the proper manifest, then move the .sfc
+						// into the user's game lib
+						// game = await launcher.identifyGame(game, 2);
 					}
-					if (game.title) {
-						this.olog(`exact match:  ${game.title}\r\n`);
-						log(game);
-						game.file = '$' + h + '/' +
-							path.relative(prefs[emu].libs[h], file);
-						games.push(game);
-						continue;
+					if (game.id) {
+						let res;
+						if (sys == 'switch') {
+							res = gameDB.find(x => x.tid === game.tid);
+						} else {
+							res = gameDB.find(x => x.id === game.id);
+						}
+						if (res) {
+							game = res;
+							this.olog(`exact match:  ${game.title}\r\n`);
+							log(game);
+							game.file = '$' + h + '/' +
+								path.relative(prefs[emu].libs[h], file);
+							games.push(game);
+							continue;
+						}
 					}
 				}
 				// rpcs3 ignore games with these ids
@@ -148,7 +159,7 @@ class Scanner {
 					continue;
 				}
 				term = term.replace(/[\[\(,](En|Ja|Eu|Disc)[^\]\)]*[\]\)]*/gi, '');
-				// special complete subs part 1
+				// special complete substitutions part 1
 				if (sys == 'wii') {
 					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
 				} else if (sys == 'switch') {

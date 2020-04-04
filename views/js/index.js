@@ -298,23 +298,22 @@ module.exports = async function(arg) {
 				$('nav').height(cpHeight + 24);
 			}
 		}
-		let $cur = cui.getCur();
-		if ($cur.hasClass('selected')) {
-			fitCoverToScreen($cur, $cur.parent());
-		}
+		// let $cur = cui.getCur();
+		// if (cui.ui == 'coverSelect') {
+		// 	fitCoverToScreen($cur);
+		// }
 	};
 
 	cui.onChange = (state, subState, gamepadConnected) => {
 		let labels = [' ', ' ', ' '];
 		if (state == 'coverSelect') {
 			labels = ['Play', 'Flip', 'Back'];
-			cui.getCur().addClass('no-outline');
 		} else if (state == 'infoSelect') {
 			labels = ['Manual', 'ImgDir', 'Back'];
-			cui.getCur().addClass('no-outline');
+			$('#libMain').addClass('no-outline');
 		} else if (state == 'libMain') {
 			labels = ['Play', 'Emu', 'Sys'];
-			cui.getCur(state).removeClass('no-outline');
+			$('#libMain').removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
 			labels = ['Texp', 'File', 'Back'];
 		} else if (state == 'pauseMenu') {
@@ -425,32 +424,22 @@ module.exports = async function(arg) {
 		}
 	}
 
-	function fitCoverToScreen($cur, $reel) {
-		$reel.css('position', 'fixed');
-		$reel.css('transform', `scale(${$(window).height()/$cur.height()})`);
-		$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+	function fitCoverToScreen($cur) {
+		let $reel = $cur.parent();
+		let $menu = $reel.parent();
+		let idx = $menu.children().index($reel);
+		log('idx: ' + idx);
+		let scale = $(window).height() / $cur.height();
+		$menu.css('transform', '');
+		$menu.css('transform', `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`);
 	}
 
-	async function coverClicked() {
-		let $cur = cui.getCur('libMain');
-		if ($cur.hasClass('uie-disabled')) return false;
-		let $reel = $cur.parent();
-		$cur.toggleClass('selected');
-		$reel.toggleClass('selected');
-		$('.reel').toggleClass('bg');
-		// $('nav').toggleClass('gamestate');
-		if ($cur.hasClass('selected')) {
-			let gameSys = $cur.attr('class').split(/\s+/)[0];
-			cui.change('coverSelect', gameSys);
-			cui.scrollToCursor(500, 0);
-			fitCoverToScreen($cur, $reel);
-		} else {
-			cui.change('libMain', sysStyle);
-			$reel.css('position', '');
-			$reel.css('left', '');
-			$reel.css('transform', '');
+	cui.afterMove = () => {
+		if ((/select/i).test(cui.ui)) {
+			let $cur = cui.getCur();
+			fitCoverToScreen($cur);
+			cui.makeCursor($cur, 'libMain');
 		}
-		cui.resize(true);
 	}
 
 	function getCurGame() {
@@ -545,7 +534,13 @@ module.exports = async function(arg) {
 					await launcher.launch();
 				}
 			} else if (act == 'a' || !isBtn) {
-				await coverClicked();
+				let $cur = cui.getCur('libMain');
+				if ($cur.hasClass('uie-disabled')) return false;
+
+				let gameSys = $cur.attr('class').split(/\s+/)[0];
+				fitCoverToScreen($cur);
+				cui.scrollToCursor(500, 0);
+				cui.change('coverSelect', gameSys);
 			}
 		} else if (ui == 'coverSelect') {
 			if ((act == 'a' || !isBtn) && cui.getCur('libMain').attr('class') &&
@@ -573,7 +568,8 @@ module.exports = async function(arg) {
 				cui.change('infoSelect');
 				$('#libMain').hide();
 			} else if (act == 'b') {
-				await coverClicked();
+				cui.change('libMain', sysStyle);
+				$('#libMain').css('transform', '');
 			} else if (act == 'y') { // flip
 				let $cur = cui.getCur();
 				let ogHeight = $cur.height();
@@ -597,7 +593,9 @@ module.exports = async function(arg) {
 				$('#infoSelect').addClass('zoom-' + act);
 				cui.change(act);
 			} else {
-				await coverClicked();
+				$('#infoSelect').css('display', 'none');
+				cui.change('libMain', sysStyle);
+				$('#libMain').css('transform', '');
 			}
 		} else if ((/game/i).test(ui)) {
 			if (act != 'back' && act != 'b' && ui == 'gameMediaSelect') {
@@ -871,6 +869,8 @@ module.exports = async function(arg) {
 			// just using the template to store default box)
 			if (noBox && themes[_sys].default) {
 				boxImg = await scraper.imgExists(themes[_sys].default, 'box');
+			} else if (noBox) {
+				boxImg = await scraper.imgExists(themes[_sys].template, 'box');
 			}
 		}
 
@@ -892,7 +892,7 @@ module.exports = async function(arg) {
 		}
 
 		await getBoxImg();
-		if ((noBox && !isUnidentified) || (themes[_sys].default && isTemplate)) {
+		if ((noBox && !isUnidentified) || isTemplate) {
 			await getCoverImg();
 		}
 		if (hasNoImages) {
@@ -982,9 +982,14 @@ module.exports = async function(arg) {
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		games = await scraper.loadImages(games, themes, recheckImgs);
 		let cols = prefs.ui.maxColumns || 8;
-		if (games.length < 42) cols = 8;
-		if (games.length < 18) cols = 4;
-		if (games.length < 4) cols = 2;
+		if (sys == 'snes') {
+			if (games.length < 500) cols = 4;
+			if (games.length < 12) cols = 2;
+		} else {
+			if (games.length < 42) cols = 8;
+			if (games.length < 18) cols = 4;
+			if (games.length < 4) cols = 2;
+		}
 		$('style.gameViewerColsStyle').remove();
 		let $glv = $('#libMain');
 		let dynColStyle = '<style class="gameViewerColsStyle" type="text/css">' +

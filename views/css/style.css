@@ -18,6 +18,7 @@ html {
 	text-align: center;
 	user-select: none;
 }
+
 /*================Themes====================*/
 :root {
 	--cover-color: rgb(130, 130, 130);
@@ -27,14 +28,17 @@ html {
 	--button-border-color: #000;
 	--box-bg-color: #000;
 }
+
 @font-face {
 	font-family: handwriting0;
 	src: url("../../themes/fonts/edosz.ttf");
 }
+
 /*================General====================*/
 .hiddenRow {
 	padding: 0 !important;
 }
+
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -183,6 +187,7 @@ webview {
 	/* Support for IE. */
 	font-feature-settings: 'liga';
 }
+
 /*================Game Lib Viewer====================*/
 #libMain {
 	display: inline-flex;
@@ -255,15 +260,6 @@ img {
 	overflow: auto;
 }
 
-.reel .uie.selected {
-	z-index: 10;
-	opacity: 1 !important;
-}
-
-.reel.bg:not(.selected) {
-	z-index: -1;
-}
-
 .reel .uie {
 	height: auto;
 	width: 100%;
@@ -272,11 +268,6 @@ img {
 	transform: scale(.96);
 	line-height: 0;
 	font-size: 0;
-}
-
-.reel,
-.reel .uie {
-	transition: transform 1s, scale 1s, left 0.75s, opacity 0s, z-index 0s;
 }
 
 #dialogs {
@@ -348,6 +339,7 @@ game.flip .shade {
 img.coverFull {
 	background-color: var(--box-bg-color);
 }
+
 /*================Game Lib Viewer====================*/
 game .crop.cover,
 game .crop.coverFull {
@@ -368,6 +360,7 @@ game.flip img.coverFull {
 	width: 200.8%;
 	transform: translate(1.6%, 1%);
 }
+
 /*================Cover====================*/
 nav {
 	display: flex;
@@ -510,6 +503,7 @@ button:focus {
 ul.nav {
 	height: 100%;
 }
+
 /*================Misc====================*/
 .hide,
 .hide * {
@@ -540,6 +534,7 @@ ul.nav {
 .invis {
 	visibility: hidden;
 }
+
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
 	font-size: 18px;
@@ -556,6 +551,7 @@ ul.nav {
 .material-icons.md-48 {
 	font-size: 48px;
 }
+
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark {
 	color: rgba(0, 0, 0, 0.54);
@@ -564,6 +560,7 @@ ul.nav {
 .material-icons.md-dark.md-inactive {
 	color: rgba(0, 0, 0, 0.26);
 }
+
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light {
 	color: rgba(255, 255, 255, 1);

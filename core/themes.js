@@ -108,7 +108,7 @@ class Themes {
 						continue;
 					}
 				}
-				$('body').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+				$('#themeStyles').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
 			}
 		}
 	}

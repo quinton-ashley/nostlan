@@ -188,7 +188,7 @@ class Scraper {
 	}
 
 	async getExtraImgs(game, recheckImgs) {
-		let res = this.imgExists(game, 'boxOpen');
+		let res = await this.imgExists(game, 'boxOpen');
 		// only check for images if boxOpen didn't exist
 		// or recheckImgs is true
 		if (!res || recheckImgs) {

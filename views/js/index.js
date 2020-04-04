@@ -128,6 +128,7 @@ module.exports = async function(arg) {
 	async function intro() {
 		$('#dialogs').show();
 		await themes.loadFrame('intro');
+		$('#themeStyles link').remove();
 		await themes.applyStyle('colors');
 		await themes.applyStyle('theme');
 	}
@@ -298,10 +299,6 @@ module.exports = async function(arg) {
 				$('nav').height(cpHeight + 24);
 			}
 		}
-		// let $cur = cui.getCur();
-		// if (cui.ui == 'coverSelect') {
-		// 	fitCoverToScreen($cur);
-		// }
 	};
 
 	cui.onChange = (state, subState, gamepadConnected) => {
@@ -430,7 +427,6 @@ module.exports = async function(arg) {
 		let idx = $menu.children().index($reel);
 		log('idx: ' + idx);
 		let scale = $(window).height() / $cur.height();
-		$menu.css('transform', '');
 		$menu.css('transform', `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`);
 	}
 
@@ -958,7 +954,7 @@ module.exports = async function(arg) {
 			try {
 				while (col < cols) {
 					if (i < games.length * (col + 1) / cols) {
-						// temp code for hiding other game versions
+						// TODO temp code for hiding other game versions
 						// the ability to select different versions of MAME games
 						// aka "sets" will be added in the future
 						if (sys == 'arcade') {
@@ -967,6 +963,7 @@ module.exports = async function(arg) {
 								games[i - 1].img.box == games[i].img.box) break;
 						}
 						await addGameBox(games[i], col);
+						$('#loadDialog2').text(`${i+1}/${games.length} games`);
 						break;
 					}
 					col++;

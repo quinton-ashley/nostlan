@@ -303,13 +303,18 @@ module.exports = async function(arg) {
 
 	cui.onChange = (state, subState, gamepadConnected) => {
 		let labels = [' ', ' ', ' '];
-		if (state == 'coverSelect') {
+		if (state == 'boxSelect_1') {
 			labels = ['Play', 'Flip', 'Back'];
-		} else if (state == 'infoSelect') {
+			$('#libMain').show();
+		} else if (state == 'openBoxMenu_2') {
 			labels = ['Manual', 'ImgDir', 'Back'];
-			$('#libMain').addClass('no-outline');
+			$('#openBoxMenu_2').removeClass('zoom-gameManual');
+			$('#openBoxMenu_2').removeClass('zoom-gameMedia');
+			$('#openBoxMenu_2').removeClass('zoom-gameMemory');
+			$('#openBoxMenu_2').removeClass('zoom-gameTexp');
 		} else if (state == 'libMain') {
 			labels = ['Play', 'Emu', 'Sys'];
+			$('#libMain').css('transform', '');
 			$('#libMain').removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
 			labels = ['Texp', 'File', 'Back'];
@@ -368,7 +373,7 @@ module.exports = async function(arg) {
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
-		if (cui.ui == 'infoSelect') {
+		if (cui.ui == 'openBoxMenu_2') {
 			cui.makeCursor($('#gameMedia').eq(0));
 		}
 	}
@@ -478,7 +483,8 @@ module.exports = async function(arg) {
 		if (ui == 'playingBack' || launcher.state == 'running') {
 			return;
 		}
-		let onMenu = (/menu/gi).test(ui);
+		let onMenu = /menu/i.test(ui);
+		let onSelect = /select/i.test(ui);
 		if (act == 'quit') {
 			// don't try to sync saves on quit
 			// if there was an error
@@ -492,7 +498,7 @@ module.exports = async function(arg) {
 			app.quit();
 			return;
 		}
-		if (ui == 'libMain' || ui == 'coverSelect') {
+		if (ui == 'libMain' || ui == 'boxSelect_1') {
 			if (act == 'x') {
 				launchEmuWithGame = true;
 				if (syst.emus.length > 1) {
@@ -505,7 +511,7 @@ module.exports = async function(arg) {
 		}
 		if (act == 'start' && !onMenu) {
 			cui.change('pauseMenu');
-		} else if (act == 'b' && onMenu &&
+		} else if (act == 'b' && (onMenu || onSelect) &&
 			ui != 'donateMenu' && ui != 'setupMenu') {
 			cui.doAction('back');
 		} else if (act == 'select') {
@@ -523,24 +529,29 @@ module.exports = async function(arg) {
 				cui.change('sysMenu');
 			} else if (act == 'y') {
 				launchEmuWithGame = false;
-				if (syst.emus > 1) {
+				if (syst.emus.length > 1) {
 					cui.change('emuMenu');
 				} else {
 					// launch without a game
 					await launcher.launch();
 				}
 			} else if (act == 'a' || !isBtn) {
-				let $cur = cui.getCur('libMain');
+				let $cur = cui.getCur();
 				if ($cur.hasClass('uie-disabled')) return false;
 
 				let gameSys = $cur.attr('class').split(/\s+/)[0];
 				fitCoverToScreen($cur);
 				cui.scrollToCursor(500, 0);
-				cui.change('coverSelect', gameSys);
+				cui.change('boxSelect_1', gameSys);
 			}
-		} else if (ui == 'coverSelect') {
-			if ((act == 'a' || !isBtn) && cui.getCur('libMain').attr('class') &&
-				(await scraper.getExtraImgs(themes[cui.getCur('libMain').attr('class').split(/\s+/)[0] || sysStyle].template))) {
+		} else if (ui == 'boxSelect_1') {
+			let $cur = cui.getCur();
+			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
+				fitCoverToScreen($cur);
+				cui.makeCursor($cur, 'libMain');
+				cui.scrollToCursor();
+			} else if ((act == 'a' || !isBtn) && $cur.attr('class') &&
+				(await scraper.getExtraImgs(themes[$cur.attr('class').split(/\s+/)[0] || sysStyle].template))) {
 				// return;
 				// TODO finish open box menu
 				let game = getCurGame();
@@ -561,11 +572,8 @@ module.exports = async function(arg) {
 					mediaImg = await scraper.imgExists(template, mediaName);
 				}
 				$('#gameMedia').prop('src', mediaImg);
-				cui.change('infoSelect');
+				cui.change('openBoxMenu_2');
 				$('#libMain').hide();
-			} else if (act == 'b') {
-				cui.change('libMain', sysStyle);
-				$('#libMain').css('transform', '');
 			} else if (act == 'y') { // flip
 				let $cur = cui.getCur();
 				let ogHeight = $cur.height();
@@ -575,39 +583,25 @@ module.exports = async function(arg) {
 					cui.scrollToCursor(0, 0);
 				}
 			}
-		} else if (ui == 'infoSelect') {
-			if (act != 'b') {
-				if (act == 'x') act = 'Manual';
-				if (act == 'y') {
-					opn(await scraper.getImgDir(getCurGame()));
-					return;
-				}
-				if (act == 'a') act = 'Media';
-				if (!(/(memory|manual|media)/gi).test(act)) return;
-				act = act[0].toUpperCase() + act.substr(1);
-				act = 'game' + act + 'Select';
-				$('#infoSelect').addClass('zoom-' + act);
-				cui.change(act);
-			} else {
-				$('#infoSelect').css('display', 'none');
-				cui.change('libMain', sysStyle);
-				$('#libMain').css('transform', '');
+		} else if (ui == 'openBoxMenu_2') {
+			if (act == 'x') act = 'Manual';
+			if (act == 'y') {
+				opn(await scraper.getImgDir(getCurGame()));
+				return;
 			}
-		} else if ((/game/i).test(ui)) {
-			if (act != 'back' && act != 'b' && ui == 'gameMediaSelect') {
-				if (act == 'a' || act == 'media') {
-					$('#infoSelect').removeClass('zoom-' + ui);
-					cui.doAction('back');
-					cui.change('libMain');
-					await launcher.launch(getCurGame());
-				} else if (act == 'y') { // Texp
+			if (act == 'a') act = 'Media';
+			if (!(/(memory|manual|media)/gi).test(act)) return;
+			act = act[0].toUpperCase() + act.substr(1);
+			act = 'game' + act;
+			$('#openBoxMenu_2').addClass('zoom-' + act);
+			cui.change(act + 'Select_3');
+		} else if (ui == 'gameMediaSelect_3') {
+			if (act == 'a' || act == 'media') {
+				await launcher.launch(getCurGame());
+			} else if (act == 'y') { // Texp
 
-				} else if (act == 'x') { // File
-					opn(getCurGame().file);
-				}
-			} else if (act == 'b') {
-				$('#infoSelect').removeClass('zoom-' + ui);
-				cui.doAction('back');
+			} else if (act == 'x') { // File
+				opn(getCurGame().file);
 			}
 		} else if (ui == 'sysMenu' && !isBtn) {
 			// if (!emu) {

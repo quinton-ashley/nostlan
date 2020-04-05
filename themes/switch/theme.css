@@ -76,3 +76,14 @@ game.switch.flip .shade {
 	width: 1.5%;
 	left: 98.5%;
 }
+
+.switch #gameMedia {
+	width: 13vh;
+	height: 18.5vh;
+	transform: translate(202%, 126%);
+	border-radius: 10%;
+}
+
+.switch #openBoxMenu_2.zoom-gameMedia {
+	transform: scale(3)translate(-25%, -32%);
+}

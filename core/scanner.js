@@ -123,14 +123,16 @@ class Scanner {
 						file: file
 					};
 					// gives the game an id or not if it fails
-					game = await launcher.identifyGame(game);
+					try {
+						game = await launcher.identifyGame(game);
+					} catch (ror) {}
 					if (!game.id && sys == 'snes' && win) {
 						// TODO if on Windows import the game
 						// get the proper manifest, then move the .sfc
 						// into the user's game lib
 						// game = await launcher.identifyGame(game, 2);
 					}
-					if (game.id) {
+					if (game.id || (sys == 'switch' && game.tid)) {
 						let res;
 						if (sys == 'switch') {
 							res = gameDB.find(x => x.tid === game.tid);

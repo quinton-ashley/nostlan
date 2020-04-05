@@ -6,7 +6,7 @@
  */
 let child = require('child_process');
 
-identify = false;
+let identify = false;
 
 class Launcher {
 	constructor() {
@@ -19,7 +19,7 @@ class Launcher {
 	async getEmuAppPath(attempt) {
 		if (!attempt) attempt = 0;
 		let emuAppPath = util.absPath(prefs[emu].app);
-		if (emuAppPath && await fs.exists(emuAppPath)) {
+		if (emuAppPath && !identify && await fs.exists(emuAppPath)) {
 			return emuAppPath;
 		}
 		emuAppPath = '';
@@ -129,6 +129,10 @@ class Launcher {
 		let emuAppPath;
 		if (identify && sys == 'snes') {
 			emuAppPath = __root + '/bin/icarus/icarus.exe';
+		} else if (identify && sys == 'snes') {
+			emuAppPath = await this.getEmuAppPath();
+			let f = path.parse(emuAppPath);
+			emuAppPath = f.dir + f.base + '-cmd' + f.ext;
 		} else {
 			emuAppPath = await this.getEmuAppPath();
 		}
@@ -254,39 +258,48 @@ class Launcher {
 		let finished = false;
 		await this.launch(game);
 
-		return new Promise((resolve, reject) => {
-			let out = '';
-			let id = '';
+		return await Promise.race([
+			new Promise((resolve, reject) => {
+				let out = '';
 
-			function idGame() {
-				if (emu == 'yuzu' &&
-					(id = /title_id=(\w{16})/.exec(out))) {
-					game.tid = id[1];
-					if (this.state == 'running') this.close();
-				}
-				if (sys == 'snes') {
-					let m = /game(\n[^\n]*){3}\n[^:]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)/.exec(out);
-					if (m) {
+				let idGame = () => {
+					if (finished) return;
+					let m;
+					if (emu == 'yuzu' &&
+						(m = /title_id=(\w{16})/.exec(out))) {
+
+						game.tid = m[1];
+
+					} else if (sys == 'snes' &&
+						(m = /game(\n[^\n]*){3}\n[^:]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)/.exec(out))) {
+
 						game.id = `${m[2]}-${m[3]}`;
+
+					} else {
+						return;
 					}
+					finished = true;
+					this.close();
+					resolve(game);
 				}
-				resolve(game);
-				finished = true;
-			}
 
-			this.child.stdout.on('data', (data) => {
-				if (this.state == 'closing' || finished) return;
-				out += data.toString();
-				log(out);
-				idGame();
-			});
+				let parseData = (data) => {
+					if (this.state == 'closing' || finished) return;
+					out += data.toString();
+					idGame();
+				}
 
-			this.child.on('close', (code) => {
-				this._close(code);
-				if (finished) return;
-				idGame();
-			});
-		});
+				this.child.stdout.on('data', parseData);
+				this.child.stderr.on('data', parseData);
+
+				this.child.on('close', (code) => {
+					this._close(code);
+					if (!finished) idGame();
+					if (!finished) reject();
+				});
+			}),
+			delay.reject(3000)
+		]);
 	}
 
 	reset() {
@@ -300,25 +313,25 @@ class Launcher {
 	}
 
 	_close(code) {
-		log(`emulator closed`);
 		cui.disableSticks = false;
-		if (this.state == 'resetting') {
-			this._launch();
-			return;
-		}
 		if (!identify) {
+			log(`emulator closed`);
+			if (this.state == 'resetting') {
+				this._launch();
+				return;
+			}
 			$('#libMain').show();
 			cui.hideDialogs();
 			let $cur = cui.getCur('libMain');
 			if ($cur.hasClass('selected')) {
-				cui.change('coverSelect');
+				cui.change('boxSelect_1');
 				let $reel = $cur.parent();
 				$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
 			} else if (cui.ui != 'libMain') {
 				cui.change('libMain');
 			}
 		}
-		if (code) {
+		if (!identify && code) {
 			let erMsg = `${prefs[emu].name} crashed!  If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator.  Search the internet for instructions on how to fully setup ${prefs[emu].name}.\n<code>`;
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
@@ -327,9 +340,11 @@ class Launcher {
 			erMsg += '</code>';
 			cui.err(erMsg, code);
 		}
-		log('exited with code ' + code);
-		electron.getCurrentWindow().focus();
-		electron.getCurrentWindow().setFullScreen(true);
+		if (!identify) {
+			log('exited with code ' + code);
+			electron.getCurrentWindow().focus();
+			electron.getCurrentWindow().setFullScreen(true);
+		}
 		this.state = 'closed';
 	}
 }

@@ -60,7 +60,7 @@ game {
 	animation-timing-function: linear;
 }
 
-#infoSelect {
+#openBoxMenu_2 {
 	z-index: 10;
 	position: fixed;
 	top: 0;
@@ -106,7 +106,7 @@ game {
 	transform: translate(-50%);
 }
 
-#infoSelect .row-y * {
+#openBoxMenu_2 .row-y * {
 	position: fixed;
 	z-index: 11;
 	top: 50%;

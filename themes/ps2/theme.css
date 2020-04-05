@@ -139,7 +139,7 @@ game.ps2.flip .shade {
 	transform: translate(78%, -209%);
 }
 
-.ps2 .zoom-gameMemorySelect {
+.ps2 .zoom-gameMemory {
 	transform: translate(-104vh, -110vh) rotate(90deg) scale(3);
 }
 
@@ -148,6 +148,6 @@ game.ps2.flip .shade {
 	transform: translate(8.5%, -29%);
 }
 
-.ps2 .zoom-gameMediaSelect {
+.ps2 .zoom-gameMedia {
 	transform: translate(-55vh, -20.7vh) scale(1.55);
 }

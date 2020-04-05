@@ -139,7 +139,7 @@ game.ps3.flip .shade {
 	transform: translate(78%, -209%);
 }
 
-.ps3 .zoom-gameMemorySelect {
+.ps3 .zoom-gameMemory {
 	transform: translate(-104vh, -110vh) rotate(90deg) scale(3);
 }
 
@@ -148,6 +148,6 @@ game.ps3.flip .shade {
 	transform: translate(8.5%, -29%);
 }
 
-.ps3 .zoom-gameMediaSelect {
+.ps3 .zoom-gameMedia {
 	transform: translate(-55vh, -20.7vh) scale(1.55);
 }

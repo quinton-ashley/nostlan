@@ -124,18 +124,18 @@ game.wii.flip .shade {
 	transform: translate(-119%, -50%);
 }
 
-.wii .zoom-gameManualSelect {
+.wii .zoom-gameManual {
 	transform: translate(34vh, 0vh) scale(1);
 }
 
-.wii .zoom-gameMediaSelect {
+.wii .zoom-gameMedia {
 	transform: translate(-59vh, 0vh) scale(1.6);
 }
 
-.wii .zoom-gameMemorySelect {
+.wii .zoom-gameMemory {
 	transform: translate(-52vh, 140vh) scale(4);
 }
 
-.wii .zoom-gameTexpSelect {
+.wii .zoom-gameTexp {
 	transform: translate(34vh, 0vh) scale(1);
 }

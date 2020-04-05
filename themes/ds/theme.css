@@ -82,7 +82,7 @@ game.ds .file.label {
 	top: 70%;
 }
 
-.ds #infoSelect {
+.ds #openBoxMenu_2 {
 	transform: scale(.6);
 }
 
@@ -97,18 +97,18 @@ game.ds .file.label {
 	border-radius: 0;
 }
 
-.ds #infoSelect.zoom-gameManualSelect {
+.ds #openBoxMenu_2.zoom-gameManual {
 	transform: translate(48vh, -4vh) scale(1.17);
 }
 
-.ds #infoSelect.zoom-gameMediaSelect {
+.ds #openBoxMenu_2.zoom-gameMedia {
 	transform: translate(-95vh, -24vh) scale(2);
 }
 
-.ds #infoSelect.zoom-gameMemorySelect {
+.ds #openBoxMenu_2.zoom-gameMemory {
 	transform: translate(-146vh, 129vh) scale(4);
 }
 
-.ds #infoSelect.zoom-gameTexpSelect {
+.ds #openBoxMenu_2.zoom-gameTexp {
 	transform: translate(34vh, 0vh) scale(1);
 }

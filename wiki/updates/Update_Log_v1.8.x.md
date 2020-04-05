@@ -1,8 +1,8 @@
-Nostlan is an open source _high quality_ front-end launcher for video game emulators! Available on Linux, macOS, and Windows. Supports Dolphin, Cemu, Yuzu, mGBA, melonDS, Citra, MAME, PCSX2, RPCS3, and Xenia.
+Nostlan is an open source _high quality_ front-end launcher for video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, Switch, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, Ryujinx, Xenia, and Yuzu.
 
-[Download the latest version of Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount of money is appreciated. [Support the development of Nostlan on patreon](https://www.patreon.com/qashto) to gain access to premium features!
+[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount is appreciated. [Support the development of Nostlan on patreon](https://www.patreon.com/nostlan) to gain access to premium features!
 
-This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read the full overview.](https://github.com/quinton-ashley/nostlan/blob/master/README.md)
+This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read about its features and look at screenshots on the readme page.](https://github.com/quinton-ashley/nostlan/blob/master/README.md)
 
 <p><a href="https://www.patreon.com/qashto">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
@@ -10,31 +10,35 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read th
 
 ## Update Summary for v1.8.x
 
+SNES game library support added, with bsnes as the default emulator. Support for alternate emulators! Switch games can be played with yuzu (default) or ryujinx . DS games can be played with melonDS (default) or DeSmuME.
+
 #### Emulators
 
-- bsnes support (SNES emulator)
+- SNES game lib support with bsnes as the default emulator (bsnes-hd on macOS)
 - Ryujinx support (alt Switch emulator that can run 32bit games)
 - running Yuzu without a game will run the maintenancetool updater
 
-#### User Interface
+#### User Experience
 
-- fixed scroll stuttering!
+- the readme page was way too long, I broke it up into wiki pages. I've put a good amount of effort into documenting Nostlan on the wiki. I hope you find it helpful!
 - mouse hides automatically when using a controller, reappears when moved
+- fixed scroll stuttering by completely replacing the old scrolling mechanics with a better method for achieving the same aesthetic results
 - improved error checking
-- unidentified games and games with no cover art will now be shown with handwritten labels that can be edited!
-- On the game library view, clicking "Systems" will open a submenu where you can choose to load another system's game library. "Play" starts the emulator with the game that the cursor is on. "Setup" will start the emulator without a game so you can update the emulator, setup controllers, etc.
+- unidentified games and games with no cover art will now be shown with handwritten labels that can be edited! Older versions of Nostlan ignored them.
+- More intuitive UI labelling. On the game library view, clicking "Sys", short for systems, will open a submenu where you can choose to load another system's game library. Clicking "Play" starts the emulator with the game that the cursor is on. Clicking "Emu", short for emulator(s), will start the emulator without a game so you can update the emulator, setup controllers, etc. In previous versions the labels on the library view were "Power", "Reset", and "Open" just like on a GameCube which aesthetically looked cool but it's just a terrible way to label the functions of those buttons and I should've changed it sooner.
 
 #### Development
 
 - updated open source license to GNU GPLv3
-- contro-ui (my controller ui framework) now uses numbered submenus
+- contro-ui (my controller ui framework) now uses hierarchal submenus, replaced a lot of bodge code
 
 ## Coming Soon
 
 #### Emulators
 
-- PPSSPP support (PSP emulator)
+- PSP game lib support with PPSSPP as the default emulator
 - snes9x support (alt SNES emulator)
+- Dreamcast game lib support with Redream as the default emulator
 
 #### User Interface
 
@@ -110,11 +114,13 @@ When you load this update Nostlan will attempt to reorganize the default paths t
     │ └─┬ 📁 games
     │   └── 💿 Mario Kart 8/code/Turbo.rpx
     └─┬ 📁 xbox360
-    	├─┬ 📁 xenia
-    	│ └── 🎮 xenia.exe
-    	└─┬ 📁 games
-      	├── 💿 Halo 4 (disc a).iso
-      	└── 💿 Halo 4 (disc b).iso
+      ├─┬ 📁 xenia
+      │ └── 🎮 xenia.exe
+      └─┬ 📁 games
+        ├── 💿 Halo 4 (disc a).iso
+        └── 💿 Halo 4 (disc b).iso
+
+Due to these huge changes, v1.8.x breaks compatibility with older versions of Nostlan. No going back!
 
 ## Let me know what you think about Nostlan
 
@@ -144,7 +150,3 @@ Support on Patreon:
 
 Donate via Paypal:  
 <https://www.paypal.me/qashto/20>
-
-<p><a href="https://www.patreon.com/qashto">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
-</a></p>

@@ -373,7 +373,8 @@ module.exports = async function(arg) {
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
-		if (cui.ui == 'openBoxMenu_2') {
+		if (cui.ui == 'openBoxMenu_2' &&
+			!cui.isParent(cui.ui, cui.uiPrev)) {
 			cui.makeCursor($('#gameMedia').eq(0));
 		}
 	}
@@ -1023,6 +1024,9 @@ module.exports = async function(arg) {
 		});
 
 		cui.addView('libMain', {
+			hoverCurDisabled: true
+		});
+		cui.addView('openBoxMenu_2', {
 			hoverCurDisabled: true
 		});
 		$('#view').css('margin-top', '20px');

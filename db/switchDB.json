@@ -49,7 +49,8 @@
 			"tid": "0100152000022000"
 		}, {
 			"id": "AABQA",
-			"title": "ARMS"
+			"title": "ARMS",
+			"tid": "01009B500007C000"
 		}, {
 			"id": "AACAA",
 			"title": "Makai Senki Disgaea 5"
@@ -196,7 +197,8 @@
 			"title": "Steamworld Dig 2"
 		}, {
 			"id": "ACBAA",
-			"title": "Animal Crossing: New Horizons"
+			"title": "Animal Crossing: New Horizons",
+			"tid": "01006F8002326000"
 		}, {
 			"id": "ACC2A",
 			"title": "Resident Evil: Revelations Collection"
@@ -252,7 +254,8 @@
 			"tid": "010059C002AC2000"
 		}, {
 			"id": "ACVKA",
-			"title": "Rayman Legends: Definitive Edition"
+			"title": "Rayman Legends: Definitive Edition",
+			"tid": "01005FF002E2A000"
 		}, {
 			"id": "ACVKB",
 			"title": "Rayman Origins: Definitive Edition"
@@ -370,16 +373,18 @@
 		}, {
 			"id": "ADFJA",
 			"title": "Super Mario Party",
+			"tid": "010036B0034E4000",
 			"img": {
 				"box": "https://images-na.ssl-images-amazon.com/images/I/81O3ChgymRL.jpg"
-			},
-			"tid": "010036B0034E4000"
+			}
 		}, {
 			"id": "ADFUA",
-			"title": "Nintendo Labo: Toy-Con 01: Variety Kit"
+			"title": "Nintendo Labo: Toy-Con 01: Variety Kit",
+			"tid": "0100C4B0034B2000"
 		}, {
 			"id": "ADFVA",
-			"title": "Nintendo Labo: Toy-Con 02: Robot Kit"
+			"title": "Nintendo Labo: Toy-Con 02: Robot Kit",
+			"tid": "01009AB0034E0000"
 		}, {
 			"id": "ADFWA",
 			"title": "Nintendo Labo: Toy-Con 03: Vehicle Kit"
@@ -797,7 +802,8 @@
 			"tid": "01008B8004E36000"
 		}, {
 			"id": "AG3JA",
-			"title": "Luigi's Mansion 3"
+			"title": "Luigi's Mansion 3",
+			"tid": "0100DCA0064A6000"
 		}, {
 			"id": "AG72A",
 			"title": "Gal Metal!"
@@ -1108,12 +1114,14 @@
 		}, {
 			"id": "AK6JA",
 			"title": "Street Fighter: 30th Anniversary Collection",
+			"tid": "0100024008310000",
 			"img": {
 				"box": "https://images-na.ssl-images-amazon.com/images/I/81kgcZ5lUmL.jpg"
 			}
 		}, {
 			"id": "AK6JB",
 			"title": "Street Fighter: 30th Anniversary Collection International",
+			"tid": "0100024008310000",
 			"img": {
 				"box": "https://images-na.ssl-images-amazon.com/images/I/81kgcZ5lUmL.jpg"
 			}
@@ -1252,10 +1260,10 @@
 		}, {
 			"id": "ALERA",
 			"title": "Mario Tennis Aces",
+			"tid": "0100BDE00862A000",
 			"img": {
 				"box": "https://images-na.ssl-images-amazon.com/images/I/91TvX36nF-L.jpg"
-			},
-			"tid": "0100BDE00862A000"
+			}
 		}, {
 			"id": "ALF3A",
 			"title": "Saturday Morning RPG",
@@ -1338,6 +1346,7 @@
 		}, {
 			"id": "AM7SA",
 			"title": "Ōkami HD",
+			"tid": "0100F10009870000",
 			"img": {
 				"cover": "https://images-na.ssl-images-amazon.com/images/I/919I8yMJTUL.jpg"
 			}
@@ -2270,6 +2279,7 @@
 		}, {
 			"id": "AR3NA",
 			"title": "The Legend of Zelda: Link's Awakening",
+			"tid": "01006BB00C6F0000",
 			"img": {
 				"box": "https://images-na.ssl-images-amazon.com/images/I/71u6nI9eAcL.jpg"
 			}
@@ -2676,7 +2686,8 @@
 			"title": "AI The Somnium Files"
 		}, {
 			"id": "AST4A",
-			"title": "Crash Team Racing Nitro-Fueled"
+			"title": "Crash Team Racing Nitro-Fueled",
+			"tid": "0100F9F00C696000"
 		}, {
 			"id": "AST4B",
 			"title": "Crash Bandicoot Racing Buttobi Nitro"
@@ -2721,7 +2732,8 @@
 			"title": "Spyro Reignited Trilogy"
 		}, {
 			"id": "AT6CB",
-			"title": "Super Monkey Ball: Banana Blitz HD"
+			"title": "Super Monkey Ball: Banana Blitz HD",
+			"tid": "0100B2A00E1E0000"
 		}, {
 			"id": "AT7FA",
 			"title": "Ghost Parade"
@@ -2946,7 +2958,8 @@
 			"title": "Mario + Rabbids: Kingdom Battle"
 		}, {
 			"id": "BAAQA",
-			"title": "Super Mario Maker 2"
+			"title": "Super Mario Maker 2",
+			"tid": "01009B90006DC000"
 		}, {
 			"id": "BAARA",
 			"title": "Skylanders: Imaginators"

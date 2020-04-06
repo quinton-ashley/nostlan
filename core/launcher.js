@@ -19,7 +19,7 @@ class Launcher {
 	async getEmuAppPath(attempt) {
 		if (!attempt) attempt = 0;
 		let emuAppPath = util.absPath(prefs[emu].app);
-		if (emuAppPath && !identify && await fs.exists(emuAppPath)) {
+		if (emuAppPath && await fs.exists(emuAppPath)) {
 			return emuAppPath;
 		}
 		emuAppPath = '';
@@ -93,7 +93,7 @@ class Launcher {
 				(linux && !(/(cemu|yuzu|rpcs3)/).test(emu)) ||
 				await fs.exists(emuAppPath)
 			) {
-				prefs[emu].app = emuAppPath;
+				if (!identify) prefs[emu].app = emuAppPath;
 				return emuAppPath;
 			}
 		}
@@ -115,7 +115,7 @@ class Launcher {
 			cui.err('app path not valid: ' + emuAppPath);
 			return '';
 		}
-		prefs[emu].app = emuAppPath;
+		if (!identify) prefs[emu].app = emuAppPath;
 		return emuAppPath;
 	}
 
@@ -129,10 +129,11 @@ class Launcher {
 		let emuAppPath;
 		if (identify && sys == 'snes') {
 			emuAppPath = __root + '/bin/icarus/icarus.exe';
-		} else if (identify && sys == 'snes') {
+		} else if (identify && sys == 'switch') {
 			emuAppPath = await this.getEmuAppPath();
 			let f = path.parse(emuAppPath);
-			emuAppPath = f.dir + f.base + '-cmd' + f.ext;
+			emuAppPath = f.dir + '/' + f.name + '-cmd' + f.ext;
+			log(emuAppPath);
 		} else {
 			emuAppPath = await this.getEmuAppPath();
 		}
@@ -147,7 +148,7 @@ class Launcher {
 				emuAppPath = 'org.citra.citra-canary'
 			}
 		}
-		log(emu);
+		if (!identify) log(emu);
 		let cmdArray = prefs[emu].cmd[osType];
 
 		let gameFile;
@@ -212,14 +213,14 @@ class Launcher {
 
 		if (!identify && game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
-			cui.change('playingBack');
+			cui.change('playingBack_1');
 			$('#libMain').hide();
 			$('#dialogs').show();
 			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
 			if (game) $('#loadDialog1').text(game.title);
 		}
-		log(this.cmdArgs);
-		log(this.emuDirPath);
+		if (!identify) log(this.cmdArgs);
+		if (!identify) log(this.emuDirPath);
 		this._launch();
 		if ((win || linux) && emu == 'yuzu' && kb) {
 			await delay(1500);

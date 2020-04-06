@@ -12,7 +12,7 @@ const idRegex = {
 	gba: /(?:^|[\[\(])([A-Z0-9]{8})(?:[\]\)]|$)/,
 	ps2: /(?:^|[\[\(])([A-Z]{4}-[0-9]{5})(?:[\]\)]|$)/,
 	ps3: /(?:^|[\[\(])(\w{9})(?:[\]\)]|_INSTALL|$)/,
-	switch: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]))(?:[\]\)]|$)/,
+	switch: /(?:^|[\[\(])([0-9A-F]{16})(?:[\]\)]|$)/,
 	wii: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
 	wiiu: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
 	xbox360: /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/,
@@ -116,7 +116,49 @@ class Scanner {
 				$('#loadDialog1').text(term);
 				await delay(1);
 
-				// exact match identification
+				// rpcs3 ignore games with these ids
+				if (term == 'TEST12345' || term == 'RPSN00001') continue;
+				// eliminations part 1
+				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
+				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
+				term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
+				term = term.replace(/[\[\(] *Torrent[^\]\)]*[\]\)]/gi, '');
+				if ((/Disc *[^1A ]/gi).test(term)) {
+					log('additional disc: ' + term);
+					continue;
+				}
+				term = term.replace(/[\[\(,](En|Ja|Eu|Disc)[^\]\)]*[\]\)]*/gi, '');
+				// special complete substitutions part 1
+				if (sys == 'wii') {
+					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
+				}
+				term = term.replace(/s*m *64n*/gi, 'Super Mario 64');
+				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
+				// exact match by checking if the id is in the file name
+				if (idRegex[sys]) id = term.match(idRegex[sys]);
+				if (id) {
+					id = id[1];
+					log('id: ' + id);
+					let game;
+					if (sys != 'switch') {
+						game = gameDB.find(x => x.id === id);
+					} else {
+						game = gameDB.find(x => x.tid === id);
+					}
+					if (game) {
+						if (sys == 'ps3') {
+							let dup = games.find(x => x.title === game.title);
+							if (dup) continue;
+						}
+						this.olog(`exact match:  ${game.title}\r\n`);
+						log(game);
+						game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
+						games.push(game);
+						continue;
+					}
+				}
+				// exact match identification by retreiving the id
+				// from the game file
 				if (sys == 'snes' || sys == 'switch') {
 					let game = {
 						title: term,
@@ -134,10 +176,12 @@ class Scanner {
 					}
 					if (game.id || (sys == 'switch' && game.tid)) {
 						let res;
-						if (sys == 'switch') {
-							res = gameDB.find(x => x.tid === game.tid);
-						} else {
+						if (sys != 'switch') {
+							log('id: ' + game.id);
 							res = gameDB.find(x => x.id === game.id);
+						} else {
+							log('id: ' + game.tid);
+							res = gameDB.find(x => x.tid === game.tid);
 						}
 						if (res) {
 							game = res;
@@ -148,44 +192,6 @@ class Scanner {
 							games.push(game);
 							continue;
 						}
-					}
-				}
-				// rpcs3 ignore games with these ids
-				if (term == 'TEST12345' || term == 'RPSN00001') continue;
-				// eliminations part 1
-				term = term.replace(/[\[\(](USA|World)[\]\)]/gi, '');
-				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
-				term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
-				if ((/Disc *[^1A ]/gi).test(term)) {
-					log('additional disc: ' + term);
-					continue;
-				}
-				term = term.replace(/[\[\(,](En|Ja|Eu|Disc)[^\]\)]*[\]\)]*/gi, '');
-				// special complete substitutions part 1
-				if (sys == 'wii') {
-					term = term.replace(/ssbm/gi, 'Super Smash Bros. Melee');
-				} else if (sys == 'switch') {
-					if (/Banana Blitz HD/gi.test(term)) term = 'AT6CB';
-					if (/Link[^s]*s Awakening/gi.test(term)) term = 'AR3NA';
-				}
-				term = term.replace(/s*m *64n*/gi, 'Super Mario 64');
-				term = term.replace(/mk(\d+)/gi, 'Mario Kart $1');
-				// special check for ids
-				if (idRegex[sys]) id = term.match(idRegex[sys]);
-				if (id) {
-					id = id[1];
-					log(id);
-					let game = gameDB.find(x => x.id === id);
-					if (game) {
-						if (sys == 'ps3') {
-							let dup = games.find(x => x.title === game.title);
-							if (dup) continue;
-						}
-						this.olog(`exact match:  ${game.title}\r\n`);
-						log(game);
-						game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
-						games.push(game);
-						continue;
 					}
 				}
 				// replacements
@@ -224,7 +230,8 @@ class Scanner {
 				term = term.replace(/paper *mario[^\: ]/gi, 'Paper Mario');
 				term = term.replace(/paper *mario *the/gi, 'Paper Mario: The');
 				// eliminations part 3
-				term = term.replace(/[\[\(]*(v*\d+\.|rev *\d).*/gi, '');
+				term = term.replace(/[\[\(]*((v|ver|version)* *\d+\.|rev *\d).*/gi, '');
+				term = term.replace(/[\[\(](v|ver|version) *[\d\.]+.*/gi, '');
 				term = term.replace(/\[[^\]]*\]/g, '');
 				term = term.replace(/ *decrypted */gi, '');
 

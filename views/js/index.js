@@ -191,7 +191,7 @@ module.exports = async function(arg) {
 	async function loadGameLib() {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
-		cui.change('loading', sysStyle);
+		cui.change('loading_1', sysStyle);
 		let ld0 = `loading your ${syst.fullName} game library`;
 		$('#loadDialog0').text(ld0);
 		emu = syst.emus[0];
@@ -368,8 +368,9 @@ module.exports = async function(arg) {
 	}
 
 	cui.afterChange = () => {
-		if ((cui.uiPrev == 'loading' || cui.uiPrev == 'playingBack' || cui.uiPrev == 'errMenu') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
+		if ((cui.uiPrev == 'loading_1' || cui.uiPrev == 'playingBack_1' || cui.uiPrev == 'errMenu') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
+			if (!$cur.length) $cur = $('#' + games[0].id).eq(0);
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
@@ -395,7 +396,7 @@ module.exports = async function(arg) {
 			return;
 		}
 		// log(act + ' held for ' + timeHeld);
-		if (cui.ui == 'playingBack' && launcher.state == 'running') {
+		if (cui.ui == 'playingBack_1' && launcher.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
@@ -481,7 +482,7 @@ module.exports = async function(arg) {
 	cui.onAction = async function(act, isBtn) {
 		let ui = cui.ui;
 		log(act + ' on ' + ui);
-		if (ui == 'playingBack' || launcher.state == 'running') {
+		if (ui == 'playingBack_1' || launcher.state == 'running') {
 			return;
 		}
 		let onMenu = /menu/i.test(ui);
@@ -540,7 +541,8 @@ module.exports = async function(arg) {
 				let $cur = cui.getCur();
 				if ($cur.hasClass('uie-disabled')) return false;
 
-				let gameSys = $cur.attr('class').split(/\s+/)[0];
+				let gameSys = $cur.attr('class');
+				if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 				fitCoverToScreen($cur);
 				cui.scrollToCursor(500, 0);
 				cui.change('boxSelect_1', gameSys);

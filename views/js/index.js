@@ -146,7 +146,7 @@ module.exports = async function(arg) {
 		for (let file of files) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
-			if (fileName == 'setupMenu') {
+			if (fileName == 'setupMenu_1') {
 				data = util.osmd(data);
 			}
 			data = data.replace(/\t/g, '  ');
@@ -161,15 +161,15 @@ module.exports = async function(arg) {
 			await createTemplate();
 		}
 		// currently supported systems
-		let sysMenu = 'h1 Select a System\n';
+		let sysMenu_1 = 'h1 Select a System\n';
 		let i = 0;
 		for (let _sys in systems) {
-			if (i % 2 == 0) sysMenu += `.row.row-x\n`;
-			sysMenu += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
+			if (i % 2 == 0) sysMenu_1 += `.row.row-x\n`;
+			sysMenu_1 += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
 			i++;
 		}
 		delete i;
-		$('#sysMenu').append(pug(sysMenu));
+		$('#sysMenu_1').append(pug(sysMenu_1));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
 		}
@@ -205,7 +205,7 @@ module.exports = async function(arg) {
 		}
 		if (games.length == 0) {
 			if (!emuDir) {
-				cui.change('setupMenu');
+				cui.change('setupMenu_1');
 				await removeIntro(0);
 				return;
 			}
@@ -222,7 +222,7 @@ module.exports = async function(arg) {
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu');
+					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu_1');
 					return;
 				}
 				gameLibDir = await dialog.selectDir(`select ${sys} game directory`);
@@ -235,7 +235,7 @@ module.exports = async function(arg) {
 				); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.err(`Game library has no game files`, 404, 'sysMenu');
+					cui.err(`Game library has no game files`, 404, 'sysMenu_1');
 					return;
 				}
 				gameLibDir = await dialog.selectDir(`select ${syst.name} game directory`);
@@ -252,7 +252,7 @@ module.exports = async function(arg) {
 					prefs[emu].libs.push(gameLibDir);
 				}
 			} else {
-				cui.err(`Couldn't load game library`, 404, 'sysMenu');
+				cui.err(`Couldn't load game library`, 404, 'sysMenu_1');
 				await loadGameLib();
 				return;
 			}
@@ -273,13 +273,13 @@ module.exports = async function(arg) {
 		}
 		await viewerLoad();
 
-		cui.removeView('emuMenu');
-		let emuMenu = 'h1 Select an Emulator\n';
+		cui.removeView('emuMenu_1');
+		let emuMenu_1 = 'h1 Select an Emulator\n';
 		for (let _emu of syst.emus) {
-			emuMenu += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
+			emuMenu_1 += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
 		}
-		$('#emuMenu').append(pug(emuMenu));
-		cui.addView('emuMenu');
+		$('#emuMenu_1').append(pug(emuMenu_1));
+		cui.addView('emuMenu_1');
 
 		await removeIntro();
 		cui.change('libMain', sysStyle);
@@ -318,7 +318,7 @@ module.exports = async function(arg) {
 			$('#libMain').removeClass('no-outline');
 		} else if (state == 'gameMediaSelect') {
 			labels = ['Texp', 'File', 'Back'];
-		} else if (state == 'pauseMenu') {
+		} else if (state == 'pauseMenu_1') {
 			labels = ['Quit', 'Mini', 'Back'];
 		} else if (/(game|menu)/i.test(state)) {
 			labels = [' ', ' ', 'Back'];
@@ -461,7 +461,7 @@ module.exports = async function(arg) {
 			return;
 		}
 		if (!prefs.saves) {
-			cui.change('addSavesPathMenu');
+			cui.change('addSavesPathMenu_2');
 			return;
 		}
 		await intro();
@@ -504,7 +504,7 @@ module.exports = async function(arg) {
 			if (act == 'x') {
 				launchEmuWithGame = true;
 				if (syst.emus.length > 1) {
-					cui.change('emuMenu');
+					cui.change('emuMenu_1');
 				} else {
 					await launcher.launch(getCurGame());
 				}
@@ -512,14 +512,14 @@ module.exports = async function(arg) {
 			}
 		}
 		if (act == 'start' && !onMenu) {
-			cui.change('pauseMenu');
+			cui.change('pauseMenu_1');
 		} else if (act == 'b' && (onMenu || onSelect) &&
-			ui != 'donateMenu' && ui != 'setupMenu') {
+			ui != 'donateMenu' && ui != 'setupMenu_1') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu_1 .uie[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu_2 .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text('auto-hide cover overlay');
@@ -528,11 +528,11 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'libMain') {
 			if (act == 'b' && !onMenu) {
-				cui.change('sysMenu');
+				cui.change('sysMenu_1');
 			} else if (act == 'y') {
 				launchEmuWithGame = false;
 				if (syst.emus.length > 1) {
-					cui.change('emuMenu');
+					cui.change('emuMenu_1');
 				} else {
 					// launch without a game
 					await launcher.launch();
@@ -606,7 +606,7 @@ module.exports = async function(arg) {
 			} else if (act == 'x') { // File
 				opn(getCurGame().file);
 			}
-		} else if (ui == 'sysMenu' && !isBtn) {
+		} else if (ui == 'sysMenu_1' && !isBtn) {
 			// if (!emu) {
 			// 	return;
 			// }
@@ -615,13 +615,13 @@ module.exports = async function(arg) {
 			syst = systems[sys];
 			cui.removeCursor();
 			await loadGameLib();
-		} else if (ui == 'interfaceMenu_1') {
+		} else if (ui == 'interfaceMenu_2') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'colors') {
 				// TODO
 			}
-		} else if (ui == 'addSavesPathMenu') {
+		} else if (ui == 'addSavesPathMenu_2') {
 			if (act == 'add') {
 				let save = {
 					name: $('#saveName').val(),
@@ -648,7 +648,7 @@ module.exports = async function(arg) {
 				prefs.saves.push(save);
 				await saveSync('syncUpdate');
 			}
-		} else if (ui == 'pauseMenu') {
+		} else if (ui == 'pauseMenu_1') {
 			if (act == 'start') {
 				cui.doAction('back');
 			} else if (act == 'syncBackup' || act == 'forceUpdate') {
@@ -657,7 +657,7 @@ module.exports = async function(arg) {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'editAppearance') {
-				cui.change('interfaceMenu_1');
+				cui.change('interfaceMenu_2');
 			} else if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
@@ -674,7 +674,7 @@ module.exports = async function(arg) {
 				cui.scrollToCursor(0);
 			} else if (act == 'showConsole') {
 				electron.getCurrentWindow().toggleDevTools();
-				let $elem = $('#pauseMenu .uie[name="showConsole"] .text');
+				let $elem = $('#pauseMenu_1 .uie[name="showConsole"] .text');
 				if ($elem.text().includes('show')) {
 					$elem.text('hide console');
 				} else {
@@ -697,15 +697,15 @@ module.exports = async function(arg) {
 			} else if (act == 'donate-later') {
 				await loadGameLib();
 			} else if (act == 'donated') {
-				cui.change('checkDonationMenu');
+				cui.change('checkDonationMenu_1');
 			}
-		} else if (ui == 'checkDonationMenu') {
+		} else if (ui == 'checkDonationMenu_1') {
 			if (act == 'continue') {
 				let pass = $('#donorPassword').val();
 				if (premium.verify(pass)) {
 					await loadGameLib();
 					if (premium.verify() && !prefs.saves) {
-						cui.change('addSavesPathMenu');
+						cui.change('addSavesPathMenu_2');
 					}
 				} else {
 					cui.change('donateMenu');
@@ -714,15 +714,15 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'full') {
-				cui.change('setupMenu');
+				cui.change('setupMenu_1');
 			}
-		} else if (ui == 'setupMenu') {
+		} else if (ui == 'setupMenu_1') {
 			if (act == 'continue') {
 				if (!(await fs.exists(emuDir))) {
 					cui.err('you must choose an install location!');
 					return false;
 				}
-				cui.change('sysMenu');
+				cui.change('sysMenu_1');
 				return;
 			}
 			if (act == 'new-in-docs') {
@@ -736,7 +736,7 @@ module.exports = async function(arg) {
 			await createTemplate();
 			opn(emuDir);
 			if (!(await fs.exists(emuDir))) return false;
-		} else if (ui == 'emuMenu') {
+		} else if (ui == 'emuMenu_1') {
 			// change emu to the selected emu
 			// or run with the previously selected emu
 			// by double clicking/pressing x or y
@@ -1066,7 +1066,7 @@ module.exports = async function(arg) {
 		if (premium.verify()) {
 			await loadGameLib();
 			if (!prefs.saves) {
-				cui.change('addSavesPathMenu');
+				cui.change('addSavesPathMenu_2');
 			}
 		} else if (await prefsMng.canLoad() && !premium.status) {
 			cui.change('donateMenu');

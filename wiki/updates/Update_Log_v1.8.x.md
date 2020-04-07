@@ -26,6 +26,8 @@ SNES game library support added, with bsnes as the default emulator. Support for
 - improved error checking
 - unidentified games and games with no cover art will now be shown with handwritten labels that can be edited! Older versions of Nostlan ignored them.
 - More intuitive UI labelling. On the game library view, clicking "Sys", short for systems, will open a submenu where you can choose to load another system's game library. Clicking "Play" starts the emulator with the game that the cursor is on. Clicking "Emu", short for emulator(s), will start the emulator without a game so you can update the emulator, setup controllers, etc. In previous versions the labels on the library view were "Power", "Reset", and "Open" just like on a GameCube which aesthetically looked cool but it's just a terrible way to label the functions of those buttons and I should've changed it sooner.
+- Precise Nintendo Switch game identification! Nostlan uses `yuzu-cmd.exe` to identify your games using its 16 hex digit title id.
+- Precise SNES game identification! Nostlan uses `icarus.exe` to identify snes games.
 
 #### Development
 
@@ -40,10 +42,11 @@ SNES game library support added, with bsnes as the default emulator. Support for
 - snes9x support (alt SNES emulator)
 - Dreamcast game lib support with Redream as the default emulator
 
-#### User Interface
+#### User Experience
 
 - users will be able to manually identify games that could not be automatically identified from Nostlan's game databases and then Nostlan will load cover art for that game
-- users will be able to identify game mods (not found in Nostlan's game database), they'll use the cover art of the original game with a label sticker describing the mod.
+- users will be able to identify game mods (not found in Nostlan's game database), they'll use the cover art of the original game with a label sticker describing the mod
+- precise Wii/Gamecube/VC game identification using `Dolphin.exe` and robotjs to get the game id values directly from the main ui's game table
 
 ## Supporting Multiple Emulators per System
 

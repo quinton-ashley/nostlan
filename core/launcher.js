@@ -213,7 +213,7 @@ class Launcher {
 
 		if (!identify && game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
-			cui.change('playingBack_1');
+			cui.change('playingBack_4');
 			$('#libMain').hide();
 			$('#dialogs').show();
 			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
@@ -321,16 +321,17 @@ class Launcher {
 				this._launch();
 				return;
 			}
-			$('#libMain').show();
+			// $('#libMain').show();
 			cui.hideDialogs();
-			let $cur = cui.getCur('libMain');
-			if ($cur.hasClass('selected')) {
-				cui.change('boxSelect_1');
-				let $reel = $cur.parent();
-				$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
-			} else if (cui.ui != 'libMain') {
-				cui.change('libMain');
-			}
+			// let $cur = cui.getCur('libMain');
+			// if ($cur.hasClass('selected')) {
+			// 	cui.change('boxSelect_1');
+			// 	let $reel = $cur.parent();
+			// 	$reel.css('left', `${$(window).width()*.5-$cur.width()*.5}px`);
+			// } else if (cui.ui != 'libMain') {
+			// 	cui.change('libMain');
+			// }
+			cui.doAction('back');
 		}
 		if (!identify && code) {
 			let erMsg = `${prefs[emu].name} crashed!  If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator.  Search the internet for instructions on how to fully setup ${prefs[emu].name}.\n<code>`;

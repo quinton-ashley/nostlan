@@ -84,6 +84,6 @@ game.switch.flip .shade {
 	border-radius: 10%;
 }
 
-.switch #openBoxMenu_2.zoom-gameMedia {
+.switch #boxOpenMenu_2.zoom-gameMedia {
 	transform: scale(3)translate(-25%, -32%);
 }

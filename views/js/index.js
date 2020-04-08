@@ -161,15 +161,15 @@ module.exports = async function(arg) {
 			await createTemplate();
 		}
 		// currently supported systems
-		let sysMenu_1 = 'h1 Select a System\n';
+		let sysMenu_5 = 'h1 Select a System\n';
 		let i = 0;
 		for (let _sys in systems) {
-			if (i % 2 == 0) sysMenu_1 += `.row.row-x\n`;
-			sysMenu_1 += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
+			if (i % 2 == 0) sysMenu_5 += `.row.row-x\n`;
+			sysMenu_5 += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
 			i++;
 		}
 		delete i;
-		$('#sysMenu_1').append(pug(sysMenu_1));
+		$('#sysMenu_5').append(pug(sysMenu_5));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
 		}
@@ -222,7 +222,7 @@ module.exports = async function(arg) {
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu_1');
+					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu_5');
 					return;
 				}
 				gameLibDir = await dialog.selectDir(`select ${sys} game directory`);
@@ -235,7 +235,7 @@ module.exports = async function(arg) {
 				); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.err(`Game library has no game files`, 404, 'sysMenu_1');
+					cui.err(`Game library has no game files`, 404, 'sysMenu_5');
 					return;
 				}
 				gameLibDir = await dialog.selectDir(`select ${syst.name} game directory`);
@@ -252,7 +252,7 @@ module.exports = async function(arg) {
 					prefs[emu].libs.push(gameLibDir);
 				}
 			} else {
-				cui.err(`Couldn't load game library`, 404, 'sysMenu_1');
+				cui.err(`Couldn't load game library`, 404, 'sysMenu_5');
 				await loadGameLib();
 				return;
 			}
@@ -273,13 +273,13 @@ module.exports = async function(arg) {
 		}
 		await viewerLoad();
 
-		cui.removeView('emuMenu_1');
-		let emuMenu_1 = 'h1 Select an Emulator\n';
+		cui.removeView('emuMenu_5');
+		let emuMenu_5 = 'h1 Select an Emulator\n';
 		for (let _emu of syst.emus) {
-			emuMenu_1 += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
+			emuMenu_5 += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
 		}
-		$('#emuMenu_1').append(pug(emuMenu_1));
-		cui.addView('emuMenu_1');
+		$('#emuMenu_5').append(pug(emuMenu_5));
+		cui.addView('emuMenu_5');
 
 		await removeIntro();
 		cui.change('libMain', sysStyle);
@@ -306,19 +306,19 @@ module.exports = async function(arg) {
 		if (state == 'boxSelect_1') {
 			labels = ['Play', 'Flip', 'Back'];
 			$('#libMain').show();
-		} else if (state == 'openBoxMenu_2') {
+		} else if (state == 'boxOpenMenu_2') {
 			labels = ['Manual', 'ImgDir', 'Back'];
-			$('#openBoxMenu_2').removeClass('zoom-gameManual');
-			$('#openBoxMenu_2').removeClass('zoom-gameMedia');
-			$('#openBoxMenu_2').removeClass('zoom-gameMemory');
-			$('#openBoxMenu_2').removeClass('zoom-gameTexp');
+			$('#boxOpenMenu_2').removeClass('zoom-gameManual');
+			$('#boxOpenMenu_2').removeClass('zoom-gameMedia');
+			$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
+			$('#boxOpenMenu_2').removeClass('zoom-gameTexp');
 		} else if (state == 'libMain') {
 			labels = ['Play', 'Emu', 'Sys'];
 			$('#libMain').css('transform', '');
 			$('#libMain').removeClass('no-outline');
-		} else if (state == 'gameMediaSelect') {
-			labels = ['Texp', 'File', 'Back'];
-		} else if (state == 'pauseMenu_1') {
+		} else if (state == 'gameMediaSelect_3') {
+			labels = ['Info', 'File', 'Back'];
+		} else if (state == 'pauseMenu_10') {
 			labels = ['Quit', 'Mini', 'Back'];
 		} else if (/(game|menu)/i.test(state)) {
 			labels = [' ', ' ', 'Back'];
@@ -368,13 +368,13 @@ module.exports = async function(arg) {
 	}
 
 	cui.afterChange = () => {
-		if ((cui.uiPrev == 'loading_1' || cui.uiPrev == 'playingBack_1' || cui.uiPrev == 'errMenu') && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
+		if (cui.uiPrev == 'loading_1' && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
 			if (!$cur.length) $cur = $('#' + games[0].id).eq(0);
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
-		if (cui.ui == 'openBoxMenu_2' &&
+		if (cui.ui == 'boxOpenMenu_2' &&
 			!cui.isParent(cui.ui, cui.uiPrev)) {
 			cui.makeCursor($('#gameMedia').eq(0));
 		}
@@ -396,7 +396,7 @@ module.exports = async function(arg) {
 			return;
 		}
 		// log(act + ' held for ' + timeHeld);
-		if (cui.ui == 'playingBack_1' && launcher.state == 'running') {
+		if (cui.ui == 'playingBack_4' && launcher.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
@@ -482,7 +482,7 @@ module.exports = async function(arg) {
 	cui.onAction = async function(act, isBtn) {
 		let ui = cui.ui;
 		log(act + ' on ' + ui);
-		if (ui == 'playingBack_1' || launcher.state == 'running') {
+		if (ui == 'playingBack_4' || launcher.state == 'running') {
 			return;
 		}
 		let onMenu = /menu/i.test(ui);
@@ -504,22 +504,22 @@ module.exports = async function(arg) {
 			if (act == 'x') {
 				launchEmuWithGame = true;
 				if (syst.emus.length > 1) {
-					cui.change('emuMenu_1');
+					cui.change('emuMenu_5');
 				} else {
 					await launcher.launch(getCurGame());
 				}
 				return;
 			}
 		}
-		if (act == 'start' && !onMenu) {
-			cui.change('pauseMenu_1');
+		if (act == 'start') {
+			cui.change('pauseMenu_10');
 		} else if (act == 'b' && (onMenu || onSelect) &&
 			ui != 'donateMenu' && ui != 'setupMenu_1') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu_2 .uie[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu_11 .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text('auto-hide cover overlay');
@@ -528,11 +528,11 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'libMain') {
 			if (act == 'b' && !onMenu) {
-				cui.change('sysMenu_1');
+				cui.change('sysMenu_5');
 			} else if (act == 'y') {
 				launchEmuWithGame = false;
 				if (syst.emus.length > 1) {
-					cui.change('emuMenu_1');
+					cui.change('emuMenu_5');
 				} else {
 					// launch without a game
 					await launcher.launch();
@@ -575,7 +575,7 @@ module.exports = async function(arg) {
 					mediaImg = await scraper.imgExists(template, mediaName);
 				}
 				$('#gameMedia').prop('src', mediaImg);
-				cui.change('openBoxMenu_2');
+				cui.change('boxOpenMenu_2');
 				$('#libMain').hide();
 			} else if (act == 'y') { // flip
 				let $cur = cui.getCur();
@@ -586,7 +586,7 @@ module.exports = async function(arg) {
 					cui.scrollToCursor(0, 0);
 				}
 			}
-		} else if (ui == 'openBoxMenu_2') {
+		} else if (ui == 'boxOpenMenu_2') {
 			if (act == 'x') act = 'Manual';
 			if (act == 'y') {
 				opn(await scraper.getImgDir(getCurGame()));
@@ -596,17 +596,17 @@ module.exports = async function(arg) {
 			if (!(/(memory|manual|media)/gi).test(act)) return;
 			act = act[0].toUpperCase() + act.substr(1);
 			act = 'game' + act;
-			$('#openBoxMenu_2').addClass('zoom-' + act);
+			$('#boxOpenMenu_2').addClass('zoom-' + act);
 			cui.change(act + 'Select_3');
 		} else if (ui == 'gameMediaSelect_3') {
 			if (act == 'a' || act == 'media') {
-				await launcher.launch(getCurGame());
-			} else if (act == 'y') { // Texp
+				cui.change('emuMenu_5');
+			} else if (act == 'y') { // info
 
-			} else if (act == 'x') { // File
+			} else if (act == 'x') { // file
 				opn(getCurGame().file);
 			}
-		} else if (ui == 'sysMenu_1' && !isBtn) {
+		} else if (ui == 'sysMenu_5' && !isBtn) {
 			// if (!emu) {
 			// 	return;
 			// }
@@ -615,7 +615,7 @@ module.exports = async function(arg) {
 			syst = systems[sys];
 			cui.removeCursor();
 			await loadGameLib();
-		} else if (ui == 'interfaceMenu_2') {
+		} else if (ui == 'interfaceMenu_11') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'colors') {
@@ -648,7 +648,7 @@ module.exports = async function(arg) {
 				prefs.saves.push(save);
 				await saveSync('syncUpdate');
 			}
-		} else if (ui == 'pauseMenu_1') {
+		} else if (ui == 'pauseMenu_10') {
 			if (act == 'start') {
 				cui.doAction('back');
 			} else if (act == 'syncBackup' || act == 'forceUpdate') {
@@ -657,7 +657,7 @@ module.exports = async function(arg) {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'editAppearance') {
-				cui.change('interfaceMenu_2');
+				cui.change('interfaceMenu_11');
 			} else if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
@@ -674,7 +674,7 @@ module.exports = async function(arg) {
 				cui.scrollToCursor(0);
 			} else if (act == 'showConsole') {
 				electron.getCurrentWindow().toggleDevTools();
-				let $elem = $('#pauseMenu_1 .uie[name="showConsole"] .text');
+				let $elem = $('#pauseMenu_10 .uie[name="showConsole"] .text');
 				if ($elem.text().includes('show')) {
 					$elem.text('hide console');
 				} else {
@@ -722,7 +722,7 @@ module.exports = async function(arg) {
 					cui.err('you must choose an install location!');
 					return false;
 				}
-				cui.change('sysMenu_1');
+				cui.change('sysMenu_5');
 				return;
 			}
 			if (act == 'new-in-docs') {
@@ -736,7 +736,7 @@ module.exports = async function(arg) {
 			await createTemplate();
 			opn(emuDir);
 			if (!(await fs.exists(emuDir))) return false;
-		} else if (ui == 'emuMenu_1') {
+		} else if (ui == 'emuMenu_5') {
 			// change emu to the selected emu
 			// or run with the previously selected emu
 			// by double clicking/pressing x or y
@@ -1028,7 +1028,7 @@ module.exports = async function(arg) {
 		cui.addView('libMain', {
 			hoverCurDisabled: true
 		});
-		cui.addView('openBoxMenu_2', {
+		cui.editView('boxOpenMenu_2', {
 			hoverCurDisabled: true
 		});
 		$('#view').css('margin-top', '20px');

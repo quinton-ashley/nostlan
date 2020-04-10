@@ -367,7 +367,7 @@ module.exports = async function(arg) {
 		$('#open span').text(buttons[2]);
 	}
 
-	cui.afterChange = () => {
+	cui.afterChange = async () => {
 		if (cui.uiPrev == 'loading_1' && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
 			if (!$cur.length) $cur = $('#' + games[0].id).eq(0);
@@ -448,7 +448,7 @@ module.exports = async function(arg) {
 	function getCurGame() {
 		let id = cui.getCur('libMain').attr('id');
 		let game = games.find(x => x.id === id);
-		if (game.file) {
+		if (game && game.file) {
 			game.file = util.absPath(game.file);
 			return game;
 		}

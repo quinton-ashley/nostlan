@@ -75,7 +75,7 @@ class Launcher {
 					emuAppPath += '/' + emuNameCases[1];
 				}
 				if (emu == 'citra') {
-					emuAppPath += '-qt-bin';
+					emuAppPath += '-qt';
 				} else if (emu == 'yuzu') {
 					emuAppPath += '-bin';
 				}

@@ -79,7 +79,7 @@
     "acorn": "^7.1.1",
     "await-spawn": "^3.0.0",
     "bootstrap": "^4.4.1",
-    "chrome-finder": "^1.0.6",
+    "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
     "contro": "^2.1.3",
     "contro-ui": "^2.0.17",
@@ -92,7 +92,7 @@
     "fuse.js": "^3.6.1",
     "gca-js": "^1.0.2",
     "gooder": "^1.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "klaw": "^3.0.0",
     "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
@@ -152,5 +152,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.43"
+  "version": "1.7.44"
 }

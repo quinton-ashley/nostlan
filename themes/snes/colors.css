@@ -1,9 +1,30 @@
 .snes {
+	--cover-color: #cac9ce;
+	--cover-text-color: #a9a7aa;
+	--cover-border-color: #64a;
+	--button-color: #7a62ae;
+	--button-border-color: #7a62ae;
+	--power-color: #7a62ae;
+	--power-text-color: #ababde;
+	--reset-color: #7a62ae;
+	--reset-text-color: #ababde;
+	--open-color: #9b999e;
+	--open-text-color: #cecdd2;
+	--open-border-color: #7d7b80;
+	--openBtn-border-color: #9b999e;
+	--openBtn-color: #9b999e;
+	--view-border-color: #a9a7aa;
+}
+
+.snes.box {
 	--cover-color: #000000;
 	--cover-text-color: #fc0c19;
 	--cover-border-color: #fc0c19;
-	--button-color: repeating-linear-gradient(#626763, #626763 5%, #000000 4px, #000000 10%);
+	--openBtn-color: repeating-linear-gradient(#626763 0%, #626763 6%, #000000 6%, #000000 10%);
 	--button-border-color: #b82899;
 	--powerBtn-border-color: #fea12a;
 	--resetBtn-border-color: #019973;
+	--view-text-color: #fc0c19;
+	--view-button-color: #eee;
+	--view-color: #000;
 }

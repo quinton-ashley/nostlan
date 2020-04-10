@@ -209,6 +209,7 @@ class Scanner {
 					term = term.replace(/ 20XX.*/gi, ': 20XX Training Pack');
 					term = term.replace(/Nickelodeon SpongeBob/gi, 'SpongeBob');
 					term = term.replace(/thousand year/gi, 'Thousand-Year');
+					term = term.replace(/kirby *64.*/gi, 'Kirby 64: The Crystal Shards');
 				} else if (sys == 'switch') {
 					term = term.replace(/Nintendo Labo/gi, 'Nintendo Labo -');
 				} else if (sys == 'gba') {

@@ -22,8 +22,8 @@
 	font-size: 3vw;
 }
 
-.menu .cursor,
-.menu .cursor * {
+.snes.box .menu .cursor,
+.snes.box .menu .cursor * {
 	filter: brightness(20);
 }
 
@@ -38,12 +38,16 @@
 	border-style: solid;
 	border-color: var(--view-text-color, var(--cover-text-color));
 	color: var(--view-text-color, var(--cover-text-color));
-	background-color: transparent;
+	background-color: var(--view-button-color);
 	border-radius: 3vw;
 	padding-left: 5%;
 	padding-right: 6%;
 	padding-top: 1%;
 	text-shadow: none;
+}
+
+.snes .nav-link {
+	border-width: .5vw;
 }
 
 /*================snes Game Lib Viewer====================*/
@@ -75,10 +79,18 @@ game.snes img.coverFull {
 	transform: rotateZ(-90deg) translate(-41.27%, .3%) scale(1.52, 1.45);
 }
 
+game.snes.flip .crop.cover {
+	top: 1%;
+}
+
+game.snes.flip .crop.coverFull {
+	top: 1.5%;
+}
+
 game.snes.flip img.coverFull {
 	width: 100%;
 	height: 100%;
-	transform: rotateZ(-90deg) translate(-41.27%, 0%) scale(1.52, 1.45);
+	transform: rotateZ(90deg) translate(41.27%, 0%) scale(1.52, 1.45);
 }
 
 game.snes .shade {

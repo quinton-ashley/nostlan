@@ -432,7 +432,6 @@ module.exports = async function(arg) {
 		let $reel = $cur.parent();
 		let $menu = $reel.parent();
 		let idx = $menu.children().index($reel);
-		log('idx: ' + idx);
 		let scale = $(window).height() / $cur.height();
 		$menu.css('transform', `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`);
 	}
@@ -482,6 +481,10 @@ module.exports = async function(arg) {
 
 	cui.onAction = async function(act, isBtn) {
 		let ui = cui.ui;
+		let $cur = cui.getCur();
+		if (act == 'a' || act == 'enter') {
+			act = $cur.attr('name') || 'a';
+		}
 		log(act + ' on ' + ui);
 		if (ui == 'playing_4' || launcher.state == 'running') {
 			return;
@@ -493,7 +496,7 @@ module.exports = async function(arg) {
 			// if there was an error
 			// if developing nostlan
 			// if user is not a patreon supporter
-			if (/error/i.test(ui) && !arg.dev && premium.verify()) {
+			if (ui != 'errorMenu_9999' && !arg.dev && premium.verify()) {
 				await saveSync('quit');
 			}
 			// save the prefs file
@@ -502,7 +505,6 @@ module.exports = async function(arg) {
 			return;
 		}
 		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
-			let $cur = cui.getCur();
 			if ($cur.hasClass('uie-disabled')) return false;
 			launchEmuWithGame = true;
 			if (syst.emus.length > 1) {
@@ -531,7 +533,6 @@ module.exports = async function(arg) {
 			if (act == 'b' && !onMenu) {
 				cui.change('sysMenu_5');
 			}
-			let $cur = cui.getCur();
 			if ($cur.hasClass('uie-disabled')) return false;
 			if (act == 'y') {
 				launchEmuWithGame = false;
@@ -549,7 +550,6 @@ module.exports = async function(arg) {
 				cui.change('boxSelect_1', gameSys);
 			}
 		} else if (ui == 'boxSelect_1') {
-			let $cur = cui.getCur();
 			if ($cur.hasClass('uie-disabled')) return false;
 			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
 				fitCoverToScreen($cur);
@@ -580,7 +580,6 @@ module.exports = async function(arg) {
 				cui.change('boxOpenMenu_2');
 				$('#libMain').hide();
 			} else if (act == 'y') { // flip
-				let $cur = cui.getCur();
 				let ogHeight = $cur.height();
 				await flipGameBox($cur);
 				if (Math.abs(ogHeight - $cur.height()) > 10) {

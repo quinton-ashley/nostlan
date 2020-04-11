@@ -479,13 +479,14 @@ module.exports = async function(arg) {
 		cui.change('libMain');
 	}
 
-	cui.onAction = async function(act, isBtn) {
+	cui.onAction = async function(act) {
 		let ui = cui.ui;
 		let $cur = cui.getCur();
 		if (act == 'a' || act == 'enter') {
 			act = $cur.attr('name') || 'a';
 		}
 		log(act + ' on ' + ui);
+		let isBtn = cui.isButton(act);
 		if (ui == 'playing_4' || launcher.state == 'running') {
 			return;
 		}

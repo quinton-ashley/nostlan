@@ -52,7 +52,7 @@ class Launcher {
 				emuAppPath = emuDirPath + '/';
 			}
 			emuAppPath += emuNameCases[i];
-			if (win || /(bsnes)/.test(emu)) {
+			if (win) {
 				if (emu == 'citra') emuAppPath += '-qt';
 				if (emu == 'mgba') emuAppPath += '-sdl';
 				if (emu == 'mame') emuAppPath += '64';
@@ -103,7 +103,7 @@ class Launcher {
 		}
 		log(`couldn't find app at path:\n` + emuAppPath);
 		emuAppPath = await dialog.selectFile('select emulator app');
-		if (mac && !/(bsnes)/.test(emu)) {
+		if (mac) {
 			emuAppPath += '/Contents/MacOS/' + emuNameCases[1];
 			if (emu == 'citra') {
 				emuAppPath += '-qt-bin';

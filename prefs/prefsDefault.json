@@ -5,9 +5,9 @@
 		"name": "bsnes",
 		"app": {},
 		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"mac": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
+			"linux": ["${app}", "${game}", "--fullscreen"],
+			"mac": ["${app}", "${game}", "--fullscreen"],
+			"win": ["${app}", "${game}", "--fullscreen"]
 		}
 	},
 	"cemu": {

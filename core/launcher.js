@@ -213,7 +213,7 @@ class Launcher {
 
 		if (!identify && game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
-			cui.change('playingBack_4');
+			cui.change('playing_4');
 			$('#libMain').hide();
 			$('#dialogs').show();
 			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
@@ -313,7 +313,7 @@ class Launcher {
 		this.child.kill('SIGINT');
 	}
 
-	_close(code) {
+	async _close(code) {
 		cui.disableSticks = false;
 		if (!identify) {
 			log(`emulator closed`);
@@ -322,8 +322,9 @@ class Launcher {
 				return;
 			}
 			cui.hideDialogs();
-			if (cui.ui == 'playingBack_4') {
-				cui.doAction('back');
+			log('exited with code ' + code);
+			if (cui.ui == 'playing_4') {
+				await cui.doAction('back');
 			}
 		}
 		if (!identify && code) {
@@ -336,7 +337,6 @@ class Launcher {
 			cui.err(erMsg, code);
 		}
 		if (!identify) {
-			log('exited with code ' + code);
 			electron.getCurrentWindow().focus();
 			electron.getCurrentWindow().setFullScreen(true);
 		}

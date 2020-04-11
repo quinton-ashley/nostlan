@@ -13,7 +13,7 @@ class Saves {
 		if (!prefs[emu].saves) prefs[emu].saves = {};
 
 		if (emu == 'melonds' || emu == 'mgba') {
-			prefs[emu].saves.dirs = prefs[emu].libs;
+			prefs[emu].saves.dirs = prefs[sys].libs;
 			return true;
 		}
 		let emuAppPath = util.absPath(prefs[emu].app);

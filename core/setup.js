@@ -169,5 +169,6 @@ module.exports = async function(arg) {
 	if (mac) toggleQuit = ['command+w', 'command+q'];
 	if (win || linux) toggleQuit = ['ctrl+w', 'ctrl+q'];
 	cui.bind(toggleQuit, 'quit');
-	cui.bind('enter', 'enter');
+	cui.bind('enter', 'a');
+	cui.bind('shift+enter', 'b');
 };

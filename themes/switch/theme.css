@@ -85,5 +85,5 @@ game.switch.flip .shade {
 }
 
 .switch #boxOpenMenu_2.zoom-gameMedia {
-	transform: scale(3)translate(-25%, -32%);
+	transform: scale(3)translate(-32.6vh, -33vh);
 }

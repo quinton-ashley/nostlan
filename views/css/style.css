@@ -237,7 +237,6 @@ webview {
 
 .menu .cursor {
 	background-color: var(--cover-color);
-	filter: brightness(1.2);
 }
 
 nav {

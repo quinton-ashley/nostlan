@@ -245,11 +245,11 @@ module.exports = async function(arg) {
 			}
 			gameLibDir = gameLibDir.replace(/\\/g, '/');
 			if (await fs.exists(gameLibDir)) {
-				if (!prefs[emu].libs) {
-					prefs[emu].libs = [];
+				if (!prefs[sys].libs) {
+					prefs[sys].libs = [];
 				}
-				if (!prefs[emu].libs.includes(gameLibDir)) {
-					prefs[emu].libs.push(gameLibDir);
+				if (!prefs[sys].libs.includes(gameLibDir)) {
+					prefs[sys].libs.push(gameLibDir);
 				}
 			} else {
 				cui.err(`Couldn't load game library`, 404, 'sysMenu_5');
@@ -396,7 +396,7 @@ module.exports = async function(arg) {
 			return;
 		}
 		// log(act + ' held for ' + timeHeld);
-		if (cui.ui == 'playingBack_4' && launcher.state == 'running') {
+		if (cui.ui == 'playing_4' && launcher.state == 'running') {
 			if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
@@ -447,6 +447,7 @@ module.exports = async function(arg) {
 
 	function getCurGame() {
 		let id = cui.getCur('libMain').attr('id');
+		if (/^_TEMPLATE/.test(id)) return;
 		let game = games.find(x => x.id === id);
 		if (game && game.file) {
 			game.file = util.absPath(game.file);
@@ -482,7 +483,7 @@ module.exports = async function(arg) {
 	cui.onAction = async function(act, isBtn) {
 		let ui = cui.ui;
 		log(act + ' on ' + ui);
-		if (ui == 'playingBack_4' || launcher.state == 'running') {
+		if (ui == 'playing_4' || launcher.state == 'running') {
 			return;
 		}
 		let onMenu = /menu/i.test(ui);
@@ -492,7 +493,7 @@ module.exports = async function(arg) {
 			// if there was an error
 			// if developing nostlan
 			// if user is not a patreon supporter
-			if (ui != 'errMenu' && !arg.dev && premium.verify()) {
+			if (/error/i.test(ui) && !arg.dev && premium.verify()) {
 				await saveSync('quit');
 			}
 			// save the prefs file
@@ -500,16 +501,16 @@ module.exports = async function(arg) {
 			app.quit();
 			return;
 		}
-		if (ui == 'libMain' || ui == 'boxSelect_1') {
-			if (act == 'x') {
-				launchEmuWithGame = true;
-				if (syst.emus.length > 1) {
-					cui.change('emuMenu_5');
-				} else {
-					await launcher.launch(getCurGame());
-				}
-				return;
+		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
+			let $cur = cui.getCur();
+			if ($cur.hasClass('uie-disabled')) return false;
+			launchEmuWithGame = true;
+			if (syst.emus.length > 1) {
+				cui.change('emuMenu_5');
+			} else {
+				await launcher.launch(getCurGame());
 			}
+			return;
 		}
 		if (act == 'start') {
 			cui.change('pauseMenu_10');
@@ -529,7 +530,10 @@ module.exports = async function(arg) {
 		} else if (ui == 'libMain') {
 			if (act == 'b' && !onMenu) {
 				cui.change('sysMenu_5');
-			} else if (act == 'y') {
+			}
+			let $cur = cui.getCur();
+			if ($cur.hasClass('uie-disabled')) return false;
+			if (act == 'y') {
 				launchEmuWithGame = false;
 				if (syst.emus.length > 1) {
 					cui.change('emuMenu_5');
@@ -538,9 +542,6 @@ module.exports = async function(arg) {
 					await launcher.launch();
 				}
 			} else if (act == 'a' || !isBtn) {
-				let $cur = cui.getCur();
-				if ($cur.hasClass('uie-disabled')) return false;
-
 				let gameSys = $cur.attr('class');
 				if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 				fitCoverToScreen($cur);
@@ -549,15 +550,16 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'boxSelect_1') {
 			let $cur = cui.getCur();
+			if ($cur.hasClass('uie-disabled')) return false;
 			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
 				fitCoverToScreen($cur);
 				cui.makeCursor($cur, 'libMain');
 				cui.scrollToCursor();
 			} else if ((act == 'a' || !isBtn) && $cur.attr('class') &&
 				(await scraper.getExtraImgs(themes[$cur.attr('class').split(/\s+/)[0] || sysStyle].template))) {
-				// return;
 				// TODO finish open box menu
 				let game = getCurGame();
+				if (!game) return;
 				let template = themes[game.sys || sys].template;
 
 				$('#gameBoxOpen').prop('src', await scraper.imgExists(template, 'boxOpen'));

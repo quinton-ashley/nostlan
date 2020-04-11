@@ -80,8 +80,8 @@ class Scanner {
 				resolve(fuse.search(term));
 			});
 		};
-		for (let h = 0; h < prefs[emu].libs.length; h++) {
-			let files = await klaw(prefs[emu].libs[h], {
+		for (let h = 0; h < prefs[sys].libs.length; h++) {
+			let files = await klaw(prefs[sys].libs[h], {
 				depthLimit: 0
 			});
 			let file;
@@ -152,7 +152,7 @@ class Scanner {
 						}
 						this.olog(`exact match:  ${game.title}\r\n`);
 						log(game);
-						game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
+						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
 					}
@@ -188,7 +188,7 @@ class Scanner {
 							this.olog(`exact match:  ${game.title}\r\n`);
 							log(game);
 							game.file = '$' + h + '/' +
-								path.relative(prefs[emu].libs[h], file);
+								path.relative(prefs[sys].libs[h], file);
 							games.push(game);
 							continue;
 						}
@@ -249,7 +249,7 @@ class Scanner {
 					};
 					unidentifiedAmt++;
 				}
-				game.file = '$' + h + '/' + path.relative(prefs[emu].libs[h], file);
+				game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 				games.push(game);
 				log(game);
 			}

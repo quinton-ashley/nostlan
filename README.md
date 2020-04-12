@@ -56,6 +56,12 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds_LQ.png">
 </a></p>
 
+### SNES [bsnes]
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/snes.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/snes_LQ.png">
+</a></p>
+
 ### DS [melonDS, DeSmuME]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds.png">

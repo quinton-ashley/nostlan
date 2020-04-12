@@ -298,13 +298,22 @@
 		"title": "Sangokushi 12"
 	}, {
 		"id": "AGME01",
-		"title": "Splatoon"
+		"title": "Splatoon",
+		"img": {
+			"disc": "q"
+		}
 	}, {
 		"id": "AGMJ01",
-		"title": "Splatoon"
+		"title": "Splatoon",
+		"img": {
+			"disc": "q"
+		}
 	}, {
 		"id": "AGMP01",
-		"title": "Splatoon"
+		"title": "Splatoon",
+		"img": {
+			"disc": "q"
+		}
 	}, {
 		"id": "AGNE52",
 		"title": "Guitar Hero Live"

@@ -200,8 +200,17 @@ module.exports = async function(arg) {
     let gamesPath = `${emuDir}/${sys}/${sys}Games.json`;
     // if prefs exist load them if not copy the default prefs
     games = [];
-    if (prefs[sys] && prefs[sys].libs && await fs.exists(gamesPath)) {
+    if (await fs.exists(gamesPath)) {
       games = JSON.parse(await fs.readFile(gamesPath)).games || [];
+
+      // user is possibly using a read only file system
+      // if prefs[sys] doesn't exist but a user
+      // game db file does
+      if (!prefs[sys] || !prefs[sys].libs) {
+        prefs[sys] = {
+          libs: [`${emuDir}/${sys}/games`]
+        };
+      }
     }
     if (games.length == 0) {
       if (!emuDir) {
@@ -245,6 +254,7 @@ module.exports = async function(arg) {
       }
       gameLibDir = gameLibDir.replace(/\\/g, '/');
       if (await fs.exists(gameLibDir)) {
+        if (!prefs[sys]) prefs[sys] = {};
         if (!prefs[sys].libs) {
           prefs[sys].libs = [];
         }

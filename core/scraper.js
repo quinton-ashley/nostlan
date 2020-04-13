@@ -165,7 +165,7 @@ class Scraper {
 				}
 
 				if (sys == 'arcade') {
-					await this.getImg(game, 'boxOpen');
+					await this.getImg(game, 'cabinet');
 				} else if (prefs.ui.getExtraImgs || isTemplate) {
 					await this.getExtraImgs(game, recheckImgs);
 				}
@@ -219,7 +219,7 @@ class Scraper {
 			file = file.substr(0, file.length - 3) + 'jpg';
 			if (!(await fs.exists(file))) {
 				file = `${imgDir}/default.lay`;
-				if (sys != 'arcade' || name != 'boxOpen' || !(await fs.exists(file))) {
+				if (sys != 'arcade' || name != 'cabinet' || !(await fs.exists(file))) {
 					return;
 				}
 			}

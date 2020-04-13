@@ -11,6 +11,11 @@ module.exports = async function() {
 				delete prefs[_emu].app;
 			}
 		}
+		for (let _emu of _syst.emus) {
+			if (prefs[_emu].cmd[osType]) {
+				prefs[_emu].cmd = prefs[_emu].cmd[osType];
+			}
+		}
 	}
 
 	// prefs version added in v1.8.x

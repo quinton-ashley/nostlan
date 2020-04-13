@@ -149,7 +149,7 @@ class Launcher {
 			}
 		}
 		if (!identify) log(emu);
-		let cmdArray = prefs[emu].cmd[osType];
+		let cmdArray = prefs[emu].cmd;
 
 		let gameFile;
 		if (game) {

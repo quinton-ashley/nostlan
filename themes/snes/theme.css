@@ -105,3 +105,16 @@ game.snes.flip .shade {
 game.snes .box {
 	border-radius: 1.6%;
 }
+
+.snes #gameMedia {
+	position: absolute;
+	border-radius: 0;
+	height: 50vh;
+	width: auto;
+	left: 75vw;
+	transform: translate(-50%, -50%);
+}
+
+.snes .zoom-gameMedia {
+	transform: translate(-48vw) scale(1.9);
+}

@@ -114,7 +114,7 @@
     "tabletojson": "^1.2.0",
     "tether": "^1.4.7",
     "three": "^0.113.2",
-    "usb": "^1.6.2",
+    "usb": "^1.6.3",
     "yauzl-promise": "^2.1.3"
   },
   "description": "Nostlan is a front-end launcher for video game emulators!",
@@ -152,5 +152,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.7.51"
+  "version": "1.7.52"
 }

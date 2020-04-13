@@ -34,7 +34,23 @@
 	filter: none;
 	background: var(--button-hover-color);
 }
+
 /*================MAME Game Lib Viewer====================*/
 game.arcade .box {
 	border-radius: 0;
+}
+
+.arcade #gameBoxOpen {
+	width: 100vw;
+}
+
+.arcade #gameMedia {
+	border-radius: 0;
+	height: 100vh;
+	width: auto;
+	transform: translate(-50%, -50%);
+}
+
+.arcade .zoom-gameMedia {
+	transform: scale(2);
 }

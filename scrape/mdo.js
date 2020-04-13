@@ -4,7 +4,7 @@ class MrDo {
 	constructor() {}
 
 	async dlImg(game, dir, name) {
-		if (name != 'boxOpen' || sys != 'arcade') {
+		if (name != 'cabinet' || sys != 'arcade') {
 			return;
 		}
 		let url = `http://www.mameworld.info/mrdo/artwork/${game.id}.zip`;

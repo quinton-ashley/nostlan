@@ -3,6 +3,7 @@
 	font-family: Early_GameBoy;
 	src: local("Early_GameBoy"), local("Early_GameBoy"), url("../fonts/Early_GameBoy.ttf");
 }
+
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -33,6 +34,7 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
+
 /*================GBA Game Lib Viewer====================*/
 game.gba .crop.coverFull {
 	width: 100%;
@@ -82,4 +84,17 @@ game.gba .title.label {
 
 game.gba .file.label {
 	top: 70%;
+}
+
+.gba #gameMedia {
+	position: absolute;
+	border-radius: 0;
+	height: 25vh;
+	width: auto;
+	left: 78.25vw;
+	transform: translate(-50%, -50%);
+}
+
+.gba .zoom-gameMedia {
+	transform: translate(-56vw) scale(1.9);
 }

@@ -32,7 +32,6 @@ class Themes {
 		];
 		// template game art
 		let _systems = Object.keys(systems);
-		_systems.push('gcn');
 		for (let _sys of _systems) {
 			let template = {
 				id: '_TEMPLATE_' + _sys,
@@ -111,6 +110,33 @@ class Themes {
 				$('#themeStyles').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
 			}
 		}
+	}
+
+	async getColorPalettes() {
+		let palettes = [];
+		const regex = /^\.([\w-]+)\.*([\w-]*)/gm;
+
+		let _systems = [sys];
+		if (sys == 'wii') _systems.push('gcn');
+		for (let dir of [__root, prefs.nlaDir]) {
+			for (let _sys of _systems) {
+				let file = `${dir}/themes/${_sys}/colors.css`;
+				if (dir != __root && !(await fs.exists(file))) {
+					continue;
+				}
+				let styles = await fs.readFile(file, 'utf8');
+
+				let palette;
+				while (palette = regex.exec(styles)) {
+					palettes.push({
+						sys: palette[1],
+						name: palette[2]
+					});
+				}
+			}
+		}
+
+		return palettes;
 	}
 
 }

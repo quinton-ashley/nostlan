@@ -2,6 +2,39 @@
 	--cover-color: #6a56b9;
 	--cover-text-color: #56429c;
 	--button-color: #6a56b9;
-	--powerBtn-color: #c0c0c0;
+	--powerBtn-color: #A2ADC1;
 	--openBtn-color: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
+}
+
+.gcn.orange {
+	--cover-color: #EB901D;
+	--cover-text-color: #D56907;
+	--button-color: #EB901D;
+	--powerBtn-color: #A2ADC1;
+	--openBtn-color: radial-gradient(circle at 50%, #D56907 15%, #EB901D 40%);
+}
+
+.gcn.silver {
+	--cover-color: #E6E4E5;
+	--cover-text-color: #656565;
+	--button-color: #E6E4E5;
+	--powerBtn-color: #A2ADC1;
+	--openBtn-color: radial-gradient(circle at 50%, #656565 15%, #E6E4E5 40%);
+}
+
+.gcn.panasonic-Q {
+	--cover-color: #7A7579;
+	--cover-text-color: #3F4249;
+	--button-color: #7A7579;
+	--button-border-color: #0887EE;
+	--powerBtn-color: #A2ADC1;
+	--openBtn-color: radial-gradient(circle at 50%, #3F4249 15%, #7A7579 40%);
+}
+
+.gcn.black {
+	--cover-color: #121617;
+	--cover-text-color: #030102;
+	--button-color: #121617;
+	--powerBtn-color: #CCC;
+	--openBtn-color: radial-gradient(circle at 50%, #030102 15%, #121617 40%);
 }

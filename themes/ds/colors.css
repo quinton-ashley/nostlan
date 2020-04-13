@@ -3,3 +3,12 @@
 	--cover-text-color: #7a7e81;
 	--powerBtn-color: #515256;
 }
+
+.ds.pink-lite {
+	--cover-color: #F2C9C7;
+	--cover-text-color: #1E0B0F;
+	--cover-border-color: #CC7D76;
+	--button-color: #F2C9C7;
+	--powerBtn-color: #F2C9C7;
+	--powerBtn-border-color: #9CD560;
+}

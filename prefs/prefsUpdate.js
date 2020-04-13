@@ -3,6 +3,7 @@ module.exports = async function() {
 	// only keeps the emu app path for the current os
 	for (let _sys in systems) {
 		let _syst = systems[_sys];
+		if (!_syst.emus) continue;
 		for (let _emu of _syst.emus) {
 			if (typeof prefs[_emu].app == 'string') continue;
 			if (prefs[_emu].app[osType]) {

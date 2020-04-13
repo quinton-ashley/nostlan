@@ -1,5 +1,23 @@
 .snes {
 	--cover-color: #cac9ce;
+	--cover-text-color: #94929B;
+	--button-color: #BBB6ED;
+	--openBtn-color: #5F3C96;
+}
+
+.snes.super-famicom {
+	--cover-color: #A3A9AC;
+	--cover-text-color: #6C6C6C;
+	--powerBtn-color: #0B60C6;
+	--powerBtn-border-color: #004AB8;
+	--resetBtn-color: #00B683;
+	--resetBtn-border-color: #20956C;
+	--openBtn-color: #FFD600;
+	--openBtn-border-color: #FCC648;
+}
+
+.snes.super-nintendo {
+	--cover-color: #cac9ce;
 	--cover-text-color: #a9a7aa;
 	--cover-border-color: #64a;
 	--button-color: #7a62ae;
@@ -16,14 +34,14 @@
 	--view-border-color: #a9a7aa;
 }
 
-.snes.box {
+.snes.game-box {
 	--cover-color: #000000;
 	--cover-text-color: #fc0c19;
 	--cover-border-color: #fc0c19;
-	--openBtn-color: repeating-linear-gradient(#626763 0%, #626763 6%, #000000 6%, #000000 10%);
-	--button-border-color: #b82899;
+	--button-color: #000000;
+	--openBtn-color: repeating-linear-gradient(#626763 0%, #626763 6%, #000000 6%, #000000 11.75%);
 	--powerBtn-border-color: #fea12a;
-	--resetBtn-border-color: #019973;
+	--resetBtn-border-color: #b82899;
 	--view-text-color: #fc0c19;
 	--view-button-color: #eee;
 	--view-color: #000;

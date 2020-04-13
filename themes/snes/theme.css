@@ -46,7 +46,11 @@
 	text-shadow: none;
 }
 
-.snes .nav-link {
+.snes.game-box #openBtn .nav-link {
+	border-width: 0;
+}
+
+.snes.game-box .nav-link {
 	border-width: .5vw;
 }
 

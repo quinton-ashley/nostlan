@@ -23,6 +23,7 @@ html {
 :root {
 	--cover-color: rgb(130, 130, 130);
 	--cover-text-color: rgb(70, 70, 70);
+	--cover-text-shadow-color: rgba(255, 255, 255, .5);
 	--button-color: rgb(70, 70, 70);
 	--button-text-color: rgba(0, 0, 0, .5);
 	--button-border-color: #000;
@@ -231,7 +232,7 @@ webview {
 	margin-bottom: 10px;
 	border: 3px solid var(--cover-text-color);
 	border-radius: 10px;
-	box-shadow: 0.5px 0.5px 0 rgba(255, 255, 255, .5);
+	box-shadow: 0.5px 0.5px 0 var(--cover-text-shadow-color);
 }
 
 .menu .cursor {

@@ -52,6 +52,10 @@ module.exports = async function(arg) {
 			fullName: 'Nintendo Game Boy Advance',
 			emus: ['mgba']
 		},
+		gcn: {
+			name: 'GameCube',
+			fullName: 'Nintendo GameCube'
+		},
 		n3ds: {
 			name: '3DS',
 			fullName: 'Nintendo 3DS',
@@ -106,7 +110,15 @@ module.exports = async function(arg) {
 		prefs.ui.mouse.wheel.smooth = true;
 	}
 
-	const premium = require(__root + '/dev/premium.js');
+	// only Patreon supporters can use premium features
+	let premium;
+	if (!arg.dev) {
+		premium = require(__root + '/dev/premium.js');
+	} else {
+		premium = {
+			verify: () => {}
+		};
+	}
 	const saves = require(__root + '/core/saves.js');
 	global.launcher = require(__root + '/core/launcher.js');
 	const updater = require(__root + '/core/updater.js');
@@ -164,8 +176,10 @@ module.exports = async function(arg) {
 		let sysMenu_5 = 'h1 Select a System\n';
 		let i = 0;
 		for (let _sys in systems) {
+			let _syst = systems[_sys];
+			if (!_syst.emus) continue;
 			if (i % 2 == 0) sysMenu_5 += `.row.row-x\n`;
-			sysMenu_5 += `\t.col.uie(name="${_sys}") ${systems[_sys].name}\n`;
+			sysMenu_5 += `\t.col.uie(name="${_sys}") ${_syst.name}\n`;
 			i++;
 		}
 		delete i;
@@ -284,11 +298,11 @@ module.exports = async function(arg) {
 		await viewerLoad();
 
 		cui.removeView('emuMenu_5');
-		let emuMenu_5 = 'h1 Select an Emulator\n';
+		let emuMenu = 'h1 Select an Emulator\n';
 		for (let _emu of syst.emus) {
-			emuMenu_5 += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
+			emuMenu += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
 		}
-		$('#emuMenu_5').append(pug(emuMenu_5));
+		$('#emuMenu_5').append(pug(emuMenu));
 		cui.addView('emuMenu_5');
 
 		await removeIntro();
@@ -427,6 +441,7 @@ module.exports = async function(arg) {
 	async function createTemplate() {
 		for (let _sys in systems) {
 			let _syst = systems[_sys];
+			if (!_syst.emus) continue;
 			for (let _emu of _syst.emus) {
 				// emu dir
 				await fs.ensureDir(`${emuDir}/${_sys}/${_emu}`);
@@ -638,8 +653,28 @@ module.exports = async function(arg) {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'colors') {
-				// TODO
+				// if (!premium.verify()) {
+				// 	cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
+				// 	return;
+				// }
+				cui.removeView('colorsMenu_12');
+				let colorsMenu = 'h1 Select a Palette\n';
+				for (let palette of (await themes.getColorPalettes())) {
+					let p = palette.sys + ' ' + palette.name;
+					if (!palette.name) palette.name = 'default';
+					palette = systems[palette.sys].name + ' ' + palette.name;
+					colorsMenu += `.col.uie(name="${p}") ${palette}\n`;
+				}
+				$('#colorsMenu_12').append(pug(colorsMenu));
+				cui.addView('colorsMenu_12');
+				cui.change('colorsMenu_12');
 			}
+		} else if (ui == 'colorsMenu_12') {
+			act = act.split(' ');
+			$('body').removeClass();
+			cui.change('interfaceMenu_11', act[0]);
+			$('body').addClass(act[1]);
+			prefs[sys].colorPalette = act[1];
 		} else if (ui == 'addSavesPathMenu_2') {
 			if (act == 'add') {
 				let save = {
@@ -1048,6 +1083,9 @@ module.exports = async function(arg) {
 		cui.addView('libMain', {
 			hoverCurDisabled: true
 		});
+		if (prefs[sys].colorPalette) {
+			$('body').addClass(prefs[sys].colorPalette);
+		}
 		cui.editView('boxOpenMenu_2', {
 			hoverCurDisabled: true
 		});
@@ -1083,9 +1121,9 @@ module.exports = async function(arg) {
 				offline = true;
 			}
 		}
-		if (premium.verify()) {
+		if (arg.dev || premium.verify()) {
 			await loadGameLib();
-			if (!prefs.saves) {
+			if (!arg.dev && !prefs.saves) {
 				cui.change('addSavesPathMenu_2');
 			}
 		} else if (await prefsMng.canLoad() && !premium.status) {

@@ -653,10 +653,10 @@ module.exports = async function(arg) {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'colors') {
-				// if (!premium.verify()) {
-				// 	cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
-				// 	return;
-				// }
+				if (!premium.verify()) {
+					cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
+					return;
+				}
 				cui.removeView('colorsMenu_12');
 				let colorsMenu = 'h1 Select a Palette\n';
 				for (let palette of (await themes.getColorPalettes())) {
@@ -1087,6 +1087,7 @@ module.exports = async function(arg) {
 			$('body').addClass(prefs[sys].colorPalette);
 		}
 		cui.editView('boxOpenMenu_2', {
+			keepBackground: true,
 			hoverCurDisabled: true
 		});
 		$('#view').css('margin-top', '20px');

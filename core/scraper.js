@@ -157,8 +157,7 @@ class Scraper {
 						continue;
 					}
 				}
-
-				if (sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
+				if (/(ds|gba|n3ds|snes|switch)/.test(sys)) {
 					await this.getImg(game, 'cart');
 				} else if (sys != 'arcade') {
 					await this.getImg(game, 'disc');

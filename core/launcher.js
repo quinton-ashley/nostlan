@@ -185,10 +185,9 @@ class Launcher {
 				"${app}",
 				"--system",
 				"Super Famicom",
-				"--import",
+				"--manifest",
 				"${game}",
 			];
-			cmdIcarus[3] = "--manifest";
 			if (mac || linux) cmdIcarus.unshift("wine64");
 			cmdArray = cmdIcarus;
 		}

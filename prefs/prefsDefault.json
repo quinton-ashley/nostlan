@@ -105,6 +105,10 @@
 			"linux": ["wine", "${app}", "${game}"],
 			"mac": ["wine64", "${app}", "${game}"],
 			"win": ["${app}", "${game}"]
+		},
+		"update": {
+			"win": ["$home/AppData/Local/yuzu/maintenancetool.exe",
+				"--launcher", "${app}"]
 		}
 	},
 	"xenia": {

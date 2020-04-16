@@ -119,7 +119,8 @@ class Launcher {
 		return emuAppPath;
 	}
 
-	async launch(game) {
+	async launch(game, opt) {
+		opt = opt || {};
 		if (game && game.id) {
 			identify = false;
 			log(game.id);
@@ -171,13 +172,11 @@ class Launcher {
 				}
 			}
 		}
-		if (!game && emu == 'yuzu' && win) {
-			// update yuzu with maintenancetool when it's run without a game
-			// $home\AppData\Local\yuzu\maintenancetool.exe --launcher $app
-			let maintenancetool = util.absPath('$home');
-			maintenancetool += '/AppData/Local/yuzu/maintenancetool.exe';
-			this.cmdArgs.push(maintenancetool);
-			this.cmdArgs.push('--launcher');
+		if (!game && opt.update) {
+			cmdArray = [];
+			for (let cmdArg of prefs[emu].update) {
+				cmdArray.push(util.absPath(cmdArg));
+			}
 		}
 
 		if (identify && sys == 'snes') {
@@ -246,6 +245,16 @@ class Launcher {
 
 		this.child.on('close', (code) => {
 			this._close(code);
+		});
+	}
+
+	async configEmu() {
+		await this.launch();
+	}
+
+	async updateEmu() {
+		await this.launch(null, {
+			update: true
 		});
 	}
 

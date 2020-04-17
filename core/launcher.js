@@ -61,6 +61,7 @@ class Launcher {
 				if (emu == 'citra') emuAppPath += '-qt';
 				if (emu == 'mgba') emuAppPath += '-sdl';
 				if (emu == 'mame') emuAppPath += '64';
+				if (emu == 'snes9x') emuAppPath += '-x64';
 				if (emu == 'yuzu' && identify) emuAppPath += '-cmd';
 				emuAppPath += '.exe';
 			} else if (mac) {

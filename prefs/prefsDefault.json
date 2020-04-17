@@ -96,10 +96,21 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
+	"snes9x": {
+		"name": "snes9x",
+		"app": {},
+		"cmd": {
+			"linux": ["${app}", "${game}", "-fullscreen"],
+			"mac": ["${app}", "${game}", "-fullscreen"],
+			"win": ["${app}", "${game}", "-fullscreen"]
+		}
+	},
 	"vba": {
 		"name": "Visual Boy Advance",
 		"app": {},
 		"cmd": {
+			"linux": ["${app}", "${game}"],
+			"mac": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		}
 	},

@@ -74,7 +74,7 @@ module.exports = async function(arg) {
 		snes: {
 			name: 'SNES',
 			fullName: 'Super Nintendo',
-			emus: ['bsnes']
+			emus: ['bsnes', 'snes9x']
 		},
 		switch: {
 			name: 'Switch',

@@ -1,4 +1,4 @@
-Nostlan is an open source _high quality_ front-end launcher for video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, Switch, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, Ryujinx, Xenia, and Yuzu.
+Nostlan is an open source _high quality_ front-end launcher for video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, Switch, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, Ryujinx, snes9x, Visual Boy Advance, Xenia, and Yuzu.
 
 [Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount is appreciated. [Support the development of Nostlan on patreon](https://www.patreon.com/nostlan) to gain access to premium features!
 
@@ -12,7 +12,7 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read ab
 
 #### Emulators
 
-- SNES game lib support with [bsnes](https://byuu.org/bsnes) as the default emulator (on macOS and Linux use [bsnes-hd](https://github.com/DerKoun/bsnes-hd/releases))
+- SNES game lib support with [bsnes](https://byuu.org/bsnes) as the default emulator (on macOS and Linux use [bsnes-hd](https://github.com/DerKoun/bsnes-hd/releases)) and snes9x as an alternate emulator.
 - Support for alternate emulators! DS games can be played with melonDS (default) or DeSmuME.
 - running Yuzu without a game will run the maintenancetool updater
 
@@ -48,7 +48,6 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read ab
 #### Emulators
 
 - [Ryujinx](https://ryujinx.org/download/) support (alt Switch emulator that can run 32bit games, unlike Yuzu). I planned to have this feature included in v1.8 but it's not working yet. I've submitted a [bug report](https://github.com/Ryujinx/Ryujinx/issues/1106) to the Ryujinx devs. Not a huge deal rn cause the emulator is still in its infancy in terms of game rendering and sound quality.
-- snes9x support (alt SNES emulator)
 
 #### User Experience
 

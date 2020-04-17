@@ -96,6 +96,13 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
+	"vba": {
+		"name": "Visual Boy Advance",
+		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}"]
+		}
+	},
 	"yuzu": {
 		"name": "Yuzu",
 		"app": {

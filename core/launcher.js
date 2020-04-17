@@ -24,6 +24,7 @@ class Launcher {
 		}
 		emuAppPath = '';
 		let emuDirPath = '';
+		// get emu dir path
 		if (win || (linux && /(cemu|rpcs3)/.test(emu)) ||
 			(mac && /(mame)/.test(emu))) {
 			emuDirPath = `${emuDir}/${sys}/${emu}`;
@@ -42,16 +43,20 @@ class Launcher {
 		} else if (mac) {
 			emuDirPath = '/Applications';
 		}
+		// try to find app in emu dir
+		let name = prefs[emu].name.replace(/ /g, '');
 		let emuNameCases = [
-			prefs[emu].name,
-			prefs[emu].name.toLowerCase(),
-			prefs[emu].name.toUpperCase()
+			name,
+			name.toLowerCase(),
+			name.toUpperCase()
 		];
 		for (let i = 0; i < emuNameCases.length; i++) {
 			if (emuDirPath) {
 				emuAppPath = emuDirPath + '/';
 			}
 			emuAppPath += emuNameCases[i];
+			// add ons to the app's name
+			if (emu == 'vba') emuAppPath += '-m';
 			if (win) {
 				if (emu == 'citra') emuAppPath += '-qt';
 				if (emu == 'mgba') emuAppPath += '-sdl';
@@ -211,7 +216,7 @@ class Launcher {
 
 		if (!identify && game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
-			cui.change('playing_4');
+			await cui.change('playing_4');
 			$('#libMain').hide();
 			$('#dialogs').show();
 			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
@@ -220,7 +225,8 @@ class Launcher {
 		if (!identify) log(this.cmdArgs);
 		if (!identify) log(this.emuDirPath);
 		this._launch();
-		if ((win || linux) && emu == 'yuzu' && kb) {
+		if ((win || linux) && cui.ui == 'playing_4' &&
+			/(yuzu|vba)/.test(emu) && kb) {
 			await delay(1500);
 			kb.keyTap('f11');
 		}

@@ -50,7 +50,7 @@ module.exports = async function(arg) {
 		gba: {
 			name: 'GBA',
 			fullName: 'Nintendo Game Boy Advance',
-			emus: ['mgba']
+			emus: ['mgba', 'vba']
 		},
 		gcn: {
 			name: 'GameCube',

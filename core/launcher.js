@@ -93,14 +93,11 @@ class Launcher {
 				}
 				emuAppPath += getMacExec();
 			} else if (linux) {
+				if (emu == 'bsnes') emuAppPath += '_hd';
 				if (emu == 'snes9x') emuAppPath += '-gtk';
-				if (emu == 'dolphin') {
-					emuAppPath = 'dolphin-emu';
-				} else if (emu == 'cemu') {
-					emuAppPath += '.exe';
-				} else if (emu == 'rpcs3') {
-					emuAppPath += '.AppImage';
-				}
+				if (emu == 'dolphin') emuAppPath = 'dolphin-emu';
+				if (emu == 'cemu') emuAppPath += '.exe';
+				if (emu == 'rpcs3') emuAppPath += '.AppImage';
 			}
 			if ((linux && !/(cemu|yuzu|rpcs3)/.test(emu)) ||
 				await fs.exists(emuAppPath)) {
@@ -222,7 +219,10 @@ class Launcher {
 			$('#libMain').hide();
 			$('#dialogs').show();
 			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
-			if (game) $('#loadDialog1').text(game.title);
+			$('#loadDialog1').text(`To close the emulator, press and hold the ` +
+				`"${prefs.inGame.quit.hold}" button for ` +
+				`${(prefs.inGame.quit.time/1000).toFixed(0)} seconds`);
+			$('#loadDialog2').text(game.title);
 		}
 		if (!identify) log(this.cmdArgs);
 		if (!identify) log('cwd: ' + this.emuDirPath);

@@ -56,7 +56,7 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/n3ds_LQ.png">
 </a></p>
 
-### SNES [bsnes]
+### SNES [bsnes, snes9x]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/snes.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/snes_LQ.png">
@@ -74,7 +74,7 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/mame_LQ.png">
 </a></p>
 
-### GBA [mGBA]
+### GBA [mGBA, Visual Boy Advance]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gba_LQ.png">
@@ -98,12 +98,19 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/xbox360_LQ.png">
 </a></p>
 
-## Premium Features
+# Get premium features by supporting the development of Nostlan!
 
-Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) to gain access to these premium features!
+[Patreon](https://www.patreon.com/nostlan) supporters get premium features for only $1 a month!
 
-- backup/sync all your save data to the cloud or local storage device
-- custom ui theme-ing (coming soon)
+- backup/sync game saves to the cloud or local storage device
+- unlock alternate UI theme color palettes
+- custom UI theming, lets you change the intro loading screens and make your own color palettes
+
+Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop. If you appreciate my work so far and will continue to use the app please support its development. Thank you!
+
+Features that might be offered in the future:
+
+- support for your PC game libraries! (Origin, Steam, Epic Games, etc.)
 
 <p><a href="https://www.patreon.com/nostlan">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/banner.png">
@@ -111,7 +118,7 @@ Support the development of Nostlan on [Patreon](https://www.patreon.com/qashto) 
 
 ## How to access Premium Features
 
-On startup Nostlan will prompt you to become a Patreon supporter. Every month, Patreon supporters will be able to see a Patreon post with the monthly donor password unique to that month. Select `access premium features` from the donation menu. After you support Nostlan on Patreon, visit Nostlan's Patreon page to get the monthly donor password. Copy the password and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features! Passwords are automatically posted each month.
+Every month, Patreon supporters will be able to see an exclusive post with the monthly donor password unique to that month. When you start Nostlan it will show a donation menu. Select `access premium features` from the donation menu. Copy the monthly donor password from Patreon and paste it into the donor password input. Select `verify password`, if the password is correct you will have access to premium features! Passwords are automatically posted each month.
 
 ## Learn more about Nostlan on the wiki
 

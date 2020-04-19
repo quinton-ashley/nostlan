@@ -68,6 +68,7 @@ module.exports = async function() {
 			if (prefs[_sys].emu) prefs[_sys].name = prefs[_sys].emu;
 			delete prefs[_sys].emu;
 			if (_sys == 'arcade') continue;
+			if (!prefs[_sys].name) continue;
 			let _emu = prefs[_sys].name.toLowerCase();
 			prefs[_emu] = prefs[_sys];
 			delete prefs[_sys];
@@ -150,13 +151,13 @@ module.exports = async function() {
 	}
 
 	prefs.version = pkg.version;
+	await this.save();
 
 	if (errCount > 0) {
-		await cui.err('failed to automatically move some game library folders ' +
-			'to conform to the new template structure (introduced in v1.8.x). ' + 'You must change them manually.  Read the update log to find out ' +
-			'why these changes were made.' +
-			'https://github.com/quinton-ashley/nostlan#nostlan-file-structure\n' +
-			'https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v1.8.x',
+		await cui.err(md('failed to automatically move some game library folders ' +
+				'to conform to the new template structure (introduced in v1.8.x). ' + 'You must change them manually.  Read the ' +
+				'[update log](https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v1.8.x) ' +
+				' on Nostlan\'s Github wiki to find out why these changes were made.'),
 			400, 'quit');
 	}
 };

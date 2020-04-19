@@ -76,10 +76,12 @@ game.ds.flip .shade {
 
 game.ds .title.label {
 	top: 5%;
+	font-size: 1.5vw;
 }
 
 game.ds .file.label {
 	top: 70%;
+	font-size: .5vw;
 }
 
 .ds #boxOpenMenu_2 {

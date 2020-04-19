@@ -13,35 +13,35 @@ class Launcher {
 		this.child = {}; // child process running an emulator
 		this.state = 'closed'; // status of the process
 		this.cmdArgs = [];
-		this.emuDirPath = '';
+		this.emuAppDir = '';
 	}
 
-	async getEmuAppPath(attempt) {
+	async getemuApp(attempt) {
 		if (!attempt) attempt = 0;
-		let emuAppPath = util.absPath(prefs[emu].app);
-		if (emuAppPath && await fs.exists(emuAppPath)) {
-			return emuAppPath;
+		let emuApp = util.absPath(prefs[emu].app);
+		if (emuApp && await fs.exists(emuApp)) {
+			return emuApp;
 		}
-		emuAppPath = '';
-		let emuDirPath = '';
+		emuApp = '';
+		let emuAppDir = '';
 		// get emu dir path
 		if (win || (linux && /(cemu|rpcs3)/.test(emu)) ||
 			(mac && /(mame)/.test(emu))) {
-			emuDirPath = `${emuDir}/${sys}/${emu}`;
+			emuAppDir = `${emuDir}/${sys}/${emu}`;
 			if (emu == 'citra') {
-				if (await fs.exists(emuDirPath + '/nightly-mingw')) {
-					emuDirPath += '/nightly-mingw';
+				if (await fs.exists(emuAppDir + '/nightly-mingw')) {
+					emuAppDir += '/nightly-mingw';
 				} else {
-					emuDirPath += '/canary-mingw';
+					emuAppDir += '/canary-mingw';
 				}
 			}
 			if (emu == 'yuzu') {
-				emuDirPath = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
-				if (attempt == 1) emuDirPath += '-early-access';
-				emuDirPath = util.absPath(emuDirPath);
+				emuAppDir = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
+				if (attempt == 1) emuAppDir += '-early-access';
+				emuAppDir = util.absPath(emuAppDir);
 			}
 		} else if (mac) {
-			emuDirPath = '/Applications';
+			emuAppDir = '/Applications';
 		}
 		// try to find app in emu dir
 		let name = prefs[emu].name.replace(/ /g, '');
@@ -70,57 +70,58 @@ class Launcher {
 
 		for (let i = 0; i < emuNameCases.length; i++) {
 			if (i == 0 && emu == 'vba') continue;
-			if (emuDirPath) {
-				emuAppPath = emuDirPath + '/';
+			if (emuAppDir) {
+				emuApp = emuAppDir + '/';
 			}
-			emuAppPath += emuNameCases[i];
+			emuApp += emuNameCases[i];
 			// add ons to the app's name
-			if (emu == 'vba') emuAppPath += '-m';
+			if (emu == 'vba') emuApp += '-m';
 			if (win) {
-				if (emu == 'citra') emuAppPath += '-qt';
-				if (emu == 'mgba') emuAppPath += '-sdl';
-				if (emu == 'mame') emuAppPath += '64';
-				if (emu == 'snes9x') emuAppPath += '-x64';
-				if (emu == 'yuzu' && identify) emuAppPath += '-cmd';
-				emuAppPath += '.exe';
+				if (emu == 'citra') emuApp += '-qt';
+				if (emu == 'desmume') emuApp += '-VS2019-x64-Release';
+				if (emu == 'mgba') emuApp += '-sdl';
+				if (emu == 'mame') emuApp += '64';
+				if (emu == 'snes9x') emuApp += '-x64';
+				if (emu == 'yuzu' && identify) emuApp += '-cmd';
+				emuApp += '.exe';
 			} else if (mac) {
 				if (emu == 'bsnes') {
-					emuAppPath += '_hd';
+					emuApp += '_hd';
 				} else if (emu == 'citra') {
-					emuAppPath += `/nightly/${emuNameCases[1]}-qt`;
+					emuApp += `/nightly/${emuNameCases[1]}-qt`;
 				} else if (emu == 'yuzu') {
-					emuAppPath += '/' + emuNameCases[1];
+					emuApp += '/' + emuNameCases[1];
 				}
-				emuAppPath += getMacExec();
+				emuApp += getMacExec();
 			} else if (linux) {
-				if (emu == 'bsnes') emuAppPath += '_hd';
-				if (emu == 'snes9x') emuAppPath += '-gtk';
-				if (emu == 'dolphin') emuAppPath = 'dolphin-emu';
-				if (emu == 'cemu') emuAppPath += '.exe';
-				if (emu == 'rpcs3') emuAppPath += '.AppImage';
+				if (emu == 'bsnes') emuApp += '_hd';
+				if (emu == 'snes9x') emuApp += '-gtk';
+				if (emu == 'dolphin') emuApp = 'dolphin-emu';
+				if (emu == 'cemu') emuApp += '.exe';
+				if (emu == 'rpcs3') emuApp += '.AppImage';
 			}
 			if ((linux && !/(cemu|yuzu|rpcs3)/.test(emu)) ||
-				await fs.exists(emuAppPath)) {
+				await fs.exists(emuApp)) {
 
-				if (!identify) prefs[emu].app = emuAppPath;
-				return emuAppPath;
+				if (!identify) prefs[emu].app = emuApp;
+				return emuApp;
 			}
 		}
 		// attempt to auto-find the app in a different place
 		if (win && emu == 'yuzu' && attempt == 0) {
-			return this.getEmuAppPath(1);
+			return this.getemuApp(1);
 		}
-		log(`couldn't find app at path:\n` + emuAppPath);
-		emuAppPath = await dialog.selectFile('select emulator app');
+		log(`couldn't find app at path:\n` + emuApp);
+		emuApp = await dialog.selectFile('select emulator app');
 
-		if (mac) emuAppPath += getMacExec();
+		if (mac) emuApp += getMacExec();
 
-		if (!(await fs.exists(emuAppPath))) {
-			cui.err('app path not valid: ' + emuAppPath);
+		if (!(await fs.exists(emuApp))) {
+			cui.err('app path not valid: ' + emuApp);
 			return '';
 		}
-		if (!identify) prefs[emu].app = emuAppPath;
-		return emuAppPath;
+		if (!identify) prefs[emu].app = emuApp;
+		return emuApp;
 	}
 
 	async launch(game, opt) {
@@ -131,26 +132,26 @@ class Launcher {
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
 		}
-		let emuAppPath;
+		let emuApp;
 		if (identify && sys == 'snes') {
-			emuAppPath = __root + '/bin/icarus/icarus.exe';
+			emuApp = __root + '/bin/icarus/icarus.exe';
 		} else if (identify && sys == 'switch') {
-			emuAppPath = await this.getEmuAppPath();
-			let f = path.parse(emuAppPath);
-			emuAppPath = f.dir + '/' + f.name + '-cmd' + f.ext;
-			log(emuAppPath);
+			emuApp = await this.getemuApp();
+			let f = path.parse(emuApp);
+			emuApp = f.dir + '/' + f.name + '-cmd' + f.ext;
+			log(emuApp);
 		} else {
-			emuAppPath = await this.getEmuAppPath();
+			emuApp = await this.getemuApp();
 		}
-		if (!emuAppPath) return;
+		if (!emuApp) return;
 		if (emu == 'mgba' && !game) {
-			emuAppPath = emuAppPath.replace('-sdl', '');
+			emuApp = emuApp.replace('-sdl', '');
 		}
 		this.cmdArgs = [];
-		this.emuDirPath = path.join(emuAppPath, '..');
+		this.emuAppDir = path.join(emuApp, '..');
 		if (linux) {
 			if (emu == 'citra') {
-				emuAppPath = 'org.citra.citra-canary'
+				emuApp = 'org.citra.citra-canary'
 			}
 		}
 		if (!identify) log(emu);
@@ -196,7 +197,7 @@ class Launcher {
 		}
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
-				this.cmdArgs.push(emuAppPath);
+				this.cmdArgs.push(emuApp);
 				if (!game) {
 					break;
 				}
@@ -207,7 +208,7 @@ class Launcher {
 			} else if (cmdArg == '${game.title}') {
 				this.cmdArgs.push(game.title);
 			} else if (cmdArg == '${cwd}') {
-				this.cmdArgs.push(this.emuDirPath);
+				this.cmdArgs.push(this.emuAppDir);
 			} else {
 				this.cmdArgs.push(cmdArg);
 			}
@@ -225,12 +226,15 @@ class Launcher {
 			$('#loadDialog2').text(game.title);
 		}
 		if (!identify) log(this.cmdArgs);
-		if (!identify) log('cwd: ' + this.emuDirPath);
+		if (!identify) log('cwd: ' + this.emuAppDir);
 		this._launch();
 		if (kb && cui.ui == 'playing_4') {
 			if ((win || linux) && /(yuzu|vba|snes9x)/.test(emu)) {
 				await delay(1500);
 				kb.keyTap('f11');
+			} else if (win && emu == 'desmume') {
+				await delay(1500);
+				kb.keyTap('enter', 'alt');
 			} else if (mac && /(mgba|vba)/.test(emu)) {
 				// switch focus to app
 				if (emu == 'mgba') {
@@ -249,7 +253,7 @@ class Launcher {
 
 	_launch() {
 		let spawnOpt = {
-			cwd: this.emuDirPath,
+			cwd: this.emuAppDir,
 			stdio: 'inherit',
 			detached: true
 		};

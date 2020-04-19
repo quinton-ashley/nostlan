@@ -18,8 +18,12 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read ab
 - SNES games can be played with bsnes (default) or snes9x.
 - GBA games can be played with mGBA (default) or Visual Boy Advance.
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_boxOpenMenu.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_boxOpenMenu_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/playMenu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/playMenu_LQ.png">
+</a></p>
+
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/emuMenu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/emuMenu_LQ.png">
 </a></p>
 
 ### App UI
@@ -34,14 +38,18 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read ab
 - unlock alternate UI theme color palettes (Patreon supporter premium feature)
 - custom UI theming, lets you change the intro loading screens and make your own color palettes (Patreon supporter premium feature)
 
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_boxSelectMenu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_boxSelectMenu_LQ.png">
+</a></p>
+
 #### User Experience
 
 - The readme page was way too long, I broke it up into separate wiki pages. I've put a lot more effort into documenting Nostlan on the [wiki](https://github.com/quinton-ashley/nostlan/wiki). I hope you find it helpful!
 - Precise Nintendo Switch game identification! Nostlan uses `yuzu-cmd.exe` to identify your games using its 16 hex digit title id. Since the Switch is a current gen console a complete database for switch games that has all the title ids doesn't exist yet ofc. Nostlan's Switch database has some title id's for older Nintendo Switch games. I added some newer ones myself for the most popular games.
 - Precise SNES game identification! Nostlan uses `icarus.exe` to identify SNES games. It doesn't work on some files but it's pretty good with .sfc roms.
 
-<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_boxSelectMenu.png">
-<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/switch_boxSelectMenu_LQ.png">
+<p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_boxOpenMenu.png">
+<img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/wiiu_boxOpenMenu_LQ.png">
 </a></p>
 
 #### Development
@@ -55,7 +63,7 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read ab
 
 - [Ryujinx](https://ryujinx.org/download/) support (alt Switch emulator that can run 32bit games, unlike Yuzu). I planned to have it working in v1.8.x but Ryujinx can't be run via spawning a child process. I've submitted a [bug report](https://github.com/Ryujinx/Ryujinx/issues/1106) to the Ryujinx devs so hopefully they will have a fix soon.
 
-### App UI
+#### App UI
 
 - update emulators via Nostlan's emulator menu
 - show game wiki pages in the `manuals` section of the open box menus
@@ -69,15 +77,13 @@ This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read ab
 - precise Wii/Gamecube/VC game identification using `Dolphin.exe` and robotjs to get the game id values directly from the main ui's game table
 - when an emulator app is not found Nostlan will prompt the user for the location of the app or if Nostlan should download and install it automatically
 
-## Supporting Multiple Emulators per System
+## The New Default Folder Structure
 
-When users launch a game, a menu will appear prompting users to choose which emulator they want to play the game with!
-
-To implement this new feature in a way that made sense, I had to rethink what the default paths to your emulators and games should be.
+When users launch a game, a menu will appear prompting users to choose which emulator they want to play the game with! To implement this new feature in a way that made sense, I had to rethink what the default paths to your emulators and games should be.
 
 If you've used Nostlan before, when you load this update Nostlan will attempt to reorganize the default paths to your emulators and games. This update breaks compatibility with all older versions of Nostlan. The folders for game images and user game list files have been moved into their respective system folder in `emu`.
 
-Example of what the OPTIONAL default Nostlan file structure looks like on Windows. Its optional but I do highly recommend using it as it makes using the Nostlan so much easier. As always, you can edit emulator app and game library locations in your user preferences file. For more info read [Setting up Nostlan](https://github.com/quinton-ashley/nostlan/wiki/Setting-up-Nostlan).
+Example of what the OPTIONAL default Nostlan file structure looks like on Windows. Its optional but I do highly recommend using it, as it makes using the Nostlan so much easier. As in previous versions, as you use the app Nostlan will prompt you for apps and game libraries not in the default location. You can also edit emulator app and game library locations in your user preferences json file. For more info read [Setting up Nostlan](https://github.com/quinton-ashley/nostlan/wiki/Setting-up-Nostlan).
 
     📁 emu (root folder can have any name)
     ├─┬ 📁 nostlan
@@ -152,7 +158,7 @@ Example of what the OPTIONAL default Nostlan file structure looks like on Window
 
 Nostlan is an experimental project but I want to make it intuitive and useful for the general public! If something is wrong with the app or if you have any questions please email me <mailto:qashto@gmail.com> or write up an issue report on Github. What do you think of the features I have planned? What should I prioritize?
 
-# Support the Development of Nostlan!
+## Support the Development of Nostlan!
 
 Patreon supporters get premium features for only $1 a month!
 
@@ -166,4 +172,4 @@ Features that might be offered in the future:
 
 - support for your PC game libraries! (Origin, Steam, Epic Games, etc.)
 
-I'm going to make a lot of videos about Nostlan which will hopefully make it easier for new users to start using the app. Ideally I would like to have 200+ supporters to consider working on Nostlan a worthwhile investment of my time. If Nostlan got 500+ supporters and I made ~$1,500 a month from Patreon, I would work on Nostlan full time and come out with updates a lot more frequently! If you use Nostlan a lot I really don't think $1 a month is too much to ask. Please support this open source project!
+I'm going to make a lot of videos about Nostlan which will hopefully make it easier for new users to start using the app. Ideally I would like to have 200+ supporters to consider working on Nostlan a worthwhile investment of my time. If Nostlan got 500+ supporters and I made ~$1,500 a month from Patreon, I would work on Nostlan full time and come out with updates a lot more frequently. If you use Nostlan a lot I really don't think $1 a month is too much to ask. Please support this open source project!

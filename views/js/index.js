@@ -1137,7 +1137,7 @@ module.exports = async function(arg) {
 				offline = true;
 			}
 		}
-		if (arg.dev || premium.verify()) {
+		if ((arg.dev && !arg.setup) || premium.verify()) {
 			await loadGameLib();
 			if (!arg.dev && !prefs.saves) {
 				cui.change('addSavesPathMenu_2');
@@ -1145,6 +1145,7 @@ module.exports = async function(arg) {
 		} else if (await prefsMng.canLoad() && !premium.status) {
 			cui.change('donateMenu');
 		} else {
+			prefs.version = pkg.version;
 			cui.change('welcomeMenu');
 		}
 		await delay(1000);

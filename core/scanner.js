@@ -233,6 +233,13 @@ class Scanner {
 				term = term.trim();
 				let game = await this.searchForGame(searcher, term, games);
 
+				if (!game) {
+					// some games use parenthesis in the game title so this
+					// is a last resort if the game isn't found
+					term = term.replace(/[\[\(].*/gi, '');
+					game = await this.searchForGame(searcher, term, games);
+				}
+
 				if (game) {
 					this.olog(`potential match:  ${game.title}\r\n`);
 				} else {

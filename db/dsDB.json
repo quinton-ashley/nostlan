@@ -8484,7 +8484,8 @@
 },{
 "id": "CPUD", "title": "Pokémon: Platin-Edition"
 },{
-"id": "CPUE", "title": "Pokémon: Platinum Version"
+"id": "CPUE", "title": "Pokémon: Platinum Version",
+"img": {"cart": "q"}
 },{
 "id": "CPUF", "title": "Pokémon: Version Platine"
 },{

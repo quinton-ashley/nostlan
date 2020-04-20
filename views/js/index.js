@@ -815,7 +815,7 @@ module.exports = async function(arg) {
 			}
 			if (acts[1] == 'update') {
 				await launcher.updateEmu();
-			} else if (acts[1] == 'config') {
+			} else if (acts[1] == 'config' || ui == 'emuMenu_5') {
 				await launcher.configEmu();
 			} else {
 				await launcher.launch(getCurGame());
@@ -1115,6 +1115,7 @@ module.exports = async function(arg) {
 		// in the cover menu
 		cui.start({
 			v: true,
+			haptic: prefs.ui.gamepad.haptic,
 			gca: prefs.ui.gamepad.gca,
 			gamepadMaps: prefs.ui.gamepad,
 			normalize: {

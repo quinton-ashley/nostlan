@@ -145,6 +145,7 @@
 		},
 		"gamepad": {
 			"gca": true,
+			"haptic": true,
 			"default": {
 				"profile": "Xbox_PS_Adaptive",
 				"map": {}

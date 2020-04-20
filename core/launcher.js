@@ -230,8 +230,8 @@ class Launcher {
 
 		this._launch();
 
-		if (game && game.id && cui.gca.connected) {
-			$('#loadDialog1').text('Unfortunately only one app at a time can be connected to the Gamecube Controller Adapter.  Nostlan will quit.');
+		if (sys == 'wii' && game && game.id && cui.gca.connected && !cui.gamepadConnected) {
+			$('#loadDialog1').text('Unfortunately only one app at a time can be connected to your Gamecube Controller Adapter.  Nostlan will quit.');
 			await delay(2000);
 			await cui.doAction('quit');
 			return;

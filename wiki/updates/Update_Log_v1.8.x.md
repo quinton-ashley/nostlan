@@ -4,6 +4,8 @@ Nostlan is an open source _high quality_ front-end launcher for video game emula
 
 This update log covers changes made in v1.8.x. Unfamiliar with Nostlan? [Read about its features and look at screenshots on the readme page.](https://github.com/quinton-ashley/nostlan/blob/master/README.md)
 
+Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](https://www.reddit.com/r/nostlan/)
+
 ## Update Summary for v1.8.x
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/snes.png">
@@ -160,11 +162,11 @@ Nostlan is an experimental project but I want to make it intuitive and useful fo
 
 ## Support the Development of Nostlan!
 
-Patreon supporters get premium features for only $1 a month!
+[Patreon](https://www.patreon.com/nostlan) supporters get premium features for only $1 a month!
 
-- backup/sync game saves to the cloud or local storage device
-- unlock alternate UI theme color palettes
-- custom UI theming, lets you change the intro loading screens and make your own color palettes
+- [backup/sync game saves to the cloud or local storage device](https://github.com/quinton-ashley/nostlan/wiki/Backup-Saves-and-Cloud-Save-Syncing)
+- [unlock alternate UI theme color palettes](https://github.com/quinton-ashley/nostlan/wiki/Change-Theme)
+- [custom UI theming, lets you change the intro loading screens and make your own color palettes](https://github.com/quinton-ashley/nostlan/wiki/Custom-Themes)
 
 Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop. If you appreciate my work so far and will continue to use the app please support its development. Thank you!
 

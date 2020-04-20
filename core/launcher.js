@@ -214,7 +214,7 @@ class Launcher {
 			}
 		}
 
-		if (!identify && game && game.id || emu == 'mame') {
+		if (game && game.id || emu == 'mame') {
 			// cui.removeView('libMain');
 			await cui.change('playing_4');
 			$('#libMain').hide();
@@ -227,7 +227,16 @@ class Launcher {
 		}
 		if (!identify) log(this.cmdArgs);
 		if (!identify) log('cwd: ' + this.emuAppDir);
+
 		this._launch();
+
+		if (game && game.id && cui.gca.connected) {
+			$('#loadDialog1').text('Unfortunately only one app at a time can be connected to the Gamecube Controller Adapter.  Nostlan will quit.');
+			await delay(2000);
+			await cui.doAction('quit');
+			return;
+		}
+
 		if (kb && cui.ui == 'playing_4') {
 			if ((win || linux) && /(yuzu|vba|snes9x)/.test(emu)) {
 				await delay(1500);
@@ -357,6 +366,8 @@ class Launcher {
 			cui.hideDialogs();
 			log('exited with code ' + code);
 			if (cui.ui == 'playing_4') {
+				// only one app at a time can be connected to the gca
+				if (cui.gca.connected) cui.gca.start();
 				await cui.doAction('back');
 			}
 		}

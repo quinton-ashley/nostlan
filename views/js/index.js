@@ -346,7 +346,7 @@ module.exports = async function(arg) {
 		}
 	};
 
-	cui.onChange = (state, subState, gamepadConnected) => {
+	cui.onChange = (state, subState) => {
 		let labels = [' ', ' ', ' '];
 		if (state == 'boxSelect_1') {
 			labels = ['Play', 'Flip', 'Back'];
@@ -404,7 +404,7 @@ module.exports = async function(arg) {
 			adjust(false);
 		}
 
-		if (!gamepadConnected || !subState) {
+		if (!(cui.gamepadConnected || cui.gca.connected) || !subState) {
 			return;
 		}
 		$('#power span').text(buttons[0]);
@@ -665,24 +665,24 @@ module.exports = async function(arg) {
 		} else if (ui == 'interfaceMenu_11') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
-			} else if (act == 'colors') {
+			} else if (act == 'theme') {
 				if (!premium.verify()) {
 					cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
 					return;
 				}
-				cui.removeView('colorsMenu_12');
-				let colorsMenu = 'h1 Select a Palette\n';
+				cui.removeView('themeMenu_12');
+				let themeMenu = 'h1 Change Theme\n';
 				for (let palette of (await themes.getColorPalettes())) {
 					let p = palette.sys + ' ' + palette.name;
 					if (!palette.name) palette.name = 'default';
 					palette = systems[palette.sys].name + ' ' + palette.name;
-					colorsMenu += `.col.uie(name="${p}") ${palette}\n`;
+					themeMenu += `.col.uie(name="${p}") ${palette}\n`;
 				}
-				$('#colorsMenu_12').append(pug(colorsMenu));
-				cui.addView('colorsMenu_12');
-				cui.change('colorsMenu_12');
+				$('#themeMenu_12').append(pug(themeMenu));
+				cui.addView('themeMenu_12');
+				cui.change('themeMenu_12');
 			}
-		} else if (ui == 'colorsMenu_12') {
+		} else if (ui == 'themeMenu_12') {
 			act = act.split(' ');
 			$('body').removeClass();
 			cui.change('interfaceMenu_11', act[0]);

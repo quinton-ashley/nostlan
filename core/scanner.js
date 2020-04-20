@@ -48,7 +48,7 @@ class Scanner {
 		// TODO exact match indexing for wii games with Dolphin using kb
 		// if (sys == 'wii' && kb) {
 		if (false) {
-			let app = await launcher.getEmuAppPath();
+			let app = await launcher.getEmuApp();
 			let dir = path.join(app, '../User');
 			if (mac && !(await fs.exists(dir))) {
 				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';

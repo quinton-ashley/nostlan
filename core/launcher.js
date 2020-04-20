@@ -16,7 +16,7 @@ class Launcher {
 		this.emuAppDir = '';
 	}
 
-	async getemuApp(attempt) {
+	async getEmuApp(attempt) {
 		if (!attempt) attempt = 0;
 		let emuApp = util.absPath(prefs[emu].app);
 		if (emuApp && await fs.exists(emuApp)) {
@@ -109,7 +109,7 @@ class Launcher {
 		}
 		// attempt to auto-find the app in a different place
 		if (win && emu == 'yuzu' && attempt == 0) {
-			return this.getemuApp(1);
+			return this.getEmuApp(1);
 		}
 		log(`couldn't find app at path:\n` + emuApp);
 		emuApp = await dialog.selectFile('select emulator app');
@@ -136,12 +136,12 @@ class Launcher {
 		if (identify && sys == 'snes') {
 			emuApp = __root + '/bin/icarus/icarus.exe';
 		} else if (identify && sys == 'switch') {
-			emuApp = await this.getemuApp();
+			emuApp = await this.getEmuApp();
 			let f = path.parse(emuApp);
 			emuApp = f.dir + '/' + f.name + '-cmd' + f.ext;
 			log(emuApp);
 		} else {
-			emuApp = await this.getemuApp();
+			emuApp = await this.getEmuApp();
 		}
 		if (!emuApp) return;
 		if (emu == 'mgba' && !game) {

@@ -203,7 +203,7 @@ class Scraper {
 	async getImgDir(game) {
 		let imgDir = `${emuDir}/${sys}/images/${game.id}`;
 		if (sys == 'arcade') {
-			imgDir = await launcher.getEmuAppPath();
+			imgDir = await launcher.getEmuApp();
 			imgDir = path.join(imgDir, '..');
 			imgDir += `/artwork/${game.id}`;
 			imgDir = imgDir.replace(/\\/g, '/');

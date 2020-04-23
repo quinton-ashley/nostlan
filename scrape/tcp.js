@@ -88,30 +88,64 @@ class TheCoverProjectScraper {
 			er('browser not loaded');
 			return;
 		}
-		let idx = game.title[0].toLowerCase();
+		// the cover project has "The" appended to titles
+		let title = game.title;
+		if (/, The/.test(title)) {
+			title = game.title.replace(/, The/g, '') + ', The';
+		}
+		if (/^The/.test(title)) {
+			title = game.title.replace(/^The /g, '') + ', The';
+		}
+		let idx = title[0].toLowerCase();
 		if (idx == idx.toUpperCase()) idx = '9';
 
-		let fusePrms = {
-			shouldSort: true,
-			tokenize: true,
-			matchAllTokens: true,
-			includeScore: true,
-			threshold: 0.1,
-			location: 0,
-			distance: 5,
-			maxPatternLength: 64,
-			minMatchCharLength: 1,
-			keys: [
-				"title"
-			]
-		};
-		let fuse = new Fuse(tcp[sys][idx], fusePrms);
-		let results = fuse.search(game.title.substr(0, 64));
-		log(results);
-		let url;
+		let lcTitle = title.toLowerCase();
+		let res = tcp[sys][idx].find(x => x.title.toLowerCase() == lcTitle);
+		if (!res && /, the/.test(lcTitle)) {
+			lcTitle = lcTitle.replace(/, the/g, '');
+			res = tcp[sys][idx].find(x => x.title.toLowerCase() == lcTitle);
+		}
+		if (!res && /&/.test(lcTitle)) {
+			lcTitle = lcTitle.replace(/&/g, 'and');
+			res = tcp[sys][idx].find(x => x.title.toLowerCase() == lcTitle);
+		}
+
+		let results;
+		if (res) {
+			log(res);
+		} else {
+			let fusePrms = {
+				shouldSort: true,
+				tokenize: true,
+				matchAllTokens: true,
+				includeScore: true,
+				threshold: 0.1,
+				location: 0,
+				distance: 5,
+				maxPatternLength: 64,
+				minMatchCharLength: 1,
+				keys: [
+					"title"
+				]
+			};
+			let fuse = new Fuse(tcp[sys][idx], fusePrms);
+			results = fuse.search(title.substr(0, 64));
+			log(results);
+
+			if (!results && !results.length && /&/.test(title)) {
+				title = title.replace(/&/g, 'and');
+				results = fuse.search(title.substr(0, 64));
+			}
+		}
+
 		if (results && results.length) {
+			res = results[0].item;
+		}
+
+		let url;
+		if (res) {
 			url = 'http://www.thecoverproject.net/view.php?game_id=';
-			url += results[0].item.url;
+			url += res.url;
 		}
 		if (!url && sys == 'wii') {
 			if (game.id.length > 4) {
@@ -148,6 +182,7 @@ class TheCoverProjectScraper {
 		if (sys == 'ps2') catID = 6;
 		if (sys == 'gba') catID = 13;
 		if (sys == 'snes') catID = 8;
+		if (sys == 'nes') catID = 27;
 		if (!catID) {
 			er('no category id for sys: ' + sys);
 			return;

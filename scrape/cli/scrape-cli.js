@@ -33,7 +33,6 @@ module.exports = async function(arg) {
 	});
 	await prefsMan.save();
 
-	const deepExtend = require('deep-extend');
 	let scraper = require(`../${scrape}.js`);
 	global.sys = arg.sys || 'snes'; // sys default
 	if (scrape == 'fly') sys = 'arcade';
@@ -64,10 +63,15 @@ module.exports = async function(arg) {
 				if (!game.img) {
 					game.img = img;
 				} else if (!arg.override) {
-					deepExtend(game.img, img);
+					for (let key of Object.keys(img)) {
+						game.img[key] = img[key];
+					}
 				} else {
-					// TODO deep extend doesn't work, do it manually
-					deepExtend(game.img, img);
+					for (let key of Object.keys(img)) {
+						if (!game.img[key]) {
+							game.img[key] = img[key];
+						}
+					}
 					game.img = img;
 				}
 				log('image found!');
@@ -93,7 +97,7 @@ module.exports = async function(arg) {
 		log('saving to file... DO NOT QUIT');
 		await fs.outputFile(dbPath, JSON.stringify({
 			games: games
-		}));
+		}, null, '\t'));
 		log('file saved: ' + dbPath);
 	}
 

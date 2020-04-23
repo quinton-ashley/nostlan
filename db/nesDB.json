@@ -1,0 +1,4017 @@
+{
+	"games": [{
+		"id": "3D564757",
+		"title": "10-Yard Fight",
+		"img": {
+			"coverFull": "c 4154"
+		}
+	}, {
+		"id": "171251E3",
+		"title": "1942",
+		"img": {
+			"coverFull": "c 3743"
+		}
+	}, {
+		"id": "12C6D5C7",
+		"title": "1943: The Battle of Midway",
+		"img": {
+			"coverFull": "c 4060"
+		}
+	}, {
+		"id": "E6A477B2",
+		"title": "3-D WorldRunner",
+		"img": {
+			"coverFull": "c 12382"
+		}
+	}, {
+		"id": "49F745E0",
+		"title": "720 Degrees"
+	}, {
+		"id": "326AB3B6",
+		"title": "8 Eyes",
+		"img": {
+			"coverFull": "c 13134"
+		}
+	}, {
+		"id": "B134D713",
+		"title": "Abadox: The Deadly Inner War"
+	}, {
+		"id": "51C0B27E",
+		"title": "Action 52"
+	}, {
+		"id": "65518EAE",
+		"title": "Addams Family, The",
+		"img": {
+			"coverFull": "c 12880"
+		}
+	}, {
+		"id": "063E5653",
+		"title": "Addams Family, The: Pugsley's Scavenger Hunt",
+		"img": {
+			"coverFull": "c 12576"
+		}
+	}, {
+		"id": "2C5908A7",
+		"title": "Advanced Dungeons & Dragons: DragonStrike",
+		"img": {
+			"coverFull": "c 12811"
+		}
+	}, {
+		"id": "B17574F3",
+		"title": "Advanced Dungeons & Dragons: Heroes of the Lance",
+		"img": {
+			"coverFull": "c 5881"
+		}
+	}, {
+		"id": "5DE61639",
+		"title": "Advanced Dungeons & Dragons: Hillsfar",
+		"img": {
+			"coverFull": "c 12802"
+		}
+	}, {
+		"id": "25952141",
+		"title": "Advanced Dungeons & Dragons: Pool of Radiance",
+		"img": {
+			"coverFull": "c 7644"
+		}
+	}, {
+		"id": "F8A713BE",
+		"title": "Adventure Island"
+	}, {
+		"id": "771C8855",
+		"title": "Adventure Island II"
+	}, {
+		"id": "BFBFD25D",
+		"title": "Adventure Island III",
+		"img": {
+			"coverFull": "c 11655"
+		}
+	}, {
+		"id": "5DBD6099",
+		"title": "Adventures in the Magic Kingdom"
+	}, {
+		"id": "67751094",
+		"title": "Adventures of Bayou Billy, The",
+		"img": {
+			"coverFull": "c 5882"
+		}
+	}, {
+		"id": "9BDE3267",
+		"title": "Adventures of Dino Riki",
+		"img": {
+			"coverFull": "c 12903"
+		}
+	}, {
+		"id": "55773880",
+		"title": "Adventures of Gilligan's Island, The"
+	}, {
+		"id": "71BF075F",
+		"title": "Adventures of Lolo",
+		"img": {
+			"coverFull": "c 12747"
+		}
+	}, {
+		"id": "1992D163",
+		"title": "Adventures of Lolo 2",
+		"img": {
+			"coverFull": "c 12747"
+		}
+	}, {
+		"id": "8DD92725",
+		"title": "Adventures of Lolo 3"
+	}, {
+		"id": "D8EE7669",
+		"title": "Adventures of Rad Gravity, The",
+		"img": {
+			"coverFull": "c 11742"
+		}
+	}, {
+		"id": "227CF577",
+		"title": "Adventures of Rocky and Bullwinkle and Friends, The"
+	}, {
+		"id": "6E85D8DD",
+		"title": "Adventures of Tom Sawyer",
+		"img": {
+			"coverFull": "c 12905"
+		}
+	}, {
+		"id": "F699EE7E",
+		"title": "After Burner"
+	}, {
+		"id": "35C41CD4",
+		"title": "Air Fortress",
+		"img": {
+			"coverFull": "c 11494"
+		}
+	}, {
+		"id": "489EF6A2",
+		"title": "Airwolf",
+		"img": {
+			"coverFull": "c 3649"
+		}
+	}, {
+		"id": "C527C297",
+		"title": "Alien 3"
+	}, {
+		"id": "CBF4366F",
+		"title": "Alien Syndrome",
+		"img": {
+			"coverFull": "c 13277"
+		}
+	}, {
+		"id": "934DB14A",
+		"title": "All-Pro Basketball",
+		"img": {
+			"coverFull": "c 13278"
+		}
+	}, {
+		"id": "DBF90772",
+		"title": "Alpha Mission",
+		"img": {
+			"coverFull": "c 12882"
+		}
+	}, {
+		"id": "E2B43A68",
+		"title": "Amagon",
+		"img": {
+			"coverFull": "c 12578"
+		}
+	}, {
+		"id": "1973AEA8",
+		"title": "American Gladiators",
+		"img": {
+			"coverFull": "c 13103"
+		}
+	}, {
+		"id": "99A9F57E",
+		"title": "Anticipation",
+		"img": {
+			"coverFull": "c 8015"
+		}
+	}, {
+		"id": "C740EB46",
+		"title": "Arch Rivals: A Basketbrawl!",
+		"img": {
+			"coverFull": "c 16279"
+		}
+	}, {
+		"id": "F304F1B9",
+		"title": "Archon",
+		"img": {
+			"coverFull": "c 12431"
+		}
+	}, {
+		"id": "32FB0583",
+		"title": "Arkanoid",
+		"img": {
+			"coverFull": "c 13090"
+		}
+	}, {
+		"id": "1425D7F4",
+		"title": "Arkista's Ring",
+		"img": {
+			"coverFull": "c 6720"
+		}
+	}, {
+		"id": "ED77B453",
+		"title": "Asterix",
+		"img": {
+			"coverFull": "c 4248"
+		}
+	}, {
+		"id": "054CB4EB",
+		"title": "Astyanax",
+		"img": {
+			"coverFull": "c 10974"
+		}
+	}, {
+		"id": "27DDF227",
+		"title": "Athena",
+		"img": {
+			"coverFull": "c 12909"
+		}
+	}, {
+		"id": "1771EA8F",
+		"title": "Athletic World",
+		"img": {
+			"coverFull": "c 12579"
+		}
+	}, {
+		"id": "7C6F615F",
+		"title": "Attack of the Killer Tomatoes",
+		"img": {
+			"coverFull": "c 12684"
+		}
+	}, {
+		"id": "BBE40DC4",
+		"title": "Baby Boomer"
+	}, {
+		"id": "A55FA397",
+		"title": "Back to the Future",
+		"img": {
+			"coverFull": "c 11219"
+		}
+	}, {
+		"id": "37BA3261",
+		"title": "Back to the Future Part II & III",
+		"img": {
+			"coverFull": "c 4070"
+		}
+	}, {
+		"id": "161D717B",
+		"title": "Bad Dudes",
+		"img": {
+			"coverFull": "c 3650"
+		}
+	}, {
+		"id": "40DAFCBA",
+		"title": "Bad News Baseball",
+		"img": {
+			"coverFull": "c 14086"
+		}
+	}, {
+		"id": "1AE7B933",
+		"title": "Bad Street Brawler",
+		"img": {
+			"coverFull": "c 12911"
+		}
+	}, {
+		"id": "401349A8",
+		"title": "Balloon Fight",
+		"img": {
+			"coverFull": "c 6148"
+		}
+	}, {
+		"id": "6CD46979",
+		"title": "Bandai Golf: Challenge Pebble Beach",
+		"img": {
+			"coverFull": "c 13126"
+		}
+	}, {
+		"id": "15FE6D0F",
+		"title": "Bandit Kings of Ancient China"
+	}, {
+		"id": "18B249E5",
+		"title": "Barbie",
+		"img": {
+			"coverFull": "c 13279"
+		}
+	}, {
+		"id": "9B821A83",
+		"title": "Bard's Tale, The",
+		"img": {
+			"coverFull": "c 4082"
+		}
+	}, {
+		"id": "4318A2F8",
+		"title": "Barker Bill's Trick Shooting",
+		"img": {
+			"coverFull": "c 13091"
+		}
+	}, {
+		"id": "AFDCBD24",
+		"title": "Baseball",
+		"img": {
+			"coverFull": "c 4071"
+		}
+	}, {
+		"id": "1F6EA423",
+		"title": "Baseball Simulator 1.000",
+		"img": {
+			"coverFull": "c 13184"
+		}
+	}, {
+		"id": "40D159B6",
+		"title": "Baseball Stars",
+		"img": {
+			"coverFull": "c 13280"
+		}
+	}, {
+		"id": "18A9F0D9",
+		"title": "Baseball Stars II",
+		"img": {
+			"coverFull": "c 12813"
+		}
+	}, {
+		"id": "6ABAD366",
+		"title": "Bases Loaded",
+		"img": {
+			"coverFull": "c 11371"
+		}
+	}, {
+		"id": "3ECA3DDA",
+		"title": "Bases Loaded 3",
+		"img": {
+			"coverFull": "c 2412"
+		}
+	}, {
+		"id": "28F9B41F",
+		"title": "Bases Loaded 4",
+		"img": {
+			"coverFull": "c 2412"
+		}
+	}, {
+		"id": "B9CF171F",
+		"title": "Bases Loaded II: Second Season",
+		"img": {
+			"coverFull": "c 5727"
+		}
+	}, {
+		"id": "03EC46AF",
+		"title": "Batman: Return of the Joker",
+		"img": {
+			"coverFull": "c 6934"
+		}
+	}, {
+		"id": "13C6617E",
+		"title": "Batman: The Video Game"
+	}, {
+		"id": "C247A23D",
+		"title": "Batman Returns",
+		"img": {
+			"coverFull": "c 12580"
+		}
+	}, {
+		"id": "2C2DDFB4",
+		"title": "Battle Chess",
+		"img": {
+			"coverFull": "c 13128"
+		}
+	}, {
+		"id": "6B53006A",
+		"title": "Battle of Olympus, The",
+		"img": {
+			"coverFull": "c 3651"
+		}
+	}, {
+		"id": "50CCC8ED",
+		"title": "Battleship",
+		"img": {
+			"coverFull": "c 13106"
+		}
+	}, {
+		"id": "90D68A43",
+		"title": "Battletank"
+	}, {
+		"id": "279710DC",
+		"title": "Battletoads",
+		"img": {
+			"coverFull": "c 3652"
+		}
+	}, {
+		"id": "CEB65B06",
+		"title": "Battletoads-Double Dragon"
+	}, {
+		"id": "C4E81924",
+		"title": "Beauty and the Beast",
+		"img": {
+			"coverFull": "c 16550"
+		}
+	}, {
+		"id": "6C93377C",
+		"title": "Bee 52",
+		"img": {
+			"coverFull": "c 14088"
+		}
+	}, {
+		"id": "EB84C54C",
+		"title": "Beetlejuice",
+		"img": {
+			"coverFull": "c 12853"
+		}
+	}, {
+		"id": "A6A725B8",
+		"title": "Best of the Best: Championship Karate"
+	}, {
+		"id": "680DA78D",
+		"title": "Bible Adventures",
+		"img": {
+			"coverFull": "c 7535"
+		}
+	}, {
+		"id": "CFD5AC62",
+		"title": "Bible Buffet"
+	}, {
+		"id": "CCDCBFC6",
+		"title": "Big Nose Freaks Out",
+		"img": {
+			"coverFull": "c 14618"
+		}
+	}, {
+		"id": "BD154C3E",
+		"title": "Big Nose the Caveman",
+		"img": {
+			"coverFull": "c 15719"
+		}
+	}, {
+		"id": "C42E648A",
+		"title": "Bigfoot",
+		"img": {
+			"coverFull": "c 13467"
+		}
+	}, {
+		"id": "C4B6ED3C",
+		"title": "Bill & Ted's Excellent Video Game Adventure",
+		"img": {
+			"coverFull": "c 13281"
+		}
+	}, {
+		"id": "847D672D",
+		"title": "Bill Elliott's NASCAR Challenge",
+		"img": {
+			"coverFull": "c 13282"
+		}
+	}, {
+		"id": "D2574720",
+		"title": "Bionic Commando",
+		"img": {
+			"coverFull": "c 5884"
+		}
+	}, {
+		"id": "1D0F4D6B",
+		"title": "Black Bass, The",
+		"img": {
+			"coverFull": "c 11819"
+		}
+	}, {
+		"id": "C2A4612E",
+		"title": "Blackjack",
+		"img": {
+			"coverFull": "c 15720"
+		}
+	}, {
+		"id": "8AB52A24",
+		"title": "Blades of Steel",
+		"img": {
+			"coverFull": "c 8531"
+		}
+	}, {
+		"id": "3F0FD764",
+		"title": "Blaster Master",
+		"img": {
+			"coverFull": "c 3653"
+		}
+	}, {
+		"id": "F37BEFD5",
+		"title": "Blue Marlin, The"
+	}, {
+		"id": "9F2EEF20",
+		"title": "Blues Brothers, The",
+		"img": {
+			"coverFull": "c 11285"
+		}
+	}, {
+		"id": "5FD2AAB1",
+		"title": "Bo Jackson Baseball",
+		"img": {
+			"coverFull": "c 16095"
+		}
+	}, {
+		"id": "DB9DCF89",
+		"title": "Bomberman",
+		"img": {
+			"coverFull": "c 11095"
+		}
+	}, {
+		"id": "1EBB5B42",
+		"title": "Bomberman II"
+	}, {
+		"id": "4E44FF44",
+		"title": "Bonk's Adventure",
+		"img": {
+			"coverFull": "c 12815"
+		}
+	}, {
+		"id": "A8F4D99E",
+		"title": "Boulder Dash"
+	}, {
+		"id": "4D1AC58C",
+		"title": "Boy and His Blob, A: Trouble on Blobolonia"
+	}, {
+		"id": "DFA111F1",
+		"title": "Bram Stoker's Dracula",
+		"img": {
+			"coverFull": "c 8533"
+		}
+	}, {
+		"id": "5F0BCE2A",
+		"title": "Break Time: The National Pool Tour",
+		"img": {
+			"coverFull": "c 13186"
+		}
+	}, {
+		"id": "A5E8D2CD",
+		"title": "BreakThru",
+		"img": {
+			"coverFull": "c 13283"
+		}
+	}, {
+		"id": "68AFEF5F",
+		"title": "Bubble Bath Babes"
+	}, {
+		"id": "5E900522",
+		"title": "Bubble Bobble",
+		"img": {
+			"coverFull": "c 6150"
+		}
+	}, {
+		"id": "E095C3F2",
+		"title": "Bubble Bobble Part 2",
+		"img": {
+			"coverFull": "c 10916"
+		}
+	}, {
+		"id": "E19EE99C",
+		"title": "Bucky O'Hare"
+	}, {
+		"id": "126EBF66",
+		"title": "Bugs Bunny Birthday Blowout, The",
+		"img": {
+			"coverFull": "c 13040"
+		}
+	}, {
+		"id": "E50A9130",
+		"title": "Bugs Bunny Crazy Castle, The",
+		"img": {
+			"coverFull": "c 12695"
+		}
+	}, {
+		"id": "A0A095C4",
+		"title": "Bump'n'Jump"
+	}, {
+		"id": "CE228874",
+		"title": "Burai Fighter",
+		"img": {
+			"coverFull": "c 12788"
+		}
+	}, {
+		"id": "DAF9D7E3",
+		"title": "BurgerTime",
+		"img": {
+			"coverFull": "c 11071"
+		}
+	}, {
+		"id": "BDF046EF",
+		"title": "Cabal",
+		"img": {
+			"coverFull": "c 11781"
+		}
+	}, {
+		"id": "DB1D03E5",
+		"title": "Caesars Palace"
+	}, {
+		"id": "2F66E302",
+		"title": "California Games",
+		"img": {
+			"coverFull": "c 12685"
+		}
+	}, {
+		"id": "4686C5DD",
+		"title": "Caltron: 6 in 1"
+	}, {
+		"id": "BE250388",
+		"title": "Capcom's Gold Medal Challenge '92"
+	}, {
+		"id": "58C7DDAF",
+		"title": "Captain America and the Avengers",
+		"img": {
+			"coverFull": "c 12915"
+		}
+	}, {
+		"id": "A5E89675",
+		"title": "Captain Comic: The Adventure"
+	}, {
+		"id": "0B404915",
+		"title": "Captain Planet and the Planeteers"
+	}, {
+		"id": "EFD26E37",
+		"title": "Captain Skyhawk",
+		"img": {
+			"coverFull": "c 6769"
+		}
+	}, {
+		"id": "05A688C8",
+		"title": "Casino Kid",
+		"img": {
+			"coverFull": "c 13286"
+		}
+	}, {
+		"id": "7329118D",
+		"title": "Casino Kid II"
+	}, {
+		"id": "0AE6C9E2",
+		"title": "Castelian",
+		"img": {
+			"coverFull": "c 6151"
+		}
+	}, {
+		"id": "345D3A1A",
+		"title": "Castle of Deceit"
+	}, {
+		"id": "2F2D1FA9",
+		"title": "Castle of Dragon",
+		"img": {
+			"coverFull": "c 6014"
+		}
+	}, {
+		"id": "12906664",
+		"title": "Castlequest",
+		"img": {
+			"coverFull": "c 8016"
+		}
+	}, {
+		"id": "B668C7FC",
+		"title": "Castlevania",
+		"img": {
+			"coverFull": "c 3742"
+		}
+	}, {
+		"id": "C471E42D",
+		"title": "Castlevania II: Simon's Quest",
+		"img": {
+			"coverFull": "c 3736"
+		}
+	}, {
+		"id": "ED2465BE",
+		"title": "Castlevania III: Dracula's Curse",
+		"img": {
+			"coverFull": "c 3746"
+		}
+	}, {
+		"id": "D1EA84C3",
+		"title": "Caveman Games",
+		"img": {
+			"coverFull": "c 11820"
+		}
+	}, {
+		"id": "D188963D",
+		"title": "Challenge of the Dragon",
+		"img": {
+			"coverFull": "c 15636"
+		}
+	}, {
+		"id": "EAC38105",
+		"title": "Championship Bowling",
+		"img": {
+			"coverFull": "c 6770"
+		}
+	}, {
+		"id": "CDC641FC",
+		"title": "Championship Pool",
+		"img": {
+			"coverFull": "c 13190"
+		}
+	}, {
+		"id": "C076D66F",
+		"title": "Championship Rally"
+	}, {
+		"id": "9AB274AE",
+		"title": "Cheetahmen II"
+	}, {
+		"id": "D7F6320C",
+		"title": "Chessmaster, The",
+		"img": {
+			"coverFull": "c 12917"
+		}
+	}, {
+		"id": "B79F2651",
+		"title": "Chiller",
+		"img": {
+			"coverFull": "c 10330"
+		}
+	}, {
+		"id": "8BF29CB6",
+		"title": "Chip 'n Dale Rescue Rangers",
+		"img": {
+			"coverFull": "c 6771"
+		}
+	}, {
+		"id": "FC5783A7",
+		"title": "Chip 'n Dale Rescue Rangers 2",
+		"img": {
+			"coverFull": "c 11268"
+		}
+	}, {
+		"id": "F99E37EB",
+		"title": "Chris Evert & Ivan Lendl in Top Players' Tennis"
+	}, {
+		"id": "77833016",
+		"title": "Chubby Cherub",
+		"img": {
+			"coverFull": "c 13192"
+		}
+	}, {
+		"id": "D152FB02",
+		"title": "Circus Caper",
+		"img": {
+			"coverFull": "c 12433"
+		}
+	}, {
+		"id": "AE8666B4",
+		"title": "City Connection",
+		"img": {
+			"coverFull": "c 12817"
+		}
+	}, {
+		"id": "82AFA828",
+		"title": "Clash at Demonhead",
+		"img": {
+			"coverFull": "c 11372"
+		}
+	}, {
+		"id": "A3C0D49F",
+		"title": "Classic Concentration",
+		"img": {
+			"coverFull": "c 12434"
+		}
+	}, {
+		"id": "57C2AE4E",
+		"title": "Cliffhanger",
+		"img": {
+			"coverFull": "c 12696"
+		}
+	}, {
+		"id": "48F68D40",
+		"title": "Clu Clu Land",
+		"img": {
+			"coverFull": "c 7774"
+		}
+	}, {
+		"id": "2D75C7A9",
+		"title": "Cobra Command",
+		"img": {
+			"coverFull": "c 13461"
+		}
+	}, {
+		"id": "C8AD4F32",
+		"title": "Cobra Triangle",
+		"img": {
+			"coverFull": "c 11821"
+		}
+	}, {
+		"id": "E2313813",
+		"title": "Code Name: Viper",
+		"img": {
+			"coverFull": "c 6152"
+		}
+	}, {
+		"id": "0123BFFE",
+		"title": "Color a Dinosaur",
+		"img": {
+			"coverFull": "c 13459"
+		}
+	}, {
+		"id": "82BE4724",
+		"title": "Commando",
+		"img": {
+			"coverFull": "c 12633"
+		}
+	}, {
+		"id": "C6000085",
+		"title": "Conan",
+		"img": {
+			"coverFull": "c 12435"
+		}
+	}, {
+		"id": "32CF4307",
+		"title": "Conflict",
+		"img": {
+			"coverFull": "c 12884"
+		}
+	}, {
+		"id": "20A5219B",
+		"title": "Conquest of the Crystal Palace",
+		"img": {
+			"coverFull": "c 5885"
+		}
+	}, {
+		"id": "F6035030",
+		"title": "Contra",
+		"img": {
+			"coverFull": "c 3654"
+		}
+	}, {
+		"id": "A94591B0",
+		"title": "Contra Force",
+		"img": {
+			"coverFull": "c 4205"
+		}
+	}, {
+		"id": "D73AA04C",
+		"title": "Cool World",
+		"img": {
+			"coverFull": "c 13685"
+		}
+	}, {
+		"id": "14255C57",
+		"title": "Corvette ZR-1 Challenge"
+	}, {
+		"id": "70F31D2C",
+		"title": "Cosmic Spacehead"
+	}, {
+		"id": "D18E6BE3",
+		"title": "Cowboy Kid",
+		"img": {
+			"coverFull": "c 13194"
+		}
+	}, {
+		"id": "81AF4AF9",
+		"title": "Crackout"
+	}, {
+		"id": "C7F0C457",
+		"title": "Crash 'n' the Boys: Street Challenge"
+	}, {
+		"id": "72E66392",
+		"title": "Crystal Mines"
+	}, {
+		"id": "1335CB05",
+		"title": "Crystalis",
+		"img": {
+			"coverFull": "c 3655"
+		}
+	}, {
+		"id": "F00584B6",
+		"title": "Cyber Stadium Series: Base Wars"
+	}, {
+		"id": "88338ED5",
+		"title": "Cyberball"
+	}, {
+		"id": "AC8DCDEA",
+		"title": "Cybernoid: The Fighting Machine",
+		"img": {
+			"coverFull": "c 12919"
+		}
+	}, {
+		"id": "9E382EBF",
+		"title": "Dance Aerobics",
+		"img": {
+			"coverFull": "c 11834"
+		}
+	}, {
+		"id": "C1B43207",
+		"title": "Danny Sullivan's Indy Heat",
+		"img": {
+			"coverFull": "c 12859"
+		}
+	}, {
+		"id": "398B8182",
+		"title": "Darkman",
+		"img": {
+			"coverFull": "c 11040"
+		}
+	}, {
+		"id": "5DCE2EEA",
+		"title": "Darkwing Duck",
+		"img": {
+			"coverFull": "c 6807"
+		}
+	}, {
+		"id": "67811DA6",
+		"title": "Dash Galaxy in the Alien Asylum",
+		"img": {
+			"coverFull": "c 12686"
+		}
+	}, {
+		"id": "E145B441",
+		"title": "Day Dreamin' Davey",
+		"img": {
+			"coverFull": "c 12864"
+		}
+	}, {
+		"id": "12748678",
+		"title": "Days of Thunder",
+		"img": {
+			"coverFull": "c 12087"
+		}
+	}, {
+		"id": "C2730C30",
+		"title": "Deadly Towers",
+		"img": {
+			"coverFull": "c 7175"
+		}
+	}, {
+		"id": "5CAA3E61",
+		"title": "Death Race"
+	}, {
+		"id": "8EAB381C",
+		"title": "Deathbots",
+		"img": {
+			"coverFull": "c 15637"
+		}
+	}, {
+		"id": "A2AF25D0",
+		"title": "Defender II",
+		"img": {
+			"coverFull": "c 12921"
+		}
+	}, {
+		"id": "28FB71AE",
+		"title": "Defender of the Crown"
+	}, {
+		"id": "A725B2D3",
+		"title": "Defenders of Dynatron City",
+		"img": {
+			"coverFull": "c 2413"
+		}
+	}, {
+		"id": "43D01C10",
+		"title": "Deja Vu",
+		"img": {
+			"coverFull": "c 5887"
+		}
+	}, {
+		"id": "4681691A",
+		"title": "Demon Sword: Release the Power"
+	}, {
+		"id": "68EC97CB",
+		"title": "Desert Commander",
+		"img": {
+			"coverFull": "c 13469"
+		}
+	}, {
+		"id": "EB9960EE",
+		"title": "Destination Earthstar",
+		"img": {
+			"coverFull": "c 12820"
+		}
+	}, {
+		"id": "A558FB52",
+		"title": "Destiny of an Emperor",
+		"img": {
+			"coverFull": "c 6303"
+		}
+	}, {
+		"id": "0C783F0C",
+		"title": "Devil World",
+		"img": {
+			"coverFull": "c 12635"
+		}
+	}, {
+		"id": "D738C059",
+		"title": "Dick Tracy",
+		"img": {
+			"coverFull": "c 11822"
+		}
+	}, {
+		"id": "085DE7C9",
+		"title": "Die Hard",
+		"img": {
+			"coverFull": "c 12582"
+		}
+	}, {
+		"id": "DBB06A25",
+		"title": "Dig Dug II: Trouble in Paradise"
+	}, {
+		"id": "1CEE0C21",
+		"title": "Digger: The Legend of the Lost City"
+	}, {
+		"id": "0C2E7863",
+		"title": "Dirty Harry",
+		"img": {
+			"coverFull": "c 12436"
+		}
+	}, {
+		"id": "DB99D0CB",
+		"title": "Dizzy the Adventurer"
+	}, {
+		"id": "6F97C721",
+		"title": "Donkey Kong",
+		"img": {
+			"coverFull": "c 11823"
+		}
+	}, {
+		"id": "B3D74C0D",
+		"title": "Donkey Kong 3",
+		"img": {
+			"coverFull": "c 11220"
+		}
+	}, {
+		"id": "AB2006B4",
+		"title": "Donkey Kong Classics",
+		"img": {
+			"coverFull": "c 8018"
+		}
+	}, {
+		"id": "4864C304",
+		"title": "Donkey Kong Jr."
+	}, {
+		"id": "0504B007",
+		"title": "Donkey Kong Jr. Math",
+		"img": {
+			"coverFull": "c 11824"
+		}
+	}, {
+		"id": "2B378D11",
+		"title": "Double Dare",
+		"img": {
+			"coverFull": "c 15702"
+		}
+	}, {
+		"id": "0F1CC048",
+		"title": "Double Dragon",
+		"img": {
+			"coverFull": "c 7000"
+		}
+	}, {
+		"id": "8A640AEF",
+		"title": "Double Dragon II: The Revenge",
+		"img": {
+			"coverFull": "c 3656"
+		}
+	}, {
+		"id": "50FD0CC6",
+		"title": "Double Dragon III: The Sacred Stones"
+	}, {
+		"id": "D0E96F6B",
+		"title": "Double Dribble",
+		"img": {
+			"coverFull": "c 5026"
+		}
+	}, {
+		"id": "1EB4A920",
+		"title": "Double Strike: Aerial Attack Force"
+	}, {
+		"id": "73620901",
+		"title": "Dr. Chaos",
+		"img": {
+			"coverFull": "c 12756"
+		}
+	}, {
+		"id": "4D3FBA78",
+		"title": "Dr. Jekyll and Mr. Hyde"
+	}, {
+		"id": "DE581355",
+		"title": "Dr. Mario",
+		"img": {
+			"coverFull": "c 4155"
+		}
+	}, {
+		"id": "A166548F",
+		"title": "Dragon Fighter",
+		"img": {
+			"coverFull": "c 12790"
+		}
+	}, {
+		"id": "811F06D9",
+		"title": "Dragon Power",
+		"img": {
+			"coverFull": "c 12957"
+		}
+	}, {
+		"id": "D7E29C03",
+		"title": "Dragon Spirit: The New Legend",
+		"img": {
+			"coverFull": "c 5888"
+		}
+	}, {
+		"id": "2545214C",
+		"title": "Dragon Warrior",
+		"img": {
+			"coverFull": "c 2440"
+		}
+	}, {
+		"id": "8C5A784E",
+		"title": "Dragon Warrior II",
+		"img": {
+			"coverFull": "c 6156"
+		}
+	}, {
+		"id": "A86A5318",
+		"title": "Dragon Warrior III",
+		"img": {
+			"coverFull": "c 15263"
+		}
+	}, {
+		"id": "506E259D",
+		"title": "Dragon Warrior IV",
+		"img": {
+			"coverFull": "c 6721"
+		}
+	}, {
+		"id": "CA033B3A",
+		"title": "Dragon's Lair"
+	}, {
+		"id": "E402B134",
+		"title": "Dropzone"
+	}, {
+		"id": "24598791",
+		"title": "Duck Hunt",
+		"img": {
+			"coverFull": "c 4156"
+		}
+	}, {
+		"id": "EFB09075",
+		"title": "DuckTales"
+	}, {
+		"id": "73C7FCF4",
+		"title": "DuckTales 2"
+	}, {
+		"id": "0955B54C",
+		"title": "Dudes With Attitude",
+		"img": {
+			"coverFull": "c 11288"
+		}
+	}, {
+		"id": "23C3FB2D",
+		"title": "Dungeon Magic: Sword of the Elements"
+	}, {
+		"id": "38B590E4",
+		"title": "Dusty Diamond's All-Star Softball",
+		"img": {
+			"coverFull": "c 12792"
+		}
+	}, {
+		"id": "34BB757B",
+		"title": "Dynablaster"
+	}, {
+		"id": "BDE93999",
+		"title": "Dynowarz: Destruction of Spondylus",
+		"img": {
+			"coverFull": "c 4103"
+		}
+	}, {
+		"id": "2AC87283",
+		"title": "Elevator Action",
+		"img": {
+			"coverFull": "c 4157"
+		}
+	}, {
+		"id": "059E0CDF",
+		"title": "Eliminator Boat Duel",
+		"img": {
+			"coverFull": "c 13136"
+		}
+	}, {
+		"id": "A4BDCC1D",
+		"title": "Elite"
+	}, {
+		"id": "9C18762B",
+		"title": "Empereur, L'"
+	}, {
+		"id": "D20BB617",
+		"title": "Eric Cantona Football Challenge: Goal! 2"
+	}, {
+		"id": "49AEB3A6",
+		"title": "Excitebike",
+		"img": {
+			"coverFull": "c 10141"
+		}
+	}, {
+		"id": "5F5BFA54",
+		"title": "Exodus: Journey to the Promised Land",
+		"img": {
+			"coverFull": "c 11845"
+		}
+	}, {
+		"id": "0A7E62D4",
+		"title": "F-117A: Stealth Fighter",
+		"img": {
+			"coverFull": "c 12925"
+		}
+	}, {
+		"id": "0BCAA4D7",
+		"title": "F-15 Strike Eagle",
+		"img": {
+			"coverFull": "c 12822"
+		}
+	}, {
+		"id": "F3841DCD",
+		"title": "F15 City War"
+	}, {
+		"id": "51BEE3EA",
+		"title": "Family Feud",
+		"img": {
+			"coverFull": "c 13939"
+		}
+	}, {
+		"id": "38FBCC85",
+		"title": "Fantastic Adventures of Dizzy, The",
+		"img": {
+			"coverFull": "c 15638"
+		}
+	}, {
+		"id": "0FFDE258",
+		"title": "Fantasy Zone"
+	}, {
+		"id": "45F03D2E",
+		"title": "Faria: A World of Mystery & Danger!",
+		"img": {
+			"coverFull": "c 6157"
+		}
+	}, {
+		"id": "E71DB268",
+		"title": "Faxanadu",
+		"img": {
+			"coverFull": "c 7646"
+		}
+	}, {
+		"id": "2CAAE01C",
+		"title": "Felix the Cat"
+	}, {
+		"id": "CE77B4BE",
+		"title": "Ferrari Grand Prix Challenge",
+		"img": {
+			"coverFull": "c 14090"
+		}
+	}, {
+		"id": "B6BF5137",
+		"title": "Fester's Quest"
+	}, {
+		"id": "CEBD2A31",
+		"title": "Final Fantasy"
+	}, {
+		"id": "D534C98E",
+		"title": "Fire 'n Ice",
+		"img": {
+			"coverFull": "c 12886"
+		}
+	}, {
+		"id": "1BC686A8",
+		"title": "Fire Hawk"
+	}, {
+		"id": "38946C43",
+		"title": "Fisher-Price: Firehouse Rescue"
+	}, {
+		"id": "267DE4CC",
+		"title": "Fisher-Price: I Can Remember",
+		"img": {
+			"coverFull": "c 12437"
+		}
+	}, {
+		"id": "B9762DA8",
+		"title": "Fisher-Price: Perfect Fit",
+		"img": {
+			"coverFull": "c 13138"
+		}
+	}, {
+		"id": "06D72C83",
+		"title": "Fist of the North Star",
+		"img": {
+			"coverFull": "c 7777"
+		}
+	}, {
+		"id": "F92BE7F2",
+		"title": "Flight of the Intruder",
+		"img": {
+			"coverFull": "c 12824"
+		}
+	}, {
+		"id": "2FE20D79",
+		"title": "Flintstones, The: The Rescue of Dino & Hoppy"
+	}, {
+		"id": "DAB84A9C",
+		"title": "Flintstones, The: The Surprise at Dinosaur Peak!"
+	}, {
+		"id": "F1FED9B8",
+		"title": "Flying Dragon: The Secret Scroll",
+		"img": {
+			"coverFull": "c 12651"
+		}
+	}, {
+		"id": "10180072",
+		"title": "Flying Warriors",
+		"img": {
+			"coverFull": "c 12855"
+		}
+	}, {
+		"id": "256392F1",
+		"title": "Formula 1 Sensation"
+	}, {
+		"id": "5A8B4DA8",
+		"title": "Formula One: Built to Win"
+	}, {
+		"id": "20353E63",
+		"title": "Fox's Peter Pan & the Pirates: The Revenge of Captain Hook"
+	}, {
+		"id": "E943EC4D",
+		"title": "Frankenstein: The Monster Returns"
+	}, {
+		"id": "3E58A87E",
+		"title": "Freedom Force",
+		"img": {
+			"coverFull": "c 12826"
+		}
+	}, {
+		"id": "BEB15855",
+		"title": "Friday the 13th",
+		"img": {
+			"coverFull": "c 9631"
+		}
+	}, {
+		"id": "576A0DE8",
+		"title": "Fun House"
+	}, {
+		"id": "1D2D93FF",
+		"title": "G.I. Joe: A Real American Hero"
+	}, {
+		"id": "8C8DEDB6",
+		"title": "G.I. Joe: The Atlantis Factor"
+	}, {
+		"id": "09C31CD4",
+		"title": "Galactic Crusader"
+	}, {
+		"id": "1DB07C0D",
+		"title": "Galaga: Demons of Death"
+	}, {
+		"id": "1D20A5C6",
+		"title": "Galaxy 5000",
+		"img": {
+			"coverFull": "c 12959"
+		}
+	}, {
+		"id": "F0E9971B",
+		"title": "Gargoyle's Quest II",
+		"img": {
+			"coverFull": "c 11289"
+		}
+	}, {
+		"id": "EC968C51",
+		"title": "Gauntlet",
+		"img": {
+			"coverFull": "c 7440"
+		}
+	}, {
+		"id": "1B71CCDB",
+		"title": "Gauntlet II",
+		"img": {
+			"coverFull": "c 14122"
+		}
+	}, {
+		"id": "0EC6C023",
+		"title": "Gemfire",
+		"img": {
+			"coverFull": "c 12583"
+		}
+	}, {
+		"id": "2225C20F",
+		"title": "Genghis Khan",
+		"img": {
+			"coverFull": "c 12866"
+		}
+	}, {
+		"id": "AF05F37E",
+		"title": "George Foreman's KO Boxing"
+	}, {
+		"id": "6A154B68",
+		"title": "Ghostbusters",
+		"img": {
+			"coverFull": "c 7177"
+		}
+	}, {
+		"id": "2AE97660",
+		"title": "Ghostbusters II",
+		"img": {
+			"coverFull": "c 12697"
+		}
+	}, {
+		"id": "B4E4879E",
+		"title": "Ghosts'n Goblins"
+	}, {
+		"id": "2BC25D5A",
+		"title": "Ghoul School",
+		"img": {
+			"coverFull": "c 13463"
+		}
+	}, {
+		"id": "84148F73",
+		"title": "Goal!",
+		"img": {
+			"coverFull": "c 10975"
+		}
+	}, {
+		"id": "90C773C1",
+		"title": "Goal! Two",
+		"img": {
+			"coverFull": "c 14092"
+		}
+	}, {
+		"id": "74386F15",
+		"title": "Godzilla: Monster of Monsters!"
+	}, {
+		"id": "9FB32923",
+		"title": "Godzilla 2: War of the Monsters",
+		"img": {
+			"coverFull": "c 13686"
+		}
+	}, {
+		"id": "E7D2C49D",
+		"title": "Golf",
+		"img": {
+			"coverFull": "c 5114"
+		}
+	}, {
+		"id": "CF5F8AF0",
+		"title": "Golf Grand Slam",
+		"img": {
+			"coverFull": "c 14752"
+		}
+	}, {
+		"id": "F532F09A",
+		"title": "Golgo 13: Top Secret Episode",
+		"img": {
+			"coverFull": "c 7643"
+		}
+	}, {
+		"id": "999577B6",
+		"title": "Goonies II, The"
+	}, {
+		"id": "4E959173",
+		"title": "Gotcha!: The Sport!"
+	}, {
+		"id": "350D835E",
+		"title": "Gradius",
+		"img": {
+			"coverFull": "c 12623"
+		}
+	}, {
+		"id": "2DFF7FDC",
+		"title": "Great Waldo Search, The"
+	}, {
+		"id": "1352F1B9",
+		"title": "Greg Norman's Golf Power",
+		"img": {
+			"coverFull": "c 14797"
+		}
+	}, {
+		"id": "0ED96F42",
+		"title": "Gremlins 2: The New Batch"
+	}, {
+		"id": "FA43146B",
+		"title": "Guardian Legend, The",
+		"img": {
+			"coverFull": "c 2425"
+		}
+	}, {
+		"id": "6DECD886",
+		"title": "Guerrilla War",
+		"img": {
+			"coverFull": "c 10096"
+		}
+	}, {
+		"id": "BEB8AB01",
+		"title": "Gumshoe",
+		"img": {
+			"coverFull": "c 11743"
+		}
+	}, {
+		"id": "D19DCB2B",
+		"title": "Gun Nac",
+		"img": {
+			"coverFull": "c 13097"
+		}
+	}, {
+		"id": "A8784932",
+		"title": "Gun.Smoke",
+		"img": {
+			"coverFull": "c 6158"
+		}
+	}, {
+		"id": "023A5A32",
+		"title": "Gyromite",
+		"img": {
+			"coverFull": "c 11290"
+		}
+	}, {
+		"id": "1D41CC8C",
+		"title": "Gyruss",
+		"img": {
+			"coverFull": "c 8019"
+		}
+	}, {
+		"id": "67CBC0A0",
+		"title": "Hammerin' Harry"
+	}, {
+		"id": "2E6EE98D",
+		"title": "Harlem Globetrotters"
+	}, {
+		"id": "841B69B6",
+		"title": "Hatris",
+		"img": {
+			"coverFull": "c 12927"
+		}
+	}, {
+		"id": "34EAB034",
+		"title": "Heavy Barrel",
+		"img": {
+			"coverFull": "c 4111"
+		}
+	}, {
+		"id": "EB15169E",
+		"title": "Heavy Shreddin'",
+		"img": {
+			"coverFull": "c 14605"
+		}
+	}, {
+		"id": "383CABBF",
+		"title": "High Speed",
+		"img": {
+			"coverFull": "c 13291"
+		}
+	}, {
+		"id": "FF24D794",
+		"title": "Hogan's Alley",
+		"img": {
+			"coverFull": "c 10097"
+		}
+	}, {
+		"id": "3869E598",
+		"title": "Hollywood Squares",
+		"img": {
+			"coverFull": "c 5889"
+		}
+	}, {
+		"id": "F31D36A3",
+		"title": "Home Alone",
+		"img": {
+			"coverFull": "c 12868"
+		}
+	}, {
+		"id": "2E0741B6",
+		"title": "Home Alone 2: Lost in New York",
+		"img": {
+			"coverFull": "c 5890"
+		}
+	}, {
+		"id": "D8230D0E",
+		"title": "Hook",
+		"img": {
+			"coverFull": "c 12829"
+		}
+	}, {
+		"id": "F4615036",
+		"title": "Hoops",
+		"img": {
+			"coverFull": "c 11825"
+		}
+	}, {
+		"id": "5A4F156D",
+		"title": "Hudson Hawk",
+		"img": {
+			"coverFull": "c 4158"
+		}
+	}, {
+		"id": "4E77733A",
+		"title": "Hunt for Red October, The",
+		"img": {
+			"coverFull": "c 5822"
+		}
+	}, {
+		"id": "77BF8B23",
+		"title": "Hydlide",
+		"img": {
+			"coverFull": "c 6353"
+		}
+	}, {
+		"id": "FB98D46E",
+		"title": "Ice Climber"
+	}, {
+		"id": "AE64CA77",
+		"title": "Ice Hockey",
+		"img": {
+			"coverFull": "c 11373"
+		}
+	}, {
+		"id": "2D273AA4",
+		"title": "Ikari Warriors",
+		"img": {
+			"coverFull": "c 11097"
+		}
+	}, {
+		"id": "4F467410",
+		"title": "Ikari Warriors II: Victory Road",
+		"img": {
+			"coverFull": "c 11139"
+		}
+	}, {
+		"id": "567E1620",
+		"title": "Ikari Warriors III: The Rescue",
+		"img": {
+			"coverFull": "c 11140"
+		}
+	}, {
+		"id": "058F23A2",
+		"title": "Image Fight",
+		"img": {
+			"coverFull": "c 12614"
+		}
+	}, {
+		"id": "8889C564",
+		"title": "Immortal, The",
+		"img": {
+			"coverFull": "c 13687"
+		}
+	}, {
+		"id": "92A3D007",
+		"title": "Impossible Mission II",
+		"img": {
+			"coverFull": "c 15723"
+		}
+	}, {
+		"id": "A80A0F01",
+		"title": "Incredible Crash Dummies, The",
+		"img": {
+			"coverFull": "c 12888"
+		}
+	}, {
+		"id": "8BCA5146",
+		"title": "Indiana Jones and the Last Crusade",
+		"img": {
+			"coverFull": "c 12794"
+		}
+	}, {
+		"id": "2EA8CC16",
+		"title": "Indiana Jones and the Last Crusade",
+		"img": {
+			"coverFull": "c 12794"
+		}
+	}, {
+		"id": "B4C81ADB",
+		"title": "Indiana Jones and the Temple of Doom",
+		"img": {
+			"coverFull": "c 12929"
+		}
+	}, {
+		"id": "DF64963B",
+		"title": "Infiltrator",
+		"img": {
+			"coverFull": "c 13292"
+		}
+	}, {
+		"id": "B14EA4D2",
+		"title": "Iron Tank: The Invasion of Normandy",
+		"img": {
+			"coverFull": "c 4073"
+		}
+	}, {
+		"id": "6944A01A",
+		"title": "Isolated Warrior",
+		"img": {
+			"coverFull": "c 12870"
+		}
+	}, {
+		"id": "4B041B6B",
+		"title": "Ivan 'Ironman' Stewart's Super Off Road"
+	}, {
+		"id": "C313EF54",
+		"title": "Jack Nicklaus' Greatest 18 Holes of Major Championship Golf"
+	}, {
+		"id": "1D5B03A5",
+		"title": "Jackal",
+		"img": {
+			"coverFull": "c 4159"
+		}
+	}, {
+		"id": "45A41784",
+		"title": "Jackie Chan's Action Kung Fu"
+	}, {
+		"id": "F6898A59",
+		"title": "James Bond Jr",
+		"img": {
+			"coverFull": "c 12698"
+		}
+	}, {
+		"id": "27D14A54",
+		"title": "Jaws",
+		"img": {
+			"coverFull": "c 9629"
+		}
+	}, {
+		"id": "2A662AC7",
+		"title": "Jeopardy!",
+		"img": {
+			"coverFull": "c 12439"
+		}
+	}, {
+		"id": "0BDD8DD9",
+		"title": "Jeopardy! 25th Anniversary Edition"
+	}, {
+		"id": "6A88579F",
+		"title": "Jeopardy! Junior Edition"
+	}, {
+		"id": "2BF61C53",
+		"title": "Jetsons, The: Cogswell's Caper",
+		"img": {
+			"coverFull": "c 12570"
+		}
+	}, {
+		"id": "00E95D86",
+		"title": "Jimmy Connors Tennis"
+	}, {
+		"id": "26D3082C",
+		"title": "Joe & Mac",
+		"img": {
+			"coverFull": "c 12571"
+		}
+	}, {
+		"id": "CF322BB3",
+		"title": "John Elway's Quarterback",
+		"img": {
+			"coverFull": "c 12441"
+		}
+	}, {
+		"id": "303D4371",
+		"title": "Jordan vs Bird: One On One"
+	}, {
+		"id": "99083B3A",
+		"title": "Joshua & the Battle of Jericho"
+	}, {
+		"id": "E2C4EDCE",
+		"title": "Journey to Silius",
+		"img": {
+			"coverFull": "c 12397"
+		}
+	}, {
+		"id": "BE387AF0",
+		"title": "Joust",
+		"img": {
+			"coverFull": "c 12442"
+		}
+	}, {
+		"id": "61179BFA",
+		"title": "Jungle Book, The",
+		"img": {
+			"coverFull": "c 12931"
+		}
+	}, {
+		"id": "3B7F5B3B",
+		"title": "Jurassic Park"
+	}, {
+		"id": "7474AC92",
+		"title": "Kabuki: Quantum Fighter",
+		"img": {
+			"coverFull": "c 10917"
+		}
+	}, {
+		"id": "F42B0DBD",
+		"title": "Karate Champ",
+		"img": {
+			"coverFull": "c 9866"
+		}
+	}, {
+		"id": "983948A5",
+		"title": "Karate Kid, The",
+		"img": {
+			"coverFull": "c 5891"
+		}
+	}, {
+		"id": "548A2C3C",
+		"title": "Karnov",
+		"img": {
+			"coverFull": "c 7180"
+		}
+	}, {
+		"id": "5104833E",
+		"title": "Kick Master",
+		"img": {
+			"coverFull": "c 2414"
+		}
+	}, {
+		"id": "D161888B",
+		"title": "Kick Off"
+	}, {
+		"id": "CD10DCE2",
+		"title": "Kickle Cubicle",
+		"img": {
+			"coverFull": "c 13864"
+		}
+	}, {
+		"id": "D9F0749F",
+		"title": "Kid Icarus",
+		"img": {
+			"coverFull": "c 7088"
+		}
+	}, {
+		"id": "8EE7C43E",
+		"title": "Kid Klown in Night Mayor World"
+	}, {
+		"id": "AA6BB985",
+		"title": "Kid Kool and the Quest for the Seven Wonder Herbs"
+	}, {
+		"id": "A9415562",
+		"title": "Kid Niki: Radical Ninja"
+	}, {
+		"id": "CB53C523",
+		"title": "King Neptune's Adventure"
+	}, {
+		"id": "7EABDA5C",
+		"title": "King of Kings, The"
+	}, {
+		"id": "01B4CA89",
+		"title": "King's Knight",
+		"img": {
+			"coverFull": "c 3737"
+		}
+	}, {
+		"id": "00837960",
+		"title": "King's Quest V",
+		"img": {
+			"coverFull": "c 6722"
+		}
+	}, {
+		"id": "F54B34BD",
+		"title": "Kings of the Beach: Professional Beach Volleyball"
+	}, {
+		"id": "5ED6F221",
+		"title": "Kirby's Adventure",
+		"img": {
+			"coverFull": "c 3740"
+		}
+	}, {
+		"id": "563C2CC0",
+		"title": "Kiwi Kraze: A Bird-Brained Adventure!"
+	}, {
+		"id": "F4DFDB14",
+		"title": "Klash Ball"
+	}, {
+		"id": "93F3A490",
+		"title": "Klax",
+		"img": {
+			"coverFull": "c 9727"
+		}
+	}, {
+		"id": "EBCFE7C5",
+		"title": "Knight Rider",
+		"img": {
+			"coverFull": "c 11837"
+		}
+	}, {
+		"id": "D7B35F7D",
+		"title": "Konami Hyper Soccer"
+	}, {
+		"id": "637FE65C",
+		"title": "Krazy Kreatures"
+	}, {
+		"id": "03272E9B",
+		"title": "Krion Conquest, The",
+		"img": {
+			"coverFull": "c 12678"
+		}
+	}, {
+		"id": "A0DF4B8F",
+		"title": "Krusty's Fun House",
+		"img": {
+			"coverFull": "c 13042"
+		}
+	}, {
+		"id": "D5C64257",
+		"title": "Kung Fu",
+		"img": {
+			"coverFull": "c 6159"
+		}
+	}, {
+		"id": "AA74A4D8",
+		"title": "Kung-Fu Heroes",
+		"img": {
+			"coverFull": "c 3738"
+		}
+	}, {
+		"id": "B0480AE9",
+		"title": "Laser Invasion",
+		"img": {
+			"coverFull": "c 12831"
+		}
+	}, {
+		"id": "E7DA8A04",
+		"title": "Last Action Hero",
+		"img": {
+			"coverFull": "c 12699"
+		}
+	}, {
+		"id": "E353969F",
+		"title": "Last Ninja, The",
+		"img": {
+			"coverFull": "c 9084"
+		}
+	}, {
+		"id": "6997F5E1",
+		"title": "Last Starfighter, The",
+		"img": {
+			"coverFull": "c 15716"
+		}
+	}, {
+		"id": "88E1A5F4",
+		"title": "Lee Trevino's Fighting Golf",
+		"img": {
+			"coverFull": "c 12443"
+		}
+	}, {
+		"id": "F181C021",
+		"title": "Legacy of the Wizard",
+		"img": {
+			"coverFull": "c 5892"
+		}
+	}, {
+		"id": "BBED6E6E",
+		"title": "Legend of Kage, The",
+		"img": {
+			"coverFull": "c 5893"
+		}
+	}, {
+		"id": "FD7E9A7E",
+		"title": "Legend of Prince Valiant, The"
+	}, {
+		"id": "04766130",
+		"title": "Legend of the Ghost Lion"
+	}, {
+		"id": "BA322865",
+		"title": "Legend of Zelda II, The: The Adventure of Link"
+	}, {
+		"id": "EAF7ED72",
+		"title": "Legend of Zelda, The",
+		"img": {
+			"coverFull": "c 12759"
+		}
+	}, {
+		"id": "A2194CAD",
+		"title": "Legendary Wings",
+		"img": {
+			"coverFull": "c 11922"
+		}
+	}, {
+		"id": "05CE560C",
+		"title": "Legends of the Diamond: The Baseball Championship Game"
+	}, {
+		"id": "A69F29FA",
+		"title": "Lemmings",
+		"img": {
+			"coverFull": "c 12961"
+		}
+	}, {
+		"id": "7077B075",
+		"title": "Lethal Weapon",
+		"img": {
+			"coverFull": "c 12573"
+		}
+	}, {
+		"id": "C4BC85A2",
+		"title": "Life Force",
+		"img": {
+			"coverFull": "c 7647"
+		}
+	}, {
+		"id": "9E379698",
+		"title": "Linus Spacehead's Cosmic Crusade",
+		"img": {
+			"coverFull": "c 16295"
+		}
+	}, {
+		"id": "89984244",
+		"title": "Lion King, The"
+	}, {
+		"id": "859C65E1",
+		"title": "Little League Baseball: Championship Series"
+	}, {
+		"id": "3BE244EF",
+		"title": "Little Mermaid, The",
+		"img": {
+			"coverFull": "c 6808"
+		}
+	}, {
+		"id": "5B4B6056",
+		"title": "Little Nemo: The Dream Master",
+		"img": {
+			"coverFull": "c 3739"
+		}
+	}, {
+		"id": "BC7FEDB9",
+		"title": "Little Ninja Brothers",
+		"img": {
+			"coverFull": "c 12653"
+		}
+	}, {
+		"id": "B5E392E2",
+		"title": "Little Samson",
+		"img": {
+			"coverFull": "c 4218"
+		}
+	}, {
+		"id": "AF5676DE",
+		"title": "Lode Runner",
+		"img": {
+			"coverFull": "c 8020"
+		}
+	}, {
+		"id": "23D17F5E",
+		"title": "Lone Ranger, The",
+		"img": {
+			"coverFull": "c 12833"
+		}
+	}, {
+		"id": "FD8D6C75",
+		"title": "Loopz",
+		"img": {
+			"coverFull": "c 13295"
+		}
+	}, {
+		"id": "93991433",
+		"title": "Low G Man: The Low Gravity Man"
+	}, {
+		"id": "988B446D",
+		"title": "Lunar Pool",
+		"img": {
+			"coverFull": "c 4160"
+		}
+	}, {
+		"id": "B0EBF3DB",
+		"title": "M.C. Kids",
+		"img": {
+			"coverFull": "c 8022"
+		}
+	}, {
+		"id": "0939852F",
+		"title": "M.U.L.E.",
+		"img": {
+			"coverFull": "c 4162"
+		}
+	}, {
+		"id": "8FF31896",
+		"title": "M.U.S.C.L.E.: Tag Team Match"
+	}, {
+		"id": "38810A91",
+		"title": "Mach Rider",
+		"img": {
+			"coverFull": "c 8686"
+		}
+	}, {
+		"id": "026E41C5",
+		"title": "Mad Max",
+		"img": {
+			"coverFull": "c 12843"
+		}
+	}, {
+		"id": "8A043CD6",
+		"title": "Mafat Conspiracy, The"
+	}, {
+		"id": "5EB8E707",
+		"title": "Magic Darts",
+		"img": {
+			"coverFull": "c 13196"
+		}
+	}, {
+		"id": "C6C2EDB5",
+		"title": "Magic Johnson's Fast Break"
+	}, {
+		"id": "92197173",
+		"title": "Magic of Scheherazade, The",
+		"img": {
+			"coverFull": "c 5728"
+		}
+	}, {
+		"id": "91E2E863",
+		"title": "Magician",
+		"img": {
+			"coverFull": "c 7648"
+		}
+	}, {
+		"id": "81389607",
+		"title": "Magmax"
+	}, {
+		"id": "96E6C1CE",
+		"title": "Major League Baseball",
+		"img": {
+			"coverFull": "c 10100"
+		}
+	}, {
+		"id": "0D9F5BD1",
+		"title": "Maniac Mansion",
+		"img": {
+			"coverFull": "c 5894"
+		}
+	}, {
+		"id": "83FC38F8",
+		"title": "Mappy-Land",
+		"img": {
+			"coverFull": "c 12688"
+		}
+	}, {
+		"id": "09874777",
+		"title": "Marble Madness",
+		"img": {
+			"coverFull": "c 2417"
+		}
+	}, {
+		"id": "C4C3949A",
+		"title": "Mario Bros.",
+		"img": {
+			"coverFull": "c 4083"
+		}
+	}, {
+		"id": "2055971A",
+		"title": "Mario Is Missing!",
+		"img": {
+			"coverFull": "c 12700"
+		}
+	}, {
+		"id": "55DB7E2A",
+		"title": "Mario's Time Machine",
+		"img": {
+			"coverFull": "c 13043"
+		}
+	}, {
+		"id": "3C7E38F5",
+		"title": "Master Chu and the Drunkard Hu"
+	}, {
+		"id": "7EAE9A13",
+		"title": "Maxi 15"
+	}, {
+		"id": "5EE6008E",
+		"title": "Mechanized Attack",
+		"img": {
+			"coverFull": "c 12963"
+		}
+	}, {
+		"id": "6EE4BB0A",
+		"title": "Mega Man",
+		"img": {
+			"coverFull": "c 4686"
+		}
+	}, {
+		"id": "0FCFC04D",
+		"title": "Mega Man 2",
+		"img": {
+			"coverFull": "c 12694"
+		}
+	}, {
+		"id": "603AAA57",
+		"title": "Mega Man 3",
+		"img": {
+			"coverFull": "c 4690"
+		}
+	}, {
+		"id": "18A2E74F",
+		"title": "Mega Man 4",
+		"img": {
+			"coverFull": "c 4692"
+		}
+	}, {
+		"id": "3EDCF7E8",
+		"title": "Mega Man 5",
+		"img": {
+			"coverFull": "c 4694"
+		}
+	}, {
+		"id": "988798A8",
+		"title": "Mega Man 6",
+		"img": {
+			"coverFull": "c 4696"
+		}
+	}, {
+		"id": "22276213",
+		"title": "Menace Beach"
+	}, {
+		"id": "12078AFD",
+		"title": "Mendel Palace",
+		"img": {
+			"coverFull": "c 11286"
+		}
+	}, {
+		"id": "F05870D5",
+		"title": "Mermaids of Atlantis: The Riddle of the Magic Bubble"
+	}, {
+		"id": "11D08CC6",
+		"title": "Metal Fighter"
+	}, {
+		"id": "817431EC",
+		"title": "Metal Gear",
+		"img": {
+			"coverFull": "c 3657"
+		}
+	}, {
+		"id": "05378607",
+		"title": "Metal Mech: Man & Machine",
+		"img": {
+			"coverFull": "c 4075"
+		}
+	}, {
+		"id": "BCACBBF4",
+		"title": "Metal Storm",
+		"img": {
+			"coverFull": "c 11656"
+		}
+	}, {
+		"id": "70080810",
+		"title": "Metroid",
+		"img": {
+			"coverFull": "c 4067"
+		}
+	}, {
+		"id": "942B1210",
+		"title": "Michael Andretti's World GP"
+	}, {
+		"id": "7C6A3D51",
+		"title": "Mickey Mousecapade",
+		"img": {
+			"coverFull": "c 7181"
+		}
+	}, {
+		"id": "6FB349E2",
+		"title": "Mickey's Adventure in Numberland"
+	}, {
+		"id": "982DFB38",
+		"title": "Mickey's Safari in Letterland",
+		"img": {
+			"coverFull": "c 16082"
+		}
+	}, {
+		"id": "9235B57B",
+		"title": "Micro Machines",
+		"img": {
+			"coverFull": "c 14094"
+		}
+	}, {
+		"id": "E62E3382",
+		"title": "MiG 29: Soviet Fighter",
+		"img": {
+			"coverFull": "c 13945"
+		}
+	}, {
+		"id": "532A27E6",
+		"title": "Might & Magic: Secret of the Inner Sanctum",
+		"img": {
+			"coverFull": "c 6935"
+		}
+	}, {
+		"id": "AAC2E75E",
+		"title": "Mighty Bomb Jack",
+		"img": {
+			"coverFull": "c 10101"
+		}
+	}, {
+		"id": "3F78037C",
+		"title": "Mighty Final Fight",
+		"img": {
+			"coverFull": "c 12809"
+		}
+	}, {
+		"id": "2C818014",
+		"title": "Mike Tyson's Punch-Out!!",
+		"img": {
+			"coverFull": "c 6863"
+		}
+	}, {
+		"id": "AE52DECE",
+		"title": "Millipede",
+		"img": {
+			"coverFull": "c 2418"
+		}
+	}, {
+		"id": "586A3277",
+		"title": "Milon's Secret Castle",
+		"img": {
+			"coverFull": "c 6351"
+		}
+	}, {
+		"id": "5DA9CEC8",
+		"title": "Mission Cobra"
+	}, {
+		"id": "E3C5BB3D",
+		"title": "Mission Impossible"
+	}, {
+		"id": "9747AC09",
+		"title": "Monopoly",
+		"img": {
+			"coverFull": "c 9085"
+		}
+	}, {
+		"id": "E542E3CF",
+		"title": "Monster in My Pocket",
+		"img": {
+			"coverFull": "c 11862"
+		}
+	}, {
+		"id": "02B9E7C2",
+		"title": "Monster Party",
+		"img": {
+			"coverFull": "c 12848"
+		}
+	}, {
+		"id": "2F698C4D",
+		"title": "Monster Truck Rally",
+		"img": {
+			"coverFull": "c 12767"
+		}
+	}, {
+		"id": "14A81635",
+		"title": "Moon Ranger"
+	}, {
+		"id": "0A0926BD",
+		"title": "Motor City Patrol",
+		"img": {
+			"coverFull": "c 12796"
+		}
+	}, {
+		"id": "A713DD30",
+		"title": "Mr. Gimmick",
+		"img": {
+			"coverFull": "c 11221"
+		}
+	}, {
+		"id": "B6D2D300",
+		"title": "Ms. Pac-Man",
+		"img": {
+			"coverFull": "c 13688"
+		}
+	}, {
+		"id": "7156CB4D",
+		"title": "Muppet Adventure: Chaos at the Carnival",
+		"img": {
+			"coverFull": "c 12935"
+		}
+	}, {
+		"id": "7DCB4C18",
+		"title": "Mutant Virus, The: Crisis in a Computer World"
+	}, {
+		"id": "B5D28EA2",
+		"title": "Mystery Quest",
+		"img": {
+			"coverFull": "c 13297"
+		}
+	}, {
+		"id": "0537322A",
+		"title": "NARC",
+		"img": {
+			"coverFull": "c 13108"
+		}
+	}, {
+		"id": "F6B9799C",
+		"title": "NES Open Tournament Golf"
+	}, {
+		"id": "B9B4D9E0",
+		"title": "NES Play Action Football",
+		"img": {
+			"coverFull": "c 2419"
+		}
+	}, {
+		"id": "F0C198FF",
+		"title": "New Ghostbusters II"
+	}, {
+		"id": "666BE5EC",
+		"title": "New Zealand Story, The",
+		"img": {
+			"coverFull": "c 11527"
+		}
+	}, {
+		"id": "35B6FEBF",
+		"title": "NFL",
+		"img": {
+			"coverFull": "c 11100"
+		}
+	}, {
+		"id": "4751A751",
+		"title": "Nigel Mansell's World Championship Challenge"
+	}, {
+		"id": "DA2CB59A",
+		"title": "Nightmare on Elm Street, A"
+	}, {
+		"id": "A60CA3D6",
+		"title": "Nightshade",
+		"img": {
+			"coverFull": "c 11826"
+		}
+	}, {
+		"id": "3D1C4894",
+		"title": "Ninja Crusaders",
+		"img": {
+			"coverFull": "c 12798"
+		}
+	}, {
+		"id": "7C4A72D8",
+		"title": "Ninja Gaiden",
+		"img": {
+			"coverFull": "c 9347"
+		}
+	}, {
+		"id": "B780521C",
+		"title": "Ninja Gaiden II: The Dark Sword of Chaos",
+		"img": {
+			"coverFull": "c 5116"
+		}
+	}, {
+		"id": "902E3168",
+		"title": "Ninja Gaiden III: The Ancient Ship of Doom",
+		"img": {
+			"coverFull": "c 6909"
+		}
+	}, {
+		"id": "02CC3973",
+		"title": "Ninja Kid",
+		"img": {
+			"coverFull": "c 13198"
+		}
+	}, {
+		"id": "0B0E128F",
+		"title": "Nintendo World Championships 1990",
+		"img": {
+			"coverFull": "c 7089"
+		}
+	}, {
+		"id": "A22657FA",
+		"title": "Nintendo World Cup",
+		"img": {
+			"coverFull": "c 4077"
+		}
+	}, {
+		"id": "81B2A3CD",
+		"title": "Noah's Ark"
+	}, {
+		"id": "4642DDA6",
+		"title": "Nobunaga's Ambition",
+		"img": {
+			"coverFull": "c 13889"
+		}
+	}, {
+		"id": "8CE478DB",
+		"title": "Nobunaga's Ambition II",
+		"img": {
+			"coverFull": "c 12835"
+		}
+	}, {
+		"id": "AE9F33D0",
+		"title": "North and South",
+		"img": {
+			"coverFull": "c 12718"
+		}
+	}, {
+		"id": "EA113128",
+		"title": "Operation Secret Storm"
+	}, {
+		"id": "EDC3662B",
+		"title": "Operation Wolf",
+		"img": {
+			"coverFull": "c 11374"
+		}
+	}, {
+		"id": "958E4BAE",
+		"title": "Orb 3D"
+	}, {
+		"id": "699FA085",
+		"title": "Othello",
+		"img": {
+			"coverFull": "c 12937"
+		}
+	}, {
+		"id": "9237B447",
+		"title": "Over Horizon"
+	}, {
+		"id": "2856111F",
+		"title": "Overlord"
+	}, {
+		"id": "42749A95",
+		"title": "P'radikus Conflict, The"
+	}, {
+		"id": "75255F88",
+		"title": "P.O.W.: Prisoners of War",
+		"img": {
+			"coverFull": "c 12088"
+		}
+	}, {
+		"id": "9E4E9CC2",
+		"title": "Pac-Man",
+		"img": {
+			"coverFull": "c 6161"
+		}
+	}, {
+		"id": "A9BBF44F",
+		"title": "Pac-Man",
+		"img": {
+			"coverFull": "c 6161"
+		}
+	}, {
+		"id": "E73E7260",
+		"title": "Pac-Mania"
+	}, {
+		"id": "6BB6A0CE",
+		"title": "Palamedes"
+	}, {
+		"id": "435AEEC6",
+		"title": "Panic Restaurant",
+		"img": {
+			"coverFull": "c 11222"
+		}
+	}, {
+		"id": "32086826",
+		"title": "Paperboy",
+		"img": {
+			"coverFull": "c 5117"
+		}
+	}, {
+		"id": "3A0965B1",
+		"title": "Paperboy 2"
+	}, {
+		"id": "083E4FC1",
+		"title": "Parodius",
+		"img": {
+			"coverFull": "c 8687"
+		}
+	}, {
+		"id": "6A483073",
+		"title": "Pesterminator",
+		"img": {
+			"coverFull": "c 4219"
+		}
+	}, {
+		"id": "CC37094C",
+		"title": "Phantom Fighter",
+		"img": {
+			"coverFull": "c 13471"
+		}
+	}, {
+		"id": "DC02F095",
+		"title": "Pictionary: The Game of Video Quick Draw"
+	}, {
+		"id": "D19ADDEB",
+		"title": "Pin-Bot"
+	}, {
+		"id": "035DC2E9",
+		"title": "Pinball",
+		"img": {
+			"coverFull": "c 5915"
+		}
+	}, {
+		"id": "2538D860",
+		"title": "Pinball Quest",
+		"img": {
+			"coverFull": "c 4078"
+		}
+	}, {
+		"id": "BCE77871",
+		"title": "Pipe Dream",
+		"img": {
+			"coverFull": "c 12757"
+		}
+	}, {
+		"id": "3D0996B2",
+		"title": "Pirates!",
+		"img": {
+			"coverFull": "c 12890"
+		}
+	}, {
+		"id": "695515A2",
+		"title": "Platoon",
+		"img": {
+			"coverFull": "c 7182"
+		}
+	}, {
+		"id": "70860FCA",
+		"title": "Popeye",
+		"img": {
+			"coverFull": "c 10249"
+		}
+	}, {
+		"id": "5CF536F4",
+		"title": "Power Blade"
+	}, {
+		"id": "D273B409",
+		"title": "Power Blade 2",
+		"img": {
+			"coverFull": "c 11955"
+		}
+	}, {
+		"id": "90226E40",
+		"title": "Power Punch II",
+		"img": {
+			"coverFull": "c 11827"
+		}
+	}, {
+		"id": "A7DE65E4",
+		"title": "Predator",
+		"img": {
+			"coverFull": "c 12702"
+		}
+	}, {
+		"id": "70CE3771",
+		"title": "Prince of Persia",
+		"img": {
+			"coverFull": "c 14610"
+		}
+	}, {
+		"id": "56756615",
+		"title": "Princess Tomato in Salad Kingdom"
+	}, {
+		"id": "41F9E0AA",
+		"title": "Pro Sport Hockey",
+		"img": {
+			"coverFull": "c 13099"
+		}
+	}, {
+		"id": "64B710D2",
+		"title": "Pro Wrestling",
+		"img": {
+			"coverFull": "c 5826"
+		}
+	}, {
+		"id": "B95E9E7F",
+		"title": "Punch-Out!!",
+		"img": {
+			"coverFull": "c 4115"
+		}
+	}, {
+		"id": "27F8D0D2",
+		"title": "Punisher, The",
+		"img": {
+			"coverFull": "c 5266"
+		}
+	}, {
+		"id": "6E0EB43E",
+		"title": "Puss n Boots: Pero's Great Adventure",
+		"img": {
+			"coverFull": "c 12703"
+		}
+	}, {
+		"id": "EA19080A",
+		"title": "Puzzle",
+		"img": {
+			"coverFull": "c 13947"
+		}
+	}, {
+		"id": "EB61133B",
+		"title": "Puzznic",
+		"img": {
+			"coverFull": "c 12704"
+		}
+	}, {
+		"id": "2472C3EB",
+		"title": "Pyramid"
+	}, {
+		"id": "C0B23520",
+		"title": "Q-bert"
+	}, {
+		"id": "95E4E594",
+		"title": "Qix",
+		"img": {
+			"coverFull": "c 12941"
+		}
+	}, {
+		"id": "B89888C9",
+		"title": "Quattro Adventure",
+		"img": {
+			"coverFull": "c 13301"
+		}
+	}, {
+		"id": "792070A9",
+		"title": "Quattro Arcade"
+	}, {
+		"id": "CCCAF368",
+		"title": "Quattro Sports"
+	}, {
+		"id": "3C5C81D4",
+		"title": "R.B.I. Baseball",
+		"img": {
+			"coverFull": "c 13302"
+		}
+	}, {
+		"id": "96DFC776",
+		"title": "R.B.I. Baseball 2",
+		"img": {
+			"coverFull": "c 9728"
+		}
+	}, {
+		"id": "FD63E7AC",
+		"title": "R.B.I. Baseball 3",
+		"img": {
+			"coverFull": "c 13303"
+		}
+	}, {
+		"id": "AAED295C",
+		"title": "R.C. Pro-Am",
+		"img": {
+			"coverFull": "c 12708"
+		}
+	}, {
+		"id": "9EDD2159",
+		"title": "R.C. Pro-Am II",
+		"img": {
+			"coverFull": "c 12708"
+		}
+	}, {
+		"id": "A8B0DA56",
+		"title": "Race America",
+		"img": {
+			"coverFull": "c 14795"
+		}
+	}, {
+		"id": "ECCD4089",
+		"title": "Racket Attack",
+		"img": {
+			"coverFull": "c 11828"
+		}
+	}, {
+		"id": "8FA6E92C",
+		"title": "Rackets & Rivals"
+	}, {
+		"id": "8B9D3E9C",
+		"title": "Rad Racer",
+		"img": {
+			"coverFull": "c 4163"
+		}
+	}, {
+		"id": "404B2E8B",
+		"title": "Rad Racer II",
+		"img": {
+			"coverFull": "c 4116"
+		}
+	}, {
+		"id": "BDE7A7B5",
+		"title": "Rad Racket: Deluxe Tennis II"
+	}, {
+		"id": "61253D1C",
+		"title": "Raid 2020"
+	}, {
+		"id": "D308D52C",
+		"title": "Raid on Bungeling Bay"
+	}, {
+		"id": "9EA1DC76",
+		"title": "Rainbow Islands",
+		"img": {
+			"coverFull": "c 11496"
+		}
+	}, {
+		"id": "E1C41D7C",
+		"title": "Rally Bike",
+		"img": {
+			"coverFull": "c 16516"
+		}
+	}, {
+		"id": "4F9DBBE5",
+		"title": "Rambo"
+	}, {
+		"id": "263AC8A0",
+		"title": "Rampage",
+		"img": {
+			"coverFull": "c 11141"
+		}
+	}, {
+		"id": "26796758",
+		"title": "Rampart",
+		"img": {
+			"coverFull": "c 14098"
+		}
+	}, {
+		"id": "9F6C119C",
+		"title": "Remote Control"
+	}, {
+		"id": "E98AB943",
+		"title": "Ren & Stimpy Show, The: Buckeroo$!",
+		"img": {
+			"coverFull": "c 13460"
+		}
+	}, {
+		"id": "A0568E1D",
+		"title": "Renegade",
+		"img": {
+			"coverFull": "c 11103"
+		}
+	}, {
+		"id": "63FCC0DD",
+		"title": "Rescue: The Embassy Mission",
+		"img": {
+			"coverFull": "c 12943"
+		}
+	}, {
+		"id": "5BB62688",
+		"title": "Ring King",
+		"img": {
+			"coverFull": "c 16189"
+		}
+	}, {
+		"id": "E9C387EC",
+		"title": "River City Ransom",
+		"img": {
+			"coverFull": "c 9273"
+		}
+	}, {
+		"id": "719571B3",
+		"title": "Road Fighter",
+		"img": {
+			"coverFull": "c 16668"
+		}
+	}, {
+		"id": "B19A55DD",
+		"title": "Road Runner",
+		"img": {
+			"coverFull": "c 14100"
+		}
+	}, {
+		"id": "8ADA3497",
+		"title": "RoadBlasters",
+		"img": {
+			"coverFull": "c 11542"
+		}
+	}, {
+		"id": "C3CCC493",
+		"title": "Robin Hood: Prince of Thieves"
+	}, {
+		"id": "810B7AB9",
+		"title": "Robo Warrior",
+		"img": {
+			"coverFull": "c 2420"
+		}
+	}, {
+		"id": "192D546F",
+		"title": "RoboCop",
+		"img": {
+			"coverFull": "c 5118"
+		}
+	}, {
+		"id": "990985C0",
+		"title": "RoboCop 2"
+	}, {
+		"id": "96087988",
+		"title": "RoboCop 3",
+		"img": {
+			"coverFull": "c 11741"
+		}
+	}, {
+		"id": "10124E09",
+		"title": "Robodemons"
+	}, {
+		"id": "476E022B",
+		"title": "Rock 'n' Ball",
+		"img": {
+			"coverFull": "c 13044"
+		}
+	}, {
+		"id": "67F77118",
+		"title": "Rocket Ranger",
+		"img": {
+			"coverFull": "c 6162"
+		}
+	}, {
+		"id": "1D6DECCC",
+		"title": "Rocketeer, The",
+		"img": {
+			"coverFull": "c 13927"
+		}
+	}, {
+		"id": "8927FD4C",
+		"title": "Rockin' Kats",
+		"img": {
+			"coverFull": "c 7123"
+		}
+	}, {
+		"id": "22AB9694",
+		"title": "Rod Land"
+	}, {
+		"id": "018A8699",
+		"title": "Roger Clemens' MVP Baseball",
+		"img": {
+			"coverFull": "c 13304"
+		}
+	}, {
+		"id": "69635A6E",
+		"title": "Rollerball",
+		"img": {
+			"coverFull": "c 13943"
+		}
+	}, {
+		"id": "2370C0A9",
+		"title": "Rollerblade Racer"
+	}, {
+		"id": "AA4997C1",
+		"title": "Rollergames"
+	}, {
+		"id": "F92BE3EC",
+		"title": "Rolling Thunder",
+		"img": {
+			"coverFull": "c 13305"
+		}
+	}, {
+		"id": "C6182024",
+		"title": "Romance of the Three Kingdoms",
+		"img": {
+			"coverFull": "c 6936"
+		}
+	}, {
+		"id": "F011E490",
+		"title": "Romance of the Three Kingdoms II",
+		"img": {
+			"coverFull": "c 13929"
+		}
+	}, {
+		"id": "6E4DCFD2",
+		"title": "Roundball: 2-on-2 Challenge"
+	}, {
+		"id": "DE25B90F",
+		"title": "Rush'n Attack",
+		"img": {
+			"coverFull": "c 5119"
+		}
+	}, {
+		"id": "37C474D5",
+		"title": "Rygar",
+		"img": {
+			"coverFull": "c 11375"
+		}
+	}, {
+		"id": "74189E12",
+		"title": "S.C.A.T.: Special Cybernetic Attack Team",
+		"img": {
+			"coverFull": "c 13145"
+		}
+	}, {
+		"id": "973BBF75",
+		"title": "Secret Scout in the Temple of Demise"
+	}, {
+		"id": "0FEC90D2",
+		"title": "Section-Z"
+	}, {
+		"id": "27AA3933",
+		"title": "Seicross",
+		"img": {
+			"coverFull": "c 14101"
+		}
+	}, {
+		"id": "FDE1C7ED",
+		"title": "Sesame Street: Big Bird's Hide & Speak",
+		"img": {
+			"coverFull": "c 14608"
+		}
+	}, {
+		"id": "339437F6",
+		"title": "Sesame Street 123"
+	}, {
+		"id": "24EECC15",
+		"title": "Sesame Street ABC & 123"
+	}, {
+		"id": "EC0FC2DE",
+		"title": "Sesame Street ABC"
+	}, {
+		"id": "5CF6A82E",
+		"title": "Sesame Street Countdown"
+	}, {
+		"id": "DDD90C39",
+		"title": "Shadow of the Ninja",
+		"img": {
+			"coverFull": "c 12846"
+		}
+	}, {
+		"id": "6A1F628A",
+		"title": "Shadowgate",
+		"img": {
+			"coverFull": "c 14103"
+		}
+	}, {
+		"id": "AA20F73D",
+		"title": "Shatterhand",
+		"img": {
+			"coverFull": "c 4079"
+		}
+	}, {
+		"id": "BE3BF3B3",
+		"title": "Shingen the Ruler",
+		"img": {
+			"coverFull": "c 2421"
+		}
+	}, {
+		"id": "EB0BDA7E",
+		"title": "Shinobi",
+		"img": {
+			"coverFull": "c 16090"
+		}
+	}, {
+		"id": "C73B82FC",
+		"title": "Shockwave",
+		"img": {
+			"coverFull": "c 11022"
+		}
+	}, {
+		"id": "851EB9BE",
+		"title": "Shooting Range",
+		"img": {
+			"coverFull": "c 14107"
+		}
+	}, {
+		"id": "6435C095",
+		"title": "Short Order + Egg-Splode!"
+	}, {
+		"id": "DC4DA5D4",
+		"title": "Side Pocket",
+		"img": {
+			"coverFull": "c 6929"
+		}
+	}, {
+		"id": "CA0A869E",
+		"title": "Silent Assault"
+	}, {
+		"id": "B843EB84",
+		"title": "Silent Service"
+	}, {
+		"id": "E74A91BB",
+		"title": "Silk Worm"
+	}, {
+		"id": "BEE1C0D9",
+		"title": "Silver Surfer",
+		"img": {
+			"coverFull": "c 9086"
+		}
+	}, {
+		"id": "5248CAF3",
+		"title": "Simpsons, The: Bart vs. the Space Mutants",
+		"img": {
+			"coverFull": "c 6774"
+		}
+	}, {
+		"id": "7416903F",
+		"title": "Simpsons, The: Bart vs. the World",
+		"img": {
+			"coverFull": "c 8530"
+		}
+	}, {
+		"id": "5991B9D0",
+		"title": "Simpsons, The: Bartman Meets Radioactive Man",
+		"img": {
+			"coverFull": "c 12584"
+		}
+	}, {
+		"id": "423ADA8E",
+		"title": "Skate or Die",
+		"img": {
+			"coverFull": "c 10977"
+		}
+	}, {
+		"id": "06961BE4",
+		"title": "Skate or Die 2: The Search for Double Trouble"
+	}, {
+		"id": "E9A6C211",
+		"title": "Ski or Die"
+	}, {
+		"id": "B422A67A",
+		"title": "Skull & Crossbones",
+		"img": {
+			"coverFull": "c 13307"
+		}
+	}, {
+		"id": "3322105A",
+		"title": "Sky Kid",
+		"img": {
+			"coverFull": "c 2422"
+		}
+	}, {
+		"id": "9FFE2F55",
+		"title": "Sky Shark",
+		"img": {
+			"coverFull": "c 12720"
+		}
+	}, {
+		"id": "86670C93",
+		"title": "Slalom",
+		"img": {
+			"coverFull": "c 6937"
+		}
+	}, {
+		"id": "6EE94D32",
+		"title": "Smash T.V."
+	}, {
+		"id": "4022C94E",
+		"title": "Smurfs, The",
+		"img": {
+			"coverFull": "c 16088"
+		}
+	}, {
+		"id": "FDF4569B",
+		"title": "Snake Rattle n Roll"
+	}, {
+		"id": "48E904D0",
+		"title": "Snake's Revenge"
+	}, {
+		"id": "A8923256",
+		"title": "Snoopy's Silly Sports Spectacular!"
+	}, {
+		"id": "1DAC6208",
+		"title": "Snow Brothers",
+		"img": {
+			"coverFull": "c 10113"
+		}
+	}, {
+		"id": "657F7875",
+		"title": "Soccer",
+		"img": {
+			"coverFull": "c 11142"
+		}
+	}, {
+		"id": "8111BA08",
+		"title": "Solar Jetman: Hunt for the Golden Warpship",
+		"img": {
+			"coverFull": "c 12837"
+		}
+	}, {
+		"id": "B6A2B981",
+		"title": "Solitaire"
+	}, {
+		"id": "40684E95",
+		"title": "Solomon's Key",
+		"img": {
+			"coverFull": "c 12444"
+		}
+	}, {
+		"id": "F184EB2D",
+		"title": "Solomon's Key 2",
+		"img": {
+			"coverFull": "c 5397"
+		}
+	}, {
+		"id": "EDCF1B71",
+		"title": "Solstice: The Quest for the Staff of Demnos"
+	}, {
+		"id": "2220E14A",
+		"title": "Space Shuttle Project",
+		"img": {
+			"coverFull": "c 10103"
+		}
+	}, {
+		"id": "99D15A91",
+		"title": "Spelunker"
+	}, {
+		"id": "D679627A",
+		"title": "Spider-Man: Return of the Sinister Six",
+		"img": {
+			"coverFull": "c 5162"
+		}
+	}, {
+		"id": "14105C13",
+		"title": "Spiritual Warfare"
+	}, {
+		"id": "CFAE9DFA",
+		"title": "Spot: The Video Game"
+	}, {
+		"id": "C7197FB1",
+		"title": "Spy Hunter",
+		"img": {
+			"coverFull": "c 12445"
+		}
+	}, {
+		"id": "C4A02712",
+		"title": "Spy vs Spy"
+	}, {
+		"id": "44F34172",
+		"title": "Sqoon"
+	}, {
+		"id": "DF67DAA1",
+		"title": "Stack-Up",
+		"img": {
+			"coverFull": "c 13151"
+		}
+	}, {
+		"id": "FCE71311",
+		"title": "Stadium Events",
+		"img": {
+			"coverFull": "c 10314"
+		}
+	}, {
+		"id": "62E2E7FC",
+		"title": "Stanley: The Search for Dr. Livingston"
+	}, {
+		"id": "FCE408A4",
+		"title": "Star Force",
+		"img": {
+			"coverFull": "c 13475"
+		}
+	}, {
+		"id": "262B5A1D",
+		"title": "Star Soldier",
+		"img": {
+			"coverFull": "c 12034"
+		}
+	}, {
+		"id": "16EBA50A",
+		"title": "Star Trek: 25th Anniversary",
+		"img": {
+			"coverFull": "c 5895"
+		}
+	}, {
+		"id": "E575687C",
+		"title": "Star Trek: The Next Generation",
+		"img": {
+			"coverFull": "c 13308"
+		}
+	}, {
+		"id": "B1723338",
+		"title": "Star Voyager",
+		"img": {
+			"coverFull": "c 13309"
+		}
+	}, {
+		"id": "C1C3636B",
+		"title": "Star Wars",
+		"img": {
+			"coverFull": "c 4080"
+		}
+	}, {
+		"id": "240DE736",
+		"title": "Star Wars: The Empire Strikes Back",
+		"img": {
+			"coverFull": "c 4120"
+		}
+	}, {
+		"id": "9F432594",
+		"title": "Starship Hector",
+		"img": {
+			"coverFull": "c 15717"
+		}
+	}, {
+		"id": "889129CB",
+		"title": "StarTropics",
+		"img": {
+			"coverFull": "c 3741"
+		}
+	}, {
+		"id": "D054FFB0",
+		"title": "StarTropics II: Zoda's Revenge"
+	}, {
+		"id": "C6DD7E69",
+		"title": "Stealth ATF",
+		"img": {
+			"coverFull": "c 12949"
+		}
+	}, {
+		"id": "C5B0B1AB",
+		"title": "Stinger",
+		"img": {
+			"coverFull": "c 13118"
+		}
+	}, {
+		"id": "61D86167",
+		"title": "Street Cop",
+		"img": {
+			"coverFull": "c 14111"
+		}
+	}, {
+		"id": "8DA651D4",
+		"title": "Street Fighter 2010: The Final Fight",
+		"img": {
+			"coverFull": "c 6775"
+		}
+	}, {
+		"id": "02EE3706",
+		"title": "Strider",
+		"img": {
+			"coverFull": "c 7782"
+		}
+	}, {
+		"id": "3A990EE0",
+		"title": "Stunt Kids"
+	}, {
+		"id": "5B16A3C8",
+		"title": "Sunday Funday: The Ride"
+	}, {
+		"id": "305B4E62",
+		"title": "Super C",
+		"img": {
+			"coverFull": "c 6938"
+		}
+	}, {
+		"id": "419461D0",
+		"title": "Super Cars"
+	}, {
+		"id": "689971F9",
+		"title": "Super Dodge Ball",
+		"img": {
+			"coverFull": "c 12515"
+		}
+	}, {
+		"id": "EFCF375D",
+		"title": "Super Glove Ball",
+		"img": {
+			"coverFull": "c 13310"
+		}
+	}, {
+		"id": "CF4487A2",
+		"title": "Super Jeopardy!",
+		"img": {
+			"coverFull": "c 12446"
+		}
+	}, {
+		"id": "D445F698",
+		"title": "Super Mario Bros.",
+		"img": {
+			"coverFull": "c 5163"
+		}
+	}, {
+		"id": "D26EFD78",
+		"title": "Super Mario Bros. + Duck Hunt"
+	}, {
+		"id": "60E63537",
+		"title": "Super Mario Bros. + Duck Hunt + World Class Track Meet",
+		"img": {
+			"coverFull": "c 10313"
+		}
+	}, {
+		"id": "F46EF39A",
+		"title": "Super Mario Bros. + Tetris + Nintendo World Cup"
+	}, {
+		"id": "CA594ACE",
+		"title": "Super Mario Bros. 2",
+		"img": {
+			"coverFull": "c 4053"
+		}
+	}, {
+		"id": "2E6301ED",
+		"title": "Super Mario Bros. 3",
+		"img": {
+			"coverFull": "c 2423"
+		}
+	}, {
+		"id": "979C5314",
+		"title": "Super Pitfall"
+	}, {
+		"id": "E840FD21",
+		"title": "Super Spike V'Ball",
+		"img": {
+			"coverFull": "c 11101"
+		}
+	}, {
+		"id": "407D6FFD",
+		"title": "Super Spike V'Ball + Nintendo World Cup"
+	}, {
+		"id": "5F2C3195",
+		"title": "Super Sprint",
+		"img": {
+			"coverFull": "c 13691"
+		}
+	}, {
+		"id": "AB41445E",
+		"title": "Super Spy Hunter"
+	}, {
+		"id": "D74B2719",
+		"title": "Super Team Games"
+	}, {
+		"id": "88C30FDA",
+		"title": "Super Turrican",
+		"img": {
+			"coverFull": "c 16299"
+		}
+	}, {
+		"id": "1FA8C4A4",
+		"title": "Superman",
+		"img": {
+			"coverFull": "c 13690"
+		}
+	}, {
+		"id": "A1FF4E1D",
+		"title": "Swamp Thing",
+		"img": {
+			"coverFull": "c 10976"
+		}
+	}, {
+		"id": "465E5483",
+		"title": "Sword Master",
+		"img": {
+			"coverFull": "c 7178"
+		}
+	}, {
+		"id": "3417EC46",
+		"title": "Swords and Serpents"
+	}, {
+		"id": "482C79AF",
+		"title": "Taboo: The Sixth Sense",
+		"img": {
+			"coverFull": "c 5916"
+		}
+	}, {
+		"id": "BF250AF2",
+		"title": "Tag Team Wrestling",
+		"img": {
+			"coverFull": "c 9087"
+		}
+	}, {
+		"id": "4D527D4A",
+		"title": "Tagin' Dragon"
+	}, {
+		"id": "798EEB98",
+		"title": "TaleSpin"
+	}, {
+		"id": "93B49582",
+		"title": "Target Renegade"
+	}, {
+		"id": "AD12A34F",
+		"title": "Tecmo Baseball",
+		"img": {
+			"coverFull": "c 14788"
+		}
+	}, {
+		"id": "85A6C0D5",
+		"title": "Tecmo Bowl",
+		"img": {
+			"coverFull": "c 11497"
+		}
+	}, {
+		"id": "696D7839",
+		"title": "Tecmo Cup: Soccer Game"
+	}, {
+		"id": "DA8E4AF4",
+		"title": "Tecmo NBA Basketball",
+		"img": {
+			"coverFull": "c 12951"
+		}
+	}, {
+		"id": "179A0D57",
+		"title": "Tecmo Super Bowl",
+		"img": {
+			"coverFull": "c 12447"
+		}
+	}, {
+		"id": "86E02D65",
+		"title": "Tecmo World Cup Soccer"
+	}, {
+		"id": "7FF76219",
+		"title": "Tecmo World Wrestling",
+		"img": {
+			"coverFull": "c 5680"
+		}
+	}, {
+		"id": "EE921D8E",
+		"title": "Teenage Mutant Ninja Turtles",
+		"img": {
+			"coverFull": "c 5897"
+		}
+	}, {
+		"id": "86964EDD",
+		"title": "Teenage Mutant Ninja Turtles: Tournament Fighters",
+		"img": {
+			"coverFull": "c 11805"
+		}
+	}, {
+		"id": "A9217EA2",
+		"title": "Teenage Mutant Ninja Turtles II: The Arcade Game",
+		"img": {
+			"coverFull": "c 6776"
+		}
+	}, {
+		"id": "BB6D7949",
+		"title": "Teenage Mutant Ninja Turtles III: The Manhattan Project",
+		"img": {
+			"coverFull": "c 11087"
+		}
+	}, {
+		"id": "D4D9E21A",
+		"title": "Tennis",
+		"img": {
+			"coverFull": "c 5898"
+		}
+	}, {
+		"id": "EA27B477",
+		"title": "Terminator 2: Judgment Day",
+		"img": {
+			"coverFull": "c 15078"
+		}
+	}, {
+		"id": "6272C549",
+		"title": "Terminator, The",
+		"img": {
+			"coverFull": "c 11804"
+		}
+	}, {
+		"id": "2A46B57F",
+		"title": "Terra Cresta",
+		"img": {
+			"coverFull": "c 12765"
+		}
+	}, {
+		"id": "1394F57E",
+		"title": "Tetris",
+		"img": {
+			"coverFull": "c 3744"
+		}
+	}, {
+		"id": "9C537919",
+		"title": "Tetris 2",
+		"img": {
+			"coverFull": "c 3735"
+		}
+	}, {
+		"id": "538CD2EA",
+		"title": "Three Stooges, The"
+	}, {
+		"id": "D80B44BC",
+		"title": "Thunder & Lightning",
+		"img": {
+			"coverFull": "c 14113"
+		}
+	}, {
+		"id": "2DDC2DC3",
+		"title": "Thunderbirds",
+		"img": {
+			"coverFull": "c 4122"
+		}
+	}, {
+		"id": "AFB46DD6",
+		"title": "Thundercade",
+		"img": {
+			"coverFull": "c 13477"
+		}
+	}, {
+		"id": "C3C7A568",
+		"title": "Tiger-Heli",
+		"img": {
+			"coverFull": "c 3745"
+		}
+	}, {
+		"id": "3E1271D5",
+		"title": "Tiles of Fate"
+	}, {
+		"id": "13D5B1A4",
+		"title": "Time Lord",
+		"img": {
+			"coverFull": "c 5796"
+		}
+	}, {
+		"id": "0F86FEB4",
+		"title": "Times of Lore",
+		"img": {
+			"coverFull": "c 6163"
+		}
+	}, {
+		"id": "99DDDB04",
+		"title": "Tiny Toon Adventures",
+		"img": {
+			"coverFull": "c 11143"
+		}
+	}, {
+		"id": "81A5EB65",
+		"title": "Tiny Toon Adventures 2: Trouble in Wackyland",
+		"img": {
+			"coverFull": "c 11838"
+		}
+	}, {
+		"id": "9E6092A4",
+		"title": "Tiny Toon Adventures Cartoon Workshop"
+	}, {
+		"id": "DE8FD935",
+		"title": "To the Earth"
+	}, {
+		"id": "7FB74A43",
+		"title": "Toki",
+		"img": {
+			"coverFull": "c 11829"
+		}
+	}, {
+		"id": "D63B30F5",
+		"title": "Tom & Jerry: The Ultimate Game of Cat and Mouse!"
+	}, {
+		"id": "50D296B3",
+		"title": "Tombs & Treasure",
+		"img": {
+			"coverFull": "c 11782"
+		}
+	}, {
+		"id": "5800BE2D",
+		"title": "Toobin'"
+	}, {
+		"id": "CF6D0D7A",
+		"title": "Top Gun",
+		"img": {
+			"coverFull": "c 4052"
+		}
+	}, {
+		"id": "6F8AF3E8",
+		"title": "Top Gun: The Second Mission"
+	}, {
+		"id": "248566A7",
+		"title": "Total Recall",
+		"img": {
+			"coverFull": "c 12712"
+		}
+	}, {
+		"id": "B629D555",
+		"title": "Totally Rad",
+		"img": {
+			"coverFull": "c 10106"
+		}
+	}, {
+		"id": "EA4EB69E",
+		"title": "Touch Down Fever",
+		"img": {
+			"coverFull": "c 12800"
+		}
+	}, {
+		"id": "7E57FBEC",
+		"title": "Town & Country Surf Designs: Thrilla's Surfari"
+	}, {
+		"id": "D3BFF72E",
+		"title": "Town & Country Surf Designs: Wood & Water Rage",
+		"img": {
+			"coverFull": "c 5896"
+		}
+	}, {
+		"id": "F009DDD2",
+		"title": "Toxic Crusaders",
+		"img": {
+			"coverFull": "c 14115"
+		}
+	}, {
+		"id": "9C9F3571",
+		"title": "Track & Field",
+		"img": {
+			"coverFull": "c 5899"
+		}
+	}, {
+		"id": "7FA191E7",
+		"title": "Track & Field II",
+		"img": {
+			"coverFull": "c 5797"
+		}
+	}, {
+		"id": "B918580C",
+		"title": "Treasure Master",
+		"img": {
+			"coverFull": "c 15718"
+		}
+	}, {
+		"id": "EE6892EB",
+		"title": "Trog!"
+	}, {
+		"id": "FC3E5C86",
+		"title": "Trojan",
+		"img": {
+			"coverFull": "c 5929"
+		}
+	}, {
+		"id": "E681B300",
+		"title": "Trolls in Crazyland, The"
+	}, {
+		"id": "C47EFC0E",
+		"title": "Trolls on Treasure Island",
+		"img": {
+			"coverFull": "c 13949"
+		}
+	}, {
+		"id": "0EF730E7",
+		"title": "Twin Cobra",
+		"img": {
+			"coverFull": "c 13465"
+		}
+	}, {
+		"id": "CF26A149",
+		"title": "Twin Eagle"
+	}, {
+		"id": "4EC0FECC",
+		"title": "Ufouria: The Saga"
+	}, {
+		"id": "A4062017",
+		"title": "Ultima: Exodus"
+	}, {
+		"id": "A25A750F",
+		"title": "Ultima: Quest of the Avatar"
+	}, {
+		"id": "4823EEFE",
+		"title": "Ultima: Warriors of Destiny"
+	}, {
+		"id": "E387C77F",
+		"title": "Ultimate Air Combat",
+		"img": {
+			"coverFull": "c 12964"
+		}
+	}, {
+		"id": "9F6CE171",
+		"title": "Ultimate Basketball",
+		"img": {
+			"coverFull": "c 13313"
+		}
+	}, {
+		"id": "831F9C1A",
+		"title": "Ultimate League Soccer"
+	}, {
+		"id": "892434DD",
+		"title": "Ultimate Stuntman, The"
+	}, {
+		"id": "2D41EF92",
+		"title": "Uncanny X-Men, The",
+		"img": {
+			"coverFull": "c 11223"
+		}
+	}, {
+		"id": "ACA15643",
+		"title": "Uncharted Waters",
+		"img": {
+			"coverFull": "c 13800"
+		}
+	}, {
+		"id": "9BAC73EF",
+		"title": "Uninvited",
+		"img": {
+			"coverFull": "c 12953"
+		}
+	}, {
+		"id": "20C795EB",
+		"title": "Untouchables, The",
+		"img": {
+			"coverFull": "c 12713"
+		}
+	}, {
+		"id": "656D4265",
+		"title": "Urban Champion",
+		"img": {
+			"coverFull": "c 7608"
+		}
+	}, {
+		"id": "C973699D",
+		"title": "Vegas Dream",
+		"img": {
+			"coverFull": "c 13315"
+		}
+	}, {
+		"id": "882E1901",
+		"title": "Venice Beach Volleyball"
+	}, {
+		"id": "753768A6",
+		"title": "Vice: Project Doom",
+		"img": {
+			"coverFull": "c 11659"
+		}
+	}, {
+		"id": "5E66EAEA",
+		"title": "Videomation"
+	}, {
+		"id": "A8F5C2AB",
+		"title": "Vindicators",
+		"img": {
+			"coverFull": "c 11287"
+		}
+	}, {
+		"id": "27777635",
+		"title": "Volleyball"
+	}, {
+		"id": "401521F7",
+		"title": "Wacky Races",
+		"img": {
+			"coverFull": "c 12574"
+		}
+	}, {
+		"id": "B6661BDA",
+		"title": "Wall Street Kid",
+		"img": {
+			"coverFull": "c 12714"
+		}
+	}, {
+		"id": "81ECDA0D",
+		"title": "Wally Bear and the No! Gang"
+	}, {
+		"id": "F79A75D7",
+		"title": "Wario's Woods",
+		"img": {
+			"coverFull": "c 12449"
+		}
+	}, {
+		"id": "15F0D3F1",
+		"title": "Wayne Gretzky Hockey",
+		"img": {
+			"coverFull": "c 13316"
+		}
+	}, {
+		"id": "B0CD000F",
+		"title": "Wayne's World",
+		"img": {
+			"coverFull": "c 14791"
+		}
+	}, {
+		"id": "5EA7D410",
+		"title": "WCW World Championship Wrestling",
+		"img": {
+			"coverFull": "c 6809"
+		}
+	}, {
+		"id": "333C48A0",
+		"title": "Werewolf: The Last Warrior",
+		"img": {
+			"coverFull": "c 12517"
+		}
+	}, {
+		"id": "3368F7FB",
+		"title": "Wheel of Fortune",
+		"img": {
+			"coverFull": "c 6777"
+		}
+	}, {
+		"id": "009AF6BE",
+		"title": "Wheel of Fortune: Family Edition",
+		"img": {
+			"coverFull": "c 12369"
+		}
+	}, {
+		"id": "68383607",
+		"title": "Wheel of Fortune: Junior Edition"
+	}, {
+		"id": "4220C170",
+		"title": "Wheel of Fortune Starring Vanna White"
+	}, {
+		"id": "917770D8",
+		"title": "Where in Time Is Carmen Sandiego"
+	}, {
+		"id": "C3463A3D",
+		"title": "Where's Waldo",
+		"img": {
+			"coverFull": "c 11846"
+		}
+	}, {
+		"id": "12B2C361",
+		"title": "Who Framed Roger Rabbit",
+		"img": {
+			"coverFull": "c 11784"
+		}
+	}, {
+		"id": "6FD5A271",
+		"title": "Whomp 'Em",
+		"img": {
+			"coverFull": "c 12585"
+		}
+	}, {
+		"id": "E7C981A2",
+		"title": "Widget",
+		"img": {
+			"coverFull": "c 12575"
+		}
+	}, {
+		"id": "5112DC21",
+		"title": "Wild Gunman",
+		"img": {
+			"coverFull": "c 14117"
+		}
+	}, {
+		"id": "103E7E7F",
+		"title": "Willow",
+		"img": {
+			"coverFull": "c 5902"
+		}
+	}, {
+		"id": "F74DFC91",
+		"title": "Win, Lose or Draw",
+		"img": {
+			"coverFull": "c 5823"
+		}
+	}, {
+		"id": "969EF9E4",
+		"title": "Winter Games",
+		"img": {
+			"coverFull": "c 13201"
+		}
+	}, {
+		"id": "6BC33D2F",
+		"title": "Wizardry: Knight of Diamonds: The Second Scenario"
+	}, {
+		"id": "D9BB572C",
+		"title": "Wizardry: Proving Grounds of the Mad Overlord",
+		"img": {
+			"coverFull": "c 5903"
+		}
+	}, {
+		"id": "26535EF5",
+		"title": "Wizards & Warriors"
+	}, {
+		"id": "2328046E",
+		"title": "Wizards & Warriors II: IronSword"
+	}, {
+		"id": "D2562072",
+		"title": "Wizards & Warriors III: Kuros...Visions of Power"
+	}, {
+		"id": "35476E87",
+		"title": "Wolverine",
+		"img": {
+			"coverFull": "c 5824"
+		}
+	}, {
+		"id": "8593E5AD",
+		"title": "World Champ: Super Boxing Great Fight"
+	}, {
+		"id": "AF4010EA",
+		"title": "World Class Track Meet",
+		"img": {
+			"coverFull": "c 14877"
+		}
+	}, {
+		"id": "F613A8F9",
+		"title": "World Games",
+		"img": {
+			"coverFull": "c 14789"
+		}
+	}, {
+		"id": "3A8723B9",
+		"title": "Wrath of the Black Manta",
+		"img": {
+			"coverFull": "c 5825"
+		}
+	}, {
+		"id": "9B506A48",
+		"title": "Wrecking Crew",
+		"img": {
+			"coverFull": "c 10327"
+		}
+	}, {
+		"id": "EB803610",
+		"title": "Wurm: Journey to the Center of the Earth!"
+	}, {
+		"id": "7B4ED0BB",
+		"title": "WWF King of the Ring",
+		"img": {
+			"coverFull": "c 12715"
+		}
+	}, {
+		"id": "37138039",
+		"title": "WWF Wrestlemania",
+		"img": {
+			"coverFull": "c 7809"
+		}
+	}, {
+		"id": "A0230D75",
+		"title": "WWF Wrestlemania Challenge"
+	}, {
+		"id": "D4611B79",
+		"title": "WWF Wrestlemania Steel Cage Challenge",
+		"img": {
+			"coverFull": "c 13768"
+		}
+	}, {
+		"id": "711896B8",
+		"title": "Xenophobe",
+		"img": {
+			"coverFull": "c 12839"
+		}
+	}, {
+		"id": "DFD70E27",
+		"title": "Xevious: The Avenger"
+	}, {
+		"id": "B1612FE6",
+		"title": "Xexyz",
+		"img": {
+			"coverFull": "c 10920"
+		}
+	}, {
+		"id": "50D141FC",
+		"title": "Yo! Noid",
+		"img": {
+			"coverFull": "c 11947"
+		}
+	}, {
+		"id": "E7EAD93B",
+		"title": "Yoshi",
+		"img": {
+			"coverFull": "c 11376"
+		}
+	}, {
+		"id": "52B58732",
+		"title": "Yoshi's Cookie"
+	}, {
+		"id": "35C6F574",
+		"title": "Young Indiana Jones Chronicles, The",
+		"img": {
+			"coverFull": "c 11831"
+		}
+	}, {
+		"id": "E292AA10",
+		"title": "Zanac",
+		"img": {
+			"coverFull": "c 11866"
+		}
+	}, {
+		"id": "D8578BFD",
+		"title": "Zen: Intergalactic Ninja",
+		"img": {
+			"coverFull": "c 11660"
+		}
+	}, {
+		"id": "03FB57B6",
+		"title": "Zombie Nation",
+		"img": {
+			"coverFull": "c 12630"
+		}
+	}]
+}

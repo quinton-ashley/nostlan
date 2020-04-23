@@ -133,9 +133,7 @@ class Launcher {
 			prefs.session[sys].gameID = game.id;
 		}
 		let emuApp;
-		if (identify && sys == 'snes') {
-			emuApp = __root + '/bin/icarus/icarus.exe';
-		} else if (identify && sys == 'switch') {
+		if (identify && sys == 'switch') {
 			emuApp = await this.getEmuApp();
 			let f = path.parse(emuApp);
 			emuApp = f.dir + '/' + f.name + '-cmd' + f.ext;
@@ -184,17 +182,6 @@ class Launcher {
 			}
 		}
 
-		if (identify && sys == 'snes') {
-			let cmdIcarus = [
-				"${app}",
-				"--system",
-				"Super Famicom",
-				"--manifest",
-				"${game}",
-			];
-			if (mac || linux) cmdIcarus.unshift("wine64");
-			cmdArray = cmdIcarus;
-		}
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
 				this.cmdArgs.push(emuApp);
@@ -312,11 +299,6 @@ class Launcher {
 						(m = /title_id=(\w{16})/.exec(out))) {
 
 						game.tid = m[1];
-
-					} else if (sys == 'snes' &&
-						(m = /game(\n[^\n]*){3}\n[^:]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)/.exec(out))) {
-
-						game.id = `${m[2]}-${m[3]}`;
 
 					} else {
 						return;

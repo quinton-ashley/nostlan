@@ -5,6 +5,8 @@
  * libraries, creates a games array, and saves array to a json file.
  */
 const Fuse = require('fuse.js');
+const crc32 = require('crc').crc32;
+const cryptog = require('crypto');
 
 const idRegex = {
 	arcade: /(\S+)/,
@@ -116,6 +118,26 @@ class Scanner {
 				$('#loadDialog1').text(term);
 				await delay(1);
 
+				if (/(snes|nes)/.test(sys)) {
+					let data = await fs.readFile(file);
+					let game, hash;
+					if (sys == 'nes') {
+						hash = crc32(data).toString(16);
+						game = gameDB.find(x => x.id === hash);
+					} else if (sys == 'snes') {
+						hash = cryptog.createHash('sha256').update(data).digest('hex');
+						game = gameDB.find(x => x.sha256 === hash);
+					}
+					if (game) {
+						this.olog(`exact match:  ${game.title}\r\n`);
+						log(game);
+						game.file = '$' + h + '/' +
+							path.relative(prefs[sys].libs[h], file);
+						games.push(game);
+						continue;
+					}
+				}
+
 				// rpcs3 ignore games with these ids
 				if (term == 'TEST12345' || term == 'RPSN00001') continue;
 				// eliminations part 1
@@ -159,7 +181,7 @@ class Scanner {
 				}
 				// exact match identification by retreiving the id
 				// from the game file
-				if (sys == 'snes' || sys == 'switch') {
+				if (sys == 'switch') {
 					let game = {
 						title: term,
 						file: file
@@ -273,7 +295,7 @@ class Scanner {
 		if (arg.v) log(results);
 		let region = prefs.region;
 		for (let i = 0; i < results.length; i++) {
-			let game = results[i];
+			let game = results[i].item;
 			if (game.title.length > term.length + 6) continue;
 			// if the search term doesn't contain demo or trial
 			// skip the demo/trial version of the game

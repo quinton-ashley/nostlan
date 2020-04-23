@@ -39,6 +39,10 @@ let format = {
 		regex: /<game name="([^"]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+<crc>([^<]+)[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n[^\n]+\n/g,
 		replace: `"id": "$2",\n\t"title": "$1"\n}, {\n`
 	}],
+	nes: [{
+		regex: /<game name="([^\(]*)[^"]*"([^<]*<){5}crc>([^<]*)([^<]*<){12}[^<]*/g,
+		replace: `"id": "$3",\n\t"title": "$1"\n}, {\n\t`
+	}],
 	ps1: [{
 		regex: /\s*"\?[^\n]*(\s*")[^"]*([^\n]*\s*")[^"]*([^,]*),\n[^\n]*\s*\},\s*{/g,
 		replace: `$1id$2title$3\n\t}, {`
@@ -48,26 +52,44 @@ let format = {
 		replace: `\t"id": "$1",\n\t"title": "$2"\n}, {\n`
 	}],
 	snes: [{
-		regex: /game\n[^\n]*\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)(\n[^g\n][^\n]*|\n)*/g,
-		replace: `}, {\n\t"id": "$3-$4",\n\t"title": "$1",\n\t"label": "$2"\n`
+		regex: /game\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^:\n]*: *([^\n]*)\n[^\-\n]*\-[^\-\n]*\-([^\n]*)(\n[^g\n][^\n]*|\n)*/g,
+		replace: `}, {\n\t"id": "$4-$5",\n\t"title": "$2",\n\t"label": "$3"\n\t"sha256": "$1"\n`
 	}, {
 		regex: /database\n *revision: ([^\n]*)[^\}]*}, /g,
-		replace: `{\n"version": "$1",\n"games": [`
+		replace: ` {\
+					n "version": "$1", \n "games": [`
 	}, {
 		regex: /\n$/,
-		replace: `}]\n}`
+		replace: `
+					}]\ n
+			}
+			`
 	}],
 	switch: [{
 		regex: /\n\s*(\{[^\s]*)\s*"[^"]*("[^\n]*\n[^\s]*)\s*"[^"]*([^"]*"[^"]*"[^"]*")([^\}]*\} \w+)*[^\}]*\s+\}/g,
-		replace: `$1\n\t"id$2\t"title$3\n}, `
+		replace: `
+			$1\ n\ t "id$2\t"
+			title$3\ n
+		},
+		`
 	}],
 	wii: [{
 		regex: /\n([^\n ]*) = ([^\n]*)/g,
-		replace: `}, {\n\t"id": "$1",\n\t"title": "$2"`
+		replace: `
+	},
+	{\
+		n\ t "id": "$1",
+		\n\ t "title": "$2"
+		`
 	}],
 	xbox360: [{
 		regex: /([^\|]*)\|([^\|]*)\|[^\|]*\|[^\|]*\|[^\|\n]*\n/g,
-		replace: `\t"id": "$1",\n\t"title": "$2"\n}, {\n`
+		replace: `\
+		t "id": "$1",
+		\n\ t "title": "$2"\
+		n
+	}, {\
+		n `
 	}]
 };
 
@@ -80,20 +102,23 @@ let strip = [{
 }, {
 	regex: / - /g,
 	replace: `: `
+}, {
+	regex: /&apos;/g,
+	replace: `'`
 }];
 
 class GenDB {
 	constructor() {}
 
 	async generate() {
+		let list;
 
 		if (typeof sources[sys] == 'string') {
 			let res = await requisition(sources[sys]);
 			let file = __root + `/db/${sys}DB`;
 			await res.saveTo(file);
-			let list = await fs.readFile(file, 'utf-8');
+			list = await fs.readFile(file, 'utf-8');
 		}
-
 
 		// log(list);
 
@@ -132,6 +157,32 @@ class GenDB {
 		await fs.remove(file);
 		file += '.json';
 		await fs.outputFile(file, JSON.stringify(list, null, '\t'));
+	}
+
+	async merge(_sys) {
+		_sys = _sys || sys;
+
+		let deepExtend = require('deep-extend');
+
+		let db0Path = `${__root}/db/${_sys}DB.json`;
+		let db0 = JSON.parse(await fs.readFile(db0Path));
+		let db1Path = `${__root}/db/${_sys}DB1.json`;
+		let db1 = JSON.parse(await fs.readFile(db1Path));
+
+		let merged = 0;
+		for (let game of db0.games) {
+			// merge by id
+			let match = db1.games.find(x => x.id === game.id);
+			if (!match) continue;
+			log(match.title);
+			deepExtend(game, match);
+			merged++;
+		}
+
+		let file = `${__root}/db/${_sys}DBx.json`;
+		await fs.outputFile(file, JSON.stringify(db0, null, '\t'));
+		log('finished!');
+		log('merged: ' + (merged / Math.max(db0.games.length, db1.games.length)).toFixed(2) * 100 + '%');
 	}
 }
 

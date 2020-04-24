@@ -76,6 +76,7 @@ class Themes {
 
 		this.arcade.default = undefined;
 		this.snes.default = undefined;
+		this.nes.default = undefined;
 	}
 
 	async loadFrame(name) {

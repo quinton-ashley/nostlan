@@ -70,6 +70,13 @@
 			"win": ["${app}", "${game}"]
 		}
 	},
+	"mesen": {
+		"name": "mesen",
+		"app": {},
+		"cmd": {
+			"win": ["${app}", "${game}"]
+		}
+	},
 	"pcsx2": {
 		"name": "PCSX2",
 		"app": {},

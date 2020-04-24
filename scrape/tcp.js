@@ -2,14 +2,17 @@ const dl = require('./dl.js');
 const Fuse = require('fuse.js');
 let regions = {
 	ps2: {
-		// A: 'AS', // Asia
-		// // C: 'China', // China
-		// E: 'EU', // Europe
-		// // H: 'Hong Kong', // Hong Kong
-		// J: 'JP', // Japan
-		// P: 'JP', // Japan (PS1/PS2)
-		// // K: 'Korea', // Korea
+		A: 'as', // Asia
+		E: 'eu', // Europe
+		J: 'jp', // Japan
+		P: 'jp', // Japan (PS1/PS2)
 		U: 'us' // USA
+	},
+	nes: {
+		Europe: 'eu',
+		Germany: 'de',
+		Japan: 'jp',
+		USA: 'us'
 	}
 };
 regions.ps3 = regions.ps2;
@@ -45,6 +48,7 @@ class TheCoverProjectScraper {
 		if (!$page) return;
 		let region;
 		if (sys == 'ps2') region = game.id[2];
+		if (sys == 'nes') region = game.id.split('-')[1];
 		if (regions[sys]) {
 			region = regions[sys][region] || 'us';
 		} else {
@@ -52,10 +56,11 @@ class TheCoverProjectScraper {
 		}
 		// search for the image from the region
 		let $links = $page.find('#covers a');
+		let found = false;
 		for (let i = 0; i < $links.length; i++) {
-			let country = $links.eq(i).find('img').eq(0).attr('src').split('/');
-			country = country[country.length - 1];
-			if (country == region + '.png') {
+			let flag = $links.eq(i).find('img').eq(0).attr('src').split('/');
+			flag = flag[flag.length - 1].slice(0, 2);
+			if (flag == region) {
 				if (i != 0) $page = null;
 				if (!$page) {
 					$page = await browser.goTo($links.eq(i).attr('href'));
@@ -67,9 +72,11 @@ class TheCoverProjectScraper {
 					$page = await browser.goTo($links.eq(i).attr('href'));
 				}
 				if (!$page) return;
+				found = true;
 				break;
 			}
 		}
+		if (!found && region == 'jp') return;
 		url = $page.find('.pageBody h2 a').eq(0).attr('href');
 		if (!url) return;
 		let img = {};

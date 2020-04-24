@@ -225,7 +225,7 @@ class Launcher {
 		}
 
 		if (kb && cui.ui == 'playing_4') {
-			if ((win || linux) && /(yuzu|vba|snes9x)/.test(emu)) {
+			if ((win || linux) && /(mesen|snes9x|yuzu|vba)/.test(emu)) {
 				await delay(1500);
 				kb.keyTap('f11');
 			} else if (win && emu == 'desmume') {

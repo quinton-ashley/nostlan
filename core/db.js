@@ -40,8 +40,8 @@ let format = {
 		replace: `"id": "$2",\n\t"title": "$1"\n}, {\n`
 	}],
 	nes: [{
-		regex: /<game name="([^\(]*)[^"]*"([^<]*<){5}crc>([^<]*)([^<]*<){12}[^<]*/g,
-		replace: `"id": "$3",\n\t"title": "$1"\n}, {\n\t`
+		regex: /game \(\s+name "([^\(]+)\(([^\(]+)\)( \([^\d]* *([\d\.]*)\))*[^"]*"[^\n]*\n[^\n]*[^"]*"[^"]*" size \d* crc (\w{8})[^\n]*\n[^\n]*\n\n/g,
+		replace: `"id": "$5",\n\t\t"title": "$1",\n\t\t"region": "$2",\n\t\t"ver": "$4"\n\t}, {\n\t\t`
 	}],
 	ps1: [{
 		regex: /\s*"\?[^\n]*(\s*")[^"]*([^\n]*\s*")[^"]*([^,]*),\n[^\n]*\s*\},\s*{/g,

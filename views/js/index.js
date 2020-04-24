@@ -61,6 +61,11 @@ module.exports = async function(arg) {
 			fullName: 'Nintendo 3DS',
 			emus: ['citra']
 		},
+		nes: {
+			name: 'NES',
+			fullname: 'Nintendo Entertainment System',
+			emus: ['mesen']
+		},
 		ps2: {
 			name: 'PS2',
 			fullName: 'Sony PlayStation 2',
@@ -917,8 +922,8 @@ module.exports = async function(arg) {
 
 	async function addGameBox(game, column) {
 		let _sys = game.sys || sys;
-		let isTemplate = (game.id.substring(1, 9) == 'TEMPLATE');
-		let isUnidentified = (game.id.substring(1, 13) == 'UNIDENTIFIED');
+		let isTemplate = (game.id.slice(1, 9) == 'TEMPLATE');
+		let isUnidentified = (game.id.slice(1, 13) == 'UNIDENTIFIED');
 		let hasNoImages = isUnidentified;
 
 		let boxImg, noBox, coverImg, coverType;

@@ -1,0 +1,15 @@
+.nes {
+	--cover-color: #C8C5C6;
+	--cover-border-color: #676465;
+	--cover-text-color: #B2343A;
+	--button-color: #676465;
+	--button-text-color: #632C2A;
+	--open-color: #202020;
+	--open-text-color: #632C2A;
+	--open-border-color: #0C0C0F;
+	--openBtn-color: #111111;
+	--reset-color: #6A6768;
+	--reset-text-color: #632C2A;
+	--reset-border-color: #423F40;
+	--powerBtn-color: #EEECED;
+}

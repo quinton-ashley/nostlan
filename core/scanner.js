@@ -123,10 +123,10 @@ class Scanner {
 					let game, hash;
 					if (sys == 'nes') {
 						hash = crc32(data).toString(16);
-						game = gameDB.find(x => x.id === hash);
+						game = gameDB.find(x => x.id.split('-')[0] == hash);
 					} else if (sys == 'snes') {
 						hash = cryptog.createHash('sha256').update(data).digest('hex');
-						game = gameDB.find(x => x.sha256 === hash);
+						game = gameDB.find(x => x.sha256 == hash);
 					}
 					if (game) {
 						this.olog(`exact match:  ${game.title}\r\n`);

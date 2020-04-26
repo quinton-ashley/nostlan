@@ -927,7 +927,10 @@ module.exports = async function(arg) {
 		let isUnidentified = (game.id.slice(1, 13) == 'UNIDENTIFIED');
 		let hasNoImages = isUnidentified;
 
-		let boxImg, noBox, coverImg, coverType;
+		let noBox;
+		let boxImg = '';
+		let coverImg = '';
+		let coverType = '';
 
 		async function getBoxImg() {
 			boxImg = await scraper.imgExists(game, 'box');

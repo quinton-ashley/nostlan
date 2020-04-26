@@ -106,11 +106,12 @@
     "popper.js": "^1.16.1",
     "probe-image-size": "^5.0.0",
     "pug": "^2.0.4",
-    "puppeteer-core": "^3.0.0",
+    "puppeteer-core": "^3.0.1",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
     "requisition": "^1.7.0",
     "robotjs": "^0.6.0",
+    "sharp": "^0.25.2",
     "tabletojson": "^2.0.4",
     "tether": "^1.4.7",
     "three": "^0.113.2",
@@ -137,13 +138,10 @@
     "url": "git+https://github.com/quinton-ashley/nostlan.git"
   },
   "scripts": {
-    "start": "electron .",
+    "start": "electron . --dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
     "rebuild": "npm rebuild --build-from-source --runtime=electron --target=8.1.1 --disturl=https://atom.io/download/atom-shell --abi=75",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder -m && electron-builder -w && electron-builder -l",
-    "gh-publish": "electron-builder -m -l -w -p always",
     "postinstall": "electron-builder install-app-deps -c.electronVersion 8.1.1 | electron-rebuild",
     "delete-tags": "git tag | xargs git tag -d",
     "delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
@@ -152,5 +150,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.9.5"
+  "version": "1.9.6"
 }

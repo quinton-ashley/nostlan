@@ -538,6 +538,7 @@ module.exports = async function(arg) {
 		}
 		log(act + ' on ' + ui);
 		if (act == 'quit') {
+			cui.opt.haptic = false;
 			// don't try to sync saves on quit
 			// if there was an error
 			// if developing nostlan

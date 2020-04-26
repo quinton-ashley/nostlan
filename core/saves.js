@@ -125,7 +125,7 @@ class Saves {
 					cui.err('can not save to cloud/backup saves folder: ' + dest);
 					return;
 				}
-				if (emu == 'melonds' || emu == 'mgba') {
+				if (/\.(bsnes|desmume|melonds|mgba|snes9x)/.test(emu)) {
 					let files = await klaw(src, {
 						depthLimit: 0
 					});
@@ -133,8 +133,11 @@ class Saves {
 						await fs.copy(file, dest + '/' + path.parse(file).base, {
 							filter: function(file) {
 								let ext = path.parse(file).ext.toLowerCase();
-								if (ext == '.nds' || ext == '.gba' || ext == '') return;
-								return true;
+								// only copy files with these extensions
+								if (/\.(dct|ds\d|dsv|ml\d|sav|srm|bsz)/.test(ext)) {
+									return true;
+								}
+								return false;
 							}
 						});
 					}

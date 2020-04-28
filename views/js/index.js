@@ -359,17 +359,16 @@ module.exports = async function(arg) {
 			labels = ['Play', 'Flip', 'Back'];
 			$('#libMain').show();
 		} else if (state == 'boxOpenMenu_2') {
-			labels = ['Manual', 'ImgDir', 'Back'];
+			labels = ['Manual', 'Memory', 'Back'];
 			$('#boxOpenMenu_2').removeClass('zoom-gameManual');
 			$('#boxOpenMenu_2').removeClass('zoom-gameMedia');
 			$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
-			$('#boxOpenMenu_2').removeClass('zoom-gameTexp');
 		} else if (state == 'libMain') {
 			labels = ['Play', 'Emu', 'Sys'];
 			$('#libMain').css('transform', '');
 			$('#libMain').removeClass('no-outline');
 		} else if (state == 'gameMediaSelect_3') {
-			labels = ['Info', 'File', 'Back'];
+			labels = ['ImgDir', 'File', 'Back'];
 		} else if (state == 'pauseMenu_10') {
 			labels = ['Quit', 'Mini', 'Back'];
 		} else if (/(game|menu)/i.test(state)) {
@@ -426,9 +425,8 @@ module.exports = async function(arg) {
 			cui.makeCursor($cur);
 			cui.scrollToCursor(250, 0);
 		}
-		if (cui.ui == 'boxOpenMenu_2' &&
-			!cui.isParent(cui.ui, cui.uiPrev)) {
-			cui.makeCursor($('#gameMedia').eq(0));
+		if (cui.ui == 'boxOpenMenu_2') {
+			cui.makeCursor($('#gameMedia'));
 		} else if (cui.uiPrev == 'boxSelect_1' && cui.ui == 'libMain') {
 			changeImageResolution(cui.getCur());
 		}
@@ -517,13 +515,13 @@ module.exports = async function(arg) {
 	}
 
 	cui.beforeMove = ($cur, state) => {
-		if ((/select/i).test(state)) {
+		if (state == 'boxSelect_1') {
 			changeImageResolution($cur);
 		}
 	}
 
 	cui.afterMove = ($cur, state) => {
-		if ((/select/i).test(state)) {
+		if (state == 'boxSelect_1') {
 			changeImageResolution($cur, 'full');
 			fitCoverToScreen($cur);
 			cui.makeCursor($cur, 'libMain');
@@ -633,6 +631,8 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'boxSelect_1') {
 			if ($cur.hasClass('uie-disabled')) return false;
+
+			// TODO not working, fix this!
 			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
 				fitCoverToScreen($cur);
 				cui.makeCursor($cur, 'libMain');
@@ -673,10 +673,7 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'boxOpenMenu_2') {
 			if (act == 'x') act = 'Manual';
-			if (act == 'y') {
-				opn(await scraper.getImgDir(getCurGame()));
-				return;
-			}
+			if (act == 'y') act = 'Memory';
 			if (act == 'a') act = 'Media';
 			if (!(/(memory|manual|media)/gi).test(act)) return;
 			act = act[0].toUpperCase() + act.substr(1);
@@ -690,10 +687,10 @@ module.exports = async function(arg) {
 				} else {
 					await launcher.launch(getCurGame());
 				}
-			} else if (act == 'y') { // info
-
+			} else if (act == 'y') { // imgdir
+				opn(await scraper.getImgDir(getCurGame()));
 			} else if (act == 'x') { // file
-				opn(getCurGame().file);
+				opn(path.parse(getCurGame().file).dir);
 			}
 		} else if (ui == 'sysMenu_5' && !isBtn) {
 			// if (!emu) {
@@ -1013,6 +1010,12 @@ module.exports = async function(arg) {
 		}
 		boxImg = await scraper.genThumb(boxImg);
 		if (coverImg) coverImg = await scraper.genThumb(coverImg);
+		if (coverType != '.coverFull') {
+			let img = await scraper.imgExists(game, 'coverFull');
+			if (img) {
+				await scraper.genThumb(img);
+			}
+		}
 		let box = `game#${game.id}.${_sys}.uie`;
 		// if game is a template don't let the user select it
 		if (isTemplate) {

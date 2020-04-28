@@ -83,10 +83,6 @@ game {
 	transform: translate(-146vh, 129vh) scale(4);
 }
 
-.zoom-gameTexpSelect {
-	transform: translate(34vh, 0vh) scale(1);
-}
-
 #gameBoxOpen {
 	z-index: 10;
 }
@@ -123,11 +119,6 @@ game {
 	width: 40.8vh;
 	border-radius: 50%;
 	transform: translate(39.4%, -35%);
-}
-
-#gameTexp {
-	width: 94vh;
-	transform: translate(-110%, -50.5%);
 }
 
 #gameManual {

@@ -90,11 +90,6 @@ game.wiiu.flip .shade {
 	transform: translate(11%, -50%);
 }
 
-.wiiu #gameTexp {
-	width: 94vh;
-	transform: translate(-110%, -50.5%);
-}
-
 .wiiu #gameManual {
 	width: 62vh;
 	transform: translate(-108%, -50%);
@@ -110,8 +105,4 @@ game.wiiu.flip .shade {
 
 .wiiu .zoom-gameMemory {
 	transform: translate(-52vh, 140vh) scale(4);
-}
-
-.wiiu .zoom-gameTexp {
-	transform: translate(34vh, 0vh) scale(1);
 }

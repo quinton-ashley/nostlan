@@ -100,10 +100,6 @@ game.wii.flip .shade {
 	transform: translate(-146vh, 129vh) scale(4);
 }
 
-.gcn .zoom-gameTexp {
-	transform: translate(34vh, 0vh) scale(1);
-}
-
 .wii #gameMemory {
 	width: 16vh;
 	transform: translate(32%, -256%);
@@ -113,11 +109,6 @@ game.wii.flip .shade {
 	width: 60.8vh;
 	border-radius: 50%;
 	transform: translate(11%, -50%);
-}
-
-.wii #gameTexp {
-	width: 94vh;
-	transform: translate(-110%, -50.5%);
 }
 
 .wii #gameManual {
@@ -135,8 +126,4 @@ game.wii.flip .shade {
 
 .wii .zoom-gameMemory {
 	transform: translate(-52vh, 140vh) scale(4);
-}
-
-.wii .zoom-gameTexp {
-	transform: translate(34vh, 0vh) scale(1);
 }

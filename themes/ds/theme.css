@@ -110,7 +110,3 @@ game.ds .file.label {
 .ds #boxOpenMenu_2.zoom-gameMemory {
 	transform: translate(-146vh, 129vh) scale(4);
 }
-
-.ds #boxOpenMenu_2.zoom-gameTexp {
-	transform: translate(34vh, 0vh) scale(1);
-}

@@ -225,6 +225,22 @@ class Scraper {
 		}
 		return file;
 	}
+
+	async genThumb(img) {
+		let og = img;
+		img = path.parse(img);
+		let thumb = img.dir + '/' + img.name + 'Thumb.jpg';
+		if (await fs.exists(thumb)) return thumb;
+		$('#loadDialog0').text('generating thumbnail images');
+
+		await sharp(og).resize({
+			height: 720
+		}).jpeg({
+			quality: 89
+		}).toFile(thumb);
+
+		return thumb;
+	}
 }
 
 module.exports = new Scraper();

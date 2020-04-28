@@ -9,7 +9,7 @@
 	src: url("../fonts/sownie.ttf");
 }
 
-.ps2 #view {
+.ps2 #nav1Btn {
 	font-family: 'Sownie', sans-serif;
 	font-size: 2.6vw;
 	line-height: 2.6vw;
@@ -21,7 +21,7 @@
 	text-rendering: geometricPrecision;
 }
 
-.ps2 .console .text {
+.ps2 .navPanel .text {
 	font-family: ryp, sans-serif;
 	font-size: 1.9vw;
 }

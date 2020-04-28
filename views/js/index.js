@@ -136,6 +136,8 @@ module.exports = async function(arg) {
 		er(ror);
 	}
 
+	global.sharp = require('sharp');
+
 	document.body.addEventListener('mousemove', function(e) {
 		document.exitPointerLock();
 	});
@@ -338,15 +340,15 @@ module.exports = async function(arg) {
 
 	cui.onResize = (adjust) => {
 		if (!$('nav').hasClass('hide')) {
-			let $cv = $('.console.view');
-			let $cvSel = $cv.find('#view');
-			let cvHeight = $cv.height();
-			let cpHeight = $('.console.power').height();
+			let $nav1 = $('#nav1');
+			let $nav1Btn = $nav1.find('#nav1Btn');
+			let nav1Height = $nav1.height();
+			let nav0Height = $('#nav0').height();
 			let mod = 24;
 			if ((/ps/i).test(sys)) mod = -8;
-			if (adjust || cvHeight != cpHeight) {
-				$cvSel.css('margin-top', (cpHeight + mod) * .5 - cvHeight * .5 - 4);
-				$('nav').height(cpHeight + 24);
+			if (adjust || nav1Height != nav0Height) {
+				$nav1Btn.css('margin-top', (nav0Height + mod) * .5 - nav1Height * .5 - 4);
+				$('nav').height(nav0Height + 24);
 			}
 		}
 	};
@@ -373,26 +375,26 @@ module.exports = async function(arg) {
 		} else if (/(game|menu)/i.test(state)) {
 			labels = [' ', ' ', 'Back'];
 		}
-		$('.text.power').text(labels[0]);
-		$('.text.reset').text(labels[1]);
-		$('.text.open').text(labels[2]);
+		$('#nav0 .text').text(labels[0]);
+		$('#nav2 .text').text(labels[1]);
+		$('#nav3 .text').text(labels[2]);
 
 		function adjust(flip) {
-			if (flip && $('nav.fixed-top').find('#view').length) {
-				$('.console.open').css({
+			if (flip && $('nav.fixed-top').find('#nav1Btn').length) {
+				$('#nav3').css({
 					'border-radius': '0 0 0 32px',
 					'border-width': '0 0 8px 0'
 				}).appendTo('nav.fixed-top');
-				$('.console.view').css({
+				$('#nav1').css({
 					'border-radius': '32px 0 0 0',
 					'border-width': '8px 0 0 0'
 				}).appendTo('nav.fixed-bottom');
-			} else if (!flip && $('nav.fixed-top').find('#open').length) {
-				$('.console.open').css({
+			} else if (!flip && $('nav.fixed-top').find('#nav3Btn').length) {
+				$('#nav3').css({
 					'border-radius': '32px 0 0 0',
 					'border-width': '8px 0 0 0'
 				}).appendTo('nav.fixed-bottom');
-				$('.console.view').css({
+				$('#nav1').css({
 					'border-radius': '0 0 0 32px',
 					'border-width': '0 0 8px 0'
 				}).appendTo('nav.fixed-top');
@@ -412,9 +414,9 @@ module.exports = async function(arg) {
 		if (!(cui.gamepadConnected || cui.gca.connected) || !subState) {
 			return;
 		}
-		$('#power span').text(buttons[0]);
-		$('#reset span').text(buttons[1]);
-		$('#open span').text(buttons[2]);
+		$('#nav0Btn span').text(buttons[0]);
+		$('#nav2Btn span').text(buttons[1]);
+		$('#nav3Btn span').text(buttons[2]);
 	}
 
 	cui.afterChange = async () => {
@@ -427,6 +429,8 @@ module.exports = async function(arg) {
 		if (cui.ui == 'boxOpenMenu_2' &&
 			!cui.isParent(cui.ui, cui.uiPrev)) {
 			cui.makeCursor($('#gameMedia').eq(0));
+		} else if (cui.uiPrev == 'boxSelect_1' && cui.ui == 'libMain') {
+			changeImageResolution(cui.getCur());
 		}
 	}
 
@@ -487,9 +491,40 @@ module.exports = async function(arg) {
 		$menu.css('transform', `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`);
 	}
 
-	cui.afterMove = () => {
-		if ((/select/i).test(cui.ui)) {
-			let $cur = cui.getCur();
+	async function changeImageResolution($cur, changeToFullRes) {
+		let $images = $cur.find('img');
+		for (let i = 0; i < 2; i++) {
+			if ($images.eq(i).hasClass('hide')) continue;
+			let img = $images.eq(i).prop('src');
+			if (!img) continue;
+			img = path.parse(img);
+			if (changeToFullRes) {
+				img.name = img.name.replace('Thumb', '');
+			} else {
+				img.name += 'Thumb';
+			}
+			let src = img.dir + '/' + img.name + img.ext;
+			if (!(await fs.exists(src.slice(8)))) {
+				src = img.dir + '/' + img.name;
+				if (img.ext != '.jpg') {
+					src += '.jpg';
+				} else {
+					src += '.png';
+				}
+			}
+			$images.eq(i).prop('src', src);
+		}
+	}
+
+	cui.beforeMove = ($cur, state) => {
+		if ((/select/i).test(state)) {
+			changeImageResolution($cur);
+		}
+	}
+
+	cui.afterMove = ($cur, state) => {
+		if ((/select/i).test(state)) {
+			changeImageResolution($cur, 'full');
 			fitCoverToScreen($cur);
 			cui.makeCursor($cur, 'libMain');
 		}
@@ -592,6 +627,7 @@ module.exports = async function(arg) {
 				let gameSys = $cur.attr('class');
 				if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 				fitCoverToScreen($cur);
+				changeImageResolution($cur, 'full');
 				cui.scrollToCursor(500, 0);
 				cui.change('boxSelect_1', gameSys);
 			}
@@ -829,10 +865,10 @@ module.exports = async function(arg) {
 		}
 	}
 
-	cui.click('#powerBtn', 'x');
-	cui.click('#viewBtn', 'start');
-	cui.click('#resetBtn', 'y');
-	cui.click('#openBtn', 'b');
+	cui.click('#nav0', 'x');
+	cui.click('#nav1', 'start');
+	cui.click('#nav2', 'y');
+	cui.click('#nav3', 'b');
 
 	async function editImgSrc($cur, $img, game, name) {
 		if (!game) return;
@@ -922,6 +958,7 @@ module.exports = async function(arg) {
 	}
 
 	async function addGameBox(game, column) {
+		$('#loadDialog1').text(game.title);
 		let _sys = game.sys || sys;
 		let isTemplate = (game.id.slice(1, 9) == 'TEMPLATE');
 		let isUnidentified = (game.id.slice(1, 13) == 'UNIDENTIFIED');
@@ -974,6 +1011,8 @@ module.exports = async function(arg) {
 			await getCoverImg();
 			game.id = id;
 		}
+		boxImg = await scraper.genThumb(boxImg);
+		if (coverImg) coverImg = await scraper.genThumb(coverImg);
 		let box = `game#${game.id}.${_sys}.uie`;
 		// if game is a template don't let the user select it
 		if (isTemplate) {
@@ -1054,17 +1093,17 @@ module.exports = async function(arg) {
 		cui.resize(true);
 		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
 		games = await scraper.loadImages(games, themes, recheckImgs);
+		// determine the amount of columns based on the amount of games
 		let cols = prefs.ui.maxColumns || 8;
 		if (sys == 'snes') {
 			if (games.length < 500) cols = 4;
-			if (games.length < 12) cols = 2;
 		} else {
 			if (games.length < 42) cols = 8;
 			if (games.length < 18) cols = 4;
-			if (games.length < 4) cols = 2;
 		}
 		$('style.gameViewerColsStyle').remove();
 		let $glv = $('#libMain');
+		// the column style must change based on the number of columns
 		let dynColStyle = '<style class="gameViewerColsStyle" type="text/css">' +
 			`.reel {width: ${1 / cols * 100}%;}`
 		for (let i = 0; i < cols; i++) {
@@ -1114,7 +1153,7 @@ module.exports = async function(arg) {
 			keepBackground: true,
 			hoverCurDisabled: true
 		});
-		$('#view').css('margin-top', '20px');
+		$('#nav1Btn').css('margin-top', '20px');
 	}
 
 	async function start() {

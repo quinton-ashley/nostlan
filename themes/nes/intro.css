@@ -221,7 +221,7 @@ h1 {
 	top: 0;
 }
 
-.power-box {
+.nav0-box {
 	position: absolute;
 	left: 1.4em;
 	width: 11.5em;
@@ -261,7 +261,7 @@ h1 {
 	transition: all 0.2s;
 }
 
-#power:checked~.light {
+#nav0Btn:checked~.light {
 	background-image: -webkit-linear-gradient(45deg, #FFF 25%, #FFF 25%, #FFF 75%, #FFF 75%, #FFF), -webkit-linear-gradient(-45deg, #FFF 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #FFF 75%, #FFF);
 	background-image: -moz-linear-gradient(45deg, #FFF 25%, #FFF 25%, #FFF 75%, #FFF 75%, #FFF), -moz-linear-gradient(-45deg, #FFF 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #FFF 75%, #FFF);
 	background-image: -o-linear-gradient(45deg, #FFF 25%, #FFF 25%, #FFF 75%, #FFF 75%, #FFF), -o-linear-gradient(-45deg, #FFF 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #FFF 75%, #FFF);
@@ -271,18 +271,18 @@ h1 {
 	box-shadow: inset 0 0 0.5em 0.2em #F1270B, 0 0 0.5em #F1550B, -0.1em -0.1em 0.1em rgba(0, 0, 0, 0.3), 0.1em 0.1em 0.1em rgba(255, 255, 255, 0.1);
 }
 
-#power:checked+.reset:active~.light, #power:checked+.reset:focus~.light {
+#nav0Btn:checked+.nav2:active~.light, #nav0Btn:checked+.nav2:focus~.light {
 	background-color: rgba(255, 255, 255, 0.06);
 	background-image: linear-gradient(45deg, #3D3D3D 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #3D3D3D 75%, #3D3D3D), linear-gradient(-45deg, #3D3D3D 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #3D3D3D 75%, #3D3D3D);
 	box-shadow: none;
 }
 
-#power {
+#nav0Btn {
 	position: absolute;
 	left: -9999px;
 }
 
-.power, .reset {
+.nav0, .nav2 {
 	position: absolute;
 	cursor: pointer;
 	width: 6em;
@@ -298,12 +298,12 @@ h1 {
 	border-radius: 0.6em;
 }
 
-.reset {
+.nav2 {
 	left: 11em;
 	top: 5em;
 }
 
-.power:before, .reset:before {
+.nav0:before, .nav2:before {
 	content: "POWER";
 	position: absolute;
 	width: 94%;
@@ -325,17 +325,17 @@ h1 {
 	transition: all 0.1s;
 }
 
-.reset:before {
+.nav2:before {
 	content: "RESET";
 }
 
-.power:hover:before, .reset:hover:before, #power:checked+.power:before {
+.nav0:hover:before, .nav2:hover:before, #nav0Btn:checked+.nav0:before {
 	top: 0;
 	-webkit-box-shadow: 0 -0.2em 0 #665E64, 0 0.2em 0.6em -0.3em rgba(0, 0, 0, 0.69);
 	box-shadow: 0 -0.2em 0 #665E64, 0 0.2em 0.6em -0.3em rgba(0, 0, 0, 0.69);
 }
 
-.power:focus:before, .power:active:before, .reset:focus:before, .reset:active:before {
+.nav0:focus:before, .nav0:active:before, .nav2:focus:before, .nav2:active:before {
 	top: -0.1em;
 	-webkit-box-shadow: 0 -0.1em 0 #665E64, 0 0.1em 0.6em -0.3em rgba(0, 0, 0, 0.69), inset 0 0.2em 1em rgba(0, 0, 0, 0.07);
 	box-shadow: 0 -0.1em 0 #665E64, 0 0.1em 0.6em -0.3em rgba(0, 0, 0, 0.69), inset 0 0.2em 1em rgba(0, 0, 0, 0.07);

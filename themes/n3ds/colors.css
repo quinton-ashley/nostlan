@@ -1,29 +1,29 @@
 .n3ds {
-	--cover-color: #3f4044;
-	--cover-text-color: #202125;
-	--powerBtn-color: #5A86C7;
-	--resetBtn-color: #009a6d;
-	--openBtn-color: #DDBB62;
+	--nav-color: #3f4044;
+	--nav-text-color: #202125;
+	--nav0Btn-color: #5A86C7;
+	--nav2Btn-color: #009a6d;
+	--nav3Btn-color: #DDBB62;
 }
 
 .n3ds.blue {
-	--cover-color: #557eaa;
-	--cover-text-color: #3a465e;
-	--powerBtn-color: #3a465e;
-	--resetBtn-color: #3a465e;
-	--openBtn-color: #3a465e;
-	--powerBtn-text-color: #5A86C7;
-	--resetBtn-text-color: #009a6d;
-	--openBtn-text-color: #DDBB62;
+	--nav-color: #557eaa;
+	--nav-text-color: #3a465e;
+	--nav0Btn-color: #3a465e;
+	--nav2Btn-color: #3a465e;
+	--nav3Btn-color: #3a465e;
+	--nav0Btn-text-color: #5A86C7;
+	--nav2Btn-text-color: #009a6d;
+	--nav3Btn-text-color: #DDBB62;
 }
 
 .n3ds.white {
-	--cover-color: #ebebeb;
-	--cover-text-color: #949494;
-	--powerBtn-color: #ffa93a;
-	--resetBtn-color: #ffa93a;
-	--openBtn-color: #ffa93a;
-	--powerBtn-text-color: #5A86C7;
-	--resetBtn-text-color: #009a6d;
-	--openBtn-text-color: #DDBB62;
+	--nav-color: #ebebeb;
+	--nav-text-color: #949494;
+	--nav0Btn-color: #ffa93a;
+	--nav2Btn-color: #ffa93a;
+	--nav3Btn-color: #ffa93a;
+	--nav0Btn-text-color: #5A86C7;
+	--nav2Btn-text-color: #009a6d;
+	--nav3Btn-text-color: #DDBB62;
 }

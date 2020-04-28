@@ -11,7 +11,7 @@ html
 	body
 		#themeStyles
 		#dialogs
-			#loadDialog0
+			#loadDialog0 starting Nostlan!
 			#loadDialog1
 			#loadDialog2
 		#donateMenu.menu.row-y
@@ -90,23 +90,22 @@ html
 			img#gameBoxOpenMask
 		#libMain.main.row-x
 		nav.navbar.fixed-top.p-0
-			button#powerBtn.console.power.p-2.m-0: ul.nav.justify-content-left.m-0
-				.power.text
+			button#nav0.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
+				.nav0.text
 				li.nav-item
-					#power.nav-link.triangle: span
-				//- img.logoNav(src='../img/logo.png')
-			button#viewBtn.console.view.p-2.m-0: ul.nav.justify-content-right.m-0
+					#nav0Btn.nav-link.triangle: span
+			button#nav1.navPanel.p-2.m-0: ul.nav.justify-content-right.m-0
 				li.nav-item
-					#view Nostlan
+					#nav1Btn Nostlan
 		nav.navbar.fixed-bottom.p-0
-			button#resetBtn.console.reset.p-2.m-0: ul.nav.justify-content-left.m-0
-				.reset.text
+			button#nav2.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
+				.nav2.text
 				li.nav-item
-					#reset.nav-link.square: span
-			button#openBtn.console.open.p-2.m-0: ul.nav.justify-content-right.m-0
+					#nav2Btn.nav-link.square: span
+			button#nav3.navPanel.p-2.m-0: ul.nav.justify-content-right.m-0
 				li.nav-item
-					#open.nav-link.circle: span
-				.open.text
+					#nav3Btn.nav-link.circle: span
+				.nav3.text
 		script.
 			console.log('opening index.pug');
 			console.log('#{node_modules}');

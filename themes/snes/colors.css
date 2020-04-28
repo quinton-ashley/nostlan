@@ -1,48 +1,48 @@
 .snes {
-	--cover-color: #cac9ce;
-	--cover-text-color: #94929B;
-	--button-color: #BBB6ED;
-	--openBtn-color: #5F3C96;
+	--nav-color: #cac9ce;
+	--nav-text-color: #94929B;
+	--navBtns-color: #BBB6ED;
+	--nav3Btn-color: #5F3C96;
 }
 
 .snes.super-famicom {
-	--cover-color: #A3A9AC;
-	--cover-text-color: #6C6C6C;
-	--powerBtn-color: #0B60C6;
-	--powerBtn-border-color: #004AB8;
-	--resetBtn-color: #00B683;
-	--resetBtn-border-color: #20956C;
-	--openBtn-color: #FFD600;
-	--openBtn-border-color: #FCC648;
+	--nav-color: #A3A9AC;
+	--nav-text-color: #6C6C6C;
+	--nav0Btn-color: #0B60C6;
+	--nav0Btn-border-color: #004AB8;
+	--nav2Btn-color: #00B683;
+	--nav2Btn-border-color: #20956C;
+	--nav3Btn-color: #FFD600;
+	--nav3Btn-border-color: #FCC648;
 }
 
 .snes.super-nintendo {
-	--cover-color: #cac9ce;
-	--cover-text-color: #a9a7aa;
-	--cover-border-color: #64a;
-	--button-color: #7a62ae;
-	--button-border-color: #7a62ae;
-	--power-color: #7a62ae;
-	--power-text-color: #ababde;
-	--reset-color: #7a62ae;
-	--reset-text-color: #ababde;
-	--open-color: #9b999e;
-	--open-text-color: #cecdd2;
-	--open-border-color: #7d7b80;
-	--openBtn-border-color: #9b999e;
-	--openBtn-color: #9b999e;
-	--view-border-color: #a9a7aa;
+	--nav-color: #cac9ce;
+	--nav-text-color: #a9a7aa;
+	--nav-border-color: #64a;
+	--navBtns-color: #7a62ae;
+	--navBtns-border-color: #7a62ae;
+	--nav0-color: #7a62ae;
+	--nav0-text-color: #ababde;
+	--nav2-color: #7a62ae;
+	--nav2-text-color: #ababde;
+	--nav3-color: #9b999e;
+	--nav3-text-color: #cecdd2;
+	--nav3-border-color: #7d7b80;
+	--nav3Btn-border-color: #9b999e;
+	--nav3Btn-color: #9b999e;
+	--nav1-border-color: #a9a7aa;
 }
 
 .snes.game-box {
-	--cover-color: #000000;
-	--cover-text-color: #fc0c19;
-	--cover-border-color: #fc0c19;
-	--button-color: #000000;
-	--openBtn-color: repeating-linear-gradient(#626763 0%, #626763 6%, #000000 6%, #000000 11.75%);
-	--powerBtn-border-color: #fea12a;
-	--resetBtn-border-color: #b82899;
-	--view-text-color: #fc0c19;
-	--view-button-color: #eee;
-	--view-color: #000;
+	--nav-color: #000000;
+	--nav-text-color: #fc0c19;
+	--nav-border-color: #fc0c19;
+	--navBtns-color: #000000;
+	--nav3Btn-color: repeating-linear-gradient(#626763 0%, #626763 6%, #000000 6%, #000000 11.75%);
+	--nav0Btn-border-color: #fea12a;
+	--nav2Btn-border-color: #b82899;
+	--nav1-text-color: #fc0c19;
+	--nav1-button-color: #eee;
+	--nav1-color: #000;
 }

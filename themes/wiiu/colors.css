@@ -1,6 +1,6 @@
 .wiiu {
-	--cover-color: #3f4044;
-	--cover-text-color: #202125;
-	--button-color: #3f4044;
-	--powerBtn-text-color: #9c333a;
+	--nav-color: #3f4044;
+	--nav-text-color: #202125;
+	--navBtns-color: #3f4044;
+	--nav0Btn-text-color: #9c333a;
 }

@@ -1,29 +1,29 @@
 .gba {
-	--cover-color: #605891;
-	--cover-text-color: #3c336a;
-	--button-color: #c6c6c4;
+	--nav-color: #605891;
+	--nav-text-color: #3c336a;
+	--navBtns-color: #c6c6c4;
 }
 
 .gba.blue-SP {
-	--cover-color: #004DA3;
-	--cover-text-color: #002166;
-	--button-color: #505153;
+	--nav-color: #004DA3;
+	--nav-text-color: #002166;
+	--navBtns-color: #505153;
 }
 
 .gba.light-blue-SP {
-	--cover-color: #75B2C7;
-	--cover-text-color: #45A0BB;
-	--button-color: #C7C8CA;
+	--nav-color: #75B2C7;
+	--nav-text-color: #45A0BB;
+	--navBtns-color: #C7C8CA;
 }
 
 .gba.red-SP {
-	--cover-color: #B73630;
-	--cover-text-color: #570000;
-	--button-color: #676566;
+	--nav-color: #B73630;
+	--nav-text-color: #570000;
+	--navBtns-color: #676566;
 }
 
 .gba.silver-SP {
-	--cover-color: #E6E5E3;
-	--cover-text-color: #898886;
-	--button-color: #676566;
+	--nav-color: #E6E5E3;
+	--nav-text-color: #898886;
+	--navBtns-color: #676566;
 }

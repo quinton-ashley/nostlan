@@ -4,12 +4,12 @@
 	src: url("../fonts/X360.ttf");
 }
 
-.xbox360 .console .text {
+.xbox360 .navPanel .text {
 	font-family: X360;
 	font-weight: 700;
 }
 
-.xbox360 #view {
+.xbox360 #nav1Btn {
 	font-family: X360;
 	font-size: 3.6vw;
 	line-height: 3.6vw;

@@ -9,41 +9,41 @@
 	src: url("../fonts/Nintender.ttf");
 }
 
-.wii .console .text {
+.wii .navPanel .text {
 	font-family: contb;
 	font-weight: 900;
 }
 
-.wii .console.open .nav-link,
-.wii .console.reset .nav-link {
+.wii #nav$1Btn,
+.wii #nav$1Btn {
 	box-shadow: 1px 5px 0 #bbbdc2;
 }
 
-.wii .console:hover .nav-link {
+.wii .navPanel:hover .nav-link {
 	filter: none;
 	transform: scale(1.05);
-	border-color: var(--button-border-color);
+	border-color: var(--navBtns-border-color);
 }
 
-.wii .console:hover,
-.wii .console:hover #view {
-	border-color: var(--button-border-color);
+.wii .navPanel:hover,
+.wii .navPanel:hover #nav1Btn {
+	border-color: var(--navBtns-border-color);
 }
 
-.wii .console:hover #view,
-.wii .console:hover .text {
-	color: var(--button-border-color);
+.wii .navPanel:hover #nav1Btn,
+.wii .navPanel:hover .text {
+	color: var(--navBtns-border-color);
 }
 
 .wii .menu .cursor {
-	border-color: var(--button-border-color);
+	border-color: var(--navBtns-border-color);
 }
 
-.console .nav-link {
+.navPanel .nav-link {
 	font-family: "contb";
 }
 
-.wii #view {
+.wii #nav1Btn {
 	font-family: Nintender;
 	font-size: 3vw;
 	line-height: 3vw;
@@ -52,8 +52,8 @@
 	-webkit-appearance: none;
 	border-width: 0.5vw;
 	border-style: solid;
-	border-color: var(--view-text-color, var(--cover-text-color));
-	color: var(--view-text-color, var(--cover-text-color));
+	border-color: var(--nav1-text-color, var(--nav-text-color));
+	color: var(--nav1-text-color, var(--nav-text-color));
 	background-color: transparent;
 	border-radius: 3vw;
 	padding-left: 5%;

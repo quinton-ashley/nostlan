@@ -157,9 +157,11 @@ module.exports = async function(arg) {
 	Mousetrap.bind('space', function() {
 		return false;
 	});
+	Mousetrap.bind('escape', function() {
+		electron.getCurrentWindow().minimize();
+	});
 
 	global.cui = require('contro-ui');
-	// global.cui = require('./contro-ui.js');
 
 	let directions = ['up', 'down', 'left', 'right'];
 	for (let direction of directions) {

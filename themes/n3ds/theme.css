@@ -9,12 +9,12 @@
 	src: url("../fonts/Nintender.ttf");
 }
 
-.n3ds .console .text {
+.n3ds .navPanel .text {
 	font-family: contb;
 	font-weight: 800;
 }
 
-.n3ds #view {
+.n3ds #nav1Btn {
 	font-family: Nintender;
 	font-size: 3vw;
 	line-height: 3vw;
@@ -23,8 +23,8 @@
 	-webkit-appearance: none;
 	border-width: 0.5vw;
 	border-style: solid;
-	border-color: var(--view-text-color, var(--cover-text-color));
-	color: var(--view-text-color, var(--cover-text-color));
+	border-color: var(--nav1-text-color, var(--nav-text-color));
+	color: var(--nav1-text-color, var(--nav-text-color));
 	background-color: transparent;
 	border-radius: 3vw;
 	padding-left: 5%;

@@ -9,7 +9,7 @@
 	src: url("../fonts/Nintender.ttf");
 }
 
-.gcn .console .text {
+.gcn .navPanel .text {
 	font-family: Gamecuben;
 	font-size: 2.5vw;
 	line-height: 2.5vw;
@@ -18,7 +18,7 @@
 	letter-spacing: -.2vw;
 }
 
-.gcn #view {
+.gcn #nav1Btn {
 	font-family: Nintender;
 	font-size: 3vw;
 	line-height: 3vw;
@@ -27,8 +27,8 @@
 	-webkit-appearance: none;
 	border-width: 0.5vw;
 	border-style: solid;
-	border-color: var(--view-text-color, var(--cover-text-color));
-	color: var(--view-text-color, var(--cover-text-color));
+	border-color: var(--nav1-text-color, var(--nav-text-color));
+	color: var(--nav1-text-color, var(--nav-text-color));
 	background-color: transparent;
 	border-radius: 3vw;
 	padding-left: 5%;

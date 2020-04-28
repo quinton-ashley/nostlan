@@ -1,32 +1,32 @@
 .switch {
-	--cover-color: #313133;
-	--cover-text-color: #050505;
-	--button-color: #3C3F45;
-	--reset-color: rgb(10, 185, 230);
-	--reset-border-color: rgb(45, 210, 255);
-	--reset-text-color: rgb(0, 125, 160);
-	--open-color: rgb(255, 60, 40);
-	--open-border-color: rgb(255, 90, 60);
-	--open-text-color: rgb(210, 50, 25);
+	--nav-color: #313133;
+	--nav-text-color: #050505;
+	--navBtns-color: #3C3F45;
+	--nav2-color: rgb(10, 185, 230);
+	--nav2-border-color: rgb(45, 210, 255);
+	--nav2-text-color: rgb(0, 125, 160);
+	--nav3-color: rgb(255, 60, 40);
+	--nav3-border-color: rgb(255, 90, 60);
+	--nav3-text-color: rgb(210, 50, 25);
 }
 
 .switch.splatoon {
-	--reset-color: #00E350;
-	--reset-border-color: #06AA38;
-	--reset-text-color: #E7E9ED;
-	--open-color: #FF4A85;
-	--open-border-color: #EF2D65;
-	--open-text-color: #050505;
+	--nav2-color: #00E350;
+	--nav2-border-color: #06AA38;
+	--nav2-text-color: #E7E9ED;
+	--nav3-color: #FF4A85;
+	--nav3-border-color: #EF2D65;
+	--nav3-text-color: #050505;
 }
 
 .switch.animal-crossing {
-	--cover-color: #5D757F;
-	--cover-text-color: #2C4446;
-	--button-color: #4F666C;
-	--reset-color: #9DF1D7;
-	--reset-border-color: #D6D6D4;
-	--reset-text-color: #050505;
-	--open-color: #FF4A85;
-	--open-border-color: #D6D6D4;
-	--open-text-color: #E7E9ED;
+	--nav-color: #5D757F;
+	--nav-text-color: #2C4446;
+	--navBtns-color: #4F666C;
+	--nav2-color: #9DF1D7;
+	--nav2-border-color: #D6D6D4;
+	--nav2-text-color: #050505;
+	--nav3-color: #FF4A85;
+	--nav3-border-color: #D6D6D4;
+	--nav3-text-color: #E7E9ED;
 }

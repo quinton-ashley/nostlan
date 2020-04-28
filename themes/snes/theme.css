@@ -14,7 +14,7 @@
 	text-shadow: none;
 }
 
-.snes .console .text {
+.snes .navPanel .text {
 	font-family: "SNES_Italic", "SNES_Italic", SNES_Italic;
 	font-weight: 1000;
 	letter-spacing: 1px;
@@ -27,7 +27,7 @@
 	filter: brightness(20);
 }
 
-.snes #view {
+.snes #nav1Btn {
 	font-family: Nintender;
 	font-size: 3vw;
 	line-height: 3vw;
@@ -36,9 +36,9 @@
 	-webkit-appearance: none;
 	border-width: 0.5vw;
 	border-style: solid;
-	border-color: var(--view-text-color, var(--cover-text-color));
-	color: var(--view-text-color, var(--cover-text-color));
-	background-color: var(--view-button-color);
+	border-color: var(--nav1-text-color, var(--nav-text-color));
+	color: var(--nav1-text-color, var(--nav-text-color));
+	background-color: var(--nav1-button-color);
 	border-radius: 3vw;
 	padding-left: 5%;
 	padding-right: 6%;
@@ -46,7 +46,7 @@
 	text-shadow: none;
 }
 
-.snes.game-box #openBtn .nav-link {
+.snes.game-box #nav3 .nav-link {
 	border-width: 0;
 }
 

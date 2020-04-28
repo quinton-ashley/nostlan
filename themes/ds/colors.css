@@ -1,14 +1,14 @@
 .ds {
-	--cover-color: #d0d4d7;
-	--cover-text-color: #7a7e81;
-	--powerBtn-color: #515256;
+	--nav-color: #d0d4d7;
+	--nav-text-color: #7a7e81;
+	--nav0Btn-color: #515256;
 }
 
 .ds.pink-lite {
-	--cover-color: #F2C9C7;
-	--cover-text-color: #1E0B0F;
-	--cover-border-color: #CC7D76;
-	--button-color: #F2C9C7;
-	--powerBtn-color: #F2C9C7;
-	--powerBtn-border-color: #9CD560;
+	--nav-color: #F2C9C7;
+	--nav-text-color: #1E0B0F;
+	--nav-border-color: #CC7D76;
+	--navBtns-color: #F2C9C7;
+	--nav0Btn-color: #F2C9C7;
+	--nav0Btn-border-color: #9CD560;
 }

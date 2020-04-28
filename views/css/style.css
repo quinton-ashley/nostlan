@@ -21,12 +21,12 @@ html {
 
 /*================Themes====================*/
 :root {
-	--cover-color: rgb(130, 130, 130);
-	--cover-text-color: rgb(70, 70, 70);
-	--cover-text-shadow-color: rgba(255, 255, 255, .5);
-	--button-color: rgb(70, 70, 70);
-	--button-text-color: rgba(0, 0, 0, .5);
-	--button-border-color: #000;
+	--nav-color: rgb(130, 130, 130);
+	--nav-text-color: rgb(70, 70, 70);
+	--nav-text-shadow-color: rgba(255, 255, 255, .5);
+	--navBtns-color: rgb(70, 70, 70);
+	--navBtns-text-color: rgba(0, 0, 0, .5);
+	--navBtns-border-color: #000;
 	--box-bg-color: #000;
 }
 
@@ -194,12 +194,13 @@ webview {
 	max-width: 100%;
 	max-height: 100%;
 	z-index: 0;
+	transition: transform .5s;
 }
 
 .menu {
-	background-color: var(--cover-color);
-	color: var(--cover-text-color);
-	border-color: var(--cover-text-color);
+	background-color: var(--nav-color);
+	color: var(--nav-text-color);
+	border-color: var(--nav-text-color);
 	border-radius: 32px;
 	border-width: 8px 0 8px 0;
 	border-style: solid;
@@ -230,13 +231,13 @@ webview {
 
 .menu .uie {
 	margin-bottom: 10px;
-	border: 3px solid var(--cover-text-color);
+	border: 3px solid var(--nav-text-color);
 	border-radius: 10px;
-	box-shadow: 0.5px 0.5px 0 var(--cover-text-shadow-color);
+	box-shadow: 0.5px 0.5px 0 var(--nav-text-shadow-color);
 }
 
 .menu .cursor {
-	background-color: var(--cover-color);
+	background-color: var(--nav-color);
 }
 
 nav {
@@ -371,98 +372,98 @@ nav * {
 	pointer-events: all;
 }
 
-.console {
+.navPanel {
 	width: 19%;
 	border-style: solid;
 	margin-left: 30px;
 }
 
-.console * {
+.navPanel * {
 	margin-top: auto;
 	margin-bottom: auto;
 }
 
-#view,
+#nav1Btn,
 .text {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
-.console .text {
+.navPanel .text {
 	overflow: hidden;
-	text-overflow: ellipsis;
+	text-overflow: clip;
 	white-space: nowrap;
 	width: 65%;
 }
 
-.console.power {
-	color: var(--power-text-color, var(--cover-text-color));
-	background: var(--power-color, var(--cover-color));
-	border-color: var(--power-border-color, var(--cover-border-color, var(--power-text-color, var(--cover-text-color))));
+#nav0 {
+	color: var(--nav0-text-color, var(--nav-text-color));
+	background: var(--nav0-color, var(--nav-color));
+	border-color: var(--nav0-border-color, var(--nav-border-color, var(--nav0-text-color, var(--nav-text-color))));
 	border-radius: 0 0 32px 0;
 	border-width: 0 0 8px 0;
 }
 
-.console.power .nav-link {
-	color: var(--powerBtn-text-color, var(--button-text-color));
-	background: var(--powerBtn-color, var(--button-color));
-	border-color: var(--powerBtn-border-color, var(--button-border-color));
+#nav0Btn {
+	color: var(--nav0Btn-text-color, var(--navBtns-text-color));
+	background: var(--nav0Btn-color, var(--navBtns-color));
+	border-color: var(--nav0Btn-border-color, var(--navBtns-border-color));
 }
 
-.console.view {
-	color: var(--view-text-color, var(--cover-text-color));
-	background: var(--view-color, var(--cover-color));
-	border-color: var(--view-border-color, var(--cover-border-color, var(--view-text-color, var(--cover-text-color))));
+#nav1 {
+	color: var(--nav1-text-color, var(--nav-text-color));
+	background: var(--nav1-color, var(--nav-color));
+	border-color: var(--nav1-border-color, var(--nav-border-color, var(--nav1-text-color, var(--nav-text-color))));
 	height: 100%;
 	border-radius: 0 0 0 32px;
 	border-width: 0 0 8px 0;
 }
 
-.console.reset {
-	color: var(--reset-text-color, var(--cover-text-color));
-	background: var(--reset-color, var(--cover-color));
-	border-color: var(--reset-border-color, var(--cover-border-color, var(--reset-text-color, var(--cover-text-color))));
+#nav2 {
+	color: var(--nav2-text-color, var(--nav-text-color));
+	background: var(--nav2-color, var(--nav-color));
+	border-color: var(--nav2-border-color, var(--nav-border-color, var(--nav2-text-color, var(--nav-text-color))));
 	height: 100%;
 	border-radius: 0 32px 0 0;
 	border-width: 8px 0 0 0;
 }
 
-.console.reset .nav-link {
-	color: var(--resetBtn-text-color, var(--button-text-color));
-	background: var(--resetBtn-color, var(--button-color));
-	border-color: var(--resetBtn-border-color, var(--button-border-color));
+#nav2Btn {
+	color: var(--nav2Btn-text-color, var(--navBtns-text-color));
+	background: var(--nav2Btn-color, var(--navBtns-color));
+	border-color: var(--nav2Btn-border-color, var(--navBtns-border-color));
 }
 
-.console.open {
-	color: var(--open-text-color, var(--cover-text-color));
-	background: var(--open-color, var(--cover-color));
-	border-color: var(--open-border-color, var(--cover-border-color, var(--open-text-color, var(--cover-text-color))));
+#nav3 {
+	color: var(--nav3-text-color, var(--nav-text-color));
+	background: var(--nav3-color, var(--nav-color));
+	border-color: var(--nav3-border-color, var(--nav-border-color, var(--nav3-text-color, var(--nav-text-color))));
 	height: 100%;
 	border-width: 8px 0 0 0;
 	border-radius: 32px 0 0 0;
 }
 
-.console.open .nav-link {
-	color: var(--openBtn-text-color, var(--button-text-color));
-	background: var(--openBtn-color, var(--button-color));
-	border-color: var(--openBtn-border-color, var(--button-border-color));
+#nav3Btn {
+	color: var(--nav3Btn-text-color, var(--navBtns-text-color));
+	background: var(--nav3Btn-color, var(--navBtns-color));
+	border-color: var(--nav3Btn-border-color, var(--navBtns-border-color));
 }
 
-.console.power *,
-.console.reset * {
+#nav0 *,
+#nav2 * {
 	margin-left: auto;
 }
 
-.console.power .nav-item,
-.console.reset .nav-item {
+#nav0 .nav-item,
+#nav2 .nav-item {
 	margin-right: 4%;
 }
 
-.console.open *,
-.console.view * {
+#nav3 *,
+#nav1 * {
 	margin-right: auto;
 }
 
-.console.open .nav-item {
+#nav3 .nav-item {
 	margin-left: 4%;
 }
 
@@ -470,7 +471,7 @@ img.logoNav {
 	height: 32px;
 }
 
-.console.view li {
+#nav1 li {
 	height: 100%;
 	margin: auto;
 }
@@ -480,17 +481,17 @@ button:focus {
 	outline: none;
 }
 
-.console:hover .nav-link {
+.navPanel:hover .nav-link {
 	filter: brightness(0.8);
 	outline: none;
 }
 
-.console .nav-link {
+.navPanel .nav-link {
 	font-size: 3vw;
 	font-weight: bold;
 	border-width: 0.27vw;
 	border-style: solid;
-	border-color: var(--button-border-color);
+	border-color: var(--navBtns-border-color);
 	border-radius: 50%;
 	box-shadow: none;
 	padding: 0;

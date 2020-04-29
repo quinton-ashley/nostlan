@@ -3,7 +3,6 @@
 	font-family: contb;
 	src: url("../fonts/contb.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -61,7 +60,6 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-
 /*================Wii Box====================*/
 game.wii .crop.coverFull {
 	width: 200.1%;
@@ -101,7 +99,6 @@ game.wii.flip .shade {
 	width: 3%;
 	left: 98%;
 }
-
 /*================Wii Open Box====================*/
 .wii #gameMemory {
 	width: 16vh;
@@ -114,7 +111,8 @@ game.wii.flip .shade {
 	transform: translate(11%, -50%);
 }
 
-.wii #gameManual {
+.wii #gameManual,
+.wii #gameWiki webview {
 	width: 57vh;
 	transform: translate(-119%, -50%);
 }

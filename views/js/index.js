@@ -45,7 +45,7 @@ module.exports = async function(arg) {
 		ds: {
 			name: 'DS',
 			fullName: 'Nintendo DS',
-			emus: ['melonds', 'desmume']
+			emus: ['desmume', 'melonds']
 		},
 		gba: {
 			name: 'GBA',
@@ -496,13 +496,13 @@ module.exports = async function(arg) {
 			let img = $images.eq(i).prop('src');
 			if (!img) continue;
 			img = path.parse(img);
-			if (changeToFullRes) {
-				img.name = img.name.replace('Thumb', '');
-			} else {
+			img.name = img.name.replace('Thumb', '');
+			if (!changeToFullRes) {
 				img.name += 'Thumb';
 			}
 			let src = img.dir + '/' + img.name + img.ext;
-			if (!(await fs.exists(src.slice(8)))) {
+			let sliceAmt = (win) ? 8 : 7;
+			if (!(await fs.exists(src.slice(sliceAmt)))) {
 				src = img.dir + '/' + img.name;
 				if (img.ext != '.jpg') {
 					src += '.jpg';
@@ -644,11 +644,18 @@ module.exports = async function(arg) {
 				if (!game) return;
 				let template = themes[game.sys || sys].template;
 
+				$('#gameManual').prop('src', '');
+				$('#gameMedia').prop('src', '');
+				$('#gameMemory').prop('src', '');
+				$('#gameWiki').html('');
+
 				$('#gameBoxOpen').prop('src', await scraper.imgExists(template, 'boxOpen'));
 				$('#gameBoxOpenMask').prop('src',
 					await scraper.imgExists(template, 'boxOpenMask'));
 				$('#gameMemory').prop('src', await scraper.imgExists(template, 'memory'));
 				$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
+
+				$('#gameWiki').html();
 
 				let mediaName = 'disc';
 				if (sys == 'snes' || sys == 'nes' || sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
@@ -672,9 +679,12 @@ module.exports = async function(arg) {
 				}
 			}
 		} else if (ui == 'boxOpenMenu_2') {
-			if (act == 'x') act = 'Manual';
-			if (act == 'y') act = 'Memory';
-			if (act == 'a') act = 'Media';
+			if (act == 'x') act = 'manual';
+			if (act == 'y') act = 'memory';
+			if (act == 'a') act = 'media';
+			if (act == 'manual') {
+				themes.loadGameWiki(getCurGame());
+			}
 			if (!(/(memory|manual|media)/gi).test(act)) return;
 			act = act[0].toUpperCase() + act.substr(1);
 			act = 'game' + act;

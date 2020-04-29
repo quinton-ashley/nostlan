@@ -72,6 +72,7 @@ class Scanner {
 			await delay(1000);
 			await this.outputUsersGamesDB(games);
 			cui.clearDialogs();
+			launcher.state = 'closed';
 			return games;
 		}
 
@@ -286,6 +287,7 @@ class Scanner {
 		this.outLog = '';
 		await this.outputUsersGamesDB(games);
 		cui.clearDialogs();
+		launcher.state = 'closed';
 		return games;
 	}
 

@@ -18,7 +18,6 @@ html {
 	text-align: center;
 	user-select: none;
 }
-
 /*================Themes====================*/
 :root {
 	--nav-color: rgb(130, 130, 130);
@@ -29,17 +28,14 @@ html {
 	--navBtns-border-color: #000;
 	--box-bg-color: #000;
 }
-
 @font-face {
 	font-family: handwriting0;
 	src: url("../../themes/fonts/edosz.ttf");
 }
-
 /*================General====================*/
 .hiddenRow {
 	padding: 0 !important;
 }
-
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -69,6 +65,27 @@ game {
 	width: 100%;
 	height: 100%;
 	display: none;
+}
+
+#gameMemory {
+	width: 18.5vh;
+	transform: translate(148%, -213%);
+}
+
+#gameMedia {
+	width: 40.8vh;
+	border-radius: 50%;
+	transform: translate(39.4%, -35%);
+}
+
+#gameManual,
+#gameWiki webview {
+	width: 55.5vh;
+	transform: translate(-110%, -50.5%);
+}
+
+#gameWiki webview {
+	height: 90vh;
 }
 
 .zoom-gameManualSelect {
@@ -107,26 +124,9 @@ game {
 	z-index: 11;
 	top: 50%;
 	left: 50%;
-	height: auto;
 }
 
-#gameMemory {
-	width: 18.5vh;
-	transform: translate(148%, -213%);
-}
-
-#gameMedia {
-	width: 40.8vh;
-	border-radius: 50%;
-	transform: translate(39.4%, -35%);
-}
-
-#gameManual {
-	width: 55.5vh;
-	transform: translate(-110%, -50.5%);
-}
-
-webview {
+#intro {
 	position: absolute;
 	background-color: #000;
 	top: 0;
@@ -178,14 +178,13 @@ webview {
 	/* Support for IE. */
 	font-feature-settings: 'liga';
 }
-
 /*================Game Lib Viewer====================*/
 #libMain {
 	display: inline-flex;
 	max-width: 100%;
 	max-height: 100%;
 	z-index: 0;
-	transition: transform .5s;
+	transition: transform 0.5s;
 }
 
 .menu {
@@ -330,7 +329,6 @@ game.flip .shade {
 img.coverFull {
 	background-color: var(--box-bg-color);
 }
-
 /*================Game Lib Viewer====================*/
 game .crop.cover,
 game .crop.coverFull {
@@ -351,7 +349,6 @@ game.flip img.coverFull {
 	width: 200.8%;
 	transform: translate(1.6%, 1%);
 }
-
 /*================Cover====================*/
 nav {
 	display: flex;
@@ -449,8 +446,8 @@ nav * {
 	margin-right: 4%;
 }
 
-#nav3 *,
-#nav1 * {
+#nav1 *,
+#nav3 * {
 	margin-right: auto;
 }
 
@@ -494,7 +491,6 @@ button:focus {
 ul.nav {
 	height: 100%;
 }
-
 /*================Misc====================*/
 .hide,
 .hide * {
@@ -525,7 +521,6 @@ ul.nav {
 .invis {
 	visibility: hidden;
 }
-
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
 	font-size: 18px;
@@ -542,7 +537,6 @@ ul.nav {
 .material-icons.md-48 {
 	font-size: 48px;
 }
-
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark {
 	color: rgba(0, 0, 0, 0.54);
@@ -551,7 +545,6 @@ ul.nav {
 .material-icons.md-dark.md-inactive {
 	color: rgba(0, 0, 0, 0.26);
 }
-
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light {
 	color: rgba(255, 255, 255, 1);

@@ -3,7 +3,6 @@
 	font-family: theboldfont;
 	src: url("../fonts/theboldfont.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -32,7 +31,6 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-
 /*================Switch Game Lib Viewer====================*/
 game.switch .box {
 	border-radius: 4%;
@@ -84,6 +82,15 @@ game.switch.flip .shade {
 	border-radius: 10%;
 }
 
+#gameWiki webview {
+	width: 53vh;
+	transform: translate(-107%, -50.5%);
+}
+
 .switch #boxOpenMenu_2.zoom-gameMedia {
-	transform: scale(3)translate(-32.6vh, -33vh);
+	transform: scale(3) translate(-32.6vh, -33vh);
+}
+
+.switch #boxOpenMenu_2.zoom-gameManual {
+	transform: translate(32.6vh);
 }

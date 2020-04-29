@@ -77,6 +77,28 @@ class Themes {
 		this.arcade.default = undefined;
 		this.snes.default = undefined;
 		this.nes.default = undefined;
+
+		this.wii.getWiki = (game) => {
+			let title = game.title.replace(/ /g, '_');
+			return `https://wiki.dolphin-emu.org/index.php?title=${title}`;
+		};
+		this.gcn.getWiki = this.wii.getWiki;
+		this.switch.getWiki = (game) => {
+			let title = game.title.toLowerCase().replace(/ /g, '-');
+			title = title.replace(/:/g, '');
+			return `https://yuzu-emu.org/game/${title}/`;
+		};
+		this.n3ds.getWiki = (game) => {
+			let title = game.title.toLowerCase().replace(/ /g, '-');
+			title = title.replace(/:/g, '');
+			return `https://citra-emu.org/game/${title}/`;
+		};
+		this.ps3.getWiki = (game) => {
+			let title = game.title.toLowerCase().replace(/ /g, '_');
+			title = encodeURI(tile);
+			return `https://wiki.rpcs3.net/index.php?title=${title}`;
+		};
+
 	}
 
 	async loadFrame(name) {
@@ -94,7 +116,8 @@ class Themes {
 		$('body').prepend(`<webview id="${name}" enableremotemodule="false" src="${fileHtml}"></webview>`);
 	}
 
-	async applyStyle(name) {
+	async getStyles(name) {
+		let styles = [];
 		let _systems = [sys];
 		if (sys == 'wii') _systems.push('gcn');
 		for (let dir of [__root, prefs.nlaDir]) {
@@ -108,32 +131,55 @@ class Themes {
 						continue;
 					}
 				}
-				$('#themeStyles').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
+				styles.push(file);
 			}
+		}
+		return styles;
+	}
+
+	async applyStyle(name) {
+		let styles = await this.getStyles(name);
+
+		for (let file of styles) {
+			$('#themeStyles').prepend(`<link rel="stylesheet" type="text/css" href="${file}">`);
 		}
 	}
 
+	async loadGameWiki(game) {
+		if (!this[game.sys || sys].getWiki) return;
+		let wiki = this[game.sys || sys].getWiki(game);
+		if (!wiki) return;
+
+		$('#gameWiki').html(`<webview enableremotemodule="false" src="${wiki}"></webview>`);
+
+		let styles = await this.getStyles('wiki');
+		let webview = $('#gameWiki webview').eq(0)[0];
+
+		// insert custom styles
+		webview.addEventListener('dom-ready', async () => {
+			// dark mode style
+			webview.insertCSS(await fs.readFile(__root + '/views/css/genericDark.css', 'utf8'));
+
+			for (let file of styles) {
+				webview.insertCSS(await fs.readFile(file, 'utf8'));
+			}
+		});
+	}
+
 	async getColorPalettes() {
+		let styles = await this.getStyles('color');
 		let palettes = [];
 		const regex = /^\.([\w-]+)\.*([\w-]*)/gm;
 
-		let _systems = [sys];
-		if (sys == 'wii') _systems.push('gcn');
-		for (let dir of [__root, prefs.nlaDir]) {
-			for (let _sys of _systems) {
-				let file = `${dir}/themes/${_sys}/colors.css`;
-				if (dir != __root && !(await fs.exists(file))) {
-					continue;
-				}
-				let styles = await fs.readFile(file, 'utf8');
+		for (let file of styles) {
+			let rules = await fs.readFile(file, 'utf8');
 
-				let palette;
-				while (palette = regex.exec(styles)) {
-					palettes.push({
-						sys: palette[1],
-						name: palette[2]
-					});
-				}
+			let palette;
+			while (palette = regex.exec(rules)) {
+				palettes.push({
+					sys: palette[1],
+					name: palette[2]
+				});
 			}
 		}
 

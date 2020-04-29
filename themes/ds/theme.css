@@ -3,7 +3,6 @@
 	font-family: nDS;
 	src: url("../fonts/nDS.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -33,7 +32,6 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-
 /*================ DS Game Lib Viewer ====================*/
 game.ds .crop.coverFull {
 	width: 100%;
@@ -81,14 +79,15 @@ game.ds .title.label {
 
 game.ds .file.label {
 	top: 70%;
-	font-size: .5vw;
+	font-size: 0.5vw;
 }
 
 .ds #boxOpenMenu_2 {
 	transform: scale(.6);
 }
 
-.ds #gameManual {
+.ds #gameManual,
+.ds #gameWiki webview {
 	width: 85vh;
 	transform: translate(-109%, -46%);
 }

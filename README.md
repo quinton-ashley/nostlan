@@ -62,7 +62,7 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/snes_LQ.png">
 </a></p>
 
-### DS [melonDS, DeSmuME]
+### DS [DeSmuME, melonDS]
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/ds_LQ.png">
@@ -100,7 +100,7 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 
 # Get premium features by supporting the development of Nostlan!
 
-[Patreon](https://www.patreon.com/nostlan) supporters get premium features for only $1 a month!
+[Patreon](https://www.patreon.com/nostlan) supporters get premium features for only \$1 a month!
 
 - backup/sync game saves to the cloud or local storage device
 - unlock alternate UI theme color palettes

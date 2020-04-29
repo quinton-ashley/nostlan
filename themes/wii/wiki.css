@@ -1,0 +1,22 @@
+#localNotice,
+#mw-head,
+#mw-head-base,
+#mw-page-base,
+#mw-panel,
+table.infobox tr:nth-child(1),
+table.infobox tr:nth-child(2) {
+	display: none!important;
+}
+
+#content {
+	margin: 0;
+}
+
+table.infobox {
+	width: 40%!important;
+}
+
+img {
+	width: 100%!important;
+	height: 100%!important;
+}

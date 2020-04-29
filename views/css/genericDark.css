@@ -1,0 +1,104 @@
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	::-webkit-scrollbar {
+		display: none!important;
+	}
+}
+
+* {
+	scrollbar-width: none !important;
+}
+
+#header,
+article,
+aside,
+blockquote,
+body,
+code,
+dd,
+dl,
+dt,
+fieldset,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 header,
+hr,
+html,
+label,
+li,
+main,
+nav,
+ol,
+option,
+p,
+pre,
+section,
+select,
+table,
+tbody,
+td,
+th,
+tr,
+ul {
+	background-image: none!important;
+	background-color: #000!important;
+	color: #808080!important;
+	text-shadow: none!important;
+}
+
+div {
+	background-color: #000!important;
+	color: #808080!important;
+	text-shadow: none!important;
+}
+
+canvas,
+embed#plugin,
+svg {
+	-webkit-filter: invert(100%) brightness(35%) hue-rotate(180deg);
+	filter: invert(100%) brightness(35%) hue-rotate(180deg);
+}
+
+input[type="checkbox"] {
+	filter: invert(100%) hue-rotate(180deg);
+}
+
+input:not([type="checkbox"]):not([type="submit"]),
+textarea,
+button,
+span {
+	background-image: none!important;
+	background-color: transparent!important;
+	color: #808080!important;
+}
+
+input:not([type="checkbox"]):not([type="submit"]),
+textarea {
+	border: 1px solid #808080!important;
+}
+
+a {
+	background-image: none!important;
+	background-color: transparent!important;
+	color: #6d6d6d!important;
+	border: 0px!important;
+	text-decoration: none!important;
+}
+
+a:hover,
+a:hover span,
+input[type="submit"]:hover,
+select:hover {
+	background-image: none!important;
+	background-color: transparent!important;
+	color: #812100!important;
+	border: 0px!important;
+	text-decoration: none!important;
+}
+
+#sidebar {
+	display: none!important;
+}

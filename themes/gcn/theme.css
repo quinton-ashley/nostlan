@@ -3,7 +3,6 @@
 	font-family: Gamecuben;
 	src: url("../fonts/Gamecuben.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -36,7 +35,6 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-
 /*================Wii/Gamecube Box====================*/
 game.gcn .crop.coverFull,
 game.wii .crop.coverFull {
@@ -86,8 +84,24 @@ game.wii.flip .shade {
 	width: 3%;
 	left: 98%;
 }
-
 /*================Wii/Gamecube Open Box====================*/
+.gcn #gameMemory {
+	width: 18.5vh;
+	transform: translate(148%, -213%);
+}
+
+.gcn #gameMedia {
+	width: 40.8vh;
+	border-radius: 50%;
+	transform: translate(39.4%, -35%);
+}
+
+.gcn #gameManual,
+.gcn #gameWiki webview {
+	width: 55.5vh;
+	transform: translate(-110%, -50.5%);
+}
+
 .gcn .zoom-gameManual {
 	transform: translate(34vh, 0vh) scale(1);
 }

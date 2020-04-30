@@ -57,6 +57,12 @@ class Saves {
 			];
 		} else if (emu == 'mame') {
 			prefs[emu].saves.dirs = [dir + '/sta'];
+		} else if (emu == 'mesen') {
+			prefs[emu].saves.dirs = [
+				dir + '/Saves',
+				dir + '/SaveStates',
+				dir + '/RecentGames'
+			];
 		} else if (emu == 'pcsx2') {
 			prefs[emu].saves.dirs = [
 				dir + '/memcards',

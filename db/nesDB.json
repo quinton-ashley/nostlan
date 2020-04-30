@@ -7784,6 +7784,17 @@
 			}
 		},
 		{
+			"id": "b0b6b5e4-World",
+			"title": "Micro Mages",
+			"img": {
+				"cover": "https://www.mobygames.com/images/covers/l/620259-micro-mages-nes-front-cover.jpg",
+				"coverBack": "https://www.mobygames.com/images/covers/l/620260-micro-mages-nes-back-cover.jpg",
+				"coverSide": "https://www.mobygames.com/images/covers/l/620261-micro-mages-nes-spine-sides.jpg",
+				"cart": "https://www.mobygames.com/images/covers/l/620264-micro-mages-nes-media.jpg",
+				"manual": "https://www.mobygames.com/images/covers/l/620263-micro-mages-nes-manual.jpg"
+			}
+		},
+		{
 			"id": "af33971f-USA",
 			"title": "MiG 29 - Soviet Fighter",
 			"img": {

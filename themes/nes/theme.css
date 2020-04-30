@@ -36,14 +36,12 @@
 }
 
 /*================nes Game Lib Viewer====================*/
+game.nes .crop.cover,
+game.nes.flip .crop.coverBack,
 game.nes .crop.coverFull {
+	position: absolute;
 	width: 100%;
-	top: 0;
-	left: 0;
-}
-
-game.nes .crop.cover {
-	width: 100%;
+	height: 100%;
 	top: 0;
 	left: 0;
 }
@@ -63,6 +61,11 @@ game.nes.flip img.coverFull {
 	width: 100%;
 	height: 100%;
 	transform: translate(60%, 0%) scale(2.204322, 1);
+}
+
+game.nes.flip img.coverBack {
+	width: 100%;
+	height: 100%;
 }
 
 game.nes .shade {

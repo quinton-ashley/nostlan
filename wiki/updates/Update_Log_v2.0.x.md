@@ -52,4 +52,4 @@ Features that might be offered in the future:
 
 - support for your PC game libraries! (Origin, Steam, Epic Games, etc.)
 
-I'm going to make a lot of videos about Nostlan which will hopefully make it easier for new users to start using the app. Ideally I would like to have 200+ supporters to consider working on Nostlan a worthwhile investment of my time. If Nostlan got 500+ supporters and I made ~$1,500 a month from Patreon, I would work on Nostlan full time and come out with updates a lot more frequently. If you use Nostlan a lot I really don't think $1 a month is too much to ask. Please support this open source project!
+I'm going to make a lot of videos about Nostlan which will hopefully make it easier for new users to start using the app. Ideally I would like to have 200+ supporters to consider working on Nostlan a worthwhile investment of my time. If Nostlan got 500+ supporters, I would work on Nostlan full time and come out with updates a lot more frequently. Please support this open source project!

@@ -1,6 +1,7 @@
 const requisition = require('requisition');
 
 async function dlWithExt(url, file, opt) {
+	opt = opt || {};
 	if (!(await fs.exists(file))) {
 		let res;
 		try {
@@ -34,6 +35,7 @@ async function dlWithExt(url, file, opt) {
 }
 
 async function dlNoExt(url, file, opt) {
+	opt = opt || {};
 	let res;
 	for (let i = 0; i < 2; i++) {
 		if (i == 0) {
@@ -49,6 +51,7 @@ async function dlNoExt(url, file, opt) {
 }
 
 module.exports = async function(url, file, opt) {
+	opt = opt || {};
 	if (opt.unknownExt) {
 		return await dlNoExt(url, file, opt);
 	}

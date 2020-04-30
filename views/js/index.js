@@ -68,7 +68,7 @@ module.exports = async function(arg) {
 		},
 		nes: {
 			name: 'NES',
-			fullname: 'Nintendo Entertainment System',
+			fullName: 'Nintendo Entertainment System',
 			emus: ['mesen'],
 			mediaType: 'cart'
 		},
@@ -365,7 +365,7 @@ module.exports = async function(arg) {
 
 	async function loadSharedAssets() {
 		cui.clearDialogs();
-		$('#loadDialog0').text('Loading additional image assets');
+		$('#loadDialog0').text('loading additional images');
 		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
 		let dir = prefs.nlaDir + '/images';
 
@@ -384,7 +384,8 @@ module.exports = async function(arg) {
 				log(res);
 			}
 		}
-
+		$('#loadDialog1').text('');
+		$('#loadDialog0').text('loading complete!');
 	}
 
 	cui.onResize = (adjust) => {
@@ -1260,10 +1261,17 @@ module.exports = async function(arg) {
 		});
 		process.on('uncaughtException', cui.err);
 		cui.bind('wheel');
+
+		// keyboard controls
 		for (let char of 'abcdefghijklmnopqrstuvwxyz1234567890') {
 			cui.bind(char, 'char-' + char);
 		}
 		cui.bind('space', 'char-_');
+
+		cui.bind('[', 'x');
+		cui.bind(']', 'y');
+		cui.bind('\\', 'b');
+
 		if (prefs.load.online) {
 			try {
 				if (await updater.check()) {

@@ -1,3 +1,3 @@
-# Thank you for donating!
+# Thank you!
 
-Enter this month's donation verification password:
+Enter this month's member verification password:

@@ -119,6 +119,16 @@ module.exports = async function(arg) {
 	let games = []; // array of current games from the systems' db
 	global.emuDir = ''; // nostlan dir is stored here
 
+	let searchTerm = '';
+	let searchTimeout = 0;
+	setInterval(function() {
+		if (searchTimeout > 1000) {
+			searchTimeout -= 1000;
+		} else {
+			searchTimeout = 0;
+		}
+	}, 1000);
+
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
 	if (mac) {
@@ -629,6 +639,32 @@ module.exports = async function(arg) {
 		if (launcher.state == 'running') {
 			return;
 		}
+
+		// letter by letter search for game
+		if (/char-\w/.test(act)) {
+			if (cui.ui != 'libMain') return;
+			if (searchTimeout == 0) {
+				searchTerm = '';
+			}
+			searchTimeout = 2000;
+			let char = act.slice(5);
+			if (char == '_') char = ' ';
+			searchTerm += char;
+			log('search for: ' + searchTerm);
+			for (let game of games) {
+				let titleSlice = game.title.slice(0, searchTerm.length);
+				if (searchTerm == titleSlice.toLowerCase()) {
+					let $cur = $('#' + game.id).eq(0);
+					if (!$cur.length) continue;
+					log('cursor to game: ' + game.title);
+					cui.makeCursor($cur);
+					cui.scrollToCursor();
+					break;
+				}
+			}
+			return;
+		}
+
 		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
 			if ($cur.hasClass('uie-disabled')) return false;
 			if (syst.emus.length > 1) {
@@ -1224,6 +1260,10 @@ module.exports = async function(arg) {
 		});
 		process.on('uncaughtException', cui.err);
 		cui.bind('wheel');
+		for (let char of 'abcdefghijklmnopqrstuvwxyz1234567890') {
+			cui.bind(char, 'char-' + char);
+		}
+		cui.bind('space', 'char-_');
 		if (prefs.load.online) {
 			try {
 				if (await updater.check()) {

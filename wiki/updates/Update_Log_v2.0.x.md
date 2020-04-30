@@ -8,17 +8,16 @@ Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](h
 
 ## Update Summary for v2.0.x
 
-Performance update! Nostlan now generates thumbnail images with a height of 720px that are used on the game library view. It automatically switches to using the full res game art when you select a game. This update also adds NES support, with em-fceux, a javascript port of fceux as the default emulator. I've also added support for Mesen since right now fceux is missing critical features like the ability to save states to a file to be used on other devices or during another game session.
+Performance update! Nostlan now generates thumbnail images with a height of 720px that are used on the game library view. It automatically switches to using the full res game art when you select a game. Scrolling and animations are now smooth even for really large libraries. This update also adds NES support!
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn_LQ.png">
 </a></p>
 
-## Coming Soon
-
 #### Emulators
 
-- NES game library support with em-fceux (default) and mesen emulator support
+- NES game library and Mesen emulator support!
+- [Ryujinx](https://ryujinx.org/download/) support (alternate Switch emulator that can run 32bit games, unlike Yuzu)
 
 #### App UI
 
@@ -26,11 +25,14 @@ Performance update! Nostlan now generates thumbnail images with a height of 720p
 
 #### User Experience
 
-- when an emulator app is not found Nostlan will prompt the user for the location of the app or if Nostlan should download and install it automatically
-- users will be able to manually identify games by searching through Nostlan's game databases and then Nostlan will load cover art for that game
-- Users will be able to identify game mods that aren't found in Nostlan's game databases. Mod boxes will have the original game art with the mod's title on a label sticker.
-- precise game identification for Nintendo DS games
-- precise Wii/Gamecube/VC game identification using `Dolphin.exe` and robotjs to get the game id values directly from the main ui's game table
+- search for games on the game library view just by typing (no search bar), just like with Windows File Explorer
+- increased performance in the game library view due to the use of thumbnail images
+
+## Coming Soon
+
+#### Emulators
+
+- Built-in support for em-fceux, a javascript port of fceux as the default emulator for nes. Currently em-fceux is missing a critical features, the ability to export save states to a file for use on other devices. I've been in contact with the developer, hopefully this feature will be implemented soon!
 
 ## Let me know what you think about Nostlan
 

@@ -40,66 +40,79 @@ module.exports = async function(arg) {
 		arcade: {
 			name: 'Arcade',
 			fullName: 'Arcade',
-			emus: ['mame']
+			emus: ['mame'],
+			mediaType: 'pcb'
 		},
 		ds: {
 			name: 'DS',
 			fullName: 'Nintendo DS',
-			emus: ['desmume', 'melonds']
+			emus: ['desmume', 'melonds'],
+			mediaType: 'cart'
 		},
 		gba: {
 			name: 'GBA',
 			fullName: 'Nintendo Game Boy Advance',
-			emus: ['mgba', 'vba']
+			emus: ['mgba', 'vba'],
+			mediaType: 'cart'
 		},
 		gcn: {
 			name: 'GameCube',
-			fullName: 'Nintendo GameCube'
+			fullName: 'Nintendo GameCube',
+			mediaType: 'disc'
 		},
 		n3ds: {
 			name: '3DS',
 			fullName: 'Nintendo 3DS',
-			emus: ['citra']
+			emus: ['citra'],
+			mediaType: 'cart'
 		},
 		nes: {
 			name: 'NES',
 			fullname: 'Nintendo Entertainment System',
-			emus: ['mesen']
+			emus: ['mesen'],
+			mediaType: 'cart'
 		},
 		ps2: {
 			name: 'PS2',
 			fullName: 'Sony PlayStation 2',
-			emus: ['pcsx2']
+			emus: ['pcsx2'],
+			mediaType: 'disc'
 		},
 		ps3: {
 			name: 'PS3',
 			fullName: 'Sony PlayStation 3',
-			emus: ['rpcs3']
+			emus: ['rpcs3'],
+			mediaType: 'disc'
 		},
 		snes: {
 			name: 'SNES',
 			fullName: 'Super Nintendo',
-			emus: ['bsnes', 'snes9x']
+			emus: ['bsnes', 'snes9x'],
+			mediaType: 'cart'
 		},
 		switch: {
 			name: 'Switch',
 			fullName: 'Nintendo Switch',
-			emus: ['yuzu', 'ryujinx']
+			emus: ['yuzu', 'ryujinx'],
+			mediaType: 'cart'
 		},
 		wii: {
 			name: 'Wii',
 			fullName: 'Nintendo Wii',
-			emus: ['dolphin']
+			emus: ['dolphin'],
+			mediaType: 'disc'
 		},
 		wiiu: {
 			name: 'Wii U',
 			fullName: 'Nintendo Wii U',
-			emus: ['cemu']
+			emus: ['cemu'],
+			mediaType: 'disc'
 		},
 		xbox360: {
 			name: 'Xbox 360',
 			fullName: 'Microsoft Xbox 360',
-			emus: ['xenia']
+			emus: ['xenia'],
+			mediaType: 'disc'
 		}
 	};
 
@@ -333,9 +346,35 @@ module.exports = async function(arg) {
 		cui.addView('playMenu_5');
 		cui.addView('emuMenu_5');
 
+		await loadSharedAssets();
+
 		await removeIntro();
 		cui.change('libMain', sysStyle);
 		cui.resize(true);
+	}
+
+	async function loadSharedAssets() {
+		cui.clearDialogs();
+		$('#loadDialog0').text('Loading additional image assets');
+		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
+		let dir = prefs.nlaDir + '/images';
+
+		let assetPacks = ['discSleeve', 'wraps'];
+
+		for (let pack of assetPacks) {
+			$('#loadDialog1').text(pack);
+			let url = gh + `/${pack}.zip`;
+			let file = dir + `/${pack}.zip`;
+			if (!(await fs.exists(dir + '/' + pack))) {
+				if (!(await fs.exists(file))) await scraper.dl(url, file, {
+					timeout: 10000
+				});
+				await fs.ensureDir(dir);
+				let res = await fs.extract(file, dir);
+				log(res);
+			}
+		}
+
 	}
 
 	cui.onResize = (adjust) => {
@@ -654,18 +693,14 @@ module.exports = async function(arg) {
 					await scraper.imgExists(template, 'boxOpenMask'));
 				$('#gameMemory').prop('src', await scraper.imgExists(template, 'memory'));
 				$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
-
 				$('#gameWiki').html();
 
-				let mediaName = 'disc';
-				if (sys == 'snes' || sys == 'nes' || sys == 'switch' || sys == 'n3ds' || sys == 'ds' || sys == 'gba') {
-					mediaName = 'cart';
-				} else if (sys == 'arcade') {
-					mediaName = 'pcb';
-				}
-				let mediaImg = await scraper.imgExists(game, mediaName);
+				let mediaImg = await scraper.imgExists(game, syst.mediaType);
 				if (!mediaImg) {
-					mediaImg = await scraper.imgExists(template, mediaName);
+					mediaImg = await scraper.imgExists(template, syst.mediaType);
+				}
+				if (!mediaImg && syst.mediaType == 'disc') {
+					mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
 				}
 				$('#gameMedia').prop('src', mediaImg);
 				cui.change('boxOpenMenu_2');

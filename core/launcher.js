@@ -202,7 +202,6 @@ class Launcher {
 		}
 
 		if (game && game.id || emu == 'mame') {
-			// cui.removeView('libMain');
 			await cui.change('playing_4');
 			$('#libMain').hide();
 			$('#dialogs').show();
@@ -254,6 +253,8 @@ class Launcher {
 			detached: true
 		};
 		if (identify) delete spawnOpt.stdio;
+
+		if (emu == 'ryujinx') delete spawnOpt.detached;
 
 		this.child = child.spawn(
 			this.cmdArgs[0],

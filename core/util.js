@@ -4,20 +4,28 @@
  * Utility functions.
  */
 // extract compressed folders using 7zip
-global.fs.extract = (input, output, opt) => {
+global.fs.extract = async (input, output, opt) => {
 	opt = opt || {};
-	return new Promise(async (resolve, reject) => {
-		opt.$bin = require('7zip-bin').path7za;
-		require('node-7z').extractFull(input, output, opt)
-			.on('end', () => {
-				fs.remove(input);
-				resolve(output);
-			})
-			.on('error', (ror) => {
-				// er(ror);
-				resolve();
-			});
-	});
+	let ext = path.parse(input).ext;
+	if (ext == '.7z') {
+		return new Promise((resolve, reject) => {
+			opt.$bin = require('7zip-bin').path7za;
+			require('node-7z').extractFull(input, output, opt)
+				.on('end', () => {
+					fs.remove(input);
+					resolve(output);
+				})
+				.on('error', (ror) => {
+					// er(ror);
+					resolve();
+				});
+		});
+	} else {
+		await require('extract-zip')(input, {
+			dir: output
+		});
+		fs.remove(input);
+	}
 };
 
 class Utility {

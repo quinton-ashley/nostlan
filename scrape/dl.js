@@ -1,6 +1,6 @@
 const requisition = require('requisition');
 
-async function dlWithExt(url, file) {
+async function dlWithExt(url, file, opt) {
 	if (!(await fs.exists(file))) {
 		let res;
 		try {
@@ -11,7 +11,7 @@ async function dlWithExt(url, file) {
 						.catch((ror) => reject(ror));
 				}),
 				new Promise((resolve, reject) => {
-					delay(2000).then(() => {
+					delay(opt.timeout || 2000).then(() => {
 						reject('request timed out');
 					});
 				})
@@ -33,7 +33,7 @@ async function dlWithExt(url, file) {
 	return file;
 }
 
-async function dlNoExt(url, file) {
+async function dlNoExt(url, file, opt) {
 	let res;
 	for (let i = 0; i < 2; i++) {
 		if (i == 0) {
@@ -48,9 +48,9 @@ async function dlNoExt(url, file) {
 	return;
 }
 
-module.exports = async function(url, file, noExt) {
-	if (noExt) {
-		return await dlNoExt(url, file);
+module.exports = async function(url, file, opt) {
+	if (opt.unknownExt) {
+		return await dlNoExt(url, file, opt);
 	}
-	return await dlWithExt(url, file);
+	return await dlWithExt(url, file, opt);
 }

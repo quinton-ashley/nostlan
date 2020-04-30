@@ -4,8 +4,6 @@
  * Scrapes for box art, disc/cart, and other images.
  */
 const rmDiacritics = require('diacritics').remove;
-// dl is a helper lib I made for downloading images
-const dl = require(__root + '/scrape/dl.js');
 
 let scrapers = {
 	b: 'bmb',
@@ -20,6 +18,9 @@ let scrapers = {
 
 class Scraper {
 	constructor() {
+		// dl is a helper lib I made for downloading images
+		this.dl = require(__root + '/scrape/dl.js');
+
 		for (let scraper in scrapers) {
 			scraper = scrapers[scraper];
 			this[scraper] = require(__root + '/scrape/' + scraper + '.js');
@@ -46,7 +47,9 @@ class Scraper {
 				url = url[0];
 			} else if (url[0] == 'q') {
 				url = await this.gqa.unwrapUrl(game, name);
-				res = await dl(url, `${imgDir}/${name}`, true);
+				res = await this.dl(url, `${imgDir}/${name}`, {
+					unknownExt: true
+				});
 				if (res) return res;
 			} else if (url[1] == 'd') {
 				scraper = 'dec';
@@ -68,7 +71,7 @@ class Scraper {
 			} else if (scraper == 'dec') {
 				res = await this.dec.dlImg(game, imgDir, name, sys);
 			} else {
-				res = await dl(url, file);
+				res = await this.dl(url, file);
 			}
 			if (res) return res;
 		}

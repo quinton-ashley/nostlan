@@ -37,17 +37,23 @@ class Gamestdb {
 			}
 			let _sys = (sys != 'n3ds') ? sys : '3ds';
 			url = `https://art.gametdb.com/${_sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
-			res = await dl(url, file, true);
+			res = await dl(url, file, {
+				unknownExt: true
+			});
 			if (res) {
 				return res;
 			}
 			url = url.replace(name + 'HQ', name + 'M');
-			res = await dl(url, file, true);
+			res = await dl(url, file, {
+				unknownExt: true
+			});
 			if (res) {
 				return res;
 			}
 			url = url.replace(name + 'M', name);
-			res = await dl(url, file, true);
+			res = await dl(url, file, {
+				unknownExt: true
+			});
 			if (res) {
 				return res;
 			}

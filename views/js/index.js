@@ -174,7 +174,8 @@ module.exports = async function(arg) {
 	}
 
 	async function removeIntro(time) {
-		time = arg.testIntro || time || prefs.load.delay;
+		time = time || prefs.load.delay;
+		if (arg.testIntro) time = 1000000;
 		log('removing intro: ' + time);
 		await delay(time);
 		$('#intro').remove();

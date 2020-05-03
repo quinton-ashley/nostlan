@@ -3,7 +3,12 @@
 	"region": "E",
 	"bsnes": {
 		"name": "bsnes",
-		"app": {},
+		"appRegex": {
+			"linux": "bsnes_hd",
+			"mac": "bsnes_hd\.app",
+			"macExec": "Contents/MacOS/bsnes",
+			"win": "bsnes\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "--fullscreen"],
 			"mac": ["${app}", "${game}", "--fullscreen"],
@@ -23,7 +28,11 @@
 	},
 	"cemu": {
 		"name": "Cemu",
-		"app": {},
+		"appRegex": {
+			"linux": "Cemu\.exe",
+			"mac": "Cemu\.exe",
+			"win": "Cemu\.exe"
+		},
 		"cmd": {
 			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
 			"mac": ["wine", "${app}", "-g", "${game}", "-f"],
@@ -44,7 +53,12 @@
 	"citra": {
 		"name": "Citra",
 		"app": {
-			"mac": "/Applications/Citra/nightly/citra-qt.app/Contents/MacOS/citra-qt-bin"
+			"linux": "org.citra.citra-nightly"
+		},
+		"appRegex": {
+			"mac": "(Citra/(nightly|canary)/)*citra-qt\.app",
+			"macExec": "Contents/MacOS/citra-qt",
+			"win": "(nightly|canary)-mingw/citra-qt\.exe"
 		},
 		"cmd": {
 			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
@@ -53,7 +67,7 @@
 		},
 		"install": {
 			"linux": {
-				"pkgManager-arch": [
+				"pkgManager-flatpak": [
 					["flatpak", "remote-add", "--if-not-exists", "flathub", "https://flathub.org/repo/flathub.flatpakrepo"],
 					["flatpak", "install", "https://flatpak.citra-emu.org/citra-nightly.flatpakref"],
 					["flatpak", "install", "https://flatpak.citra-emu.org/citra-canary.flatpakref"]
@@ -69,12 +83,23 @@
 	},
 	"desmume": {
 		"name": "DeSmuME",
-		"app": {},
+		"app": {
+			"linux": "desmume"
+		},
+		"appRegex": {
+			"mac": "DeSmuME\.app",
+			"macExec": "Contents/MacOS/DeSmuME",
+			"win": "DeSmuME-VS2019-x64-Release\.exe"
+		},
 		"cmd": {
+			"linux": ["${app}", "${game}"],
 			"mac": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		},
 		"install": {
+			"linux": {
+				"pkgManager-arch": ["pacman", "-s", "${app}"]
+			},
 			"mac": {
 				"standalone": "https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK"
 			},
@@ -85,7 +110,14 @@
 	},
 	"dolphin": {
 		"name": "Dolphin",
-		"app": {},
+		"app": {
+			"linux": "dolphin-emu"
+		},
+		"appRegex": {
+			"mac": "dolphin\.app",
+			"macExec": "Contents/MacOS/dolphin",
+			"win": "(Dolphin/)*Dolphin\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "-b"],
 			"mac": ["${app}", "${game}", "-b"],
@@ -93,7 +125,7 @@
 		},
 		"install": {
 			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "dolphin-emu"]
+				"pkgManager-arch": ["pacman", "-S", "${app}"]
 			},
 			"mac": {
 				"installer": "https://dl.dolphin-emu.org/builds/27/f0/dolphin-master-5.0-11824.dmg"
@@ -105,7 +137,13 @@
 	},
 	"mame": {
 		"name": "MAME",
-		"app": {},
+		"app": {
+			"linux": "mame"
+		},
+		"appRegex": {
+			"mac": "mame64",
+			"win": "mame64\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
 			"mac": ["${app}", "-inipath", "${cwd}", "${game.id}"],
@@ -122,7 +160,14 @@
 	},
 	"mgba": {
 		"name": "mGBA",
-		"app": {},
+		"app": {
+			"linux": ["mgba-sdl"]
+		},
+		"appRegex": {
+			"mac": "(Applications/)*mGBA\.app",
+			"macExec": "Contents/MacOS/mGBA",
+			"win": "mGBA\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "-f", "${game}"],
 			"mac": ["${app}", "-f", "${game}"],
@@ -130,11 +175,10 @@
 		},
 		"install": {
 			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "mgba-sdl"]
+				"pkgManager-arch": ["pacman", "-S", "${app}"]
 			},
 			"mac": {
-				"standalone": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz",
-				"location": "Applications"
+				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz"
 			},
 			"win": {
 				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
@@ -143,8 +187,12 @@
 	},
 	"melonds": {
 		"name": "melonDS",
-		"app": {},
+		"appRegex": {
+			"linux": "melonDS",
+			"win": "melonDS\.exe"
+		},
 		"cmd": {
+			"win": ["${app}", "${game}"]
 			"win": ["${app}", "${game}"]
 		},
 		"install": {
@@ -158,7 +206,9 @@
 	},
 	"mesen": {
 		"name": "mesen",
-		"app": {},
+		"appRegex": {
+			"win": "Mesen\.exe"
+		},
 		"cmd": {
 			"win": ["${app}", "${game}"]
 		},
@@ -170,15 +220,19 @@
 	},
 	"pcsx2": {
 		"name": "PCSX2",
-		"app": {},
+		"app": {
+			"linux": "pcsx2"
+		},
+		"appRegex": {
+			"win": "pcsx2\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
-			"mac": ["${app}", "${game}", "--nogui", "--fullscreen"],
 			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
 		},
 		"install": {
 			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "pcsx2"]
+				"pkgManager-arch": ["pacman", "-S", "${app}"]
 			},
 			"win": {
 				"portable": "https://pcsx2.net/download/releases/windows/send/40-windows/119-pcsx2-1-4-0-binaries.html"
@@ -187,7 +241,10 @@
 	},
 	"rpcs3": {
 		"name": "RPCS3",
-		"app": {},
+		"appRegex": {
+			"linux": "rpcs3[^_]+_linux64.AppImage",
+			"win": "rpcs3\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]

@@ -8,25 +8,23 @@ Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](h
 
 ## Update Summary for v2.0.x
 
-Performance update! Nostlan now generates thumbnail images with a height of 720px that are used on the game library view. It automatically switches to using the full res game art when you select a game. Scrolling and animations are now smooth even for really large libraries. This update also adds NES support!
-
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn_LQ.png">
 </a></p>
 
 #### Emulators
 
-- NES game library and Mesen emulator support!
+- NES game library and Mesen emulator support! I consider Mesen to be the best nes emulator but it's not available on macOS and can't be run with wine. em-fceux, a NES emulator written in javascript will be supported in the future.
 - [Ryujinx](https://ryujinx.org/download/) support (alternate Switch emulator that can run 32bit games, unlike Yuzu)
 
 #### App UI
 
-- shows game wiki pages in the `manuals` section of the open box menus (works for wii, n3ds, and switch)
+- shows emulator wiki pages for games in the `manuals` section of the open box menus (works for wii, n3ds, and switch)
 
 #### User Experience
 
 - search for games on the game library view just by typing (no search bar), just like with Windows File Explorer
-- increased performance in the game library view due to the use of thumbnail images
+- increased performance in the game library view due to the use of thumbnail images. Nostlan automatically switches to using the full res game art when you select a game. Scrolling and animations are now smooth even for really large libraries!
 
 ## Coming Soon
 

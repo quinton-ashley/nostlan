@@ -149,7 +149,7 @@ class Launcher {
 		this.emuAppDir = path.join(emuApp, '..');
 		if (linux) {
 			if (emu == 'citra') {
-				emuApp = 'org.citra.citra-canary'
+				emuApp = 'org.citra.citra-nightly'
 			}
 		}
 		if (!identify) log(emu);

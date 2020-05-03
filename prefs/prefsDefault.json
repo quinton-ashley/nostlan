@@ -16,7 +16,9 @@
 			"mac": {
 				"portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_mac.zip"
 			},
-			"win-portable": "https://byuu.org/download/bsnes/bsnes_v115-windows.zip"
+			"win": {
+				"portable": "https://byuu.org/download/bsnes/bsnes_v115-windows.zip"
+			}
 		}
 	},
 	"cemu": {

@@ -5,21 +5,21 @@ module.exports = async function() {
 		let _syst = systems[_sys];
 		if (!_syst.emus) continue;
 		for (let _emu of _syst.emus) {
-			if (prefs[_emu].cmd[osType]) {
-				prefs[_emu].cmd = prefs[_emu].cmd[osType];
-			}
-			if (prefs[_emu].update) {
-				if (prefs[_emu].update[osType]) {
-					prefs[_emu].update = prefs[_emu].update[osType];
-				} else if (!Array.isArray(prefs[_emu].update)) {
-					delete prefs[_emu].update;
+
+			let props = ['app', 'cmd', 'update', 'install'];
+
+			for (let prop of props) {
+				if (!prefs[_emu][prop] ||
+					typeof prefs[_emu][prop] == 'string') {
+					continue;
 				}
-			}
-			if (typeof prefs[_emu].app == 'string') continue;
-			if (prefs[_emu].app[osType]) {
-				prefs[_emu].app = prefs[_emu].app[osType];
-			} else {
-				delete prefs[_emu].app;
+				if (prefs[_emu][prop][osType]) {
+					prefs[_emu][prop] = prefs[_emu][prop][osType];
+				} else if (prefs[_emu][prop].linux ||
+					prefs[_emu][prop].mac ||
+					prefs[_emu][prop].win) {
+					delete prefs[_emu][prop];
+				}
 			}
 		}
 	}

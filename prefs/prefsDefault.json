@@ -6,7 +6,6 @@
 		"appRegex": {
 			"linux": "bsnes_hd",
 			"mac": "bsnes_hd\.app",
-			"macExec": "Contents/MacOS/bsnes",
 			"win": "bsnes\.exe"
 		},
 		"cmd": {
@@ -55,10 +54,19 @@
 		"app": {
 			"linux": "org.citra.citra-nightly"
 		},
+		"appDirs": {
+			"mac": [
+				"/Applications/Citra/nightly",
+				"/Applications/Citra/canary"
+			],
+			"win": [
+				"$emu/nightly-mingw",
+				"$emu/canary-mingw"
+			]
+		},
 		"appRegex": {
-			"mac": "(Citra/(nightly|canary)/)*citra-qt\.app",
-			"macExec": "Contents/MacOS/citra-qt",
-			"win": "(nightly|canary)-mingw/citra-qt\.exe"
+			"mac": "citra-qt\.app",
+			"win": "citra-qt\.exe"
 		},
 		"cmd": {
 			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
@@ -87,9 +95,8 @@
 			"linux": "desmume"
 		},
 		"appRegex": {
-			"mac": "DeSmuME\.app",
-			"macExec": "Contents/MacOS/DeSmuME",
-			"win": "DeSmuME-VS2019-x64-Release\.exe"
+			"mac": "DeSmuME.*\.app",
+			"win": "DeSmuME.*\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
@@ -115,8 +122,7 @@
 		},
 		"appRegex": {
 			"mac": "dolphin\.app",
-			"macExec": "Contents/MacOS/dolphin",
-			"win": "(Dolphin/)*Dolphin\.exe"
+			"win": "Dolphin\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "-b"],
@@ -158,33 +164,6 @@
 			}
 		}
 	},
-	"mgba": {
-		"name": "mGBA",
-		"app": {
-			"linux": ["mgba-sdl"]
-		},
-		"appRegex": {
-			"mac": "(Applications/)*mGBA\.app",
-			"macExec": "Contents/MacOS/mGBA",
-			"win": "mGBA\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "-f", "${game}"],
-			"mac": ["${app}", "-f", "${game}"],
-			"win": ["${app}", "-f", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "${app}"]
-			},
-			"mac": {
-				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz"
-			},
-			"win": {
-				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
-			}
-		}
-	},
 	"melonds": {
 		"name": "melonDS",
 		"appRegex": {
@@ -218,6 +197,35 @@
 			}
 		}
 	},
+	"mgba": {
+		"name": "mGBA",
+		"app": {
+			"linux": "mgba-sdl"
+		},
+		"appDirs": {
+			"mac": ["Applications"]
+		},
+		"appRegex": {
+			"mac": "mGBA\.app",
+			"win": "mgba-sdl\.exe"
+		},
+		"cmd": {
+			"linux": ["${app}", "-f", "${game}"],
+			"mac": ["${app}", "-f", "${game}"],
+			"win": ["${app}", "-f", "${game}"]
+		},
+		"install": {
+			"linux": {
+				"pkgManager-arch": ["pacman", "-S", "${app}"]
+			},
+			"mac": {
+				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz"
+			},
+			"win": {
+				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
+			}
+		}
+	},
 	"pcsx2": {
 		"name": "PCSX2",
 		"app": {
@@ -242,7 +250,7 @@
 	"rpcs3": {
 		"name": "RPCS3",
 		"appRegex": {
-			"linux": "rpcs3[^_]+_linux64.AppImage",
+			"linux": "rpcs3.*\.AppImage",
 			"win": "rpcs3\.exe"
 		},
 		"cmd": {
@@ -260,7 +268,11 @@
 	},
 	"ryujinx": {
 		"name": "Ryujinx",
-		"app": {},
+		"appRegex": {
+			"linux": "Ryujinx",
+			"mac": "Ryujinx",
+			"win": "Ryujinx\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
 			"mac": ["${app}", "${game}"],
@@ -280,13 +292,22 @@
 	},
 	"snes9x": {
 		"name": "snes9x",
-		"app": {},
+		"app": {
+			"linux": "snes9x-gtk"
+		},
+		"appRegex": {
+			"mac": "snes9x-x64\.exe",
+			"win": "snes9x-x64\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "-fullscreen"],
-			"mac": ["${app}", "${game}", "-fullscreen"],
+			"mac": ["wine64", "${app}", "${game}", "-fullscreen"],
 			"win": ["${app}", "${game}", "-fullscreen"]
 		},
 		"install": {
+			"mac": {
+				"portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
+			},
 			"win": {
 				"portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
 			}
@@ -294,7 +315,13 @@
 	},
 	"vba": {
 		"name": "Visual Boy Advance",
-		"app": {},
+		"app": {
+			"linux": "vbam-sdl"
+		},
+		"appRegex": {
+			"mac": "visualboyadvance-m\.app",
+			"win": "visualboyadvance-m\.exe"
+		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
 			"mac": ["${app}", "${game}"],
@@ -302,7 +329,7 @@
 		},
 		"install": {
 			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "vbam-sdl"]
+				"pkgManager-arch": ["pacman", "-S", "${app}"]
 			},
 			"mac": {
 				"standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip"
@@ -314,12 +341,18 @@
 	},
 	"yuzu": {
 		"name": "Yuzu",
-		"app": {
-			"win": "$home/AppData/Local/yuzu/yuzu-windows-msvc/yuzu.exe"
+		"appDirs": {
+			"win": [
+				"$home/AppData/Local/yuzu/yuzu-windows-msvc",
+				"$home/AppData/Local/yuzu/yuzu-windows-msvc-early-access"
+			]
+		},
+		"appRegex": {
+			"linux": "yuzu",
+			"win": "yuzu\.exe"
 		},
 		"cmd": {
 			"linux": ["wine", "${app}", "${game}"],
-			"mac": ["wine64", "${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		},
 		"install": {
@@ -338,6 +371,9 @@
 	"xenia": {
 		"name": "Xenia",
 		"app": {},
+		"appRegex": {
+			"win": "Xenia\.exe"
+		},
 		"cmd": {
 			"win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]
 		},

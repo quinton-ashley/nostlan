@@ -119,7 +119,7 @@
     "usb": "^1.6.3",
     "yauzl-promise": "^2.1.3"
   },
-  "description": "Nostlan is a front-end launcher for video game emulators!",
+  "description": "Nostlan is a front-end launcher for retro and current gen video game emulators!",
   "devDependencies": {},
   "entry point": "app.js",
   "keywords": [
@@ -151,5 +151,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.9.16"
+  "version": "1.9.17"
 }

@@ -16,101 +16,67 @@ class Launcher {
 		this.emuAppDir = '';
 	}
 
-	async getEmuApp(attempt) {
-		if (!attempt) attempt = 0;
-		let emuApp = util.absPath(prefs[emu].app);
-		if (emuApp && await fs.exists(emuApp)) {
-			return emuApp;
-		}
-		emuApp = '';
-		let emuAppDir = '';
-		// get emu dir path
-		if (win || (linux && /(cemu|rpcs3)/.test(emu)) ||
-			(mac && /(mame)/.test(emu))) {
-			emuAppDir = `${emuDir}/${sys}/${emu}`;
-			if (emu == 'citra') {
-				if (await fs.exists(emuAppDir + '/nightly-mingw')) {
-					emuAppDir += '/nightly-mingw';
-				} else {
-					emuAppDir += '/canary-mingw';
-				}
-			}
-			if (emu == 'yuzu') {
-				emuAppDir = '$home/AppData/Local/yuzu/yuzu-windows-msvc';
-				if (attempt == 1) emuAppDir += '-early-access';
-				emuAppDir = util.absPath(emuAppDir);
-			}
-		} else if (mac) {
-			emuAppDir = '/Applications';
-		}
-		// try to find app in emu dir
+	async getMacExec(file) {
+		let macExec = file;
+
+		let file = path.parse(file);
+
+		if (file.ext == '.app') return macExec;
+
+		macExec += '/Contents/MacOS/';
+
 		let name = prefs[emu].name.replace(/ /g, '');
-		let emuNameCases = [
+		let execNames = [
+			file.base,
 			name,
 			name.toLowerCase(),
 			name.toUpperCase()
 		];
 
-		function getMacExec() {
-			let macExec = '';
-			if (emu != 'mame') {
-				macExec += '.app/Contents/MacOS';
+		for (let execName of execNames) {
+			if (await fs.exists(macExec + execName)) {
+				macExec += execName;
+				return macExec;
 			}
-			if (emu == 'desmume') {
-				macExec += '/' + emuNameCases[0];
-			} else if (emu != 'mame') {
-				macExec += '/' + emuNameCases[1];
-			}
-			if (emu == 'citra') macExec += '-qt';
-			if (emu == 'mame') macExec += '64';
-			if (emu == 'vba') macExec += '-m';
-			if (emu == 'yuzu') macExec += '-bin';
-			return macExec;
 		}
+		// not found
+		return;
+	}
 
-		for (let i = 0; i < emuNameCases.length; i++) {
-			if (i == 0 && emu == 'vba') continue;
-			if (emuAppDir) {
-				emuApp = emuAppDir + '/';
-			}
-			emuApp += emuNameCases[i];
-			// add ons to the app's name
-			if (emu == 'vba') emuApp += '-m';
-			if (win) {
-				if (emu == 'citra') emuApp += '-qt';
-				if (emu == 'desmume') emuApp += '-VS2019-x64-Release';
-				if (emu == 'mgba') emuApp += '-sdl';
-				if (emu == 'mame') emuApp += '64';
-				if (emu == 'snes9x') emuApp += '-x64';
-				if (emu == 'yuzu' && identify) emuApp += '-cmd';
-				emuApp += '.exe';
-			} else if (mac) {
-				if (emu == 'bsnes') {
-					emuApp += '_hd';
-				} else if (emu == 'citra') {
-					emuApp += `/nightly/${emuNameCases[1]}-qt`;
-				} else if (emu == 'yuzu') {
-					emuApp += '/' + emuNameCases[1];
-				}
-				emuApp += getMacExec();
-			} else if (linux) {
-				if (emu == 'bsnes') emuApp += '_hd';
-				if (emu == 'snes9x') emuApp += '-gtk';
-				if (emu == 'dolphin') emuApp = 'dolphin-emu';
-				if (emu == 'cemu') emuApp += '.exe';
-				if (emu == 'rpcs3') emuApp += '.AppImage';
-			}
-			if ((linux && !/(cemu|yuzu|rpcs3)/.test(emu)) ||
-				await fs.exists(emuApp)) {
-
-				if (!identify) prefs[emu].app = emuApp;
+	async getEmuApp() {
+		let emuApp = util.absPath(prefs[emu].app);
+		if (emuApp) {
+			let isCmd = !/\//.test(emuApp);
+			if ((linux && isCmd) ||
+				((!linux || !isCmd) && await fs.exists(emuApp))) {
 				return emuApp;
 			}
 		}
-		// attempt to auto-find the app in a different place
-		if (win && emu == 'yuzu' && attempt == 0) {
-			return this.getEmuApp(1);
+		let emuAppDirs = prefs[emu].appDirs || [];
+
+		emuAppDirs.push(`${emuDir}/${sys}/${emu}`);
+		if (mac) emuAppDirs.push('/Applications');
+
+		for (let dir of emuAppDirs) {
+
+			let files = await klaw(dir);
+			let regex = new RegExp(prefs[emu].appRegex, 'i');
+
+			for (let file of files) {
+				let f = path.parse(file);
+
+				if (regex.test(f.base)) {
+					emuApp = file;
+					if (mac) emuApp = getMacExec(emuApp);
+					if (emuApp && await fs.exists(emuApp)) {
+						return emuApp;
+					}
+				}
+			}
 		}
+
+		// TODO
+
 		log(`couldn't find app at path:\n` + emuApp);
 		emuApp = await dialog.selectFile('select emulator app');
 

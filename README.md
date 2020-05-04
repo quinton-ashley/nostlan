@@ -1,8 +1,8 @@
 # Nostlan
 
-Nostlan is an open source _high quality_ front-end launcher for video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, Switch, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, Ryujinx, Xenia, and Yuzu.
+Nostlan is a _high quality_ front-end launcher for retro and current gen video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, Switch, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, Ryujinx, Xenia, and Yuzu.
 
-[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount is appreciated. [Support the development of Nostlan on patreon](https://www.patreon.com/nostlan) to gain access to premium features!
+[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and [support the development of Nostlan on patreon](https://www.patreon.com/nostlan) to gain access to premium features! If you don't want to become a Patreon supporter but still enjoy using the app [please make a donation on Paypal](https://www.paypal.me/qashto/20), any amount is appreciated.
 
 <p><a href="https://www.patreon.com/nostlan">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan/master/views/img/icon.png">
@@ -10,13 +10,13 @@ Nostlan is an open source _high quality_ front-end launcher for video game emula
 
 ## A what? What's a "frontend launcher"?
 
-A front-end or user interface (UI) is the presentation and interaction layer of an app or website. Most modern emulator apps have basic game list UIs that you can use to select games to play using a mouse/keyboard but not a game controller.
-
-Nostlan is like the part of Netflix where you choose a movie to watch but for your game libraries. It's a fullscreen media viewer that identifies your games and downloads box art for them. You can interact with it using a mouse or game controller! Unlike [other popular front-end launchers](https://github.com/quinton-ashley/nostlan/wiki/How-is-Nostlan-different-from-other-front-ends%3F) for video game emulators, Nostlan has a sleek, minimalistic design that prioritizes box art, not a bunch of text and metadata. Check out the screenshots below!
+Nostlan is like the part of Netflix where you choose a movie to watch but for your game libraries. It's a fullscreen media viewer that identifies your games and downloads high quality box art for them. You can interact with Nostlan using a mouse and keyboard or a game controller. [Nostlan is unlike any other launcher for video game emulators](https://github.com/quinton-ashley/nostlan/wiki/How-is-Nostlan-different-from-other-front-ends%3F). It has a sleek, minimalistic design that prioritizes box art, not a bunch of text and metadata. Check out the screenshots below!
 
 ## Features
 
 - unified UI for mouse/gamepad interaction
+- easy to use for people who don't know anything about emulators
+- install any emulator right in the app
 - designed for UHD displays and projectors
 - checks multiple database sites for the highest quality box art
 - nostalgic UI themes for each supported console
@@ -158,6 +158,6 @@ Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating ga
 
 MAME and the MAME Logo are Copyright © 1997-2019 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
 
-Nostlan and the Nostlan logo images are Copyright © 2019 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images using the Public Domain License CC0. The Nostlan software itself is fully open source and licensed under the copyleft [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+Nostlan and the Nostlan logo are Copyright © 2019-2020 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images using the Public Domain License CC0. The Nostlan software itself is fully open source and licensed under the copyleft [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 
 ![GNU GPLv3 logo](https://www.gnu.org/graphics/gpl-v3-logo.svg)

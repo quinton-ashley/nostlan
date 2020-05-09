@@ -5808,20 +5808,7 @@
 		}, {
 			"id": "RUUE01",
 			"title": "Animal Crossing: City Folk",
-			"sys": "gcn",
-			"texp": [{
-				"name": "HD",
-				"authors": [
-					"TechieAndroid", "WannabeTechNerd", "Vorpal_",
-					"kinkinkijkin", "MelonSpeedruns", "shrotus", "John Ghostly",
-					"Brackenhawk", "SoApBoX91", "Cumberlock", "Interlace",
-					"aaaaaaa", "seraph"
-				],
-				"rate": "10",
-				"date": "8-7-2018",
-				"dds": ["https://drive.google.com/open?id=1Z8-pMx20xO8q3caiqy4NOrSNVT1veDSk"],
-				"url": ["https://forums.dolphin-emu.org/Thread-animal-crossing-hd-texture-pack-october-7th-2018"]
-			}]
+			"sys": "gcn"
 		}, {
 			"id": "RUUJ01",
 			"title": "Machi He Ikouyo: Doubutsu no Mori"
@@ -23911,16 +23898,7 @@
 			"sys": "gcn",
 			"img": {
 				"disc": "q"
-			},
-			"texp": [{
-				"name": "HD",
-				"authors": ["The Dolphin Community"],
-				"rate": 10,
-				"version": "1.8.0",
-				"dds": ["https://drive.google.com/file/d/1_sihdonrLpO9YxQLFfdubdS6ccktKHfu/view"],
-				"png": ["https://drive.google.com/file/d/1ml_a7-o_ZB5ZbG3LIqdJA_8VSu8msIh6/view"],
-				"url": ["https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018"]
-			}]
+			}
 		}, {
 			"id": "G8MJ01",
 			"title": "Paper Mario RPG"
@@ -25822,16 +25800,7 @@
 		}, {
 			"id": "GKYE01",
 			"title": "Kirby Air Ride",
-			"sys": "gcn",
-			"texp": [{
-				"name": "UHD",
-				"authors": ["qashto", "kilerbomb", "Guitar_Bro", "gameboy96"],
-				"rate": 10,
-				"version": "1.0.0",
-				"dds": ["https://drive.google.com/open?id=1wZgDAMmJIt71PZsPzKnBFJ28rpnka3GE"],
-				"png": ["https://github.com/quinton-ashley/Kirby_Air_Ride_UHD_Texture_Pack.git"],
-				"url": ["https://forums.dolphin-emu.org/Thread-kirby-air-ride-uhd-texture-pack"]
-			}]
+			"sys": "gcn"
 		}, {
 			"id": "GKYJ01",
 			"title": "Kirby's Airride"
@@ -25934,26 +25903,7 @@
 		}, {
 			"id": "GLME01",
 			"title": "Luigi's Mansion",
-			"sys": "gcn",
-			"texp": [{
-				"name": "Paintings and Sculptures",
-				"authors": ["qashto"],
-				"rate": 10,
-				"version": "1.0.0",
-				"dds": ["https://drive.google.com/open?id=1sR921rV6jlRSKlBX84oHzmVe9peZLohN"],
-				"png": ["https://github.com/quinton-ashley/Luigis_Mansion_UHD_Pack.git"],
-				"url": ["https://forums.dolphin-emu.org/Thread-luigi-s-mansion-uhd-pack"],
-				"patron": ["https://www.patreon.com/qashto"]
-			}, {
-				"name": "HD",
-				"authors": ["HenrikoMagnifico"],
-				"rate": 10,
-				"version": "1.0.1a",
-				"date": "12-12-2018",
-				"png": ["https://drive.google.com/file/d/1J7p4EVlv0RvTb7-9_BaSBPniw5696gYd/view"],
-				"url": ["https://forums.dolphin-emu.org/Thread-luigi-s-mansion-hd-texture-pack-2018-1-0-1a-2018-12-12"],
-				"patron": ["https://www.patreon.com/henrikomagnifico"]
-			}]
+			"sys": "gcn"
 		}, {
 			"id": "GLMJ01",
 			"title": "Luigi's Mansion"
@@ -26241,32 +26191,9 @@
 			"title": "Super Mario Sunshine",
 			"sys": "gcn",
 			"img": {
+				"coverFull": "https://r.mprd.se/GCN/Covers/Super%20Mario%20Sunshine.jpg",
 				"disc": "https://images.launchbox-app.com/40a9bd38-7d95-430f-830c-ed008d431bba.png"
-			},
-			"texp": [{
-				"name": "Hires",
-				"authors": ["razius"],
-				"rate": 9,
-				"version": "2.0.0-alpha",
-				"png": ["https://drive.google.com/open?id=0B5xbh74TDCkbbHl5NFlwWkk2amM"],
-				"url": ["https://forums.dolphin-emu.org/Thread-super-mario-sunshine-hires-texture-pack"]
-			}, {
-				"name": "UHD",
-				"authors": ["qashto"],
-				"rate": 7,
-				"version": "1.3.9",
-				"dds": ["https://drive.google.com/open?id=1vLL8Q2ttwWEMeBWmQQ5GjLlCxidJC8sj"],
-				"png": ["https://github.com/quinton-ashley/Super_Mario_Sunshine_UHD_Texture_Pack.git"],
-				"url": ["https://forums.dolphin-emu.org/Thread-super-mario-sunshine-uhd-texture-pack"],
-				"patron": ["https://www.patreon.com/qashto"]
-			}, {
-				"name": "Painted Edition",
-				"authors": ["Ty Anderson", "Lumbeeslayer"],
-				"rate": 1,
-				"version": "1.0.0",
-				"png": ["https://drive.google.com/drive/folders/1uc8gIDwUPZRxXIisQJAFfPpKiLsgwFnI"],
- 				"url": ["https://forums.dolphin-emu.org/Thread-super-mario-sunshine-painted-edition"]
- 			}]
+			}
 		}, {
 			"id": "GMSJ01",
 			"title": "Super Mario Sunshine",
@@ -28349,24 +28276,7 @@
 		}, {
 			"id": "PZLE01",
 			"title": "The Legend of Zelda: Collector's Edition",
-			"sys": "gcn",
-			"texp": [{
-				"name": "HD",
-	 			"authors": ["The Dolphin Community"],
-	 			"rate": 10,
-	 			"version": "1.7.0",
-				"ddsRP": ["https://mega.nz/#!KyhXQCgC!24xsSydhf1o87mC0j9Lv1uLwFPhNWZEzWKKTMvgmc30"],
-				"dds": [
-					"https://drive.google.com/file/d/1NxxriTdkv4WbCZgEpmddj2xevNqgPBji/view",
-					"https://mega.nz/#!jypGGKJb!xoS8DQ8Py55VTEPJjWT5QXVMgzmtBFVtA6nOW1_fPpE",
-					"https://www.dropbox.com/s/vay5ssky9zv8zi9/Zelda%2064%20HD%20V2.6%20%28DDS%20BC7%29.7z?dl=0"
-				],
-	 			"png": [
-					"https://drive.google.com/file/d/1Vt4eKyHRpFYN0cTpva5ezon4WgwERoU2/view",
-					"https://mega.nz/#!PnZzDY7L!9PA9wcALU_PDcYOrpDD0_bqTWVzsVqlPCDQ3VJ1YwzE"
-				],
-	 			"url": ["https://forums.dolphin-emu.org/Thread-zelda-collector-s-edition-hd-texture-pack-v2-1-2018-03-27?page=80"]
-			}]
+			"sys": "gcn"
 		}, {
 			"id": "PZLJ01",
 			"title": "The Legend of Zelda: Collector's Edition",

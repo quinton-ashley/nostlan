@@ -1,0 +1,76 @@
+{
+	"texp": {
+		"G8M": [{
+			"name": "HD",
+			"authors": ["The Dolphin Community"],
+			"rate": 10,
+			"version": "1.8.0",
+			"dl": "https://drive.google.com/file/d/1_sihdonrLpO9YxQLFfdubdS6ccktKHfu/view",
+			"forum": "https://forums.dolphin-emu.org/Thread-paper-mario-ttyd-hd-texture-pack-v1-7-july-4-2018",
+			"paypal": "https://www.paypal.me/qashto/5",
+			"patreon": "https://www.patreon.com/qashto"
+		}],
+		"GKY": [{
+			"name": "UHD",
+			"authors": ["qashto", "kilerbomb", "Guitar_Bro", "gameboy96"],
+			"rate": 10,
+			"version": "1.0.0",
+			"dl": "https://github.com/quinton-ashley/Kirby_Air_Ride_UHD_Texture_Pack/releases/latest/download/GKY.7z",
+			"github": "https://github.com/quinton-ashley/Kirby_Air_Ride_UHD_Texture_Pack",
+			"forum": "https://forums.dolphin-emu.org/Thread-kirby-air-ride-uhd-texture-pack"
+		}],
+		"GLM": [{
+			"name": "Paintings and Sculptures",
+			"authors": ["qashto"],
+			"rate": 10,
+			"version": "1.0.0",
+			"dl": "https://drive.google.com/open?id=1sR921rV6jlRSKlBX84oHzmVe9peZLohN",
+			"github": "https://github.com/quinton-ashley/Luigis_Mansion_UHD_Pack",
+			"forum": "https://forums.dolphin-emu.org/Thread-luigi-s-mansion-uhd-pack",
+			"paypal": "https://www.paypal.me/qashto/5",
+			"patreon": "https://www.patreon.com/qashto"
+		}, {
+			"name": "HD",
+			"authors": ["HenrikoMagnifico"],
+			"rate": 10,
+			"version": "1.0.1a",
+			"date": "12-12-2018",
+			"dl": "https://drive.google.com/file/d/1J7p4EVlv0RvTb7-9_BaSBPniw5696gYd/view",
+			"forum": "https://forums.dolphin-emu.org/Thread-luigi-s-mansion-hd-texture-pack-2018-1-0-1a-2018-12-12",
+			"patreon": "https://www.patreon.com/henrikomagnifico"
+		}],
+		"GMS": [{
+			"name": "UHD",
+			"authors": ["qashto", "razius", "The Dolphin Community"],
+			"rate": 10,
+			"version": "2.0.x",
+			"date": "05-09-2020",
+			"dl": "https://github.com/quinton-ashley/Super_Mario_Sunshine_UHD_Texture_Pack/releases/latest/download/GMS.7z",
+			"github": "https://github.com/quinton-ashley/Super_Mario_Sunshine_UHD_Texture_Pack",
+			"forum": "https://forums.dolphin-emu.org/Thread-super-mario-sunshine-uhd-texture-pack",
+			"paypal": "https://www.paypal.me/qashto/5",
+			"patron": "https://www.patreon.com/qashto"
+		}],
+		"PZL": [{
+			"name": "HD",
+			"authors": ["The Dolphin Community"],
+			"rate": 10,
+			"version": "1.7.0",
+			"dl": "https://drive.google.com/file/d/1NxxriTdkv4WbCZgEpmddj2xevNqgPBji/view",
+			"forum": "https://forums.dolphin-emu.org/Thread-zelda-collector-s-edition-hd-texture-pack-v2-1-2018-03-27?page=80"
+		}],
+		"RUU": [{
+			"name": "HD",
+			"authors": [
+				"TechieAndroid", "WannabeTechNerd", "Vorpal_",
+				"kinkinkijkin", "MelonSpeedruns", "shrotus", "John Ghostly",
+				"Brackenhawk", "SoApBoX91", "Cumberlock", "Interlace",
+				"aaaaaaa", "seraph"
+			],
+			"rate": "10",
+			"date": "08-07-2018",
+			"dl": "https://drive.google.com/open?id=1Z8-pMx20xO8q3caiqy4NOrSNVT1veDSk",
+			"forum": "https://forums.dolphin-emu.org/Thread-animal-crossing-hd-texture-pack-october-7th-2018"
+		}]
+	}
+}

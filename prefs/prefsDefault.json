@@ -5,8 +5,8 @@
 		"name": "bsnes",
 		"appRegex": {
 			"linux": "bsnes_hd",
-			"mac": "bsnes_hd\.app",
-			"win": "bsnes\.exe"
+			"mac": "bsnes_hd\\.app",
+			"win": "bsnes\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "--fullscreen"],
@@ -28,9 +28,9 @@
 	"cemu": {
 		"name": "Cemu",
 		"appRegex": {
-			"linux": "Cemu\.exe",
-			"mac": "Cemu\.exe",
-			"win": "Cemu\.exe"
+			"linux": "Cemu\\.exe",
+			"mac": "Cemu\\.exe",
+			"win": "Cemu\\.exe"
 		},
 		"cmd": {
 			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
@@ -65,8 +65,8 @@
 			]
 		},
 		"appRegex": {
-			"mac": "citra-qt\.app",
-			"win": "citra-qt\.exe"
+			"mac": "citra-qt\\.app",
+			"win": "citra-qt\\.exe"
 		},
 		"cmd": {
 			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
@@ -87,6 +87,11 @@
 			"win": {
 				"installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe"
 			}
+		},
+		"saveDirs": {
+			"linux": ["$home/.local/share/citra-emu/sdmc"],
+			"mac": ["$home/.local/share/citra-emu/sdmc"],
+			"win": ["$home/AppData/Roaming/Citra/sdmc"]
 		}
 	},
 	"desmume": {
@@ -95,8 +100,8 @@
 			"linux": "desmume"
 		},
 		"appRegex": {
-			"mac": "DeSmuME.*\.app",
-			"win": "DeSmuME.*\.exe"
+			"mac": "DeSmuME.*\\.app",
+			"win": "DeSmuME.*\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
@@ -113,6 +118,9 @@
 			"win": {
 				"standalone": "https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe"
 			}
+		},
+		"fullscreenKeyCombo": {
+			"win": ["enter", "alt"]
 		}
 	},
 	"dolphin": {
@@ -121,8 +129,8 @@
 			"linux": "dolphin-emu"
 		},
 		"appRegex": {
-			"mac": "dolphin\.app",
-			"win": "Dolphin\.exe"
+			"mac": "dolphin\\.app",
+			"win": "Dolphin\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "-b"],
@@ -148,7 +156,7 @@
 		},
 		"appRegex": {
 			"mac": "mame64",
-			"win": "mame64\.exe"
+			"win": "mame64\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
@@ -168,10 +176,10 @@
 		"name": "melonDS",
 		"appRegex": {
 			"linux": "melonDS",
-			"win": "melonDS\.exe"
+			"win": "melonDS\\.exe"
 		},
 		"cmd": {
-			"win": ["${app}", "${game}"]
+			"linux": ["${app}", "${game}"],
 			"win": ["${app}", "${game}"]
 		},
 		"install": {
@@ -186,7 +194,7 @@
 	"mesen": {
 		"name": "mesen",
 		"appRegex": {
-			"win": "Mesen\.exe"
+			"win": "Mesen\\.exe"
 		},
 		"cmd": {
 			"win": ["${app}", "${game}"]
@@ -195,6 +203,10 @@
 			"win": {
 				"standalone": "https://www.mesen.ca/download.php"
 			}
+		},
+		"fullscreenKeyCombo": {
+			"linux": ["f11"],
+			"win": ["f11"]
 		}
 	},
 	"mgba": {
@@ -206,8 +218,8 @@
 			"mac": ["Applications"]
 		},
 		"appRegex": {
-			"mac": "mGBA\.app",
-			"win": "mgba-sdl\.exe"
+			"mac": "mGBA\\.app",
+			"win": "mgba-sdl\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "-f", "${game}"],
@@ -224,6 +236,9 @@
 			"win": {
 				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
 			}
+		},
+		"fullscreenKeyCombo": {
+			"mac": ["f", "command"]
 		}
 	},
 	"pcsx2": {
@@ -232,7 +247,7 @@
 			"linux": "pcsx2"
 		},
 		"appRegex": {
-			"win": "pcsx2\.exe"
+			"win": "pcsx2\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
@@ -250,8 +265,8 @@
 	"rpcs3": {
 		"name": "RPCS3",
 		"appRegex": {
-			"linux": "rpcs3.*\.AppImage",
-			"win": "rpcs3\.exe"
+			"linux": "rpcs3.*\\.AppImage",
+			"win": "rpcs3\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
@@ -271,7 +286,7 @@
 		"appRegex": {
 			"linux": "Ryujinx",
 			"mac": "Ryujinx",
-			"win": "Ryujinx\.exe"
+			"win": "Ryujinx\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
@@ -296,8 +311,8 @@
 			"linux": "snes9x-gtk"
 		},
 		"appRegex": {
-			"mac": "snes9x-x64\.exe",
-			"win": "snes9x-x64\.exe"
+			"mac": "snes9x-x64\\.exe",
+			"win": "snes9x-x64\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}", "-fullscreen"],
@@ -311,6 +326,10 @@
 			"win": {
 				"portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
 			}
+		},
+		"fullscreenKeyCombo": {
+			"linux": ["f11"],
+			"win": ["f11"]
 		}
 	},
 	"vba": {
@@ -319,8 +338,8 @@
 			"linux": "vbam-sdl"
 		},
 		"appRegex": {
-			"mac": "visualboyadvance-m\.app",
-			"win": "visualboyadvance-m\.exe"
+			"mac": "visualboyadvance-m\\.app",
+			"win": "visualboyadvance-m\\.exe"
 		},
 		"cmd": {
 			"linux": ["${app}", "${game}"],
@@ -337,6 +356,10 @@
 			"win": {
 				"standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip"
 			}
+		},
+		"fullscreenKeyCombo": {
+			"linux": ["f11"],
+			"win": ["f11"]
 		}
 	},
 	"yuzu": {
@@ -349,7 +372,7 @@
 		},
 		"appRegex": {
 			"linux": "yuzu",
-			"win": "yuzu\.exe"
+			"win": "yuzu\\.exe"
 		},
 		"cmd": {
 			"linux": ["wine", "${app}", "${game}"],
@@ -366,13 +389,16 @@
 		"update": {
 			"win": ["$home/AppData/Local/yuzu/maintenancetool.exe",
 				"--launcher", "${app}"]
+		},
+		"fullscreenKeyCombo": {
+			"linux": ["f11"],
+			"win": ["f11"]
 		}
 	},
 	"xenia": {
 		"name": "Xenia",
-		"app": {},
 		"appRegex": {
-			"win": "Xenia\.exe"
+			"win": "Xenia\\.exe"
 		},
 		"cmd": {
 			"win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]

@@ -117,7 +117,7 @@ module.exports = async function(arg) {
 	};
 
 	let games = []; // array of current games from the systems' db
-	global.emuDir = ''; // nostlan dir is stored here
+	global.systemsDir = ''; // nostlan dir is stored here
 
 	let searchTerm = '';
 	let searchTimeout = 0;
@@ -197,7 +197,7 @@ module.exports = async function(arg) {
 		}
 		if (await prefsMng.canLoad()) {
 			await prefsMng.load();
-			emuDir = path.join(prefs.nlaDir, '..');
+			systemsDir = path.join(prefs.nlaDir, '..');
 			await prefsMng.update();
 			await createTemplate();
 		}
@@ -240,7 +240,7 @@ module.exports = async function(arg) {
 		emu = syst.emus[0];
 		if (mac && sys == 'ds') emu = 'desmume';
 		await intro();
-		let gamesPath = `${emuDir}/${sys}/${sys}Games.json`;
+		let gamesPath = `${systemsDir}/${sys}/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		games = [];
 		if (await fs.exists(gamesPath)) {
@@ -251,22 +251,22 @@ module.exports = async function(arg) {
 			// game db file does
 			if (!prefs[sys] || !prefs[sys].libs) {
 				prefs[sys] = {
-					libs: [`${emuDir}/${sys}/games`]
+					libs: [`${systemsDir}/${sys}/games`]
 				};
 			}
 		}
 		if (games.length == 0) {
-			if (!emuDir) {
+			if (!systemsDir) {
 				cui.change('setupMenu_1');
 				await removeIntro(0);
 				return;
 			}
 			log(emu);
-			let gameLibDir = `${emuDir}/${sys}/games`;
+			let gameLibDir = `${systemsDir}/${sys}/games`;
 			if (emu == 'rpcs3') {
-				gameLibDir = `${emuDir}/${sys}/rpcs3/dev_hdd0/game`;
+				gameLibDir = `${systemsDir}/${sys}/rpcs3/dev_hdd0/game`;
 			} else if (emu == 'mame') {
-				gameLibDir = `${emuDir}/${sys}/mame/roms`;
+				gameLibDir = `${systemsDir}/${sys}/mame/roms`;
 			}
 
 			log(gameLibDir);
@@ -323,8 +323,8 @@ module.exports = async function(arg) {
 				return;
 			}
 		}
-		emuDir = emuDir.replace(/\\/g, '/');
-		prefs.nlaDir = emuDir + '/nostlan';
+		systemsDir = systemsDir.replace(/\\/g, '/');
+		prefs.nlaDir = systemsDir + '/nostlan';
 		try {
 			await fs.ensureDir(prefs.nlaDir);
 		} catch (ror) {
@@ -419,7 +419,7 @@ module.exports = async function(arg) {
 			$('#libMain').css('transform', '');
 			$('#libMain').removeClass('no-outline');
 		} else if (state == 'gameMediaSelect_3') {
-			labels = ['ImgDir', 'File', 'Back'];
+			labels = ['File', 'ImgDir', 'Back'];
 		} else if (state == 'pauseMenu_10') {
 			labels = ['Quit', 'Mini', 'Back'];
 		} else if (/(game|menu)/i.test(state)) {
@@ -523,10 +523,10 @@ module.exports = async function(arg) {
 			if (!_syst.emus) continue;
 			for (let _emu of _syst.emus) {
 				// emu dir
-				await fs.ensureDir(`${emuDir}/${_sys}/${_emu}`);
+				await fs.ensureDir(`${systemsDir}/${_sys}/${_emu}`);
 				// games dir
 				if (!/(rpcs3|mame)/.test(_emu)) {
-					await fs.ensureDir(`${emuDir}/${_sys}/games`);
+					await fs.ensureDir(`${systemsDir}/${_sys}/games`);
 				}
 			}
 		}
@@ -770,10 +770,10 @@ module.exports = async function(arg) {
 				} else {
 					await launcher.launch(getCurGame());
 				}
-			} else if (act == 'y') { // imgdir
-				opn(await scraper.getImgDir(getCurGame()));
 			} else if (act == 'x') { // file
 				opn(path.parse(getCurGame().file).dir);
+			} else if (act == 'y') { // imgdir
+				opn(await scraper.getImgDir(getCurGame()));
 			}
 		} else if (ui == 'sysMenu_5' && !isBtn) {
 			// if (!emu) {
@@ -784,6 +784,19 @@ module.exports = async function(arg) {
 			syst = systems[sys];
 			cui.removeCursor();
 			await loadGameLib();
+		} else if (ui == 'controllerMenu_11') {
+			if (act == 'rumble') {
+				prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
+				cui.opt.haptic = prefs.ui.gamepad.haptic;
+				let $rumble = $('#controllerMenu_11 .uie[name="rumble"]');
+				if (prefs.ui.gamepad.haptic) {
+					log('rumble enabled');
+					$rumble.text('disable rumble');
+				} else {
+					log('rumble disabled');
+					$rumble.text('enable rumble');
+				}
+			}
 		} else if (ui == 'interfaceMenu_11') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
@@ -847,11 +860,13 @@ module.exports = async function(arg) {
 				electron.getCurrentWindow().setFullScreen(true);
 			} else if (act == 'editAppearance') {
 				cui.change('interfaceMenu_11');
+			} else if (act == 'controllerSettings') {
+				cui.change('controllerMenu_11');
 			} else if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
 					recheckImgs = true;
-					await fs.remove(`${emuDir}/${sys}/${sys}Games.json`);
+					await fs.remove(`${systemsDir}/${sys}/${sys}Games.json`);
 				}
 				cui.removeView('libMain');
 				cui.change('rescanning');
@@ -907,7 +922,7 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'setupMenu_1') {
 			if (act == 'continue') {
-				if (!(await fs.exists(emuDir))) {
+				if (!(await fs.exists(systemsDir))) {
 					cui.err('you must choose an install location!');
 					return false;
 				}
@@ -915,16 +930,16 @@ module.exports = async function(arg) {
 				return;
 			}
 			if (act == 'new-in-docs') {
-				emuDir = util.absPath('$home') + '/Documents';
+				systemsDir = util.absPath('$home') + '/Documents';
 			} else {
 				let msg = 'choose the folder you want the template to go in';
-				emuDir = await dialog.selectDir(msg);
+				systemsDir = await dialog.selectDir(msg);
 			}
-			emuDir += '/emu';
-			if (!emuDir) return false;
+			systemsDir += '/emu';
+			if (!systemsDir) return false;
 			await createTemplate();
-			opn(emuDir);
-			if (!(await fs.exists(emuDir))) return false;
+			opn(systemsDir);
+			if (!(await fs.exists(systemsDir))) return false;
 		} else if (ui == 'emuMenu_5' || ui == 'playMenu_5') {
 			// change emu to the selected emu
 			// or run with the previously selected emu

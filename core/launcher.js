@@ -19,7 +19,7 @@ class Launcher {
 	async getMacExec(file) {
 		let macExec = file;
 
-		let file = path.parse(file);
+		file = path.parse(file);
 
 		if (file.ext == '.app') return macExec;
 
@@ -54,12 +54,14 @@ class Launcher {
 		}
 		let emuAppDirs = prefs[emu].appDirs || [];
 
-		emuAppDirs.push(`${emuDir}/${sys}/${emu}`);
+		emuAppDirs.push(`${systemsDir}/${sys}/${emu}`);
 		if (mac) emuAppDirs.push('/Applications');
 
 		for (let dir of emuAppDirs) {
 
-			let files = await klaw(dir);
+			let files = await klaw(dir, {
+				depthLimit: 2
+			});
 			let regex = new RegExp(prefs[emu].appRegex, 'i');
 
 			for (let file of files) {
@@ -74,8 +76,6 @@ class Launcher {
 				}
 			}
 		}
-
-		// TODO
 
 		log(`couldn't find app at path:\n` + emuApp);
 		emuApp = await dialog.selectFile('select emulator app');
@@ -190,24 +190,20 @@ class Launcher {
 		}
 
 		if (kb && cui.ui == 'playing_4') {
-			if ((win || linux) && /(mesen|snes9x|yuzu|vba)/.test(emu)) {
+			let combo = prefs[emu].fullscreenKeyCombo;
+			if (combo) {
 				await delay(1500);
-				kb.keyTap('f11');
-			} else if (win && emu == 'desmume') {
-				await delay(1500);
-				kb.keyTap('enter', 'alt');
-			} else if (mac && /(mgba|vba)/.test(emu)) {
-				// switch focus to app
-				if (emu == 'mgba') {
-					await delay(5000);
-					kb.keyTap('f', 'command');
-				} else if (emu == 'vba') {
-					await delay(1500);
-					kb.keyToggle('tab', 'down', ['command', 'shift']);
-					await delay(500);
-					kb.keyToggle('tab', 'up', ['command', 'shift']);
-					kb.keyTap('enter');
+				if (combo[1]) {
+					kb.keyTap(combo[0], combo[1]);
+				} else {
+					kb.keyTap(combo[0]);
 				}
+			} else if (mac && emu == 'vba') {
+				await delay(1500);
+				kb.keyToggle('tab', 'down', ['command', 'shift']);
+				await delay(500);
+				kb.keyToggle('tab', 'up', ['command', 'shift']);
+				kb.keyTap('enter');
 			}
 		}
 	}

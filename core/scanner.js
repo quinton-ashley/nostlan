@@ -278,7 +278,7 @@ class Scanner {
 				log(game);
 			}
 		}
-		let outLogPath = `${emuDir}/${sys}/${sys}Log.txt`;
+		let outLogPath = `${systemsDir}/${sys}/${sys}Log.txt`;
 		try {
 			await fs.outputFile(outLogPath, this.outLog);
 		} catch (ror) {
@@ -332,7 +332,7 @@ class Scanner {
 
 	async outputUsersGamesDB(games) {
 		if (!games) return;
-		let gamesPath = `${emuDir}/${sys}/${sys}Games.json`;
+		let gamesPath = `${systemsDir}/${sys}/${sys}Games.json`;
 		log('game library saved to: ');
 		log(gamesPath);
 		try {

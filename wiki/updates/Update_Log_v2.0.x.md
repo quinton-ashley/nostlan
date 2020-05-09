@@ -14,12 +14,12 @@ Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](h
 
 #### Emulators
 
-- NES game library and Mesen emulator support! I consider Mesen to be the best nes emulator but it's not available on macOS and can't be run with wine. em-fceux, a NES emulator written in javascript will be supported in the future.
+- NES game library and Mesen emulator support! I consider Mesen to be the best nes emulator but it's not available on macOS and can't be run with wine. em-fceux, a NES emulator ported to javascript will be bundled built-in with Nostlan in the future.
 - [Ryujinx](https://ryujinx.org/download/) support (alternate Switch emulator that can run 32bit games, unlike Yuzu)
 
 #### App UI
 
-- shows emulator wiki pages for games in the `manuals` section of the open box menus (works for wii, n3ds, and switch)
+- shows emulator wiki pages for games in the `manuals` section of the open box menus (only works for wii and switch rn)
 
 #### User Experience
 

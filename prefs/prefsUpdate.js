@@ -6,7 +6,7 @@ module.exports = async function() {
 		if (!_syst.emus) continue;
 		for (let _emu of _syst.emus) {
 
-			let props = ['app', 'cmd', 'update', 'install'];
+			let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install'];
 
 			for (let prop of props) {
 				if (!prefs[_emu][prop] ||
@@ -54,7 +54,7 @@ module.exports = async function() {
 			await fs.move(prefs.btlDir, prefs.nlaDir);
 		}
 		delete prefs.btlDir;
-		emuDir = path.join(prefs.nlaDir, '..');
+		systemsDir = path.join(prefs.nlaDir, '..');
 	}
 	if (typeof prefs.donor == 'boolean') prefs.donor = {};
 	if (prefs.saves) {
@@ -95,27 +95,27 @@ module.exports = async function() {
 		}
 	}
 
-	// in v1.8.x the file structure of emuDir was changed
+	// in v1.8.x the file structure of systemsDir was changed
 	let errCount = 0;
 	for (let _sys in systems) {
 		let _syst = systems[_sys];
 		if (!_syst.emus) continue;
 		let _emu = _syst.emus[0];
 		let moveDirs = [{
-			src: `${emuDir}/${prefs[_emu].name}`,
-			dest: `${emuDir}/${_sys}`
+			src: `${systemsDir}/${prefs[_emu].name}`,
+			dest: `${systemsDir}/${_sys}`
 		}, {
-			src: `${emuDir}/nostlan/${_sys}`,
-			dest: `${emuDir}/${_sys}/images`
+			src: `${systemsDir}/nostlan/${_sys}`,
+			dest: `${systemsDir}/${_sys}/images`
 		}, {
-			src: `${emuDir}/${_sys}/BIN`,
-			dest: `${emuDir}/${_sys}/${_emu}`
+			src: `${systemsDir}/${_sys}/BIN`,
+			dest: `${systemsDir}/${_sys}/${_emu}`
 		}, {
-			src: `${emuDir}/${_sys}/GAMES`, // make lowercase
-			dest: `${emuDir}/${_sys}/_games` // temp folder
+			src: `${systemsDir}/${_sys}/GAMES`, // make lowercase
+			dest: `${systemsDir}/${_sys}/_games` // temp folder
 		}, {
-			src: `${emuDir}/${_sys}/_games`,
-			dest: `${emuDir}/${_sys}/games`
+			src: `${systemsDir}/${_sys}/_games`,
+			dest: `${systemsDir}/${_sys}/games`
 		}];
 		// remove old game lib files, rescanning must be done
 		await fs.remove(`${usrDir}/_usr/${_sys}Games.json`);
@@ -139,7 +139,7 @@ module.exports = async function() {
 		if (prefs[_emu].saves) {
 			delete prefs[_emu].saves.dirs;
 		}
-		await fs.remove(`${emuDir}/nostlan/${_sys}`);
+		await fs.remove(`${systemsDir}/nostlan/${_sys}`);
 
 		if (prefs[_emu].app) {
 			let emuApp = util.absPath(prefs[_emu].app);

@@ -19,7 +19,7 @@ Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](h
 
 #### App UI
 
-- shows emulator wiki pages for games in the `manuals` section of the open box menus (only works for wii and switch rn)
+- shows emulator wiki pages for games in the `manuals` section of the open box menus (only works for wii and switch right now)
 
 #### User Experience
 

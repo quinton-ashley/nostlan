@@ -2,11 +2,11 @@ Nostlan is an open source _high quality_ front-end launcher for video game emula
 
 [Download Nostlan](https://github.com/quinton-ashley/nostlan/releases) and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount is appreciated. [Support the development of Nostlan on patreon](https://www.patreon.com/nostlan) to gain access to premium features!
 
-This update log covers changes made in v2.0.x. Unfamiliar with Nostlan? [Read about its features and look at screenshots on the readme page.](https://github.com/quinton-ashley/nostlan/blob/master/README.md)
+This update log covers changes made in v1.10.x. Unfamiliar with Nostlan? [Read about its features and look at screenshots on the readme page.](https://github.com/quinton-ashley/nostlan/blob/master/README.md)
 
 Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](https://www.reddit.com/r/nostlan/)
 
-## Update Summary for v2.0.x
+## Update Summary for v1.10.x
 
 <p><a href="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn.png">
 <img src="https://raw.githubusercontent.com/quinton-ashley/nostlan-screenshots/master/gcn_LQ.png">
@@ -31,6 +31,7 @@ Join the Nostlan Community on [Discord](https://discord.gg/cT2yNC6) | [Reddit](h
 #### Emulators
 
 - Built-in support for em-fceux, a javascript port of fceux as the default emulator for nes. Currently em-fceux is missing a critical features, the ability to export save states to a file for use on other devices. I've been in contact with the developer, hopefully this feature will be implemented soon!
+- install emulators in Nostlan
 
 ## Let me know what you think about Nostlan
 

@@ -198,6 +198,7 @@ class Launcher {
 				} else {
 					kb.keyTap(combo[0]);
 				}
+				log('kb: ' + combo);
 			} else if (mac && emu == 'vba') {
 				await delay(1500);
 				kb.keyToggle('tab', 'down', ['command', 'shift']);

@@ -6,7 +6,7 @@ module.exports = async function() {
 		if (!_syst.emus) continue;
 		for (let _emu of _syst.emus) {
 
-			let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install'];
+			let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install', 'fullscreenKeyCombo'];
 
 			for (let prop of props) {
 				if (!prefs[_emu][prop] ||

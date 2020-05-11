@@ -655,7 +655,13 @@ module.exports = async function(arg) {
 			log('search for: ' + searchTerm);
 			for (let game of games) {
 				let titleSlice = game.title.slice(0, searchTerm.length);
-				if (searchTerm == titleSlice.toLowerCase()) {
+				let matched = (searchTerm == titleSlice.toLowerCase());
+				if (game.keywords) {
+					for (let keyword of game.keywords) {
+						if (searchTerm == keyword.toLowerCase()) matched = true;
+					}
+				}
+				if (matched) {
 					let $cur = $('#' + game.id).eq(0);
 					if (!$cur.length) continue;
 					log('cursor to game: ' + game.title);

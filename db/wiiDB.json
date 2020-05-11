@@ -3876,18 +3876,22 @@
 		}, {
 			"id": "RMGE01",
 			"title": "Super Mario Galaxy",
+			"keywords": ["SMG"],
 			"img": {
 				"disc": "https://www.mobygames.com/images/covers/l/142046-super-mario-galaxy-wii-media.jpg"
 			}
 		}, {
 			"id": "RMGJ01",
-			"title": "Super Mario Galaxy"
+			"title": "Super Mario Galaxy",
+			"keywords": ["SMG"]
 		}, {
 			"id": "RMGK01",
-			"title": "Super Mario Galaxy"
+			"title": "Super Mario Galaxy",
+			"keywords": ["SMG"]
 		}, {
 			"id": "RMGP01",
-			"title": "Super Mario Galaxy"
+			"title": "Super Mario Galaxy",
+			"keywords": ["SMG"]
 		}, {
 			"id": "RMHE08",
 			"title": "Monster Hunter Tri"
@@ -23770,13 +23774,16 @@
 			"title": "Sims, The"
 		}, {
 			"id": "G4QE01",
-			"title": "Super Mario Strikers"
+			"title": "Super Mario Strikers",
+			"sys": "gcn"
 		}, {
 			"id": "G4QJ01",
-			"title": "Super Mario Strikers"
+			"title": "Super Mario Strikers",
+			"sys": "gcn"
 		}, {
 			"id": "G4QP01",
-			"title": "Mario Smash Football"
+			"title": "Mario Smash Football",
+			"sys": "gcn"
 		}, {
 			"id": "G4SE01",
 			"title": "The Legend of Zelda: Four Swords Adventures",
@@ -24956,10 +24963,12 @@
 			"title": "2002 FIFA World Cup"
 		}, {
 			"id": "GFKE69",
-			"title": "Freekstyle"
+			"title": "Freekstyle",
+			"sys": "gcn"
 		}, {
 			"id": "GFKP69",
-			"title": "Freekstyle"
+			"title": "Freekstyle",
+			"sys": "gcn"
 		}, {
 			"id": "GFMJAF",
 			"title": "Family Stadium 2003"
@@ -26189,6 +26198,7 @@
 		}, {
 			"id": "GMSE01",
 			"title": "Super Mario Sunshine",
+			"keywords": ["SMS"],
 			"sys": "gcn",
 			"img": {
 				"coverFull": "https://r.mprd.se/GCN/Covers/Super%20Mario%20Sunshine.jpg",
@@ -26197,10 +26207,12 @@
 		}, {
 			"id": "GMSJ01",
 			"title": "Super Mario Sunshine",
+			"keywords": ["SMS"],
 			"sys": "gcn"
 		}, {
 			"id": "GMSP01",
 			"title": "Super Mario Sunshine",
+			"keywords": ["SMS"],
 			"sys": "gcn"
 		}, {
 			"id": "GMTE69",
@@ -27217,16 +27229,20 @@
 			"title": "Sega Soccer Slam"
 		}, {
 			"id": "GSTE69",
-			"title": "SSX Tricky"
+			"title": "SSX Tricky",
+			"sys": "gcn"
 		}, {
 			"id": "GSTJ13",
-			"title": "SSX Tricky"
+			"title": "SSX Tricky",
+			"sys": "gcn"
 		}, {
 			"id": "GSTJ69",
-			"title": "SSX Tricky"
+			"title": "SSX Tricky",
+			"sys": "gcn"
 		}, {
 			"id": "GSTP69",
-			"title": "SSX Tricky"
+			"title": "SSX Tricky",
+			"sys": "gcn"
 		}, {
 			"id": "GSUE70",
 			"title": "Superman: Shadow of Apokolips"
@@ -27559,13 +27575,16 @@
 			"title": "Shadow the Hedgehog"
 		}, {
 			"id": "GUSE7F",
-			"title": "Universal Studios Theme Park Adventure"
+			"title": "Universal Studios Theme Park Adventure",
+			"sys": "gcn"
 		}, {
 			"id": "GUSJ28",
-			"title": "Universal Studios Japan Adventure"
+			"title": "Universal Studios Japan Adventure",
+			"sys": "gcn"
 		}, {
 			"id": "GUSP7F",
-			"title": "Universal Studios Theme Park Adventure"
+			"title": "Universal Studios Theme Park Adventure",
+			"sys": "gcn"
 		}, {
 			"id": "GUTD52",
 			"title": "Ultimate Spider-Man"
@@ -27944,13 +27963,16 @@
 			"title": "XGRA Extreme G Racing Association"
 		}, {
 			"id": "GXBE69",
-			"title": "SSX 3"
+			"title": "SSX 3",
+			"sys": "gcn"
 		}, {
 			"id": "GXBJ13",
-			"title": "SSX 3"
+			"title": "SSX 3",
+			"sys": "gcn"
 		}, {
 			"id": "GXBP69",
-			"title": "SSX 3"
+			"title": "SSX 3",
+			"sys": "gcn"
 		}, {
 			"id": "GXCE01",
 			"title": "Custom Robo"

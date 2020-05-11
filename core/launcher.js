@@ -21,7 +21,7 @@ class Launcher {
 
 		file = path.parse(file);
 
-		if (file.ext == '.app') return macExec;
+		if (file.ext != '.app') return macExec;
 
 		macExec += '/Contents/MacOS/';
 
@@ -69,7 +69,7 @@ class Launcher {
 
 				if (regex.test(f.base)) {
 					emuApp = file;
-					if (mac) emuApp = getMacExec(emuApp);
+					if (mac) emuApp = await this.getMacExec(emuApp);
 					if (emuApp && await fs.exists(emuApp)) {
 						return emuApp;
 					}
@@ -80,7 +80,7 @@ class Launcher {
 		log(`couldn't find app at path:\n` + emuApp);
 		emuApp = await dialog.selectFile('select emulator app');
 
-		if (mac) emuApp += getMacExec();
+		if (mac) emuApp += await this.getMacExec();
 
 		if (!(await fs.exists(emuApp))) {
 			cui.err('app path not valid: ' + emuApp);

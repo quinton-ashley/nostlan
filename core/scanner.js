@@ -115,6 +115,7 @@ class Scanner {
 				} else {
 					term = term.base;
 				}
+				let fileName = term;
 				this.olog('file:   ' + term);
 				$('#loadDialog1').text(term);
 				await delay(1);
@@ -254,13 +255,13 @@ class Scanner {
 				term = term.replace(/ *decrypted */gi, '');
 
 				term = term.trim();
-				let game = await this.searchForGame(searcher, term, games);
+				let game = await this.searchForGame(searcher, games, term, fileName);
 
 				if (!game) {
 					// some games use parenthesis in the game title so this
 					// is a last resort if the game isn't found
 					term = term.replace(/[\[\(].*/gi, '');
-					game = await this.searchForGame(searcher, term, games);
+					game = await this.searchForGame(searcher, games, term, fileName);
 				}
 
 				if (game) {
@@ -291,11 +292,18 @@ class Scanner {
 		return games;
 	}
 
-	async searchForGame(searcher, term, games) {
+	async searchForGame(searcher, games, term, fileName) {
 		log('term:  ' + term);
 		let results = await searcher(term.substr(0, 64));
 		if (arg.v) log(results);
 		let region = prefs.region;
+		if (/USA/i.test(fileName)) {
+			region = 'E';
+		} else if (/Japan/i.test(fileName)) {
+			region = 'J';
+		} else if (/Europe/i.test(fileName)) {
+			region = 'P';
+		}
 		for (let i = 0; i < results.length; i++) {
 			let game = results[i].item;
 			if (game.title.length > term.length + 6) continue;
@@ -309,12 +317,9 @@ class Scanner {
 				let gRegion = game.id[3];
 				// TODO: this is a temporary region filter
 				if (/[KWXDZIFSHYVRAC]/.test(gRegion)) continue;
-				if (gRegion == 'E' && (region == 'P' || region == 'J')) continue;
-				if (gRegion == 'P' && (region == 'E' || region == 'J')) continue;
-				if (gRegion == 'J' && (region == 'E' || region == 'P')) continue;
+				if (region != gRegion) continue;
 			} else if (sys == 'switch') {
 				let gRegion = game.id[4];
-				if (gRegion == 'A' && (region == 'P' || region == 'J')) continue;
 				if (gRegion == 'B' && (region == 'E' || region == 'J')) continue;
 				if (gRegion == 'C' && (region == 'E' || region == 'P')) continue;
 			}

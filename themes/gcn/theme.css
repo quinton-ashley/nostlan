@@ -38,8 +38,8 @@
 /*================Wii/Gamecube Box====================*/
 game.gcn .crop.coverFull,
 game.wii .crop.coverFull {
-	width: 200.1%;
-	top: 1.4%;
+	width: 200.6%;
+	top: 1.2%;
 	left: 0;
 }
 
@@ -49,9 +49,9 @@ game.wii .crop.coverFull {
 
 game.gcn .crop.cover,
 game.wii .crop.cover {
-	width: 94.5%;
-	top: 2.6%;
-	left: 0.8%;
+	width: 95%;
+	top: 1.2%;
+	left: 2.4%;
 }
 
 game.gcn img.coverFull,

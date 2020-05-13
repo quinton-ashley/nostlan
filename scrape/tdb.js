@@ -6,6 +6,18 @@ let availableImgs = [
 	"coverFull",
 	"disc"
 ];
+let regions = {
+	nintendo: {
+		E: 'US',
+		P: 'EN',
+		J: 'JA'
+	},
+	ps3: {
+		U: 'US',
+		E: 'EN',
+		J: 'JA'
+	}
+}
 
 class Gamestdb {
 	constructor() {}
@@ -29,12 +41,13 @@ class Gamestdb {
 			if (i == 2) {
 				id = id.substr(0, id.length - 1) + 'C';
 			}
-			let locale = 'US';
-			if (sys == 'ps3') {
-				if (id[2] == 'E') {
-					locale = 'EN';
-				}
+			let locale;
+			if (sys != 'ps3') {
+				locale = regions.nintendo[id[3]];
+			} else {
+				locale = regions.ps3[id[2]];
 			}
+			if (!locale) locale = 'US';
 			let _sys = (sys != 'n3ds') ? sys : '3ds';
 			url = `https://art.gametdb.com/${_sys}/${((name!='coverFull')?name:'coverfull')}HQ/${locale}/${id}`;
 			res = await dl(url, file, {

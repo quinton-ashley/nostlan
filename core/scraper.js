@@ -30,7 +30,7 @@ class Scraper {
 	async getImg(game, name, hq) {
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
-		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title}`));
+		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title} [${game.id}]`));
 		let imgDir = await this.getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB

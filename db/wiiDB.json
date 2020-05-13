@@ -26198,22 +26198,40 @@
 		}, {
 			"id": "GMSE01",
 			"title": "Super Mario Sunshine",
-			"keywords": ["SMS"],
+			"keywords": ["SMS J"],
 			"sys": "gcn",
 			"img": {
+				"box": "q",
 				"coverFull": "https://r.mprd.se/GCN/Covers/Super%20Mario%20Sunshine.jpg",
-				"disc": "https://images.launchbox-app.com/40a9bd38-7d95-430f-830c-ed008d431bba.png"
+				"disc": "https://images.launchbox-app.com/40a9bd38-7d95-430f-830c-ed008d431bba.png",
+				"manual": "https://themushroomkingdom.net/images/sms/sms_gooped-up.jpg"
+			}
+		}, {
+			"id": "GMSE02",
+			"title": "Super Mario Sunshine Multiplayer",
+			"keywords": ["SMS multi", "SMS coop"],
+			"sys": "gcn",
+			"img": {
+				"cover": "https://www.romstation.fr/romstation/resources/games/ngc/cover/53136.jpg",
+				"manual": "https://themushroomkingdom.net/images/sms/sms_gooped-up.jpg"
 			}
 		}, {
 			"id": "GMSJ01",
 			"title": "Super Mario Sunshine",
-			"keywords": ["SMS"],
-			"sys": "gcn"
+			"keywords": ["SMS J"],
+			"sys": "gcn",
+			"img": {
+				"box": "q",
+				"disc": "https://www.mobygames.com/images/covers/large/1137760559-00.jpg"
+			}
 		}, {
 			"id": "GMSP01",
 			"title": "Super Mario Sunshine",
-			"keywords": ["SMS"],
-			"sys": "gcn"
+			"keywords": ["SMS P"],
+			"sys": "gcn",
+			"img": {
+				"manual": "https://themushroomkingdom.net/images/sms/sms_gooped-up.jpg"
+			}
 		}, {
 			"id": "GMTE69",
 			"title": "Disney's Party"

@@ -690,7 +690,7 @@ module.exports = async function(arg) {
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu_11 .uie[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu_12 .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text('auto-hide cover overlay');
@@ -790,11 +790,11 @@ module.exports = async function(arg) {
 			syst = systems[sys];
 			cui.removeCursor();
 			await loadGameLib();
-		} else if (ui == 'controllerMenu_11') {
+		} else if (ui == 'controllerMenu_12') {
 			if (act == 'rumble') {
 				prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
 				cui.opt.haptic = prefs.ui.gamepad.haptic;
-				let $rumble = $('#controllerMenu_11 .uie[name="rumble"]');
+				let $rumble = $('#controllerMenu_12 .uie[name="rumble"]');
 				if (prefs.ui.gamepad.haptic) {
 					log('rumble enabled');
 					$rumble.text('disable rumble');
@@ -803,7 +803,7 @@ module.exports = async function(arg) {
 					$rumble.text('enable rumble');
 				}
 			}
-		} else if (ui == 'interfaceMenu_11') {
+		} else if (ui == 'interfaceMenu_12') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'theme') {
@@ -811,7 +811,7 @@ module.exports = async function(arg) {
 					cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
 					return;
 				}
-				cui.removeView('themeMenu_12');
+				cui.removeView('themeMenu_13');
 				let themeMenu = 'h1 Change Theme\n';
 				for (let palette of (await themes.getColorPalettes())) {
 					let p = palette.sys + ' ' + palette.name;
@@ -819,14 +819,14 @@ module.exports = async function(arg) {
 					palette = systems[palette.sys].name + ' ' + palette.name;
 					themeMenu += `.col.uie(name="${p}") ${palette}\n`;
 				}
-				$('#themeMenu_12').append(pug(themeMenu));
-				cui.addView('themeMenu_12');
-				cui.change('themeMenu_12');
+				$('#themeMenu_13').append(pug(themeMenu));
+				cui.addView('themeMenu_13');
+				cui.change('themeMenu_13');
 			}
-		} else if (ui == 'themeMenu_12') {
+		} else if (ui == 'themeMenu_13') {
 			act = act.split(' ');
 			$('body').removeClass();
-			cui.change('interfaceMenu_11', act[0]);
+			cui.change('interfaceMenu_12', act[0]);
 			$('body').addClass(act[1]);
 			prefs[sys].colorPalette = act[1];
 		} else if (ui == 'addSavesPathMenu_2') {
@@ -864,10 +864,6 @@ module.exports = async function(arg) {
 			} else if (act == 'fullscreen') {
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(true);
-			} else if (act == 'editAppearance') {
-				cui.change('interfaceMenu_11');
-			} else if (act == 'controllerSettings') {
-				cui.change('controllerMenu_11');
 			} else if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
@@ -882,6 +878,21 @@ module.exports = async function(arg) {
 				await removeIntro();
 				cui.change('libMain');
 				cui.scrollToCursor(0);
+			} else if (act == 'x') {
+				cui.doAction('quit');
+			} else if (act == 'settings') {
+				cui.change('settingsMenu_11');
+			} else if (act == 'minimize' ||
+				act == 'prefs' || act == 'y') {
+				electron.getCurrentWindow().minimize();
+			}
+		} else if (ui == 'settingsMenu_11') {
+			if (act == 'editAppearance') {
+				cui.change('interfaceMenu_12');
+			} else if (act == 'controllerSettings') {
+				cui.change('controllerMenu_12');
+			} else if (act == 'editPrefs') {
+				opn(prefsMng.prefsPath);
 			} else if (act == 'showConsole') {
 				electron.getCurrentWindow().toggleDevTools();
 				let $elem = $('#pauseMenu_10 .uie[name="showConsole"] .text');
@@ -890,14 +901,6 @@ module.exports = async function(arg) {
 				} else {
 					$elem.text('show console');
 				}
-			} else if (act == 'editPrefs') {
-				opn(prefsMng.prefsPath);
-			} else if (act == 'x') {
-				cui.doAction('quit');
-			}
-			if (act == 'minimize' ||
-				act == 'prefs' || act == 'y') {
-				electron.getCurrentWindow().minimize();
 			}
 		} else if (ui == 'donateMenu') {
 			if (act == 'donate-monthly') {
@@ -1293,6 +1296,7 @@ module.exports = async function(arg) {
 		cui.bind('[', 'x');
 		cui.bind(']', 'y');
 		cui.bind('\\', 'b');
+		cui.bind('|', 'start');
 
 		if (prefs.load.online) {
 			try {

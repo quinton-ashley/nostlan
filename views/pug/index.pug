@@ -29,12 +29,12 @@ html
 			.uie(name='new-in-docs') install at ~/Documents/emu
 			.uie(name='new') choose install location
 			.uie(name='continue') finish setup
-		#themeMenu_12.menu.row-y
-		#interfaceMenu_11.menu.row-y
+		#themeMenu_13.menu.row-y
+		#interfaceMenu_12.menu.row-y
 			h1 Change Appearance
 			.uie(name='theme') change theme
 			.uie(name='toggleCover') auto-hide cover overlay
-		#controllerMenu_11.menu.row-y
+		#controllerMenu_12.menu.row-y
 			h1 Controller Settings
 			.uie(name='rumble') rumble on/off
 		#pauseMenu_10.menu.row-y
@@ -51,10 +51,6 @@ html
 				i.material-icons.md-left cloud_download
 				.text sync saves from backup
 				i.material-icons.md-right.invis cloud_download
-			.uie(name='editAppearance')
-				i.material-icons.md-left view_comfy
-				.text change appearance
-				i.material-icons.md-right.invis view_comfy
 			.uie(name='scanForGames')
 				i.material-icons.md-left disc_full
 				.text scan for games
@@ -63,22 +59,32 @@ html
 				i.material-icons.md-left add_photo_alternate
 				.text scan for images
 				i.material-icons.md-right.invis add_photo_alternate
-			.uie(name='showConsole') 
-				i.material-icons.md-left bug_report
-				.text show console
-				i.material-icons.md-right.invis bug_report
+			.uie(name='settings')
+				i.material-icons.md-left perm_data_setting
+				.text settings menu
+				i.material-icons.md-right.invis perm_data_setting
+			.uie(name='quit')
+				i.material-icons.md-left eject
+				.text exit nostlan
+				i.material-icons.md-right.invis eject
+		#settingsMenu_11.menu.row-y
+			h1 Settings Menu
+			.uie(name='editAppearance')
+				i.material-icons.md-left view_comfy
+				.text change appearance
+				i.material-icons.md-right.invis view_comfy
 			.uie(name='controllerSettings')
 				i.material-icons.md-left videogame_asset
 				.text controller settings
 				i.material-icons.md-right.invis videogame_asset
+			.uie(name='showConsole') 
+				i.material-icons.md-left bug_report
+				.text show console
+				i.material-icons.md-right.invis bug_report
 			.uie(name='editPrefs')
 				i.material-icons.md-left perm_data_setting
 				.text edit preferences
 				i.material-icons.md-right.invis perm_data_setting
-			.uie(name='quit')
-				i.material-icons.md-left eject
-				.text quit nostlan
-				i.material-icons.md-right.invis eject
 		#sysMenu_5.menu.container.row-y
 		#playMenu_5.menu.row-y
 		#emuMenu_5.menu.row-y

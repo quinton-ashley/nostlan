@@ -279,7 +279,7 @@ class Scanner {
 				log(game);
 			}
 		}
-		let outLogPath = `${systemsDir}/${sys}/${sys}Log.txt`;
+		let outLogPath = `${systemsDir}/${sys}/${sys}GameLibScanLog.txt`;
 		try {
 			await fs.outputFile(outLogPath, this.outLog);
 		} catch (ror) {

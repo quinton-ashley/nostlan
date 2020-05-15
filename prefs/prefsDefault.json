@@ -1,462 +1,464 @@
 {
-	"nlaDir": "",
-	"region": "E",
-	"bsnes": {
-		"name": "bsnes",
-		"appRegex": {
-			"linux": "bsnes_hd",
-			"mac": "bsnes_hd\\.app",
-			"win": "bsnes\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}", "--fullscreen"],
-			"mac": ["${app}", "${game}", "--fullscreen"],
-			"win": ["${app}", "${game}", "--fullscreen"]
-		},
-		"install": {
-			"linux": {
-				"portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_linux.zip"
-			},
-			"mac": {
-				"portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_mac.zip"
-			},
-			"win": {
-				"portable": "https://byuu.org/download/bsnes/bsnes_v115-windows.zip"
-			}
-		}
-	},
-	"cemu": {
-		"name": "Cemu",
-		"appRegex": {
-			"linux": "Cemu\\.exe",
-			"mac": "Cemu\\.exe",
-			"win": "Cemu\\.exe"
-		},
-		"cmd": {
-			"linux": ["wine", "${app}", "-g", "${game}", "-f"],
-			"mac": ["wine", "${app}", "-g", "${game}", "-f"],
-			"win": ["${app}", "-g", "${game}", "-f"]
-		},
-		"install": {
-			"linux": {
-				"portable": "http://cemu.info/releases/cemu_1.18.2.zip"
-			},
-			"mac": {
-				"portable": "http://cemu.info/releases/cemu_1.18.2.zip"
-			},
-			"win": {
-				"portable": "http://cemu.info/releases/cemu_1.18.2.zip"
-			}
-		}
-	},
-	"citra": {
-		"name": "Citra",
-		"app": {
-			"linux": "org.citra.citra-nightly"
-		},
-		"appDirs": {
-			"mac": [
-				"/Applications/Citra/nightly",
-				"/Applications/Citra/canary"
-			],
-			"win": [
-				"$emu/nightly-mingw",
-				"$emu/canary-mingw"
-			]
-		},
-		"appRegex": {
-			"mac": "citra-qt\\.app",
-			"win": "citra-qt\\.exe"
-		},
-		"cmd": {
-			"linux": ["flatpak", "run", "${app}", "${game}", "-f"],
-			"mac": ["${app}", "${game}", "-f"],
-			"win": ["${app}", "${game}", "-f"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-flatpak": [
-					["flatpak", "remote-add", "--if-not-exists", "flathub", "https://flathub.org/repo/flathub.flatpakrepo"],
-					["flatpak", "install", "https://flatpak.citra-emu.org/citra-nightly.flatpakref"],
-					["flatpak", "install", "https://flatpak.citra-emu.org/citra-canary.flatpakref"]
-				]
-			},
-			"mac": {
-				"installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg"
-			},
-			"win": {
-				"installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe"
-			}
-		},
-		"saveDirs": {
-			"linux": ["$home/.local/share/citra-emu/sdmc"],
-			"mac": ["$home/.local/share/citra-emu/sdmc"],
-			"win": ["$home/AppData/Roaming/Citra/sdmc"]
-		}
-	},
-	"desmume": {
-		"name": "DeSmuME",
-		"app": {
-			"linux": "desmume"
-		},
-		"appRegex": {
-			"mac": "DeSmuME.*\\.app",
-			"win": "DeSmuME.*\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"mac": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-arch": ["pacman", "-s", "${app}"]
-			},
-			"mac": {
-				"standalone": "https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK"
-			},
-			"win": {
-				"standalone": "https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe"
-			}
-		},
-		"fullscreenKeyCombo": {
-			"win": ["enter", "alt"]
-		}
-	},
-	"dolphin": {
-		"name": "Dolphin",
-		"app": {
-			"linux": "dolphin-emu"
-		},
-		"appRegex": {
-			"mac": "dolphin\\.app",
-			"win": "Dolphin\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}", "-b"],
-			"mac": ["${app}", "${game}", "-b"],
-			"win": ["${app}", "${game}", "-b"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "${app}"]
-			},
-			"mac": {
-				"installer": "https://dl.dolphin-emu.org/builds/27/f0/dolphin-master-5.0-11824.dmg"
-			},
-			"win": {
-				"portable": "https://dl.dolphin-emu.org/builds/a6/20/dolphin-master-5.0-11824-x64.7z"
-			}
-		}
-	},
-	"mame": {
-		"name": "MAME",
-		"app": {
-			"linux": "mame"
-		},
-		"appRegex": {
-			"mac": "mame64",
-			"win": "mame64\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
-			"mac": ["${app}", "-inipath", "${cwd}", "${game.id}"],
-			"win": ["${app}", "-inipath", "${cwd}", "${game.id}"]
-		},
-		"install": {
-			"mac": {
-				"portable": "https://sdlmame.lngn.net/mame0220-64bit.zip"
-			},
-			"win": {
-				"portable": "https://github.com/mamedev/mame/releases/download/mame0220/mame0220b_64bit.exe"
-			}
-		}
-	},
-	"melonds": {
-		"name": "melonDS",
-		"appRegex": {
-			"linux": "melonDS",
-			"win": "melonDS\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"portable": "http://melonds.kuribo64.net/downloads/melonDS_0.8.3_linux64.7z"
-			},
-			"win": {
-				"portable": "http://melonds.kuribo64.net/downloads/melonDS_0.8.3_win64.7z"
-			}
-		}
-	},
-	"mesen": {
-		"name": "mesen",
-		"appRegex": {
-			"win": "Mesen\\.exe"
-		},
-		"cmd": {
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"win": {
-				"standalone": "https://www.mesen.ca/download.php"
-			}
-		},
-		"fullscreenKeyCombo": {
-			"linux": ["f11"],
-			"win": ["f11"]
-		}
-	},
-	"mgba": {
-		"name": "mGBA",
-		"app": {
-			"linux": "mgba-sdl"
-		},
-		"appDirs": {
-			"mac": ["Applications"]
-		},
-		"appRegex": {
-			"mac": "mGBA\\.app",
-			"win": "mgba-sdl\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "-f", "${game}"],
-			"mac": ["${app}", "-f", "${game}"],
-			"win": ["${app}", "-f", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "${app}"]
-			},
-			"mac": {
-				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz"
-			},
-			"win": {
-				"portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
-			}
-		},
-		"fullscreenKeyCombo": {
-			"mac": ["f", "command"]
-		}
-	},
-	"pcsx2": {
-		"name": "PCSX2",
-		"app": {
-			"linux": "pcsx2"
-		},
-		"appRegex": {
-			"win": "pcsx2\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
-			"win": ["${app}", "${game}", "--nogui", "--fullscreen"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "${app}"]
-			},
-			"win": {
-				"portable": "https://pcsx2.net/download/releases/windows/send/40-windows/119-pcsx2-1-4-0-binaries.html"
-			}
-		}
-	},
-	"rpcs3": {
-		"name": "RPCS3",
-		"appRegex": {
-			"linux": "rpcs3.*\\.AppImage",
-			"win": "rpcs3\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"standalone": "https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-72bef8dd7f557d3aac09829e2d1069a2d98182bb/rpcs3-v0.0.10-10321-72bef8dd_linux64.AppImage"
-			},
-			"win": {
-				"portable": "https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-72bef8dd7f557d3aac09829e2d1069a2d98182bb/rpcs3-v0.0.10-10321-72bef8dd_win64.7z"
-			}
-		}
-	},
-	"ryujinx": {
-		"name": "Ryujinx",
-		"appRegex": {
-			"linux": "Ryujinx",
-			"mac": "Ryujinx",
-			"win": "Ryujinx\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"mac": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-linux_x64.tar.gz"
-			},
-			"mac": {
-				"portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-osx_x64.zip"
-			},
-			"win": {
-				"portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-win_x64.zip"
-			}
-		}
-	},
-	"snes9x": {
-		"name": "snes9x",
-		"app": {
-			"linux": "snes9x-gtk"
-		},
-		"appRegex": {
-			"mac": "snes9x-x64\\.exe",
-			"win": "snes9x-x64\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}", "-fullscreen"],
-			"mac": ["wine64", "${app}", "${game}", "-fullscreen"],
-			"win": ["${app}", "${game}", "-fullscreen"]
-		},
-		"install": {
-			"mac": {
-				"portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
-			},
-			"win": {
-				"portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
-			}
-		},
-		"fullscreenKeyCombo": {
-			"linux": ["f11"],
-			"win": ["f11"]
-		}
-	},
-	"vba": {
-		"name": "Visual Boy Advance",
-		"app": {
-			"linux": "vbam-sdl"
-		},
-		"appRegex": {
-			"mac": "visualboyadvance-m\\.app",
-			"win": "visualboyadvance-m\\.exe"
-		},
-		"cmd": {
-			"linux": ["${app}", "${game}"],
-			"mac": ["${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"pkgManager-arch": ["pacman", "-S", "${app}"]
-			},
-			"mac": {
-				"standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip"
-			},
-			"win": {
-				"standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip"
-			}
-		},
-		"fullscreenKeyCombo": {
-			"linux": ["f11"],
-			"win": ["f11"]
-		}
-	},
-	"yuzu": {
-		"name": "Yuzu",
-		"appDirs": {
-			"win": [
-				"$home/AppData/Local/yuzu/yuzu-windows-msvc",
-				"$home/AppData/Local/yuzu/yuzu-windows-msvc-early-access"
-			]
-		},
-		"appRegex": {
-			"linux": "yuzu",
-			"win": "yuzu\\.exe"
-		},
-		"cmd": {
-			"linux": ["wine", "${app}", "${game}"],
-			"win": ["${app}", "${game}"]
-		},
-		"install": {
-			"linux": {
-				"portable": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-244/yuzu-linux-20200430-429f8cb21.7z"
-			},
-			"win": {
-				"installer": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-244/yuzu-windows-msvc-20200430-429f8cb21.7z"
-			}
-		},
-		"update": {
-			"win": ["$home/AppData/Local/yuzu/maintenancetool.exe",
-				"--launcher", "${app}"]
-		},
-		"fullscreenKeyCombo": {
-			"linux": ["f11"],
-			"win": ["f11"]
-		}
-	},
-	"xenia": {
-		"name": "Xenia",
-		"appRegex": {
-			"win": "Xenia\\.exe"
-		},
-		"cmd": {
-			"win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]
-		},
-		"install": {
-			"win": {
-				"portable": "https://ci.appveyor.com/api/projects/benvanik/xenia/artifacts/xenia_master.zip?branch=master&job=Configuration%3A%20Release&pr=false"
-			}
-		}
-	},
-	"ui": {
-		"mouse": {
-			"wheel": {
-				"multi": 1,
-				"smooth": false
-			}
-		},
-		"gamepad": {
-			"gca": true,
-			"haptic": true,
-			"default": {
-				"profile": "Xbox_PS_Adaptive",
-				"map": {}
-			},
-			"ps": {
-				"profile": "Xbox_PS_Adaptive",
-				"map": {}
-			},
-			"xbox": {
-				"profile": "Xbox_PS_Adaptive",
-				"map": {}
-			},
-			"nintendo": {
-				"profile": "Nintendo_Adaptive",
-				"map": {}
-			}
-		},
-		"maxColumns": 8,
-		"getBackCoverHQ": false,
-		"getExtraImgs": false,
-		"autoHideCover": false
-	},
-	"load": {
-		"delay": 2000,
-		"online": true
-	},
-	"inGame": {
-		"quit": {
-			"hold": "start",
-			"time": 5000
-		},
-		"reset": {
-			"hold": "select",
-			"time": 5000
-		}
-	},
-	"donor": {},
-	"session": {
-		"sys": "wii"
-	}
+  "nlaDir": "",
+  "region": "E",
+  "bsnes": {
+    "name": "bsnes",
+    "appRegex": {
+      "linux": "bsnes_hd",
+      "mac": "bsnes_hd\\.app",
+      "win": "bsnes\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}", "--fullscreen"],
+      "mac": ["${app}", "${game}", "--fullscreen"],
+      "win": ["${app}", "${game}", "--fullscreen"]
+    },
+    "install": {
+      "linux": {
+        "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_linux.zip"
+      },
+      "mac": {
+        "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_mac.zip"
+      },
+      "win": {
+        "portable": "https://byuu.org/download/bsnes/bsnes_v115-windows.zip"
+      }
+    }
+  },
+  "cemu": {
+    "name": "Cemu",
+    "appRegex": {
+      "linux": "Cemu\\.exe",
+      "mac": "Cemu\\.exe",
+      "win": "Cemu\\.exe"
+    },
+    "cmd": {
+      "linux": ["wine", "${app}", "-g", "${game}", "-f"],
+      "mac": ["wine", "${app}", "-g", "${game}", "-f"],
+      "win": ["${app}", "-g", "${game}", "-f"]
+    },
+    "install": {
+      "linux": {
+        "portable": "http://cemu.info/releases/cemu_1.18.2.zip"
+      },
+      "mac": {
+        "portable": "http://cemu.info/releases/cemu_1.18.2.zip"
+      },
+      "win": {
+        "portable": "http://cemu.info/releases/cemu_1.18.2.zip"
+      }
+    }
+  },
+  "citra": {
+    "name": "Citra",
+    "app": {
+      "linux": "org.citra.citra-nightly"
+    },
+    "appDirs": {
+      "mac": [
+        "/Applications/Citra/nightly",
+        "/Applications/Citra/canary"
+      ],
+      "win": [
+        "$emu/nightly-mingw",
+        "$emu/canary-mingw"
+      ]
+    },
+    "appRegex": {
+      "mac": "citra-qt\\.app",
+      "win": "citra-qt\\.exe"
+    },
+    "cmd": {
+      "linux": ["flatpak", "run", "${app}", "${game}", "-f"],
+      "mac": ["${app}", "${game}", "-f"],
+      "win": ["${app}", "${game}", "-f"]
+    },
+    "install": {
+      "linux": {
+        "pkgManager-flatpak": [
+          ["flatpak", "remote-add", "--if-not-exists", "flathub", "https://flathub.org/repo/flathub.flatpakrepo"],
+          ["flatpak", "install", "https://flatpak.citra-emu.org/citra-nightly.flatpakref"],
+          ["flatpak", "install", "https://flatpak.citra-emu.org/citra-canary.flatpakref"]
+        ]
+      },
+      "mac": {
+        "installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg"
+      },
+      "win": {
+        "installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe"
+      }
+    },
+    "saveDirs": {
+      "linux": ["$home/.local/share/citra-emu/sdmc"],
+      "mac": ["$home/.local/share/citra-emu/sdmc"],
+      "win": ["$home/AppData/Roaming/Citra/sdmc"]
+    }
+  },
+  "desmume": {
+    "name": "DeSmuME",
+    "app": {
+      "linux": "desmume"
+    },
+    "appRegex": {
+      "mac": "DeSmuME.*\\.app",
+      "win": "DeSmuME.*\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}"],
+      "mac": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "pkgManager-arch": ["pacman", "-s", "${app}"]
+      },
+      "mac": {
+        "standalone": "https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK"
+      },
+      "win": {
+        "standalone": "https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe"
+      }
+    },
+    "fullscreenKeyCombo": {
+      "win": ["enter", "alt"]
+    }
+  },
+  "dolphin": {
+    "name": "Dolphin",
+    "app": {
+      "linux": "dolphin-emu"
+    },
+    "appRegex": {
+      "mac": "dolphin\\.app",
+      "win": "Dolphin\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}", "-b"],
+      "mac": ["${app}", "${game}", "-b"],
+      "win": ["${app}", "${game}", "-b"]
+    },
+    "install": {
+      "linux": {
+        "pkgManager-arch": ["pacman", "-S", "${app}"]
+      },
+      "mac": {
+        "installer": "https://dl.dolphin-emu.org/builds/27/f0/dolphin-master-5.0-11824.dmg"
+      },
+      "win": {
+        "portable": "https://dl.dolphin-emu.org/builds/a6/20/dolphin-master-5.0-11824-x64.7z"
+      }
+    }
+  },
+  "mame": {
+    "name": "MAME",
+    "app": {
+      "linux": "mame"
+    },
+    "appRegex": {
+      "mac": "mame64",
+      "win": "mame64\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
+      "mac": ["${app}", "-inipath", "${cwd}", "${game.id}"],
+      "win": ["${app}", "-inipath", "${cwd}", "${game.id}"]
+    },
+    "install": {
+      "mac": {
+        "portable": "https://sdlmame.lngn.net/mame0220-64bit.zip"
+      },
+      "win": {
+        "portable": "https://github.com/mamedev/mame/releases/download/mame0220/mame0220b_64bit.exe"
+      }
+    }
+  },
+  "melonds": {
+    "name": "melonDS",
+    "appRegex": {
+      "linux": "melonDS",
+      "win": "melonDS\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "portable": "http://melonds.kuribo64.net/downloads/melonDS_0.8.3_linux64.7z"
+      },
+      "win": {
+        "portable": "http://melonds.kuribo64.net/downloads/melonDS_0.8.3_win64.7z"
+      }
+    }
+  },
+  "mesen": {
+    "name": "mesen",
+    "appRegex": {
+      "win": "Mesen\\.exe"
+    },
+    "cmd": {
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "win": {
+        "standalone": "https://www.mesen.ca/download.php"
+      }
+    },
+    "fullscreenKeyCombo": {
+      "linux": ["f11"],
+      "win": ["f11"]
+    }
+  },
+  "mgba": {
+    "name": "mGBA",
+    "app": {
+      "linux": "mgba-sdl"
+    },
+    "appDirs": {
+      "mac": ["Applications"]
+    },
+    "appRegex": {
+      "mac": "mGBA\\.app",
+      "win": "mgba-sdl\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "-f", "${game}"],
+      "mac": ["${app}", "-f", "${game}"],
+      "win": ["${app}", "-f", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "pkgManager-arch": ["pacman", "-S", "${app}"]
+      },
+      "mac": {
+        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz"
+      },
+      "win": {
+        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
+      }
+    },
+    "fullscreenKeyCombo": {
+      "mac": ["f", "command"]
+    }
+  },
+  "pcsx2": {
+    "name": "PCSX2",
+    "app": {
+      "linux": "pcsx2"
+    },
+    "appRegex": {
+      "win": "pcsx2\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}", "--nogui", "--fullscreen"],
+      "win": ["${app}", "${game}", "--nogui", "--fullscreen"]
+    },
+    "install": {
+      "linux": {
+        "pkgManager-arch": ["pacman", "-S", "${app}"]
+      },
+      "win": {
+        "portable": "https://pcsx2.net/download/releases/windows/send/40-windows/119-pcsx2-1-4-0-binaries.html"
+      }
+    }
+  },
+  "rpcs3": {
+    "name": "RPCS3",
+    "appRegex": {
+      "linux": "rpcs3.*\\.AppImage",
+      "win": "rpcs3\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "standalone": "https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-72bef8dd7f557d3aac09829e2d1069a2d98182bb/rpcs3-v0.0.10-10321-72bef8dd_linux64.AppImage"
+      },
+      "win": {
+        "portable": "https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-72bef8dd7f557d3aac09829e2d1069a2d98182bb/rpcs3-v0.0.10-10321-72bef8dd_win64.7z"
+      }
+    }
+  },
+  "ryujinx": {
+    "name": "Ryujinx",
+    "appRegex": {
+      "linux": "Ryujinx",
+      "mac": "Ryujinx",
+      "win": "Ryujinx\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}"],
+      "mac": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-linux_x64.tar.gz"
+      },
+      "mac": {
+        "portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-osx_x64.zip"
+      },
+      "win": {
+        "portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-win_x64.zip"
+      }
+    }
+  },
+  "snes9x": {
+    "name": "snes9x",
+    "app": {
+      "linux": "snes9x-gtk"
+    },
+    "appRegex": {
+      "mac": "snes9x-x64\\.exe",
+      "win": "snes9x-x64\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}", "-fullscreen"],
+      "mac": ["wine64", "${app}", "${game}", "-fullscreen"],
+      "win": ["${app}", "${game}", "-fullscreen"]
+    },
+    "install": {
+      "mac": {
+        "portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
+      },
+      "win": {
+        "portable": "https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip"
+      }
+    },
+    "fullscreenKeyCombo": {
+      "linux": ["f11"],
+      "win": ["f11"]
+    }
+  },
+  "vba": {
+    "name": "Visual Boy Advance",
+    "app": {
+      "linux": "vbam-sdl"
+    },
+    "appRegex": {
+      "mac": "visualboyadvance-m\\.app",
+      "win": "visualboyadvance-m\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}"],
+      "mac": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "pkgManager-arch": ["pacman", "-S", "${app}"]
+      },
+      "mac": {
+        "standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip"
+      },
+      "win": {
+        "standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip"
+      }
+    },
+    "fullscreenKeyCombo": {
+      "linux": ["f11"],
+      "win": ["f11"]
+    }
+  },
+  "yuzu": {
+    "name": "Yuzu",
+    "appDirs": {
+      "win": [
+        "$home/AppData/Local/yuzu/yuzu-windows-msvc",
+        "$home/AppData/Local/yuzu/yuzu-windows-msvc-early-access"
+      ]
+    },
+    "appRegex": {
+      "linux": "yuzu",
+      "win": "yuzu\\.exe"
+    },
+    "cmd": {
+      "linux": ["wine", "${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "portable": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-244/yuzu-linux-20200430-429f8cb21.7z"
+      },
+      "win": {
+        "installer": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-244/yuzu-windows-msvc-20200430-429f8cb21.7z"
+      }
+    },
+    "update": {
+      "win": ["$home/AppData/Local/yuzu/maintenancetool.exe",
+        "--launcher", "${app}"
+      ]
+    },
+    "fullscreenKeyCombo": {
+      "linux": ["f11"],
+      "win": ["f11"]
+    }
+  },
+  "xenia": {
+    "name": "Xenia",
+    "appRegex": {
+      "win": "Xenia\\.exe"
+    },
+    "cmd": {
+      "win": ["${app}", "${game}", "--d3d12_resolution_scale=2", "--fullscreen"]
+    },
+    "install": {
+      "win": {
+        "portable": "https://ci.appveyor.com/api/projects/benvanik/xenia/artifacts/xenia_master.zip?branch=master&job=Configuration%3A%20Release&pr=false"
+      }
+    }
+  },
+  "ui": {
+    "mouse": {
+      "wheel": {
+        "multi": 1,
+        "smooth": false
+      }
+    },
+    "gamepad": {
+      "gca": true,
+      "haptic": true,
+      "default": {
+        "profile": "Xbox_PS_Adaptive",
+        "map": {}
+      },
+      "ps": {
+        "profile": "Xbox_PS_Adaptive",
+        "map": {}
+      },
+      "xbox": {
+        "profile": "Xbox_PS_Adaptive",
+        "map": {}
+      },
+      "nintendo": {
+        "profile": "Nintendo_Adaptive",
+        "map": {}
+      }
+    },
+    "maxColumns": 8,
+    "getBackCoverHQ": false,
+    "getExtraImgs": false,
+    "autoHideCover": false,
+    "launchFullScreen": true
+  },
+  "load": {
+    "delay": 2000,
+    "online": true
+  },
+  "inGame": {
+    "quit": {
+      "hold": "start",
+      "time": 5000
+    },
+    "reset": {
+      "hold": "select",
+      "time": 5000
+    }
+  },
+  "donor": {},
+  "session": {
+    "sys": "wii"
+  }
 }

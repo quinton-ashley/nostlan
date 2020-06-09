@@ -1,126 +1,126 @@
 doctype html
 html
-  head
-    title Nostlan
-    meta(charset='utf-8')
-    link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
-    link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
-    link(rel='stylesheet' type='text/css' href='../css/style.css')
+	head
+		title Nostlan
+		meta(charset='utf-8')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
+		link(rel='stylesheet' type='text/css' href='../css/style.css')
 
-  body
-    #themeStyles
-    #dialogs
-      #loadDialog0 starting Nostlan!
-      #loadDialog1
-      #loadDialog2
-    #donateMenu.menu.row-y
-      .uie(name='donated') access premium features
-      .uie(name='donate-monthly') open Patreon page
-      .uie(name='donate-later') remind me later
-    #checkDonationMenu_1.menu.row-y
-      input#donorPassword.col-12.form-control(placeholder="patreon subscriber monthly password")
-      .uie(name='continue') verify password
-      .uie(name='b') I don't support Nostlan yet
-    #welcomeMenu.menu.row-y
-      h1 Thanks for installing Nostlan!
-      .uie(name='full') start setup
-    #setupMenu_1.menu.row-y
-      .uie(name='new-in-docs') install at ~/Documents/emu
-      .uie(name='new') choose install location
-      .uie(name='continue') finish setup
-    #themeMenu_13.menu.row-y
-    #interfaceMenu_12.menu.row-y
-      h1 Change Appearance
-      .uie(name='theme') change theme
-      .uie(name='toggleCover') auto-hide cover overlay
-    #controllerMenu_12.menu.row-y
-      h1 Controller Settings
-      .uie(name='rumble') rumble on/off
-    #pauseMenu_10.menu.container.row-y
-      h1 Main Menu
-      .row.row-x
-        .uie.col(name='minimize')
-          i.material-icons.md-left call_to_action
-          .text mini
-        .uie.col(name='fullscreen')
-          i.material-icons.md-left zoom_out_map
-          .text full
-        .uie.col(name='quit')
-          i.material-icons.md-left eject
-          .text quit
-      .row.row-x
-        .uie.col(name='scanForGames')
-          i.material-icons.md-left disc_full
-          .text find games
-        .uie.col(name='scanForImages')
-          i.material-icons.md-left add_photo_alternate
-          .text get images
-      .row.row-x
-        .uie.col(name='syncBackup')
-          i.material-icons.md-left cloud_upload
-          .text backup
-        .uie.col(name='forceUpdate')
-          i.material-icons.md-left cloud_download
-          .text sync
-      .row.row-x
-        .uie.col(name='settings')
-          i.material-icons.md-left perm_data_setting
-          .text settings menu
-          i.material-icons.md-right.invis perm_data_setting
-    #settingsMenu_11.menu.row-y
-      h1 Settings Menu
-      .uie(name='editAppearance')
-        i.material-icons.md-left view_comfy
-        .text change appearance
-        i.material-icons.md-right.invis view_comfy
-      .uie(name='controllerSettings')
-        i.material-icons.md-left videogame_asset
-        .text controller settings
-        i.material-icons.md-right.invis videogame_asset
-      .uie(name='showConsole') 
-        i.material-icons.md-left bug_report
-        .text show console
-        i.material-icons.md-right.invis bug_report
-      .uie(name='editPrefs')
-        i.material-icons.md-left perm_data_setting
-        .text edit preferences
-        i.material-icons.md-right.invis perm_data_setting
-    #sysMenu_5.menu.container.row-y
-    #playMenu_5.menu.row-y
-    #emuMenu_5.menu.row-y
-    #addSavesPathMenu_2.menu.row-y
-      input#saveName.col-12.form-control(placeholder="Name")
-      input#saveNumOfBackups.col-12.form-control(placeholder="Number of backups")
-      .uie(name='add') add
-    #boxOpenMenu_2.row-x.no-outline
-      img#gameBoxOpen.uie(name='b')
-      .row-y
-        img#gameManual.uie(name='manual')
-        #gameWiki
-      .row-y
-        img#gameMemory.uie(name='memory')
-        img#gameMedia.uie(name='media')
-      img#gameBoxOpenMask
-    #libMain.main.row-x
-    nav.navbar.fixed-top.p-0
-      button#nav0.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
-        .nav0.text
-        li.nav-item
-          #nav0Btn.nav-link.triangle: span
-      button#nav1.navPanel.p-2.m-0: ul.nav.justify-content-right.m-0
-        li.nav-item
-          #nav1Btn Nostlan
-    nav.navbar.fixed-bottom.p-0
-      button#nav2.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
-        .nav2.text
-        li.nav-item
-          #nav2Btn.nav-link.square: span
-      button#nav3.navPanel.p-2.m-0: ul.nav.justify-content-right.m-0
-        li.nav-item
-          #nav3Btn.nav-link.circle: span
-        .nav3.text
-    script.
-      console.log('opening index.pug');
-      console.log('#{node_modules}');
-      require('../js/index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));
+	body
+		#themeStyles
+		#dialogs
+			#loadDialog0 starting Nostlan!
+			#loadDialog1
+			#loadDialog2
+		#donateMenu.menu.row-y
+			.uie(name='donated') access premium features
+			.uie(name='donate-monthly') open Patreon page
+			.uie(name='donate-later') remind me later
+		#checkDonationMenu_1.menu.row-y
+			input#donorPassword.col-12.form-control(placeholder="patreon subscriber monthly password")
+			.uie(name='continue') verify password
+			.uie(name='b') I don't support Nostlan yet
+		#welcomeMenu.menu.row-y
+			h1 Thanks for installing Nostlan!
+			.uie(name='full') start setup
+		#setupMenu_1.menu.row-y
+			.uie(name='new-in-docs') install at ~/Documents/emu
+			.uie(name='new') choose install location
+			.uie(name='continue') finish setup
+		#themeMenu_13.menu.row-y
+		#interfaceMenu_12.menu.row-y
+			h1 Change Appearance
+			.uie(name='theme') change theme
+			.uie(name='toggleCover') auto-hide cover overlay
+		#controllerMenu_12.menu.row-y
+			h1 Controller Settings
+			.uie(name='rumble') rumble on/off
+		#pauseMenu_10.menu.container.row-y
+			h1 Main Menu
+			.row.row-x
+				.uie.col(name='minimize')
+					i.material-icons.md-left call_to_action
+					.text mini
+				.uie.col(name='fullscreen')
+					i.material-icons.md-left zoom_out_map
+					.text full
+				.uie.col(name='quit')
+					i.material-icons.md-left eject
+					.text quit
+			.row.row-x
+				.uie.col(name='scanForGames')
+					i.material-icons.md-left disc_full
+					.text find games
+				.uie.col(name='scanForImages')
+					i.material-icons.md-left add_photo_alternate
+					.text get images
+			.row.row-x
+				.uie.col(name='syncBackup')
+					i.material-icons.md-left cloud_upload
+					.text backup
+				.uie.col(name='forceUpdate')
+					i.material-icons.md-left cloud_download
+					.text sync
+			.row.row-x
+				.uie.col(name='settings')
+					i.material-icons.md-left perm_data_setting
+					.text settings menu
+					i.material-icons.md-right.invis perm_data_setting
+		#settingsMenu_11.menu.row-y
+			h1 Settings Menu
+			.uie(name='editAppearance')
+				i.material-icons.md-left view_comfy
+				.text change appearance
+				i.material-icons.md-right.invis view_comfy
+			.uie(name='controllerSettings')
+				i.material-icons.md-left videogame_asset
+				.text controller settings
+				i.material-icons.md-right.invis videogame_asset
+			.uie(name='showConsole') 
+				i.material-icons.md-left bug_report
+				.text show console
+				i.material-icons.md-right.invis bug_report
+			.uie(name='editPrefs')
+				i.material-icons.md-left perm_data_setting
+				.text edit preferences
+				i.material-icons.md-right.invis perm_data_setting
+		#sysMenu_5.menu.container.row-y
+		#playMenu_5.menu.row-y
+		#emuMenu_5.menu.row-y
+		#addSavesPathMenu_2.menu.row-y
+			input#saveName.col-12.form-control(placeholder="Name")
+			input#saveNumOfBackups.col-12.form-control(placeholder="Backup History Amount")
+			.uie(name='add') add
+		#boxOpenMenu_2.row-x.no-outline
+			img#gameBoxOpen.uie(name='b')
+			.row-y
+				img#gameManual.uie(name='manual')
+				#gameWiki
+			.row-y
+				img#gameMemory.uie(name='memory')
+				img#gameMedia.uie(name='media')
+			img#gameBoxOpenMask
+		#libMain.main.row-x
+		nav.navbar.fixed-top.p-0
+			button#nav0.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
+				.nav0.text
+				li.nav-item
+					#nav0Btn.nav-link.triangle: span
+			button#nav1.navPanel.p-2.m-0: ul.nav.justify-content-right.m-0
+				li.nav-item
+					#nav1Btn Nostlan
+		nav.navbar.fixed-bottom.p-0
+			button#nav2.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
+				.nav2.text
+				li.nav-item
+					#nav2Btn.nav-link.square: span
+			button#nav3.navPanel.p-2.m-0: ul.nav.justify-content-right.m-0
+				li.nav-item
+					#nav3Btn.nav-link.circle: span
+				.nav3.text
+		script.
+			console.log('opening index.pug');
+			console.log('#{node_modules}');
+			require('../js/index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

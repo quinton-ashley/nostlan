@@ -136,12 +136,12 @@ class TheCoverProjectScraper {
 				]
 			};
 			let fuse = new Fuse(tcp[sys][idx], fusePrms);
-			results = fuse.search(title.substr(0, 64));
+			results = fuse.search(title.slice(0, 64));
 			log(results);
 
 			if (!results && !results.length && /&/.test(title)) {
 				title = title.replace(/&/g, 'and');
-				results = fuse.search(title.substr(0, 64));
+				results = fuse.search(title.slice(0, 64));
 			}
 		}
 

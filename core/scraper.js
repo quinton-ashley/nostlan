@@ -64,7 +64,7 @@ class Scraper {
 				// the url is just a regular old link
 				url = url[0];
 			}
-			if (!ext) ext = url.substr(-3);
+			if (!ext) ext = url.slice(-3);
 			file = `${imgDir}/${name}.${ext}`;
 			if (scraper == 'gfs') {
 				res = await this.gfs.dlImg(url, imgDir, name);
@@ -112,7 +112,7 @@ class Scraper {
 			} else {
 				game = games[i];
 			}
-			if (game.id.substring(1, 13) == 'UNIDENTIFIED') continue;
+			if (game.id.slice(1, 13) == 'UNIDENTIFIED') continue;
 			if (game.title) {
 				game.title = rmDiacritics(game.title);
 			}
@@ -160,11 +160,7 @@ class Scraper {
 						continue;
 					}
 				}
-				if (/(ds|gba|n3ds|nes|snes|switch)/.test(sys)) {
-					await this.getImg(game, 'cart');
-				} else if (sys != 'arcade') {
-					await this.getImg(game, 'disc');
-				}
+				await this.getImg(game, syst.mediaType);
 
 				if (sys == 'arcade') {
 					await this.getImg(game, 'cabinet');
@@ -218,7 +214,7 @@ class Scraper {
 		let imgDir = await this.getImgDir(game);
 		let file = `${imgDir}/${name}.png`;
 		if (!(await fs.exists(file))) {
-			file = file.substr(0, file.length - 3) + 'jpg';
+			file = file.slice(0, -3) + 'jpg';
 			if (!(await fs.exists(file))) {
 				file = `${imgDir}/default.lay`;
 				if (sys != 'arcade' || name != 'cabinet' || !(await fs.exists(file))) {

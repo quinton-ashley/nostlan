@@ -30,7 +30,7 @@ class GameFaqsScraper {
 	unwrapUrl(data) {
 		let d = data[0];
 		let url = 'https://gamefaqs1.cbsistatic.com/box';
-		return `${url}/${d[0]}/${d[1]}/${d[2]}/${d.substr(3)}_front.jpg`;
+		return `${url}/${d[0]}/${d[1]}/${d[2]}/${d.slice(3)}_front.jpg`;
 	}
 
 	async getImgUrls(game, name) {
@@ -78,7 +78,7 @@ class GameFaqsScraper {
 		log(url);
 		let img = {};
 		img[name] = this.wrapUrl(url);
-		// await dl(url, __root + '/scrape/img/' + game.id + url.substr(-4));
+		// await dl(url, __root + '/scrape/img/' + game.id + url.slice(-4));
 		return img;
 	}
 
@@ -105,7 +105,7 @@ class GameFaqsScraper {
 			]
 		};
 		let fuse = new Fuse(gfs[sys][idx], fusePrms);
-		let results = fuse.search(game.title.substr(0, 64));
+		let results = fuse.search(game.title.slice(0, 64));
 		log(results);
 		let url;
 		if (results && results.length) url = results[0].item.url;
@@ -171,7 +171,7 @@ class GameFaqsScraper {
 	}
 
 	async dlImg(url, dir, name) {
-		let ext = url.substr(-4).toLowerCase();
+		let ext = url.slice(-4).toLowerCase();
 		let imgPath = dir + '/' + name + ext;
 		log(url);
 		let res;

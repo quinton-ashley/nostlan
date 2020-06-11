@@ -75,7 +75,7 @@
   ],
   "dependencies": {
     "7zip-bin": "^5.0.3",
-    "@popperjs/core": "^2.4.0",
+    "@popperjs/core": "^2.4.1",
     "acorn": "^7.2.0",
     "await-spawn": "^3.0.0",
     "bootstrap": "^4.5.0",
@@ -151,5 +151,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.10.7"
+  "version": "1.10.8"
 }

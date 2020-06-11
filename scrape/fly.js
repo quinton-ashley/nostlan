@@ -41,7 +41,7 @@ class FlyerFeverScraper {
 				if (!img[name]) {
 					delete img[name];
 				} else if (arg.dl) {
-					await dl(img[name], `${__root}/dev/img/${game.id}/${name}.${img[name].substr(-3)}`);
+					await dl(img[name], `${__root}/dev/img/${game.id}/${name}.${img[name].slice(-3)}`);
 				}
 				if (img[name]) img[name] = this.wrapUrl(img[name]);
 			}

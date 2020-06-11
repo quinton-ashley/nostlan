@@ -36,10 +36,10 @@ class Gamestdb {
 				break;
 			}
 			if (i == 1) {
-				id = id.substr(0, id.length - 1) + 'B';
+				id = id.slice(0, -1) + 'B';
 			}
 			if (i == 2) {
-				id = id.substr(0, id.length - 1) + 'C';
+				id = id.slice(0, -1) + 'C';
 			}
 			let locale;
 			if (sys != 'ps3') {

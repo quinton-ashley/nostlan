@@ -48,7 +48,7 @@ module.exports = async function(arg) {
 	}
 
 	String.prototype.insert = function(insert, index) {
-		return this.substr(0, index) + insert + this.substr(index);
+		return this.slice(0, index) + insert + this.slice(index);
 	}
 
 	path.nx = (file) => {

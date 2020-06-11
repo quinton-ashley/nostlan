@@ -294,7 +294,7 @@ class Scanner {
 
 	async searchForGame(searcher, games, term, fileName) {
 		log('term:  ' + term);
-		let results = await searcher(term.substr(0, 64));
+		let results = await searcher(term.slice(0, 64));
 		if (arg.v) log(results);
 		let region = prefs.region;
 		if (/USA/i.test(fileName)) {

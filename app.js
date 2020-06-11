@@ -15,6 +15,7 @@
 		app,
 		BrowserWindow
 	} = require('electron');
+	app.allowRendererProcessReuse = false;
 
 	// command line options
 	if (arg.h || arg.help) {

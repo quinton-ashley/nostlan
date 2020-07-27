@@ -100,12 +100,14 @@ class Scanner {
 				if (term.base == 'dir.txt') continue;
 				// if the file is not a game file, skip it
 				if (term.ext == '.sav') continue;
-				if (sys == 'snes' && !/\.(sfc|smc)/i.test(term.ext)) continue;
-				if (sys == 'ds' && !/\.nds/i.test(term.ext)) continue;
-				if (sys == 'gba' && !/\.gba/i.test(term.ext)) continue;
-				if (sys == 'wii' &&
-					!/\.(gcm|iso|tgc|gcz|wbfs|wad|elf|dol)/i.test(term.ext)) {
-					continue;
+				if (syst.gameExts) {
+					let isGame = false;
+					for (let ext of syst.gameExts) {
+						if ('.' + ext == term.ext) {
+							isGame = true;
+						}
+					}
+					if (!isGame) continue;
 				}
 				// fixes an issue where folder names were split by periods
 				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.

@@ -118,15 +118,6 @@ class Scraper {
 			}
 			imgDir = await this.getImgDir(game);
 
-			if (sys != 'arcade') {
-				// move img dir from deprecated location
-				let imgDirDep = imgDir + '/img';
-				if (await fs.exists(imgDirDep)) {
-					await fs.copy(imgDirDep, imgDir);
-					await fs.remove(imgDirDep);
-				}
-			}
-
 			if (recheckImgs || !(await fs.exists(imgDir))) {
 				try {
 					await fs.ensureDir(imgDir);
@@ -168,16 +159,17 @@ class Scraper {
 					await this.getExtraImgs(game, recheckImgs);
 				}
 			}
-		}
-		if (themes[sysStyle].default && !(await this.imgExists(themes[sysStyle].default, 'box'))) {
-			log(themes[sysStyle].default);
-			await this.getImg(themes[sysStyle].default, 'box');
-			await this.getImg(themes[sysStyle].default, 'boxBack');
-			await this.getImg(themes[sysStyle].default, 'boxSide');
-			if (!(await this.imgExists(themes[sysStyle].default, 'box'))) {
-				cui.err('ERROR: No default box image found in the directory ' +
-					await this.getImgDir(themes[sysStyle].default));
-				return [];
+
+			if (isTemplate && !(await this.imgExists(game, 'box'))) {
+				log(game);
+				await this.getImg(game, 'box');
+				await this.getImg(game, 'boxBack');
+				await this.getImg(game, 'boxSide');
+				if (!(await this.imgExists(game, 'box'))) {
+					cui.err('ERROR: No default box image found in the directory ' +
+						await this.getImgDir(game), 404, 'sysMenu_5');
+					return [];
+				}
 			}
 		}
 
@@ -200,14 +192,7 @@ class Scraper {
 	}
 
 	async getImgDir(game) {
-		let imgDir = `${systemsDir}/${sys}/images/${game.id}`;
-		if (sys == 'arcade') {
-			imgDir = await launcher.getEmuApp();
-			imgDir = path.join(imgDir, '..');
-			imgDir += `/artwork/${game.id}`;
-			imgDir = imgDir.replace(/\\/g, '/');
-		}
-		return imgDir;
+		return `${systemsDir}/${sys}/images/${game.id}`;
 	}
 
 	async imgExists(game, name) {

@@ -24,6 +24,12 @@ module.exports = async function() {
 		}
 	}
 
+	if (prefs.version == '1.11.0') {
+		if (await fs.exists(`${systemsDir}/arcade/images`)) {
+			await fs.remove(`${systemsDir}/arcade/images`);
+		}
+	}
+
 	// prefs version added in v1.8.x
 	if (prefs.version) {
 		prefs.version = pkg.version;

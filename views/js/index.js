@@ -24,8 +24,9 @@ module.exports = async function(arg) {
 	usrDir = path.join(usrDir, '..') + '/nostlan';
 	log(usrDir);
 
-	// get the default prefrences
-	let prefsMng = require(__root + '/prefs/prefsManager.js')
+	// preferences manager is a config file editor
+	let prefsMng = require(__root + '/prefs/prefsManager.js');
+	// get custom update method
 	prefsMng.update = require(__root + '/prefs/prefsUpdate.js');
 	prefsMng.prefsPath = usrDir + '/_usr/prefs.json';
 	global.prefs = await prefsMng.loadDefaultPrefs();
@@ -36,89 +37,13 @@ module.exports = async function(arg) {
 	global.emu = ''; // current emulator (name)
 	global.offline = false;
 
-	global.systems = {
-		arcade: {
-			name: 'Arcade',
-			fullName: 'Arcade',
-			emus: ['mame'],
-			mediaType: 'pcb'
-		},
-		ds: {
-			name: 'DS',
-			fullName: 'Nintendo DS',
-			emus: ['desmume', 'melonds'],
-			mediaType: 'cart'
-		},
-		gba: {
-			name: 'GBA',
-			fullName: 'Nintendo Game Boy Advance',
-			emus: ['mgba', 'vba'],
-			mediaType: 'cart'
-		},
-		gcn: {
-			name: 'GameCube',
-			fullName: 'Nintendo GameCube',
-			mediaType: 'disc'
-		},
-		n3ds: {
-			name: '3DS',
-			fullName: 'Nintendo 3DS',
-			emus: ['citra'],
-			mediaType: 'cart'
-		},
-		nes: {
-			name: 'NES',
-			fullName: 'Nintendo Entertainment System',
-			emus: ['mesen'],
-			mediaType: 'cart'
-		},
-		ps2: {
-			name: 'PS2',
-			fullName: 'Sony PlayStation 2',
-			emus: ['pcsx2'],
-			mediaType: 'disc'
-		},
-		ps3: {
-			name: 'PS3',
-			fullName: 'Sony PlayStation 3',
-			emus: ['rpcs3'],
-			mediaType: 'disc'
-		},
-		snes: {
-			name: 'SNES',
-			fullName: 'Super Nintendo',
-			emus: ['bsnes', 'snes9x'],
-			mediaType: 'cart'
-		},
-		switch: {
-			name: 'Switch',
-			fullName: 'Nintendo Switch',
-			emus: ['yuzu', 'ryujinx'],
-			mediaType: 'cart'
-		},
-		wii: {
-			name: 'Wii',
-			fullName: 'Nintendo Wii',
-			emus: ['dolphin'],
-			mediaType: 'disc'
-		},
-		wiiu: {
-			name: 'Wii U',
-			fullName: 'Nintendo Wii U',
-			emus: ['cemu'],
-			mediaType: 'disc'
-		},
-		xbox360: {
-			name: 'Xbox 360',
-			fullName: 'Microsoft Xbox 360',
-			emus: ['xenia'],
-			mediaType: 'disc'
-		}
-	};
+	// get the built-in supported systems + emulators
+	global.systems = require(__root + '/core/systems.js');
 
 	let games = []; // array of current games from the systems' db
 	global.systemsDir = ''; // nostlan dir is stored here
 
+	// users can type to search, which has an auto timeout
 	let searchTerm = '';
 	let searchTimeout = 0;
 	setInterval(function() {
@@ -129,6 +54,7 @@ module.exports = async function(arg) {
 		}
 	}, 1000);
 
+	// Set default settings for scrolling on a Mac.
 	// I assume the user is using a smooth scroll trackpad
 	// or apple mouse with their Mac.
 	if (mac) {
@@ -161,6 +87,8 @@ module.exports = async function(arg) {
 
 	global.sharp = require('sharp');
 
+	// if the mouse moves show it
+	// mouse is hidden when the user starts using a gamepad
 	document.body.addEventListener('mousemove', function(e) {
 		document.exitPointerLock();
 	});
@@ -183,10 +111,12 @@ module.exports = async function(arg) {
 	}
 
 	async function load() {
+		// convert all markdown files to html
 		let files = await klaw(__root + '/views/md');
 		for (let file of files) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
+			// this file has OS specific text
 			if (fileName == 'setupMenu_1') {
 				data = util.osmd(data);
 			}
@@ -195,13 +125,18 @@ module.exports = async function(arg) {
 			file = path.parse(file);
 			$('#' + file.name).prepend(data);
 		}
+		// after the user uses the app for the first time
+		// a preferences file is created
+		// if it exists load it
 		if (await prefsMng.canLoad()) {
 			await prefsMng.load();
 			systemsDir = path.join(prefs.nlaDir, '..');
 			await prefsMng.update();
+			// ensures the template dir structure exists
+			// makes folders if they aren't there
 			await createTemplate();
 		}
-		// currently supported systems
+
 		let sysMenu_5 = 'h1 Select a System\n';
 		let i = 0;
 		for (let _sys in systems) {
@@ -312,14 +247,21 @@ module.exports = async function(arg) {
 			games = await scan.gameLib();
 			if (!games.length) {
 				await removeIntro(0);
-				let note = 'Game files must have the file extension: ';
-				if (sys == 'ds') note += '.nds';
-				if (sys == 'gba') note += '.gba';
-				if (sys == 'snes') note += '.sfc or .smc';
-				if (sys == 'wii') {
-					note += '.gcm, .iso, .tgc, .gcz, .wbfs, .wad, .elf, or .dol';
+				let note = 'Game library has no game files. ';
+				if (syst.gameExts) {
+					note = 'Game files must have the file extension: ';
 				}
-				cui.err('Game library has no game files. ' + note, 404, 'sysMenu_5');
+				for (let i in syst.gameExts) {
+					let ext = syst.gameExts;
+					note += '.' + ext;
+					if (i != syst.gameExts.length - 1) {
+						note += ', ';
+					}
+					if (i == syst.gameExts.length - 2) {
+						note += 'or ';
+					}
+				}
+				cui.err(note, 404, 'sysMenu_5');
 				return;
 			}
 		}
@@ -525,8 +467,21 @@ module.exports = async function(arg) {
 				// emu dir
 				await fs.ensureDir(`${systemsDir}/${_sys}/${_emu}`);
 				// games dir
-				if (!/(rpcs3|mame)/.test(_emu)) {
+				if (!_syst.gamesDir) {
 					await fs.ensureDir(`${systemsDir}/${_sys}/games`);
+				} else {
+					await fs.symlink(
+						`${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`,
+						`${systemsDir}/${_sys}/games`,
+						'dir'
+					);
+				}
+				if (_syst.imagesDir) {
+					await fs.symlink(
+						`${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`,
+						`${systemsDir}/${_sys}/images`,
+						'dir'
+					);
 				}
 			}
 		}
@@ -1005,13 +960,12 @@ module.exports = async function(arg) {
 	async function flipGameBox($cur) {
 		let game = getCurGame();
 		let template = themes[game.sys || sys].template;
-		let dflt = themes[game.sys || sys].default;
 		if (!$cur.hasClass('flip')) {
 			$cur.addClass('flip');
 			let $box = $cur.find('.box').eq(0);
 			if (!(await editImgSrc($cur, $box, game, 'boxBack'))) {
-				if (!(await editImgSrc($cur, $box, dflt, 'boxBack'))) {
-					await editImgSrc($cur, $box, dflt, 'box');
+				if (!(await editImgSrc($cur, $box, template, 'boxBack'))) {
+					await editImgSrc($cur, $box, template, 'box');
 				}
 			} else {
 				return;
@@ -1042,7 +996,7 @@ module.exports = async function(arg) {
 			$box = $box.eq(0);
 			log($box);
 			let hasBox = true;
-			for (let g of [game, dflt, template]) {
+			for (let g of [game, template]) {
 				if (await editImgSrc($cur, $box, g, 'box')) break;
 				hasBox = false;
 			}
@@ -1077,13 +1031,9 @@ module.exports = async function(arg) {
 
 		async function getBoxImg() {
 			boxImg = await scraper.imgExists(game, 'box');
-			// if box img is found
+			// if box img is not found
 			noBox = (!boxImg);
-			// if template and a default exists (soon to be deprecated in favor of
-			// just using the template to store default box)
-			if (noBox && themes[_sys].default) {
-				boxImg = await scraper.imgExists(themes[_sys].default, 'box');
-			} else if (noBox) {
+			if (noBox) {
 				boxImg = await scraper.imgExists(themes[_sys].template, 'box');
 			}
 		}

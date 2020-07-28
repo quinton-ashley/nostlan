@@ -91,13 +91,6 @@ class Scraper {
 		let imgDir;
 		let isTemplate;
 
-		// deprecated 3ds to n3ds
-		if (sys == 'n3ds') {
-			let depDir = `${prefs.nlaDir}/3ds`;
-			if (await fs.exists(depDir)) {
-				await fs.move(depDir, `${prefs.nlaDir}/n3ds`);
-			}
-		}
 		let gamesTotal = games.length + 1;
 		for (let i = 0; i < games.length + 1; i++) {
 			$('#loadDialog2').text(`${i+1}/${gamesTotal} games`);

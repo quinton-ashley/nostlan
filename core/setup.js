@@ -18,6 +18,7 @@ module.exports = async function(arg) {
 	global.path = require('path');
 	global.process = require('process');
 	global.spawn = require('await-spawn');
+	global.semver = require('semver');
 
 	global.klaw = function(dir, opt) {
 		return new Promise((resolve, reject) => {

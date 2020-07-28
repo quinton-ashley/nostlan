@@ -24,9 +24,25 @@ module.exports = async function() {
 		}
 	}
 
-	if (prefs.version == '1.11.0') {
-		if (await fs.exists(`${systemsDir}/arcade/images`)) {
-			await fs.remove(`${systemsDir}/arcade/images`);
+	if (semver.lt(prefs.version, '1.11.1')) {
+		let arcadeImages = `${systemsDir}/arcade/images`;
+		if (await fs.exists(arcadeImages)) {
+			await fs.remove(arcadeImages);
+		}
+		// rpcs3 changed, before it was preferrable for games
+		// to be stored in the internal emu fs, now they can be
+		// stored anywhere. For previous users of Nostlan I chose
+		// to symlink that dir.
+		let ps3Games = `${systemsDir}/ps3/games`;
+		if (await fs.exists(ps3Games)) {
+			let files = await klaw(ps3Games);
+			if (!files.length) {
+				await fs.remove(ps3Games);
+				await fs.symlink(
+					`${systemsDir}/${sys}/rpcs3/dev_hdd0/game`,
+					ps3Games, 'dir'
+				);
+			}
 		}
 	}
 

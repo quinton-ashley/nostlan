@@ -16,12 +16,7 @@ module.exports = async function(arg) {
 	// in a set location.
 	// Only the user's preferences and game libs json databases
 	// are stored here.
-	global.usrDir = '$home/Documents/emu/bottlenose'; // deprecated path
-	usrDir = util.absPath(usrDir);
-	if (usrDir && (await fs.exists(usrDir))) {
-		await fs.move(usrDir, path.join(usrDir, '..') + '/nostlan');
-	}
-	usrDir = path.join(usrDir, '..') + '/nostlan';
+	global.usrDir = util.absPath('$home/Documents/emu/nostlan');
 	log(usrDir);
 
 	// preferences manager is a config file editor
@@ -197,13 +192,8 @@ module.exports = async function(arg) {
 				return;
 			}
 			log(emu);
-			let gameLibDir = `${systemsDir}/${sys}/games`;
-			if (emu == 'rpcs3') {
-				gameLibDir = `${systemsDir}/${sys}/rpcs3/dev_hdd0/game`;
-			} else if (emu == 'mame') {
-				gameLibDir = `${systemsDir}/${sys}/mame/roms`;
-			}
 
+			let gameLibDir = `${systemsDir}/${sys}/games`;
 			log(gameLibDir);
 
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
@@ -225,7 +215,8 @@ module.exports = async function(arg) {
 					cui.err(`Game library has no game files`, 404, 'sysMenu_5');
 					return;
 				}
-				gameLibDir = await dialog.selectDir(`select ${syst.name} game directory`);
+				gameLibDir = await dialog.selectDir(
+					`select ${syst.name} game directory`);
 				log(gameLibDir);
 				if (!gameLibDir) continue;
 				files = await klaw(gameLibDir);
@@ -467,20 +458,20 @@ module.exports = async function(arg) {
 				// emu dir
 				await fs.ensureDir(`${systemsDir}/${_sys}/${_emu}`);
 				// games dir
+				let gamesDir = `${systemsDir}/${_sys}/games`;
 				if (!_syst.gamesDir) {
-					await fs.ensureDir(`${systemsDir}/${_sys}/games`);
-				} else {
+					await fs.ensureDir(gamesDir);
+				} else if (!(await fs.exists(gamesDir))) {
 					await fs.symlink(
 						`${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`,
-						`${systemsDir}/${_sys}/games`,
-						'dir'
+						gamesDir, 'dir'
 					);
 				}
-				if (_syst.imagesDir) {
+				let imagesDir = `${systemsDir}/${_sys}/images`;
+				if (_syst.imagesDir && !(await fs.exists(imagesDir))) {
 					await fs.symlink(
 						`${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`,
-						`${systemsDir}/${_sys}/images`,
-						'dir'
+						imagesDir, 'dir'
 					);
 				}
 			}

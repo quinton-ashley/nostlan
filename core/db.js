@@ -164,9 +164,9 @@ class GenDB {
 
 		let deepExtend = require('deep-extend');
 
-		let db0Path = `${__root}/db/${_sys}DB.json`;
+		let db0Path = `${__root}/db/${_sys}DB_up.json`;
 		let db0 = JSON.parse(await fs.readFile(db0Path));
-		let db1Path = `${__root}/db/${_sys}DB1.json`;
+		let db1Path = `${__root}/db/${_sys}DB.json`;
 		let db1 = JSON.parse(await fs.readFile(db1Path));
 
 		let merged = 0;
@@ -177,6 +177,16 @@ class GenDB {
 			log(match.title);
 			deepExtend(game, match);
 			merged++;
+		}
+
+		for (let game of db1.games) {
+			// merge by id
+			let match = db0.games.find(x => x.id === game.id);
+			if (!match) {
+				db0.games.push(game);
+				log(game.title);
+				merged++;
+			}
 		}
 
 		let file = `${__root}/db/${_sys}DBx.json`;

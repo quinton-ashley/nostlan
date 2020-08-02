@@ -1025,7 +1025,7 @@ module.exports = async function(arg) {
 			// if box img is not found
 			noBox = (!boxImg);
 			if (noBox) {
-				boxImg = await scraper.imgExists(themes[_sys].template, 'box');
+				boxImg = await scraper.getImg(themes[_sys].template, 'box');
 			}
 		}
 

@@ -349,7 +349,7 @@ module.exports = async function(arg) {
 			$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
 		} else if (state == 'libMain') {
 			labels = ['Play', 'Emu', 'Sys'];
-			$('#libMain').css('transform', '');
+			$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
 			$('#libMain').removeClass('no-outline');
 		} else if (state == 'gameMediaSelect_3') {
 			labels = ['File', 'ImgDir', 'Back'];
@@ -483,17 +483,20 @@ module.exports = async function(arg) {
 		let $menu = $reel.parent();
 		let idx = $menu.children().index($reel);
 		let scale = $(window).height() / $cur.height();
-		$menu.css('transform', `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`);
+		$menu[0].style.transform = `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`;
 	}
 
 	async function changeImageResolution($cur, changeToFullRes) {
-		await delay(400);
 		let $images = $cur.find('img');
-		for (let i = 1; i < 4; i += 2) {
-			let $img = $images.eq(i);
-			if ($img.hasClass('hide')) continue;
-
-			let img = $images.eq(i - 1).prop('src');
+		for (let i = 0; i < 4; i += 2) {
+			if ($images.eq(i).hasClass('hide')) continue;
+			if ((changeToFullRes &&
+					$images.eq(i).css('display') == 'none') ||
+				(!changeToFullRes &&
+					$images.eq(i).css('display') == 'block')) {
+				continue;
+			}
+			let img = $images.eq(i).prop('src');
 			if (!img) continue;
 			img = path.parse(img);
 			img.name = img.name.replace('Thumb', '');
@@ -507,7 +510,27 @@ module.exports = async function(arg) {
 					src += '.png';
 				}
 			}
-			$img.prop('src', src);
+			let $img = $images.eq(i + 1);
+			if ($img.prop('src') != src) {
+				$img.prop('src', src);
+			}
+
+			function swap() {
+				let showIdx = i + 1;
+				let hideIdx = i;
+				if (!changeToFullRes) {
+					showIdx = i;
+					hideIdx = i + 1;
+				}
+				$images.eq(showIdx).css('display', 'block');
+				$images.eq(hideIdx).css('display', 'none');
+				$img[0].onload = () => {};
+			};
+			if (!$img[0].complete) {
+				$img[0].onload = swap;
+			} else {
+				swap();
+			}
 		}
 	}
 
@@ -654,7 +677,6 @@ module.exports = async function(arg) {
 				let gameSys = $cur.attr('class');
 				if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 				fitCoverToScreen($cur);
-				changeImageResolution($cur, 'full');
 				cui.scrollToCursor(500, 0);
 				cui.change('boxSelect_1', gameSys);
 			}
@@ -684,6 +706,7 @@ module.exports = async function(arg) {
 				$('#gameMemory').prop('src', await scraper.imgExists(template, 'memory'));
 				$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
 				$('#gameWiki').html();
+				themes.loadGameWiki(getCurGame());
 
 				let mediaImg = await scraper.imgExists(game, syst.mediaType);
 				if (!mediaImg) {
@@ -707,9 +730,6 @@ module.exports = async function(arg) {
 			if (act == 'x') act = 'manual';
 			if (act == 'y') act = 'memory';
 			if (act == 'a') act = 'media';
-			if (act == 'manual') {
-				themes.loadGameWiki(getCurGame());
-			}
 			if (!(/(memory|manual|media)/gi).test(act)) return;
 			act = act[0].toUpperCase() + act.slice(1);
 			act = 'game' + act;
@@ -928,16 +948,18 @@ module.exports = async function(arg) {
 		if (!img) return;
 		$img.prop('src', img);
 		let prevClass = $img.attr('class');
-		if (prevClass) prevClass.replace('crop ', '');
+		if (prevClass) {
+			prevClass = prevClass.replace(/(hq|crop) */g, '');
+		}
 		let $elems;
 		if (prevClass && prevClass != 'hide') {
 			$elems = [
-				$cur.find('.' + prevClass)
+				$cur.find('.hq.' + prevClass)
 			];
 		} else {
 			$elems = [
 				$cur.find('section'),
-				$cur.find('section img')
+				$cur.find('section img.hq')
 			];
 		}
 		for (let $elem of $elems) {
@@ -952,7 +974,7 @@ module.exports = async function(arg) {
 		let template = themes[game.sys || sys].template;
 		if (!$cur.hasClass('flip')) {
 			$cur.addClass('flip');
-			let $box = $cur.find('.box').eq(0);
+			let $box = $cur.find('.box.hq').eq(0);
 			if (!(await editImgSrc($cur, $box, game, 'boxBack'))) {
 				if (!(await editImgSrc($cur, $box, template, 'boxBack'))) {
 					await editImgSrc($cur, $box, template, 'box');
@@ -961,14 +983,14 @@ module.exports = async function(arg) {
 				return;
 			}
 			$cur.find('.shade').removeClass('hide');
-			let $cover = $cur.find('img.cover');
+			let $cover = $cur.find('img.cover.hq');
 			if (!$cover.length) {
-				$cover = $cur.find('img.coverFull');
+				$cover = $cur.find('img.coverFull.hq');
 				if ($cover.length) {
 					$cover.eq(0).removeClass('hide');
 					return;
 				}
-				$cover = $cur.find('section img');
+				$cover = $cur.find('section img.hq');
 			}
 			$cover = $cover.eq(0);
 			for (let name of ['coverFull', 'coverBack']) {
@@ -979,9 +1001,9 @@ module.exports = async function(arg) {
 			$cover.removeClass('hide');
 		} else {
 			$cur.removeClass('flip');
-			let $box = $cur.find('img.boxBack');
+			let $box = $cur.find('img.boxBack.hq');
 			log($box);
-			if (!$box.length) $box = $cur.find('img.box');
+			if (!$box.length) $box = $cur.find('img.box.hq');
 			if (!$box.length) return;
 			$box = $box.eq(0);
 			log($box);
@@ -991,9 +1013,9 @@ module.exports = async function(arg) {
 				hasBox = false;
 			}
 			if ((game.sys || sys) != 'switch') $cur.find('.shade').addClass('hide');
-			let $cover = $cur.find('img.coverBack');
-			if (!$cover.length) $cover = $cur.find('img.coverFull');
-			if (!$cover.length) $cover = $cur.find('section img');
+			let $cover = $cur.find('img.coverBack.hq');
+			if (!$cover.length) $cover = $cur.find('img.coverFull.hq');
+			if (!$cover.length) $cover = $cur.find('section img.hq');
 			$cover = $cover.eq(0);
 			if (hasBox) {
 				$cover.addClass('hide');
@@ -1244,7 +1266,7 @@ module.exports = async function(arg) {
 
 		if (prefs.load.online) {
 			try {
-				if (await updater.check()) {
+				if (!arg.dev && await updater.check()) {
 					app.quit();
 				}
 			} catch (ror) {

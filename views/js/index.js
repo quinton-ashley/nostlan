@@ -462,17 +462,25 @@ module.exports = async function(arg) {
 				if (!_syst.gamesDir) {
 					await fs.ensureDir(gamesDir);
 				} else if (!(await fs.exists(gamesDir))) {
-					await fs.symlink(
-						`${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`,
-						gamesDir, 'dir'
-					);
+					try {
+						await fs.symlink(
+							`${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`,
+							gamesDir, 'dir'
+						);
+					} catch (ror) {
+						er(ror);
+					}
 				}
 				let imagesDir = `${systemsDir}/${_sys}/images`;
 				if (_syst.imagesDir && !(await fs.exists(imagesDir))) {
-					await fs.symlink(
-						`${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`,
-						imagesDir, 'dir'
-					);
+					try {
+						await fs.symlink(
+							`${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`,
+							imagesDir, 'dir'
+						);
+					} catch (ror) {
+						er(ror);
+					}
 				}
 			}
 		}

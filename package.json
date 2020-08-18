@@ -145,6 +145,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
     "rebuild": "npm rebuild --build-from-source --runtime=electron --target=9.0.3 --disturl=https://atom.io/download/atom-shell --abi=75",
+    "dist-l": "electron-builder -l",
     "postinstall": "electron-builder install-app-deps -c.electronVersion 9.0.3 | electron-rebuild",
     "delete-tags": "git tag | xargs git tag -d",
     "delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
@@ -153,5 +154,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.13.1"
+  "version": "1.13.2"
 }

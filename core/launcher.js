@@ -181,6 +181,8 @@ class Launcher {
 				`"${prefs.inGame.quit.hold}" button for ` +
 				`${(prefs.inGame.quit.time/1000).toFixed(0)} seconds`);
 			$('#loadDialog2').text(game.title);
+		} else if (!identify) {
+			$('body').addClass('dim');
 		}
 		if (!identify) log(this.cmdArgs);
 		if (!identify) log('cwd: ' + this.emuAppDir);
@@ -195,15 +197,26 @@ class Launcher {
 		}
 
 		if (kb && cui.ui == 'playing_4') {
-			let combo = prefs[emu].fullscreenKeyCombo;
-			if (combo) {
+			let combos = prefs[emu].fullscreenKeyCombo;
+			if (combos) {
+				// delay through emulator app start
 				await delay(1500);
-				if (combo[1]) {
-					kb.keyTap(combo[0], combo[1]);
-				} else {
-					kb.keyTap(combo[0]);
+				// if there's just one combo array
+				if (typeof combos[0] == 'string') {
+					combos = [combos];
 				}
-				log('kb: ' + combo);
+				for (let combo of combos) {
+					if (typeof combo == 'number') {
+						await delay(combo);
+						log('delay: ' + combo + 'ms');
+					} else if (combo[1]) {
+						kb.keyTap(combo[0], combo[1]);
+						log('kb: ' + combo);
+					} else {
+						kb.keyTap(combo[0]);
+						log('kb: ' + combo);
+					}
+				}
 			} else if (mac && emu == 'vba') {
 				await delay(1500);
 				kb.keyToggle('tab', 'down', ['command', 'shift']);
@@ -321,6 +334,7 @@ class Launcher {
 				if (cui.gca.connected) cui.gca.start();
 				await cui.doAction('back');
 			}
+			$('body').removeClass('dim');
 		}
 		if (!identify && code) {
 			let erMsg = `${prefs[emu].name} crashed!  If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator.  Search the internet for instructions on how to fully setup ${prefs[emu].name}.\n<code>`;

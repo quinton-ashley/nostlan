@@ -190,6 +190,10 @@ game {
 	transition: all 0s;
 }
 
+.dim {
+	opacity: 0.25;
+}
+
 .menu {
 	background-color: var(--nav-color);
 	color: var(--nav-text-color);

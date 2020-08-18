@@ -24,7 +24,7 @@ module.exports = async function() {
 		}
 	}
 
-	if (semver.lt(prefs.version, '1.13.2')) {
+	if (semver.lt(prefs.version, '1.13.3')) {
 		prefs.yuzu.fullscreenKeyCombo = [2000, ["f11"]];
 	}
 

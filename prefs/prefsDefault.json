@@ -393,7 +393,7 @@
     },
     "fullscreenKeyCombo": {
       "linux": ["f11"],
-      "win": [1000, ["tab", ["alt", "shift"]], 20, ["f11"]]
+      "win": [2000, ["f11"]]
     }
   },
   "xenia": {

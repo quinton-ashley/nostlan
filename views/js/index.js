@@ -706,6 +706,7 @@ module.exports = async function(arg) {
 				$('#gameManual').prop('src', '');
 				$('#gameMedia').prop('src', '');
 				$('#gameMemory').prop('src', '');
+				$('#gameBoxOpenMask').prop('src', '');
 				$('#gameWiki').html('');
 
 				$('#gameBoxOpen').prop('src', await scraper.imgExists(template, 'boxOpen'));
@@ -718,7 +719,7 @@ module.exports = async function(arg) {
 
 				let mediaImg = await scraper.imgExists(game, syst.mediaType);
 				if (!mediaImg) {
-					mediaImg = await scraper.imgExists(template, syst.mediaType);
+					mediaImg = await scraper.getImg(template, syst.mediaType);
 				}
 				if (!mediaImg && syst.mediaType == 'disc') {
 					mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
@@ -765,10 +766,12 @@ module.exports = async function(arg) {
 			cui.removeCursor();
 			await loadGameLib();
 		} else if (ui == 'controllerMenu_12') {
-			if (act == 'rumble') {
+			if (act == 'info') {
+				cui.change('controInfoMenu_13');
+			} else if (act == 'rumble') {
 				prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
 				cui.opt.haptic = prefs.ui.gamepad.haptic;
-				let $rumble = $('#controllerMenu_12 .uie[name="rumble"]');
+				let $rumble = $('#controllerMenu_12 .uie[name="rumble"] .text');
 				if (prefs.ui.gamepad.haptic) {
 					log('rumble enabled');
 					$rumble.text('disable rumble');
@@ -776,6 +779,20 @@ module.exports = async function(arg) {
 					log('rumble disabled');
 					$rumble.text('enable rumble');
 				}
+			} else if (/prof/.test(act)) {
+				let type = 'xbox_ps';
+				if (act == 'prof1') type = 'nintendo';
+				if (act == 'prof2') type = 'other';
+				let prof = prefs.ui.gamepad[type].profile;
+				if (prof == 'adaptive') {
+					prof = 'constant';
+				} else if (prof == 'constant') {
+					prof = 'none';
+				} else if (prof == 'none') {
+					prof = 'adaptive';
+				}
+				prefs.ui.gamepad[type].profile = prof;
+				$(`#controllerMenu_12 .uie[name="${act}"]`).text(prof);
 			}
 		} else if (ui == 'interfaceMenu_12') {
 			if (act == 'toggleCover') {
@@ -839,11 +856,24 @@ module.exports = async function(arg) {
 				prefs.ui.launchFullScreen = !prefs.ui.launchFullScreen;
 				electron.getCurrentWindow().focus();
 				electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
-			} else if (act == 'scanForImages' || act == 'scanForGames') {
+			} else if (act == 'gameLibMenu') {
+				cui.change('gameLibMenu_11');
+			} else if (act == 'x') {
+				cui.doAction('quit');
+			} else if (act == 'settings') {
+				cui.change('settingsMenu_11');
+			} else if (act == 'minimize' ||
+				act == 'prefs' || act == 'y') {
+				electron.getCurrentWindow().minimize();
+			}
+		} else if (ui == 'gameLibMenu_11') {
+			if (act == 'scanForImages' || act == 'scanForGames') {
 				let recheckImgs = false;
 				if (act == 'scanForImages') {
 					recheckImgs = true;
-					await fs.remove(`${systemsDir}/${sys}/${sys}Games.json`);
+					await fs.remove(`${systemsDir}/${sys}/${sys}Games.json`, `${systemsDir}/${sys}/${sys}Games_old.json`, {
+						overwrite: true
+					});
 				}
 				cui.removeView('libMain');
 				cui.change('rescanning');
@@ -853,19 +883,21 @@ module.exports = async function(arg) {
 				await removeIntro();
 				cui.change('libMain');
 				cui.scrollToCursor(0);
-			} else if (act == 'x') {
-				cui.doAction('quit');
-			} else if (act == 'settings') {
-				cui.change('settingsMenu_11');
-			} else if (act == 'minimize' ||
-				act == 'prefs' || act == 'y') {
-				electron.getCurrentWindow().minimize();
+			} else if (act == 'info') {
+				cui.change('gameLibInfoMenu_12');
 			}
 		} else if (ui == 'settingsMenu_11') {
 			if (act == 'editAppearance') {
 				cui.change('interfaceMenu_12');
 			} else if (act == 'controllerSettings') {
 				cui.change('controllerMenu_12');
+				let nameMsg = `<div>Name: ${cui.gamepadId}</div>`;
+				let typeMsg = '';
+				if (cui.gamepadConnected) {
+					typeMsg = `<div>Type: ${cui.gamepadType}</div>`;
+				}
+				$('#controllerMenu_12 #controName').html(nameMsg);
+				$('#controllerMenu_12 #controType').html(typeMsg);
 			} else if (act == 'editPrefs') {
 				opn(prefsMng.prefsPath);
 			} else if (act == 'showConsole') {

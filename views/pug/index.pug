@@ -32,11 +32,37 @@ html
 		#themeMenu_13.menu.row-y
 		#interfaceMenu_12.menu.row-y
 			h1 Change Appearance
-			.uie(name='theme') change theme
-			.uie(name='toggleCover') auto-hide cover overlay
-		#controllerMenu_12.menu.row-y
+			.uie(name='theme')
+				i.material-icons.md-left brush
+				.text change theme
+				i.material-icons.md-right.invis brush
+			.uie(name='toggleCover')
+				i.material-icons.md-left crop_free
+				.text hide overlay buttons
+				i.material-icons.md-right.invis crop_free
+		#controllerMenu_12.menu.menu-wide.row-y
 			h1 Controller Settings
-			.uie(name='rumble') rumble on/off
+			.row.row-x
+				.uie.col(name='info')
+					i.material-icons.md-left info
+					.text info
+				.uie.col(name='rumble')
+					i.material-icons.md-left vibration
+					.text rumble on/off
+			.row.row-x
+				.col
+					h3 Xbox/PS
+					.uie(name='prof0') adaptive
+				.col
+					h3 Nintendo
+					.uie(name='prof1') adaptive
+				.col
+					h3 Other
+					.uie(name='prof2') adaptive
+			#controName
+			#controType
+		#controInfoMenu_13.menu.menu-wide.row-y
+			.uie(name='b') back
 		#pauseMenu_10.menu.container.row-y
 			h1 Main Menu
 			.row.row-x
@@ -50,12 +76,9 @@ html
 					i.material-icons.md-left eject
 					.text quit
 			.row.row-x
-				.uie.col(name='scanForGames')
+				.uie.col(name='gameLibMenu')
 					i.material-icons.md-left disc_full
-					.text find games
-				.uie.col(name='scanForImages')
-					i.material-icons.md-left add_photo_alternate
-					.text get images
+					.text edit game library
 			.row.row-x
 				.uie.col(name='syncBackup')
 					i.material-icons.md-left cloud_upload
@@ -68,6 +91,30 @@ html
 					i.material-icons.md-left perm_data_setting
 					.text settings menu
 					i.material-icons.md-right.invis perm_data_setting
+		#gameLibMenu_11.menu.row-y
+			h1 Game Library Menu
+			.uie(name='scanForGames')
+				i.material-icons.md-left library_add
+				.text add new games
+				i.material-icons.md-right.invis library_add
+			.uie(name='identifyGames')
+				i.material-icons.md-left fingerprint
+				.text identify games (coming soon)
+				i.material-icons.md-right.invis fingerprint
+			.uie(name='scanForImages')
+				i.material-icons.md-left add_photo_alternate
+				.text auto-scan for images
+				i.material-icons.md-right.invis add_photo_alternate
+			.uie(name='imageSearch')
+				i.material-icons.md-left image_search
+				.text search for images (coming soon)
+				i.material-icons.md-right.invis image_search
+			.uie.col(name='info')
+				i.material-icons.md-left info
+				.text info
+				i.material-icons.md-right.invis info
+		#gameLibInfoMenu_12.menu.menu-wide.row-y
+			.uie(name='b') back
 		#settingsMenu_11.menu.row-y
 			h1 Settings Menu
 			.uie(name='editAppearance')

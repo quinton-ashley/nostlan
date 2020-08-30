@@ -420,22 +420,18 @@
     "gamepad": {
       "gca": true,
       "haptic": true,
-      "default": {
-        "profile": "Xbox_PS_Adaptive",
-        "map": {}
-      },
-      "ps": {
-        "profile": "Xbox_PS_Adaptive",
-        "map": {}
-      },
-      "xbox": {
-        "profile": "Xbox_PS_Adaptive",
-        "map": {}
-      },
       "nintendo": {
-        "profile": "Nintendo_Adaptive",
+        "profile": "adaptive",
         "map": {}
-      }
+      },
+			"xbox_ps": {
+        "profile": "adaptive",
+        "map": {}
+      },
+			"other": {
+				"profile": "adaptive",
+				"map": {}
+			}
     },
     "maxColumns": 8,
     "getBackCoverHQ": false,

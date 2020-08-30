@@ -33,11 +33,11 @@ On Linux, Nostlan will look for emulator apps in their default install locations
 ```
 📁 ~/Documents/emu
 └─┬ 📁 ds (system folder)
-  ├── 📁 desmume (empty, installed at default path)
+  ├── 📁 desmume (emulator folder)
   ├─┬ 📁 games
   │ ├── 💿 Mario & Luigi - Partners in Time.nds
   │ └── 💿 Mario & Luigi - Partners in Time.sav
   └─┬ 📁 images
     └──┬ 📁  A58E (the game id)
-       └── 🖼 box.png
+       └── 🖼 box.png (front of the box)
 ```

@@ -1,4 +1,6 @@
 module.exports = async function() {
+	let ver = prefs.version;
+	prefs.version = pkg.version;
 
 	// only keeps the emu app path for the current os
 	for (let _sys in systems) {
@@ -24,41 +26,51 @@ module.exports = async function() {
 		}
 	}
 
-	if (semver.lt(prefs.version, '1.13.3')) {
-		prefs.yuzu.fullscreenKeyCombo = [2000, ["f11"]];
+	if (semver.gte(ver, '1.13.5')) return;
+
+	let controTypes = ['xbox', 'ps', 'nintendo', 'default'];
+	for (let type of controTypes) {
+		delete prefs.ui.gamepad[type];
+	}
+	controTypes = ['xbox_ps', 'nintendo', 'other'];
+	for (let type of controTypes) {
+		prefs.ui.gamepad[type] = {};
+		prefs.ui.gamepad[type].profile = 'adaptive';
+		prefs.ui.gamepad[type].map = {};
 	}
 
-	if (semver.lt(prefs.version, '1.11.1')) {
-		let arcadeImages = `${systemsDir}/arcade/images`;
-		if (await fs.exists(arcadeImages)) {
-			await fs.remove(arcadeImages);
-		}
-		// rpcs3 changed, before it was preferrable for games
-		// to be stored in the internal emu fs, now they can be
-		// stored anywhere. For previous users of Nostlan I chose
-		// to symlink that dir.
-		let ps3Games = `${systemsDir}/ps3/games`;
-		if (await fs.exists(ps3Games)) {
-			let files = await klaw(ps3Games);
-			if (!files.length) {
-				await fs.remove(ps3Games);
-				try {
-					await fs.symlink(
-						`${systemsDir}/${sys}/rpcs3/dev_hdd0/game`,
-						ps3Games, 'dir'
-					);
-				} catch (ror) {
-					er(ror);
-				}
+	if (semver.gte(ver, '1.13.3')) return;
+
+	prefs.yuzu.fullscreenKeyCombo = [2000, ["f11"]];
+
+	if (semver.gte(ver, '1.11.1')) return;
+
+	let arcadeImages = `${systemsDir}/arcade/images`;
+	if (await fs.exists(arcadeImages)) {
+		await fs.remove(arcadeImages);
+	}
+	// rpcs3 changed, before it was preferrable for games
+	// to be stored in the internal emu fs, now they can be
+	// stored anywhere. For previous users of Nostlan I chose
+	// to symlink that dir.
+	let ps3Games = `${systemsDir}/ps3/games`;
+	if (await fs.exists(ps3Games)) {
+		let files = await klaw(ps3Games);
+		if (!files.length) {
+			await fs.remove(ps3Games);
+			try {
+				await fs.symlink(
+					`${systemsDir}/${sys}/rpcs3/dev_hdd0/game`,
+					ps3Games, 'dir'
+				);
+			} catch (ror) {
+				er(ror);
 			}
 		}
 	}
 
 	// prefs version added in v1.8.x
-	if (prefs.version) {
-		prefs.version = pkg.version;
-		return;
-	}
+	if (semver.gte(ver, '1.8.0')) return;
 	// if prefs file is pre-v1.8.x
 	// update older versions of the prefs file
 	if (prefs.ui.gamepad.mapping) delete prefs.ui.gamepad.mapping;
@@ -180,7 +192,6 @@ module.exports = async function() {
 		}
 	}
 
-	prefs.version = pkg.version;
 	await this.save();
 
 	if (errCount > 0) {

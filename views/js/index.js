@@ -865,6 +865,10 @@ module.exports = async function(arg) {
 			} else if (act == 'minimize' ||
 				act == 'prefs' || act == 'y') {
 				electron.getCurrentWindow().minimize();
+			} else if (act == 'patreon') {
+				opn('https://www.patreon.com/nostlan');
+			} else if (act == 'help') {
+				opn('https://discord.com/channels/698656653633126441/707865945292406885'); // nostlan discord #support channel
 			}
 		} else if (ui == 'gameLibMenu_11') {
 			if (act == 'scanForImages' || act == 'scanForGames') {
@@ -914,7 +918,7 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'donateMenu') {
 			if (act == 'donate-monthly') {
-				opn('https://www.patreon.com/qashto');
+				opn('https://www.patreon.com/nostlan');
 			} else if (act == 'donate-single') {
 				opn('https://www.paypal.me/qashto/20');
 			} else if (act == 'donate-later') {

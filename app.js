@@ -60,6 +60,7 @@
 
 		let windowPrms = {
 			webPreferences: {
+				enableRemoteModule: true,
 				nodeIntegration: true,
 				webviewTag: true
 			}

@@ -898,6 +898,9 @@ module.exports = async function(arg) {
 				}
 				$('#controllerMenu_12 #controName').html(nameMsg);
 				$('#controllerMenu_12 #controType').html(typeMsg);
+				$('#prof0').text(prefs.ui.gamepad.xbox_ps.profile);
+				$('#prof1').text(prefs.ui.gamepad.nintendo.profile);
+				$('#prof2').text(prefs.ui.gamepad.other.profile);
 			} else if (act == 'editPrefs') {
 				opn(prefsMng.prefsPath);
 			} else if (act == 'showConsole') {

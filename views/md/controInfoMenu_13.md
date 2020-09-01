@@ -14,4 +14,4 @@ Although some may find this confusing at first, adaptive context mapping maps th
 
 Hence by using an adaptive context mapping profile you will always be using the physically correct button layout for the system library you're browsing, regardless of what controller you use! I recommend using adaptive mapping in your controller settings for each emulator too. This way you can play games using the button layout that game developers intended, even if you're using a controller made for a different system.
 
-To disable this feature change the mapping profile from "adaptive" to "none" in controller settings, quit Nostlan to save your changes, and then restart.
+To disable this feature change the mapping profile from "adaptive" to "none" in controller settings, quit Nostlan to save your changes, and then restart Nostlan.

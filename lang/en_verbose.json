@@ -71,9 +71,9 @@
 		"gameLibInfoMenuBackLbl": "back"
 	},
 	"controllerMenu_12": {
-		"controllerMenuTitle": "Controller Settings",
+		"controllerMenuTitle": "Gamepad Settings",
 		"controllerMenuInfoLbl": "information",
-		"rumbleLbl": "rumble",
+		"rumbleLbl": "vibration",
 		"prof2Lbl": "Other"
 	},
 	"controInfoMenu_13": {

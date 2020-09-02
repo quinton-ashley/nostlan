@@ -10,7 +10,7 @@
 	},
 	"checkDonationMenu_1": {
 		"verifyDonorLbl": "подтвердите пароль",
-		"notADonorLbl": "Я еще не поддерживаю Nostlan."
+		"notADonorLbl": "Я не член Nostlan."
 	},
 	"setupMenu_1": {
 		"newDefaultInstallLbl": "установить в ~\/Documents\/emu",
@@ -18,12 +18,12 @@
 		"finishSetupLbl": "завершить установку"
 	},
 	"libMain": {
-		"nav0Lbl": "воспроизвести",
-		"nav2Lbl": "эмулятор",
-		"nav3Lbl": "игровая приставка"
+		"nav0Lbl": "Воспроизвести",
+		"nav2Lbl": "Эмулятор",
+		"nav3Lbl": "Игровая приставка"
 	},
 	"boxSelect_1": {
-		"nav0Lbl": "воспроизвести",
+		"nav0Lbl": "Воспроизвести",
 		"nav2Lbl": "Перевернуть",
 		"nav3Lbl": "Назад"
 	},
@@ -45,7 +45,7 @@
 		"minimizeLbl": "свернуть",
 		"fullscreenLbl": "полный экран",
 		"quitLbl": "выход",
-		"gameLibMenuLbl": "редактировать игровую библиотеку",
+		"gameLibMenuLbl": "редактировать коллекцию игр",
 		"syncBackupLbl": "резервное копирование",
 		"forceUpdateLbl": "синхронизация",
 		"patreonLbl": "patreon",
@@ -54,27 +54,27 @@
 	},
 	"settingsMenu_11": {
 		"settingsMenuTitle": "Меню параметров",
-		"editAppearanceLbl": "изменить тему",
-		"controllerSettingsLbl": "параметры контроллера",
-		"toggleConsoleLbl": ["показать консоль", "скрыть консоль"],
-		"editPrefsLbl": "параметры редактирования"
+		"editAppearanceLbl": "изменить вид",
+		"controllerSettingsLbl": "параметры геймпада",
+		"toggleConsoleLbl": ["показать интерфейс командной строки", "скрыть интерфейс командной строки"],
+		"editPrefsLbl": "настройки"
 	},
 	"gameLibMenu_11": {
-		"gameLibMenuTitle": "Меню Библиотеки игр",
+		"gameLibMenuTitle": "Меню коллекции игр",
 		"scanForGamesLbl": "добавить новые игры",
-		"identifyGamesLbl": "определить игры (приход скоро)",
+		"identifyGamesLbl": "распознавание игр (скоро)",
 		"scanForImagesLbl": "автоматическое сканирование изображений",
 		"imageSearchLbl": "поиск изображений (скоро)",
-		"gameLibInfoLbl": "Информация"
+		"gameLibInfoLbl": "информация"
 	},
 	"gameLibInfoMenu_12": {
 		"gameLibInfoMenuBackLbl": "назад"
 	},
 	"controllerMenu_12": {
-		"controllerMenuTitle": "Параметры контроллера",
-		"controllerMenuInfoLbl": "Информация",
-		"rumbleLbl": "Румба",
-		"prof2Lbl": "Прочие"
+		"controllerMenuTitle": "Параметры геймпада",
+		"controllerMenuInfoLbl": "информация",
+		"rumbleLbl": "вибрация",
+		"prof2Lbl": "Прочее"
 	},
 	"controInfoMenu_13": {
 		"controInfoMenuBackLbl": "назад"
@@ -83,8 +83,8 @@
 		"addLbl": "добавить"
 	},
 	"interfaceMenu_12": {
-		"interfaceMenuTitle": "Изменить внешний вид",
+		"interfaceMenuTitle": "Изменить вид",
 		"themeLbl": "изменить тему",
-		"toggleCoverLbl": ["скрыть кнопки наложения", "показать кнопки наложения"]
+		"toggleCoverLbl": ["скрыть крайние кнопки", "показать крайние кнопки"]
 	}
 }

@@ -1,0 +1,90 @@
+{
+	"welcomeMenu": {
+		"welcomeMenuTitle": "¡Gracias por instalar Nostlan!",
+		"startSetupLbl": "configuración de inicio"
+	},
+	"donateMenu": {
+		"donatedLbl": "acceso a las características",
+		"donatePatreonLbl": "Página abierta de Patreon",
+		"donateLaterLbl": "Recordarme después"
+	},
+	"checkDonationMenu_1": {
+		"verifyDonorLbl": "verificar contraseña",
+		"notADonorLbl": "Todavía no apoyo a Nostlan"
+	},
+	"setupMenu_1": {
+		"newDefaultInstallLbl": "instalar en ~\/Documents\/emu",
+		"newInstallLbl": "elegir ubicación de instalación",
+		"finishSetupLbl": "configuración de acabado"
+	},
+	"libMain": {
+		"nav0Lbl": "Jugar",
+		"nav2Lbl": "Emulador",
+		"nav3Lbl": "Sistema"
+	},
+	"boxSelect_1": {
+		"nav0Lbl": "Jugar",
+		"nav2Lbl": "Flip",
+		"nav3Lbl": "Volver"
+	},
+	"boxOpenMenu_2": {
+		"nav0Lbl": "Manual",
+		"nav2Lbl": "Memoria",
+		"nav3Lbl": "Volver"
+	},
+	"gameMediaSelect_3": {
+		"nav0Lbl": "Archivo",
+		"nav2Lbl": "Carpeta de imágenes",
+		"nav3Lbl": "Volver"
+	},
+	"pauseMenu_10": {
+		"pauseMenuTitle": "Menú principal",
+		"nav0Lbl": "Salida",
+		"nav2Lbl": "Minimizar",
+		"nav3Lbl": "Volver",
+		"minimizeLbl": "minimizar",
+		"fullscreenLbl": "Pantalla completa",
+		"quitLbl": "Salida",
+		"gameLibMenuLbl": "editar biblioteca de juegos",
+		"syncBackupLbl": "copia de seguridad",
+		"forceUpdateLbl": "sincronizar",
+		"patreonLbl": "patreón",
+		"helpLbl": "Ayuda",
+		"settingsMenuLbl": "menú de configuración"
+	},
+	"settingsMenu_11": {
+		"settingsMenuTitle": "Menú Configuración",
+		"editAppearanceLbl": "aspecto de cambio",
+		"controllerSettingsLbl": "valores de controlador",
+		"toggleConsoleLbl": ["mostrar consola", "ocultar consola"],
+		"editPrefsLbl": "preferencias de edición"
+	},
+	"gameLibMenu_11": {
+		"gameLibMenuTitle": "Menú Biblioteca de juegos",
+		"scanForGamesLbl": "añadir nuevos juegos",
+		"identifyGamesLbl": "identificar juegos (próximamente)",
+		"scanForImagesLbl": "Exploración automática de imágenes",
+		"imageSearchLbl": "buscar imágenes (próximamente)",
+		"gameLibInfoLbl": "información"
+	},
+	"gameLibInfoMenu_12": {
+		"gameLibInfoMenuBackLbl": "dorso"
+	},
+	"controllerMenu_12": {
+		"controllerMenuTitle": "Configuración del controlador",
+		"controllerMenuInfoLbl": "información",
+		"rumbleLbl": "retumbar",
+		"prof2Lbl": "Otros"
+	},
+	"controInfoMenu_13": {
+		"controInfoMenuBackLbl": "dorso"
+	},
+	"addSavesPathMenu_2": {
+		"addLbl": "añadir"
+	},
+	"interfaceMenu_12": {
+		"interfaceMenuTitle": "Cambio de aspecto",
+		"themeLbl": "tema de cambio",
+		"toggleCoverLbl": ["ocultar botones de superposición", "mostrar botones de superposición"]
+	}
+}

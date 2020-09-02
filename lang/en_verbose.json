@@ -1,0 +1,90 @@
+{
+	"welcomeMenu": {
+		"welcomeMenuTitle": "Thank you for installing Nostlan!",
+		"startSetupLbl": "start setup"
+	},
+	"donateMenu": {
+		"donatedLbl": "access premium features",
+		"donatePatreonLbl": "open Patreon page",
+		"donateLaterLbl": "remind me later"
+	},
+	"checkDonationMenu_1": {
+		"verifyDonorLbl": "verify password",
+		"notADonorLbl": "I haven't donated yet"
+	},
+	"setupMenu_1": {
+		"newDefaultInstallLbl": "install at ~\/Documents\/emu",
+		"newInstallLbl": "choose install location",
+		"finishSetupLbl": "finish setup"
+	},
+	"libMain": {
+		"nav0Lbl": "Play",
+		"nav2Lbl": "Emulator",
+		"nav3Lbl": "System"
+	},
+	"boxSelect_1": {
+		"nav0Lbl": "Play",
+		"nav2Lbl": "Flip",
+		"nav3Lbl": "Back"
+	},
+	"boxOpenMenu_2": {
+		"nav0Lbl": "Manual",
+		"nav2Lbl": "Memory",
+		"nav3Lbl": "Back"
+	},
+	"gameMediaSelect_3": {
+		"nav0Lbl": "File",
+		"nav2Lbl": "Image Folder",
+		"nav3Lbl": "Back"
+	},
+	"pauseMenu_10": {
+		"pauseMenuTitle": "Main Menu",
+		"nav0Lbl": "Exit",
+		"nav2Lbl": "Minimize",
+		"nav3Lbl": "Back",
+		"minimizeLbl": "minimize",
+		"fullscreenLbl": "fullscreen",
+		"quitLbl": "exit",
+		"gameLibMenuLbl": "edit game library",
+		"syncBackupLbl": "backup",
+		"forceUpdateLbl": "synchronize",
+		"patreonLbl": "patreon",
+		"helpLbl": "help",
+		"settingsMenuLbl": "settings menu"
+	},
+	"settingsMenu_11": {
+		"settingsMenuTitle": "Settings Menu",
+		"editAppearanceLbl": "change appearance",
+		"controllerSettingsLbl": "controller settings",
+		"toggleConsoleLbl": ["show console", "hide console"],
+		"editPrefsLbl": "edit preferences"
+	},
+	"gameLibMenu_11": {
+		"gameLibMenuTitle": "Game Library Menu",
+		"scanForGamesLbl": "add new games",
+		"identifyGamesLbl": "identify games (coming soon)",
+		"scanForImagesLbl": "auto-scan for images",
+		"imageSearchLbl": "search for images (coming soon)",
+		"gameLibInfoLbl": "information"
+	},
+	"gameLibInfoMenu_12": {
+		"gameLibInfoMenuBackLbl": "back"
+	},
+	"controllerMenu_12": {
+		"controllerMenuTitle": "Controller Settings",
+		"controllerMenuInfoLbl": "information",
+		"rumbleLbl": "rumble",
+		"prof2Lbl": "Other"
+	},
+	"controInfoMenu_13": {
+		"controInfoMenuBackLbl": "back"
+	},
+	"addSavesPathMenu_2": {
+		"addLbl": "add"
+	},
+	"interfaceMenu_12": {
+		"interfaceMenuTitle": "Change Appearance",
+		"themeLbl": "change theme",
+		"toggleCoverLbl": ["hide overlay buttons", "show overlay buttons"]
+	}
+}

@@ -106,6 +106,22 @@ module.exports = async function(arg) {
 	}
 
 	async function load() {
+		// after the user uses the app for the first time
+		// a preferences file is created
+		// if it exists load it
+		if (await prefsMng.canLoad()) {
+			await prefsMng.load();
+			systemsDir = path.join(prefs.nlaDir, '..');
+			await prefsMng.update();
+			// ensures the template dir structure exists
+			// makes folders if they aren't there
+			await createTemplate();
+		}
+
+
+		global.lang = JSON.parse(
+			await fs.readFile(__root + '/lang/ru.json', 'utf8'));
+
 		// convert all markdown files to html
 		let files = await klaw(__root + '/views/md');
 		for (let file of files) {
@@ -119,17 +135,6 @@ module.exports = async function(arg) {
 			data = pug('.md', null, md(data));
 			file = path.parse(file);
 			$('#' + file.name).prepend(data);
-		}
-		// after the user uses the app for the first time
-		// a preferences file is created
-		// if it exists load it
-		if (await prefsMng.canLoad()) {
-			await prefsMng.load();
-			systemsDir = path.join(prefs.nlaDir, '..');
-			await prefsMng.update();
-			// ensures the template dir structure exists
-			// makes folders if they aren't there
-			await createTemplate();
 		}
 
 		let sysMenu_5 = 'h1 Select a System\n';
@@ -339,28 +344,34 @@ module.exports = async function(arg) {
 
 	cui.onChange = (state, subState) => {
 		let labels = [' ', ' ', ' '];
-		if (state == 'boxSelect_1') {
-			labels = ['Play', 'Flip', 'Back'];
-			$('#libMain').show();
-		} else if (state == 'boxOpenMenu_2') {
-			labels = ['Manual', 'Memory', 'Back'];
-			$('#boxOpenMenu_2').removeClass('zoom-gameManual');
-			$('#boxOpenMenu_2').removeClass('zoom-gameMedia');
-			$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
-		} else if (state == 'libMain') {
-			labels = ['Play', 'Emu', 'Sys'];
-			$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
-			$('#libMain').removeClass('no-outline');
-		} else if (state == 'gameMediaSelect_3') {
-			labels = ['File', 'ImgDir', 'Back'];
-		} else if (state == 'pauseMenu_10') {
-			labels = ['Quit', 'Mini', 'Back'];
-		} else if (/(game|menu)/i.test(state)) {
+		if (/(game|menu)/i.test(state)) {
 			labels = [' ', ' ', 'Back'];
 		}
 		$('#nav0 .text').text(labels[0]);
 		$('#nav2 .text').text(labels[1]);
 		$('#nav3 .text').text(labels[2]);
+
+		// TODO UI translation, english ui /lang/en.js
+
+		for (let elem in lang[state]) {
+			let txt = lang[state][elem];
+			if (typeof txt == 'string') {
+				$('#' + elem).text(txt);
+			} else {
+				$('#' + elem).text(txt[0]);
+			}
+		}
+
+		if (state == 'boxSelect_1') {
+			$('#libMain').show();
+		} else if (state == 'boxOpenMenu_2') {
+			$('#boxOpenMenu_2').removeClass('zoom-gameManual');
+			$('#boxOpenMenu_2').removeClass('zoom-gameMedia');
+			$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
+		} else if (state == 'libMain') {
+			$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
+			$('#libMain').removeClass('no-outline');
+		}
 
 		function adjust(flip) {
 			if (flip && $('nav.fixed-top').find('#nav1Btn').length) {
@@ -459,25 +470,25 @@ module.exports = async function(arg) {
 				await fs.ensureDir(`${systemsDir}/${_sys}/${_emu}`);
 				// games dir
 				let gamesDir = `${systemsDir}/${_sys}/games`;
+				let systGamesDir = `${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`;
 				if (!_syst.gamesDir) {
 					await fs.ensureDir(gamesDir);
-				} else if (!(await fs.exists(gamesDir))) {
+				} else if (_syst.gamesDir &&
+					!(await fs.exists(gamesDir)) &&
+					await fs.exists(systGamesDir)) {
 					try {
-						await fs.symlink(
-							`${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`,
-							gamesDir, 'dir'
-						);
+						await fs.ensureSymlink(systGamesDir, gamesDir, 'dir');
 					} catch (ror) {
 						er(ror);
 					}
 				}
 				let imagesDir = `${systemsDir}/${_sys}/images`;
-				if (_syst.imagesDir && !(await fs.exists(imagesDir))) {
+				let systImagesDir = `${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`;
+				if (_syst.imagesDir &&
+					!(await fs.exists(imagesDir)) &&
+					await fs.exists(systImagesDir)) {
 					try {
-						await fs.symlink(
-							`${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`,
-							imagesDir, 'dir'
-						);
+						await fs.ensureSymlink(systImagesDir, imagesDir, 'dir');
 					} catch (ror) {
 						er(ror);
 					}
@@ -907,9 +918,9 @@ module.exports = async function(arg) {
 				$('#prof2').text(prefs.ui.gamepad.other.profile);
 			} else if (act == 'editPrefs') {
 				opn(prefsMng.prefsPath);
-			} else if (act == 'showConsole') {
+			} else if (act == 'toggleConsole') {
 				electron.getCurrentWindow().toggleDevTools();
-				let $elem = $('#pauseMenu_10 .uie[name="showConsole"] .text');
+				let $elem = $('#pauseMenu_10 .uie[name="toggleConsole"] .text');
 				if ($elem.text().includes('show')) {
 					$elem.text('hide console');
 				} else {
@@ -917,11 +928,11 @@ module.exports = async function(arg) {
 				}
 			}
 		} else if (ui == 'donateMenu') {
-			if (act == 'donate-monthly') {
+			if (act == 'donatePatreon') {
 				opn('https://www.patreon.com/nostlan');
 			} else if (act == 'donate-single') {
 				opn('https://www.paypal.me/qashto/20');
-			} else if (act == 'donate-later') {
+			} else if (act == 'donateLater') {
 				await loadGameLib();
 			} else if (act == 'donated') {
 				cui.change('checkDonationMenu_1');
@@ -944,7 +955,7 @@ module.exports = async function(arg) {
 				cui.change('setupMenu_1');
 			}
 		} else if (ui == 'setupMenu_1') {
-			if (act == 'continue') {
+			if (act == 'finishSetup') {
 				if (!(await fs.exists(systemsDir))) {
 					cui.err('you must choose an install location!');
 					return false;
@@ -952,9 +963,9 @@ module.exports = async function(arg) {
 				cui.change('sysMenu_5');
 				return;
 			}
-			if (act == 'new-in-docs') {
+			if (act == 'newDefaultInstall') {
 				systemsDir = util.absPath('$home') + '/Documents';
-			} else {
+			} else if (act == 'newInstall') {
 				let msg = 'choose the folder you want the template to go in';
 				systemsDir = await dialog.selectDir(msg);
 			}

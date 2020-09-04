@@ -16,7 +16,6 @@ html {
 	text-align: center;
 	user-select: none;
 }
-
 /*================Themes====================*/
 :root {
 	--nav-color: rgb(130, 130, 130);
@@ -27,17 +26,14 @@ html {
 	--navBtns-border-color: #000;
 	--box-bg-color: #000;
 }
-
 @font-face {
 	font-family: handwriting0;
 	src: url("../../themes/fonts/edosz.ttf");
 }
-
 /*================General====================*/
 .hiddenRow {
 	padding: 0 !important;
 }
-
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -185,7 +181,6 @@ game {
 	/* Support for IE. */
 	font-feature-settings: 'liga';
 }
-
 /*================Game Lib Viewer====================*/
 #libMain {
 	display: inline-flex;
@@ -342,7 +337,6 @@ game.flip .shade {
 img.coverFull {
 	background-color: var(--box-bg-color);
 }
-
 /*================Game Lib Viewer====================*/
 game .crop.cover,
 game .crop.coverFull {
@@ -363,7 +357,6 @@ game.flip img.coverFull {
 	width: 200.8%;
 	transform: translate(1.6%, 1%);
 }
-
 /*================Cover====================*/
 nav {
 	display: flex;
@@ -375,8 +368,13 @@ nav * {
 	pointer-events: all;
 }
 
+.navbar {
+	height: 12vh;
+}
+
 .navPanel {
 	width: 19%;
+	height: 100%;
 	border-style: solid;
 	margin-left: 30px;
 }
@@ -392,10 +390,25 @@ nav * {
 }
 
 .navPanel .text {
-	overflow: hidden;
-	text-overflow: clip;
-	white-space: nowrap;
+	/* overflow: hidden; */
+	/* text-overflow: clip; */
+	/* white-space: nowrap; */
 	width: 65%;
+	height: 100%;
+}
+
+.navPanel .text span {
+	vertical-align: middle;
+}
+
+.navPanel .text.twoLines {
+	line-height: 1vh;
+	transform: scaleY(1)!important;
+}
+
+.navPanel .text .twoLines {
+	line-height: 1;
+	vertical-align: sub;
 }
 
 #nav0 {
@@ -456,6 +469,11 @@ nav * {
 	margin-left: auto;
 }
 
+#nav0 .text,
+#nav2 .text {
+	margin-right: 2%;
+}
+
 #nav0 .nav-item,
 #nav2 .nav-item {
 	margin-right: 4%;
@@ -464,6 +482,10 @@ nav * {
 #nav1 *,
 #nav3 * {
 	margin-right: auto;
+}
+
+#nav3 .text {
+	margin-left: 2%;
 }
 
 #nav3 .nav-item {
@@ -475,7 +497,6 @@ img.logoNav {
 }
 
 #nav1 li {
-	height: 100%;
 	margin: auto;
 }
 
@@ -506,7 +527,6 @@ button:focus {
 ul.nav {
 	height: 100%;
 }
-
 /*================Misc====================*/
 .hide,
 .hide * {
@@ -537,7 +557,6 @@ ul.nav {
 .invis {
 	visibility: hidden;
 }
-
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
 	font-size: 18px;
@@ -554,7 +573,6 @@ ul.nav {
 .material-icons.md-48 {
 	font-size: 48px;
 }
-
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark {
 	color: rgba(0, 0, 0, 0.54);
@@ -563,7 +581,6 @@ ul.nav {
 .material-icons.md-dark.md-inactive {
 	color: rgba(0, 0, 0, 0.26);
 }
-
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light {
 	color: rgba(255, 255, 255, 1);

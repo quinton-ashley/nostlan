@@ -10,7 +10,6 @@
 .arcade .navPanel .text {
 	font-family: Orbitron, sans-serif;
 	text-transform: uppercase;
-	font-size: 2.4vw;
 	transform: scale(1, 2) translate(0%, 6%);
 	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
 }
@@ -34,7 +33,6 @@
 	filter: none;
 	background: var(--navBtns-hover-color);
 }
-
 /*================MAME Game Lib Viewer====================*/
 game.arcade .box {
 	border-radius: 0;

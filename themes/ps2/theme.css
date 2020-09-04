@@ -3,7 +3,6 @@
 	font-family: ryp;
 	src: url("../fonts/ryp.ttf");
 }
-
 @font-face {
 	font-family: 'Sownie';
 	src: url("../fonts/sownie.ttf");
@@ -17,13 +16,12 @@
 	border: none;
 	box-shadow: none;
 	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
-	transform: translate(0%, 50%) scale(1, 1.4);
+	transform: scale(1, 1.4);
 	text-rendering: geometricPrecision;
 }
 
 .ps2 .navPanel .text {
 	font-family: ryp, sans-serif;
-	font-size: 1.9vw;
 }
 
 .ps2 .square span {
@@ -93,7 +91,6 @@
 	top: 0.2vw;
 	transform: scale(0.65);
 }
-
 /*===== PS2 Game Lib Viewer ===*/
 game.ps2 .crop.coverFull {
 	width: 200.4%;

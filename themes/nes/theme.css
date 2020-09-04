@@ -3,7 +3,6 @@
 	font-family: Early_GameBoy;
 	src: local("Early_GameBoy"), local("Early_GameBoy"), url("../fonts/Early_GameBoy.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -12,7 +11,6 @@
 .nes .navPanel .text {
 	font-family: "Early_GameBoy", "Early_GameBoy", Early_GameBoy;
 	font-weight: 900;
-	font-size: 2.3vw;
 	transform: scaleY(2);
 }
 
@@ -34,11 +32,10 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rnes(255, 255, 255, .5);
 }
-
 /*================nes Game Lib Viewer====================*/
 game.nes .crop.cover,
-game.nes.flip .crop.coverBack,
-game.nes .crop.coverFull {
+game.nes .crop.coverFull,
+game.nes.flip .crop.coverBack {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -69,12 +66,12 @@ game.nes.flip img.coverBack {
 }
 
 game.nes .shade {
-	width: 0%;
+	width: 0;
 }
 
 game.nes.flip .shade {
 	left: 99%;
-	width: 0%;
+	width: 0;
 }
 
 game.nes .box {

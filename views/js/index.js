@@ -7,6 +7,7 @@ module.exports = async function(arg) {
 	await require(arg.__root + '/core/setup.js')(arg);
 	log('version: ' + pkg.version);
 	global.util = require(__root + '/core/util.js');
+	require(__root + '/core/jquery.textfill.min.js')();
 
 	// Nostlan dir location cannot be changed.
 	// Only used to store small config files, no images,
@@ -170,8 +171,10 @@ module.exports = async function(arg) {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
 		cui.change('loading_1', sysStyle);
-		let ld0 = `loading your ${syst.fullName} game library`;
-		$('#loadDialog0').text(ld0);
+		if (prefs.lang == 'en') {
+			let ld0 = `loading your ${syst.fullName} game library`;
+			$('#loadDialog0').text(ld0);
+		}
 		emu = syst.emus[0];
 		if (mac && sys == 'ds') emu = 'desmume';
 		await intro();
@@ -204,10 +207,13 @@ module.exports = async function(arg) {
 			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.err(`Game library does not exist: \n` + gameLibDir, 404, 'sysMenu_5');
+					// 'Game library does not exist: '
+					cui.err(lang['sysMenu_5'].msg0 + '\n' + gameLibDir, 404, 'sysMenu_5');
 					return;
 				}
-				gameLibDir = await dialog.selectDir(`select ${sys} game directory`);
+				gameLibDir = await dialog.selectDir(
+					lang['sysMenu_5'].msg2_0 + syst.name + lang['sysMenu_5'].msg2_1
+				);
 			}
 			let files = await klaw(gameLibDir);
 			for (let i = 0; !files.length || (
@@ -217,11 +223,13 @@ module.exports = async function(arg) {
 				); i++) {
 				if (i >= 1) {
 					await removeIntro(0);
-					cui.err(`Game library has no game files`, 404, 'sysMenu_5');
+					// 'Game library has no game files'
+					cui.err(lang['sysMenu_5'].msg1, 404, 'sysMenu_5');
 					return;
 				}
+				// `select ${syst.name} games folder`
 				gameLibDir = await dialog.selectDir(
-					`select ${syst.name} game directory`);
+					lang['sysMenu_5'].msg2_0 + syst.name + lang['sysMenu_5'].msg2_1);
 				log(gameLibDir);
 				if (!gameLibDir) continue;
 				files = await klaw(gameLibDir);
@@ -236,16 +244,19 @@ module.exports = async function(arg) {
 					prefs[sys].libs.push(gameLibDir);
 				}
 			} else {
-				cui.err(`Couldn't load game library`, 404, 'sysMenu_5');
+				// 'Couldn't load game library'
+				cui.err(lang['sysMenu_5'].msg3, 404, 'sysMenu_5');
 				await loadGameLib();
 				return;
 			}
 			games = await scan.gameLib();
 			if (!games.length) {
 				await removeIntro(0);
-				let note = 'Game library has no game files. ';
+				// 'Game library has no game files. '
+				let note = lang['sysMenu_5'].msg4;
 				if (syst.gameExts) {
-					note = 'Game files must have the file extension: ';
+					// 'Game files must have the file extension: '
+					note = lang['sysMenu_5'].msg5;
 				}
 				for (let i in syst.gameExts) {
 					let ext = syst.gameExts;
@@ -254,7 +265,8 @@ module.exports = async function(arg) {
 						note += ', ';
 					}
 					if (i == syst.gameExts.length - 2) {
-						note += 'or ';
+						// 'or '
+						note += lang['sysMenu_5'].msg6;
 					}
 				}
 				cui.err(note, 404, 'sysMenu_5');
@@ -278,16 +290,21 @@ module.exports = async function(arg) {
 
 		cui.removeView('playMenu_5');
 		cui.removeView('emuMenu_5');
-		let playMenu = 'h1 Play game with\n';
-		let emuMenu = 'h1 Emulator Menu\n';
+		let playMenu = 'h1#playMenuTitle\n';
+		let emuMenu = 'h1#emuMenuTitle\n';
 		for (let _emu of syst.emus) {
 			playMenu += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
+
+			// TODO check if user has the emulator
+			// if they do add the configure and update buttons
+			// else add a button to install
+
 			emuMenu += `.col.uie(name="${_emu}-config") ` +
-				`Configure ${prefs[_emu].name}\n`;
+				`${lang['emuMenu_5'].msg0} ${prefs[_emu].name}\n`;
 
 			if (prefs[_emu].update) {
 				emuMenu += `.col.uie(name="${_emu}-update") ` +
-					`Update ${prefs[_emu].name}\n`;
+					`${lang['emuMenu_5'].msg1} ${prefs[_emu].name}\n`;
 			}
 		}
 		$('#playMenu_5').append(pug(playMenu));
@@ -304,7 +321,8 @@ module.exports = async function(arg) {
 
 	async function loadSharedAssets() {
 		cui.clearDialogs();
-		$('#loadDialog0').text('loading additional images');
+		// 'loading additional images'
+		$('#loadDialog0').text(lang["loading_1"].msg0);
 		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
 		let dir = prefs.nlaDir + '/images';
 
@@ -324,32 +342,20 @@ module.exports = async function(arg) {
 			}
 		}
 		$('#loadDialog1').text('');
-		$('#loadDialog0').text('loading complete!');
+		// 'loading complete!'
+		$('#loadDialog0').text(lang["loading_1"].msg0);
 	}
 
-	cui.onResize = (adjust) => {
-		if (!$('nav').hasClass('hide')) {
-			let $nav1 = $('#nav1');
-			let $nav1Btn = $nav1.find('#nav1Btn');
-			let nav1Height = $nav1.height();
-			let nav0Height = $('#nav0').height();
-			let mod = 24;
-			if ((/ps/i).test(sys)) mod = -8;
-			if (adjust || nav1Height != nav0Height) {
-				$nav1Btn.css('margin-top', (nav0Height + mod) * .5 - nav1Height * .5 - 4);
-				$('nav').height(nav0Height + 24);
-			}
-		}
-	};
+	cui.onResize = (adjust) => {};
 
 	cui.onChange = (state, subState) => {
 		let labels = [' ', ' ', ' '];
 		if (/(game|menu)/i.test(state)) {
-			labels = [' ', ' ', 'Back'];
+			labels[2] = lang['pauseMenu_10'].msg0;
 		}
-		$('#nav0 .text').text(labels[0]);
-		$('#nav2 .text').text(labels[1]);
-		$('#nav3 .text').text(labels[2]);
+		$('#nav0Lbl').text(labels[0]);
+		$('#nav2Lbl').text(labels[1]);
+		$('#nav3Lbl').text(labels[2]);
 
 		// TODO UI translation, english ui /lang/en.js
 
@@ -361,6 +367,22 @@ module.exports = async function(arg) {
 				$('#' + elem).text(txt[0]);
 			}
 		}
+
+		let lbls = ['#nav0Lbl', '#nav2Lbl', '#nav3Lbl'];
+		for (let lbl of lbls) {
+			let $lbl = $(lbl);
+			let $parent = $lbl.parent();
+			let txt = $lbl.text();
+			if (txt.includes(' ')) {
+				$lbl.addClass('twoLines');
+				$parent.addClass('twoLines');
+			} else {
+				$lbl.removeClass('twoLines');
+				$parent.removeClass('twoLines');
+			}
+		}
+
+		$('nav .text').textfill();
 
 		if (state == 'boxSelect_1') {
 			$('#libMain').show();
@@ -1287,7 +1309,6 @@ module.exports = async function(arg) {
 			keepBackground: true,
 			hoverCurDisabled: true
 		});
-		$('#nav1Btn').css('margin-top', '20px');
 	}
 
 	async function start() {

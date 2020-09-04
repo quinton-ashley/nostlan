@@ -10,7 +10,7 @@
 	},
 	"checkDonationMenu_1": {
 		"verifyDonorLbl": "verify password",
-		"notADonorLbl": "I haven't donated yet"
+		"notADonorLbl": "I am not a member yet"
 	},
 	"setupMenu_1": {
 		"newDefaultInstallLbl": "install at ~\/Documents\/emu",
@@ -45,12 +45,13 @@
 		"minimizeLbl": "minimize",
 		"fullscreenLbl": "fullscreen",
 		"quitLbl": "exit",
-		"gameLibMenuLbl": "edit game library",
+		"gameLibMenuLbl": "edit game collection",
 		"syncBackupLbl": "backup",
 		"forceUpdateLbl": "synchronize",
-		"patreonLbl": "patreon",
+		"patreonLbl": "Patreon",
 		"helpLbl": "help",
-		"settingsMenuLbl": "settings menu"
+		"settingsMenuLbl": "settings menu",
+		"msg0": "Back"
 	},
 	"settingsMenu_11": {
 		"settingsMenuTitle": "Settings Menu",
@@ -60,7 +61,7 @@
 		"editPrefsLbl": "edit preferences"
 	},
 	"gameLibMenu_11": {
-		"gameLibMenuTitle": "Game Library Menu",
+		"gameLibMenuTitle": "Game Collection Menu",
 		"scanForGamesLbl": "add new games",
 		"identifyGamesLbl": "identify games (coming soon)",
 		"scanForImagesLbl": "auto-scan for images",
@@ -86,5 +87,30 @@
 		"interfaceMenuTitle": "Change Appearance",
 		"themeLbl": "change theme",
 		"toggleCoverLbl": ["hide overlay buttons", "show overlay buttons"]
+	},
+	"sysMenu_5": {
+		"sysMenuTitle": "Select a System",
+		"msg0": "Game collection does not exist: ",
+		"msg1": "Game collection has no game files",
+		"msg2_0": "select ",
+		"msg2_1": " games folder",
+		"msg3": "Couldn't load game collection",
+		"msg4": "Game collection has no game files. ",
+		"msg5": "Game files must have the file extension: ",
+		"msg6": "or "
+	},
+	"playMenu_5": {
+		"playMenuTitle": "Play game with"
+	},
+	"emuMenu_5": {
+		"emuMenuTitle": "Emulator Menu",
+		"msg0": "Configure",
+		"msg1": "Update",
+		"msg3": "Install"
+	},
+	"loading_1": {
+		"loadDialog0": "loading your game collection",
+		"msg0": "loading additional images",
+		"msg1": "loading complete!"
 	}
 }

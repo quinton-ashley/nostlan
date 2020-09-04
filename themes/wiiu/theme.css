@@ -3,7 +3,6 @@
 	font-family: contb;
 	src: url("../fonts/contb.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -12,8 +11,6 @@
 .wiiu .navPanel .text {
 	font-family: contb;
 	font-weight: 900;
-	font-size: 3.5vw;
-	line-height: 3.5vw;
 }
 
 .wiiu #nav1Btn {
@@ -34,7 +31,6 @@
 	padding-top: 1%;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-
 /*================ Wii U Game Lib Viewer ====================*/
 game.wiiu .crop.coverFull {
 	width: 200.4%;
@@ -77,7 +73,6 @@ game.wiiu.flip .shade {
 	width: 1.4%;
 	left: 98.7%;
 }
-
 /*================Wii Open Box====================*/
 .wiiu #gameMemory {
 	width: 16vh;

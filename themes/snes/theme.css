@@ -3,7 +3,6 @@
 	font-family: SNES_Italic;
 	src: local("SNES_Italic"), local("SNES_Italic"), url("../fonts/SNES_Italic.ttf");
 }
-
 @font-face {
 	font-family: Nintender;
 	src: url("../fonts/Nintender.ttf");
@@ -18,8 +17,6 @@
 	font-family: "SNES_Italic", "SNES_Italic", SNES_Italic;
 	font-weight: 1000;
 	letter-spacing: 1px;
-	transform: scale(1.6);
-	font-size: 3vw;
 }
 
 .snes.box .menu .cursor,
@@ -51,15 +48,14 @@
 }
 
 .snes.game-box .nav-link {
-	border-width: .5vw;
+	border-width: 0.5vw;
 }
-
 /*================snes Game Lib Viewer====================*/
 game.snes .crop.coverFull {
 	width: 98.1%;
 	height: 98.5%;
 	top: 0;
-	left: .73%;
+	left: 0.73%;
 	border-radius: 10px;
 }
 
@@ -67,7 +63,7 @@ game.snes .crop.cover {
 	width: 98.1%;
 	height: 99%;
 	top: 0;
-	left: .73%;
+	left: 0.73%;
 	border-radius: 10px;
 }
 

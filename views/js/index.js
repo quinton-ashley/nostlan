@@ -121,7 +121,8 @@ module.exports = async function(arg) {
 
 
 		global.lang = JSON.parse(
-			await fs.readFile(__root + '/lang/ru.json', 'utf8'));
+			// await fs.readFile(__root + `/lang/${prefs.ui.lang}.json`, 'utf8'));
+			await fs.readFile(__root + `/lang/en.json`, 'utf8'));
 
 		// convert all markdown files to html
 		let files = await klaw(__root + '/views/md');

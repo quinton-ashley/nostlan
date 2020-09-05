@@ -390,8 +390,8 @@ nav * {
 }
 
 .navPanel .text {
-	/* overflow: hidden; */
-	/* text-overflow: clip; */
+	overflow: hidden;
+	text-overflow: clip;
 	/* white-space: nowrap; */
 	width: 65%;
 	height: 100%;
@@ -399,6 +399,7 @@ nav * {
 
 .navPanel .text span {
 	vertical-align: middle;
+	line-height: 1;
 }
 
 .navPanel .text.twoLines {
@@ -408,7 +409,6 @@ nav * {
 
 .navPanel .text .twoLines {
 	line-height: 1;
-	vertical-align: sub;
 }
 
 #nav0 {

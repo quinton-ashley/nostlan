@@ -411,6 +411,7 @@
     }
   },
   "ui": {
+		"lang": "en",
     "mouse": {
       "wheel": {
         "multi": 1,

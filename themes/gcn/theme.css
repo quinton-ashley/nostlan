@@ -11,8 +11,8 @@
 .gcn .navPanel .text {
 	font-family: Gamecuben;
 	font-weight: 900;
-	text-transform: lowercase;
 	letter-spacing: -.2vw;
+	font-variant: all-small-caps;
 }
 
 .gcn #nav1Btn {

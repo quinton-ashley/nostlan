@@ -9177,13 +9177,16 @@
 			"title": "Get Fit with Mel B"
 		}, {
 			"id": "SNHE69",
-			"title": "Need for Speed: Hot Pursuit"
+			"title": "Need for Speed: Hot Pursuit",
+			"sys": "gcn"
 		}, {
 			"id": "SNHJ13",
-			"title": "Need for Speed: Hot Pursuit"
+			"title": "Need for Speed: Hot Pursuit",
+			"sys": "gcn"
 		}, {
 			"id": "SNHP69",
-			"title": "Need for Speed: Hot Pursuit"
+			"title": "Need for Speed: Hot Pursuit",
+			"sys": "gcn"
 		}, {
 			"id": "SNIE54",
 			"title": "Nicktoons MLB"
@@ -25166,10 +25169,12 @@
 			"title": "Madagascar"
 		}, {
 			"id": "GH2E69",
-			"title": "Need for Speed: Hot Pursuit 2"
+			"title": "Need for Speed: Hot Pursuit 2",
+			"sys": "gcn"
 		}, {
 			"id": "GH2P69",
-			"title": "Need for Speed: Hot Pursuit 2"
+			"title": "Need for Speed: Hot Pursuit 2",
+			"sys": "gcn"
 		}, {
 			"id": "GH3E69",
 			"title": "NHL 2003"
@@ -25812,10 +25817,12 @@
 			"sys": "gcn"
 		}, {
 			"id": "GKYJ01",
-			"title": "Kirby's Airride"
+			"title": "Kirby's Airride",
+			"sys": "gcn"
 		}, {
 			"id": "GKYP01",
-			"title": "Kirby Air Ride"
+			"title": "Kirby Air Ride",
+			"sys": "gcn"
 		}, {
 			"id": "GKZD54",
 			"title": "Codename: Kids Next Door - Operation: V.I.D.E.O.G.A.M.E."

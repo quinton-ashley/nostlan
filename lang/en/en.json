@@ -1,0 +1,118 @@
+{
+	"welcomeMenu": {
+		"title0": "Thanks for installing Nostlan!",
+		"opt0": "start setup"
+	},
+	"donateMenu": {
+		"opt0": "access premium features",
+		"opt1": "open Patreon page",
+		"opt2": "remind me later"
+	},
+	"checkDonationMenu_1": {
+		"opt0": "verify password",
+		"opt1": "I don't support Nostlan yet"
+	},
+	"setupMenu_1": {
+		"opt0": "install at ~\/Documents\/emu",
+		"opt1": "choose install location",
+		"opt2": "finish setup"
+	},
+	"libMain": {
+		"nav0Lbl": "Play",
+		"nav2Lbl": "Emu",
+		"nav3Lbl": "Sys",
+		"err0": "game not found"
+	},
+	"boxSelect_1": {
+		"nav0Lbl": "Play",
+		"nav2Lbl": "Flip",
+		"nav3Lbl": "Back"
+	},
+	"boxOpenMenu_2": {
+		"nav0Lbl": "Manual",
+		"nav2Lbl": "Memory",
+		"nav3Lbl": "Back"
+	},
+	"gameMediaSelect_3": {
+		"nav0Lbl": "File",
+		"nav2Lbl": "ImgDir",
+		"nav3Lbl": "Back"
+	},
+	"pauseMenu_10": {
+		"title0": "Main Menu",
+		"nav0Lbl": "Quit",
+		"nav2Lbl": "Mini",
+		"nav3Lbl": "Back",
+		"opt0": "mini",
+		"opt1": "full",
+		"opt2": "quit",
+		"opt3": "edit game library",
+		"opt4": "backup",
+		"opt5": "sync",
+		"opt6": "Patreon",
+		"opt7": "help",
+		"opt8": "settings menu",
+		"msg0": "Back"
+	},
+	"settingsMenu_11": {
+		"title0": "Settings Menu",
+		"opt0": "change appearance",
+		"opt1": "controller settings",
+		"opt2": ["show console", "hide console"],
+		"opt3": "edit preferences"
+	},
+	"gameLibMenu_11": {
+		"title0": "Game Library Menu",
+		"opt0": "add new games",
+		"opt1": "identify games (coming soon)",
+		"opt2": "auto-scan for images",
+		"opt3": "search for images (coming soon)",
+		"opt4": "info"
+	},
+	"gameLibInfoMenu_12": {
+		"opt0": "back"
+	},
+	"controllerMenu_12": {
+		"title0": "Controller Settings",
+		"opt0": "info",
+		"opt1": "rumble",
+		"prof2Lbl": "Other"
+	},
+	"controInfoMenu_13": {
+		"opt0": "back"
+	},
+	"addSavesPathMenu_2": {
+		"opt0": "add"
+	},
+	"interfaceMenu_12": {
+		"title0": "Change Appearance",
+		"opt0": "change theme",
+		"opt1": ["hide overlay buttons", "show overlay buttons"]
+	},
+	"sysMenu_5": {
+		"title0": "Select a System",
+		"msg0": "Game library does not exist",
+		"msg1": "Game library has no game files",
+		"msg2_0": "select",
+		"msg2_1": "games folder",
+		"msg3": "Couldn't load game library",
+		"msg4": "Game library has no game files",
+		"msg5": "Game files must have the file extension",
+		"msg6": "or"
+	},
+	"playMenu_5": {
+		"title0": "Play game with"
+	},
+	"emuMenu_5": {
+		"title0": "Emulator Menu",
+		"msg0": "Configure",
+		"msg1": "Update",
+		"msg3": "Install"
+	},
+	"loading_1": {
+		"msg0_0": "loading your",
+		"msg0_1": "game library",
+		"msg1": "loading additional images",
+		"msg2": "loading complete!"
+	}
+}

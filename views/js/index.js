@@ -119,13 +119,27 @@ module.exports = async function(arg) {
 			await createTemplate();
 		}
 
-
 		global.lang = JSON.parse(
-			// await fs.readFile(__root + `/lang/${prefs.ui.lang}.json`, 'utf8'));
-			await fs.readFile(__root + `/lang/en.json`, 'utf8'));
+			await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
+
+		// if (!prefs.ui.lang) {
+		// 	let iso_639_1 = require('iso-639').iso_639_1;
+		// 	let langFolders = await klaw(__root + '/lang');
+		// 	for (let x of langFolders) {
+		// 		if (!iso_639_1[x]) continue;
+		// 		let elem = `.uie(name=${x}) `;
+		// 		elem += iso_639_1[x].name;
+		// 		$('#languageMenu').append(pug(elem));
+		// 	}
+		// 	cui.change('languageMenu');
+		// }
+
+		// global.lang = JSON.parse(
+		// 	await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
 
 		// convert all markdown files to html
-		let files = await klaw(__root + '/views/md');
+		// let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
+		let files = await klaw(`${__root}/lang/en/md`);
 		for (let file of files) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
@@ -138,8 +152,9 @@ module.exports = async function(arg) {
 			file = path.parse(file);
 			$('#' + file.name).prepend(data);
 		}
+		delete files;
 
-		let sysMenu_5 = 'h1 Select a System\n';
+		let sysMenu_5 = `h1#sysMenuTitle\n`;
 		let i = 0;
 		for (let _sys in systems) {
 			let _syst = systems[_sys];
@@ -172,10 +187,11 @@ module.exports = async function(arg) {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
 		cui.change('loading_1', sysStyle);
-		if (prefs.lang == 'en') {
-			let ld0 = `loading your ${syst.fullName} game library`;
-			$('#loadDialog0').text(ld0);
-		}
+		// 'loading your game library'
+		let ld0 = lang.loading_1.msg0_0 + ' ';
+		ld0 += syst.fullName + ' ';
+		ld0 += lang.loading_1.msg0_1;
+		$('#loadDialog0').text(ld0);
 		emu = syst.emus[0];
 		if (mac && sys == 'ds') emu = 'desmume';
 		await intro();
@@ -209,11 +225,11 @@ module.exports = async function(arg) {
 				if (i >= 1) {
 					await removeIntro(0);
 					// 'Game library does not exist: '
-					cui.err(lang['sysMenu_5'].msg0 + '\n' + gameLibDir, 404, 'sysMenu_5');
+					cui.err(lang.sysMenu_5.msg0 + ': \n' + gameLibDir, 404, 'sysMenu_5');
 					return;
 				}
 				gameLibDir = await dialog.selectDir(
-					lang['sysMenu_5'].msg2_0 + syst.name + lang['sysMenu_5'].msg2_1
+					lang.sysMenu_5.msg2_0 + ' ' + syst.name + ' ' + lang.sysMenu_5.msg2_1
 				);
 			}
 			let files = await klaw(gameLibDir);
@@ -225,12 +241,12 @@ module.exports = async function(arg) {
 				if (i >= 1) {
 					await removeIntro(0);
 					// 'Game library has no game files'
-					cui.err(lang['sysMenu_5'].msg1, 404, 'sysMenu_5');
+					cui.err(lang.sysMenu_5.msg1, 404, 'sysMenu_5');
 					return;
 				}
 				// `select ${syst.name} games folder`
 				gameLibDir = await dialog.selectDir(
-					lang['sysMenu_5'].msg2_0 + syst.name + lang['sysMenu_5'].msg2_1);
+					lang.sysMenu_5.msg2_0 + ' ' + syst.name + ' ' + lang.sysMenu_5.msg2_1);
 				log(gameLibDir);
 				if (!gameLibDir) continue;
 				files = await klaw(gameLibDir);
@@ -246,7 +262,7 @@ module.exports = async function(arg) {
 				}
 			} else {
 				// 'Couldn't load game library'
-				cui.err(lang['sysMenu_5'].msg3, 404, 'sysMenu_5');
+				cui.err(lang.sysMenu_5.msg3, 404, 'sysMenu_5');
 				await loadGameLib();
 				return;
 			}
@@ -254,10 +270,10 @@ module.exports = async function(arg) {
 			if (!games.length) {
 				await removeIntro(0);
 				// 'Game library has no game files. '
-				let note = lang['sysMenu_5'].msg4;
+				let note = lang.sysMenu_5.msg4 + '. ';
 				if (syst.gameExts) {
 					// 'Game files must have the file extension: '
-					note = lang['sysMenu_5'].msg5;
+					note = lang.sysMenu_5.msg5 + ': ';
 				}
 				for (let i in syst.gameExts) {
 					let ext = syst.gameExts;
@@ -267,7 +283,7 @@ module.exports = async function(arg) {
 					}
 					if (i == syst.gameExts.length - 2) {
 						// 'or '
-						note += lang['sysMenu_5'].msg6;
+						note += lang.sysMenu_5.msg6 + ' ';
 					}
 				}
 				cui.err(note, 404, 'sysMenu_5');
@@ -301,11 +317,11 @@ module.exports = async function(arg) {
 			// else add a button to install
 
 			emuMenu += `.col.uie(name="${_emu}-config") ` +
-				`${lang['emuMenu_5'].msg0} ${prefs[_emu].name}\n`;
+				`${lang.emuMenu_5.msg0} ${prefs[_emu].name}\n`;
 
 			if (prefs[_emu].update) {
 				emuMenu += `.col.uie(name="${_emu}-update") ` +
-					`${lang['emuMenu_5'].msg1} ${prefs[_emu].name}\n`;
+					`${lang.emuMenu_5.msg1} ${prefs[_emu].name}\n`;
 			}
 		}
 		$('#playMenu_5').append(pug(playMenu));
@@ -323,7 +339,7 @@ module.exports = async function(arg) {
 	async function loadSharedAssets() {
 		cui.clearDialogs();
 		// 'loading additional images'
-		$('#loadDialog0').text(lang["loading_1"].msg0);
+		$('#loadDialog0').text(lang.loading_1.msg1);
 		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
 		let dir = prefs.nlaDir + '/images';
 
@@ -344,7 +360,7 @@ module.exports = async function(arg) {
 		}
 		$('#loadDialog1').text('');
 		// 'loading complete!'
-		$('#loadDialog0').text(lang["loading_1"].msg0);
+		$('#loadDialog0').text(lang.loading_1.msg2);
 	}
 
 	cui.onResize = (adjust) => {};
@@ -352,7 +368,7 @@ module.exports = async function(arg) {
 	cui.onChange = (state, subState) => {
 		let labels = [' ', ' ', ' '];
 		if (/(game|menu)/i.test(state)) {
-			labels[2] = lang['pauseMenu_10'].msg0;
+			labels[2] = lang.pauseMenu_10.msg0;
 		}
 		$('#nav0Lbl').text(labels[0]);
 		$('#nav2Lbl').text(labels[1]);
@@ -362,11 +378,11 @@ module.exports = async function(arg) {
 
 		for (let elem in lang[state]) {
 			let txt = lang[state][elem];
-			if (typeof txt == 'string') {
-				$('#' + elem).text(txt);
-			} else {
-				$('#' + elem).text(txt[0]);
-			}
+			if (typeof txt != 'string') txt = txt[0];
+			let $elem = $(`${state} .${elem}`);
+			if (!$elem.length) $elem = $('#' + elem);
+			if (!$elem.length) continue;
+			$elem.text(txt);
 		}
 
 		let lbls = ['#nav0Lbl', '#nav2Lbl', '#nav3Lbl'];
@@ -598,7 +614,7 @@ module.exports = async function(arg) {
 			game.file = util.absPath(game.file);
 			return game;
 		}
-		cui.err('game not found: ' + id);
+		cui.err(lang.libMain.err0 + ': ' + id);
 	}
 
 	async function saveSync(act) {
@@ -951,14 +967,12 @@ module.exports = async function(arg) {
 				}
 			}
 		} else if (ui == 'donateMenu') {
-			if (act == 'donatePatreon') {
-				opn('https://www.patreon.com/nostlan');
-			} else if (act == 'donate-single') {
-				opn('https://www.paypal.me/qashto/20');
-			} else if (act == 'donateLater') {
-				await loadGameLib();
-			} else if (act == 'donated') {
+			if (act == 'opt0') {
 				cui.change('checkDonationMenu_1');
+			} else if (act == 'opt1') {
+				opn('https://www.patreon.com/nostlan');
+			} else if (act == 'opt2') {
+				await loadGameLib();
 			}
 		} else if (ui == 'checkDonationMenu_1') {
 			if (act == 'continue') {
@@ -997,6 +1011,9 @@ module.exports = async function(arg) {
 			await createTemplate();
 			opn(systemsDir);
 			if (!(await fs.exists(systemsDir))) return false;
+		} else if (ui == 'languageMenu') {
+			prefs.ui.lang = act;
+			cui.change('loading_1');
 		} else if (ui == 'emuMenu_5' || ui == 'playMenu_5') {
 			// change emu to the selected emu
 			// or run with the previously selected emu

@@ -93,6 +93,7 @@
     "fuse.js": "^6.4.1",
     "gca-js": "^1.0.2",
     "gooder": "^1.0.4",
+    "iso-639": "^0.2.2",
     "jquery": "^3.5.1",
     "klaw": "^3.0.0",
     "lodash": "^4.17.20",
@@ -153,5 +154,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.14.12"
+  "version": "1.14.13"
 }

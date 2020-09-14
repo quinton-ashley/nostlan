@@ -14,41 +14,43 @@ html
 			#loadDialog0 starting Nostlan!
 			#loadDialog1
 			#loadDialog2
+		#languageMenu.menu.row-y
+			h1.title0 Choose Language
 		#donateMenu.menu.row-y
-			#donatedLbl.uie(name='donated') access premium features
-			#donatePatreonLbl.uie(name='donatePatreon') open Patreon page
-			#donateLaterLbl.uie(name='donateLater') remind me later
+			.uie.opt0 access premium features
+			.uie.opt1 open Patreon page
+			.uie.opt2 remind me later
 		#checkDonationMenu_1.menu.row-y
 			input#donorPassword.col-12.form-control(placeholder="patreon subscriber monthly password")
-			#verifyDonorLbl.uie(name='continue') verify password
-			#notADonorLbl.uie(name='b') I don't support Nostlan yet
+			.uie.opt0(name='continue') verify password
+			.uie.opt1(name='b') I don't support Nostlan yet
 		#welcomeMenu.menu.row-y
-			h1#welcomeMenuTitle Thanks for installing Nostlan!
-			#startSetupLbl.uie(name='full') start setup
+			h1.title0 Thanks for installing Nostlan!
+			.uie.opt0(name='full') start setup
 		#setupMenu_1.menu.row-y
-			#newDefaultInstallLbl.uie(name='newDefaultInstall') install at ~/Documents/emu
-			#newInstallLbl.uie(name='newInstall') choose install location
-			#finishSetupLbl.uie(name='finishSetup') finish setup
+			.uie.opt0(name='newDefaultInstall') install at ~/Documents/emu
+			.uie.opt1(name='newInstall') choose install location
+			.uie.opt2(name='finishSetup') finish setup
 		#themeMenu_13.menu.row-y
 		#interfaceMenu_12.menu.row-y
-			h1#interfaceMenuTitle Change Appearance
+			h1.title0 Change Appearance
 			.uie(name='theme')
 				i.material-icons.md-left brush
-				#themeLbl.text change theme
+				.text.opt0 change theme
 				i.material-icons.md-right.invis brush
 			.uie(name='toggleCover')
 				i.material-icons.md-left crop_free
-				#toggleCoverLbl.text hide overlay buttons
+				.text.opt1 hide overlay buttons
 				i.material-icons.md-right.invis crop_free
 		#controllerMenu_12.menu.menu-wide.row-y
-			h1#controllerMenuTitle Controller Settings
+			h1.title0 Controller Settings
 			.row.row-x
 				.uie.col(name='info')
 					i.material-icons.md-left info
-					#controllerMenuInfoLbl.text info
+					.text.opt0 info
 				.uie.col(name='rumble')
 					i.material-icons.md-left vibration
-					#rumbleLbl.text rumble on/off
+					.text.opt1 rumble on/off
 			.row.row-x
 				.col
 					h2 Xbox/PlayStation
@@ -62,84 +64,84 @@ html
 			h3#controName
 			h3#controType
 		#controInfoMenu_13.menu.menu-wide.row-y
-			#controInfoMenuBackLbl.uie(name='b') back
+			.uie.opt0(name='b') back
 		#pauseMenu_10.menu.container.row-y
-			h1#pauseMenuTitle Main Menu
+			h1.title0 Main Menu
 			.row.row-x
 				.uie.col(name='minimize')
 					i.material-icons.md-left call_to_action
-					#minimizeLbl.text mini
+					.text.opt0 mini
 				.uie.col(name='fullscreen')
 					i.material-icons.md-left zoom_out_map
-					#fullscreenLbl.text full
+					.text.opt1 full
 				.uie.col(name='quit')
 					i.material-icons.md-left power_settings_new
-					#quitLbl.text quit
+					.text.opt2 quit
 			.row.row-x
 				.uie.col(name='gameLibMenu')
 					i.material-icons.md-left disc_full
-					#gameLibMenuLbl.text edit game library
+					.text.opt3 edit game library
 					i.material-icons.md-right.invis disc_full
 			.row.row-x
 				.uie.col(name='syncBackup')
 					i.material-icons.md-left cloud_upload
-					#syncBackupLbl.text backup
+					.text.opt4 backup
 				.uie.col(name='forceUpdate')
 					i.material-icons.md-left cloud_download
-					#forceUpdateLbl.text sync
+					.text.opt5 sync
 			.row.row-x
 				.uie.col(name='patreon')
 					i.material-icons.md-left favorite
-					#patreonLbl.text patreon
+					.text.opt6 patreon
 				.uie.col(name='help')
 					i.material-icons.md-left help
-					#helpLbl.text help
+					.text.opt7 help
 			.row.row-x
 				.uie.col(name='settings')
 					i.material-icons.md-left perm_data_setting
-					#settingsMenuLbl.text settings menu
+					.text.opt8 settings menu
 					i.material-icons.md-right.invis perm_data_setting
 		#gameLibMenu_11.menu.row-y
-			h1#gameLibMenuTitle Game Library Menu
+			h1.title0 Game Library Menu
 			.uie(name='scanForGames')
 				i.material-icons.md-left library_add
-				#scanForGamesLbl.text add new games
+				.text.opt0 add new games
 				i.material-icons.md-right.invis library_add
 			.uie(name='identifyGames')
 				i.material-icons.md-left fingerprint
-				#identifyGamesLbl.text identify games (coming soon)
+				.text.opt1 identify games (coming soon)
 				i.material-icons.md-right.invis fingerprint
 			.uie(name='scanForImages')
 				i.material-icons.md-left add_photo_alternate
-				#scanForImagesLbl.text auto-scan for images
+				.text.opt2 auto-scan for images
 				i.material-icons.md-right.invis add_photo_alternate
 			.uie(name='imageSearch')
 				i.material-icons.md-left image_search
-				#imageSearchLbl.text search for images (coming soon)
+				.text.opt3 search for images (coming soon)
 				i.material-icons.md-right.invis image_search
 			.uie.col(name='info')
 				i.material-icons.md-left info
-				#gameLibInfoLbl.text info
+				.text.opt4 info
 				i.material-icons.md-right.invis info
 		#gameLibInfoMenu_12.menu.menu-wide.row-y
 			#gameLibInfoMenuBackLbl.uie(name='b') back
 		#settingsMenu_11.menu.row-y
-			h1#settingsMenuTitle Settings Menu
+			h1.title0 Settings Menu
 			.uie(name='editAppearance')
 				i.material-icons.md-left view_comfy
-				#editAppearanceLbl.text change appearance
+				.text.opt0 change appearance
 				i.material-icons.md-right.invis view_comfy
 			.uie(name='controllerSettings')
 				i.material-icons.md-left videogame_asset
-				#controllerSettingsLbl.text controller settings
+				.text.opt1 controller settings
 				i.material-icons.md-right.invis videogame_asset
 			.uie(name='toggleConsole')
 				i.material-icons.md-left bug_report
-				#toggleConsoleLbl.text show console
+				.text.opt2 show console
 				i.material-icons.md-right.invis bug_report
 			.uie(name='editPrefs')
 				i.material-icons.md-left perm_data_setting
-				#editPrefsLbl.text edit preferences
+				.text.opt3 edit preferences
 				i.material-icons.md-right.invis perm_data_setting
 		#sysMenu_5.menu.container.row-y
 		#playMenu_5.menu.row-y
@@ -147,7 +149,7 @@ html
 		#addSavesPathMenu_2.menu.row-y
 			input#saveName.col-12.form-control(placeholder="Name")
 			input#saveNumOfBackups.col-12.form-control(placeholder="Backup History Amount")
-			#addLbl.uie(name='add') add
+			.uie.opt0(name='add') add
 		#boxOpenMenu_2.row-x.no-outline
 			img#gameBoxOpen.uie(name='b')
 			.row-y

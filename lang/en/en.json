@@ -43,6 +43,7 @@
 		"nav0Lbl": "Quit",
 		"nav2Lbl": "Mini",
 		"nav3Lbl": "Back",
+		"msg0": "Back",
 		"opt0": "mini",
 		"opt1": "full",
 		"opt2": "quit",
@@ -51,8 +52,7 @@
 		"opt5": "sync",
 		"opt6": "Patreon",
 		"opt7": "help",
-		"opt8": "settings menu",
-		"msg0": "Back"
+		"opt8": "settings menu"
 	},
 	"settingsMenu_11": {
 		"title0": "Settings Menu",
@@ -107,12 +107,13 @@
 		"title0": "Emulator Menu",
 		"msg0": "Configure",
 		"msg1": "Update",
-		"msg3": "Install"
+		"msg2": "Install"
 	},
 	"loading_1": {
 		"msg0_0": "loading your",
 		"msg0_1": "game library",
 		"msg1": "loading additional images",
-		"msg2": "loading complete!"
+		"msg2": "loading complete!",
+		"msg3": "starting Nostlan"
 	}
 }

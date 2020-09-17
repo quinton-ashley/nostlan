@@ -113,6 +113,7 @@
 		"msg0_0": "loading your",
 		"msg0_1": "game library",
 		"msg0": "loading additional images",
-		"msg1": "loading complete!"
+		"msg1": "loading complete!",
+		"msg3": "starting Nostlan"
 	}
 }

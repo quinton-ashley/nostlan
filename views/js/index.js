@@ -106,7 +106,9 @@ module.exports = async function(arg) {
 		cui.hideDialogs();
 	}
 
-	async function load() {
+	async function setup() {
+		electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
+
 		// after the user uses the app for the first time
 		// a preferences file is created
 		// if it exists load it
@@ -118,41 +120,6 @@ module.exports = async function(arg) {
 			// makes folders if they aren't there
 			await createTemplate();
 		}
-
-		global.lang = JSON.parse(
-			await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
-
-		// if (!prefs.ui.lang) {
-		// 	let iso_639_1 = require('iso-639').iso_639_1;
-		// 	let langFolders = await klaw(__root + '/lang');
-		// 	for (let x of langFolders) {
-		// 		if (!iso_639_1[x]) continue;
-		// 		let elem = `.uie(name=${x}) `;
-		// 		elem += iso_639_1[x].name;
-		// 		$('#languageMenu').append(pug(elem));
-		// 	}
-		// 	cui.change('languageMenu');
-		// }
-
-		// global.lang = JSON.parse(
-		// 	await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
-
-		// convert all markdown files to html
-		// let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
-		let files = await klaw(`${__root}/lang/en/md`);
-		for (let file of files) {
-			let data = await fs.readFile(file, 'utf8');
-			let fileName = path.parse(file).name;
-			// this file has OS specific text
-			if (fileName == 'setupMenu_1') {
-				data = util.osmd(data);
-			}
-			data = data.replace(/\t/g, '  ');
-			data = pug('.md', null, md(data));
-			file = path.parse(file);
-			$('#' + file.name).prepend(data);
-		}
-		delete files;
 
 		let sysMenu_5 = `h1#sysMenuTitle\n`;
 		let i = 0;
@@ -181,6 +148,51 @@ module.exports = async function(arg) {
 		if (sys == '3ds') sys = 'n3ds';
 		syst = systems[sys];
 		cui.mapButtons(sys);
+
+		if (!prefs.ui.lang) {
+			let iso_639_1 = require('iso-639').iso_639_1;
+			let langFolders = await klaw(__root + '/lang');
+			let elems = '';
+			for (let x of langFolders) {
+				x = path.parse(x).base;
+				if (!iso_639_1[x]) continue;
+				elems += `.uie(name='${x}') `;
+				elems += iso_639_1[x].name + '\n';
+			}
+			log(elems);
+			$('#languageMenu').append(pug(elems));
+		}
+
+		// physical layout always matches the on screen postion of x and y
+		// in the cover menu
+		cui.start({
+			v: true,
+			haptic: prefs.ui.gamepad.haptic,
+			gca: prefs.ui.gamepad.gca,
+			gamepadMaps: prefs.ui.gamepad,
+			normalize: {
+				map: {
+					x: 'y',
+					y: 'x'
+				},
+				disable: 'nintendo'
+			}
+		});
+		process.on('uncaughtException', cui.err);
+		cui.bind('wheel');
+
+		// keyboard controls
+		for (let char of 'abcdefghijklmnopqrstuvwxyz1234567890') {
+			cui.bind(char, 'char-' + char);
+		}
+		cui.bind('space', 'char-_');
+
+		cui.bind('[', 'x');
+		cui.bind(']', 'y');
+		cui.bind('\\', 'b');
+		cui.bind('|', 'start');
+
+		await start();
 	}
 
 	async function loadGameLib() {
@@ -366,6 +378,10 @@ module.exports = async function(arg) {
 	cui.onResize = (adjust) => {};
 
 	cui.onChange = (state, subState) => {
+		if (state == 'languageMenu') {
+			cui.clearDialogs();
+			return;
+		}
 		let labels = [' ', ' ', ' '];
 		if (/(game|menu)/i.test(state)) {
 			labels[2] = lang.pauseMenu_10.msg0;
@@ -379,7 +395,7 @@ module.exports = async function(arg) {
 		for (let elem in lang[state]) {
 			let txt = lang[state][elem];
 			if (typeof txt != 'string') txt = txt[0];
-			let $elem = $(`${state} .${elem}`);
+			let $elem = $(`#${state} .${elem}`);
 			if (!$elem.length) $elem = $('#' + elem);
 			if (!$elem.length) continue;
 			$elem.text(txt);
@@ -1013,7 +1029,7 @@ module.exports = async function(arg) {
 			if (!(await fs.exists(systemsDir))) return false;
 		} else if (ui == 'languageMenu') {
 			prefs.ui.lang = act;
-			cui.change('loading_1');
+			await start();
 		} else if (ui == 'emuMenu_5' || ui == 'playMenu_5') {
 			// change emu to the selected emu
 			// or run with the previously selected emu
@@ -1330,36 +1346,33 @@ module.exports = async function(arg) {
 	}
 
 	async function start() {
-		electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
-		await load();
-		// physical layout always matches the on screen postion of x and y
-		// in the cover menu
-		cui.start({
-			v: true,
-			haptic: prefs.ui.gamepad.haptic,
-			gca: prefs.ui.gamepad.gca,
-			gamepadMaps: prefs.ui.gamepad,
-			normalize: {
-				map: {
-					x: 'y',
-					y: 'x'
-				},
-				disable: 'nintendo'
-			}
-		});
-		process.on('uncaughtException', cui.err);
-		cui.bind('wheel');
-
-		// keyboard controls
-		for (let char of 'abcdefghijklmnopqrstuvwxyz1234567890') {
-			cui.bind(char, 'char-' + char);
+		if (!prefs.ui.lang) {
+			cui.change('languageMenu');
+			await delay(1000);
+			cui.resize(true);
+			return;
 		}
-		cui.bind('space', 'char-_');
 
-		cui.bind('[', 'x');
-		cui.bind(']', 'y');
-		cui.bind('\\', 'b');
-		cui.bind('|', 'start');
+		global.lang = JSON.parse(
+			await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
+
+		$('loadDialog0').text(lang.loading_1.msg3);
+
+		// convert all markdown files to html
+		let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
+		for (let file of files) {
+			let data = await fs.readFile(file, 'utf8');
+			let fileName = path.parse(file).name;
+			// this file has OS specific text
+			if (fileName == 'setupMenu_1') {
+				data = util.osmd(data);
+			}
+			data = data.replace(/\t/g, '  ');
+			data = pug('.md', null, md(data));
+			file = path.parse(file);
+			$('#' + file.name).prepend(data);
+		}
+		delete files;
 
 		if (prefs.load.online) {
 			try {
@@ -1386,5 +1399,6 @@ module.exports = async function(arg) {
 		cui.resize(true);
 	}
 
-	await start();
+	// first function to be called
+	await setup();
 };

@@ -43,6 +43,7 @@
 		"nav0Lbl": "Выход",
 		"nav2Lbl": "Свернуть",
 		"nav3Lbl": "Назад",
+		"msg0": "Назад",
 		"opt0": "свернуть",
 		"opt1": "полный экран",
 		"opt2": "выход",
@@ -51,8 +52,7 @@
 		"opt5": "синхронизация",
 		"opt6": "Patreon",
 		"opt7": "помощь",
-		"opt8": "меню параметров",
-		"msg0": "Назад"
+		"opt8": "меню параметров"
 	},
 	"settingsMenu_11": {
 		"title0": "Меню параметров",
@@ -107,12 +107,13 @@
 		"title0": "Меню эмулятор",
 		"msg0": "Configure",
 		"msg1": "Update",
-		"msg3": "Установить"
+		"msg2": "Установить"
 	},
 	"loading_1": {
 		"msg0_0": "loading your",
 		"msg0_1": "game library",
-		"msg0": "loading additional images",
-		"msg1": "loading complete!"
+		"msg1": "loading additional images",
+		"msg2": "loading complete!",
+		"msg3": "starting Nostlan"
 	}
 }

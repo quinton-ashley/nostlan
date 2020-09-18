@@ -121,7 +121,7 @@ module.exports = async function(arg) {
 			await createTemplate();
 		}
 
-		let sysMenu_5 = `h1#sysMenuTitle\n`;
+		let sysMenu_5 = `h1.title0\n`;
 		let i = 0;
 		for (let _sys in systems) {
 			let _syst = systems[_sys];
@@ -150,17 +150,7 @@ module.exports = async function(arg) {
 		cui.mapButtons(sys);
 
 		if (!prefs.ui.lang) {
-			let iso_639_1 = require('iso-639').iso_639_1;
-			let langFolders = await klaw(__root + '/lang');
-			let elems = '';
-			for (let x of langFolders) {
-				x = path.parse(x).base;
-				if (!iso_639_1[x]) continue;
-				elems += `.uie(name='${x}') `;
-				elems += iso_639_1[x].name + '\n';
-			}
-			log(elems);
-			$('#languageMenu').append(pug(elems));
+			await createLanguageMenu();
 		}
 
 		// physical layout always matches the on screen postion of x and y
@@ -193,6 +183,21 @@ module.exports = async function(arg) {
 		cui.bind('|', 'start');
 
 		await start();
+	}
+
+	async function createLanguageMenu() {
+		let iso_639_1 = require('iso-639').iso_639_1;
+		let langFolders = await klaw(__root + '/lang');
+		let elems = `h1 ${lang.languageMenu.title0}\n`;
+		for (let x of langFolders) {
+			x = path.parse(x).base;
+			if (!iso_639_1[x]) continue;
+			elems += `.uie(name='${x}') `;
+			elems += iso_639_1[x].name + '\n';
+		}
+		log(elems);
+		$('#languageMenu').empty();
+		$('#languageMenu').append(pug(elems));
 	}
 
 	async function loadGameLib() {
@@ -319,8 +324,8 @@ module.exports = async function(arg) {
 
 		cui.removeView('playMenu_5');
 		cui.removeView('emuMenu_5');
-		let playMenu = 'h1#playMenuTitle\n';
-		let emuMenu = 'h1#emuMenuTitle\n';
+		let playMenu = 'h1.title0\n';
+		let emuMenu = 'h1.title0\n';
 		for (let _emu of syst.emus) {
 			playMenu += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
 
@@ -635,7 +640,9 @@ module.exports = async function(arg) {
 
 	async function saveSync(act) {
 		if (!premium.verify()) {
-			cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
+			// 'You must be a Patreon supporter to access
+			// this feature.  Restart Nostlan and enter your // donor verfication password.'
+			cui.err(lang.premium.msg0);
 			return;
 		}
 		if (!prefs.saves) {
@@ -736,9 +743,9 @@ module.exports = async function(arg) {
 			let $elem = $('#interfaceMenu_12 .uie[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
-				$elem.text('auto-hide cover overlay');
+				$elem.text(lang.interfaceMenu_12.opt1[0]);
 			} else {
-				$elem.text('show cover overlay');
+				$elem.text(lang.interfaceMenu_12.opt1[1]);
 			}
 		} else if (ui == 'libMain') {
 			if (act == 'b' && !onMenu) {
@@ -840,10 +847,10 @@ module.exports = async function(arg) {
 				let $rumble = $('#controllerMenu_12 .uie[name="rumble"] .text');
 				if (prefs.ui.gamepad.haptic) {
 					log('rumble enabled');
-					$rumble.text('disable rumble');
+					$rumble.text(lang.controllerMenu_12.opt1[0]);
 				} else {
 					log('rumble disabled');
-					$rumble.text('enable rumble');
+					$rumble.text(lang.controllerMenu_12.opt1[1]);
 				}
 			} else if (/prof/.test(act)) {
 				let type = 'xbox_ps';
@@ -865,11 +872,11 @@ module.exports = async function(arg) {
 				cui.buttonPressed('select');
 			} else if (act == 'theme') {
 				if (!premium.verify()) {
-					cui.err('You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password.');
+					cui.err(lang.premium.msg0);
 					return;
 				}
 				cui.removeView('themeMenu_13');
-				let themeMenu = 'h1 Change Theme\n';
+				let themeMenu = 'h1.title0\n';
 				for (let palette of (await themes.getColorPalettes())) {
 					let p = palette.sys + ' ' + palette.name;
 					if (!palette.name) palette.name = 'default';
@@ -893,20 +900,23 @@ module.exports = async function(arg) {
 					backups: $('#saveNumOfBackups').val()
 				}
 				if (!save.name || !save.backups) {
-					cui.err('name and number of backups required');
+					// name and number of backups required
+					cui.err(lang.addSavesPathMenu_2.err0);
 					return;
 				}
 				save.backups = Number(save.backups);
 				if (save.backups < 1) {
-					cui.err('1 save backup required');
+					// '1 save backup required'
+					cui.err(lang.addSavesPathMenu_2.err1);
 					return;
 				}
-
-				let msg = 'Select a save sync location';
+				// 'Select a save sync location'
+				let msg = lang.addSavesPathMenu_2.msg0;
 				save.dir = await dialog.selectDir(msg);
 
 				if (!(await fs.exists(save.dir))) {
-					cui.err('Not a valid folder.');
+					// 'Not a valid folder'
+					cui.err(lang.addSavesPathMenu_2.err2);
 					return;
 				}
 				if (!prefs.saves) prefs.saves = [];
@@ -971,15 +981,25 @@ module.exports = async function(arg) {
 				$('#prof0').text(prefs.ui.gamepad.xbox_ps.profile);
 				$('#prof1').text(prefs.ui.gamepad.nintendo.profile);
 				$('#prof2').text(prefs.ui.gamepad.other.profile);
+			} else if (act == 'languageMenu') {
+				await createLanguageMenu();
+				cui.addListeners('#languageMenu');
+				if (cui.ui == 'settingsMenu_11') {
+					cui.removeView('libMain');
+					cui.removeCursor();
+				}
+				cui.change('languageMenu');
 			} else if (act == 'editPrefs') {
 				opn(prefsMng.prefsPath);
 			} else if (act == 'toggleConsole') {
 				electron.getCurrentWindow().toggleDevTools();
 				let $elem = $('#pauseMenu_10 .uie[name="toggleConsole"] .text');
 				if ($elem.text().includes('show')) {
-					$elem.text('hide console');
+					// 'hide console'
+					$elem.text(lang.settingsMenu_11.opt2[1]);
 				} else {
-					$elem.text('show console');
+					// 'show console'
+					$elem.text(lang.settingsMenu_11.opt2[0]);
 				}
 			}
 		} else if (ui == 'donateMenu') {
@@ -1000,7 +1020,8 @@ module.exports = async function(arg) {
 					}
 				} else {
 					cui.change('donateMenu');
-					cui.err('incorrect donor password');
+					// 'incorrect donor password'
+					cui.err(lang.donateMenu.err0);
 				}
 			}
 		} else if (ui == 'welcomeMenu') {
@@ -1010,7 +1031,8 @@ module.exports = async function(arg) {
 		} else if (ui == 'setupMenu_1') {
 			if (act == 'finishSetup') {
 				if (!(await fs.exists(systemsDir))) {
-					cui.err('you must choose an install location!');
+					// 'You must choose an install location!'
+					cui.err(lang.setupMenu_1.err0);
 					return false;
 				}
 				cui.change('sysMenu_5');
@@ -1019,7 +1041,8 @@ module.exports = async function(arg) {
 			if (act == 'newDefaultInstall') {
 				systemsDir = util.absPath('$home') + '/Documents';
 			} else if (act == 'newInstall') {
-				let msg = 'choose the folder you want the template to go in';
+				// 'choose the folder you want the template to go in'
+				let msg = lang.setupMenu_1.msg0;
 				systemsDir = await dialog.selectDir(msg);
 			}
 			systemsDir += '/emu';
@@ -1268,7 +1291,7 @@ module.exports = async function(arg) {
 								games[i - 1].img.box == games[i].img.box) break;
 						}
 						await addGameBox(games[i], col);
-						$('#loadDialog2').text(`${i+1}/${games.length} games`);
+						$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading_1.msg4}`);
 						break;
 					}
 					col++;

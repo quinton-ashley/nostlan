@@ -1,4 +1,7 @@
 {
+	"languageMenu": {
+		"title0": "Языковое меню"
+	},
 	"welcomeMenu": {
 		"title0": "Спасибо за установку Nostlan!",
 		"opt0": "запуск установки"
@@ -6,7 +9,9 @@
 	"donateMenu": {
 		"opt0": "доступ к премиум-функциям",
 		"opt1": "Открыть страницу Patreon",
-		"opt2": "напомнить позже"
+		"opt2": "напомнить позже",
+		"err0": "incorrect member password",
+		"msg0": "You must be a Patreon member to access this feature.  Restart Nostlan and enter your member verfication password."
 	},
 	"checkDonationMenu_1": {
 		"opt0": "подтвердите пароль",
@@ -15,7 +20,9 @@
 	"setupMenu_1": {
 		"opt0": "установить в ~\/Documents\/emu",
 		"opt1": "выберите место установки",
-		"opt2": "завершить установку"
+		"opt2": "завершить установку",
+		"err0": "You must choose an install location!",
+		"msg0": "choose the folder you want the template to go in"
 	},
 	"libMain": {
 		"nav0Lbl": "Воспроизвести",
@@ -59,7 +66,8 @@
 		"opt0": "изменить вид",
 		"opt1": "параметры геймпада",
 		"opt2": ["показать интерфейс командной строки", "скрыть интерфейс командной строки"],
-		"opt3": "настройки"
+		"opt3": "настройки",
+		"opt4": "языковое меню"
 	},
 	"gameLibMenu_11": {
 		"title0": "Меню коллекции игр",
@@ -75,19 +83,26 @@
 	"controllerMenu_12": {
 		"title0": "Параметры геймпада",
 		"opt0": "информация",
-		"opt1": "вибрация",
+		"opt1": ["выключить вибрацию", "включить вибрацию"],
 		"prof2Lbl": "Прочее"
 	},
 	"controInfoMenu_13": {
 		"opt0": "назад"
 	},
 	"addSavesPathMenu_2": {
-		"opt0": "добавить"
+		"opt0": "добавить",
+		"err0": "name and number of backups required",
+		"err1": "1 save backup required",
+		"err2": "Not a valid folder",
+		"msg0": "Select a save sync location"
 	},
 	"interfaceMenu_12": {
 		"title0": "Изменить вид",
 		"opt0": "изменить тему",
 		"opt1": ["скрыть крайние кнопки", "показать крайние кнопки"]
+	},
+	"themeMenu_13": {
+		"title0": "Смени тему"
 	},
 	"sysMenu_5": {
 		"title0": "Select a System",
@@ -114,6 +129,7 @@
 		"msg0_1": "game library",
 		"msg1": "loading additional images",
 		"msg2": "loading complete!",
-		"msg3": "starting Nostlan"
+		"msg3": "starting Nostlan",
+		"msg4": "игры"
 	}
 }

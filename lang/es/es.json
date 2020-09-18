@@ -1,0 +1,135 @@
+{
+	"languageMenu": {
+		"title0": "Menú Idioma"
+	},
+	"welcomeMenu": {
+		"title0": "¡Gracias por instalar Nostlan!",
+		"opt0": "configuración de inicio"
+	},
+	"donateMenu": {
+		"opt0": "acceso a las características",
+		"opt1": "página abierta de Patreon",
+		"opt2": "recordarme después",
+		"err0": "contraseña de miembro incorrecta",
+		"msg0": "Debe ser miembro de Patreon para acceder a esta característica.  Reinicie Nostlan y especifique la contraseña de la verficación de miembro."
+	},
+	"checkDonationMenu_1": {
+		"opt0": "verificar contraseña",
+		"opt1": "No soy miembro todavía"
+	},
+	"setupMenu_1": {
+		"opt0": "instalar en ~\/Documents\/emu",
+		"opt1": "elegir ubicación de instalación",
+		"opt2": "configuración de acabado",
+		"err0": "Debe elegir una ubicación de instalación.",
+		"msg0": "elija la carpeta en la que desea que se vaya la plantilla"
+	},
+	"libMain": {
+		"nav0Lbl": "Jugar",
+		"nav2Lbl": "Emulador",
+		"nav3Lbl": "Sistema",
+		"err0": "juego no encontrado"
+	},
+	"boxSelect_1": {
+		"nav0Lbl": "Jugar",
+		"nav2Lbl": "Flip",
+		"nav3Lbl": "Volver"
+	},
+	"boxOpenMenu_2": {
+		"nav0Lbl": "Manual",
+		"nav2Lbl": "Memoria",
+		"nav3Lbl": "Volver"
+	},
+	"gameMediaSelect_3": {
+		"nav0Lbl": "Archivo",
+		"nav2Lbl": "Carpeta de imágenes",
+		"nav3Lbl": "Volver"
+	},
+	"pauseMenu_10": {
+		"title0": "Menú principal",
+		"nav0Lbl": "Salida",
+		"nav2Lbl": "Minimizar",
+		"nav3Lbl": "Volver",
+		"msg0": "Volver",
+		"opt0": "minimizar",
+		"opt1": "pantalla completa",
+		"opt2": "salida",
+		"opt3": "editar colección de juegos",
+		"opt4": "copia de seguridad",
+		"opt5": "sincronizar",
+		"opt6": "Patreon",
+		"opt7": "ayuda",
+		"opt8": "menú de configuración"
+	},
+	"settingsMenu_11": {
+		"title0": "Menú Configuración",
+		"opt0": "aspecto de cambio",
+		"opt1": "valores de controlador",
+		"opt2": ["mostrar herramientas de desarrollo web", "ocultar herramientas de desarrollo web"],
+		"opt3": "preferencias de edición",
+		"opt4": "menú de idioma"
+	},
+	"gameLibMenu_11": {
+		"title0": "Menú Colección de juegos",
+		"opt0": "añadir nuevos juegos",
+		"opt1": "identificar juegos (próximamente)",
+		"opt2": "Exploración automática de imágenes",
+		"opt3": "buscar imágenes (próximamente)",
+		"opt4": "información"
+	},
+	"gameLibInfoMenu_12": {
+		"opt0": "dorso"
+	},
+	"controllerMenu_12": {
+		"title0": "Configuración De Gamepad",
+		"opt0": "información",
+		"opt1": ["desactivar la vibración", "activar la vibración"],
+		"prof2Lbl": "Otros"
+	},
+	"controInfoMenu_13": {
+		"opt0": "dorso"
+	},
+	"addSavesPathMenu_2": {
+		"opt0": "añadir",
+		"err0": "nombre y número de copias de seguridad necesarias",
+		"err1": "1 guardar copia de seguridad necesaria",
+		"err2": "No es una carpeta válida",
+		"msg0": "Seleccionar una ubicación de sincronización de salvar"
+	},
+	"interfaceMenu_12": {
+		"title0": "Cambio de aspecto",
+		"opt0": "tema de cambio",
+		"opt1": ["ocultar botones de superposición", "mostrar botones de superposición"]
+	},
+	"themeMenu_13": {
+		"title0": "Cambiar tema"
+	},
+	"sysMenu_5": {
+		"title0": "Seleccionar un sistema",
+		"msg0": "La colección de juegos no existe",
+		"msg1": "La colección de juegos no tiene archivos de juegos",
+		"msg2_0": "seleccionar",
+		"msg2_1": "carpeta de juegos",
+		"msg3": "No se pudo cargar la colección de juegos",
+		"msg4": "La colección de juegos no tiene archivos de juegos",
+		"msg5": "Los archivos de juego deben tener la extensión de archivo",
+		"msg6": "o"
+	},
+	"playMenu_5": {
+		"title0": "Jugar juego con"
+	},
+	"emuMenu_5": {
+		"title0": "Menú de emulador",
+		"msg0": "Configurar",
+		"msg1": "Actualización",
+		"msg3": "Instalación"
+	},
+	"loading_1": {
+		"msg0_0": "cargar su",
+		"msg0_1": "biblioteca de juegos",
+		"msg0": "cargar imágenes adicionales",
+		"msg1": "carga completa!",
+		"msg3": "inicio de Nostlan",
+		"msg4": "juegos"
+	}
+}

@@ -1,4 +1,7 @@
 {
+	"languageMenu": {
+		"title0": "Language Menu"
+	},
 	"welcomeMenu": {
 		"title0": "Thank you for installing Nostlan!",
 		"opt0": "start setup"
@@ -6,7 +9,9 @@
 	"donateMenu": {
 		"opt0": "access premium features",
 		"opt1": "open Patreon page",
-		"opt2": "remind me later"
+		"opt2": "remind me later",
+		"err0": "incorrect member password",
+		"msg0": "You must be a Patreon member to access this feature.  Restart Nostlan and enter your member verfication password."
 	},
 	"checkDonationMenu_1": {
 		"opt0": "verify password",
@@ -15,7 +20,9 @@
 	"setupMenu_1": {
 		"opt0": "install at ~\/Documents\/emu",
 		"opt1": "choose install location",
-		"opt2": "finish setup"
+		"opt2": "finish setup",
+		"err0": "You must choose an install location!",
+		"msg0": "choose the folder you want the template to go in"
 	},
 	"libMain": {
 		"nav0Lbl": "Play",
@@ -43,6 +50,7 @@
 		"nav0Lbl": "Exit",
 		"nav2Lbl": "Minimize",
 		"nav3Lbl": "Back",
+		"msg0": "Back",
 		"opt0": "minimize",
 		"opt1": "fullscreen",
 		"opt2": "exit",
@@ -51,15 +59,15 @@
 		"opt5": "synchronize",
 		"opt6": "Patreon",
 		"opt7": "help",
-		"opt8": "settings menu",
-		"msg0": "Back"
+		"opt8": "settings menu"
 	},
 	"settingsMenu_11": {
 		"title0": "Settings Menu",
 		"opt0": "change appearance",
 		"opt1": "controller settings",
 		"opt2": ["show console", "hide console"],
-		"opt3": "edit preferences"
+		"opt3": "edit preferences",
+		"opt4": "language menu"
 	},
 	"gameLibMenu_11": {
 		"title0": "Game Collection Menu",
@@ -75,19 +83,26 @@
 	"controllerMenu_12": {
 		"title0": "Gamepad Settings",
 		"opt0": "information",
-		"opt1": "vibration",
+		"opt1": ["turn off vibration", "turn on vibration"],
 		"prof2Lbl": "Other"
 	},
 	"controInfoMenu_13": {
 		"opt0": "back"
 	},
 	"addSavesPathMenu_2": {
-		"opt0": "add"
+		"opt0": "add",
+		"err0": "name and number of backups required",
+		"err1": "1 save backup required",
+		"err2": "Not a valid folder",
+		"msg0": "Select a save sync location"
 	},
 	"interfaceMenu_12": {
 		"title0": "Change Appearance",
 		"opt0": "change theme",
 		"opt1": ["hide overlay buttons", "show overlay buttons"]
+	},
+	"themeMenu_13": {
+		"title0": "Change Theme"
 	},
 	"sysMenu_5": {
 		"title0": "Select a System",
@@ -114,6 +129,7 @@
 		"msg0_1": "game library",
 		"msg0": "loading additional images",
 		"msg1": "loading complete!",
-		"msg3": "starting Nostlan"
+		"msg3": "starting Nostlan",
+		"msg4": "games"
 	}
 }

@@ -1,0 +1,13 @@
+@nsobid-32487E7E3D94954E6EB824ABE489B2FC000000
+
+// nsobid found in main @ offset 0x40
+
+# Mario Tennis- ASM v3.1.0
+
+@flag print_values
+@flag offset_shift 0x100
+
+@enabled
+000C4DA4 1F2003D5
+000C4DE4 1F2003D5
+@stop

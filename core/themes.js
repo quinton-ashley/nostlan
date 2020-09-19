@@ -135,7 +135,7 @@ class Themes {
 	}
 
 	async getColorPalettes() {
-		let styles = await this.getStyles('color');
+		let styles = await this.getStyles('colors');
 		let palettes = [];
 		const regex = /^\.([\w-]+)\.*([\w-]*)/gm;
 

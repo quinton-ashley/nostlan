@@ -1003,11 +1003,11 @@ module.exports = async function(arg) {
 				}
 			}
 		} else if (ui == 'donateMenu') {
-			if (act == 'opt0') {
+			if (act == 'verify') {
 				cui.change('checkDonationMenu_1');
-			} else if (act == 'opt1') {
+			} else if (act == 'patreon') {
 				opn('https://www.patreon.com/nostlan');
-			} else if (act == 'opt2') {
+			} else if (act == 'remind') {
 				await loadGameLib();
 			}
 		} else if (ui == 'checkDonationMenu_1') {
@@ -1393,6 +1393,7 @@ module.exports = async function(arg) {
 			data = data.replace(/\t/g, '  ');
 			data = pug('.md', null, md(data));
 			file = path.parse(file);
+			$(`#${file.name} .md`).remove();
 			$('#' + file.name).prepend(data);
 		}
 		delete files;

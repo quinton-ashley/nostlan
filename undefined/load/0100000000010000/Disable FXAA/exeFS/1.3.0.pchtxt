@@ -1,0 +1,16 @@
+@nsobid-B424BE150A8E7D78701CBE7A439D9EBF
+
+// nsobid found in main @ offset 0x40
+
+# Super Mario Odyssey v1.3.0 Remove FXAA - port by Michele
+
+@flag print_values
+@flag offset_shift 0x100
+
+// Disable FXAA
+
+@enabled
+009BD3A8 08000014
+@stop
+
+@theboy181, Michele

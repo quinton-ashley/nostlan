@@ -26,7 +26,9 @@ module.exports = async function() {
 		}
 	}
 
-	// if (semver.gte(ver, '1.15.0')) return;
+	if (semver.gte(ver, '1.15.0')) return;
+
+	delete prefs.mgba.appDirs;
 
 	if (semver.gte(ver, '1.13.5')) return;
 

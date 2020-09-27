@@ -153,6 +153,7 @@
 		"msg2": "running install script, please wait...",
 		"msg3": "downloading, please wait...",
 		"msg4": "download complete, extracting files...",
-		"msg5": "verifying installation..."
+		"msg5": "verifying installation...",
+		"msg6": "moving stand alone app to"
 	}
 }

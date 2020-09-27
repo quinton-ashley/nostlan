@@ -228,7 +228,7 @@
         "pkgManager_arch": ["pacman", "-S", "${app}"]
       },
       "mac": {
-        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-osx.tar.xz"
+        "standalone": "https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-osx.tar.xz"
       },
       "win": {
         "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-win64.7z"

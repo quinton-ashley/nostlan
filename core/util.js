@@ -21,9 +21,17 @@ global.fs.extract = async (input, output, opt) => {
 				});
 		});
 	} else {
-		await require('extract-zip')(input, {
-			dir: output
-		});
+		try {
+			await require('extract-zip')(input, {
+				dir: output
+			});
+		} catch (ror) {
+			if (mac || linux) {
+				await spawn('tar', ['-xzvf', input, '-C', output]);
+			} else {
+				er(ror);
+			}
+		}
 		fs.remove(input);
 	}
 };

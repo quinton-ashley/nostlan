@@ -28,6 +28,7 @@ class Installer {
 			cui.err(lang.emuAppMenu_6.err0 + ": " + osType);
 			return;
 		}
+		log('installing ' + prefs[emu].name);
 		let distro;
 
 		if (linux) distro = (await getDistro()).os;
@@ -36,7 +37,7 @@ class Installer {
 				(/arch/.test(distro) && ins.pkgManager_arch))) {
 			let cmds = ins.pkgManager_flatpak ||
 				ins.pkgManager_arch;
-			// 'running install script, please wait...'
+			log('running install script, please wait...');
 			$('#loadDialog0').text(lang.emuAppMenu_6.msg2);
 			return await runInstallCmds(cmds);
 		}
@@ -54,8 +55,10 @@ class Installer {
 		let prmIdx = url.indexOf('?');
 		let _url = (prmIdx != -1) ? url.slice(prmIdx)[0] : url;
 		let ext = path.parse(_url).ext.toLowerCase();
+		if (ext == '.gz') ext = '.tar.gz';
+		if (ext == '.xz') ext = '.tar.xz';
 		let file = dir + '/pkg' + ext;
-		// 'downloading, please wait...'
+		log('downloading, please wait...');
 		$('#loadDialog2').text(lang.emuAppMenu_6.msg3);
 		let res = await dl(url, file);
 		if (!res) {
@@ -64,7 +67,7 @@ class Installer {
 			return;
 		}
 		if (/(zip|7z|rar|tar)/.test(ext)) {
-			// 'download complete, extracting files...'
+			log('download complete, extracting files...');
 			$('#loadDialog2').text(lang.emuAppMenu_6.msg4);
 			await fs.extract(file, dir);
 		}
@@ -92,11 +95,20 @@ class Installer {
 			await spawn(files[0]);
 		} else if (mac && ins.standalone) {
 			files = await klaw(dir, {
-				depthLimit: 0
+				depthLimit: 2
 			});
-			if (files.length == 1) {
-				await fs.move(files[0], '/Applications');
+			for (let file of files) {
+				if (path.parse(file).ext == '.app') {
+					log('moving stand alone app to /Applications');
+					$('#loadDialog2').text(lang.emuAppMenu_6.msg6 + ' /Applications');
+					await fs.move(file, '/Applications/' + path.parse(file).base);
+					break;
+				}
 			}
+			// cleanup
+			await fs.remove(dir);
+			// ensure template dir
+			await fs.ensureDir(dir);
 		}
 		$('#loadDialog2').text(lang.emuAppMenu_6.msg5);
 		res = await launcher.getEmuApp();

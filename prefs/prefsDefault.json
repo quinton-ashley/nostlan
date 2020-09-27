@@ -21,7 +21,7 @@
         "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_mac.zip"
       },
       "win": {
-        "portable": "https://byuu.org/download/bsnes/bsnes_v115-windows.zip"
+        "portable": "https://github.com/bsnes-emu/bsnes/releases/download/v115/bsnes_v115-windows.zip"
       }
     }
   },
@@ -39,13 +39,13 @@
     },
     "install": {
       "linux": {
-        "portable": "http://cemu.info/releases/cemu_1.18.2.zip"
+        "portable": "http://cemu.info/releases/cemu_1.21.2.zip"
       },
       "mac": {
-        "portable": "http://cemu.info/releases/cemu_1.18.2.zip"
+        "portable": "http://cemu.info/releases/cemu_1.21.2.zip"
       },
       "win": {
-        "portable": "http://cemu.info/releases/cemu_1.18.2.zip"
+        "portable": "http://cemu.info/releases/cemu_1.21.2.zip"
       }
     }
   },
@@ -75,17 +75,17 @@
     },
     "install": {
       "linux": {
-        "pkgManager-flatpak": [
+        "pkgManager_flatpak": [
           ["flatpak", "remote-add", "--if-not-exists", "flathub", "https://flathub.org/repo/flathub.flatpakrepo"],
           ["flatpak", "install", "https://flatpak.citra-emu.org/citra-nightly.flatpakref"],
           ["flatpak", "install", "https://flatpak.citra-emu.org/citra-canary.flatpakref"]
         ]
       },
       "mac": {
-        "installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg"
+        "installer": "https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-mac.dmg"
       },
       "win": {
-        "installer": "https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe"
+        "installer": "https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-windows.exe"
       }
     },
     "saveDirs": {
@@ -110,7 +110,7 @@
     },
     "install": {
       "linux": {
-        "pkgManager-arch": ["pacman", "-s", "${app}"]
+        "pkgManager_arch": ["pacman", "-s", "${app}"]
       },
       "mac": {
         "standalone": "https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK"
@@ -139,13 +139,13 @@
     },
     "install": {
       "linux": {
-        "pkgManager-arch": ["pacman", "-S", "${app}"]
+        "pkgManager_arch": ["pacman", "-S", "${app}"]
       },
       "mac": {
-        "installer": "https://dl.dolphin-emu.org/builds/27/f0/dolphin-master-5.0-11824.dmg"
+        "installer": "https://dl.dolphin-emu.org/builds/84/d3/dolphin-master-5.0-12247.dmg"
       },
       "win": {
-        "portable": "https://dl.dolphin-emu.org/builds/a6/20/dolphin-master-5.0-11824-x64.7z"
+        "portable": "https://dl.dolphin-emu.org/builds/99/df/dolphin-master-5.0-12247-x64.7z"
       }
     }
   },
@@ -165,10 +165,10 @@
     },
     "install": {
       "mac": {
-        "portable": "https://sdlmame.lngn.net/mame0220-64bit.zip"
+        "portable": "https://sdlmame.lngn.net/mame0224-64bit.zip"
       },
       "win": {
-        "portable": "https://github.com/mamedev/mame/releases/download/mame0220/mame0220b_64bit.exe"
+        "portable": "https://github.com/mamedev/mame/releases/download/mame0224/mame0224b_64bit.exe"
       }
     }
   },
@@ -214,9 +214,6 @@
     "app": {
       "linux": "mgba-sdl"
     },
-    "appDirs": {
-      "mac": ["Applications"]
-    },
     "appRegex": {
       "mac": "mGBA\\.app",
       "win": "mgba-sdl\\.exe"
@@ -228,13 +225,13 @@
     },
     "install": {
       "linux": {
-        "pkgManager-arch": ["pacman", "-S", "${app}"]
+        "pkgManager_arch": ["pacman", "-S", "${app}"]
       },
       "mac": {
-        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-osx.tar.xz"
+        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-osx.tar.xz"
       },
       "win": {
-        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.1/mGBA-0.8.1-win64.7z"
+        "portable": "https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-win64.7z"
       }
     },
     "fullscreenKeyCombo": {
@@ -255,7 +252,7 @@
     },
     "install": {
       "linux": {
-        "pkgManager-arch": ["pacman", "-S", "${app}"]
+        "pkgManager_arch": ["pacman", "-S", "${app}"]
       },
       "win": {
         "portable": "https://pcsx2.net/download/releases/windows/send/40-windows/119-pcsx2-1-4-0-binaries.html"
@@ -274,10 +271,10 @@
     },
     "install": {
       "linux": {
-        "standalone": "https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-72bef8dd7f557d3aac09829e2d1069a2d98182bb/rpcs3-v0.0.10-10321-72bef8dd_linux64.AppImage"
+        "standalone": "https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_linux64.AppImage"
       },
       "win": {
-        "portable": "https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-72bef8dd7f557d3aac09829e2d1069a2d98182bb/rpcs3-v0.0.10-10321-72bef8dd_win64.7z"
+        "portable": "https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_win64.7z"
       }
     }
   },
@@ -295,13 +292,13 @@
     },
     "install": {
       "linux": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-linux_x64.tar.gz"
+        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-linux_x64.tar.gz"
       },
       "mac": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-osx_x64.zip"
+        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-osx_x64.zip"
       },
       "win": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/fjx47uyvgv0l894j/artifacts/ryujinx-1.0.4423-win_x64.zip"
+        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-win_x64.zip"
       }
     }
   },
@@ -348,7 +345,7 @@
     },
     "install": {
       "linux": {
-        "pkgManager-arch": ["pacman", "-S", "${app}"]
+        "pkgManager_arch": ["pacman", "-S", "${app}"]
       },
       "mac": {
         "standalone": "https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip"
@@ -380,10 +377,11 @@
     },
     "install": {
       "linux": {
-        "portable": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-244/yuzu-linux-20200430-429f8cb21.7z"
+        "portable": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-390/yuzu-linux-20200926-59c572363.tar.xz"
       },
       "win": {
-        "installer": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-244/yuzu-windows-msvc-20200430-429f8cb21.7z"
+				"prereq": "https://aka.ms/vs/16/release/vc_redist.x64.exe",
+        "installer": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-390/yuzu-windows-msvc-20200926-59c572363.zip"
       }
     },
     "update": {

@@ -27,7 +27,10 @@ module.exports = async function(arg) {
 			require('klaw')(dir, opt)
 				.on('data', item => {
 					if (i > 0) {
-						items.push(item.path);
+						if (!(mac && i == 1 &&
+								path.parse(item.path).base == '.DS_Store')) {
+							items.push(item.path);
+						}
 					}
 					i++;
 				})

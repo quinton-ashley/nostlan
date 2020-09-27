@@ -1,5 +1,5 @@
 module.exports = async function() {
-	let ver = prefs.version;
+	let ver = prefs.version || pkg.version;
 	prefs.version = pkg.version;
 
 	// only keeps the emu app path for the current os
@@ -12,7 +12,7 @@ module.exports = async function() {
 
 			for (let prop of props) {
 				if (!prefs[_emu][prop] ||
-					typeof prefs[_emu][prop] == 'string') {
+					(prop != 'install' && typeof prefs[_emu][prop] == 'string')) {
 					continue;
 				}
 				if (prefs[_emu][prop][osType]) {
@@ -25,6 +25,8 @@ module.exports = async function() {
 			}
 		}
 	}
+
+	// if (semver.gte(ver, '1.15.0')) return;
 
 	if (semver.gte(ver, '1.13.5')) return;
 

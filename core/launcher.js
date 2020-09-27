@@ -65,7 +65,8 @@ class Launcher {
 					depthLimit: 2
 				});
 			} catch (ror) {
-				await cui.err('File system error. Fix by deleting the file. ' + ror, '406');
+				// 'Incorrect path to emulator app directory. Delete or edit your user preferences file.'
+				await cui.err(lang.playing_4.err0 + ' ' + ror, '406');
 			}
 			let regex = new RegExp(prefs[emu].appRegex, 'i');
 
@@ -82,17 +83,10 @@ class Launcher {
 			}
 		}
 
-		log(`couldn't find app at path:\n` + emuApp);
-		emuApp = await dialog.selectFile('select emulator app');
+		log(`couldn't find app at path: ` + emuApp);
 
-		if (mac) emuApp += await this.getMacExec();
-
-		if (!(await fs.exists(emuApp))) {
-			cui.err('app path not valid: ' + emuApp);
-			return '';
-		}
-		if (!identify) prefs[emu].app = emuApp;
-		return emuApp;
+		cui.change('emuAppMenu_6');
+		return '';
 	}
 
 	async launch(game, opt) {
@@ -103,16 +97,13 @@ class Launcher {
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
 		}
-		let emuApp;
+		let emuApp = await this.getEmuApp();
+		if (!emuApp) return;
 		if (identify && sys == 'switch') {
-			emuApp = await this.getEmuApp();
 			let f = path.parse(emuApp);
 			emuApp = f.dir + '/' + f.name + '-cmd' + f.ext;
 			log(emuApp);
-		} else {
-			emuApp = await this.getEmuApp();
 		}
-		if (!emuApp) return;
 		if (emu == 'mgba' && !game) {
 			emuApp = emuApp.replace('-sdl', '');
 		}
@@ -176,10 +167,13 @@ class Launcher {
 			await cui.change('playing_4');
 			$('#libMain').hide();
 			$('#dialogs').show();
-			$('#loadDialog0').text(`Starting ${prefs[emu].name}`);
-			$('#loadDialog1').text(`To close the emulator, press and hold the ` +
-				`"${prefs.inGame.quit.hold}" button for ` +
-				`${(prefs.inGame.quit.time/1000).toFixed(0)} seconds`);
+			// 'Starting'
+			$('#loadDialog0').text(`${lang.playing_4.msg1} ${prefs[emu].name}`);
+			// `To close the emulator, press and hold the
+			// ${btn} button for ${time} seconds`
+			$('#loadDialog1').text(lang.playing_4.msg2_0 + `"${prefs.inGame.quit.hold}" ` + lang.playing_4.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
+				' ' + lang.playing_4.msg2_2
+			);
 			$('#loadDialog2').text(game.title);
 		} else if (!identify) {
 			$('body').addClass('dim');
@@ -190,7 +184,10 @@ class Launcher {
 		this._launch();
 
 		if (sys == 'wii' && game && game.id && cui.gca.connected && !cui.gamepadConnected) {
-			$('#loadDialog1').text('Unfortunately only one app at a time can be connected to your Gamecube Controller Adapter.  Nostlan will quit.');
+			// 'Unfortunately only one app at a time can be
+			// connected to your Gamecube Controller
+			// Adapter.  Nostlan will quit.'
+			$('#loadDialog1').text(lang.playing_4.msg3);
 			await delay(2000);
 			await cui.doAction('quit');
 			return;
@@ -337,7 +334,13 @@ class Launcher {
 			$('body').removeClass('dim');
 		}
 		if (!identify && code) {
-			let erMsg = `${prefs[emu].name} crashed!  If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator.  Search the internet for instructions on how to fully setup ${prefs[emu].name}.\n<code>`;
+			// ``${app} crashed! If the game didn't start it
+			// might be because some emulators require
+			// system firmware, BIOS, decryption keys, and
+			// other files not included with the emulator.
+			// Search the internet for instructions on how to
+			// fully setup ${app}`
+			let erMsg = prefs[emu].name + ' ' + lang.playing_4.err2 + ' ' + `${prefs[emu].name}.\n<code>`;
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
 				erMsg += `${this.cmdArgs[i]} `;

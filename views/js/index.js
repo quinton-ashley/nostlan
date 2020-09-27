@@ -67,12 +67,15 @@ module.exports = async function(arg) {
 			verify: () => {}
 		};
 	}
-	const saves = require(__root + '/core/saves.js');
-	global.launcher = require(__root + '/core/launcher.js');
-	const updater = require(__root + '/core/updater.js');
-	const themes = require(__root + '/core/themes.js');
-	const scan = require(__root + '/core/scanner.js');
-	const scraper = require(__root + '/core/scraper.js');
+	let core = __root + '/core';
+	global.launcher = require(core + '/launcher.js');
+	const installer = require(core + '/installer.js');
+	const saves = require(core + '/saves.js');
+	const scan = require(core + '/scanner.js');
+	const scraper = require(core + '/scraper.js');
+	const themes = require(core + '/themes.js');
+	const updater = require(core + '/updater.js');
+	delete core;
 
 	try {
 		global.kb = require('robotjs');
@@ -188,7 +191,9 @@ module.exports = async function(arg) {
 	async function createLanguageMenu() {
 		let iso_639_1 = require('iso-639').iso_639_1;
 		let langFolders = await klaw(__root + '/lang');
-		let elems = `h1 ${lang.languageMenu.title0}\n`;
+		let title = 'Language Menu';
+		if (global.lang) title = lang.languageMenu.title0;
+		let elems = `h1 ${title}\n`;
 		for (let x of langFolders) {
 			x = path.parse(x).base;
 			if (!iso_639_1[x]) continue;
@@ -1069,6 +1074,42 @@ module.exports = async function(arg) {
 				await launcher.configEmu();
 			} else {
 				await launcher.launch(getCurGame());
+			}
+		} else if (ui == 'emuAppMenu_6') {
+			if (act == 'find') {
+				// 'Select emulator app'
+				let emuApp = await dialog.selectFile(
+					lang.playing_4.msg0);
+
+				if (mac) {
+					emuApp = await launcher.getMacExec(emuApp);
+				}
+
+				if (!(await fs.exists(emuApp))) {
+					// 'Emulator app not found at'
+					cui.err(lang.playing_4.err1 + ': ' + emuApp);
+					return;
+				}
+				prefs[emu].app = emuApp;
+				cui.doAction('back');
+			} else if (act == 'install') {
+				$('#libMain').addClass('dim');
+				$('#emuAppMenu_6').addClass('dim');
+				cui.clearDialogs();
+				$('#dialogs').show();
+				let wdw = electron.getCurrentWindow();
+				wdw.focus();
+				wdw.setFullScreen(false);
+				let res = await installer.install();
+				wdw.focus();
+				wdw.setFullScreen(prefs.ui.launchFullScreen);
+				cui.clearDialogs();
+				$('#libMain').removeClass('dim');
+				$('#emuAppMenu_6').removeClass('dim');
+				if (!res) {
+					return;
+				}
+				cui.doAction('back');
 			}
 		}
 	}

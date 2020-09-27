@@ -131,5 +131,28 @@
 		"msg2": "loading complete!",
 		"msg3": "starting Nostlan",
 		"msg4": "games"
+	},
+	"playing_4": {
+		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",
+		"err1": "Emulator app not found at: ",
+		"err2": "crashed! If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator. Search the internet for instructions on how to fully setup",
+		"msg0": "Select emulator app",
+		"msg1": "Starting",
+		"msg2_0": "To close the emulator, press and hold the",
+		"msg2_1": "button for",
+		"msg2_2": "seconds",
+		"msg3": "Unfortunately only one app at a time can be connected to your Gamecube Controller Adapter.  Nostlan will quit."
+	},
+	"emuAppMenu_6": {
+		"err0": "This emulator is not available for your computer's operating system",
+		"err1": "Automated install of this emulator with Nostlan is not possible. You must install manually.",
+		"err2": "Could not download app from",
+		"err3": "Installer not found in package",
+		"msg0": "installing",
+		"msg1": "preparing to install...",
+		"msg2": "running install script, please wait...",
+		"msg3": "downloading, please wait...",
+		"msg4": "download complete, extracting files...",
+		"msg5": "verifying installation..."
 	}
 }

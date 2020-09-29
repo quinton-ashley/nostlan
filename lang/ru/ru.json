@@ -106,14 +106,8 @@
 	},
 	"sysMenu_5": {
 		"title0": "Select a System",
-		"msg0": "Game library does not exist",
-		"msg1": "Game library has no game files",
-		"msg2_0": "select",
-		"msg2_1": "games folder",
-		"msg3": "Couldn't load game library",
-		"msg4": "Game library has no game files",
-		"msg5": "Game files must have the file extension",
-		"msg6": "or"
+		"msg0": "game library does not exist",
+		"msg1": "game library has no game files"
 	},
 	"playMenu_5": {
 		"title0": "Play game with"

@@ -58,7 +58,7 @@ class Launcher {
 		if (mac) emuAppDirs.push('/Applications');
 
 		for (let dir of emuAppDirs) {
-
+			if (!(await fs.exists(dir))) continue;
 			let files;
 			try {
 				files = await klaw(dir, {

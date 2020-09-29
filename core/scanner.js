@@ -164,7 +164,7 @@ class Scanner {
 				if (idRegex[sys]) id = term.match(idRegex[sys]);
 				if (id) id = id[1];
 				if (sys == 'wii') {
-					if (/Sunshine_Stardust/i.test(term)) {
+					if (term == 'Super_Mario_Sunshine_Stardust-trimmed') {
 						id = 'AVP3A';
 					}
 				}

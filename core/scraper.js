@@ -118,6 +118,7 @@ class Scraper {
 					er(ror);
 					games.splice(i, 1);
 					i--;
+					if (games.length == 0) return [];
 					continue;
 				}
 				if (!isTemplate ||

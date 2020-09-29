@@ -205,7 +205,7 @@ module.exports = async function(arg) {
 		$('#languageMenu').append(pug(elems));
 	}
 
-	async function loadGameLib() {
+	async function loadGameLib(gameLibDir) {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
 		cui.change('loading_1', sysStyle);
@@ -238,77 +238,40 @@ module.exports = async function(arg) {
 				await removeIntro(0);
 				return;
 			}
-			log(emu);
 
-			let gameLibDir = `${systemsDir}/${sys}/games`;
-			log(gameLibDir);
+			gameLibDir = gameLibDir ||
+				`${systemsDir}/${sys}/games`;
+			log('searching for games in: ' + gameLibDir);
 
-			for (let i = 0; !gameLibDir || !(await fs.exists(gameLibDir)); i++) {
-				if (i >= 1) {
-					await removeIntro(0);
-					// 'Game library does not exist: '
-					cui.err(lang.sysMenu_5.msg0 + ': \n' + gameLibDir, 404, 'sysMenu_5');
-					return;
-				}
-				gameLibDir = await dialog.selectDir(
-					lang.sysMenu_5.msg2_0 + ' ' + syst.name + ' ' + lang.sysMenu_5.msg2_1
-				);
+			if (!(await fs.exists(gameLibDir))) {
+				await removeIntro(0);
+				// 'game library does not exist: '
+				cui.err(syst.name + ' ' +
+					lang.sysMenu_5.msg0 + ': ' +
+					gameLibDir, 404, 'emptyGameLibMenu_5');
+				return;
 			}
 			let files = await klaw(gameLibDir);
-			for (let i = 0; !files.length || (
+			if (!files.length || (
 					files.length == 1 &&
 					(['.DS_Store', 'dir.txt'].includes(
 						path.parse(files[0]).base))
-				); i++) {
-				if (i >= 1) {
-					await removeIntro(0);
-					// 'Game library has no game files'
-					cui.err(lang.sysMenu_5.msg1, 404, 'sysMenu_5');
-					return;
-				}
-				// `select ${syst.name} games folder`
-				gameLibDir = await dialog.selectDir(
-					lang.sysMenu_5.msg2_0 + ' ' + syst.name + ' ' + lang.sysMenu_5.msg2_1);
-				log(gameLibDir);
-				if (!gameLibDir) continue;
-				files = await klaw(gameLibDir);
-			}
-			gameLibDir = gameLibDir.replace(/\\/g, '/');
-			if (await fs.exists(gameLibDir)) {
-				if (!prefs[sys]) prefs[sys] = {};
-				if (!prefs[sys].libs) {
-					prefs[sys].libs = [];
-				}
-				if (!prefs[sys].libs.includes(gameLibDir)) {
-					prefs[sys].libs.push(gameLibDir);
-				}
-			} else {
-				// 'Couldn't load game library'
-				cui.err(lang.sysMenu_5.msg3, 404, 'sysMenu_5');
-				await loadGameLib();
+				)) {
+				await removeIntro(0);
+				// 'game library has no game files'
+				cui.err(syst.name + ' ' +
+					lang.sysMenu_5.msg1 + ': ' +
+					gameLibDir, 404, 'emptyGameLibMenu_5');
 				return;
+			}
+			if (!prefs[sys]) prefs[sys] = {};
+			if (!prefs[sys].libs) prefs[sys].libs = [];
+			if (!prefs[sys].libs.includes(gameLibDir)) {
+				prefs[sys].libs.push(gameLibDir);
 			}
 			games = await scan.gameLib();
 			if (!games.length) {
-				await removeIntro(0);
-				// 'Game library has no game files. '
-				let note = lang.sysMenu_5.msg4 + '. ';
-				if (syst.gameExts) {
-					// 'Game files must have the file extension: '
-					note = lang.sysMenu_5.msg5 + ': ';
-				}
-				for (let i in syst.gameExts) {
-					let ext = syst.gameExts;
-					note += '.' + ext;
-					if (i != syst.gameExts.length - 1) {
-						note += ', ';
-					}
-					if (i == syst.gameExts.length - 2) {
-						// 'or '
-						note += lang.sysMenu_5.msg6 + ' ';
-					}
-				}
-				cui.err(note, 404, 'sysMenu_5');
+				cui.change('emptyGameLibMenu_5');
 				return;
 			}
 		}
@@ -436,6 +399,44 @@ module.exports = async function(arg) {
 		} else if (state == 'libMain') {
 			$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
 			$('#libMain').removeClass('no-outline');
+		} else if (state == 'emuAppMenu_6') {
+			$('#emuAppMenu_6 .opt0').text(
+				lang.emuAppMenu_6.opt0 + ' ' + prefs[emu].name
+			);
+			$('#emuAppMenu_6 .opt1').text(
+				lang.emuAppMenu_6.opt1 + ' ' + prefs[emu].name
+			);
+		} else if (state == 'emptyGameLibMenu_5') {
+			$('#emptyGameLibMenu_5 .opt1').text(
+				lang.emptyGameLibMenu_5.opt1 + ' ' +
+				prefs[emu].name
+			);
+			// 'No games found in'
+			let note = lang.sysMenu_5.msg1_0 + ': ';
+			note += gameLibDir + '\n';
+			if (syst.gameExts) {
+				// 'Game files must have the file extension'
+				note += lang.sysMenu_5.msg1_1 + ': ';
+			}
+			for (let i in syst.gameExts) {
+				let ext = syst.gameExts;
+				note += '.' + ext;
+				if (i != syst.gameExts.length - 1) {
+					note += ', ';
+				}
+				if (i == syst.gameExts.length - 2) {
+					// 'or '
+					note += lang.sysMenu_5.msg1_2 + ' ';
+				}
+			}
+			// "If you don't have any
+			note += '\n' + lang.sysMenu_5.msg1_3 + ' ';
+			// games yet you might want to install the
+			note += syst.name + ' ' + lang.sysMenu_5.msg1_4;
+			note += ' ' + prefs[emu].name + ' ';
+			// emulator app first.""
+			note += lang.sysMenu_5.msg1_5;
+			$('#emptyGameLibMenu_5 .msg1').text(note);
 		}
 
 		function adjust(flip) {
@@ -1076,15 +1077,17 @@ module.exports = async function(arg) {
 				await launcher.launch(getCurGame());
 			}
 		} else if (ui == 'emuAppMenu_6') {
-			if (act == 'find') {
+			if (act == 'install') {
+				let res = await installEmuApp();
+				if (!res) return;
+				cui.doAction('back');
+			} else if (act == 'find') {
 				// 'Select emulator app'
 				let emuApp = await dialog.selectFile(
 					lang.playing_4.msg0);
-
 				if (mac) {
 					emuApp = await launcher.getMacExec(emuApp);
 				}
-
 				if (!(await fs.exists(emuApp))) {
 					// 'Emulator app not found at'
 					cui.err(lang.playing_4.err1 + ': ' + emuApp);
@@ -1092,24 +1095,29 @@ module.exports = async function(arg) {
 				}
 				prefs[emu].app = emuApp;
 				cui.doAction('back');
-			} else if (act == 'install') {
-				$('#libMain').addClass('dim');
-				$('#emuAppMenu_6').addClass('dim');
-				cui.clearDialogs();
-				$('#dialogs').show();
-				let wdw = electron.getCurrentWindow();
-				wdw.focus();
-				wdw.setFullScreen(false);
-				let res = await installer.install();
-				wdw.focus();
-				wdw.setFullScreen(prefs.ui.launchFullScreen);
-				cui.clearDialogs();
-				$('#libMain').removeClass('dim');
-				$('#emuAppMenu_6').removeClass('dim');
-				if (!res) {
+			}
+		} else if (ui == 'emptyGameLibMenu_5') {
+			if (act == 'find') {
+				log('user selecting gameLibDir');
+				// `select ${syst.name} games folder`
+				let gameLibDir = await dialog.selectDir(
+					lang.emptyGameLibMenu_5.msg0_0 + ' ' +
+					syst.name + ' ' +
+					lang.emptyGameLibMenu_5.msg0_1);
+				log('user selected: ' + gameLibDir);
+				if (!gameLibDir ||
+					!(await fs.exists(gameLibDir))) {
+					// 'Game library does not exist'
+					cui.err(syst.name + ' ' +
+						lang.sysMenu_5.msg0 + ': ' +
+						gameLibDir, 404);
 					return;
 				}
-				cui.doAction('back');
+				await loadGameLib(gameLibDir);
+			} else if (act == 'install') {
+				let res = await installEmuApp();
+				if (!res) return;
+				await loadGameLib();
 			}
 		}
 	}

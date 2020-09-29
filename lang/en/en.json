@@ -106,14 +106,8 @@
 	},
 	"sysMenu_5": {
 		"title0": "Select a System",
-		"msg0": "Game library does not exist",
-		"msg1": "Game library has no game files",
-		"msg2_0": "select",
-		"msg2_1": "games folder",
-		"msg3": "Couldn't load game library",
-		"msg4": "Game library has no game files",
-		"msg5": "Game files must have the file extension",
-		"msg6": "or"
+		"msg0": "game library does not exist",
+		"msg1": "game library has no game files",
 	},
 	"playMenu_5": {
 		"title0": "Play game with"
@@ -144,16 +138,35 @@
 		"msg3": "Unfortunately only one app at a time can be connected to your Gamecube Controller Adapter.  Nostlan will quit."
 	},
 	"emuAppMenu_6": {
+		"opt0": "install",
+		"opt1": "browse for",
 		"err0": "This emulator is not available for your computer's operating system",
 		"err1": "Automated install of this emulator with Nostlan is not possible. You must install manually.",
 		"err2": "Could not download app from",
 		"err3": "Installer not found in package",
+		"err4": "couldn't find install disk, finish install manually",
 		"msg0": "installing",
 		"msg1": "preparing to install...",
 		"msg2": "running install script, please wait...",
 		"msg3": "downloading, please wait...",
 		"msg4": "download complete, extracting files...",
 		"msg5": "verifying installation...",
-		"msg6": "moving stand alone app to"
+		"msg6": "moving stand alone app to",
+		"msg7": "running setup app",
+		"msg8": "moving apps to",
+		"msg9": "finishing, ejecting all install disks",
+		"msg10": "finishing, deleting package file"
+	},
+	"emptyGameLibMenu_5": {
+		"opt0": "browse for games folder",
+		"opt1": "install",
+		"msg0_0": "select",
+		"msg0_1": "games folder",
+		"msg1_0": "No games found in",
+		"msg1_1": "Game files must have the file extension",
+		"msg1_2": "or",
+		"msg1_3": "If you don't have any",
+		"msg1_4": "games yet you might want to install the",
+		"msg1_5": "emulator app first."
 	}
 }

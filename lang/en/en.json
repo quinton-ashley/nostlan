@@ -107,7 +107,7 @@
 	"sysMenu_5": {
 		"title0": "Select a System",
 		"msg0": "game library does not exist",
-		"msg1": "game library has no game files",
+		"msg1": "game library has no game files"
 	},
 	"playMenu_5": {
 		"title0": "Play game with"
@@ -162,11 +162,10 @@
 		"opt1": "install",
 		"msg0_0": "select",
 		"msg0_1": "games folder",
-		"msg1_0": "No games found in",
-		"msg1_1": "Game files must have the file extension",
-		"msg1_2": "or",
-		"msg1_3": "If you don't have any",
-		"msg1_4": "games yet you might want to install the",
-		"msg1_5": "emulator app first."
+		"msg1_0": "Game files must have the file extension",
+		"msg1_1": "or",
+		"msg1_2": "If you don't have any",
+		"msg1_3": "games yet you might want to install the",
+		"msg1_4": "emulator app first."
 	}
 }

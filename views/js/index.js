@@ -300,7 +300,6 @@ module.exports = async function(arg) {
 			// TODO check if user has the emulator
 			// if they do add the configure and update buttons
 			// else add a button to install
-
 			emuMenu += `.col.uie(name="${_emu}-config") ` +
 				`${lang.emuMenu_5.msg0} ${prefs[_emu].name}\n`;
 
@@ -411,12 +410,10 @@ module.exports = async function(arg) {
 				lang.emptyGameLibMenu_5.opt1 + ' ' +
 				prefs[emu].name
 			);
-			// 'No games found in'
-			let note = lang.sysMenu_5.msg1_0 + ': ';
-			note += gameLibDir + '\n';
+			let note = '';
 			if (syst.gameExts) {
 				// 'Game files must have the file extension'
-				note += lang.sysMenu_5.msg1_1 + ': ';
+				note += lang.emptyGameLibMenu_5.msg1_0 + ': ';
 			}
 			for (let i in syst.gameExts) {
 				let ext = syst.gameExts;
@@ -426,16 +423,16 @@ module.exports = async function(arg) {
 				}
 				if (i == syst.gameExts.length - 2) {
 					// 'or '
-					note += lang.sysMenu_5.msg1_2 + ' ';
+					note += lang.emptyGameLibMenu_5.msg1_1 + ' ';
 				}
 			}
 			// "If you don't have any
-			note += '\n' + lang.sysMenu_5.msg1_3 + ' ';
+			note += '\n' + lang.emptyGameLibMenu_5.msg1_2 + ' ';
 			// games yet you might want to install the
-			note += syst.name + ' ' + lang.sysMenu_5.msg1_4;
+			note += syst.name + ' ' + lang.emptyGameLibMenu_5.msg1_3;
 			note += ' ' + prefs[emu].name + ' ';
 			// emulator app first.""
-			note += lang.sysMenu_5.msg1_5;
+			note += lang.emptyGameLibMenu_5.msg1_4;
 			$('#emptyGameLibMenu_5 .msg1').text(note);
 		}
 

@@ -27,7 +27,7 @@ class Installer {
 		// 'preparing to install'
 		this.loadLog(lang.emuAppMenu_6.msg1);
 		let ins = prefs[emu].install;
-		if (!Object.keys(ins).length) {
+		if (!ins) {
 			// This emulator is not available for your
 			// computer's operating system
 			cui.err(lang.emuAppMenu_6.err0 + ": " + osType);
@@ -56,9 +56,15 @@ class Installer {
 			cui.err(lang.emuAppMenu_6.err1);
 			return;
 		}
+		url = url.split(' ');
+		let ext;
+		if (url.length == 2) ext = url[1];
+		url = url[0];
 		let prmIdx = url.indexOf('?');
-		let _url = (prmIdx != -1) ? url.slice(prmIdx)[0] : url;
-		let ext = path.parse(_url).ext.toLowerCase();
+		if (!ext) {
+			let _url = (prmIdx != -1) ? url.slice(prmIdx)[0] : url;
+			ext = path.parse(_url).ext.toLowerCase();
+		}
 		if (ext == '.gz') ext = '.tar.gz';
 		if (ext == '.xz') ext = '.tar.xz';
 		let file = dir + '/pkg' + ext;
@@ -80,7 +86,9 @@ class Installer {
 		});
 		// check if there's a top level folder
 		// put contents in dir
-		if (files.length == 1 && (await fs.stat(files[0])).isDirectory()) {
+		if (files.length == 1 &&
+			(await fs.stat(files[0])).isDirectory() &&
+			(!mac || path.parse(files[0]).ext != '.app')) {
 			await fs.copy(files[0], dir, {
 				overwrite: true
 			});
@@ -169,7 +177,9 @@ class Installer {
 					this.loadLog(lang.emuAppMenu_6.msg6 +
 						' /Applications');
 					await fs.move(file, '/Applications/' +
-						path.parse(file).base);
+						path.parse(file).base, {
+							overwrite: true
+						});
 					break;
 				}
 			}
@@ -180,6 +190,10 @@ class Installer {
 		}
 		this.loadLog(lang.emuAppMenu_6.msg5);
 		res = await launcher.getEmuApp();
+		if (!res) {
+			// 'Install failed, you must manually install'
+			cui.err(lang.emuAppMenu_6.err5 + ': ' + prefs[emu].name);
+		}
 		if (mac && res) {
 			// fixes non-executable apps on macOS 10.15+
 			await spawn('chmod', ['755', res]);

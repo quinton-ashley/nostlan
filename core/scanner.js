@@ -51,6 +51,7 @@ class Scanner {
 		// if (sys == 'wii' && kb) {
 		if (false) {
 			let app = await launcher.getEmuApp();
+			if (!app) cui.change('emuAppMenu_6');
 			let dir = path.join(app, '../User');
 			if (mac && !(await fs.exists(dir))) {
 				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';

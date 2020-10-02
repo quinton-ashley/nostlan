@@ -68,6 +68,7 @@ class Launcher {
 				// 'Incorrect path to emulator app directory. Delete or edit your user preferences file.'
 				await cui.err(lang.playing_4.err0 + ' ' + ror, '406');
 			}
+			if (!prefs[emu].appRegex) return;
 			let regex = new RegExp(prefs[emu].appRegex, 'i');
 
 			for (let file of files) {
@@ -84,8 +85,6 @@ class Launcher {
 		}
 
 		log(`couldn't find app at path: ` + emuApp);
-
-		cui.change('emuAppMenu_6');
 		return '';
 	}
 
@@ -98,7 +97,10 @@ class Launcher {
 			prefs.session[sys].gameID = game.id;
 		}
 		let emuApp = await this.getEmuApp();
-		if (!emuApp) return;
+		if (!emuApp) {
+			cui.change('emuAppMenu_6');
+			return;
+		}
 		if (identify && sys == 'switch') {
 			let f = path.parse(emuApp);
 			emuApp = f.dir + '/' + f.name + '-cmd' + f.ext;
@@ -350,7 +352,8 @@ class Launcher {
 		}
 		if (!identify) {
 			electron.getCurrentWindow().focus();
-			electron.getCurrentWindow().setFullScreen(true);
+			electron.getCurrentWindow().setFullScreen(
+				prefs.ui.launchFullScreen);
 		}
 		this.state = 'closed';
 		identify = false;

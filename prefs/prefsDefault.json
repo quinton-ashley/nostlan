@@ -113,7 +113,7 @@
         "pkgManager_arch": ["pacman", "-s", "${app}"]
       },
       "mac": {
-        "standalone": "https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK"
+        "standalone": "https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK .zip"
       },
       "win": {
         "standalone": "https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe"

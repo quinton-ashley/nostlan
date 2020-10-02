@@ -110,8 +110,6 @@ module.exports = async function(arg) {
 	}
 
 	async function setup() {
-		electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
-
 		// after the user uses the app for the first time
 		// a preferences file is created
 		// if it exists load it
@@ -123,6 +121,8 @@ module.exports = async function(arg) {
 			// makes folders if they aren't there
 			await createTemplate();
 		}
+		electron.getCurrentWindow().setFullScreen(
+			prefs.ui.launchFullScreen);
 
 		let sysMenu_5 = `h1.title0\n`;
 		let i = 0;
@@ -234,8 +234,8 @@ module.exports = async function(arg) {
 		}
 		if (games.length == 0) {
 			if (!systemsDir) {
-				cui.change('setupMenu_1');
 				await removeIntro(0);
+				cui.change('setupMenu_1');
 				return;
 			}
 
@@ -245,10 +245,11 @@ module.exports = async function(arg) {
 
 			if (!(await fs.exists(gameLibDir))) {
 				await removeIntro(0);
+				await cui.change('sysMenu_5');
 				// 'game library does not exist: '
 				cui.err(syst.name + ' ' +
 					lang.sysMenu_5.msg0 + ': ' +
-					gameLibDir, 404, 'emptyGameLibMenu_5');
+					gameLibDir, 404, 'emptyGameLibMenu_6');
 				return;
 			}
 			let files = await klaw(gameLibDir);
@@ -258,10 +259,11 @@ module.exports = async function(arg) {
 						path.parse(files[0]).base))
 				)) {
 				await removeIntro(0);
+				await cui.change('sysMenu_5');
 				// 'game library has no game files'
 				cui.err(syst.name + ' ' +
 					lang.sysMenu_5.msg1 + ': ' +
-					gameLibDir, 404, 'emptyGameLibMenu_5');
+					gameLibDir, 404, 'emptyGameLibMenu_6');
 				return;
 			}
 			if (!prefs[sys]) prefs[sys] = {};
@@ -271,7 +273,9 @@ module.exports = async function(arg) {
 			}
 			games = await scan.gameLib();
 			if (!games.length) {
-				cui.change('emptyGameLibMenu_5');
+				await removeIntro(0);
+				await cui.change('sysMenu_5');
+				cui.change('emptyGameLibMenu_6');
 				return;
 			}
 		}
@@ -405,15 +409,15 @@ module.exports = async function(arg) {
 			$('#emuAppMenu_6 .opt1').text(
 				lang.emuAppMenu_6.opt1 + ' ' + prefs[emu].name
 			);
-		} else if (state == 'emptyGameLibMenu_5') {
-			$('#emptyGameLibMenu_5 .opt1').text(
-				lang.emptyGameLibMenu_5.opt1 + ' ' +
+		} else if (state == 'emptyGameLibMenu_6') {
+			$('#emptyGameLibMenu_6 .opt1').text(
+				lang.emptyGameLibMenu_6.opt1 + ' ' +
 				prefs[emu].name
 			);
 			let note = '';
 			if (syst.gameExts) {
 				// 'Game files must have the file extension'
-				note += lang.emptyGameLibMenu_5.msg1_0 + ': ';
+				note += lang.emptyGameLibMenu_6.msg1_0 + ': ';
 			}
 			for (let i in syst.gameExts) {
 				let ext = syst.gameExts;
@@ -423,17 +427,17 @@ module.exports = async function(arg) {
 				}
 				if (i == syst.gameExts.length - 2) {
 					// 'or '
-					note += lang.emptyGameLibMenu_5.msg1_1 + ' ';
+					note += lang.emptyGameLibMenu_6.msg1_1 + ' ';
 				}
 			}
 			// "If you don't have any
-			note += '\n' + lang.emptyGameLibMenu_5.msg1_2 + ' ';
+			note += '\n' + lang.emptyGameLibMenu_6.msg1_2 + ' ';
 			// games yet you might want to install the
-			note += syst.name + ' ' + lang.emptyGameLibMenu_5.msg1_3;
+			note += syst.name + ' ' + lang.emptyGameLibMenu_6.msg1_3;
 			note += ' ' + prefs[emu].name + ' ';
 			// emulator app first.""
-			note += lang.emptyGameLibMenu_5.msg1_4;
-			$('#emptyGameLibMenu_5 .msg1').text(note);
+			note += lang.emptyGameLibMenu_6.msg1_4;
+			$('#emptyGameLibMenu_6 .msg1').text(note);
 		}
 
 		function adjust(flip) {
@@ -680,7 +684,7 @@ module.exports = async function(arg) {
 			// if there was an error
 			// if developing nostlan
 			// if user is not a patreon supporter
-			if (ui != 'errorMenu_9999' && !arg.dev && premium.verify()) {
+			if (ui != 'alertMenu_9999' && !arg.dev && premium.verify()) {
 				await saveSync('quit');
 			}
 			// save the prefs file
@@ -738,7 +742,8 @@ module.exports = async function(arg) {
 		if (act == 'start') {
 			cui.change('pauseMenu_10');
 		} else if (act == 'b' && (onMenu || onSelect) &&
-			ui != 'donateMenu' && ui != 'setupMenu_1') {
+			ui != 'donateMenu' && ui != 'setupMenu_1' &&
+			cui.getParent() != 'loading_1') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
@@ -934,7 +939,8 @@ module.exports = async function(arg) {
 			} else if (act == 'fullscreen') {
 				prefs.ui.launchFullScreen = !prefs.ui.launchFullScreen;
 				electron.getCurrentWindow().focus();
-				electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
+				electron.getCurrentWindow().setFullScreen(
+					prefs.ui.launchFullScreen);
 			} else if (act == 'gameLibMenu') {
 				cui.change('gameLibMenu_11');
 			} else if (act == 'x') {
@@ -1077,7 +1083,8 @@ module.exports = async function(arg) {
 			if (act == 'install') {
 				let res = await installEmuApp();
 				if (!res) return;
-				cui.doAction('back');
+				cui.alert(lang.alertMenu_9999.msg0,
+					lang.emuAppMenu_6.msg11 + ' ' + prefs[emu].name, 'doubleBack');
 			} else if (act == 'find') {
 				// 'Select emulator app'
 				let emuApp = await dialog.selectFile(
@@ -1093,14 +1100,14 @@ module.exports = async function(arg) {
 				prefs[emu].app = emuApp;
 				cui.doAction('back');
 			}
-		} else if (ui == 'emptyGameLibMenu_5') {
+		} else if (ui == 'emptyGameLibMenu_6') {
 			if (act == 'find') {
 				log('user selecting gameLibDir');
 				// `select ${syst.name} games folder`
 				let gameLibDir = await dialog.selectDir(
-					lang.emptyGameLibMenu_5.msg0_0 + ' ' +
+					lang.emptyGameLibMenu_6.msg0_0 + ' ' +
 					syst.name + ' ' +
-					lang.emptyGameLibMenu_5.msg0_1);
+					lang.emptyGameLibMenu_6.msg0_1);
 				log('user selected: ' + gameLibDir);
 				if (!gameLibDir ||
 					!(await fs.exists(gameLibDir))) {
@@ -1112,11 +1119,38 @@ module.exports = async function(arg) {
 				}
 				await loadGameLib(gameLibDir);
 			} else if (act == 'install') {
-				let res = await installEmuApp();
-				if (!res) return;
-				await loadGameLib();
+				let app = await launcher.getEmuApp();
+				if (app) {
+					cui.err(lang.emptyGameLibMenu_6.err0 + ' ' + app);
+					return;
+				}
+				app = await installEmuApp();
+				if (!app) return;
+				cui.alert(lang.alertMenu_9999.msg0,
+					lang.emuAppMenu_6.msg11 + ' ' + prefs[emu].name,
+					'sysMenu_5');
 			}
 		}
+	}
+
+	async function installEmuApp() {
+		$('#libMain').addClass('dim');
+		$('#emuAppMenu_6').addClass('dim');
+		cui.clearDialogs();
+		$('#dialogs').show();
+		let wdw = electron.getCurrentWindow();
+		wdw.focus();
+		wdw.setFullScreen(false);
+		let res = await installer.install();
+		wdw.focus();
+		wdw.setFullScreen(prefs.ui.launchFullScreen);
+		cui.clearDialogs();
+		$('#libMain').removeClass('dim');
+		$('#emuAppMenu_6').removeClass('dim');
+		if (res) {
+			await createTemplate();
+		}
+		return res;
 	}
 
 	cui.click('#nav0', 'x');

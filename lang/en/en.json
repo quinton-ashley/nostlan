@@ -145,6 +145,7 @@
 		"err2": "Could not download app from",
 		"err3": "Installer not found in package",
 		"err4": "couldn't find install disk, finish install manually",
+		"err5": "Install failed, you must manually install",
 		"msg0": "installing",
 		"msg1": "preparing to install...",
 		"msg2": "running install script, please wait...",
@@ -155,9 +156,10 @@
 		"msg7": "running setup app",
 		"msg8": "moving apps to",
 		"msg9": "finishing, ejecting all install disks",
-		"msg10": "finishing, deleting package file"
+		"msg10": "finishing, deleting package file",
+		"msg11": "Installed"
 	},
-	"emptyGameLibMenu_5": {
+	"emptyGameLibMenu_6": {
 		"opt0": "browse for games folder",
 		"opt1": "install",
 		"msg0_0": "select",
@@ -166,6 +168,14 @@
 		"msg1_1": "or",
 		"msg1_2": "If you don't have any",
 		"msg1_3": "games yet you might want to install the",
-		"msg1_4": "emulator app first."
+		"msg1_4": "emulator app first.",
+		"err0": "You already have this emulator installed on your computer!"
+	},
+	"alertMenu_9999": {
+		"msg0": "Success!",
+		"msg1": "Failed",
+		"msg3": "Error",
+		"msg2": "Error Code",
+		"opt0": "okay"
 	}
 }

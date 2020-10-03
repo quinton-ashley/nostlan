@@ -1083,6 +1083,7 @@ module.exports = async function(arg) {
 			if (act == 'install') {
 				let res = await installEmuApp();
 				if (!res) return;
+				// 'Success' 'Installed'
 				cui.alert(lang.alertMenu_9999.msg0,
 					lang.emuAppMenu_6.msg11 + ' ' + prefs[emu].name, 'doubleBack');
 			} else if (act == 'find') {

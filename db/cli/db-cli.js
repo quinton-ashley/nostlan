@@ -7,9 +7,9 @@ module.exports = async function(arg) {
 
 	global.sys = arg.sys;
 
-	if (arg.do == 'generate') {
+	if (arg.generate) {
 		db.generate();
-	} else if (arg.do == 'merge') {
+	} else if (arg.merge) {
 		db.merge();
 	} else {
 		er('cli db can\'t do this action: ' + arg.do);

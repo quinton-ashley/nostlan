@@ -81,6 +81,7 @@ class Installer {
 			this.loadLog(lang.emuAppMenu_6.msg4);
 			await fs.extract(file, dir);
 		}
+		await fs.remove(file);
 		let files = await klaw(dir, {
 			depthLimit: 0
 		});
@@ -188,6 +189,7 @@ class Installer {
 			// ensure template dir
 			await fs.ensureDir(dir);
 		}
+		// 'verifying installation'
 		this.loadLog(lang.emuAppMenu_6.msg5);
 		res = await launcher.getEmuApp();
 		if (!res) {

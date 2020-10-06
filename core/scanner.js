@@ -38,8 +38,8 @@ class Scanner {
 		this.outLog = '';
 	}
 
-	async gameLib(rescan, fullRescan) {
-		if (!rescan || fullRescan) {
+	async gameLib(games) {
+		if (!games) {
 			// 'Indexing your game library'
 			$('#loadDialog0').text(lang.loading_1.msg5);
 		} else {
@@ -48,40 +48,11 @@ class Scanner {
 		}
 		this.outLog = '';
 		let unidentifiedAmt = 0;
-		let games = [];
+		let fullRescan = !games;
+		games = games || [];
 		let gameDB = [];
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
-
-		// TODO exact match indexing for wii games with Dolphin using kb
-		// if (sys == 'wii' && kb) {
-		if (false) {
-			let app = await launcher.getEmuApp();
-			if (!app) cui.change('emuAppMenu_6');
-			let dir = path.join(app, '../User');
-			if (mac && !(await fs.exists(dir))) {
-				dir = util.absPath('$home') + '/Library/Application Support/Dolphin';
-			}
-			if (!(await fs.exists(dir))) {
-				cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local user directory, create a text file named "portable" next to the executable files of the build (Dolphin.exe). With the extension it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use the global user directory, instead it will create and use the local user directory in the same directory.`);
-				return;
-			}
-			let config = await fs.readFile(dir + '/Config/Dolphin.ini');
-			let ogConfig = config;
-			config.replace(/(Column[^ ]*)[^\n]*/g, '$1 = False');
-			config.replace(/ColumnTitle[^\n]*/, 'ColumnTitle = True');
-			config.replace(/ColumnFileName[^\n]*/, 'ColumnFileName = True');
-			config.replace(/ColumnID[^\n]*/, 'ColumnID = True');
-			await fs.outputFile(dir + '/Config/Dolphin.ini', config);
-
-			$('#loadDialog0').text('Do not close Dolphin while game indexing is in progress');
-			// TODO
-			await delay(1000);
-			await this.outputUsersGamesDB(games);
-			cui.clearDialogs();
-			launcher.state = 'closed';
-			return games;
-		}
 
 		let fuse, searcher;
 		fuse = new Fuse(gameDB, searcharg);
@@ -94,6 +65,13 @@ class Scanner {
 			let files = await klaw(prefs[sys].libs[h], {
 				depthLimit: 0
 			});
+			if (!fullRescan) {
+				for (let game of games) {
+					let file = util.absPath(game.file);
+					files = files.filter(x => x != file);
+				}
+			}
+
 			let file;
 			// a lot of pruning is required to get good search results
 			for (let i = 0; i < files.length; i++) {
@@ -365,3 +343,34 @@ class Scanner {
 }
 
 module.exports = new Scanner();
+
+
+// // TODO exact match indexing for wii games with Dolphin using kb
+// // if (sys == 'wii' && kb) {
+// if (false) {
+// 	let app = await launcher.getEmuApp();
+// 	if (!app) cui.change('emuAppMenu_6');
+// 	let dir = path.join(app, '../User');
+// 	if (mac && !(await fs.exists(dir))) {
+// 		dir = util.absPath('$home') + '/Library/Application Support/Dolphin';
+// 	}
+// 	if (!(await fs.exists(dir))) {
+// 		cui.err(`"User" folder not found. "User" folder needs to be in the same folder as "Dolphin.exe". To make a build use a local user directory, create a text file named "portable" next to the executable files of the build (Dolphin.exe). With the extension it should be named "portable.txt". Dolphin will check if that file exists in the same directory, then it will not use the global user directory, instead it will create and use the local user directory in the same directory.`);
+// 		return;
+// 	}
+// 	let config = await fs.readFile(dir + '/Config/Dolphin.ini');
+// 	let ogConfig = config;
+// 	config.replace(/(Column[^ ]*)[^\n]*/g, '$1 = False');
+// 	config.replace(/ColumnTitle[^\n]*/, 'ColumnTitle = True');
+// 	config.replace(/ColumnFileName[^\n]*/, 'ColumnFileName = True');
+// 	config.replace(/ColumnID[^\n]*/, 'ColumnID = True');
+// 	await fs.outputFile(dir + '/Config/Dolphin.ini', config);
+//
+// 	$('#loadDialog0').text('Do not close Dolphin while game indexing is in progress');
+// 	// TODO
+// 	await delay(1000);
+// 	await this.outputUsersGamesDB(games);
+// 	cui.clearDialogs();
+// 	launcher.state = 'closed';
+// 	return games;
+// }

@@ -420,8 +420,7 @@ module.exports = async function(arg) {
 				note += lang.emptyGameLibMenu_6.msg1_0 + ': ';
 			}
 			for (let i in syst.gameExts) {
-				let ext = syst.gameExts;
-				note += '.' + ext;
+				note += '.' + syst.gameExts[i];
 				if (i != syst.gameExts.length - 1) {
 					note += ', ';
 				}
@@ -953,7 +952,8 @@ module.exports = async function(arg) {
 			} else if (act == 'patreon') {
 				opn('https://www.patreon.com/nostlan');
 			} else if (act == 'help') {
-				opn('https://discord.com/channels/698656653633126441/707865945292406885'); // nostlan discord #support channel
+				// nostlan discord invite link
+				opn('https://discord.gg/G8qrmT');
 			}
 		} else if (ui == 'gameLibMenu_11') {
 			let recheckImgs = (act == 'scanForImages');
@@ -963,11 +963,11 @@ module.exports = async function(arg) {
 				cui.change('loading_1');
 				await intro();
 				if (!recheckImgs) {
-					await fs.move(`${systemsDir}/${sys}/${sys}Games.json`,
-						`${systemsDir}/${sys}/${sys}Games_old.json`, {
-							overwrite: true
-						});
-					games = await scan.gameLib(true, fullRescan);
+					if (!fullRescan) {
+						games = await scan.gameLib(games);
+					} else {
+						games = await scan.gameLib();
+					}
 				}
 				await viewerLoad(recheckImgs);
 				await removeIntro();

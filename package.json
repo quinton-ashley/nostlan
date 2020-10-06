@@ -81,7 +81,7 @@
     "bootstrap": "^4.5.2",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^2.0.31",
+    "contro-ui": "^2.0.32",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^4.4.0",
@@ -101,7 +101,7 @@
     "markdown-it": "^11.0.1",
     "material-design-icons-iconfont": "^6.1.0",
     "minimist": "^1.2.5",
-    "moment": "^2.29.0",
+    "moment": "^2.29.1",
     "mousetrap": "^1.6.5",
     "node-7z": "^2.1.1",
     "node-abi": "^2.19.1",
@@ -155,5 +155,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.15.0"
+  "version": "1.15.1"
 }

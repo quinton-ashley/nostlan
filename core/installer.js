@@ -80,8 +80,11 @@ class Installer {
 			// 'download complete, extracting files...'
 			this.loadLog(lang.emuAppMenu_6.msg4);
 			await fs.extract(file, dir);
+			await fs.remove(file);
+		} else {
+			// "download complete"
+			this.loadLog(lang.emuAppMenu_6.msg12);
 		}
-		await fs.remove(file);
 		let files = await klaw(dir, {
 			depthLimit: 0
 		});
@@ -101,10 +104,13 @@ class Installer {
 			for (let file of files) {
 				ext = path.parse(file).ext;
 				if (ext == '.dmg') {
+					// "opening macOS .dmg file"
+					this.loadLog(lang.emuAppMenu_6.msg13);
 					await opn(file);
-					await delay(5000);
 					res = file;
 				} else if (ext == '.exe') {
+					// "opening installer executable"
+					this.loadLog(lang.emuAppMenu_6.msg14);
 					await spawn(file);
 					res = file;
 				}
@@ -116,17 +122,18 @@ class Installer {
 			}
 			if (mac) {
 				// find the ejectable install disk
-				files = await klaw('/Volumes', {
-					depthLimit: 0
-				});
-				let regex = `(${emu}|${emu.name}`;
-				if (emu == 'citra') regex += '|dist';
-				regex += ')';
-				regex = new RegExp(regex, 'i');
 				let disk;
-				for (let file of files) {
-					if (regex.test(file)) {
-						disk = file;
+				for (let i = 0; !disk || i < 20; i++) {
+					await delay(500);
+					files = await klaw('/Volumes', {
+						depthLimit: 0
+					});
+					let regex = `(${emu}|${emu.name}`;
+					if (emu == 'citra') regex += '|dist';
+					regex += ')';
+					regex = new RegExp(regex, 'i');
+					for (let file of files) {
+						if (regex.test(file)) disk = file;
 					}
 				}
 				if (!disk) {

@@ -976,6 +976,11 @@ module.exports = async function(arg) {
 				cui.scrollToCursor(0);
 			} else if (act == 'info') {
 				cui.change('gameLibInfoMenu_12');
+			} else if (act == 'identifyGames' || act == 'imageSearch') {
+				// "This option is not available yet!"
+				// "Not Implemented"
+				cui.alert(lang.alertMenu_9999.msg0,
+					lang.alertMenu_9999.title4);
 			}
 		} else if (ui == 'settingsMenu_11') {
 			if (act == 'editAppearance') {
@@ -1085,9 +1090,10 @@ module.exports = async function(arg) {
 			if (act == 'install') {
 				let res = await installEmuApp();
 				if (!res) return;
-				// 'Success' 'Installed'
-				cui.alert(lang.alertMenu_9999.msg0,
-					lang.emuAppMenu_6.msg11 + ' ' + prefs[emu].name, 'doubleBack');
+				// 'Success!' 'Installed'
+				cui.alert(lang.emuAppMenu_6.msg11 + ' ' +
+					prefs[emu].name, lang.alertMenu_9999.title0,
+					'doubleBack');
 			} else if (act == 'find') {
 				// 'Select emulator app'
 				let emuApp = await dialog.selectFile(
@@ -1129,8 +1135,9 @@ module.exports = async function(arg) {
 				}
 				app = await installEmuApp();
 				if (!app) return;
-				cui.alert(lang.alertMenu_9999.msg0,
-					lang.emuAppMenu_6.msg11 + ' ' + prefs[emu].name,
+				// 'Success!' 'Installed'
+				cui.alert(lang.emuAppMenu_6.msg11 + ' ' +
+					prefs[emu].name, lang.alertMenu_9999.title0,
 					'sysMenu_5');
 			}
 		}

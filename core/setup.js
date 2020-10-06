@@ -29,6 +29,7 @@ module.exports = async function(arg) {
 					if (i > 0) {
 						if (!(mac && i == 1 &&
 								path.parse(item.path).base == '.DS_Store')) {
+							if (win) item.path = item.path.replace(/\\/g, '/');
 							items.push(item.path);
 						}
 					}

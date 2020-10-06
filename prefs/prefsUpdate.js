@@ -24,6 +24,15 @@ module.exports = async function() {
 				}
 			}
 		}
+
+		// remove all game library locations with backslashes
+		if (prefs[_sys] && prefs[_sys].libs && prefs[_sys].libs.length > 1) {
+			for (let i in prefs[_sys].libs) {
+				if (/\\/g.test(prefs[_sys].libs[i])) {
+					prefs[_sys].libs.splice(i, 1);
+				}
+			}
+		}
 	}
 
 	if (semver.gte(ver, '1.15.0')) return;

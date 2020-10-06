@@ -116,6 +116,7 @@ module.exports = async function(arg) {
 		if (await prefsMng.canLoad()) {
 			await prefsMng.load();
 			systemsDir = path.join(prefs.nlaDir, '..');
+			systemsDir = systemsDir.replace(/\\/g, '/');
 			await prefsMng.update();
 			// ensures the template dir structure exists
 			// makes folders if they aren't there
@@ -1460,6 +1461,13 @@ module.exports = async function(arg) {
 
 		global.lang = JSON.parse(
 			await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
+
+		if (prefs.ui.lang != 'en') {
+			const deepExtend = require('deep-extend');
+			let en = JSON.parse(
+				await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
+			deepExtend(en, lang);
+		}
 
 		$('loadDialog0').text(lang.loading_1.msg3);
 

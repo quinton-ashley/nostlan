@@ -956,18 +956,19 @@ module.exports = async function(arg) {
 				opn('https://discord.com/channels/698656653633126441/707865945292406885'); // nostlan discord #support channel
 			}
 		} else if (ui == 'gameLibMenu_11') {
-			if (act == 'scanForImages' || act == 'scanForGames') {
-				let recheckImgs = false;
-				if (act == 'scanForImages') {
-					recheckImgs = true;
-					await fs.remove(`${systemsDir}/${sys}/${sys}Games.json`, `${systemsDir}/${sys}/${sys}Games_old.json`, {
-						overwrite: true
-					});
-				}
+			let recheckImgs = (act == 'scanForImages');
+			let fullRescan = (act == 'rescanGameLib');
+			if (act == 'scanForGames' || recheckImgs || fullRescan) {
 				cui.removeView('libMain');
-				cui.change('rescanning');
+				cui.change('loading_1');
 				await intro();
-				games = await scan.gameLib();
+				if (!recheckImgs) {
+					await fs.move(`${systemsDir}/${sys}/${sys}Games.json`,
+						`${systemsDir}/${sys}/${sys}Games_old.json`, {
+							overwrite: true
+						});
+					games = await scan.gameLib(true, fullRescan);
+				}
 				await viewerLoad(recheckImgs);
 				await removeIntro();
 				cui.change('libMain');

@@ -75,7 +75,8 @@
 		"opt1": "identify games (coming soon)",
 		"opt2": "auto-scan for images",
 		"opt3": "search for images (coming soon)",
-		"opt4": "info"
+		"opt4": "info",
+		"opt5": "rescan all games"
 	},
 	"gameLibInfoMenu_12": {
 		"opt0": "back"
@@ -124,7 +125,9 @@
 		"msg1": "loading additional images",
 		"msg2": "loading complete!",
 		"msg3": "starting Nostlan",
-		"msg4": "games"
+		"msg4": "games",
+		"msg5": "Indexing your game library",
+		"msg6": "Indexing new games in your game library"
 	},
 	"playing_4": {
 		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",

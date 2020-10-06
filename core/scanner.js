@@ -38,8 +38,14 @@ class Scanner {
 		this.outLog = '';
 	}
 
-	async gameLib() {
-		$('#loadDialog0').text('Indexing your game library');
+	async gameLib(rescan, fullRescan) {
+		if (!rescan || fullRescan) {
+			// 'Indexing your game library'
+			$('#loadDialog0').text(lang.loading_1.msg5);
+		} else {
+			// 'Indexing new games in your game library'
+			$('#loadDialog0').text(lang.loading_1.msg6);
+		}
 		this.outLog = '';
 		let unidentifiedAmt = 0;
 		let games = [];

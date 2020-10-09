@@ -14,6 +14,9 @@ class Launcher {
 		this.state = 'closed'; // status of the process
 		this.cmdArgs = [];
 		this.emuAppDir = '';
+		this.emuJS = {
+			fceux: require(__root + '/launch/fceux.js')
+		};
 	}
 
 	async getMacExec(file) {
@@ -90,12 +93,25 @@ class Launcher {
 
 	async launch(game, opt) {
 		opt = opt || {};
+		$('#dialogs').show();
+		// 'launching'
+		$('#loadDialog0').text(lang.playing_4.msg4 + ' ' + prefs[emu].name);
 		if (game && game.id) {
 			identify = false;
 			log(game.id);
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
 		}
+
+		if (this.emuJS[emu]) {
+			await this.emuJS[emu].launch(game);
+			cui.clearDialogs();
+			$('#libMain').hide();
+			this.state = 'running';
+			cui.disableSticks = true;
+			return;
+		}
+
 		let emuApp = await this.getEmuApp();
 		if (!emuApp) {
 			cui.change('emuAppMenu_6');
@@ -168,7 +184,6 @@ class Launcher {
 		if (game && game.id || emu == 'mame') {
 			await cui.change('playing_4');
 			$('#libMain').hide();
-			$('#dialogs').show();
 			// 'Starting'
 			$('#loadDialog0').text(`${lang.playing_4.msg1} ${prefs[emu].name}`);
 			// `To close the emulator, press and hold the
@@ -176,9 +191,7 @@ class Launcher {
 			$('#loadDialog1').text(lang.playing_4.msg2_0 + `"${prefs.inGame.quit.hold}" ` + lang.playing_4.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
 				' ' + lang.playing_4.msg2_2
 			);
-			$('#loadDialog2').text(game.title);
-		} else if (!identify) {
-			$('body').addClass('dim');
+			if (game) $('#loadDialog2').text(game.title);
 		}
 		if (!identify) log(this.cmdArgs);
 		if (!identify) log('cwd: ' + this.emuAppDir);
@@ -310,16 +323,27 @@ class Launcher {
 
 	reset() {
 		this.state = 'resetting';
-		this.child.kill('SIGINT');
+		if (!this.emuJS[emu]) {
+			this.child.kill('SIGINT');
+		} else {
+			this._close();
+			this.emuJS[emu].close();
+		}
 	}
 
 	close() {
 		this.state = 'closing';
-		this.child.kill('SIGINT');
+		if (!this.emuJS[emu]) {
+			this.child.kill('SIGINT');
+		} else {
+			this._close();
+			this.emuJS[emu].close();
+		}
 	}
 
 	async _close(code) {
 		cui.disableSticks = false;
+		$('nav').show();
 		if (!identify) {
 			log(`emulator closed`);
 			if (this.state == 'resetting') {

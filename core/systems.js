@@ -46,7 +46,7 @@ module.exports = {
 	nes: {
 		name: 'NES',
 		fullName: 'Nintendo Entertainment System',
-		emus: ['mesen'],
+		emus: ['mesen', 'fceux'],
 		mediaType: 'cart'
 	},
 	ps2: {

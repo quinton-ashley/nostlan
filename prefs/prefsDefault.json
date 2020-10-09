@@ -149,6 +149,9 @@
       }
     }
   },
+	"fceux": {
+		"name": "em-fceux"
+	},
   "mame": {
     "name": "MAME",
     "app": {

@@ -57,7 +57,7 @@ class Launcher {
 		if (mac) emuAppDirs.push('/Applications');
 
 		for (let dir of emuAppDirs) {
-			dir = dir.replace('$emu', emuDir);
+			dir = util.absPath(dir);
 			if (!(await fs.exists(dir))) continue;
 			let files;
 			try {
@@ -137,7 +137,7 @@ class Launcher {
 			});
 			_this = null;
 			if (cfg.dev) this.jsEmu.openDevTools();
-			await delay(3000);
+			await delay(500);
 			await this.jsEmu.executeJavaScript(
 				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
 			);
@@ -146,7 +146,6 @@ class Launcher {
 			cui.clearDialogs();
 			$('#libMain').hide();
 			this.state = 'running';
-			cui.disableSticks = true;
 			return;
 		}
 
@@ -361,6 +360,8 @@ class Launcher {
 		} else {
 			this._close();
 			this.jsEmu.executeJavaScript('jsEmu.close();');
+			this.jsEmu.remove();
+			this.jsEmu = null;
 		}
 	}
 
@@ -371,6 +372,8 @@ class Launcher {
 		} else {
 			this._close();
 			this.jsEmu.executeJavaScript('jsEmu.close();');
+			this.jsEmu.remove();
+			this.jsEmu = null;
 		}
 	}
 

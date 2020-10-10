@@ -1,41 +1,44 @@
-let fceux;
-
 class Nostlan_em_fceux {
 	constructor() {
 		this.bits = 0;
 		this.btns = ['a', 'b', 'select', 'start', 'up', 'down', 'left', 'right'];
+		this.fceux;
+		this.ready = false;
 	}
 
 	async launch(game) {
-		fceux = await FCEUX();
+		this.fceux = await FCEUX();
 		// Initialize the instance (creates Web Audio etc.)
-		fceux.init('#screen0');
+		this.fceux.init('#screen0');
 
 		// Download a game ROM and start it.
-		fceux.downloadGame(game.file);
+		this.fceux.downloadGame(game.file);
 
 		// Run the emulation update loop.
 		// Use requestAnimationFrame() to synchronise to repaints.
+		let _this = this;
+
 		function updateLoop() {
 			window.requestAnimationFrame(updateLoop);
-			fceux.update();
+			_this.fceux.update();
 		}
 		window.requestAnimationFrame(updateLoop);
+		this.ready = true;
 	}
 
 	// The array index below corresponds to the button bit index.
 	// ['A','B','Select','Start','Up','Down','Left','Right']
-	btnPress(port, btn) {
-		let idx = this.btns.indexOf(btn);
-		idx *= (port + 1);
-		for (let i = 0; i < 16; i++) {
-			if (i == idx) {
+	contro(port, btnStates) {
+		if (!this.ready) return;
+
+		for (let i = 8 * port; i < 8 * (port + 1); i++) {
+			if (btnStates[this.btns[i % 8]]) {
 				this.bits |= 1 << i;
 			} else {
 				this.bits &= ~(1 << i);
 			}
 		}
-		fceux.setControllerBits(this.bits);
+		this.fceux.setControllerBits(this.bits);
 	}
 
 	async close() {}

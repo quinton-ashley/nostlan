@@ -352,6 +352,14 @@ module.exports = async function(arg) {
 		$('#loadDialog0').text(lang.loading_1.msg2);
 	}
 
+	cui.passthrough = (btnStates, stks, trigs, type) => {
+		if (!launcher.jsEmu) return;
+
+		launcher.jsEmu.executeJavaScript(
+			`jsEmu.contro(0, ${JSON.stringify(btnStates)})`
+		);
+	};
+
 	cui.onResize = (adjust) => {};
 
 	cui.onChange = (state, subState) => {
@@ -695,11 +703,6 @@ module.exports = async function(arg) {
 			return;
 		}
 		if (launcher.state == 'running') {
-			if (launcher.jsEmu) {
-				launcher.jsEmu.executeJavaScript(
-					`jsEmu.btnPress(0, '${act}')`
-				);
-			}
 			return;
 		}
 		let isBtn = cui.isButton(act);
@@ -781,14 +784,13 @@ module.exports = async function(arg) {
 		} else if (ui == 'boxSelect_1') {
 			if ($cur.hasClass('uie-disabled')) return false;
 
-			// TODO not working, fix this!
 			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
 				fitCoverToScreen($cur);
 				cui.makeCursor($cur, 'libMain');
 				cui.scrollToCursor();
 			} else if ((act == 'a' || !isBtn) && $cur.attr('class') &&
 				(await scraper.getExtraImgs(themes[$cur.attr('class').split(/\s+/)[0] || sysStyle].template))) {
-				// TODO finish open box menu
+				// TODO finish open box menus for all systems
 				let game = getCurGame();
 				if (!game) return;
 				let template = themes[game.sys || sys].template;

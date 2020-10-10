@@ -33,41 +33,73 @@ class Installer {
 			cui.err(lang.emuAppMenu_6.err0 + ": " + osType);
 			return;
 		}
-		let distro;
 
-		if (linux) distro = (await getDistro()).os;
-
-		if (linux && (ins.pkgManager_flatpak ||
-				(/Arch/i.test(distro) && ins.pkgManager_arch))) {
-			let cmds = ins.pkgManager_flatpak ||
-				ins.pkgManager_arch;
-			// 'running install script, please wait...'
-			this.loadLog(lang.emuAppMenu_6.msg2);
-			return await runInstallCmds(cmds);
+		if (!ins.jsEmu && linux) {
+			let distro = (await getDistro()).os;
+			if (ins.pkgManager_flatpak ||
+				(/Arch/i.test(distro) && ins.pkgManager_arch)) {
+				let cmds = ins.pkgManager_flatpak ||
+					ins.pkgManager_arch;
+				// 'running install script, please wait...'
+				this.loadLog(lang.emuAppMenu_6.msg2);
+				return await runInstallCmds(cmds);
+			}
 		}
 
 		let dir = `${systemsDir}/${sys}/${emu}`;
 		await opn(dir);
-		let url = ins.installer || ins.portable ||
-			ins.standalone;
-		if (!url) {
+
+		let urls = ins.jsEmu || ins.installer ||
+			ins.portable || ins.standalone;
+		if (!urls) {
 			// Automated install of this emulator with Nostlan
 			// is not possible. You must install manually.
 			cui.err(lang.emuAppMenu_6.err1);
 			return;
 		}
+		// urls just contains one url
+		// put it in array
+		if (typeof urls == 'string') urls = [urls];
+
+		let res;
+		for (let url of urls) {
+			res = await this._install(ins, url);
+			if (!res) return;
+		}
+		res = false;
+		// 'verifying installation'
+		this.loadLog(lang.emuAppMenu_6.msg5);
+		res = await launcher.getEmuApp();
+		if (!res) {
+			// 'Install failed, you must manually install'
+			cui.err(lang.emuAppMenu_6.err5 + ': ' + prefs[emu].name);
+		}
+		if (mac && res) {
+			// fixes non-executable apps on macOS 10.15+
+			await spawn('chmod', ['755', res]);
+		}
+		return res;
+	}
+
+	async _install(ins, url) {
+		let dir = `${systemsDir}/${sys}/${emu}`;
+		let ext, file;
 		url = url.split(' ');
-		let ext;
 		if (url.length == 2) ext = url[1];
 		url = url[0];
 		let prmIdx = url.indexOf('?');
+		let _url;
 		if (!ext) {
-			let _url = (prmIdx != -1) ? url.slice(prmIdx)[0] : url;
+			_url = (prmIdx != -1) ? url.slice(prmIdx)[0] : url;
 			ext = path.parse(_url).ext.toLowerCase();
 		}
 		if (ext == '.gz') ext = '.tar.gz';
 		if (ext == '.xz') ext = '.tar.xz';
-		let file = dir + '/pkg' + ext;
+		if (!ins.jsEmu) {
+			file = dir + '/pkg' + ext;
+		} else {
+			file = dir + '/' + path.parse(_url).name + ext;
+		}
 		// 'downloading, please wait...'
 		this.loadLog(lang.emuAppMenu_6.msg3);
 		let res = await dl(url, file);
@@ -85,6 +117,7 @@ class Installer {
 			// "download complete"
 			this.loadLog(lang.emuAppMenu_6.msg12);
 		}
+		if (ins.jsEmu) return true;
 		let files = await klaw(dir, {
 			depthLimit: 0
 		});
@@ -196,18 +229,7 @@ class Installer {
 			// ensure template dir
 			await fs.ensureDir(dir);
 		}
-		// 'verifying installation'
-		this.loadLog(lang.emuAppMenu_6.msg5);
-		res = await launcher.getEmuApp();
-		if (!res) {
-			// 'Install failed, you must manually install'
-			cui.err(lang.emuAppMenu_6.err5 + ': ' + prefs[emu].name);
-		}
-		if (mac && res) {
-			// fixes non-executable apps on macOS 10.15+
-			await spawn('chmod', ['755', res]);
-		}
-		return res;
+		return true;
 	}
 
 	async runInstallCmds(cmds) {

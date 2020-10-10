@@ -53,6 +53,8 @@ class Utility {
 			tag = tag.slice(1);
 			if (tag == 'home') {
 				replacement = os.homedir().replace(/\\/g, '/');
+			} else if (tag == 'emu') {
+				replacement = `${systemsDir}/${sys}/${emu}`;
 			}
 			file = file.replace('$' + tag, replacement);
 		}

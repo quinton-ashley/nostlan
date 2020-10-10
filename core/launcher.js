@@ -14,9 +14,6 @@ class Launcher {
 		this.state = 'closed'; // status of the process
 		this.cmdArgs = [];
 		this.emuAppDir = '';
-		this.emuJS = {
-			fceux: require(__root + '/launch/fceux.js')
-		};
 	}
 
 	async getMacExec(file) {
@@ -56,11 +53,11 @@ class Launcher {
 			}
 		}
 		let emuAppDirs = prefs[emu].appDirs || [];
-
 		emuAppDirs.push(`${systemsDir}/${sys}/${emu}`);
 		if (mac) emuAppDirs.push('/Applications');
 
 		for (let dir of emuAppDirs) {
+			dir = dir.replace('$emu', emuDir);
 			if (!(await fs.exists(dir))) continue;
 			let files;
 			try {
@@ -103,8 +100,49 @@ class Launcher {
 			prefs.session[sys].gameID = game.id;
 		}
 
-		if (this.emuJS[emu]) {
-			await this.emuJS[emu].launch(game);
+		let emuApp = await this.getEmuApp();
+		if (!emuApp) {
+			cui.change('emuAppMenu_6');
+			return;
+		}
+
+		if (prefs[emu].jsEmu) {
+			let dir = `${systemsDir}/${sys}/${emu}`;
+			let jsEmuDir = `${__root}/emu/${sys}/${emu}`;
+
+			let cfgEditor = new ConfigEditor();
+			cfgEditor.configPath = dir + '/config.json';
+			cfgEditor.configDefaultsPath = jsEmuDir + '/config.json';
+			let cfg = await cfgEditor.getDefaults();
+			let currentVersion = cfg.version;
+			cfg = await cfgEditor.load(cfg);
+			if (!(await cfgEditor.canLoad()) ||
+				cfg.version != currentVersion) {
+
+				await fs.copy(jsEmuDir, dir, {
+					overwrite: true
+				});
+				cfg.version = currentVersion;
+				await cfgEditor.save(cfg);
+			}
+
+			let fileHtml = `${dir}/launch.html`;
+			$('body').prepend(`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}"></webview>`);
+			this.jsEmu = $('#jsEmu').eq(0)[0];
+			let _this = this;
+			await new Promise((resolve) => {
+				_this.jsEmu.addEventListener('dom-ready', () => {
+					resolve();
+				});
+			});
+			_this = null;
+			if (cfg.dev) this.jsEmu.openDevTools();
+			await delay(3000);
+			await this.jsEmu.executeJavaScript(
+				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
+			);
+			await cui.change('playing_4');
+			$('nav').hide();
 			cui.clearDialogs();
 			$('#libMain').hide();
 			this.state = 'running';
@@ -112,11 +150,6 @@ class Launcher {
 			return;
 		}
 
-		let emuApp = await this.getEmuApp();
-		if (!emuApp) {
-			cui.change('emuAppMenu_6');
-			return;
-		}
 		if (identify && sys == 'switch') {
 			let f = path.parse(emuApp);
 			emuApp = f.dir + '/' + f.name + '-cmd' + f.ext;
@@ -323,21 +356,21 @@ class Launcher {
 
 	reset() {
 		this.state = 'resetting';
-		if (!this.emuJS[emu]) {
+		if (!prefs[emu].jsEmu) {
 			this.child.kill('SIGINT');
 		} else {
 			this._close();
-			this.emuJS[emu].close();
+			this.jsEmu.executeJavaScript('jsEmu.close();');
 		}
 	}
 
 	close() {
 		this.state = 'closing';
-		if (!this.emuJS[emu]) {
+		if (!prefs[emu].jsEmu) {
 			this.child.kill('SIGINT');
 		} else {
 			this._close();
-			this.emuJS[emu].close();
+			this.jsEmu.executeJavaScript('jsEmu.close();');
 		}
 	}
 

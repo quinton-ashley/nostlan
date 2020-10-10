@@ -20,12 +20,12 @@ module.exports = async function(arg) {
 	global.usrDir = util.absPath('$home/Documents/emu/nostlan');
 	log(usrDir);
 
-	// preferences manager is a config file editor
-	let prefsMng = require(__root + '/prefs/prefsManager.js');
-	// get custom update method
+	global.ConfigEditor = require(__root + '/core/ConfigEditor.js');
+	let prefsMng = new ConfigEditor();
+	prefsMng.configPath = usrDir + '/_usr/prefs.json';
+	prefsMng.configDefaultsPath = __root + '/prefs/prefsDefaults.json';
 	prefsMng.update = require(__root + '/prefs/prefsUpdate.js');
-	prefsMng.prefsPath = usrDir + '/_usr/prefs.json';
-	global.prefs = await prefsMng.loadDefaultPrefs();
+	global.prefs = await prefsMng.getDefaults();
 
 	global.sys = ''; // current system (name)
 	global.syst = {}; // current system (object)
@@ -114,7 +114,7 @@ module.exports = async function(arg) {
 		// a preferences file is created
 		// if it exists load it
 		if (await prefsMng.canLoad()) {
-			await prefsMng.load();
+			prefs = await prefsMng.load(prefs);
 			systemsDir = path.join(prefs.nlaDir, '..');
 			systemsDir = systemsDir.replace(/\\/g, '/');
 			await prefsMng.update();
@@ -289,7 +289,7 @@ module.exports = async function(arg) {
 		}
 		prefs.session.sys = sys;
 		cui.mapButtons(sys);
-		await prefsMng.save();
+		await prefsMng.save(prefs);
 		if (premium.verify()) {
 			await saves.update();
 		}
@@ -305,11 +305,11 @@ module.exports = async function(arg) {
 			// TODO check if user has the emulator
 			// if they do add the configure and update buttons
 			// else add a button to install
-			emuMenu += `.col.uie(name="${_emu}-config") ` +
+			emuMenu += `.col.uie(name="${_emu}_config") ` +
 				`${lang.emuMenu_5.msg0} ${prefs[_emu].name}\n`;
 
 			if (prefs[_emu].update) {
-				emuMenu += `.col.uie(name="${_emu}-update") ` +
+				emuMenu += `.col.uie(name="${_emu}_update") ` +
 					`${lang.emuMenu_5.msg1} ${prefs[_emu].name}\n`;
 			}
 		}
@@ -491,6 +491,8 @@ module.exports = async function(arg) {
 			cui.makeCursor($('#gameMedia'));
 		} else if (cui.uiPrev == 'boxSelect_1' && cui.ui == 'libMain') {
 			changeImageResolution(cui.getCur());
+		} else if (cui.ui == 'emuAppMenu_6') {
+			cui.clearDialogs();
 		}
 	}
 
@@ -688,16 +690,21 @@ module.exports = async function(arg) {
 				await saveSync('quit');
 			}
 			// save the prefs file
-			if (prefs.nlaDir) await prefsMng.save();
+			if (prefs.nlaDir) await prefsMng.save(prefs);
 			app.quit();
+			return;
+		}
+		if (launcher.state == 'running') {
+			if (launcher.jsEmu) {
+				launcher.jsEmu.executeJavaScript(
+					`jsEmu.btnPress(0, '${act}')`
+				);
+			}
 			return;
 		}
 		let isBtn = cui.isButton(act);
 		let onMenu = /menu/i.test(ui);
 		let onSelect = /select/i.test(ui);
-		if (launcher.state == 'running') {
-			return;
-		}
 
 		// letter by letter search for game
 		if (/char-\w/.test(act)) {
@@ -1010,7 +1017,7 @@ module.exports = async function(arg) {
 				}
 				cui.change('languageMenu');
 			} else if (act == 'editPrefs') {
-				opn(prefsMng.prefsPath);
+				opn(prefsMng.configPath);
 			} else if (act == 'toggleConsole') {
 				electron.getCurrentWindow().toggleDevTools();
 				let $elem = $('#pauseMenu_10 .uie[name="toggleConsole"] .text');
@@ -1077,7 +1084,7 @@ module.exports = async function(arg) {
 			// change emu to the selected emu
 			// or run with the previously selected emu
 			// by double clicking/pressing x or y
-			let acts = act.split('-');
+			let acts = act.split('_');
 			if (syst.emus.includes(acts[0])) {
 				emu = acts[0];
 			} else if (act != 'x' && act != 'y') {
@@ -1499,6 +1506,7 @@ module.exports = async function(arg) {
 			$(`#${file.name} .md`).remove();
 			$('#' + file.name).prepend(data);
 		}
+		files = null;
 		delete files;
 
 		if (prefs.load.online) {

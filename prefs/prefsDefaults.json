@@ -149,8 +149,16 @@
       }
     }
   },
-	"fceux": {
-		"name": "em-fceux"
+	"em-fceux": {
+		"name": "em-fceux",
+		"app": "$emu/fceux.js",
+		"jsEmu": true,
+		"install": {
+			"jsEmu": [
+				"https://unpkg.com/em-fceux/dist/fceux.js",
+				"https://unpkg.com/em-fceux/dist/fceux.wasm"
+			]
+		}
 	},
   "mame": {
     "name": "MAME",

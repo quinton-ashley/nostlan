@@ -14,6 +14,7 @@ class Launcher {
 		this.state = 'closed'; // status of the process
 		this.cmdArgs = [];
 		this.emuAppDir = '';
+		this.game = {};
 	}
 
 	async getMacExec(file) {
@@ -98,6 +99,7 @@ class Launcher {
 			log(game.id);
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
+			this.game = game;
 		}
 
 		let emuApp = await this.getEmuApp();
@@ -358,10 +360,10 @@ class Launcher {
 		if (!prefs[emu].jsEmu) {
 			this.child.kill('SIGINT');
 		} else {
-			this._close();
 			this.jsEmu.executeJavaScript('jsEmu.close();');
 			this.jsEmu.remove();
 			this.jsEmu = null;
+			this.launch(this.game);
 		}
 	}
 
@@ -382,7 +384,7 @@ class Launcher {
 		$('nav').show();
 		if (!identify) {
 			log(`emulator closed`);
-			if (this.state == 'resetting') {
+			if (!this.jsEmu && this.state == 'resetting') {
 				this._launch();
 				return;
 			}

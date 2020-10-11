@@ -154,5 +154,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.15.4"
+  "version": "1.15.5"
 }

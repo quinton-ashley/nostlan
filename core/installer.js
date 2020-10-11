@@ -62,7 +62,11 @@ class Installer {
 		if (typeof urls == 'string') urls = [urls];
 
 		let res;
-		for (let url of urls) {
+		for (let i in urls) {
+			// skip fceux.js until tsone publishes the fixes
+			// I made for em-fceux
+			if (emu == 'em-fceux' && i == 0) continue;
+			let url = urls[i];
 			res = await this._install(ins, url);
 			if (!res) return;
 		}

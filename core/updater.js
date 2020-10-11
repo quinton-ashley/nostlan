@@ -30,7 +30,7 @@ class Updater {
 	async check() {
 		$('#dialogs').show();
 		$('#loadDialog0').text('Checking for an update...');
-		let url = 'https://github.com/quinton-ashley/nostlan/releases/tag/';
+		let url = 'https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v';
 		let ogVer = pkg.version.split('.');
 		for (let i in ogVer) {
 			ogVer[i] = Number(ogVer[i]);

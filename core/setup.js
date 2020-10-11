@@ -13,6 +13,7 @@ module.exports = async function(arg) {
 
 	global.delay = require('delay');
 	global.fs = require('fs-extra');
+	global.fetch = require('node-fetch');
 	global.os = require('os');
 	global.opn = require('open');
 	global.path = require('path');

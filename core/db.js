@@ -4,7 +4,6 @@
  * NOTE: Not used by Nostlan yet, incomplete.
  * Converts database files to Nostlan's json db format.
  */
-const requisition = require('requisition');
 const tbl2json = require('tabletojson');
 // mame arcade db retrieved from the app itself
 let sources = {
@@ -103,7 +102,7 @@ class GenDB {
 		if (typeof sources[sys] == 'string') {
 			log('downloading database');
 			log(sources[sys]);
-			let res = await requisition(sources[sys]);
+			let res = await fetch(sources[sys]);
 			file = __root + `/db/${sys}DB_up`;
 			await res.saveTo(file);
 			list = await fs.readFile(file, 'utf-8');

@@ -109,6 +109,10 @@ class Launcher {
 		}
 
 		if (prefs[emu].jsEmu) {
+			if (!game) {
+				cui.alert('Not configurable yet.');
+				return;
+			}
 			let dir = `${systemsDir}/${sys}/${emu}`;
 			let jsEmuDir = `${__root}/emu/${sys}/${emu}`;
 

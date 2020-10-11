@@ -1,5 +1,4 @@
 const dl = require('./dl.js');
-const req = require('requisition');
 const probe = require('probe-image-size');
 
 let gb = {
@@ -27,11 +26,11 @@ async function dlFromGiant(game, dir, name) {
 		gb.regex['ps3'] = new RegExp(regexStr, 'i');
 	}
 	let url = gb.search + query;
-	let res = await (await req(url)).json();
+	let res = await (await fetch(url)).json();
 	let tags = res.results[0].image_tags;
 	url = tags.find(x => x.name === 'Box Art').api_detail_url;
 	url += '&' + gb.params;
-	res = await (await req(url)).json();
+	res = await (await fetch(url)).json();
 	let images = res.results;
 	let largestImgUrl = '';
 	let largest = 0;

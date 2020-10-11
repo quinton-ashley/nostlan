@@ -4,8 +4,6 @@
  * Checks if there is a minor/major update to Nostlan
  * and prompts the user to download it.
  */
-const rp = require('request-promise-native');
-
 class Updater {
 	constructor() {}
 
@@ -13,16 +11,13 @@ class Updater {
 		try {
 			const res = await Promise.race([
 				new Promise((resolve, reject) => {
-					rp({
-							uri: url,
-							resolveWithFullResponse: true
-						}).then((response) => resolve(response))
+					fetch(url)
+						.then((response) => resolve(response))
 						.catch((ror) => reject(ror));
 				}),
 				delay.reject(1000)
 			]);
-			log('update res: ' + res);
-			return (/^(?!4)\d\d/.test(res.statusCode));
+			return (/^(?!4)\d\d/.test(res.status));
 		} catch (ror) {}
 		return false;
 	}
@@ -30,7 +25,7 @@ class Updater {
 	async check() {
 		$('#dialogs').show();
 		$('#loadDialog0').text('Checking for an update...');
-		let url = 'https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v';
+		let url = 'https://github.com/quinton-ashley/nostlan/releases/tag/';
 		let ogVer = pkg.version.split('.');
 		for (let i in ogVer) {
 			ogVer[i] = Number(ogVer[i]);

@@ -1,5 +1,3 @@
-const requisition = require('requisition');
-
 async function dlWithExt(url, file, opt) {
 	opt = opt || {};
 	if (!(await fs.exists(file))) {
@@ -7,7 +5,7 @@ async function dlWithExt(url, file, opt) {
 		try {
 			res = await Promise.race([
 				new Promise((resolve, reject) => {
-					requisition(url)
+					fetch(url)
 						.then((response) => resolve(response))
 						.catch((ror) => reject(ror));
 				}),
@@ -28,7 +26,16 @@ async function dlWithExt(url, file, opt) {
 		$('#loadDialog1').text(url.replace(/\%20/g, ' '));
 		log('loading image: ' + url);
 		log('saving to: ' + file);
-		await res.saveTo(file);
+		await new Promise((resolve, reject) => {
+			const fileStream = fs.createWriteStream(file);
+			res.body.pipe(fileStream);
+			res.body.on("error", (err) => {
+				reject(err);
+			});
+			fileStream.on("finish", () => {
+				resolve();
+			});
+		});
 		$('#loadDialog1').text(' ');
 	}
 	return file;

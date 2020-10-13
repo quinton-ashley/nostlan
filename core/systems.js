@@ -14,9 +14,7 @@ module.exports = {
 		name: 'Arcade',
 		fullName: 'Arcade',
 		emus: ['mame'],
-		mediaType: 'pcb',
-		gamesDir: 'roms',
-		imagesDir: 'artwork'
+		mediaType: 'pcb'
 	},
 	ds: {
 		name: 'DS',

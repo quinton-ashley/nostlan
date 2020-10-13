@@ -1,3 +1,5 @@
+const streamPipeline = require('util').promisify(require('stream').pipeline);
+
 async function dlWithExt(url, file, opt) {
 	opt = opt || {};
 	if (!(await fs.exists(file))) {
@@ -26,7 +28,7 @@ async function dlWithExt(url, file, opt) {
 		$('#loadDialog1').text(url.replace(/\%20/g, ' '));
 		log('downloading: ' + url);
 		log('saving to: ' + file);
-		await streamPipeline(response.body, fs.createWriteStream(file));
+		await streamPipeline(res.body, fs.createWriteStream(file));
 		$('#loadDialog1').text(' ');
 	}
 	return file;

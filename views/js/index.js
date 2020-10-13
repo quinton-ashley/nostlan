@@ -339,12 +339,12 @@ module.exports = async function(arg) {
 			let url = gh + `/${pack}.zip`;
 			let file = dir + `/${pack}.zip`;
 			if (!(await fs.exists(dir + '/' + pack))) {
-				if (!(await fs.exists(file))) await scraper.dl(url, file, {
+				await fs.ensureDir(dir);
+				file = await scraper.dl(url, file, {
 					timeout: 10000
 				});
-				await fs.ensureDir(dir);
-				let res = await fs.extract(file, dir);
-				log(res);
+				if (!file) break;
+				await fs.extract(file, dir);
 			}
 		}
 		$('#loadDialog1').text('');
@@ -542,34 +542,67 @@ module.exports = async function(arg) {
 		for (let _sys in systems) {
 			let _syst = systems[_sys];
 			if (!_syst.emus) continue;
-			for (let _emu of _syst.emus) {
-				// emu dir
-				await fs.ensureDir(`${systemsDir}/${_sys}/${_emu}`);
-				// games dir
-				let gamesDir = `${systemsDir}/${_sys}/games`;
-				let systGamesDir = `${systemsDir}/${_sys}/${_emu}/${_syst.gamesDir}`;
-				if (!_syst.gamesDir) {
-					await fs.ensureDir(gamesDir);
-				} else if (_syst.gamesDir &&
-					!(await fs.exists(gamesDir)) &&
-					await fs.exists(systGamesDir)) {
+			for (let i in _syst.emus) {
+				let _emu = _syst.emus[i];
+				let templateDir = `${systemsDir}/${_sys}/${_emu}`;
+
+				let emuAppDirs = prefs[_emu].appDirs || [];
+				for (let dir of emuAppDirs) {
+					if (!(await fs.exists(dir))) continue;
+					if (linux) {
+						let testDir = dir + '/nostlanTest';
+						try {
+							await fs.ensureDir(testDir);
+							await fs.remove(testDir);
+						} catch (ror) {
+							opn(dir);
+							await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
+								lang.setupMenu_1.err1, 'quit');
+						}
+					}
 					try {
-						await fs.ensureSymlink(systGamesDir, gamesDir, 'dir');
+						await fs.ensureSymlink(dir, templateDir, 'dir');
 					} catch (ror) {
 						er(ror);
 					}
+					break;
 				}
-				let imagesDir = `${systemsDir}/${_sys}/images`;
-				let systImagesDir = `${systemsDir}/${_sys}/${_emu}/${_syst.imagesDir}`;
-				if (_syst.imagesDir &&
-					!(await fs.exists(imagesDir)) &&
-					await fs.exists(systImagesDir)) {
-					try {
-						await fs.ensureSymlink(systImagesDir, imagesDir, 'dir');
-					} catch (ror) {
-						er(ror);
+				if (!(await fs.exists(templateDir))) {
+					await fs.ensureDir(templateDir);
+				}
+				if (i > 0) continue;
+				// games and/or images dirs might be in a special place
+				// for example the 'roms' folder of MAME
+				async function ensureSysDirs(dirType) {
+					let defaultDir = `${systemsDir}/${_sys}/${dirType}`;
+					dirType += 'Dir';
+					if (!prefs[_emu][dirType]) {
+						await fs.ensureDir(defaultDir);
+					} else if (!(await fs.exists(defaultDir))) {
+						// look for dedicated games dir
+						let dir = templateDir + '/' + prefs[_emu][dirType];
+						await fs.ensureDir(dir);
+						if (linux) {
+							let testDir = dir + '/nostlanTest';
+							try {
+								await fs.ensureDir(testDir);
+								await fs.remove(testDir);
+							} catch (ror) {
+								opn(dir);
+								await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
+									lang.setupMenu_1.err1, 'quit');
+							}
+						}
+						try {
+							await fs.ensureSymlink(dir, defaultDir, 'dir');
+						} catch (ror) {
+							er(ror);
+						}
 					}
 				}
+
+				await ensureSysDirs('games');
+				await ensureSysDirs('images');
 			}
 		}
 	}
@@ -1053,6 +1086,7 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'full') {
+				await prefsMng.update();
 				cui.change('setupMenu_1');
 			}
 		} else if (ui == 'setupMenu_1') {
@@ -1516,7 +1550,8 @@ module.exports = async function(arg) {
 				offline = true;
 			}
 		}
-		if ((arg.dev && !arg.setup) || premium.verify()) {
+		cui.clearDialogs();
+		if ((arg.dev && !arg.testSetup) || premium.verify()) {
 			await loadGameLib();
 			if (!arg.dev && !prefs.saves) {
 				cui.change('addSavesPathMenu_2');

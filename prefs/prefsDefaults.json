@@ -165,6 +165,14 @@
     "app": {
       "linux": "mame"
     },
+    "appDirs": {
+      "linux": [
+        "/usr/share/games/mame",
+        "/usr/lib/mame"
+      ]
+    },
+    "gamesDir": "roms",
+    "imagesDir": "artwork",
     "appRegex": {
       "mac": "mame64",
       "win": "mame64\\.exe"

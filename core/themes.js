@@ -88,7 +88,9 @@ class Themes {
 		let styles = [];
 		let _systems = [sys];
 		if (sys == 'wii') _systems.push('gcn');
-		for (let dir of [__root, prefs.nlaDir]) {
+		let dirs = [__root];
+		if (prefs.nlaDir) dirs.push(prefs.nlaDir);
+		for (let dir of dirs) {
 			for (let _sys of _systems) {
 				let file = `${dir}/themes/${_sys}/${name}.css`;
 				if (dir != __root && !(await fs.exists(file))) {

@@ -113,6 +113,7 @@
     "robotjs": "^0.6.0",
     "semver": "^7.3.2",
     "sharp": "^0.26.1",
+    "sudo-js": "^1.0.2",
     "tabletojson": "^2.0.4",
     "tether": "^1.4.7",
     "three": "^0.120.1",
@@ -152,5 +153,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.16.2"
+  "version": "1.16.3"
 }

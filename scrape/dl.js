@@ -24,18 +24,9 @@ async function dlWithExt(url, file, opt) {
 			return;
 		}
 		$('#loadDialog1').text(url.replace(/\%20/g, ' '));
-		log('loading image: ' + url);
+		log('downloading: ' + url);
 		log('saving to: ' + file);
-		await new Promise((resolve, reject) => {
-			const fileStream = fs.createWriteStream(file);
-			res.body.pipe(fileStream);
-			res.body.on("error", (err) => {
-				reject(err);
-			});
-			fileStream.on("finish", () => {
-				resolve();
-			});
-		});
+		await streamPipeline(response.body, fs.createWriteStream(file));
 		$('#loadDialog1').text(' ');
 	}
 	return file;

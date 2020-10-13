@@ -745,9 +745,8 @@ module.exports = async function(arg) {
 			if (syst.emus.length > 1) {
 				cui.change('playMenu_5');
 			} else {
-				$('#libMain').addClass('dim');
+				$('body > :not(#dialogs)').addClass('dim');
 				await launcher.launch(getCurGame());
-				$('#libMain').removeClass('dim');
 			}
 			return;
 		}
@@ -841,9 +840,8 @@ module.exports = async function(arg) {
 				if (syst.emus.length > 1) {
 					cui.change('playMenu_5');
 				} else {
-					$('#libMain').addClass('dim');
+					$('body > :not(#dialogs)').addClass('dim');
 					await launcher.launch(getCurGame());
-					$('#libMain').removeClass('dim');
 				}
 			} else if (act == 'x') { // file
 				opn(path.parse(getCurGame().file).dir);
@@ -1092,7 +1090,7 @@ module.exports = async function(arg) {
 			} else if (act != 'x' && act != 'y') {
 				return;
 			}
-			$('#libMain').addClass('dim');
+			$('body > :not(#dialogs)').addClass('dim');
 			if (acts[1] == 'update') {
 				await launcher.updateEmu();
 			} else if (acts[1] == 'config' || ui == 'emuMenu_5') {
@@ -1100,7 +1098,6 @@ module.exports = async function(arg) {
 			} else {
 				await launcher.launch(getCurGame());
 			}
-			$('#libMain').removeClass('dim');
 		} else if (ui == 'emuAppMenu_6') {
 			if (act == 'install') {
 				let res = await installEmuApp();
@@ -1159,8 +1156,7 @@ module.exports = async function(arg) {
 	}
 
 	async function installEmuApp() {
-		$('#libMain').addClass('dim');
-		$('#emuAppMenu_6').addClass('dim');
+		$('body > :not(#dialogs)').addClass('dim');
 		cui.clearDialogs();
 		$('#dialogs').show();
 		let wdw = electron.getCurrentWindow();
@@ -1170,8 +1166,7 @@ module.exports = async function(arg) {
 		wdw.focus();
 		wdw.setFullScreen(prefs.ui.launchFullScreen);
 		cui.clearDialogs();
-		$('#libMain').removeClass('dim');
-		$('#emuAppMenu_6').removeClass('dim');
+		$('body > :not(#dialogs)').removeClass('dim');
 		if (res) {
 			await createTemplate();
 		}

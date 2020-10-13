@@ -399,7 +399,7 @@ class Launcher {
 				if (cui.gca.connected) cui.gca.start();
 				await cui.doAction('back');
 			}
-			$('body').removeClass('dim');
+			$('body > :not(#dialogs)').removeClass('dim');
 		}
 		if (!identify && code) {
 			// ``${app} crashed! If the game didn't start it

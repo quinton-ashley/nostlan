@@ -15,6 +15,7 @@ class Launcher {
 		this.cmdArgs = [];
 		this.emuAppDir = '';
 		this.game = {};
+		this.stdout = '';
 	}
 
 	async getMacExec(file) {
@@ -165,6 +166,15 @@ class Launcher {
 		}
 		this.cmdArgs = [];
 		this.emuAppDir = path.join(emuApp, '..');
+		if (this.emuAppDir == '.') {
+			this.emuAppDir = `${systemsDir}/${sys}/${emu}`;
+		}
+		if (emu == 'mame' &&
+			!(await fs.exists(this.emuAppDir + '/mame.ini'))) {
+			await spawn('mame', ['-cc'], {
+				cwd: this.emuAppDir
+			});
+		}
 		if (linux) {
 			if (emu == 'citra') {
 				emuApp = 'org.citra.citra-nightly'
@@ -280,7 +290,7 @@ class Launcher {
 	_launch() {
 		let spawnOpt = {
 			cwd: this.emuAppDir,
-			stdio: 'inherit',
+			stdio: 'pipe',
 			detached: true
 		};
 		if (identify) delete spawnOpt.stdio;
@@ -295,6 +305,15 @@ class Launcher {
 
 		this.state = 'running';
 		cui.disableSticks = true;
+
+		let _this = this;
+
+		function parseData(data) {
+			_this.stdout += data;
+		}
+
+		this.child.stdout.on('data', parseData);
+		this.child.stderr.on('data', parseData);
 
 		this.child.on('close', (code) => {
 			this._close(code);
@@ -408,12 +427,17 @@ class Launcher {
 			// other files not included with the emulator.
 			// Search the internet for instructions on how to
 			// fully setup ${app}`
-			let erMsg = prefs[emu].name + ' ' + lang.playing_4.err2 + ' ' + `${prefs[emu].name}.\n<code>`;
+			let erMsg = '<p>' + prefs[emu].name + ' ' +
+				lang.playing_4.err2 + ' ' +
+				`${prefs[emu].name}.</p>\n`;
+			erMsg += '<textarea rows=8>';
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
 				erMsg += `${this.cmdArgs[i]} `;
 			}
-			erMsg += '</code>';
+			erMsg += '\n' + this.stdout + '</textarea>';
+
+			this.stdout = ''; // clear stdout
 			cui.err(erMsg, code);
 		}
 		if (!identify) {

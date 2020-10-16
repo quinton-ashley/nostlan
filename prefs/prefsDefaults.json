@@ -167,8 +167,7 @@
     },
     "appDirs": {
       "linux": [
-        "/usr/share/games/mame",
-        "/usr/lib/mame"
+        "$home/.mame"
       ]
     },
     "gamesDir": "roms",

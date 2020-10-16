@@ -35,6 +35,14 @@ module.exports = async function() {
 		}
 	}
 
+	if (semver.gte(ver, '1.16.4')) return;
+
+	if (linux) {
+		prefs.mame.appDirs = [
+			"$home/.mame"
+		];
+	}
+
 	if (semver.gte(ver, '1.15.0')) return;
 
 	delete prefs.mgba.appDirs;

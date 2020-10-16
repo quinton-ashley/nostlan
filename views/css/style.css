@@ -1,609 +1,609 @@
-*::-webkit-scrollbar {
-	display: none;
+*:not(textarea)::-webkit-scrollbar {
+  display: none;
 }
 
 * {
-	scrollbar-width: none !important;
+  scrollbar-width: none !important;
 }
 
 body,
 html {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	background-color: #000;
-	text-align: center;
-	user-select: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  text-align: center;
+  user-select: none;
 }
 
 /*================Themes====================*/
 :root {
-	--nav-color: rgb(130, 130, 130);
-	--nav-text-color: rgb(70, 70, 70);
-	--nav-text-shadow-color: rgba(255, 255, 255, .5);
-	--navBtns-color: rgb(70, 70, 70);
-	--navBtns-text-color: rgba(0, 0, 0, .5);
-	--navBtns-border-color: #000;
-	--box-bg-color: #000;
+  --nav-color: rgb(130, 130, 130);
+  --nav-text-color: rgb(70, 70, 70);
+  --nav-text-shadow-color: rgba(255, 255, 255, .5);
+  --navBtns-color: rgb(70, 70, 70);
+  --navBtns-text-color: rgba(0, 0, 0, .5);
+  --navBtns-border-color: #000;
+  --box-bg-color: #000;
 }
 
 @font-face {
-	font-family: handwriting0;
-	src: url("../../themes/fonts/edosz.ttf");
+  font-family: handwriting0;
+  src: url("../../themes/fonts/edosz.ttf");
 }
 
 /*================General====================*/
 .hiddenRow {
-	padding: 0 !important;
+  padding: 0 !important;
 }
 
 @keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
 
-	to {
-		transform: rotate(360deg);
-	}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 game {
-	display: block;
+  display: block;
 }
 
 #update {
-	animation-name: spin;
-	animation-duration: 2000ms;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 #boxOpenMenu_2 {
-	z-index: 10;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: none;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
 }
 
 #gameMemory {
-	width: 18.5vh;
-	transform: translate(148%, -213%);
+  width: 18.5vh;
+  transform: translate(148%, -213%);
 }
 
 #gameMedia {
-	width: 40.8vh;
-	border-radius: 50%;
-	transform: translate(39.4%, -35%);
+  width: 40.8vh;
+  border-radius: 50%;
+  transform: translate(39.4%, -35%);
 }
 
 #gameManual,
 #gameWiki webview {
-	width: 55.5vh;
-	transform: translate(-110%, -50.5%);
+  width: 55.5vh;
+  transform: translate(-110%, -50.5%);
 }
 
 #gameWiki webview {
-	height: 90vh;
+  height: 90vh;
 }
 
 .zoom-gameManualSelect {
-	transform: translate(34vh, 0vh) scale(1);
+  transform: translate(34vh, 0vh) scale(1);
 }
 
 .zoom-gameMediaSelect {
-	transform: translate(-71vh, -11vh) scale(2);
+  transform: translate(-71vh, -11vh) scale(2);
 }
 
 .zoom-gameMemorySelect {
-	transform: translate(-146vh, 129vh) scale(4);
+  transform: translate(-146vh, 129vh) scale(4);
 }
 
 #gameBoxOpen {
-	z-index: 10;
+  z-index: 10;
 }
 
 #gameBoxOpenMask {
-	z-index: 19;
-	pointer-events: none;
+  z-index: 19;
+  pointer-events: none;
 }
 
 #gameBoxOpen,
 #gameBoxOpenMask {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	height: 100%;
-	width: auto;
-	transform: translate(-50%);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: auto;
+  transform: translate(-50%);
 }
 
 #boxOpenMenu_2 .row-y * {
-	position: fixed;
-	z-index: 11;
-	top: 50%;
-	left: 50%;
+  position: fixed;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
 }
 
 #intro {
-	position: absolute;
-	background-color: #000;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	width: 100vw;
-	height: 100vh;
-	border-width: 0;
+  position: absolute;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  border-width: 0;
 }
 
 #dialogs * {
-	width: max-content;
+  width: max-content;
 }
 
 .uie.no-outline {
-	outline: none !important;
+  outline: none !important;
 }
 
 #welcomeMenu img {
-	margin-top: -10%;
-	margin-bottom: -10%;
-	transform: scale(.8);
+  margin-top: -10%;
+  margin-bottom: -10%;
+  transform: scale(.8);
 }
 
 .menu-wide {
-	width: 100vw;
-	margin-left: 0;
+  width: 100vw;
+  margin-left: 0;
 }
 
 #errMenu {
-	position: fixed;
-	top: 0;
+  position: fixed;
+  top: 0;
 }
 
 .material-icons {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	font-size: 24px;
-	/* Preferred icon size */
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	/* Support for all WebKit browsers. */
-	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
-	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
-	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
-	font-feature-settings: 'liga';
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
 /*================Game Lib Viewer====================*/
 #libMain {
-	display: inline-flex;
-	max-width: 100%;
-	max-height: 100%;
-	z-index: 0;
-	transition: all 0s;
+  display: inline-flex;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 0;
+  transition: all 0s;
 }
 
 .dim {
-	opacity: 0.25;
+  opacity: 0.25;
 }
 
 .menu {
-	background-color: var(--nav-color);
-	color: var(--nav-text-color);
-	border-color: var(--nav-text-color);
-	border-radius: 32px;
-	border-width: 8px 0 8px 0;
-	border-style: solid;
-	font-weight: bold;
+  background-color: var(--nav-color);
+  color: var(--nav-text-color);
+  border-color: var(--nav-text-color);
+  border-radius: 32px;
+  border-width: 8px 0 8px 0;
+  border-style: solid;
+  font-weight: bold;
 }
 
 .menu h1 {
-	font-weight: bolder;
-	margin-bottom: 14px;
+  font-weight: bolder;
+  margin-bottom: 14px;
 }
 
 .menu * {
-	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 .menu code,
 .menu li,
 .menu p,
 .menu pre {
-	color: rgba(0, 0, 0, .6);
-	text-shadow: none;
+  color: rgba(0, 0, 0, .6);
+  text-shadow: none;
 }
 
 .menu a {
-	color: rgba(2555, 255, 255, .6);
-	text-shadow: none;
+  color: rgba(2555, 255, 255, .6);
+  text-shadow: none;
 }
 
 .menu .uie {
-	margin-bottom: 10px;
-	border: 3px solid var(--nav-text-color);
-	border-radius: 10px;
-	box-shadow: 0.5px 0.5px 0 var(--nav-text-shadow-color);
-	padding: 0;
+  margin-bottom: 10px;
+  border: 3px solid var(--nav-text-color);
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 0 var(--nav-text-shadow-color);
+  padding: 0;
 }
 
 .menu .cursor {
-	background-color: var(--nav-color);
+  background-color: var(--nav-color);
 }
 
 nav {
-	font-size: 48px;
+  font-size: 48px;
 }
 
 img {
-	width: 100%;
-	float: center;
+  width: 100%;
+  float: center;
 }
 
 .box {
-	border-radius: 2%;
+  border-radius: 2%;
 }
 
 .reel {
-	height: 100vh;
-	width: 12.5%;
-	z-index: 1;
-	overflow: auto;
+  height: 100vh;
+  width: 12.5%;
+  z-index: 1;
+  overflow: auto;
 }
 
 .reel .uie {
-	height: auto;
-	width: 100%;
-	z-index: 1;
-	left: 0;
-	transform: scale(.96);
-	line-height: 0;
-	font-size: 0;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  transform: scale(.96);
+  line-height: 0;
+  font-size: 0;
 }
 
 #dialogs {
-	font-size: 2vh;
-	color: #ddd;
-	width: 100vw;
+  font-size: 2vh;
+  color: #ddd;
+  width: 100vw;
 }
 
 #dialogs * {
-	background-color: #000;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 150;
-	pointer-events: none;
+  background-color: #000;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 150;
+  pointer-events: none;
 }
 
 #loadDialog0 {
-	top: 75%;
+  top: 75%;
 }
 
 #loadDialog1 {
-	top: 85%;
+  top: 85%;
 }
 
 #loadDialog2 {
-	top: 95%;
+  top: 95%;
 }
 
 game .shade {
-	position: absolute;
-	width: 1%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  position: absolute;
+  width: 1%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 game .label {
-	font-family: handwriting0;
-	font-size: 24px;
-	text-align: center;
-	position: absolute;
-	width: fit-content;
-	max-width: 90%;
-	height: fit-content;
-	background-color: coral;
-	color: #000;
-	line-height: initial;
-	padding: 5px;
+  font-family: handwriting0;
+  font-size: 24px;
+  text-align: center;
+  position: absolute;
+  width: fit-content;
+  max-width: 90%;
+  height: fit-content;
+  background-color: coral;
+  color: #000;
+  line-height: initial;
+  padding: 5px;
 }
 
 game .title.label {
-	top: 20%;
-	left: 5%;
+  top: 20%;
+  left: 5%;
 }
 
 game .file.label {
-	font-size: 8px;
-	top: 87%;
-	left: 5%;
+  font-size: 8px;
+  top: 87%;
+  left: 5%;
 }
 
 game.flip .shade {
-	left: 98%;
-	background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  left: 98%;
+  background: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
 
 img.coverFull {
-	background-color: var(--box-bg-color);
+  background-color: var(--box-bg-color);
 }
 
 /*================Game Lib Viewer====================*/
 game .crop.cover,
 game .crop.coverFull {
-	height: 100%;
-	overflow: hidden;
-	position: absolute;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
 }
 
 game.flip .crop.coverFull {
-	width: 100%;
+  width: 100%;
 }
 
 game.flip img.box {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 game.flip img.coverFull {
-	width: 200.8%;
-	transform: translate(1.6%, 1%);
+  width: 200.8%;
+  transform: translate(1.6%, 1%);
 }
 
 /*================Cover====================*/
 nav {
-	display: flex;
-	background-color: transparent;
-	pointer-events: none;
+  display: flex;
+  background-color: transparent;
+  pointer-events: none;
 }
 
 nav * {
-	pointer-events: all;
+  pointer-events: all;
 }
 
 .navbar {
-	height: 12vh;
+  height: 12vh;
 }
 
 .navPanel {
-	width: 19%;
-	height: 100%;
-	border-style: solid;
-	margin-left: 30px;
+  width: 19%;
+  height: 100%;
+  border-style: solid;
+  margin-left: 30px;
 }
 
 .navPanel * {
-	margin-top: auto;
-	margin-bottom: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #nav1Btn,
 .text {
-	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 .navPanel .text {
-	overflow: hidden;
-	text-overflow: clip;
-	/* white-space: nowrap; */
-	width: 65%;
-	height: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+  /* white-space: nowrap; */
+  width: 65%;
+  height: 100%;
 }
 
 .navPanel .text span {
-	vertical-align: middle;
-	line-height: 1;
+  vertical-align: middle;
+  line-height: 1;
 }
 
 .navPanel .text.twoLines {
-	line-height: 1vh;
-	transform: scaleY(1) !important;
+  line-height: 1vh;
+  transform: scaleY(1) !important;
 }
 
 .navPanel .text .twoLines {
-	line-height: 1;
+  line-height: 1;
 }
 
 #nav0 {
-	color: var(--nav0-text-color, var(--nav-text-color));
-	background: var(--nav0-color, var(--nav-color));
-	border-color: var(--nav0-border-color, var(--nav-border-color, var(--nav0-text-color, var(--nav-text-color))));
-	border-radius: 0 0 32px 0;
-	border-width: 0 0 8px 0;
+  color: var(--nav0-text-color, var(--nav-text-color));
+  background: var(--nav0-color, var(--nav-color));
+  border-color: var(--nav0-border-color, var(--nav-border-color, var(--nav0-text-color, var(--nav-text-color))));
+  border-radius: 0 0 32px 0;
+  border-width: 0 0 8px 0;
 }
 
 #nav0Btn {
-	color: var(--nav0Btn-text-color, var(--navBtns-text-color));
-	background: var(--nav0Btn-color, var(--navBtns-color));
-	border-color: var(--nav0Btn-border-color, var(--navBtns-border-color));
+  color: var(--nav0Btn-text-color, var(--navBtns-text-color));
+  background: var(--nav0Btn-color, var(--navBtns-color));
+  border-color: var(--nav0Btn-border-color, var(--navBtns-border-color));
 }
 
 #nav1 {
-	color: var(--nav1-text-color, var(--nav-text-color));
-	background: var(--nav1-color, var(--nav-color));
-	border-color: var(--nav1-border-color, var(--nav-border-color, var(--nav1-text-color, var(--nav-text-color))));
-	height: 100%;
-	border-radius: 0 0 0 32px;
-	border-width: 0 0 8px 0;
+  color: var(--nav1-text-color, var(--nav-text-color));
+  background: var(--nav1-color, var(--nav-color));
+  border-color: var(--nav1-border-color, var(--nav-border-color, var(--nav1-text-color, var(--nav-text-color))));
+  height: 100%;
+  border-radius: 0 0 0 32px;
+  border-width: 0 0 8px 0;
 }
 
 #nav2 {
-	color: var(--nav2-text-color, var(--nav-text-color));
-	background: var(--nav2-color, var(--nav-color));
-	border-color: var(--nav2-border-color, var(--nav-border-color, var(--nav2-text-color, var(--nav-text-color))));
-	height: 100%;
-	border-radius: 0 32px 0 0;
-	border-width: 8px 0 0 0;
+  color: var(--nav2-text-color, var(--nav-text-color));
+  background: var(--nav2-color, var(--nav-color));
+  border-color: var(--nav2-border-color, var(--nav-border-color, var(--nav2-text-color, var(--nav-text-color))));
+  height: 100%;
+  border-radius: 0 32px 0 0;
+  border-width: 8px 0 0 0;
 }
 
 #nav2Btn {
-	color: var(--nav2Btn-text-color, var(--navBtns-text-color));
-	background: var(--nav2Btn-color, var(--navBtns-color));
-	border-color: var(--nav2Btn-border-color, var(--navBtns-border-color));
+  color: var(--nav2Btn-text-color, var(--navBtns-text-color));
+  background: var(--nav2Btn-color, var(--navBtns-color));
+  border-color: var(--nav2Btn-border-color, var(--navBtns-border-color));
 }
 
 #nav3 {
-	color: var(--nav3-text-color, var(--nav-text-color));
-	background: var(--nav3-color, var(--nav-color));
-	border-color: var(--nav3-border-color, var(--nav-border-color, var(--nav3-text-color, var(--nav-text-color))));
-	height: 100%;
-	border-width: 8px 0 0 0;
-	border-radius: 32px 0 0 0;
+  color: var(--nav3-text-color, var(--nav-text-color));
+  background: var(--nav3-color, var(--nav-color));
+  border-color: var(--nav3-border-color, var(--nav-border-color, var(--nav3-text-color, var(--nav-text-color))));
+  height: 100%;
+  border-width: 8px 0 0 0;
+  border-radius: 32px 0 0 0;
 }
 
 #nav3Btn {
-	color: var(--nav3Btn-text-color, var(--navBtns-text-color));
-	background: var(--nav3Btn-color, var(--navBtns-color));
-	border-color: var(--nav3Btn-border-color, var(--navBtns-border-color));
+  color: var(--nav3Btn-text-color, var(--navBtns-text-color));
+  background: var(--nav3Btn-color, var(--navBtns-color));
+  border-color: var(--nav3Btn-border-color, var(--navBtns-border-color));
 }
 
 #nav0 *,
 #nav2 * {
-	margin-left: auto;
+  margin-left: auto;
 }
 
 #nav0 .text,
 #nav2 .text {
-	margin-right: 2%;
+  margin-right: 2%;
 }
 
 #nav0 .nav-item,
 #nav2 .nav-item {
-	margin-right: 4%;
+  margin-right: 4%;
 }
 
 #nav1 *,
 #nav3 * {
-	margin-right: auto;
+  margin-right: auto;
 }
 
 #nav3 .text {
-	margin-left: 2%;
+  margin-left: 2%;
 }
 
 #nav3 .nav-item {
-	margin-left: 4%;
+  margin-left: 4%;
 }
 
 img.logoNav {
-	height: 32px;
+  height: 32px;
 }
 
 #nav1 li {
-	margin: auto;
+  margin: auto;
 }
 
 button:active,
 button:focus {
-	outline: none;
+  outline: none;
 }
 
 .navPanel:hover .nav-link {
-	filter: brightness(0.8);
-	outline: none;
+  filter: brightness(0.8);
+  outline: none;
 }
 
 .navPanel .nav-link {
-	font-size: 3vw;
-	font-weight: bold;
-	border-width: 0.27vw;
-	border-style: solid;
-	border-color: var(--navBtns-border-color);
-	border-radius: 50%;
-	box-shadow: none;
-	padding: 0;
-	margin: 0;
-	width: 5vw;
-	height: 5vw;
+  font-size: 3vw;
+  font-weight: bold;
+  border-width: 0.27vw;
+  border-style: solid;
+  border-color: var(--navBtns-border-color);
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  width: 5vw;
+  height: 5vw;
 }
 
 ul.nav {
-	height: 100%;
+  height: 100%;
 }
 
 /*================Misc====================*/
 .hide,
 .hide * {
-	filter: opacity(0) !important;
+  filter: opacity(0) !important;
 }
 
 .uie i.material-icons {
-	font-size: inherit;
-	vertical-align: sub;
-	line-height: inherit;
-	transform: scale(1.4);
+  font-size: inherit;
+  vertical-align: sub;
+  line-height: inherit;
+  transform: scale(1.4);
 }
 
 .uie .text {
-	display: inline;
+  display: inline;
 }
 
 .md-left {
-	float: left;
-	margin-left: 14px;
+  float: left;
+  margin-left: 14px;
 }
 
 .md-right {
-	float: right;
-	margin-right: 14px;
+  float: right;
+  margin-right: 14px;
 }
 
 .invis {
-	visibility: hidden;
+  visibility: hidden;
 }
 
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 .material-icons.md-24 {
-	font-size: 24px;
+  font-size: 24px;
 }
 
 .material-icons.md-36 {
-	font-size: 36px;
+  font-size: 36px;
 }
 
 .material-icons.md-48 {
-	font-size: 48px;
+  font-size: 48px;
 }
 
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark {
-	color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.54);
 }
 
 .material-icons.md-dark.md-inactive {
-	color: rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.26);
 }
 
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light {
-	color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .material-icons.md-light.md-inactive {
-	color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 #jsEmu {
-	width: 100vw;
-	height: 100vh;
-	margin: 0;
-	padding: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }

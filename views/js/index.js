@@ -548,6 +548,7 @@ module.exports = async function(arg) {
 
 				let emuAppDirs = prefs[_emu].appDirs || [];
 				for (let dir of emuAppDirs) {
+					dir = util.absPath(dir);
 					if (!(await fs.exists(dir))) continue;
 					if (linux) {
 						let testDir = dir + '/nostlanTest';

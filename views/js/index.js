@@ -118,9 +118,6 @@ module.exports = async function(arg) {
 			systemsDir = path.join(prefs.nlaDir, '..');
 			systemsDir = systemsDir.replace(/\\/g, '/');
 			await prefsMng.update();
-			// ensures the template dir structure exists
-			// makes folders if they aren't there
-			await createTemplate();
 		}
 		electron.getCurrentWindow().setFullScreen(
 			prefs.ui.launchFullScreen);
@@ -172,7 +169,10 @@ module.exports = async function(arg) {
 				disable: 'nintendo'
 			}
 		});
-		process.on('uncaughtException', cui.err);
+		process.on('uncaughtException', (ror) => {
+			cui.err(`<textarea rows=8>${ror.stack}</textarea>`,
+				'Nostlan crashed :(', 'quit');
+		});
 		cui.bind('wheel');
 
 		// keyboard controls
@@ -556,9 +556,11 @@ module.exports = async function(arg) {
 							await fs.ensureDir(testDir);
 							await fs.remove(testDir);
 						} catch (ror) {
-							opn(dir);
-							await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
-								lang.setupMenu_1.err1, 'quit');
+							if (!prefs.load.readOnlyFS) {
+								opn(dir);
+								await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
+									lang.setupMenu_1.err1, 'quit');
+							}
 						}
 					}
 					try {
@@ -589,9 +591,11 @@ module.exports = async function(arg) {
 								await fs.ensureDir(testDir);
 								await fs.remove(testDir);
 							} catch (ror) {
-								opn(dir);
-								await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
-									lang.setupMenu_1.err1, 'quit');
+								if (!prefs.load.readOnlyFS) {
+									opn(dir);
+									await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
+										lang.setupMenu_1.err1, 'quit');
+								}
 							}
 						}
 						try {
@@ -1540,6 +1544,12 @@ module.exports = async function(arg) {
 		}
 		files = null;
 		delete files;
+
+		// ensures the template dir structure exists
+		// makes folders if they aren't there
+		if (await prefsMng.canLoad()) {
+			await createTemplate();
+		}
 
 		if (prefs.load.online) {
 			try {

@@ -120,6 +120,7 @@
       }
     },
     "fullscreenKeyCombo": {
+      "linux": ["f11"],
       "win": ["enter", "alt"]
     }
   },
@@ -133,9 +134,9 @@
       "win": "Dolphin\\.exe"
     },
     "cmd": {
-      "linux": ["${app}", "${game}", "-b"],
-      "mac": ["${app}", "${game}", "-b"],
-      "win": ["${app}", "${game}", "-b"]
+      "linux": ["${app}", "${game}"],
+      "mac": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
     },
     "install": {
       "linux": {
@@ -457,7 +458,8 @@
   },
   "load": {
     "delay": 2000,
-    "online": true
+    "online": true,
+		"readOnlyFS": false
   },
   "inGame": {
     "quit": {

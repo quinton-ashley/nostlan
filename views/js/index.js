@@ -224,12 +224,12 @@ module.exports = async function(arg) {
 		if (await fs.exists(gamesPath)) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games || [];
 
-			// user is possibly using a read only file system
-			// if prefs[sys] doesn't exist but a user
-			// game db file does
+			// user possibly has a fresh prefs.json file
+			// if prefs[sys] doesn't exist but a
+			// gameLib file does
 			if (!prefs[sys] || !prefs[sys].libs) {
 				prefs[sys] = {
-					libs: [`${systemsDir}/${sys}/games`]
+					libs: []
 				};
 			}
 		}

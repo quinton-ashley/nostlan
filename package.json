@@ -8,10 +8,10 @@
   },
   "build": {
     "appId": "com.qashto.nostlan",
-    "copyright": "Copyright © 2019 Quinton Ashley",
-    "electronVersion": "9.2.1",
+    "copyright": "Copyright © 2018-2020 Quinton Ashley",
+    "electronVersion": "10.1.3",
     "electronDownload": {
-      "version": "9.2.1"
+      "version": "10.1.3"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -143,8 +143,7 @@
     "start": "electron . --dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "rebuild-l": "npm rebuild --build-from-source --runtime=electron --target=10.1.0 --disturl=https://atom.io/download/atom-shell",
-    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=9.2.1 --disturl=https://atom.io/download/atom-shell",
+    "rebuild": "npm rebuild --build-from-source --runtime=electron --target=10.1.3 --disturl=https://atom.io/download/atom-shell",
     "dist-l": "electron-builder -l",
     "delete-tags": "git tag | xargs git tag -d",
     "delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
@@ -153,5 +152,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.17.2"
+  "version": "1.17.3"
 }

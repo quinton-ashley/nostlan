@@ -134,9 +134,9 @@
       "win": "Dolphin\\.exe"
     },
     "cmd": {
-      "linux": ["${app}", "${game}"],
-      "mac": ["${app}", "${game}"],
-      "win": ["${app}", "${game}"]
+      "linux": ["${app}", "-e", "${game}"],
+      "mac": ["${app}", "-e", "${game}"],
+      "win": ["${app}", "-e", "${game}"]
     },
     "install": {
       "linux": {

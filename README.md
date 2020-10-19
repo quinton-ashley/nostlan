@@ -16,19 +16,19 @@ Nostlan is like the part of Netflix where you choose a movie to watch but for yo
 
 ## Features
 
--   unified UI for mouse/gamepad interaction
--   easy to use for people who don't know anything about emulators
--   install any emulator right in the app
--   designed for UHD displays and projectors
--   checks multiple database sites for the highest quality box art
--   nostalgic UI themes for each supported console
--   uses individual emulators: no cores and no controller input transfer lag
--   most controllers connect to Nostlan automatically, no setup required
--   Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
--   gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
--   cross-platform support for Linux, macOS, and Windows
--   advanced customization: edit launch commands
--   [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
+- unified UI for mouse/gamepad interaction
+- easy to use for people who don't know anything about emulators
+- automated install of any emulator
+- designed for UHD displays and projectors
+- checks multiple database sites for the highest quality box art
+- nostalgic UI themes for each supported console
+- uses individual emulator apps, not cores
+- most controllers connect to Nostlan automatically, no setup required
+- Xbox One, PS4 Dualshock, and Switch Pro controllers all supported
+- gamecube controller adapter supported with [gca-js](https://github.com/YonicDev/gca-js)
+- cross-platform support for Linux, macOS, and Windows
+- advanced customization: edit launch commands
+- [PREMIUM FEATURE] backup/sync all your save data to the cloud or local storage device
 
 ## Supported Systems and Emulators
 
@@ -108,17 +108,17 @@ Click on an image to see it in full quality 4K!
 
 ## Support the Development of Nostlan!
 
-[Patreon](https://www.patreon.com/nostlan) supporters get premium features for only \\$1 a month!
+[Patreon](https://www.patreon.com/nostlan) supporters get premium features for only \\\$1 a month!
 
--   [backup/sync game saves to the cloud or local storage device](https://github.com/quinton-ashley/nostlan/wiki/Backup-Saves-and-Cloud-Save-Syncing)
--   [unlock alternate UI theme color palettes](https://github.com/quinton-ashley/nostlan/wiki/Change-Theme)
--   [custom UI theming, lets you change the intro loading screens and make your own color palettes](https://github.com/quinton-ashley/nostlan/wiki/Custom-Themes)
+- [backup/sync game saves to the cloud or local storage device](https://github.com/quinton-ashley/nostlan/wiki/Backup-Saves-and-Cloud-Save-Syncing)
+- [unlock alternate UI theme color palettes](https://github.com/quinton-ashley/nostlan/wiki/Change-Theme)
+- [custom UI theming, lets you change the intro loading screens and make your own color palettes](https://github.com/quinton-ashley/nostlan/wiki/Custom-Themes)
 
 Even though I decided to make this project open source and free to use, it still took a lot of work and a long time to develop. If you appreciate my work so far and will continue to use the app please support its development. Thank you!
 
 Features that might be offered in the future:
 
--   support for your PC game libraries! (Origin, Steam, Epic Games, etc.)
+- support for your PC game libraries! (Origin, Steam, Epic Games, etc.)
 
 For the past two years I've spent way too much time developing Nostlan. I'm really happy with the progress I've made but I'd be able to work on it a lot more if I felt like the community was interested in it. Even 50 supporters would be huge for me! After I get to a point where I feel like I can do a big v2.0 release, I'm going to make a lot of video tutorials that walk people through the setup process. My goal is to have 200 Patreon supporters!
 

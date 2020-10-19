@@ -236,7 +236,8 @@ class Launcher {
 			$('#loadDialog0').text(`${lang.playing_4.msg1} ${prefs[emu].name}`);
 			// `To close the emulator, press and hold the
 			// ${btn} button for ${time} seconds`
-			$('#loadDialog1').text(lang.playing_4.msg2_0 + `"${prefs.inGame.quit.hold}" ` + lang.playing_4.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
+			$('#loadDialog1').text(lang.playing_4.msg2_0 +
+				` "${prefs.inGame.quit.hold}" ` + lang.playing_4.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
 				' ' + lang.playing_4.msg2_2
 			);
 			if (game) $('#loadDialog2').text(game.title);

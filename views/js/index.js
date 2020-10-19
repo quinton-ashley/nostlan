@@ -1056,6 +1056,7 @@ module.exports = async function(arg) {
 				cui.change('languageMenu');
 			} else if (act == 'editPrefs') {
 				opn(prefsMng.configPath);
+				cui.doAction('quit');
 			} else if (act == 'toggleConsole') {
 				electron.getCurrentWindow().toggleDevTools();
 				let $elem = $('#pauseMenu_10 .uie[name="toggleConsole"] .text');

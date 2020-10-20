@@ -81,7 +81,7 @@
     "bootstrap": "^4.5.3",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^2.0.37",
+    "contro-ui": "^2.0.38",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^4.4.0",
@@ -152,5 +152,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.17.3"
+  "version": "1.17.4"
 }

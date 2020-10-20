@@ -170,6 +170,7 @@ module.exports = async function(arg) {
 			}
 		});
 		process.on('uncaughtException', (ror) => {
+			console.error(ror);
 			cui.err(`<textarea rows=8>${ror.stack}</textarea>`,
 				'Nostlan crashed :(', 'quit');
 		});
@@ -352,11 +353,11 @@ module.exports = async function(arg) {
 		$('#loadDialog0').text(lang.loading_1.msg2);
 	}
 
-	cui.passthrough = (btnStates, stks, trigs, type) => {
+	cui.passthrough = (contro) => {
 		if (!launcher.jsEmu) return;
 
 		launcher.jsEmu.executeJavaScript(
-			`jsEmu.contro(0, ${JSON.stringify(btnStates)})`
+			`jsEmu.controIn(${JSON.stringify(contro)})`
 		);
 	};
 

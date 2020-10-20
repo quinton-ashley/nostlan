@@ -1,4 +1,4 @@
-class Nostlan_em_fceux {
+class Nostlan_emfceux {
 	constructor() {
 		this.bits = 0;
 		this.btns = ['a', 'b', 'select', 'start', 'up', 'down', 'left', 'right'];
@@ -28,11 +28,11 @@ class Nostlan_em_fceux {
 
 	// The array index below corresponds to the button bit index.
 	// ['A','B','Select','Start','Up','Down','Left','Right']
-	contro(port, btnStates) {
+	controIn(contro) {
 		if (!this.ready) return;
-
+		let port = contro.port;
 		for (let i = 8 * port; i < 8 * (port + 1); i++) {
-			if (btnStates[this.btns[i % 8]]) {
+			if (contro.btns[this.btns[i % 8]]) {
 				this.bits |= 1 << i;
 			} else {
 				this.bits &= ~(1 << i);
@@ -44,4 +44,4 @@ class Nostlan_em_fceux {
 	async close() {}
 }
 
-let jsEmu = new Nostlan_em_fceux();
+let jsEmu = new Nostlan_emfceux();

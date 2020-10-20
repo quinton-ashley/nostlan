@@ -135,23 +135,24 @@ class Launcher {
 
 			let fileHtml = `${dir}/launch.html`;
 			$('body').prepend(`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}"></webview>`);
-			this.jsEmu = $('#jsEmu').eq(0)[0];
-			let _this = this;
+
+			let jsEmu = $('#jsEmu').eq(0)[0];
 			await new Promise((resolve) => {
-				_this.jsEmu.addEventListener('dom-ready', () => {
+				jsEmu.addEventListener('dom-ready', () => {
 					resolve();
 				});
 			});
-			_this = null;
-			if (cfg.dev) this.jsEmu.openDevTools();
+			if (cfg.dev) jsEmu.openDevTools();
 			await delay(500);
-			await this.jsEmu.executeJavaScript(
+			await jsEmu.executeJavaScript(
 				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
 			);
+			this.jsEmu = jsEmu;
 			await cui.change('playing_4');
 			$('nav').hide();
 			cui.clearDialogs();
 			$('#libMain').hide();
+			$('#boxOpenMenu_2').hide();
 			this.state = 'running';
 			return;
 		}
@@ -232,6 +233,7 @@ class Launcher {
 		if (game && game.id || emu == 'mame') {
 			await cui.change('playing_4');
 			$('#libMain').hide();
+			$('#boxOpenMenu_2').hide();
 			// 'Starting'
 			$('#loadDialog0').text(`${lang.playing_4.msg1} ${prefs[emu].name}`);
 			// `To close the emulator, press and hold the

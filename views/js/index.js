@@ -502,6 +502,8 @@ module.exports = async function(arg) {
 			changeImageResolution(cui.getCur());
 		} else if (cui.ui == 'emuAppMenu_6') {
 			cui.clearDialogs();
+		} else if (cui.ui == 'gameMediaSelect_3') {
+			$('#boxOpenMenu_2').show();
 		}
 	}
 

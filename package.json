@@ -81,7 +81,7 @@
     "bootstrap": "^4.5.3",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^2.0.38",
+    "contro-ui": "^2.0.39",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^4.4.0",
@@ -89,7 +89,7 @@
     "electron-pug": "^2.0.0",
     "extract-zip": "^2.0.1",
     "fs-extra": "^9.0.1",
-    "fuse.js": "^6.4.1",
+    "fuse.js": "^6.4.2",
     "gca-js": "^1.0.2",
     "gooder": "^1.0.4",
     "iso-639": "^0.2.2",
@@ -112,7 +112,6 @@
     "robotjs": "^0.6.0",
     "semver": "^7.3.2",
     "sharp": "^0.26.2",
-    "sudo-js": "^1.0.2",
     "tabletojson": "^2.0.4",
     "tether": "^1.4.7",
     "three": "^0.120.1",
@@ -121,8 +120,7 @@
   },
   "description": "Nostlan is a front-end launcher for retro and current gen video game emulators!",
   "devDependencies": {
-    "node-abi": "^2.19.1",
-    "prebuild-install": "^5.3.5"
+    "node-abi": "^2.19.1"
   },
   "entry point": "app.js",
   "keywords": [
@@ -155,5 +153,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.17.5"
+  "version": "1.17.6"
 }

@@ -9,14 +9,10 @@ module.exports = async function(arg) {
 	global.util = require(__root + '/core/util.js');
 	require(__root + '/core/jquery.textfill.min.js')();
 
-	// Nostlan dir location cannot be changed.
-	// Only used to store small config files, no images,
-	// so that it doesn't take much space on the user's
-	// main hard drive.  I don't give users a choice
-	// to move this folder elsewhere because it needs to be
-	// in a set location.
-	// Only the user's preferences and game libs json databases
-	// are stored here.
+	// Users can put their emu folder with all their games
+	// emulator apps, and box art images anywhere they want but
+	// the preferences file must be located at:
+	// $home/Documents/emu/nostlan/_usr/prefs.json
 	global.usrDir = util.absPath('$home/Documents/emu/nostlan');
 	log(usrDir);
 
@@ -118,6 +114,8 @@ module.exports = async function(arg) {
 			systemsDir = path.join(prefs.nlaDir, '..');
 			systemsDir = systemsDir.replace(/\\/g, '/');
 			await prefsMng.update();
+		} else if (arg.dev) {
+			arg.testSetup = true;
 		}
 		electron.getCurrentWindow().setFullScreen(
 			prefs.ui.launchFullScreen);

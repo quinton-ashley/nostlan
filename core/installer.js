@@ -70,7 +70,11 @@ class Installer {
 		// 'verifying installation'
 		this.loadLog(lang.emuAppMenu_6.msg5);
 		res = await launcher.getEmuApp();
-		if (!res) {
+		if (!res && ins.installer && win) {
+			// 'Almost done, please finish install manually'
+			cui.alert(lang.emuAppMenu_6.msg15 + ': ' + prefs[emu].name,
+				lang.alertMenu_9999.title5);
+		} else if (!res) {
 			// 'Install failed, you must manually install'
 			cui.err(lang.emuAppMenu_6.err5 + ': ' + prefs[emu].name);
 		}
@@ -145,6 +149,7 @@ class Installer {
 					// "opening installer executable"
 					this.loadLog(lang.emuAppMenu_6.msg14);
 					await spawn(file);
+					await delay(2000);
 					res = file;
 				}
 			}

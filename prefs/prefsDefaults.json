@@ -400,7 +400,7 @@
       },
       "win": {
 				"prereq": "https://aka.ms/vs/16/release/vc_redist.x64.exe",
-        "installer": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-390/yuzu-windows-msvc-20200926-59c572363.zip"
+        "installer": "https://github.com/yuzu-emu/liftinstall/releases/download/1.8/yuzu_install.exe"
       }
     },
     "update": {

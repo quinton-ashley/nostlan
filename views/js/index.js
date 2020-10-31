@@ -499,6 +499,7 @@ module.exports = async function(arg) {
 		} else if (cui.uiPrev == 'boxSelect_1' && cui.ui == 'libMain') {
 			changeImageResolution(cui.getCur());
 		} else if (cui.ui == 'emuAppMenu_6') {
+			$('body > :not(#dialogs)').removeClass('dim');
 			cui.clearDialogs();
 		} else if (cui.ui == 'gameMediaSelect_3') {
 			$('#boxOpenMenu_2').show();

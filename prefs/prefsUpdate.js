@@ -1,6 +1,9 @@
-module.exports = async function() {
+module.exports = async function(defaults) {
 	let ver = prefs.version || pkg.version;
 	prefs.version = pkg.version;
+
+	systemsDir = path.join(prefs.nlaDir, '..');
+	systemsDir = systemsDir.replace(/\\/g, '/');
 
 	// only keeps the emu app path for the current os
 	for (let _sys in systems) {
@@ -11,12 +14,15 @@ module.exports = async function() {
 			let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install', 'fullscreenKeyCombo'];
 
 			for (let prop of props) {
+				// always update install, appDirs, appRegex
 				if (!prefs[_emu][prop] ||
-					(prop != 'install' && typeof prefs[_emu][prop] == 'string')) {
+					(!/(install|appDirs|appRegex)/.test(prop) && typeof prefs[_emu][prop] == 'string')) {
 					continue;
 				}
 				if (prefs[_emu][prop][osType]) {
 					prefs[_emu][prop] = prefs[_emu][prop][osType];
+				} else if (defaults[_emu][prop][osType]) {
+					prefs[_emu][prop] = defaults[_emu][prop][osType];
 				} else if (prefs[_emu][prop].linux ||
 					prefs[_emu][prop].mac ||
 					prefs[_emu][prop].win) {

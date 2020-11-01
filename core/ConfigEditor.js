@@ -14,11 +14,18 @@ class ConfigEditor {
 	}
 
 	async load(cfg) {
-		if (!cfg) cfg = this.getDefaults();
+		if (!cfg) cfg = await this.getDefaults();
 		if (await this.canLoad()) {
 			let cfg1 = await JSON.parse(await fs.readFile(this.configPath));
 			if (cfg) {
+				let configDefaults = {};
+				if (this.update) {
+					deepExtend(configDefaults, cfg);
+				}
 				deepExtend(cfg, cfg1);
+				if (this.update) {
+					await this.update(configDefaults);
+				}
 			} else {
 				cfg = cfg1;
 			}

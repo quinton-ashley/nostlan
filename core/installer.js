@@ -107,6 +107,7 @@ class Installer {
 		// 'downloading, please wait...'
 		this.loadLog(lang.emuAppMenu_6.msg3);
 		let res = await dl(url, file);
+		await delay(100);
 		if (!res) {
 			// 'Could not download app from'
 			cui.err(lang.emuAppMenu_6.err2 + ': ' + url);
@@ -148,7 +149,11 @@ class Installer {
 				} else if (ext == '.exe') {
 					// "opening installer executable"
 					this.loadLog(lang.emuAppMenu_6.msg14);
-					await spawn(file);
+					try {
+						await spawn(file);
+					} catch (ror) {
+						return;
+					}
 					await delay(2000);
 					res = file;
 				}

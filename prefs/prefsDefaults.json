@@ -60,6 +60,8 @@
         "/Applications/Citra/canary"
       ],
       "win": [
+				"$home/AppData/Local/Citra/nightly-mingw",
+				"$home/AppData/Local/Citra/canary-mingw",
         "$emu/nightly-mingw",
         "$emu/canary-mingw"
       ]

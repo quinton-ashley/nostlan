@@ -111,9 +111,6 @@ module.exports = async function(arg) {
 		// if it exists load it
 		if (await prefsMng.canLoad()) {
 			prefs = await prefsMng.load(prefs);
-			systemsDir = path.join(prefs.nlaDir, '..');
-			systemsDir = systemsDir.replace(/\\/g, '/');
-			await prefsMng.update();
 		} else if (arg.dev) {
 			arg.testSetup = true;
 		}

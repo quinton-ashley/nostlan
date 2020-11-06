@@ -21,7 +21,7 @@ module.exports = async function(defaults) {
 				}
 				if (prefs[_emu][prop][osType]) {
 					prefs[_emu][prop] = prefs[_emu][prop][osType];
-				} else if (defaults[_emu][prop][osType]) {
+				} else if (defaults[_emu][prop] && defaults[_emu][prop][osType]) {
 					prefs[_emu][prop] = defaults[_emu][prop][osType];
 				} else if (prefs[_emu][prop].linux ||
 					prefs[_emu][prop].mac ||

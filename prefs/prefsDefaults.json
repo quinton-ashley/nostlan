@@ -321,6 +321,10 @@
       "win": {
         "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-win_x64.zip"
       }
+    },
+		"fullscreenKeyCombo": {
+      "linux": ["f11"],
+      "win": [11000, ["f11"]]
     }
   },
   "snes9x": {
@@ -412,7 +416,7 @@
     },
     "fullscreenKeyCombo": {
       "linux": ["f11"],
-      "win": [2000, ["f11"]]
+      "win": [4000, ["f11"]]
     }
   },
   "xenia": {

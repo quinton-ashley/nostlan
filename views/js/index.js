@@ -1091,7 +1091,7 @@ module.exports = async function(arg) {
 			}
 		} else if (ui == 'welcomeMenu') {
 			if (act == 'full') {
-				await prefsMng.update();
+				await prefsMng.update(prefs);
 				cui.change('setupMenu_1');
 			}
 		} else if (ui == 'setupMenu_1') {
@@ -1101,6 +1101,7 @@ module.exports = async function(arg) {
 					cui.err(lang.setupMenu_1.err0);
 					return false;
 				}
+				await prefsMng.save(prefs);
 				cui.change('sysMenu_5');
 				return;
 			}

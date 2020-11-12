@@ -11,6 +11,8 @@ module.exports = async function(defaults) {
 		if (!_syst.emus) continue;
 		for (let _emu of _syst.emus) {
 
+			prefs[_emu].latestVersion = defaults[_emu].latestVersion;
+
 			let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install', 'fullscreenKeyCombo'];
 
 			for (let prop of props) {

@@ -161,7 +161,11 @@
 				"https://unpkg.com/em-fceux/dist/fceux.js",
 				"https://unpkg.com/em-fceux/dist/fceux.wasm"
 			]
-		}
+		},
+		"latestVersion": "1.1.0",
+		"dev": false,
+		"mute": false,
+		"volume": 20
 	},
   "mame": {
     "name": "MAME",
@@ -468,6 +472,10 @@
 		"readOnlyFS": false
   },
   "inGame": {
+		"pause": {
+      "hold": "start",
+      "time": 2000
+    },
     "quit": {
       "hold": "start",
       "time": 5000

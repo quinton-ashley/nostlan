@@ -17,137 +17,175 @@ html
 		#languageMenu.menu.row-y
 			h1.title0 Language Menu
 		#donateMenu.menu.row-y
-			.uie.opt0(name='verify') access premium features
-			.uie.opt1(name='patreon') open Patreon page
-			.uie.opt2(name='remind') remind me later
+			.cui.opt0(name='verify') access premium features
+			.cui.opt1(name='patreon') open Patreon page
+			.cui.opt2(name='remind') remind me later
 		#checkDonationMenu_1.menu.row-y
 			input#donorPassword.col-12.form-control(placeholder="patreon subscriber monthly password")
-			.uie.opt0(name='continue') verify password
-			.uie.opt1(name='b') I don't support Nostlan yet
+			.cui.opt0(name='continue') verify password
+			.cui.opt1(name='b') I don't support Nostlan yet
 		#welcomeMenu.menu.row-y
 			h1.title0 Thanks for installing Nostlan!
-			.uie.opt0(name='full') start setup
+			.cui.opt0(name='full') start setup
 		#setupMenu_1.menu.row-y
-			.uie.opt0(name='newDefaultInstall') install at ~/Documents/emu
-			.uie.opt1(name='newInstall') choose install location
-			.uie.opt2(name='finishSetup') finish setup
+			.cui.opt0(name='newDefaultInstall') install at ~/Documents/emu
+			.cui.opt1(name='newInstall') choose install location
+			.cui.opt2(name='finishSetup') finish setup
+		#pauseMenu_10.menu.row-y
+			h1.title0 Emulation Paused
+			.cui.col(name='unpause')
+				i.material-icons.md-left play_arrow
+				.text.opt0 unpause emulation
+			.cui.col(name='loadState')
+				i.material-icons.md-left system_update_alt
+				.text.opt1 load state
+			.cui.col(name='saveState')
+				i.material-icons.md-left save
+				.text.opt2 save state
+			.cui.col(name='stop')
+				i.material-icons.md-left stop
+				.text.opt3 stop emulation
+		#saveStateMenu_11.menu.row-y
+			h1.title0 Save State to Slot
+			.cui.col.left(name='slot0') 0
+			.cui.col.left(name='slot1') 1
+			.cui.col.left(name='slot2') 2
+			.cui.col.left(name='slot3') 3
+			.cui.col.left(name='slot4') 4
+			.cui.col.left(name='slot5') 5
+			.cui.col.left(name='slot6') 6
+			.cui.col.left(name='slot7') 7
+			.cui.col.left(name='slot8') 8
+			.cui.col.left(name='slot9') 9
+		#loadStateMenu_11.menu.row-y
+			h1.title0 Load State from Slot
+			.cui.col.left(name='slot0') 0
+			.cui.col.left(name='slot1') 1
+			.cui.col.left(name='slot2') 2
+			.cui.col.left(name='slot3') 3
+			.cui.col.left(name='slot4') 4
+			.cui.col.left(name='slot5') 5
+			.cui.col.left(name='slot6') 6
+			.cui.col.left(name='slot7') 7
+			.cui.col.left(name='slot8') 8
+			.cui.col.left(name='slot9') 9
 		#themeMenu_13.menu.row-y
 		#interfaceMenu_12.menu.row-y
 			h1.title0 Change Appearance
-			.uie(name='theme')
+			.cui(name='theme')
 				i.material-icons.md-left brush
 				.text.opt0 change theme
 				i.material-icons.md-right.invis brush
-			.uie(name='toggleCover')
+			.cui(name='toggleCover')
 				i.material-icons.md-left crop_free
 				.text.opt1 hide overlay buttons
 				i.material-icons.md-right.invis crop_free
 		#controllerMenu_12.menu.menu-wide.row-y
 			h1.title0 Controller Settings
 			.row.row-x
-				.uie.col(name='info')
+				.cui.col(name='info')
 					i.material-icons.md-left info
 					.text.opt0 info
-				.uie.col(name='rumble')
+				.cui.col(name='rumble')
 					i.material-icons.md-left vibration
 					.text.opt1 rumble on/off
 			.row.row-x
 				.col
 					h2 Xbox/PlayStation
-					#prof0.uie(name='prof0') adaptive
+					#prof0.cui(name='prof0') adaptive
 				.col
 					h2 Nintendo
-					#prof1.uie(name='prof1') adaptive
+					#prof1.cui(name='prof1') adaptive
 				.col
 					h2#prof2Lbl Other
-					#prof2.uie(name='prof2') adaptive
+					#prof2.cui(name='prof2') adaptive
 			h3#controName
 			h3#controType
 		#controInfoMenu_13.menu.menu-wide.row-y
-			.uie.opt0(name='b') back
-		#pauseMenu_10.menu.container.row-y
+			.cui.opt0(name='b') back
+		#nostlanMenu_10.menu.row-y
 			h1.title0 Main Menu
 			.row.row-x
-				.uie.col(name='minimize')
+				.cui.col(name='minimize')
 					i.material-icons.md-left call_to_action
 					.text.opt0 mini
-				.uie.col(name='fullscreen')
+				.cui.col(name='fullscreen')
 					i.material-icons.md-left zoom_out_map
 					.text.opt1 full
-				.uie.col(name='quit')
+				.cui.col(name='quit')
 					i.material-icons.md-left power_settings_new
 					.text.opt2 quit
 			.row.row-x
-				.uie.col(name='gameLibMenu')
+				.cui.col(name='gameLibMenu')
 					i.material-icons.md-left disc_full
 					.text.opt3 edit game library
 					i.material-icons.md-right.invis disc_full
 			.row.row-x
-				.uie.col(name='syncBackup')
+				.cui.col(name='syncBackup')
 					i.material-icons.md-left cloud_upload
 					.text.opt4 backup
-				.uie.col(name='forceUpdate')
+				.cui.col(name='forceUpdate')
 					i.material-icons.md-left cloud_download
 					.text.opt5 sync
 			.row.row-x
-				.uie.col(name='patreon')
+				.cui.col(name='patreon')
 					i.material-icons.md-left favorite
 					.text.opt6 patreon
-				.uie.col(name='help')
+				.cui.col(name='help')
 					i.material-icons.md-left help
 					.text.opt7 help
 			.row.row-x
-				.uie.col(name='settings')
+				.cui.col(name='settings')
 					i.material-icons.md-left perm_data_setting
 					.text.opt8 settings menu
 					i.material-icons.md-right.invis perm_data_setting
 		#gameLibMenu_11.menu.row-y
 			h1.title0 Game Library Menu
-			.uie(name='scanForGames')
+			.cui(name='scanForGames')
 				i.material-icons.md-left library_add
 				.text.opt0 add new games
 				i.material-icons.md-right.invis library_add
-			.uie(name='rescanGameLib')
+			.cui(name='rescanGameLib')
 				i.material-icons.md-left new_releases
 				.text.opt5 rescan all games
 				i.material-icons.md-right.invis new_releases
-			.uie(name='identifyGames')
+			.cui(name='identifyGames')
 				i.material-icons.md-left fingerprint
 				.text.opt1 manually identify games
 				i.material-icons.md-right.invis fingerprint
-			.uie(name='scanForImages')
+			.cui(name='scanForImages')
 				i.material-icons.md-left add_photo_alternate
 				.text.opt2 auto-scan for images
 				i.material-icons.md-right.invis add_photo_alternate
-			.uie(name='imageSearch')
+			.cui(name='imageSearch')
 				i.material-icons.md-left image_search
 				.text.opt3 manually search for images
 				i.material-icons.md-right.invis image_search
-			.uie.col(name='info')
+			.cui.col(name='info')
 				i.material-icons.md-left info
 				.text.opt4 info
 				i.material-icons.md-right.invis info
 		#gameLibInfoMenu_12.menu.menu-wide.row-y
-			#gameLibInfoMenuBackLbl.uie(name='b') back
+			#gameLibInfoMenuBackLbl.cui(name='b') back
 		#settingsMenu_11.menu.row-y
 			h1.title0 Settings Menu
-			.uie(name='editAppearance')
+			.cui(name='editAppearance')
 				i.material-icons.md-left view_comfy
 				.text.opt0 change appearance
 				i.material-icons.md-right.invis view_comfy
-			.uie(name='controllerSettings')
+			.cui(name='controllerSettings')
 				i.material-icons.md-left videogame_asset
 				.text.opt1 controller settings
 				i.material-icons.md-right.invis videogame_asset
-			.uie(name='languageMenu')
+			.cui(name='languageMenu')
 				i.material-icons.md-left translate
 				.text.opt4 language menu
 				i.material-icons.md-right.invis translate
-			.uie(name='toggleConsole')
+			.cui(name='toggleConsole')
 				i.material-icons.md-left bug_report
 				.text.opt2 show console
 				i.material-icons.md-right.invis bug_report
-			.uie(name='editPrefs')
+			.cui(name='editPrefs')
 				i.material-icons.md-left perm_data_setting
 				.text.opt3 edit preferences
 				i.material-icons.md-right.invis perm_data_setting
@@ -156,39 +194,39 @@ html
 		#emuMenu_5.menu.row-y
 		#emuAppMenu_6.menu.row-y
 			h1.title0 Emulator App Menu
-			.uie(name='install')
+			.cui(name='install')
 				i.material-icons.md-left get_app
 				.text.opt0 install
 				i.material-icons.md-right.invis get_app
-			.uie(name='find')
+			.cui(name='find')
 				i.material-icons.md-left wysiwyg
 				.text.opt1 browse for
 				i.material-icons.md-right.invis wysiwyg
 		#emptyGameLibMenu_6.menu.row-y
 			h1.title0 No games found
 			p.msg1
-			.uie(name='find')
+			.cui(name='find')
 				i.material-icons.md-left wysiwyg
 				.text.opt0 browse for games folder
 				i.material-icons.md-right.invis wysiwyg
-			.uie(name='install')
+			.cui(name='install')
 				i.material-icons.md-left get_app
 				.text.opt1 install
 				i.material-icons.md-right.invis get_app
 		#addSavesPathMenu_2.menu.row-y
 			input#saveName.col-12.form-control(placeholder="Name")
 			input#saveNumOfBackups.col-12.form-control(placeholder="Backup History Amount")
-			.uie.opt0(name='add') add
+			.cui.opt0(name='add') add
 		#boxOpenMenu_2.row-x.no-outline
-			img#gameBoxOpen.uie(name='b')
+			img#gameBoxOpen.cui(name='b')
 			.row-y
-				img#gameManual.uie(name='manual')
+				img#gameManual.cui(name='manual')
 				#gameWiki
 			.row-y
-				img#gameMemory.uie(name='memory')
-				img#gameMedia.uie(name='media')
+				img#gameMemory.cui(name='memory')
+				img#gameMedia.cui(name='media')
 			img#gameBoxOpenMask
-		#libMain.main.row-x
+		#libMain.main.reels.row-x
 		nav.navbar.fixed-top.p-0
 			button#nav0.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0
 				.nav0.text: span#nav0Lbl

@@ -5,6 +5,7 @@
  * in the user's prefs.json file.
  */
 let child = require('child_process');
+let base64 = require('byte-base64');
 
 let identify = false;
 
@@ -115,26 +116,47 @@ class Launcher {
 				return;
 			}
 			let dir = `${systemsDir}/${sys}/${emu}`;
-			let jsEmuDir = `${__root}/emu/${sys}/${emu}`;
+			let jsEmuDir = `${__root}/jsEmu/${sys}/${emu}`;
 
-			let cfgEditor = new ConfigEditor();
-			cfgEditor.configPath = dir + '/config.json';
-			cfgEditor.configDefaultsPath = jsEmuDir + '/config.json';
-			let cfg = await cfgEditor.getDefaults();
-			let currentVersion = cfg.version;
-			cfg = await cfgEditor.load(cfg);
-			if (!(await cfgEditor.canLoad()) ||
-				cfg.version != currentVersion) {
-
+			if (!prefs[emu].dev && (!(await fs.exists(dir + '/launch.js')) ||
+					prefs[emu].version != prefs[emu].latestVersion)) {
 				await fs.copy(jsEmuDir, dir, {
 					overwrite: true
 				});
-				cfg.version = currentVersion;
-				await cfgEditor.save(cfg);
+				prefs[emu].version = prefs[emu].latestVersion;
+				log('updated ' + prefs[emu].name + ' to ' + prefs[emu].version);
+			}
+
+			let cfg = {};
+			Object.assign(cfg, prefs[emu]);
+
+			if (await fs.exists(dir + '/states')) {
+				let files = await klaw(dir + '/states');
+				cfg.saveStates = {};
+				let gameName = path.parse(game.file).name;
+				for (let file of files) {
+					if (path.parse(file).name == gameName) {
+						// let data = await fs.readFile(file, 'utf8');
+						// data = base64.base64ToBytes(data);
+						// data = Array.from(data);
+						let slot = file.slice(-1);
+						cfg.saveStates[slot] = {
+							file: file,
+							// data: data,
+							date: (await fs.stat(file)).mtime.toLocaleString('en-US', {
+								timeZone: timeZone
+							})
+						};
+					}
+				}
+				if (!Object.keys(cfg.saveStates).length) {
+					delete cfg.saveStates;
+				}
 			}
 
 			let fileHtml = `${dir}/launch.html`;
-			$('body').prepend(`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}"></webview>`);
+			let preloadJS = __root + '/jsEmu/preload.js';
+			$('body').prepend(`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}" preload="${preloadJS}"></webview>`);
 
 			let jsEmu = $('#jsEmu').eq(0)[0];
 			await new Promise((resolve) => {
@@ -143,10 +165,42 @@ class Launcher {
 				});
 			});
 			if (cfg.dev) jsEmu.openDevTools();
+			let _this = this;
+			jsEmu.addEventListener('ipc-message', async (event) => {
+				let ping = JSON.parse(event.channel);
+
+				log(ping);
+
+				if (ping.saveState) {
+					let {
+						slot,
+						data,
+						ext
+					} = ping.saveState;
+					data = Uint8Array.from(data);
+					log(data);
+					data = base64.bytesToBase64(data);
+					log(data);
+					let g = path.parse(_this.game.file);
+					let file = dir + '/states/' + g.name + ext;
+					await fs.outputFile(file, data);
+					if (!_this.cfg.saveStates) {
+						_this.cfg.saveStates = {};
+					}
+					_this.cfg.saveStates[slot] = {
+						file: file,
+						data: data,
+						date: (await fs.stat(file)).mtime.toLocaleString('en-US', {
+							timeZone: timeZone
+						})
+					};
+				}
+			});
 			await delay(500);
 			await jsEmu.executeJavaScript(
 				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
 			);
+			this.cfg = cfg;
 			this.jsEmu = jsEmu;
 			await cui.change('playing_4');
 			$('nav').hide();
@@ -402,7 +456,32 @@ class Launcher {
 			this.jsEmu.executeJavaScript('jsEmu.close();');
 			this.jsEmu.remove();
 			this.jsEmu = null;
+			this.cfg = null;
 		}
+	}
+
+	pause() {
+		this.state = 'paused';
+		this.jsEmu.executeJavaScript('jsEmu.pause();');
+		cui.change('pauseMenu_10');
+		$('nav').show();
+		$('body > :not(#dialogs)').removeClass('dim');
+	}
+
+	unpause() {
+		this.state = 'running';
+		this.jsEmu.executeJavaScript('jsEmu.unpause();');
+		cui.change('playing_4');
+		$('nav').hide();
+		$('body > :not(#dialogs)').removeClass('dim');
+	}
+
+	saveState(slot) {
+		this.jsEmu.executeJavaScript(`jsEmu.saveState(${slot || ''});`);
+	}
+
+	loadState(slot) {
+		this.jsEmu.executeJavaScript(`jsEmu.loadState(${slot || ''});`);
 	}
 
 	async _close(code) {

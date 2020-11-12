@@ -47,7 +47,7 @@
 		"nav2Lbl": "ImgDir",
 		"nav3Lbl": "Back"
 	},
-	"pauseMenu_10": {
+	"nostlanMenu_10": {
 		"title0": "Main Menu",
 		"nav0Lbl": "Quit",
 		"nav2Lbl": "Mini",
@@ -190,5 +190,13 @@
 		"title5": "Alert",
 		"msg0": "This option is not available yet!",
 		"opt0": "okay"
+	},
+	"pauseMenu_10": {
+		"title0": "Pause Menu",
+		"err0": "Nostlan's main menu is not available when emulators are running",
+		"opt0": "unpause emulation",
+		"opt1": "load state",
+		"opt2": "save state",
+		"opt3": "stop emulation"
 	}
 }

@@ -23,7 +23,9 @@ class Saves {
 		let dir = path.join(emuApp, '..');
 		dir = dir.replace(/\\/g, '/');
 
-		if (emu == 'cemu') {
+		if (prefs[emu].jsEmu) {
+			prefs[emu].saves.dirs = [dir + '/saves', dir + '/states'];
+		} else if (emu == 'cemu') {
 			prefs[emu].saves.dirs = [dir + '/mlc01/usr/save'];
 		} else if (emu == 'citra') {
 			if (win) {

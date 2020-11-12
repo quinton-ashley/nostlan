@@ -28,6 +28,7 @@ module.exports = async function(arg) {
 	global.sysStyle = ''; // style of that system
 	global.emu = ''; // current emulator (name)
 	global.offline = false;
+	global.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 	// get the built-in supported systems + emulators
 	global.systems = require(__root + '/core/systems.js');
@@ -123,7 +124,7 @@ module.exports = async function(arg) {
 			let _syst = systems[_sys];
 			if (!_syst.emus) continue;
 			if (i % 2 == 0) sysMenu_5 += `.row.row-x\n`;
-			sysMenu_5 += `\t.col.uie(name="${_sys}") ${_syst.name}\n`;
+			sysMenu_5 += `\t.col.cui(name="${_sys}") ${_syst.name}\n`;
 			i++;
 		}
 		delete i;
@@ -169,7 +170,7 @@ module.exports = async function(arg) {
 			cui.err(`<textarea rows=8>${ror.stack}</textarea>`,
 				'Nostlan crashed :(', 'quit');
 		});
-		cui.bind('wheel');
+		cui.bindWheel($('.reels'));
 
 		// keyboard controls
 		for (let char of 'abcdefghijklmnopqrstuvwxyz1234567890') {
@@ -194,7 +195,7 @@ module.exports = async function(arg) {
 		for (let x of langFolders) {
 			x = path.parse(x).base;
 			if (!iso_639_1[x]) continue;
-			elems += `.uie(name='${x}') `;
+			elems += `.cui(name='${x}') `;
 			elems += iso_639_1[x].name + '\n';
 		}
 		log(elems);
@@ -211,8 +212,12 @@ module.exports = async function(arg) {
 		ld0 += syst.fullName + ' ';
 		ld0 += lang.loading_1.msg0_1;
 		$('#loadDialog0').text(ld0);
-		emu = syst.emus[0];
-		if (mac && sys == 'ds') emu = 'desmume';
+		// set emu to the default for the current OS
+		for (let _emu of syst.emus) {
+			if (!prefs[_emu].cmd && !prefs[_emu].jsEmu) continue;
+			emu = _emu;
+			break;
+		}
 		await intro();
 		let gamesPath = `${systemsDir}/${sys}/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
@@ -296,16 +301,20 @@ module.exports = async function(arg) {
 		let playMenu = 'h1.title0\n';
 		let emuMenu = 'h1.title0\n';
 		for (let _emu of syst.emus) {
-			playMenu += `.col.uie(name="${_emu}") ${prefs[_emu].name}\n`;
+			// if cmd not found emulator is not available
+			// for the operating system
+			if (!prefs[_emu].cmd && !prefs[_emu].jsEmu) continue;
+
+			playMenu += `.col.cui(name="${_emu}") ${prefs[_emu].name}\n`;
 
 			// TODO check if user has the emulator
 			// if they do add the configure and update buttons
 			// else add a button to install
-			emuMenu += `.col.uie(name="${_emu}_config") ` +
+			emuMenu += `.col.cui(name="${_emu}_config") ` +
 				`${lang.emuMenu_5.msg0} ${prefs[_emu].name}\n`;
 
 			if (prefs[_emu].update) {
-				emuMenu += `.col.uie(name="${_emu}_update") ` +
+				emuMenu += `.col.cui(name="${_emu}_update") ` +
 					`${lang.emuMenu_5.msg1} ${prefs[_emu].name}\n`;
 			}
 		}
@@ -365,7 +374,7 @@ module.exports = async function(arg) {
 		}
 		let labels = [' ', ' ', ' '];
 		if (/(game|menu)/i.test(state)) {
-			labels[2] = lang.pauseMenu_10.msg0;
+			labels[2] = lang.nostlanMenu_10.msg0;
 		}
 		$('#nav0Lbl').text(labels[0]);
 		$('#nav2Lbl').text(labels[1]);
@@ -439,9 +448,23 @@ module.exports = async function(arg) {
 			// games yet you might want to install the
 			note += syst.name + ' ' + lang.emptyGameLibMenu_6.msg1_3;
 			note += ' ' + prefs[emu].name + ' ';
-			// emulator app first.""
+			// emulator app first."
 			note += lang.emptyGameLibMenu_6.msg1_4;
 			$('#emptyGameLibMenu_6 .msg1').text(note);
+		} else if (state == 'saveStateMenu_11' ||
+			state == 'loadStateMenu_11') {
+
+			let $slots = $('#' + state + ' .cui');
+			let states = launcher.cfg.saveStates;
+			for (let i = 0; i < $slots.length; i++) {
+				let txt = i + ' ';
+				if (states && states[i]) {
+					txt += states[i].date;
+				} else {
+					txt += 'empty slot';
+				}
+				$slots.eq(i).text(txt);
+			}
 		}
 
 		function adjust(flip) {
@@ -521,6 +544,13 @@ module.exports = async function(arg) {
 		log(act + ' held for ' + timeHeld);
 		if (launcher.state == 'running') {
 			if (
+				launcher.jsEmu &&
+				act == prefs.inGame.pause.hold &&
+				timeHeld > prefs.inGame.pause.time
+			) {
+				log('pausing emulation');
+				launcher.pause();
+			} else if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
 			) {
@@ -778,7 +808,7 @@ module.exports = async function(arg) {
 		}
 
 		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
-			if ($cur.hasClass('uie-disabled')) return false;
+			if ($cur.hasClass('cui-disabled')) return false;
 			if (syst.emus.length > 1) {
 				cui.change('playMenu_5');
 			} else {
@@ -787,16 +817,16 @@ module.exports = async function(arg) {
 			}
 			return;
 		}
-		if (act == 'start') {
-			cui.change('pauseMenu_10');
+		if (act == 'start' && cui.getLevel(ui) < 10) {
+			cui.change('nostlanMenu_10');
 		} else if (act == 'b' && (onMenu || onSelect) &&
 			ui != 'donateMenu' && ui != 'setupMenu_1' &&
-			cui.getParent() != 'loading_1') {
+			ui != 'pauseMenu_10' && cui.getParent() != 'loading_1') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu_12 .uie[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu_12 .cui[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text(lang.interfaceMenu_12.opt1[0]);
@@ -807,7 +837,7 @@ module.exports = async function(arg) {
 			if (act == 'b' && !onMenu) {
 				cui.change('sysMenu_5');
 			}
-			if ($cur.hasClass('uie-disabled')) return false;
+			if ($cur.hasClass('cui-disabled')) return false;
 			if (act == 'y') {
 				cui.change('emuMenu_5');
 			} else if (act == 'a' || !isBtn) {
@@ -818,7 +848,7 @@ module.exports = async function(arg) {
 				cui.change('boxSelect_1', gameSys);
 			}
 		} else if (ui == 'boxSelect_1') {
-			if ($cur.hasClass('uie-disabled')) return false;
+			if ($cur.hasClass('cui-disabled')) return false;
 
 			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
 				fitCoverToScreen($cur);
@@ -900,7 +930,7 @@ module.exports = async function(arg) {
 			} else if (act == 'rumble') {
 				prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
 				cui.opt.haptic = prefs.ui.gamepad.haptic;
-				let $rumble = $('#controllerMenu_12 .uie[name="rumble"] .text');
+				let $rumble = $('#controllerMenu_12 .cui[name="rumble"] .text');
 				if (prefs.ui.gamepad.haptic) {
 					log('rumble enabled');
 					$rumble.text(lang.controllerMenu_12.opt1[0]);
@@ -921,7 +951,7 @@ module.exports = async function(arg) {
 					prof = 'adaptive';
 				}
 				prefs.ui.gamepad[type].profile = prof;
-				$(`#controllerMenu_12 .uie[name="${act}"]`).text(prof);
+				$(`#controllerMenu_12 .cui[name="${act}"]`).text(prof);
 			}
 		} else if (ui == 'interfaceMenu_12') {
 			if (act == 'toggleCover') {
@@ -937,7 +967,7 @@ module.exports = async function(arg) {
 					let p = palette.sys + ' ' + palette.name;
 					if (!palette.name) palette.name = 'default';
 					palette = systems[palette.sys].name + ' ' + palette.name;
-					themeMenu += `.col.uie(name="${p}") ${palette}\n`;
+					themeMenu += `.col.cui(name="${p}") ${palette}\n`;
 				}
 				$('#themeMenu_13').append(pug(themeMenu));
 				cui.addView('themeMenu_13');
@@ -980,6 +1010,31 @@ module.exports = async function(arg) {
 				await saveSync('syncUpdate');
 			}
 		} else if (ui == 'pauseMenu_10') {
+			if (act == 'start') {
+				// nostlan main menu is not available
+				// when running emulators
+				cui.err(lang.pauseMenu_10.err0);
+			} else if (act == 'unpause' || act == 'b') {
+				launcher.unpause();
+			} else if (act == 'saveState') {
+				cui.change('saveStateMenu_11');
+			} else if (act == 'loadState') {
+				cui.change('loadStateMenu_11');
+			} else if (act == 'stop') {
+				await cui.change('playing_4');
+				launcher.close();
+			}
+		} else if (ui == 'saveStateMenu_11' && /slot\d/.test(act)) {
+			let slot = act.slice(4);
+			log('saving state to slot ' + slot);
+			launcher.saveState(slot);
+			launcher.unpause();
+		} else if (ui == 'loadStateMenu_11' && /slot\d/.test(act)) {
+			let slot = act.slice(4);
+			log('loading save state from slot ' + slot);
+			launcher.loadState(slot);
+			launcher.unpause();
+		} else if (ui == 'nostlanMenu_10') {
 			if (act == 'start') {
 				cui.doAction('back');
 			} else if (act == 'syncBackup' || act == 'forceUpdate') {
@@ -1058,7 +1113,7 @@ module.exports = async function(arg) {
 				cui.doAction('quit');
 			} else if (act == 'toggleConsole') {
 				electron.getCurrentWindow().toggleDevTools();
-				let $elem = $('#pauseMenu_10 .uie[name="toggleConsole"] .text');
+				let $elem = $('#nostlanMenu_10 .cui[name="toggleConsole"] .text');
 				if ($elem.text().includes('show')) {
 					// 'hide console'
 					$elem.text(lang.settingsMenu_11.opt2[1]);
@@ -1213,10 +1268,10 @@ module.exports = async function(arg) {
 		return res;
 	}
 
-	cui.click('#nav0', 'x');
-	cui.click('#nav1', 'start');
-	cui.click('#nav2', 'y');
-	cui.click('#nav3', 'b');
+	cui.click($('#nav0'), 'x');
+	cui.click($('#nav1'), 'start');
+	cui.click($('#nav2'), 'y');
+	cui.click($('#nav3'), 'b');
 
 	async function editImgSrc($cur, $img, game, name) {
 		if (!game) return;
@@ -1364,10 +1419,10 @@ module.exports = async function(arg) {
 				await scraper.genThumb(img);
 			}
 		}
-		let box = `game#${game.id}.${_sys}.uie`;
+		let box = `game#${game.id}.${_sys}.cui`;
 		// if game is a template don't let the user select it
 		if (isTemplate) {
-			box += '.uie-disabled';
+			box += '.cui-disabled';
 		}
 		box += '\n';
 		box += `  img.box.lq(src="${boxImg}")\n`;
@@ -1444,7 +1499,11 @@ module.exports = async function(arg) {
 
 	async function viewerLoad(recheckImgs) {
 		cui.resize(true);
-		cui.setMouse(prefs.ui.mouse, 100 * prefs.ui.mouse.wheel.multi);
+		if (!prefs.ui.mouse.delta) {
+			prefs.ui.mouse.delta =
+				100 * prefs.ui.mouse.wheel.multi;
+		}
+		cui.setMouseOptions(prefs.ui.mouse);
 		games = await scraper.loadImages(games, themes, recheckImgs);
 		// determine the amount of columns based on the amount of games
 		let cols = prefs.ui.maxColumns || 8;
@@ -1466,7 +1525,7 @@ module.exports = async function(arg) {
 			dynColStyle += `.reel.r${i} {left:  ${i / cols * 100}%;}`;
 		}
 		dynColStyle += `
-.reel .uie.cursor {
+.reel .cui.cursor {
 	outline: ${Math.abs(7-cols)}px dashed white;
 	outline-offset: ${ 9-cols}px;
 }`;

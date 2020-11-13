@@ -171,12 +171,12 @@ module.exports = async function(arg) {
 
 	let directions = ['up', 'down', 'left', 'right'];
 	for (let direction of directions) {
-		cui.bind(direction, direction);
+		cui.keyPress(direction, direction);
 	}
 	let toggleQuit;
 	if (mac) toggleQuit = ['command+w', 'command+q'];
 	if (win || linux) toggleQuit = ['ctrl+w', 'ctrl+q'];
-	cui.bind(toggleQuit, 'quit');
-	cui.bind('enter', 'a');
-	cui.bind('shift+enter', 'b');
+	cui.keyPress(toggleQuit, 'quit');
+	cui.keyPress('enter', 'a');
+	cui.keyPress('shift+enter', 'b');
 };

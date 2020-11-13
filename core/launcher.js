@@ -154,6 +154,19 @@ class Launcher {
 				}
 			}
 
+			if (cfg.keyboard && Array.isArray(cfg.keyboard)) {
+				for (let port in cfg.keyboard) {
+					let board = cfg.keyboard[port];
+					for (let btn in board) {
+						cui.keyPress(board[btn], {
+							state: 'playing_4',
+							act: btn,
+							port: port
+						});
+					}
+				}
+			}
+
 			let fileHtml = `${dir}/launch.html`;
 			let preloadJS = __root + '/jsEmu/preload.js';
 			$('body').prepend(`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}" preload="${preloadJS}"></webview>`);
@@ -177,8 +190,8 @@ class Launcher {
 						data,
 						ext
 					} = ping.saveState;
-					data = Uint8Array.from(data);
-					log(data);
+					// data = Uint8Array.from(data);
+					// log(data);
 					data = base64.bytesToBase64(data);
 					log(data);
 					let g = path.parse(_this.game.file);

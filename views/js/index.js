@@ -173,15 +173,19 @@ module.exports = async function(arg) {
 		cui.bindWheel($('.reels'));
 
 		// keyboard controls
-		for (let char of 'abcdefghijklmnopqrstuvwxyz1234567890') {
-			cui.bind(char, 'char-' + char);
+		for (let char of 'abcdefghijklmnopqrstuvwxyz') {
+			cui.keyPress(char, 'key-' + char);
+			cui.keyPress('shift+' + char, 'key-' + char.toUpperCase());
 		}
-		cui.bind('space', 'char-_');
+		for (let char of '1234567890!@#$%^&*()') {
+			cui.keyPress(char, 'key-' + char);
+		}
+		cui.keyPress('space', 'key- ');
 
-		cui.bind('[', 'x');
-		cui.bind(']', 'y');
-		cui.bind('\\', 'b');
-		cui.bind('|', 'start');
+		cui.keyPress('[', 'x');
+		cui.keyPress(']', 'y');
+		cui.keyPress('\\', 'b');
+		cui.keyPress('|', 'start');
 
 		await start();
 	}
@@ -541,7 +545,7 @@ module.exports = async function(arg) {
 		if (timeHeld < 2000) {
 			return;
 		}
-		log(act + ' held for ' + timeHeld);
+		// log(act + ' held for ' + timeHeld);
 		if (launcher.state == 'running') {
 			if (
 				launcher.jsEmu &&
@@ -770,6 +774,9 @@ module.exports = async function(arg) {
 			return;
 		}
 		if (launcher.state == 'running') {
+			if (launcher.jsEmu) {
+
+			}
 			return;
 		}
 		let isBtn = cui.isButton(act);
@@ -777,14 +784,13 @@ module.exports = async function(arg) {
 		let onSelect = /select/i.test(ui);
 
 		// letter by letter search for game
-		if (/char-\w/.test(act)) {
+		if (/key-./.test(act)) {
 			if (cui.ui != 'libMain') return;
 			if (searchTimeout == 0) {
 				searchTerm = '';
 			}
 			searchTimeout = 2000;
-			let char = act.slice(5);
-			if (char == '_') char = ' ';
+			let char = act.slice(4);
 			searchTerm += char;
 			log('search for: ' + searchTerm);
 			for (let game of games) {

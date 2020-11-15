@@ -5,19 +5,30 @@
 	<meta charset="utf-8">
 	<title>Nostlan + em-fceux</title>
 	<style>
+		html,
+		body {
+			overflow: hidden;
+		}
+
 		*::-webkit-scrollbar {
 			display: none;
 		}
-		
+
 		* {
 			scrollbar-width: none !important;
 		}
+
+		.tube {
+			height: 100vh;
+			text-align: center;
+		}
+
 	</style>
 </head>
 
 <body>
 	<script type="text/javascript" src="./fceux.js"></script>
-	<div style="height: 100vh; text-align: center">
+	<div class="tube">
 		<canvas id="screen0"></canvas>
 	</div>
 	<script type="text/javascript" src="./launch.js"></script>

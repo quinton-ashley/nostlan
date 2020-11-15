@@ -154,7 +154,7 @@
   },
 	"em-fceux": {
 		"name": "em-fceux",
-		"app": "$emu/fceux.js",
+		"app": "$emu/launch.js",
 		"jsEmu": true,
 		"install": {
 			"jsEmu": [
@@ -166,25 +166,21 @@
 		"dev": false,
 		"mute": false,
 		"volume": 20,
-		"keyboard": [{
-			"up": "w",
-			"down": "s",
-			"left": "a",
-			"right": "d",
-			"start": "x",
-			"select": "z",
-			"b": "c",
-			"a": "v"
-		}, {
-			"up": "i",
-			"down": "k",
-			"left": "j",
-			"right": "l",
-			"start": ",",
-			"select": "m",
-			"b": ".",
-			"a": "/"
-		}]
+		"keyboard": [{},{}]
+	},
+	"iodine": {
+		"name": "IodineGBA",
+		"app": "$emu/launch.js",
+		"bios": "$emu/bios.bin",
+		"jsEmu": true,
+		"install": {
+			"jsEmu": "https://github.com/taisel/IodineGBA/archive/master.zip"
+		},
+		"latestVersion": "1.0.0",
+		"dev": false,
+		"mute": false,
+		"volume": 20,
+		"keyboard": [{},{}]
 	},
   "mame": {
     "name": "MAME",
@@ -485,6 +481,57 @@
     "autoHideCover": false,
     "launchFullScreen": true
   },
+	"jsEmu": {
+		"keyboard": [{
+			"pause": "esc",
+			"load0": "shift+0",
+			"load1": "shift+1",
+			"load2": "shift+2",
+			"load3": "shift+3",
+			"load4": "shift+4",
+			"load5": "shift+5",
+			"load6": "shift+6",
+			"load7": "shift+7",
+			"load8": "shift+8",
+			"load9": "shift+9",
+			"save0": "alt+0",
+			"save1": "alt+1",
+			"save2": "alt+2",
+			"save3": "alt+3",
+			"save4": "alt+4",
+			"save5": "alt+5",
+			"save6": "alt+6",
+			"save7": "alt+7",
+			"save8": "alt+8",
+			"save9": "alt+9",
+			"up": "w",
+			"down": "s",
+			"left": "a",
+			"right": "d",
+			"start": "x",
+			"select": "z",
+			"a": "g",
+			"b": "v",
+			"x": "f",
+			"y": "c",
+			"l": "q",
+			"r": "e"
+		},
+		{
+			"up": "i",
+			"down": "k",
+			"left": "j",
+			"right": "l",
+			"start": ",",
+			"select": "m",
+			"a": "'",
+			"b": "/",
+			"x": ";",
+			"y": ".",
+			"l": "u",
+			"r": "o"
+		}]
+	},
   "load": {
     "delay": 2000,
     "online": true,

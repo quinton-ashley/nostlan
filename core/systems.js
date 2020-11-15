@@ -26,7 +26,7 @@ module.exports = {
 	gba: {
 		name: 'GBA',
 		fullName: 'Nintendo Game Boy Advance',
-		emus: ['mgba', 'vba'],
+		emus: ['mgba', 'iodine', 'vba'],
 		mediaType: 'cart',
 		gameExts: ['gba']
 	},

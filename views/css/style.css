@@ -54,6 +54,11 @@ game {
 
 #jsEmu {
 	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	pointer-events: none;
 }
 
 #update {
@@ -608,11 +613,4 @@ ul.nav {
 
 .material-icons.md-light.md-inactive {
 	color: rgba(255, 255, 255, 0.3);
-}
-
-#jsEmu {
-	width: 100vw;
-	height: 100vh;
-	margin: 0;
-	padding: 0;
 }

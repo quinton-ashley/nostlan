@@ -175,7 +175,8 @@ module.exports = async function(arg) {
 		// keyboard controls
 		for (let char of 'abcdefghijklmnopqrstuvwxyz') {
 			cui.keyPress(char, 'key-' + char);
-			cui.keyPress('shift+' + char, 'key-' + char.toUpperCase());
+			char = char.toUpperCase();
+			cui.keyPress(char, 'key-' + char);
 		}
 		for (let char of '1234567890!@#$%^&*()') {
 			cui.keyPress(char, 'key-' + char);
@@ -552,8 +553,7 @@ module.exports = async function(arg) {
 				act == prefs.inGame.pause.hold &&
 				timeHeld > prefs.inGame.pause.time
 			) {
-				log('pausing emulation');
-				launcher.pause();
+				cui.doAction('pause');
 			} else if (
 				act == prefs.inGame.quit.hold &&
 				timeHeld > prefs.inGame.quit.time
@@ -775,7 +775,12 @@ module.exports = async function(arg) {
 		}
 		if (launcher.state == 'running') {
 			if (launcher.jsEmu) {
-
+				if (ui == 'playing_4') {
+					if (act == 'pause') {
+						log('pausing emulation');
+						launcher.pause();
+					}
+				}
 			}
 			return;
 		}
@@ -1020,12 +1025,23 @@ module.exports = async function(arg) {
 				// nostlan main menu is not available
 				// when running emulators
 				cui.err(lang.pauseMenu_10.err0);
-			} else if (act == 'unpause' || act == 'b') {
+			} else if (act == 'unpause' || act == 'b' || act == 'pause') {
 				launcher.unpause();
 			} else if (act == 'saveState') {
 				cui.change('saveStateMenu_11');
 			} else if (act == 'loadState') {
 				cui.change('loadStateMenu_11');
+			} else if (act == 'mute') {
+				let $elem = $('#pauseMenu_10 .cui[name="mute"] .text');
+				if ($elem.text().includes('un')) {
+					launcher.unmute();
+					// 'mute'
+					$elem.text(lang.pauseMenu_10.opt4[1]);
+				} else {
+					launcher.mute();
+					// 'unmute'
+					$elem.text(lang.pauseMenu_10.opt4[0]);
+				}
 			} else if (act == 'stop') {
 				await cui.change('playing_4');
 				launcher.close();

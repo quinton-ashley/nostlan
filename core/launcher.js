@@ -130,6 +130,15 @@ class Launcher {
 			let cfg = {};
 			Object.assign(cfg, prefs[emu]);
 
+			if (cfg.bios) {
+				cfg.bios = util.absPath(cfg.bios);
+				if (!(await fs.exists(cfg.bios))) {
+					// "This emulator requires system bios file(s)"
+					cui.err(lang.playMenu_5.err + ': ' + cfg.bios);
+					return;
+				}
+			}
+
 			if (await fs.exists(dir + '/states')) {
 				let files = await klaw(dir + '/states');
 				cfg.saveStates = {};
@@ -154,12 +163,21 @@ class Launcher {
 				}
 			}
 
+			cui.setUISub('jsEmu', true);
+
 			if (cfg.keyboard && Array.isArray(cfg.keyboard)) {
 				for (let port in cfg.keyboard) {
-					let board = cfg.keyboard[port];
+					let board = {};
+					// default keyboard controls
+					Object.assign(board, cfg.keyboard[port]);
+					if (prefs.jsEmu.keyboard[port]) {
+						// overridden by keyboard control settings
+						// in the preferences for the emu
+						Object.assign(board, prefs.jsEmu.keyboard[port]);
+					}
 					for (let btn in board) {
 						cui.keyPress(board[btn], {
-							state: 'playing_4',
+							state: 'jsEmu',
 							act: btn,
 							port: port
 						});
@@ -190,10 +208,7 @@ class Launcher {
 						data,
 						ext
 					} = ping.saveState;
-					// data = Uint8Array.from(data);
-					// log(data);
 					data = base64.bytesToBase64(data);
-					log(data);
 					let g = path.parse(_this.game.file);
 					let file = dir + '/states/' + g.name + ext;
 					await fs.outputFile(file, data);
@@ -209,7 +224,7 @@ class Launcher {
 					};
 				}
 			});
-			await delay(500);
+			await delay(1500);
 			await jsEmu.executeJavaScript(
 				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
 			);
@@ -468,6 +483,8 @@ class Launcher {
 			this._close();
 			this.jsEmu.executeJavaScript('jsEmu.close();');
 			this.jsEmu.remove();
+			$('body').removeClass('jsEmu');
+			cui.setUISub(sys);
 			this.jsEmu = null;
 			this.cfg = null;
 		}
@@ -495,6 +512,14 @@ class Launcher {
 
 	loadState(slot) {
 		this.jsEmu.executeJavaScript(`jsEmu.loadState(${slot || ''});`);
+	}
+
+	mute() {
+		this.jsEmu.executeJavaScript(`jsEmu.mute();`);
+	}
+
+	unmute() {
+		this.jsEmu.executeJavaScript(`jsEmu.unmute();`);
 	}
 
 	async _close(code) {

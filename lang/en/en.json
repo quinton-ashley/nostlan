@@ -135,6 +135,7 @@
 		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",
 		"err1": "Emulator app not found at: ",
 		"err2": "crashed! If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator. Search the internet for instructions on how to fully setup",
+		"err3": "This emulator requires system bios file(s)",
 		"msg0": "Select emulator app",
 		"msg1": "Starting",
 		"msg2_0": "To close the emulator, press and hold the",
@@ -197,6 +198,7 @@
 		"opt0": "unpause emulation",
 		"opt1": "load state",
 		"opt2": "save state",
-		"opt3": "stop emulation"
+		"opt3": "stop emulation",
+		"opt4": ["mute", "unmute"]
 	}
 }

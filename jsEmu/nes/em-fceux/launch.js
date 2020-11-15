@@ -78,6 +78,10 @@ class Nostlan_emfceux {
 		this.fceux.setMuted(toggle);
 	}
 
+	unmute() {
+		this.mute(false);
+	}
+
 	saveState(slot) {
 		if (typeof slot == 'number') {
 			this.fceux.setState(slot);

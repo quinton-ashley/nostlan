@@ -215,12 +215,14 @@ class Launcher {
 					if (!_this.cfg.saveStates) {
 						_this.cfg.saveStates = {};
 					}
+					let date = (await fs.stat(file)).mtime;
+					date = date.toLocaleString('en-US', {
+						timeZone: timeZone
+					});
 					_this.cfg.saveStates[slot] = {
-						file: file,
-						data: data,
-						date: (await fs.stat(file)).mtime.toLocaleString('en-US', {
-							timeZone: timeZone
-						})
+						file,
+						data,
+						date
 					};
 				}
 			});

@@ -17,7 +17,7 @@ module.exports = async function(arg) {
 	log(usrDir);
 
 	global.ConfigEditor = require(__root + '/core/ConfigEditor.js');
-	let prefsMng = new ConfigEditor();
+	global.prefsMng = new ConfigEditor();
 	prefsMng.configPath = usrDir + '/_usr/prefs.json';
 	prefsMng.configDefaultsPath = __root + '/prefs/prefsDefaults.json';
 	prefsMng.update = require(__root + '/prefs/prefsUpdate.js');
@@ -35,17 +35,6 @@ module.exports = async function(arg) {
 
 	let games = []; // array of current games from the systems' db
 	global.systemsDir = ''; // nostlan dir is stored here
-
-	// users can type to search, which has an auto timeout
-	let searchTerm = '';
-	let searchTimeout = 0;
-	setInterval(function() {
-		if (searchTimeout > 1000) {
-			searchTimeout -= 1000;
-		} else {
-			searchTimeout = 0;
-		}
-	}, 1000);
 
 	// Set default settings for scrolling on a Mac.
 	// I assume the user is using a smooth scroll trackpad
@@ -88,6 +77,31 @@ module.exports = async function(arg) {
 	document.body.addEventListener('mousemove', function(e) {
 		document.exitPointerLock();
 	});
+
+	// https://www.geeksforgeeks.org/drag-and-drop-files-in-electronjs/
+	document.addEventListener('drop', (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		for (const f of event.dataTransfer.files) {
+			// Using the path attribute to get absolute file path
+			console.log('File Path of dragged files: ', f.path)
+		}
+	});
+
+	document.addEventListener('dragover', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+
+	document.addEventListener('dragenter', (event) => {
+		console.log('File is in the Drop Space');
+	});
+
+	document.addEventListener('dragleave', (event) => {
+		console.log('File has left the Drop Space');
+	});
+
 
 	async function intro() {
 		$('#dialogs').show();
@@ -372,165 +386,6 @@ module.exports = async function(arg) {
 
 	cui.onResize = (adjust) => {};
 
-	cui.onChange = (state, subState) => {
-		if (state == 'languageMenu') {
-			cui.clearDialogs();
-			return;
-		}
-		let labels = [' ', ' ', ' '];
-		if (/(game|menu)/i.test(state)) {
-			labels[2] = lang.nostlanMenu_10.msg0;
-		}
-		$('#nav0Lbl').text(labels[0]);
-		$('#nav2Lbl').text(labels[1]);
-		$('#nav3Lbl').text(labels[2]);
-
-		// TODO UI translation, english ui /lang/en.js
-
-		for (let elem in lang[state]) {
-			let txt = lang[state][elem];
-			if (typeof txt != 'string') txt = txt[0];
-			let $elem = $(`#${state} .${elem}`);
-			if (!$elem.length) $elem = $('#' + elem);
-			if (!$elem.length) continue;
-			$elem.text(txt);
-		}
-
-		let lbls = ['#nav0Lbl', '#nav2Lbl', '#nav3Lbl'];
-		for (let lbl of lbls) {
-			let $lbl = $(lbl);
-			let $parent = $lbl.parent();
-			let txt = $lbl.text();
-			if (txt.includes(' ')) {
-				$lbl.addClass('twoLines');
-				$parent.addClass('twoLines');
-			} else {
-				$lbl.removeClass('twoLines');
-				$parent.removeClass('twoLines');
-			}
-		}
-
-		$('nav .text').textfill();
-
-		if (state == 'boxSelect_1') {
-			$('#libMain').show();
-		} else if (state == 'boxOpenMenu_2') {
-			$('#boxOpenMenu_2').removeClass('zoom-gameManual');
-			$('#boxOpenMenu_2').removeClass('zoom-gameMedia');
-			$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
-		} else if (state == 'libMain') {
-			$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
-			$('#libMain').removeClass('no-outline');
-		} else if (state == 'emuAppMenu_6') {
-			$('#emuAppMenu_6 .opt0').text(
-				lang.emuAppMenu_6.opt0 + ' ' + prefs[emu].name
-			);
-			$('#emuAppMenu_6 .opt1').text(
-				lang.emuAppMenu_6.opt1 + ' ' + prefs[emu].name
-			);
-		} else if (state == 'emptyGameLibMenu_6') {
-			$('#emptyGameLibMenu_6 .opt1').text(
-				lang.emptyGameLibMenu_6.opt1 + ' ' +
-				prefs[emu].name
-			);
-			let note = '';
-			if (syst.gameExts) {
-				// 'Game files must have the file extension'
-				note += lang.emptyGameLibMenu_6.msg1_0 + ': ';
-			}
-			for (let i in syst.gameExts) {
-				note += '.' + syst.gameExts[i];
-				if (i != syst.gameExts.length - 1) {
-					note += ', ';
-				}
-				if (i == syst.gameExts.length - 2) {
-					// 'or '
-					note += lang.emptyGameLibMenu_6.msg1_1 + ' ';
-				}
-			}
-			// "If you don't have any
-			note += '\n' + lang.emptyGameLibMenu_6.msg1_2 + ' ';
-			// games yet you might want to install the
-			note += syst.name + ' ' + lang.emptyGameLibMenu_6.msg1_3;
-			note += ' ' + prefs[emu].name + ' ';
-			// emulator app first."
-			note += lang.emptyGameLibMenu_6.msg1_4;
-			$('#emptyGameLibMenu_6 .msg1').text(note);
-		} else if (state == 'saveStateMenu_11' ||
-			state == 'loadStateMenu_11') {
-
-			let $slots = $('#' + state + ' .cui');
-			let states = launcher.cfg.saveStates;
-			for (let i = 0; i < $slots.length; i++) {
-				let txt = i + ' ';
-				if (states && states[i]) {
-					txt += states[i].date;
-				} else {
-					txt += 'empty slot';
-				}
-				$slots.eq(i).text(txt);
-			}
-		}
-
-		function adjust(flip) {
-			if (flip && $('nav.fixed-top').find('#nav1Btn').length) {
-				$('#nav3').css({
-					'border-radius': '0 0 0 32px',
-					'border-width': '0 0 8px 0'
-				}).appendTo('nav.fixed-top');
-				$('#nav1').css({
-					'border-radius': '32px 0 0 0',
-					'border-width': '8px 0 0 0'
-				}).appendTo('nav.fixed-bottom');
-			} else if (!flip && $('nav.fixed-top').find('#nav3Btn').length) {
-				$('#nav3').css({
-					'border-radius': '32px 0 0 0',
-					'border-width': '8px 0 0 0'
-				}).appendTo('nav.fixed-bottom');
-				$('#nav1').css({
-					'border-radius': '0 0 0 32px',
-					'border-width': '0 0 8px 0'
-				}).appendTo('nav.fixed-top');
-			}
-		}
-		let buttons = ['X', 'Y', 'B'];
-		if ((/(xbox|arcade)/i).test(subState)) {
-			buttons = ['Y', 'X', 'B'];
-			adjust(true);
-		} else if ((/ps/i).test(subState)) {
-			buttons = ['', '', ''];
-			adjust(true);
-		} else {
-			adjust(false);
-		}
-
-		if (!(cui.gamepadConnected || cui.gca.connected) || !subState) {
-			return;
-		}
-		$('#nav0Btn span').text(buttons[0]);
-		$('#nav2Btn span').text(buttons[1]);
-		$('#nav3Btn span').text(buttons[2]);
-	}
-
-	cui.afterChange = async () => {
-		if (cui.uiPrev == 'loading_1' && cui.ui == 'libMain' && prefs.session[sys] && prefs.session[sys].gameID) {
-			let $cur = $('#' + prefs.session[sys].gameID).eq(0);
-			if (!$cur.length) $cur = $('#' + games[0].id).eq(0);
-			cui.makeCursor($cur);
-			cui.scrollToCursor(250, 0);
-		}
-		if (cui.ui == 'boxOpenMenu_2') {
-			cui.makeCursor($('#gameMedia'));
-		} else if (cui.uiPrev == 'boxSelect_1' && cui.ui == 'libMain') {
-			changeImageResolution(cui.getCur());
-		} else if (cui.ui == 'emuAppMenu_6') {
-			$('body > :not(#dialogs)').removeClass('dim');
-			cui.clearDialogs();
-		} else if (cui.ui == 'gameMediaSelect_3') {
-			$('#boxOpenMenu_2').show();
-		}
-	}
-
 	cui.clearDialogs = () => {
 		$('#loadDialog0').text('');
 		$('#loadDialog1').text('');
@@ -540,35 +395,6 @@ module.exports = async function(arg) {
 	cui.hideDialogs = () => {
 		$('#dialogs').hide();
 		cui.clearDialogs();
-	}
-
-	cui.onHeldAction = (act, timeHeld) => {
-		if (timeHeld < 2000) {
-			return;
-		}
-		// log(act + ' held for ' + timeHeld);
-		if (launcher.state == 'running') {
-			if (
-				launcher.jsEmu &&
-				act == prefs.inGame.pause.hold &&
-				timeHeld > prefs.inGame.pause.time
-			) {
-				cui.doAction('pause');
-			} else if (
-				act == prefs.inGame.quit.hold &&
-				timeHeld > prefs.inGame.quit.time
-			) {
-				log('shutting down emulator');
-				launcher.close();
-			} else if (
-				act == prefs.inGame.reset.hold &&
-				timeHeld > prefs.inGame.reset.time
-			) {
-				log('resetting emulator');
-				launcher.reset();
-				return true;
-			}
-		}
 	}
 
 	async function createTemplate() {
@@ -645,16 +471,16 @@ module.exports = async function(arg) {
 		}
 	}
 
-	function fitCoverToScreen($cur) {
-		let $reel = $cur.parent();
+	function fitCoverToScreen($cursor) {
+		let $reel = $cursor.parent();
 		let $menu = $reel.parent();
 		let idx = $menu.children().index($reel);
-		let scale = $(window).height() / $cur.height();
-		$menu[0].style.transform = `scale(${scale}) translate(${-($reel.width()*idx + $cur.width()*.5 - $(window).width()*.5)}px, 0)`;
+		let scale = $(window).height() / $cursor.height();
+		$menu[0].style.transform = `scale(${scale}) translate(${-($reel.width()*idx + $cursor.width()*.5 - $(window).width()*.5)}px, 0)`;
 	}
 
-	async function changeImageResolution($cur, changeToFullRes) {
-		let $images = $cur.find('img');
+	async function changeImageResolution($cursor, changeToFullRes) {
+		let $images = $cursor.find('img');
 		for (let i = 0; i < 4; i += 2) {
 			if ($images.eq(i).hasClass('hide')) continue;
 			if ((changeToFullRes &&
@@ -701,22 +527,22 @@ module.exports = async function(arg) {
 		}
 	}
 
-	cui.beforeMove = ($cur, state) => {
+	cui.beforeMove = ($cursor, state) => {
 		if (state == 'boxSelect_1') {
-			changeImageResolution($cur);
+			changeImageResolution($cursor);
 		}
 	}
 
-	cui.afterMove = ($cur, state) => {
+	cui.afterMove = ($cursor, state) => {
 		if (state == 'boxSelect_1') {
-			changeImageResolution($cur, 'full');
-			fitCoverToScreen($cur);
-			cui.makeCursor($cur, 'libMain');
+			changeImageResolution($cursor, 'full');
+			fitCoverToScreen($cursor);
+			cui.makeCursor($cursor, 'libMain');
 		}
 	}
 
 	function getCurGame() {
-		let id = cui.getCur('libMain').attr('id');
+		let id = cui.getCursor('libMain').attr('id');
 		if (/^_TEMPLATE/.test(id)) return;
 		let game = games.find(x => x.id === id);
 		if (game && game.file) {
@@ -752,219 +578,24 @@ module.exports = async function(arg) {
 		cui.change('libMain');
 	}
 
-	cui.onAction = async function(act) {
-		let ui = cui.ui;
-		let $cur = cui.getCur();
-		if (act == 'a' || act == 'enter') {
-			act = $cur.attr('name') || 'a';
+
+
+	quit() {
+		cui.opt.haptic = false;
+		// don't try to sync saves on quit
+		// if there was an error
+		// if developing nostlan
+		// if user is not a patreon supporter
+		if (ui != 'alertMenu_9999' && !arg.dev && premium.verify()) {
+			await saveSync('quit');
 		}
-		log(act + ' on ' + ui);
-		if (act == 'quit') {
-			cui.opt.haptic = false;
-			// don't try to sync saves on quit
-			// if there was an error
-			// if developing nostlan
-			// if user is not a patreon supporter
-			if (ui != 'alertMenu_9999' && !arg.dev && premium.verify()) {
-				await saveSync('quit');
-			}
-			// save the prefs file
-			if (prefs.nlaDir) await prefsMng.save(prefs);
-			app.quit();
-			return;
-		}
-		if (launcher.state == 'running') {
-			if (launcher.jsEmu) {
-				if (ui == 'playing_4') {
-					if (act == 'pause') {
-						log('pausing emulation');
-						launcher.pause();
-					}
-				}
-			}
-			return;
-		}
-		let isBtn = cui.isButton(act);
-		let onMenu = /menu/i.test(ui);
-		let onSelect = /select/i.test(ui);
+		// save the prefs file
+		if (prefs.nlaDir) await prefsMng.save(prefs);
+		app.quit();
+	}
 
-		// letter by letter search for game
-		if (/key-./.test(act)) {
-			if (cui.ui != 'libMain') return;
-			if (searchTimeout == 0) {
-				searchTerm = '';
-			}
-			searchTimeout = 2000;
-			let char = act.slice(4);
-			searchTerm += char;
-			log('search for: ' + searchTerm);
-			for (let game of games) {
-				let titleSlice = game.title.slice(0, searchTerm.length);
-				let matched = (searchTerm == titleSlice.toLowerCase());
-				if (game.keywords) {
-					for (let keyword of game.keywords) {
-						if (searchTerm == keyword.toLowerCase()) matched = true;
-					}
-				}
-				if (matched) {
-					let $cur = $('#' + game.id).eq(0);
-					if (!$cur.length) continue;
-					log('cursor to game: ' + game.title);
-					cui.makeCursor($cur);
-					cui.scrollToCursor();
-					break;
-				}
-			}
-			return;
-		}
-
-		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
-			if ($cur.hasClass('cui-disabled')) return false;
-			if (syst.emus.length > 1) {
-				cui.change('playMenu_5');
-			} else {
-				$('body > :not(#dialogs)').addClass('dim');
-				await launcher.launch(getCurGame());
-			}
-			return;
-		}
-		if (act == 'start' && cui.getLevel(ui) < 10) {
-			cui.change('nostlanMenu_10');
-		} else if (act == 'b' && (onMenu || onSelect) &&
-			ui != 'donateMenu' && ui != 'setupMenu_1' &&
-			ui != 'pauseMenu_10' && cui.getParent() != 'loading_1') {
-			cui.doAction('back');
-		} else if (act == 'select') {
-			$('nav').toggleClass('hide');
-			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu_12 .cui[name="toggleCover"] .text');
-			if (!prefs.ui.autoHideCover) {
-				cui.resize(true);
-				$elem.text(lang.interfaceMenu_12.opt1[0]);
-			} else {
-				$elem.text(lang.interfaceMenu_12.opt1[1]);
-			}
-		} else if (ui == 'libMain') {
-			if (act == 'b' && !onMenu) {
-				cui.change('sysMenu_5');
-			}
-			if ($cur.hasClass('cui-disabled')) return false;
-			if (act == 'y') {
-				cui.change('emuMenu_5');
-			} else if (act == 'a' || !isBtn) {
-				let gameSys = $cur.attr('class');
-				if (gameSys) gameSys = gameSys.split(/\s+/)[0];
-				fitCoverToScreen($cur);
-				cui.scrollToCursor(500, 0);
-				cui.change('boxSelect_1', gameSys);
-			}
-		} else if (ui == 'boxSelect_1') {
-			if ($cur.hasClass('cui-disabled')) return false;
-
-			if ((act == 'a' || !isBtn) && $cur[0].id != cui.getCur('libMain')[0].id) {
-				fitCoverToScreen($cur);
-				cui.makeCursor($cur, 'libMain');
-				cui.scrollToCursor();
-			} else if ((act == 'a' || !isBtn) && $cur.attr('class') &&
-				(await scraper.getExtraImgs(themes[$cur.attr('class').split(/\s+/)[0] || sysStyle].template))) {
-				// TODO finish open box menus for all systems
-				let game = getCurGame();
-				if (!game) return;
-				let template = themes[game.sys || sys].template;
-
-				$('#gameManual').prop('src', '');
-				$('#gameMedia').prop('src', '');
-				$('#gameMemory').prop('src', '');
-				$('#gameBoxOpenMask').prop('src', '');
-				$('#gameWiki').html('');
-
-				$('#gameBoxOpen').prop('src', await scraper.imgExists(template, 'boxOpen'));
-				$('#gameBoxOpenMask').prop('src',
-					await scraper.imgExists(template, 'boxOpenMask'));
-				$('#gameMemory').prop('src', await scraper.imgExists(template, 'memory'));
-				$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
-				$('#gameWiki').html();
-				themes.loadGameWiki(getCurGame());
-
-				let mediaImg = await scraper.imgExists(game, syst.mediaType);
-				if (!mediaImg) {
-					mediaImg = await scraper.getImg(template, syst.mediaType);
-				}
-				if (!mediaImg && syst.mediaType == 'disc') {
-					mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
-				}
-				$('#gameMedia').prop('src', mediaImg);
-				cui.change('boxOpenMenu_2');
-				$('#libMain').hide();
-			} else if (act == 'y') { // flip
-				let ogHeight = $cur.height();
-				await flipGameBox($cur);
-				if (Math.abs(ogHeight - $cur.height()) > 10) {
-					cui.resize();
-					cui.scrollToCursor(0, 0);
-				}
-			}
-		} else if (ui == 'boxOpenMenu_2') {
-			if (act == 'x') act = 'manual';
-			if (act == 'y') act = 'memory';
-			if (act == 'a') act = 'media';
-			if (!(/(memory|manual|media)/gi).test(act)) return;
-			act = act[0].toUpperCase() + act.slice(1);
-			act = 'game' + act;
-			$('#boxOpenMenu_2').addClass('zoom-' + act);
-			cui.change(act + 'Select_3');
-		} else if (ui == 'gameMediaSelect_3') {
-			if (act == 'a' || act == 'media') {
-				if (syst.emus.length > 1) {
-					cui.change('playMenu_5');
-				} else {
-					$('body > :not(#dialogs)').addClass('dim');
-					await launcher.launch(getCurGame());
-				}
-			} else if (act == 'x') { // file
-				opn(path.parse(getCurGame().file).dir);
-			} else if (act == 'y') { // imgdir
-				opn(await scraper.getImgDir(getCurGame()));
-			}
-		} else if (ui == 'sysMenu_5' && !isBtn) {
-			// if (!emu) {
-			// 	return;
-			// }
-			cui.removeView('libMain');
-			sys = act;
-			syst = systems[sys];
-			cui.removeCursor();
-			await loadGameLib();
-		} else if (ui == 'controllerMenu_12') {
-			if (act == 'info') {
-				cui.change('controInfoMenu_13');
-			} else if (act == 'rumble') {
-				prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
-				cui.opt.haptic = prefs.ui.gamepad.haptic;
-				let $rumble = $('#controllerMenu_12 .cui[name="rumble"] .text');
-				if (prefs.ui.gamepad.haptic) {
-					log('rumble enabled');
-					$rumble.text(lang.controllerMenu_12.opt1[0]);
-				} else {
-					log('rumble disabled');
-					$rumble.text(lang.controllerMenu_12.opt1[1]);
-				}
-			} else if (/prof/.test(act)) {
-				let type = 'xbox_ps';
-				if (act == 'prof1') type = 'nintendo';
-				if (act == 'prof2') type = 'other';
-				let prof = prefs.ui.gamepad[type].profile;
-				if (prof == 'adaptive') {
-					prof = 'constant';
-				} else if (prof == 'constant') {
-					prof = 'none';
-				} else if (prof == 'none') {
-					prof = 'adaptive';
-				}
-				prefs.ui.gamepad[type].profile = prof;
-				$(`#controllerMenu_12 .cui[name="${act}"]`).text(prof);
-			}
-		} else if (ui == 'interfaceMenu_12') {
+	cui.boxSelect_1.onAction(act, $cur) {
+		if (ui == 'interfaceMenu_12') {
 			if (act == 'toggleCover') {
 				cui.buttonPressed('select');
 			} else if (act == 'theme') {
@@ -1295,7 +926,7 @@ module.exports = async function(arg) {
 	cui.click($('#nav2'), 'y');
 	cui.click($('#nav3'), 'b');
 
-	async function editImgSrc($cur, $img, game, name) {
+	async function editImgSrc($cursor, $img, game, name) {
 		if (!game) return;
 		let img = await scraper.imgExists(game, name);
 		// log(img);
@@ -1308,12 +939,12 @@ module.exports = async function(arg) {
 		let $elems;
 		if (prevClass && prevClass != 'hide') {
 			$elems = [
-				$cur.find('.hq.' + prevClass)
+				$cursor.find('.hq.' + prevClass)
 			];
 		} else {
 			$elems = [
-				$cur.find('section'),
-				$cur.find('section img.hq')
+				$cursor.find('section'),
+				$cursor.find('section img.hq')
 			];
 		}
 		for (let $elem of $elems) {
@@ -1323,62 +954,62 @@ module.exports = async function(arg) {
 		return img;
 	}
 
-	async function flipGameBox($cur) {
+	async function flipGameBox($cursor) {
 		let game = getCurGame();
 		let template = themes[game.sys || sys].template;
-		if (!$cur.hasClass('flip')) {
-			$cur.addClass('flip');
-			let $box = $cur.find('.box.hq').eq(0);
-			if (!(await editImgSrc($cur, $box, game, 'boxBack'))) {
-				if (!(await editImgSrc($cur, $box, template, 'boxBack'))) {
-					await editImgSrc($cur, $box, template, 'box');
+		if (!$cursor.hasClass('flip')) {
+			$cursor.addClass('flip');
+			let $box = $cursor.find('.box.hq').eq(0);
+			if (!(await editImgSrc($cursor, $box, game, 'boxBack'))) {
+				if (!(await editImgSrc($cursor, $box, template, 'boxBack'))) {
+					await editImgSrc($cursor, $box, template, 'box');
 				}
 			} else {
 				return;
 			}
-			$cur.find('.shade').removeClass('hide');
-			let $cover = $cur.find('img.cover.hq');
+			$cursor.find('.shade').removeClass('hide');
+			let $cover = $cursor.find('img.cover.hq');
 			if (!$cover.length) {
-				$cover = $cur.find('img.coverFull.hq');
+				$cover = $cursor.find('img.coverFull.hq');
 				if ($cover.length) {
 					$cover.eq(0).removeClass('hide');
 					return;
 				}
-				$cover = $cur.find('section img.hq');
+				$cover = $cursor.find('section img.hq');
 			}
 			$cover = $cover.eq(0);
 			for (let name of ['coverFull', 'coverBack']) {
 				for (let g of [game, template]) {
-					if (await editImgSrc($cur, $cover, g, name)) break;
+					if (await editImgSrc($cursor, $cover, g, name)) break;
 				}
 			}
 			$cover.removeClass('hide');
 		} else {
-			$cur.removeClass('flip');
-			let $box = $cur.find('img.boxBack.hq');
+			$cursor.removeClass('flip');
+			let $box = $cursor.find('img.boxBack.hq');
 			log($box);
-			if (!$box.length) $box = $cur.find('img.box.hq');
+			if (!$box.length) $box = $cursor.find('img.box.hq');
 			if (!$box.length) return;
 			$box = $box.eq(0);
 			log($box);
 			let hasBox = true;
 			for (let g of [game, template]) {
-				if (await editImgSrc($cur, $box, g, 'box')) break;
+				if (await editImgSrc($cursor, $box, g, 'box')) break;
 				hasBox = false;
 			}
-			if ((game.sys || sys) != 'switch') $cur.find('.shade').addClass('hide');
-			let $cover = $cur.find('img.coverBack.hq');
-			if (!$cover.length) $cover = $cur.find('img.coverFull.hq');
-			if (!$cover.length) $cover = $cur.find('section img.hq');
+			if ((game.sys || sys) != 'switch') $cursor.find('.shade').addClass('hide');
+			let $cover = $cursor.find('img.coverBack.hq');
+			if (!$cover.length) $cover = $cursor.find('img.coverFull.hq');
+			if (!$cover.length) $cover = $cursor.find('section img.hq');
 			$cover = $cover.eq(0);
 			if (hasBox) {
 				$cover.addClass('hide');
 			} else {
 				let name = '';
 				for (name of ['coverFull', 'cover']) {
-					if (await editImgSrc($cur, $cover, game, name)) break;
+					if (await editImgSrc($cursor, $cover, game, name)) break;
 				}
-				if (name == 'coverFull') $cur.find('.shade').removeClass('hide');
+				if (name == 'coverFull') $cursor.find('.shade').removeClass('hide');
 			}
 		}
 	}

@@ -13,11 +13,11 @@
 		"err0": "誤ったメンバー・パスワード",
 		"msg0": "この機能にアクセスするには、 Patreon メンバーである必要があります。  Nostlan を再始動し、メンバーのバージョン化パスワードを入力します。"
 	},
-	"checkDonationMenu_1": {
+	"checkDonationMenu": {
 		"opt0": "確認パスワード",
 		"opt1": "私はまだメンバーではありません"
 	},
-	"setupMenu_1": {
+	"setupMenu": {
 		"opt0": "~\/Documents\/emu にインストールする",
 		"opt1": "インストール場所の選択",
 		"opt2": "セットアップの終了",
@@ -30,22 +30,22 @@
 		"nav3Lbl": "システム",
 		"err0": "ゲームが見つからない"
 	},
-	"boxSelect_1": {
+	"boxSelect": {
 		"nav0Lbl": "プレイ",
 		"nav2Lbl": "フリップ",
 		"nav3Lbl": "バック"
 	},
-	"boxOpenMenu_2": {
+	"boxOpenMenu": {
 		"nav0Lbl": "マニュアル",
 		"nav2Lbl": "メモリー",
 		"nav3Lbl": "バック"
 	},
-	"gameMediaSelect_3": {
+	"gameMediaSelect": {
 		"nav0Lbl": "ファイル ( )",
 		"nav2Lbl": "イメージ・フォルダー",
 		"nav3Lbl": "バック"
 	},
-	"nostlanMenu_10": {
+	"nostlanMenu": {
 		"title0": "メインメニュー",
 		"nav0Lbl": "出口",
 		"nav2Lbl": "最小化",
@@ -61,7 +61,7 @@
 		"opt7": "ヘルプ",
 		"opt8": "設定メニュー"
 	},
-	"settingsMenu_11": {
+	"settingsMenu": {
 		"title0": "設定メニュー",
 		"opt0": "外観の変更",
 		"opt1": "コントローラー設定",
@@ -69,7 +69,7 @@
 		"opt3": "設定の編集",
 		"opt4": "言語メニュー"
 	},
-	"gameLibMenu_11": {
+	"gameLibMenu": {
 		"title0": "ゲームコレクションメニュー",
 		"opt0": "新しいゲームを加える",
 		"opt1": "ゲームを特定する ( すぐに来る )",
@@ -77,34 +77,34 @@
 		"opt3": "画像の検索 ( すぐに来る )",
 		"opt4": "情報"
 	},
-	"gameLibInfoMenu_12": {
+	"gameLibInfoMenu": {
 		"opt0": "背面"
 	},
-	"controllerMenu_12": {
+	"controllerMenu": {
 		"title0": "ガムパード設定",
 		"opt0": "情報",
 		"opt1": ["振動を消す", "振動をオンにする"],
 		"prof2Lbl": "その他"
 	},
-	"controInfoMenu_13": {
+	"controInfoMenu": {
 		"opt0": "背面"
 	},
-	"addSavesPathMenu_2": {
+	"addSavesPathMenu": {
 		"opt0": "加える",
 		"err0": "必要なバックアップの名前と数",
 		"err1": "1 バックアップの保管が必要",
 		"err2": "無効なフォルダーです",
 		"msg0": "保存同期ロケーションの選択"
 	},
-	"interfaceMenu_12": {
+	"interfaceMenu": {
 		"title0": "外観の変更",
 		"opt0": "テーマの変更",
 		"opt1": ["オーバーレイの表示ボタン", "オーバーレイボタンの表示"]
 	},
-	"themeMenu_13": {
+	"themeMenu": {
 		"title0": "テーマの変更"
 	},
-	"sysMenu_5": {
+	"sysMenu": {
 		"title0": "システムの選択",
 		"msg0": "ゲームコレクションは存在しません",
 		"msg1": "ゲームコレクションにゲームファイルがない",
@@ -115,16 +115,16 @@
 		"msg5": "ゲーム・ファイルにはファイル拡張子が必要です",
 		"msg6": "又は"
 	},
-	"playMenu_5": {
+	"playMenu": {
 		"title0": "ゲームのプレイ"
 	},
-	"emuMenu_5": {
+	"emuMenu": {
 		"title0": "エミュレーター・メニュー",
 		"msg0": "構成",
 		"msg1": "アップデート",
 		"msg3": "インストール"
 	},
-	"loading_1": {
+	"loading": {
 		"msg0_0": "ロード",
 		"msg0_1": "ゲームライブラリ",
 		"msg0": "追加イメージのロード",

@@ -5,19 +5,19 @@ class CuiState {
 			let res = await this.installEmuApp();
 			if (!res) return;
 			// 'Success!' 'Installed'
-			cui.alert(lang.emuAppMenu_6.msg11 + ' ' +
-				prefs[emu].name, lang.alertMenu_9999.title0,
+			cui.alert(lang.emuAppMenu.msg11 + ' ' +
+				prefs[emu].name, lang.alertMenu.title0,
 				'doubleBack');
 		} else if (act == 'find') {
 			// 'Select emulator app'
 			let emuApp = await dialog.selectFile(
-				lang.playing_4.msg0);
+				lang.playing.msg0);
 			if (mac) {
 				emuApp = await nostlan.launcher.getMacExec(emuApp);
 			}
 			if (!(await fs.exists(emuApp))) {
 				// 'Emulator app not found at'
-				cui.err(lang.playing_4.err1 + ': ' + emuApp);
+				cui.err(lang.playing.err1 + ': ' + emuApp);
 				return;
 			}
 			prefs[emu].app = emuApp;
@@ -44,11 +44,11 @@ class CuiState {
 	}
 
 	async onChange() {
-		$('#emuAppMenu_6 .opt0').text(
-			lang.emuAppMenu_6.opt0 + ' ' + prefs[emu].name
+		$('#emuAppMenu .opt0').text(
+			lang.emuAppMenu.opt0 + ' ' + prefs[emu].name
 		);
-		$('#emuAppMenu_6 .opt1').text(
-			lang.emuAppMenu_6.opt1 + ' ' + prefs[emu].name
+		$('#emuAppMenu .opt1').text(
+			lang.emuAppMenu.opt1 + ' ' + prefs[emu].name
 		);
 	}
 

@@ -1,5 +1,6 @@
 class CuiState {
 	async onAction(act) {
+		if (!systems[act]) return;
 		cui.removeView('libMain');
 		sys = act;
 		syst = systems[sys];

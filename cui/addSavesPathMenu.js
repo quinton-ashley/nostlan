@@ -8,22 +8,22 @@ class CuiState {
 			}
 			if (!save.name || !save.backups) {
 				// name and number of backups required
-				cui.err(lang.addSavesPathMenu_2.err0);
+				cui.err(lang.addSavesPathMenu.err0);
 				return;
 			}
 			save.backups = Number(save.backups);
 			if (save.backups < 1) {
 				// '1 save backup required'
-				cui.err(lang.addSavesPathMenu_2.err1);
+				cui.err(lang.addSavesPathMenu.err1);
 				return;
 			}
 			// 'Select a save sync location'
-			let msg = lang.addSavesPathMenu_2.msg0;
+			let msg = lang.addSavesPathMenu.msg0;
 			save.dir = await dialog.selectDir(msg);
 
 			if (!(await fs.exists(save.dir))) {
 				// 'Not a valid folder'
-				cui.err(lang.addSavesPathMenu_2.err2);
+				cui.err(lang.addSavesPathMenu.err2);
 				return;
 			}
 			if (!prefs.saves) prefs.saves = [];

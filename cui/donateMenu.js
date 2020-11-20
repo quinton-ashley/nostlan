@@ -2,7 +2,7 @@ class CuiState {
 
 	async onAction(act) {
 		if (act == 'verify') {
-			cui.change('checkDonationMenu_1');
+			cui.change('checkDonationMenu');
 		} else if (act == 'patreon') {
 			opn('https://www.patreon.com/nostlan');
 		} else if (act == 'remind') {

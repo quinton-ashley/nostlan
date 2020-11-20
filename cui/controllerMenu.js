@@ -2,17 +2,17 @@ class CuiState {
 
 	async onAction(act) {
 		if (act == 'info') {
-			cui.change('controInfoMenu_13');
+			cui.change('controInfoMenu');
 		} else if (act == 'rumble') {
 			prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
 			cui.opt.haptic = prefs.ui.gamepad.haptic;
-			let $rumble = $('#controllerMenu_12 .cui[name="rumble"] .text');
+			let $rumble = $('#controllerMenu .cui[name="rumble"] .text');
 			if (prefs.ui.gamepad.haptic) {
 				log('rumble enabled');
-				$rumble.text(lang.controllerMenu_12.opt1[0]);
+				$rumble.text(lang.controllerMenu.opt1[0]);
 			} else {
 				log('rumble disabled');
-				$rumble.text(lang.controllerMenu_12.opt1[1]);
+				$rumble.text(lang.controllerMenu.opt1[1]);
 			}
 		} else if (/prof/.test(act)) {
 			let type = 'xbox_ps';
@@ -27,7 +27,7 @@ class CuiState {
 				prof = 'adaptive';
 			}
 			prefs.ui.gamepad[type].profile = prof;
-			$(`#controllerMenu_12 .cui[name="${act}"]`).text(prof);
+			$(`#controllerMenu .cui[name="${act}"]`).text(prof);
 		}
 	}
 }

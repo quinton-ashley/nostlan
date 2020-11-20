@@ -5,13 +5,13 @@ class CuiState {
 		let fullRescan = (act == 'rescanGameLib');
 		if (act == 'scanForGames' || recheckImgs || fullRescan) {
 			cui.removeView('libMain');
-			cui.change('loading_1');
+			cui.change('loading');
 			await cui.loading.intro();
 			if (!recheckImgs) {
 				if (!fullRescan) {
-					games = await scan.gameLib(games);
+					games = await nostlan.scan.gameLib(games);
 				} else {
-					games = await scan.gameLib();
+					games = await nostlan.scan.gameLib();
 				}
 			}
 			await viewerLoad(recheckImgs);
@@ -19,12 +19,12 @@ class CuiState {
 			cui.change('libMain');
 			cui.scrollToCursor(0);
 		} else if (act == 'info') {
-			cui.change('gameLibInfoMenu_12');
+			cui.change('gameLibInfoMenu');
 		} else if (act == 'identifyGames' || act == 'imageSearch') {
 			// "This option is not available yet!"
 			// "Not Implemented"
-			cui.alert(lang.alertMenu_9999.msg0,
-				lang.alertMenu_9999.title4);
+			cui.alert(lang.alertMenu.msg0,
+				lang.alertMenu.title4);
 		}
 	}
 }

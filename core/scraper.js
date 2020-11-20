@@ -161,7 +161,7 @@ class Scraper {
 				await this.getImg(game, 'boxSide');
 				if (!(await this.imgExists(game, 'box'))) {
 					cui.err('ERROR: No default box image found in the directory ' +
-						await this.getImgDir(game), 404, 'sysMenu_5');
+						await this.getImgDir(game), 404, 'sysMenu');
 					return [];
 				}
 			}

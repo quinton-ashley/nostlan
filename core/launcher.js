@@ -69,7 +69,7 @@ class Launcher {
 				});
 			} catch (ror) {
 				// 'Incorrect path to emulator app directory. Delete or edit your user preferences file.'
-				await cui.err(lang.playing_4.err0 + ' ' + ror, '406');
+				await cui.err(lang.playing.err0 + ' ' + ror, '406');
 			}
 			if (!prefs[emu].appRegex) return;
 			let regex = new RegExp(prefs[emu].appRegex, 'i');
@@ -95,7 +95,7 @@ class Launcher {
 		opt = opt || {};
 		$('#dialogs').show();
 		// 'launching'
-		$('#loadDialog0').text(lang.playing_4.msg4 + ' ' + prefs[emu].name);
+		$('#loadDialog0').text(lang.playing.msg4 + ' ' + prefs[emu].name);
 		if (game && game.id) {
 			identify = false;
 			log(game.id);
@@ -106,7 +106,7 @@ class Launcher {
 
 		let emuApp = await this.getEmuApp();
 		if (!emuApp) {
-			cui.change('emuAppMenu_6');
+			cui.change('emuAppMenu');
 			return;
 		}
 
@@ -134,7 +134,7 @@ class Launcher {
 				cfg.bios = util.absPath(cfg.bios);
 				if (!(await fs.exists(cfg.bios))) {
 					// "This emulator requires system bios file(s)"
-					cui.err(lang.playMenu_5.err + ': ' + cfg.bios);
+					cui.err(lang.playMenu.err + ': ' + cfg.bios);
 					return;
 				}
 			}
@@ -236,7 +236,7 @@ class Launcher {
 			$('nav').hide();
 			cui.clearDialogs();
 			$('#libMain').hide();
-			$('#boxOpenMenu_2').hide();
+			$('#boxOpenMenu').hide();
 			this.state = 'running';
 			return;
 		}
@@ -317,14 +317,14 @@ class Launcher {
 		if (game && game.id || emu == 'mame') {
 			await cui.change('playing_4');
 			$('#libMain').hide();
-			$('#boxOpenMenu_2').hide();
+			$('#boxOpenMenu').hide();
 			// 'Starting'
-			$('#loadDialog0').text(`${lang.playing_4.msg1} ${prefs[emu].name}`);
+			$('#loadDialog0').text(`${lang.playing.msg1} ${prefs[emu].name}`);
 			// `To close the emulator, press and hold the
 			// ${btn} button for ${time} seconds`
-			$('#loadDialog1').text(lang.playing_4.msg2_0 +
-				` "${prefs.inGame.quit.hold}" ` + lang.playing_4.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
-				' ' + lang.playing_4.msg2_2
+			$('#loadDialog1').text(lang.playing.msg2 +
+				` "${prefs.inGame.quit.hold}" ` + lang.playing.msg2 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
+				' ' + lang.playing.msg2
 			);
 			if (game) $('#loadDialog2').text(game.title);
 		}
@@ -337,13 +337,13 @@ class Launcher {
 			// 'Unfortunately only one app at a time can be
 			// connected to your Gamecube Controller
 			// Adapter.  Nostlan will quit.'
-			$('#loadDialog1').text(lang.playing_4.msg3);
+			$('#loadDialog1').text(lang.playing.msg3);
 			await delay(2000);
 			await cui.doAction('quit');
 			return;
 		}
 
-		if (kb && cui.ui == 'playing_4') {
+		if (kb && cui.ui == 'playing') {
 			let combos = prefs[emu].fullscreenKeyCombo;
 			if (combos) {
 				// delay through emulator app start
@@ -495,7 +495,7 @@ class Launcher {
 	pause() {
 		this.state = 'paused';
 		this.jsEmu.executeJavaScript('jsEmu.pause();');
-		cui.change('pauseMenu_10');
+		cui.change('pauseMenu');
 		$('nav').show();
 		$('body > :not(#dialogs)').removeClass('dim');
 	}
@@ -535,7 +535,7 @@ class Launcher {
 			}
 			cui.hideDialogs();
 			log('exited with code ' + code);
-			if (cui.ui == 'playing_4') {
+			if (cui.ui == 'playing') {
 				// only one app at a time can be connected to the gca
 				if (cui.gca.connected) cui.gca.start();
 				await cui.doAction('back');
@@ -550,7 +550,7 @@ class Launcher {
 			// Search the internet for instructions on how to
 			// fully setup ${app}`
 			let erMsg = '<p>' + prefs[emu].name + ' ' +
-				lang.playing_4.err2 + ' ' +
+				lang.playing.err2 + ' ' +
 				`${prefs[emu].name}.</p>\n`;
 			erMsg += '<textarea rows=8>';
 			for (let i in this.cmdArgs) {

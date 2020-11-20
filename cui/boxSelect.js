@@ -4,16 +4,18 @@ class CuiState {
 		let $cursor = cui.getCursor();
 		if ($cursor.hasClass('cui-disabled')) return false;
 
+		let isBtn = cui.isButton(act);
+
 		if ((act == 'a' || !isBtn) && $cursor[0].id != cui.getCursor('libMain')[0].id) {
 			this.fitCoverToScreen($cursor);
 			cui.makeCursor($cursor, 'libMain');
 			cui.scrollToCursor();
 		} else if ((act == 'a' || !isBtn) && $cursor.attr('class') &&
-			(await scraper.getExtraImgs(themes[$cursor.attr('class').split(/\s+/)[0] || sysStyle].template))) {
+			(await nostlan.scraper.getExtraImgs(nostlan.themes[$cursor.attr('class').split(/\s+/)[0] || sysStyle].template))) {
 			// TODO finish open box menus for all systems
 			let game = cui.libMain.getCurGame();
 			if (!game) return;
-			let template = themes[game.sys || sys].template;
+			let template = nostlan.themes[game.sys || sys].template;
 
 			$('#gameManual').prop('src', '');
 			$('#gameMedia').prop('src', '');
@@ -21,23 +23,23 @@ class CuiState {
 			$('#gameBoxOpenMask').prop('src', '');
 			$('#gameWiki').html('');
 
-			$('#gameBoxOpen').prop('src', await scraper.imgExists(template, 'boxOpen'));
+			$('#gameBoxOpen').prop('src', await nostlan.scraper.imgExists(template, 'boxOpen'));
 			$('#gameBoxOpenMask').prop('src',
-				await scraper.imgExists(template, 'boxOpenMask'));
-			$('#gameMemory').prop('src', await scraper.imgExists(template, 'memory'));
-			$('#gameManual').prop('src', await scraper.imgExists(template, 'manual'));
+				await nostlan.scraper.imgExists(template, 'boxOpenMask'));
+			$('#gameMemory').prop('src', await nostlan.scraper.imgExists(template, 'memory'));
+			$('#gameManual').prop('src', await nostlan.scraper.imgExists(template, 'manual'));
 			$('#gameWiki').html();
-			themes.loadGameWiki(cui.libMain.getCurGame());
+			nostlan.themes.loadGameWiki(cui.libMain.getCurGame());
 
-			let mediaImg = await scraper.imgExists(game, syst.mediaType);
+			let mediaImg = await nostlan.scraper.imgExists(game, syst.mediaType);
 			if (!mediaImg) {
-				mediaImg = await scraper.getImg(template, syst.mediaType);
+				mediaImg = await nostlan.scraper.getImg(template, syst.mediaType);
 			}
 			if (!mediaImg && syst.mediaType == 'disc') {
 				mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
 			}
 			$('#gameMedia').prop('src', mediaImg);
-			cui.change('boxOpenMenu_2');
+			cui.change('boxOpenMenu');
 			$('#libMain').hide();
 		} else if (act == 'y') { // flip
 			let ogHeight = $cursor.height();
@@ -79,7 +81,7 @@ class CuiState {
 
 	async flipGameBox($cursor) {
 		let game = cui.libMain.getCurGame();
-		let template = themes[game.sys || sys].template;
+		let template = nostlan.themes[game.sys || sys].template;
 		if (!$cursor.hasClass('flip')) {
 			$cursor.addClass('flip');
 			let $box = $cursor.find('.box.hq').eq(0);
@@ -176,7 +178,8 @@ class CuiState {
 				$images.eq(showIdx).css('display', 'block');
 				$images.eq(hideIdx).css('display', 'none');
 				$img[0].onload = () => {};
-			};
+			}
+
 			if (!$img[0].complete) {
 				$img[0].onload = swap;
 			} else {

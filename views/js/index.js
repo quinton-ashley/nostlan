@@ -115,17 +115,17 @@ module.exports = async function(args) {
 		electron.getCurrentWindow().setFullScreen(
 			prefs.ui.launchFullScreen);
 
-		let sysMenu_5 = `h1.title0\n`;
+		let sysMenu = `h1.title0\n`;
 		let i = 0;
 		for (let _sys in systems) {
 			let _syst = systems[_sys];
 			if (!_syst.emus) continue;
-			if (i % 2 == 0) sysMenu_5 += `.row.row-x\n`;
-			sysMenu_5 += `\t.col.cui(name="${_sys}") ${_syst.name}\n`;
+			if (i % 2 == 0) sysMenu += `.row.row-x\n`;
+			sysMenu += `\t.col.cui(name="${_sys}") ${_syst.name}\n`;
 			i++;
 		}
 		delete i;
-		$('#sysMenu_5').append(pug(sysMenu_5));
+		$('#sysMenu').append(pug(sysMenu));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
 		}
@@ -215,8 +215,8 @@ module.exports = async function(args) {
 						} catch (ror) {
 							if (!prefs.load.readOnlyFS) {
 								opn(dir);
-								await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
-									lang.setupMenu_1.err1, 'quit');
+								await cui.error(lang.setupMenu.err2 + '\n' + dir,
+									lang.setupMenu.err1, 'quit');
 							}
 						}
 					}
@@ -250,8 +250,8 @@ module.exports = async function(args) {
 							} catch (ror) {
 								if (!prefs.load.readOnlyFS) {
 									opn(dir);
-									await cui.error(lang.setupMenu_1.err2 + '\n' + dir,
-										lang.setupMenu_1.err1, 'quit');
+									await cui.error(lang.setupMenu.err2 + '\n' + dir,
+										lang.setupMenu.err1, 'quit');
 								}
 							}
 						}
@@ -287,7 +287,7 @@ module.exports = async function(args) {
 			deepExtend(en, lang);
 		}
 
-		$('loadDialog0').text(lang.loading_1.msg3);
+		$('loadDialog0').text(lang.loading.msg3);
 
 		// convert all markdown files to html
 		let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
@@ -295,7 +295,7 @@ module.exports = async function(args) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
 			// this file has OS specific text
-			if (fileName == 'setupMenu_1') {
+			if (fileName == 'setupMenu') {
 				data = util.osmd(data);
 			}
 			data = data.replace(/\t/g, '  ');
@@ -327,7 +327,7 @@ module.exports = async function(args) {
 		if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
 			await cui.libMain.load();
 			if (!args.dev && !prefs.saves) {
-				cui.change('addSavesPathMenu_2');
+				cui.change('addSavesPathMenu');
 			}
 		} else if (await prefsMng.canLoad() && !nostlan.premium.status) {
 			cui.change('donateMenu');
@@ -345,7 +345,7 @@ module.exports = async function(args) {
 		// if there was an error
 		// if developing nostlan
 		// if user is not a patreon supporter
-		if (ui != 'alertMenu_9999' &&
+		if (ui != 'alertMenu' &&
 			!args.dev && nostlan.premium.verify()) {
 			await cui.nostlanMenu.saveSync('quit');
 		}
@@ -387,7 +387,7 @@ module.exports = async function(args) {
 		if (act == 'quit') {
 			await quit();
 		} else if (nostlan.launcher.state == 'running') {
-			if (nostlan.launcher.jsEmu && ui == 'playing_4') {
+			if (nostlan.launcher.jsEmu && ui == 'playing') {
 				if (act == 'pause') {
 					log('pausing emulation');
 					nostlan.launcher.pause();
@@ -396,29 +396,29 @@ module.exports = async function(args) {
 		} else if (/key-./.test(act)) {
 			// letter by letter search for game
 			cui.libMain.searchForGame(act.slice(4));
-		} else if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
+		} else if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect')) {
 			if (cui.getCursor().hasClass('cui-disabled')) return false;
 			if (syst.emus.length > 1) {
-				cui.change('playMenu_5');
+				cui.change('playMenu');
 			} else {
 				$('body > :not(#dialogs)').addClass('dim');
 				await nostlan.launcher.launch(cui.libMain.getCurGame());
 			}
 		} else if (act == 'start' && cui.getLevel(ui) < 10) {
-			cui.change('nostlanMenu_10');
+			cui.change('nostlanMenu');
 		} else if (act == 'b' && (/menu/i.test(ui) || /select/i.test(ui)) &&
-			ui != 'donateMenu' && ui != 'setupMenu_1' &&
-			ui != 'pauseMenu_10' && cui.getParent() != 'loading_1') {
+			ui != 'donateMenu' && ui != 'setupMenu' &&
+			ui != 'pauseMenu' && cui.getParent() != 'loading') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu_12 .cui[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu .cui[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
-				$elem.text(lang.interfaceMenu_12.opt1[0]);
+				$elem.text(lang.interfaceMenu.opt1[0]);
 			} else {
-				$elem.text(lang.interfaceMenu_12.opt1[1]);
+				$elem.text(lang.interfaceMenu.opt1[1]);
 			}
 		}
 	}
@@ -458,7 +458,7 @@ module.exports = async function(args) {
 		}
 		let labels = [' ', ' ', ' '];
 		if (/(game|menu)/i.test(state)) {
-			labels[2] = lang.nostlanMenu_10.msg0;
+			labels[2] = lang.nostlanMenu.msg0;
 		}
 		$('#nav0Lbl').text(labels[0]);
 		$('#nav2Lbl').text(labels[1]);

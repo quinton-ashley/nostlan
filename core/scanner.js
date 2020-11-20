@@ -41,10 +41,10 @@ class Scanner {
 	async gameLib(games) {
 		if (!games) {
 			// 'Indexing your game library'
-			$('#loadDialog0').text(lang.loading_1.msg5);
+			$('#loadDialog0').text(lang.loading.msg5);
 		} else {
 			// 'Indexing new games in your game library'
-			$('#loadDialog0').text(lang.loading_1.msg6);
+			$('#loadDialog0').text(lang.loading.msg6);
 		}
 		this.outLog = '';
 		let unidentifiedAmt = 0;
@@ -349,7 +349,7 @@ module.exports = new Scanner();
 // // if (sys == 'wii' && kb) {
 // if (false) {
 // 	let app = await nostlan.launcher.getEmuApp();
-// 	if (!app) cui.change('emuAppMenu_6');
+// 	if (!app) cui.change('emuAppMenu');
 // 	let dir = path.join(app, '../User');
 // 	if (mac && !(await fs.exists(dir))) {
 // 		dir = util.absPath('$home') + '/Library/Application Support/Dolphin';

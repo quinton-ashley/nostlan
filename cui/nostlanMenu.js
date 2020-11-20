@@ -11,11 +11,11 @@ class CuiState {
 			electron.getCurrentWindow().setFullScreen(
 				prefs.ui.launchFullScreen);
 		} else if (act == 'gameLibMenu') {
-			cui.change('gameLibMenu_11');
+			cui.change('gameLibMenu');
 		} else if (act == 'x') {
 			cui.doAction('quit');
 		} else if (act == 'settings') {
-			cui.change('settingsMenu_11');
+			cui.change('settingsMenu');
 		} else if (act == 'minimize' ||
 			act == 'prefs' || act == 'y') {
 			electron.getCurrentWindow().minimize();
@@ -35,7 +35,7 @@ class CuiState {
 			return;
 		}
 		if (!prefs.saves) {
-			cui.change('addSavesPathMenu_2');
+			cui.change('addSavesPathMenu');
 			return;
 		}
 		await cui.loading.intro();

@@ -16,18 +16,18 @@ class CuiState {
 	async onAction(act, $cur) {
 		let $cursor = cui.getCursor();
 		let isBtn = cui.isButton(act);
-		if (act == 'b' && !/menu/i.test(ui)) {
-			cui.change('sysMenu_5');
+		if (act == 'b' && !/menu/i.test(cui.ui)) {
+			cui.change('sysMenu');
 		}
 		if ($cursor.hasClass('cui-disabled')) return false;
 		if (act == 'y') {
-			cui.change('emuMenu_5');
+			cui.change('emuMenu');
 		} else if (act == 'a' || !isBtn) {
 			let gameSys = $cursor.attr('class');
 			if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 			cui.boxSelect.fitCoverToScreen($cursor);
 			cui.scrollToCursor(500, 0);
-			cui.change('boxSelect_1', gameSys);
+			cui.change('boxSelect', gameSys);
 		}
 	}
 
@@ -45,11 +45,11 @@ class CuiState {
 	async load(gameLibDir) {
 		// sysStyle = prefs[sys].style || sys;
 		sysStyle = sys;
-		cui.change('loading_1', sysStyle);
+		cui.change('loading', sysStyle);
 		// 'loading your game library'
-		let ld0 = lang.loading_1.msg0_0 + ' ';
+		let ld0 = lang.loading.msg0_0 + ' ';
 		ld0 += syst.fullName + ' ';
-		ld0 += lang.loading_1.msg0_1;
+		ld0 += lang.loading.msg0_1;
 		$('#loadDialog0').text(ld0);
 		// set emu to the default for the current OS
 		for (let _emu of syst.emus) {
@@ -76,7 +76,7 @@ class CuiState {
 		if (games.length == 0) {
 			if (!systemsDir) {
 				await cui.loading.removeIntro(0);
-				cui.change('setupMenu_1');
+				cui.change('setupMenu');
 				return;
 			}
 
@@ -86,11 +86,11 @@ class CuiState {
 
 			if (!(await fs.exists(gameLibDir))) {
 				await cui.loading.removeIntro(0);
-				await cui.change('sysMenu_5');
+				await cui.change('sysMenu');
 				// 'game library does not exist: '
 				cui.err(syst.name + ' ' +
-					lang.sysMenu_5.msg0 + ': ' +
-					gameLibDir, 404, 'emptyGameLibMenu_6');
+					lang.sysMenu.msg0 + ': ' +
+					gameLibDir, 404, 'emptyGameLibMenu');
 				return;
 			}
 			let files = await klaw(gameLibDir);
@@ -100,11 +100,11 @@ class CuiState {
 						path.parse(files[0]).base))
 				)) {
 				await cui.loading.removeIntro(0);
-				await cui.change('sysMenu_5');
+				await cui.change('sysMenu');
 				// 'game library has no game files'
 				cui.err(syst.name + ' ' +
-					lang.sysMenu_5.msg1 + ': ' +
-					gameLibDir, 404, 'emptyGameLibMenu_6');
+					lang.sysMenu.msg1 + ': ' +
+					gameLibDir, 404, 'emptyGameLibMenu');
 				return;
 			}
 			if (!prefs[sys]) prefs[sys] = {};
@@ -115,8 +115,8 @@ class CuiState {
 			games = await nostlan.scan.gameLib();
 			if (!games.length) {
 				await cui.loading.removeIntro(0);
-				await cui.change('sysMenu_5');
-				cui.change('emptyGameLibMenu_6');
+				await cui.change('sysMenu');
+				cui.change('emptyGameLibMenu');
 				return;
 			}
 		}
@@ -135,8 +135,8 @@ class CuiState {
 		}
 		await this.viewerLoad();
 
-		cui.removeView('playMenu_5');
-		cui.removeView('emuMenu_5');
+		cui.removeView('playMenu');
+		cui.removeView('emuMenu');
 		let playMenu = 'h1.title0\n';
 		let emuMenu = 'h1.title0\n';
 		for (let _emu of syst.emus) {
@@ -150,17 +150,17 @@ class CuiState {
 			// if they do add the configure and update buttons
 			// else add a button to install
 			emuMenu += `.col.cui(name="${_emu}_config") ` +
-				`${lang.emuMenu_5.msg0} ${prefs[_emu].name}\n`;
+				`${lang.emuMenu.msg0} ${prefs[_emu].name}\n`;
 
 			if (prefs[_emu].update) {
 				emuMenu += `.col.cui(name="${_emu}_update") ` +
-					`${lang.emuMenu_5.msg1} ${prefs[_emu].name}\n`;
+					`${lang.emuMenu.msg1} ${prefs[_emu].name}\n`;
 			}
 		}
-		$('#playMenu_5').append(pug(playMenu));
-		$('#emuMenu_5').append(pug(emuMenu));
-		cui.addView('playMenu_5');
-		cui.addView('emuMenu_5');
+		$('#playMenu').append(pug(playMenu));
+		$('#emuMenu').append(pug(emuMenu));
+		cui.addView('playMenu');
+		cui.addView('emuMenu');
 
 		await this.loadSharedAssets();
 
@@ -172,7 +172,7 @@ class CuiState {
 	async loadSharedAssets() {
 		cui.clearDialogs();
 		// 'loading additional images'
-		$('#loadDialog0').text(lang.loading_1.msg1);
+		$('#loadDialog0').text(lang.loading.msg1);
 		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
 		let dir = prefs.nlaDir + '/images';
 
@@ -193,7 +193,7 @@ class CuiState {
 		}
 		$('#loadDialog1').text('');
 		// 'loading complete!'
-		$('#loadDialog0').text(lang.loading_1.msg2);
+		$('#loadDialog0').text(lang.loading.msg2);
 	}
 
 	searchForGame(char) {
@@ -245,7 +245,7 @@ class CuiState {
 								games[i - 1].img.box == games[i].img.box) break;
 						}
 						await this.addGameBox(games[i], col);
-						$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading_1.msg4}`);
+						$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading.msg4}`);
 						break;
 					}
 					col++;
@@ -393,9 +393,9 @@ class CuiState {
 		dynColStyle += '</style>';
 		$('body').append(dynColStyle);
 
-		await addTemplateBoxes(cols);
-		await addGameBoxes(cols);
-		await addTemplateBoxes(cols);
+		await this.addTemplateBoxes(cols);
+		await this.addGameBoxes(cols);
+		await this.addTemplateBoxes(cols);
 
 		$('#libMain game .label').click(function(e) {
 			e.stopPropagation();
@@ -422,7 +422,7 @@ class CuiState {
 		if (prefs[sys].colorPalette) {
 			$('body').addClass(prefs[sys].colorPalette);
 		}
-		cui.editView('boxOpenMenu_2', {
+		cui.editView('boxOpenMenu', {
 			keepBackground: true,
 			hoverCurDisabled: true
 		});
@@ -434,13 +434,13 @@ class CuiState {
 	}
 
 	async afterChange() {
-		if (cui.uiPrev == 'loading_1' && prefs.session[sys] && prefs.session[sys].gameID) {
+		if (cui.uiPrev == 'loading' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cursor = $('#' + prefs.session[sys].gameID).eq(0);
 			if (!$cursor.length) $cursor = $('#' + games[0].id).eq(0);
 			cui.makeCursor($cursor);
 			cui.scrollToCursor(250, 0);
-		} else if (cui.uiPrev == 'boxSelect_1') {
-			changeImageResolution(cui.getCursor());
+		} else if (cui.uiPrev == 'boxSelect') {
+			cui.boxSelect.changeImageResolution(cui.getCursor());
 		}
 	}
 }

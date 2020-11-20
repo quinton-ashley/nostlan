@@ -6,7 +6,7 @@ class CuiState {
 			if (nostlan.premium.verify(pass)) {
 				await cui.libMain.load();
 				if (nostlan.premium.verify() && !prefs.saves) {
-					cui.change('addSavesPathMenu_2');
+					cui.change('addSavesPathMenu');
 				}
 			} else {
 				cui.change('donateMenu');

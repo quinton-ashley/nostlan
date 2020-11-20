@@ -22,15 +22,15 @@ class Installer {
 
 	async install() {
 		log('installing ' + prefs[emu].name);
-		$('#loadDialog0').text(lang.emuAppMenu_6.msg0 +
+		$('#loadDialog0').text(lang.emuAppMenu.msg0 +
 			' ' + prefs[emu].name);
 		// 'preparing to install'
-		this.loadLog(lang.emuAppMenu_6.msg1);
+		this.loadLog(lang.emuAppMenu.msg1);
 		let ins = prefs[emu].install;
 		if (!ins && !prefs[emu].jsEmu) {
 			// This emulator is not available for your
 			// computer's operating system
-			cui.err(lang.emuAppMenu_6.err0 + ": " + osType);
+			cui.err(lang.emuAppMenu.err0 + ": " + osType);
 			return;
 		}
 		if (prefs[emu].jsEmu) {
@@ -49,7 +49,7 @@ class Installer {
 				let cmds = ins.pkgManager_flatpak ||
 					ins.pkgManager_arch;
 				// 'running install script, please wait...'
-				this.loadLog(lang.emuAppMenu_6.msg2);
+				this.loadLog(lang.emuAppMenu.msg2);
 				return await runInstallCmds(cmds);
 			}
 		}
@@ -62,7 +62,7 @@ class Installer {
 		if (!urls) {
 			// Automated install of this emulator with Nostlan
 			// is not possible. You must install manually.
-			cui.err(lang.emuAppMenu_6.err1);
+			cui.err(lang.emuAppMenu.err1);
 			return;
 		}
 		// urls just contains one url
@@ -76,15 +76,15 @@ class Installer {
 		}
 		res = false;
 		// 'verifying installation'
-		this.loadLog(lang.emuAppMenu_6.msg5);
+		this.loadLog(lang.emuAppMenu.msg5);
 		res = await this.getEmuApp();
 		if (!res && ins.installer && win) {
 			// 'Almost done, please finish install manually'
-			cui.alert(lang.emuAppMenu_6.msg15 + ': ' + prefs[emu].name,
-				lang.alertMenu_9999.title5);
+			cui.alert(lang.emuAppMenu.msg15 + ': ' + prefs[emu].name,
+				lang.alertMenu.title5);
 		} else if (!res) {
 			// 'Install failed, you must manually install'
-			cui.err(lang.emuAppMenu_6.err5 + ': ' + prefs[emu].name);
+			cui.err(lang.emuAppMenu.err5 + ': ' + prefs[emu].name);
 		}
 		if (mac && res) {
 			// fixes non-executable apps on macOS 10.15+
@@ -113,22 +113,22 @@ class Installer {
 			file = dir + '/' + path.parse(_url).name + ext;
 		}
 		// 'downloading, please wait...'
-		this.loadLog(lang.emuAppMenu_6.msg3);
+		this.loadLog(lang.emuAppMenu.msg3);
 		let res = await dl(url, file);
 		await delay(100);
 		if (!res) {
 			// 'Could not download app from'
-			cui.err(lang.emuAppMenu_6.err2 + ': ' + url);
+			cui.err(lang.emuAppMenu.err2 + ': ' + url);
 			return;
 		}
 		if (/(zip|7z|rar|tar)/i.test(ext)) {
 			// 'download complete, extracting files...'
-			this.loadLog(lang.emuAppMenu_6.msg4);
+			this.loadLog(lang.emuAppMenu.msg4);
 			await fs.extract(file, dir);
 			await fs.remove(file);
 		} else {
 			// "download complete"
-			this.loadLog(lang.emuAppMenu_6.msg12);
+			this.loadLog(lang.emuAppMenu.msg12);
 		}
 		if (ins.jsEmu) return true;
 		let files = await klaw(dir, {
@@ -151,12 +151,12 @@ class Installer {
 				ext = path.parse(file).ext;
 				if (ext == '.dmg') {
 					// "opening macOS .dmg file"
-					this.loadLog(lang.emuAppMenu_6.msg13);
+					this.loadLog(lang.emuAppMenu.msg13);
 					await opn(file);
 					res = file;
 				} else if (ext == '.exe') {
 					// "opening installer executable"
-					this.loadLog(lang.emuAppMenu_6.msg14);
+					this.loadLog(lang.emuAppMenu.msg14);
 					try {
 						await spawn(file);
 					} catch (ror) {
@@ -168,7 +168,7 @@ class Installer {
 			}
 			if (!res) {
 				// 'Installer not found in package'
-				cui.err(lang.emuAppMenu_6.err3 + ': ' + url);
+				cui.err(lang.emuAppMenu.err3 + ': ' + url);
 				return;
 			}
 			if (mac) {
@@ -190,7 +190,7 @@ class Installer {
 				if (!disk) {
 					// "couldn't find install disk,
 					// finish install manually"
-					this.loadLog(lang.emuAppMenu_6.err4);
+					this.loadLog(lang.emuAppMenu.err4);
 					return true;
 				}
 				files = await klaw(disk, {
@@ -202,14 +202,14 @@ class Installer {
 							file += '/Contents/MacOS/' +
 								path.parse(file).name;
 							// 'running setup app'
-							this.loadLog(lang.emuAppMenu_6.msg7);
+							this.loadLog(lang.emuAppMenu.msg7);
 							try {
 								await spawn(file);
 							} catch (ror) {}
 						} else {
 							// move the app and any helper apps,
 							// such as updaters, to Applications
-							this.loadLog(lang.emuAppMenu_6.msg8 +
+							this.loadLog(lang.emuAppMenu.msg8 +
 								' /Applications');
 							let dest = '/Applications';
 							dest += '/' + path.parse(file).base;
@@ -220,12 +220,12 @@ class Installer {
 					}
 				}
 				// 'finishing, ejecting all install disks'
-				this.loadLog(lang.emuAppMenu_6.msg9);
+				this.loadLog(lang.emuAppMenu.msg9);
 				await spawn('osascript', ['-e',
 					'tell application "Finder" to eject (every disk whose ejectable is true)'
 				]);
 				// 'finishing, deleting package file'
-				this.loadLog(lang.emuAppMenu_6.msg10);
+				this.loadLog(lang.emuAppMenu.msg10);
 				await fs.remove(res);
 			}
 		} else if (mac && ins.standalone) {
@@ -233,7 +233,7 @@ class Installer {
 			for (let file of files) {
 				if (path.parse(file).ext == '.app') {
 					// 'moving stand alone app to /Applications'
-					this.loadLog(lang.emuAppMenu_6.msg6 +
+					this.loadLog(lang.emuAppMenu.msg6 +
 						' /Applications');
 					await fs.move(file, '/Applications/' +
 						path.parse(file).base, {

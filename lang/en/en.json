@@ -13,11 +13,11 @@
 		"err0": "incorrect donor password",
 		"msg0": "You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password."
 	},
-	"checkDonationMenu_1": {
+	"checkDonationMenu": {
 		"opt0": "verify password",
 		"opt1": "I don't support Nostlan yet"
 	},
-	"setupMenu_1": {
+	"setupMenu": {
 		"opt0": "install at ~\/Documents\/emu",
 		"opt1": "choose install location",
 		"opt2": "finish setup",
@@ -32,22 +32,22 @@
 		"nav3Lbl": "Sys",
 		"err0": "game not found"
 	},
-	"boxSelect_1": {
+	"boxSelect": {
 		"nav0Lbl": "Play",
 		"nav2Lbl": "Flip",
 		"nav3Lbl": "Back"
 	},
-	"boxOpenMenu_2": {
+	"boxOpenMenu": {
 		"nav0Lbl": "Manual",
 		"nav2Lbl": "Memory",
 		"nav3Lbl": "Back"
 	},
-	"gameMediaSelect_3": {
+	"gameMediaSelect": {
 		"nav0Lbl": "File",
 		"nav2Lbl": "ImgDir",
 		"nav3Lbl": "Back"
 	},
-	"nostlanMenu_10": {
+	"nostlanMenu": {
 		"title0": "Main Menu",
 		"nav0Lbl": "Quit",
 		"nav2Lbl": "Mini",
@@ -63,7 +63,7 @@
 		"opt7": "help",
 		"opt8": "settings menu"
 	},
-	"settingsMenu_11": {
+	"settingsMenu": {
 		"title0": "Settings Menu",
 		"opt0": "change appearance",
 		"opt1": "controller settings",
@@ -71,7 +71,7 @@
 		"opt3": "edit preferences",
 		"opt4": "language menu"
 	},
-	"gameLibMenu_11": {
+	"gameLibMenu": {
 		"title0": "Game Library Menu",
 		"opt0": "add new games",
 		"opt1": "manually identify games",
@@ -80,48 +80,48 @@
 		"opt4": "info",
 		"opt5": "rescan all games"
 	},
-	"gameLibInfoMenu_12": {
+	"gameLibInfoMenu": {
 		"opt0": "back"
 	},
-	"controllerMenu_12": {
+	"controllerMenu": {
 		"title0": "Controller Settings",
 		"opt0": "info",
 		"opt1": ["disable rumble", "enable rumble"],
 		"prof2Lbl": "Other"
 	},
-	"controInfoMenu_13": {
+	"controInfoMenu": {
 		"opt0": "back"
 	},
-	"addSavesPathMenu_2": {
+	"addSavesPathMenu": {
 		"opt0": "add",
 		"err0": "name and number of backups required",
 		"err1": "1 save backup required",
 		"err2": "Not a valid folder",
 		"msg0": "Select a save sync location"
 	},
-	"interfaceMenu_12": {
+	"interfaceMenu": {
 		"title0": "Change Appearance",
 		"opt0": "change theme",
 		"opt1": ["hide overlay buttons", "show overlay buttons"]
 	},
-	"themeMenu_13": {
+	"themeMenu": {
 		"title0": "Change Theme"
 	},
-	"sysMenu_5": {
+	"sysMenu": {
 		"title0": "Select a System",
 		"msg0": "game library does not exist",
 		"msg1": "game library has no game files"
 	},
-	"playMenu_5": {
+	"playMenu": {
 		"title0": "Play game with"
 	},
-	"emuMenu_5": {
+	"emuMenu": {
 		"title0": "Emulator Menu",
 		"msg0": "Configure",
 		"msg1": "Update",
 		"msg2": "Install"
 	},
-	"loading_1": {
+	"loading": {
 		"msg0_0": "loading your",
 		"msg0_1": "game library",
 		"msg1": "loading additional images",
@@ -131,7 +131,7 @@
 		"msg5": "Indexing your game library",
 		"msg6": "Indexing new games in your game library"
 	},
-	"playing_4": {
+	"playing": {
 		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",
 		"err1": "Emulator app not found at: ",
 		"err2": "crashed! If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator. Search the internet for instructions on how to fully setup",
@@ -144,7 +144,7 @@
 		"msg3": "Unfortunately only one app at a time can be connected to your Gamecube Controller Adapter.  Nostlan will quit.",
 		"msg4": "launching"
 	},
-	"emuAppMenu_6": {
+	"emuAppMenu": {
 		"opt0": "install",
 		"opt1": "browse for",
 		"err0": "This emulator is not available for your computer's operating system",
@@ -170,7 +170,7 @@
 		"msg14": "opening installer executable",
 		"msg15": "Almost done, please finish install manually"
 	},
-	"emptyGameLibMenu_6": {
+	"emptyGameLibMenu": {
 		"opt0": "browse for games folder",
 		"opt1": "install",
 		"msg0_0": "select",
@@ -182,7 +182,7 @@
 		"msg1_4": "emulator app first.",
 		"err0": "You already have this emulator installed on your computer!"
 	},
-	"alertMenu_9999": {
+	"alertMenu": {
 		"title0": "Success!",
 		"title1": "Failed",
 		"title2": "Error Code",
@@ -192,7 +192,7 @@
 		"msg0": "This option is not available yet!",
 		"opt0": "okay"
 	},
-	"pauseMenu_10": {
+	"pauseMenu": {
 		"title0": "Pause Menu",
 		"err0": "Nostlan's main menu is not available when emulators are running",
 		"opt0": "unpause emulation",

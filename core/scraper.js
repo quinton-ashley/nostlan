@@ -87,7 +87,7 @@ class Scraper {
 		return res;
 	}
 
-	async loadImages(games, themes, recheckImgs) {
+	async loadImages(games, recheckImgs) {
 		let imgDir;
 		let isTemplate;
 
@@ -97,11 +97,11 @@ class Scraper {
 			let res;
 			let game;
 			if (!isTemplate && i == games.length) {
-				game = themes[sysStyle].template;
+				game = nostlan.themes[sysStyle].template;
 				isTemplate = true;
 				if (sys != sysStyle) i--;
 			} else if (isTemplate) {
-				game = themes[sys].template;
+				game = nostlan.themes[sys].template;
 			} else {
 				game = games[i];
 			}

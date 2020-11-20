@@ -1,21 +1,21 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (act == 'a' || act == 'media') {
 			if (syst.emus.length > 1) {
 				cui.change('playMenu_5');
 			} else {
 				$('body > :not(#dialogs)').addClass('dim');
-				await launcher.launch(getCurGame());
+				await nostlan.launcher.launch(cui.libMain.getCurGame());
 			}
 		} else if (act == 'x') { // file
-			opn(path.parse(getCurGame().file).dir);
+			opn(path.parse(cui.libMain.getCurGame().file).dir);
 		} else if (act == 'y') { // imgdir
-			opn(await scraper.getImgDir(getCurGame()));
+			opn(await scraper.getImgDir(cui.libMain.getCurGame()));
 		}
 	}
 
-	afterChange() {
+	async afterChange() {
 		$('#boxOpenMenu_2').show();
 	}
 }

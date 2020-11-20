@@ -182,7 +182,7 @@ class Scanner {
 					};
 					// gives the game an id or not if it fails
 					try {
-						game = await launcher.identifyGame(game);
+						game = await nostlan.launcher.identifyGame(game);
 					} catch (ror) {}
 					if (game.id || (sys == 'switch' && game.tid)) {
 						let res;
@@ -280,7 +280,7 @@ class Scanner {
 		this.outLog = '';
 		await this.outputUsersGamesDB(games);
 		cui.clearDialogs();
-		launcher.state = 'closed';
+		nostlan.launcher.state = 'closed';
 		return games;
 	}
 
@@ -348,7 +348,7 @@ module.exports = new Scanner();
 // // TODO exact match indexing for wii games with Dolphin using kb
 // // if (sys == 'wii' && kb) {
 // if (false) {
-// 	let app = await launcher.getEmuApp();
+// 	let app = await nostlan.launcher.getEmuApp();
 // 	if (!app) cui.change('emuAppMenu_6');
 // 	let dir = path.join(app, '../User');
 // 	if (mac && !(await fs.exists(dir))) {
@@ -371,6 +371,6 @@ module.exports = new Scanner();
 // 	await delay(1000);
 // 	await this.outputUsersGamesDB(games);
 // 	cui.clearDialogs();
-// 	launcher.state = 'closed';
+// 	nostlan.launcher.state = 'closed';
 // 	return games;
 // }

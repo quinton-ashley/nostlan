@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (act == 'x') act = 'manual';
 		if (act == 'y') act = 'memory';
 		if (act == 'a') act = 'media';
@@ -11,12 +11,13 @@ class CuiState {
 		cui.change(act + 'Select_3');
 	}
 
-	onChange() {
+	async onChange() {
 		$('#boxOpenMenu_2').removeClass('zoom-gameManual');
 		$('#boxOpenMenu_2').removeClass('zoom-gameMedia');
 		$('#boxOpenMenu_2').removeClass('zoom-gameMemory');
 	}
-	afterChange() {
+
+	async afterChange() {
 		cui.makeCursor($('#gameMedia'));
 	}
 }

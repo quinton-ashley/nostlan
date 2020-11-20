@@ -1,6 +1,39 @@
 class CuiState {
 
-	onChange() {
+	async onAction(act) {
+		if (act == 'find') {
+			log('user selecting gameLibDir');
+			// `select ${syst.name} games folder`
+			let gameLibDir = await dialog.selectDir(
+				lang.emptyGameLibMenu_6.msg0_0 + ' ' +
+				syst.name + ' ' +
+				lang.emptyGameLibMenu_6.msg0_1);
+			log('user selected: ' + gameLibDir);
+			if (!gameLibDir ||
+				!(await fs.exists(gameLibDir))) {
+				// 'Game library does not exist'
+				cui.err(syst.name + ' ' +
+					lang.sysMenu_5.msg0 + ': ' +
+					gameLibDir, 404);
+				return;
+			}
+			await cui.libMain.load(gameLibDir);
+		} else if (act == 'install') {
+			let app = await nostlan.launcher.getEmuApp();
+			if (app) {
+				cui.err(lang.emptyGameLibMenu_6.err0 + ' ' + app);
+				return;
+			}
+			app = await cui.emuAppMenu.installEmuApp();
+			if (!app) return;
+			// 'Success!' 'Installed'
+			cui.alert(lang.emuAppMenu_6.msg11 + ' ' +
+				prefs[emu].name, lang.alertMenu_9999.title0,
+				'sysMenu_5');
+		}
+	}
+
+	async onChange() {
 		$('#emptyGameLibMenu_6 .opt1').text(
 			lang.emptyGameLibMenu_6.opt1 + ' ' +
 			prefs[emu].name

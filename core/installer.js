@@ -77,7 +77,7 @@ class Installer {
 		res = false;
 		// 'verifying installation'
 		this.loadLog(lang.emuAppMenu_6.msg5);
-		res = await launcher.getEmuApp();
+		res = await this.getEmuApp();
 		if (!res && ins.installer && win) {
 			// 'Almost done, please finish install manually'
 			cui.alert(lang.emuAppMenu_6.msg15 + ': ' + prefs[emu].name,

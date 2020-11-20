@@ -4,7 +4,7 @@ class CuiState {
 		sys = act;
 		syst = systems[sys];
 		cui.removeCursor();
-		await loadGameLib();
+		await cui.libMain.load();
 	}
 }
 module.exports = new CuiState();

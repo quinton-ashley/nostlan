@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (act == 'start') {
 			cui.doAction('back');
 		} else if (act == 'syncBackup' || act == 'forceUpdate') {

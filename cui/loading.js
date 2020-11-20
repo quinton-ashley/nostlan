@@ -10,7 +10,7 @@ class CuiState {
 
 	async removeIntro(time) {
 		time = time || prefs.load.delay;
-		if (arg.testIntro) time = 1000000;
+		if (prefs.args.testIntro) time = 1000000;
 		log('removing intro: ' + time);
 		await delay(time);
 		$('#intro').remove();

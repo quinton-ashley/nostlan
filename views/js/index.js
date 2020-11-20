@@ -3,8 +3,8 @@
  *
  * Main file. Handles user interaction with the UI.
  */
-module.exports = async function(arg) {
-	await require(arg.__root + '/core/setup.js')(arg);
+module.exports = async function(args) {
+	await require(args.__root + '/core/setup.js')(args);
 	log('version: ' + pkg.version);
 	global.util = require(__root + '/core/util.js');
 	require(__root + '/core/jquery.textfill.min.js')();
@@ -22,6 +22,7 @@ module.exports = async function(arg) {
 	prefsMng.configDefaultsPath = __root + '/prefs/prefsDefaults.json';
 	prefsMng.update = require(__root + '/prefs/prefsUpdate.js');
 	global.prefs = await prefsMng.getDefaults();
+	prefs.args = args;
 
 	global.sys = ''; // current system (name)
 	global.syst = {}; // current system (object)
@@ -32,8 +33,6 @@ module.exports = async function(arg) {
 
 	// get the built-in supported systems + emulators
 	global.systems = require(__root + '/core/systems.js');
-
-	let games = []; // array of current games from the systems' db
 	global.systemsDir = ''; // nostlan dir is stored here
 
 	// Set default settings for scrolling on a Mac.
@@ -65,7 +64,7 @@ module.exports = async function(arg) {
 	delete core;
 
 	// only Patreon supporters can use premium features
-	if (!arg.dev) {
+	if (!args.dev) {
 		nostlan.premium = require(__root + '/dev/premium.js');
 	} else {
 		nostlan.premium = {
@@ -80,28 +79,28 @@ module.exports = async function(arg) {
 	});
 
 	// https://www.geeksforgeeks.org/drag-and-drop-files-in-electronjs/
-	document.addEventListener('drop', (event) => {
-		event.preventDefault();
-		event.stopPropagation();
-
-		for (const f of event.dataTransfer.files) {
-			// Using the path attribute to get absolute file path
-			console.log('File Path of dragged files: ', f.path)
-		}
-	});
-
-	document.addEventListener('dragover', (e) => {
-		e.preventDefault();
-		e.stopPropagation();
-	});
-
-	document.addEventListener('dragenter', (event) => {
-		console.log('File is in the Drop Space');
-	});
-
-	document.addEventListener('dragleave', (event) => {
-		console.log('File has left the Drop Space');
-	});
+	// document.addEventListener('drop', (event) => {
+	// 	event.preventDefault();
+	// 	event.stopPropagation();
+	//
+	// 	for (const f of event.dataTransfer.files) {
+	// 		// Using the path attribute to get absolute file path
+	// 		console.log('File Path of dragged files: ', f.path)
+	// 	}
+	// });
+	//
+	// document.addEventListener('dragover', (e) => {
+	// 	e.preventDefault();
+	// 	e.stopPropagation();
+	// });
+	//
+	// document.addEventListener('dragenter', (event) => {
+	// 	console.log('File is in the Drop Space');
+	// });
+	//
+	// document.addEventListener('dragleave', (event) => {
+	// 	console.log('File has left the Drop Space');
+	// });
 
 	async function setup() {
 		// after the user uses the app for the first time
@@ -109,8 +108,9 @@ module.exports = async function(arg) {
 		// if it exists load it
 		if (await prefsMng.canLoad()) {
 			prefs = await prefsMng.load(prefs);
-		} else if (arg.dev) {
-			arg.testSetup = true;
+			prefs.args = args;
+		} else if (args.dev) {
+			args.testSetup = true;
 		}
 		electron.getCurrentWindow().setFullScreen(
 			prefs.ui.launchFullScreen);
@@ -129,7 +129,7 @@ module.exports = async function(arg) {
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
 		}
-		$('nav').hover(function() {
+		$('nav').hover(() => {
 			if (prefs.ui.autoHideCover) {
 				$('nav').toggleClass('hide');
 				if (!$('nav').hasClass('hide')) {
@@ -137,7 +137,7 @@ module.exports = async function(arg) {
 				}
 			}
 		});
-		sys = arg.sys || prefs.session.sys;
+		sys = args.sys || prefs.session.sys;
 		// deprecated system id, change to 'n3ds'
 		if (sys == '3ds') sys = 'n3ds';
 		syst = systems[sys];
@@ -169,6 +169,13 @@ module.exports = async function(arg) {
 		});
 		cui.bindWheel($('.reels'));
 
+
+		for (let file of (await klaw(__root + '/cui'))) {
+			let name = path.parse(file).name;
+			if (name.slice(2) == '__') continue;
+			cui[name] = require(file);
+		}
+
 		// keyboard controls
 		for (let char of 'abcdefghijklmnopqrstuvwxyz') {
 			cui.keyPress(char, 'key-' + char);
@@ -186,27 +193,6 @@ module.exports = async function(arg) {
 		cui.keyPress('|', 'start');
 
 		await start();
-	}
-
-	cui.passthrough = (contro) => {
-		if (!nostlan.launcher.jsEmu) return;
-
-		nostlan.launcher.jsEmu.executeJavaScript(
-			`jsEmu.controIn(${JSON.stringify(contro)})`
-		);
-	};
-
-	cui.onResize = (adjust) => {};
-
-	cui.clearDialogs = () => {
-		$('#loadDialog0').text('');
-		$('#loadDialog1').text('');
-		$('#loadDialog2').text('');
-	}
-
-	cui.hideDialogs = () => {
-		$('#dialogs').hide();
-		cui.clearDialogs();
 	}
 
 	async function createTemplate() {
@@ -283,19 +269,111 @@ module.exports = async function(arg) {
 		}
 	}
 
-	function quit() {
+	async function start() {
+		if (!prefs.ui.lang) {
+			cui.change('languageMenu');
+			await delay(1000);
+			cui.resize(true);
+			return;
+		}
+
+		global.lang = JSON.parse(
+			await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
+
+		if (prefs.ui.lang != 'en') {
+			const deepExtend = require('deep-extend');
+			let en = JSON.parse(
+				await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
+			deepExtend(en, lang);
+		}
+
+		$('loadDialog0').text(lang.loading_1.msg3);
+
+		// convert all markdown files to html
+		let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
+		for (let file of files) {
+			let data = await fs.readFile(file, 'utf8');
+			let fileName = path.parse(file).name;
+			// this file has OS specific text
+			if (fileName == 'setupMenu_1') {
+				data = util.osmd(data);
+			}
+			data = data.replace(/\t/g, '  ');
+			data = pug('.md', null, md(data));
+			file = path.parse(file);
+			$(`#${file.name} .md`).remove();
+			$('#' + file.name).prepend(data);
+		}
+		files = null;
+		delete files;
+
+		// ensures the template dir structure exists
+		// makes folders if they aren't there
+		if (await prefsMng.canLoad()) {
+			await createTemplate();
+		}
+
+		if (prefs.load.online) {
+			try {
+				if (!args.dev && await nostlan.updater.check()) {
+					app.quit();
+				}
+			} catch (ror) {
+				log('running in offline mode');
+				offline = true;
+			}
+		}
+		cui.clearDialogs();
+		if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
+			await cui.libMain.load();
+			if (!args.dev && !prefs.saves) {
+				cui.change('addSavesPathMenu_2');
+			}
+		} else if (await prefsMng.canLoad() && !nostlan.premium.status) {
+			cui.change('donateMenu');
+		} else {
+			prefs.version = pkg.version;
+			cui.change('welcomeMenu');
+		}
+		await delay(1000);
+		cui.resize(true);
+	}
+
+	async function quit() {
 		cui.opt.haptic = false;
 		// don't try to sync saves on quit
 		// if there was an error
 		// if developing nostlan
 		// if user is not a patreon supporter
 		if (ui != 'alertMenu_9999' &&
-			!arg.dev && nostlan.premium.verify()) {
+			!args.dev && nostlan.premium.verify()) {
 			await cui.nostlanMenu.saveSync('quit');
 		}
 		// save the prefs file
+		delete prefs.args;
 		if (prefs.nlaDir) await prefsMng.save(prefs);
 		app.quit();
+	}
+
+	cui.passthrough = (contro) => {
+		if (!nostlan.launcher.jsEmu) return;
+
+		nostlan.launcher.jsEmu.executeJavaScript(
+			`jsEmu.controIn(${JSON.stringify(contro)})`
+		);
+	};
+
+	cui.onResize = (adjust) => {};
+
+	cui.clearDialogs = () => {
+		$('#loadDialog0').text('');
+		$('#loadDialog1').text('');
+		$('#loadDialog2').text('');
+	}
+
+	cui.hideDialogs = () => {
+		$('#dialogs').hide();
+		cui.clearDialogs();
 	}
 
 	cui.click($('#nav0'), 'x');
@@ -307,19 +385,17 @@ module.exports = async function(arg) {
 		let ui = cui.ui;
 		log(act + ' on ' + ui);
 		if (act == 'quit') {
-			quit();
+			await quit();
 		} else if (nostlan.launcher.state == 'running') {
-			if (nostlan.launcher.jsEmu) {
-				if (ui == 'playing_4') {
-					if (act == 'pause') {
-						log('pausing emulation');
-						nostlan.launcher.pause();
-					}
+			if (nostlan.launcher.jsEmu && ui == 'playing_4') {
+				if (act == 'pause') {
+					log('pausing emulation');
+					nostlan.launcher.pause();
 				}
 			}
 		} else if (/key-./.test(act)) {
 			// letter by letter search for game
-			searchForGame(act.slice(4));
+			cui.libMain.searchForGame(act.slice(4));
 		} else if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect_1')) {
 			if (cui.getCursor().hasClass('cui-disabled')) return false;
 			if (syst.emus.length > 1) {
@@ -453,76 +529,6 @@ module.exports = async function(arg) {
 		$('#nav0Btn span').text(buttons[0]);
 		$('#nav2Btn span').text(buttons[1]);
 		$('#nav3Btn span').text(buttons[2]);
-	}
-
-	async function start() {
-		if (!prefs.ui.lang) {
-			cui.change('languageMenu');
-			await delay(1000);
-			cui.resize(true);
-			return;
-		}
-
-		global.lang = JSON.parse(
-			await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
-
-		if (prefs.ui.lang != 'en') {
-			const deepExtend = require('deep-extend');
-			let en = JSON.parse(
-				await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
-			deepExtend(en, lang);
-		}
-
-		$('loadDialog0').text(lang.loading_1.msg3);
-
-		// convert all markdown files to html
-		let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
-		for (let file of files) {
-			let data = await fs.readFile(file, 'utf8');
-			let fileName = path.parse(file).name;
-			// this file has OS specific text
-			if (fileName == 'setupMenu_1') {
-				data = util.osmd(data);
-			}
-			data = data.replace(/\t/g, '  ');
-			data = pug('.md', null, md(data));
-			file = path.parse(file);
-			$(`#${file.name} .md`).remove();
-			$('#' + file.name).prepend(data);
-		}
-		files = null;
-		delete files;
-
-		// ensures the template dir structure exists
-		// makes folders if they aren't there
-		if (await prefsMng.canLoad()) {
-			await createTemplate();
-		}
-
-		if (prefs.load.online) {
-			try {
-				if (!arg.dev && await nostlan.updater.check()) {
-					app.quit();
-				}
-			} catch (ror) {
-				log('running in offline mode');
-				offline = true;
-			}
-		}
-		cui.clearDialogs();
-		if ((arg.dev && !arg.testSetup) || nostlan.premium.verify()) {
-			await cui.libMain.load();
-			if (!arg.dev && !prefs.saves) {
-				cui.change('addSavesPathMenu_2');
-			}
-		} else if (await prefsMng.canLoad() && !nostlan.premium.status) {
-			cui.change('donateMenu');
-		} else {
-			prefs.version = pkg.version;
-			cui.change('welcomeMenu');
-		}
-		await delay(1000);
-		cui.resize(true);
 	}
 
 	// first function to be called

@@ -9,9 +9,11 @@ setInterval(function() {
 	}
 }, 1000);
 
+let games = []; // array of current games from the systems' db
+
 class CuiState {
 
-	onAction(act, $cur) {
+	async onAction(act, $cur) {
 		let $cursor = cui.getCursor();
 		let isBtn = cui.isButton(act);
 		if (act == 'b' && !/menu/i.test(ui)) {
@@ -426,12 +428,12 @@ class CuiState {
 		});
 	}
 
-	onChange() {
+	async onChange() {
 		$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
 		$('#libMain').removeClass('no-outline');
 	}
 
-	afterChange() {
+	async afterChange() {
 		if (cui.uiPrev == 'loading_1' && prefs.session[sys] && prefs.session[sys].gameID) {
 			let $cursor = $('#' + prefs.session[sys].gameID).eq(0);
 			if (!$cursor.length) $cursor = $('#' + games[0].id).eq(0);

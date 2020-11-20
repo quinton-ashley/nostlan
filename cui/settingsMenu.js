@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (act == 'editAppearance') {
 			cui.change('interfaceMenu_12');
 		} else if (act == 'controllerSettings') {

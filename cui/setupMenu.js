@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (act == 'finishSetup') {
 			if (!(await fs.exists(systemsDir))) {
 				// 'You must choose an install location!'

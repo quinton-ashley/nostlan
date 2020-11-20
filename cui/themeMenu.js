@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		act = act.split(' ');
 		$('body').removeClass();
 		cui.change('interfaceMenu_12', act[0]);

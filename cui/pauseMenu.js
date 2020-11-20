@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (act == 'start') {
 			// nostlan main menu is not available
 			// when running emulators

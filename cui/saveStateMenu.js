@@ -1,6 +1,6 @@
 class CuiState {
 
-	onAction(act) {
+	async onAction(act) {
 		if (!/slot\d/.test(act)) return;
 		let slot = act.slice(4);
 		log('saving state to slot ' + slot);
@@ -8,7 +8,7 @@ class CuiState {
 		nostlan.launcher.unpause();
 	}
 
-	onChange() {
+	async onChange() {
 		let $slots = $('#' + state + ' .cui');
 		let states = nostlan.launcher.cfg.saveStates;
 		for (let i = 0; i < $slots.length; i++) {

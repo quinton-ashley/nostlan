@@ -31,7 +31,7 @@ class CuiState {
 		if (!nostlan.premium.verify()) {
 			// 'You must be a Patreon supporter to access
 			// this feature.  Restart Nostlan and enter your // donor verfication password.'
-			cui.err(lang.premium.msg0);
+			cui.err(lang.donateMenu.msg0);
 			return;
 		}
 		if (!prefs.saves) {

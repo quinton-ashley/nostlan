@@ -7,14 +7,14 @@ class CuiState {
 		if (!(/(memory|manual|media)/gi).test(act)) return;
 		act = act[0].toUpperCase() + act.slice(1);
 		act = 'game' + act;
-		$('#boxOpenMenu').addClass('zoom-' + act);
-		cui.change(act + 'Select');
+		$(this.id).addClass('zoom-' + act);
+		cui.change(act + 'Select_3');
 	}
 
 	async onChange() {
-		$('#boxOpenMenu').removeClass('zoom-gameManual');
-		$('#boxOpenMenu').removeClass('zoom-gameMedia');
-		$('#boxOpenMenu').removeClass('zoom-gameMemory');
+		$(this.id).removeClass('zoom-gameManual');
+		$(this.id).removeClass('zoom-gameMedia');
+		$(this.id).removeClass('zoom-gameMemory');
 	}
 
 	async afterChange() {

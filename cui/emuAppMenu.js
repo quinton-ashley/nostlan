@@ -38,7 +38,7 @@ class CuiState {
 		cui.clearDialogs();
 		$('body > :not(#dialogs)').removeClass('dim');
 		if (res) {
-			await createTemplate();
+			await cui.setupMenu.createTemplate();
 		}
 		return res;
 	}

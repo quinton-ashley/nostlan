@@ -1,8 +1,9 @@
 class CuiState {
 
 	async onAction(act) {
+		if (cui.isButton(act)) return;
 		prefs.ui.lang = act;
-		await start();
+		await nostlan.start();
 	}
 
 	async create() {

@@ -5,7 +5,7 @@ class CuiState {
 			cui.buttonPressed('select');
 		} else if (act == 'theme') {
 			if (!nostlan.premium.verify()) {
-				cui.err(lang.premium.msg0);
+				cui.err(lang.donateMenu.msg0);
 				return;
 			}
 			cui.removeView('themeMenu');

@@ -6,13 +6,20 @@ class CuiState {
 
 		let isBtn = cui.isButton(act);
 
-		if ((act == 'a' || !isBtn) && $cursor[0].id != cui.getCursor('libMain')[0].id) {
+		if (act == 'a' && $cursor[0].id != cui.getCursor('libMain')[0].id) {
 			this.fitCoverToScreen($cursor);
 			cui.makeCursor($cursor, 'libMain');
 			cui.scrollToCursor();
-		} else if ((act == 'a' || !isBtn) && $cursor.attr('class') &&
-			(await nostlan.scraper.getExtraImgs(nostlan.themes[$cursor.attr('class').split(/\s+/)[0] || sysStyle].template))) {
+		} else if (act == 'a') {
+
+			// try to load/download open box menu images
+			if (!$cursor.attr('class')) return;
+			let style = $cursor.attr('class').split(/\s+/)[0] || sysStyle;
+			let imgs = nostlan.themes[style].template;
+			if (!(await nostlan.scraper.getExtraImgs(imgs))) return;
+
 			// TODO finish open box menus for all systems
+
 			let game = cui.libMain.getCurGame();
 			if (!game) return;
 			let template = nostlan.themes[game.sys || sys].template;
@@ -48,6 +55,9 @@ class CuiState {
 				cui.resize();
 				cui.scrollToCursor(0, 0);
 			}
+		} else if (/key-./.test(act)) {
+			// letter by letter search for game
+			cui.libMain.searchForGame(act.slice(4));
 		}
 	}
 

@@ -18,16 +18,20 @@ class CuiState {
 		let isBtn = cui.isButton(act);
 		if (act == 'b' && !/menu/i.test(cui.ui)) {
 			cui.change('sysMenu');
+			return;
 		}
-		if ($cursor.hasClass('cui-disabled')) return false;
+		if ($cursor.hasClass('cui-disabled')) return;
 		if (act == 'y') {
 			cui.change('emuMenu');
-		} else if (act == 'a' || !isBtn) {
+		} else if (act == 'a') {
 			let gameSys = $cursor.attr('class');
 			if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 			cui.boxSelect.fitCoverToScreen($cursor);
 			cui.scrollToCursor(500, 0);
 			cui.change('boxSelect', gameSys);
+		} else if (/key-./.test(act)) {
+			// letter by letter search for game
+			this.searchForGame(act.slice(4));
 		}
 	}
 
@@ -157,8 +161,8 @@ class CuiState {
 					`${lang.emuMenu.msg1} ${prefs[_emu].name}\n`;
 			}
 		}
-		$('#playMenu').append(pug(playMenu));
-		$('#emuMenu').append(pug(emuMenu));
+		$('#playMenu_5').append(pug(playMenu));
+		$('#emuMenu_5').append(pug(emuMenu));
 		cui.addView('playMenu');
 		cui.addView('emuMenu');
 

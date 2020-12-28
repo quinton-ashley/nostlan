@@ -78,7 +78,7 @@
 
 		let url = 'file://' + arg.__root;
 		if (!arg.cli) {
-			url += '/views/pug/index.pug';
+			url += '/views/index.pug';
 		} else if (!arg.cli.includes('.')) {
 			url += `/${arg.cli}/cli/${arg.cli}-cli.pug`;
 		} else {

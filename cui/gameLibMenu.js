@@ -1,20 +1,16 @@
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act) {
 		let recheckImgs = (act == 'scanForImages');
-		let fullRescan = (act == 'rescanGameLib');
-		if (act == 'scanForGames' || recheckImgs || fullRescan) {
+		let doFullRescan = (act == 'rescanGameLib');
+		if (act == 'scanForGames' || recheckImgs || doFullRescan) {
 			cui.removeView('libMain');
 			cui.change('loading');
 			await cui.loading.intro();
 			if (!recheckImgs) {
-				if (!fullRescan) {
-					games = await nostlan.scan.gameLib(games);
-				} else {
-					games = await nostlan.scan.gameLib();
-				}
+				await cui.libMain.rescanLib(doFullRescan);
 			}
-			await viewerLoad(recheckImgs);
+			await cui.gameLibMenu.viewerLoad(recheckImgs);
 			await cui.loading.removeIntro();
 			cui.change('libMain');
 			cui.scrollToCursor(0);

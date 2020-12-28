@@ -1,4 +1,4 @@
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act) {
 		if (!/slot\d/.test(act)) return;

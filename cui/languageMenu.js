@@ -1,4 +1,4 @@
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act) {
 		if (cui.isButton(act)) return;
@@ -19,8 +19,8 @@ class CuiState {
 			elems += iso_639_1[x].name + '\n';
 		}
 		log(elems);
-		$('#languageMenu').empty();
-		$('#languageMenu').append(pug(elems));
+		this.$elem.empty();
+		this.$elem.append(pug(elems));
 	}
 }
 module.exports = new CuiState();

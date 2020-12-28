@@ -1,7 +1,7 @@
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act) {
-		let $cursor = cui.getCursor();
+		let $cursor = cui.$cursor;
 		if ($cursor.hasClass('cui-disabled')) return false;
 
 		let isBtn = cui.isButton(act);

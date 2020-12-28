@@ -23,7 +23,6 @@ module.exports = function() {
 
 	cui.onAction = async (act) => {
 		let ui = cui.ui;
-		log(act + ' on ' + ui);
 		if (act == 'quit') {
 			await nostlan.quit();
 		} else if (nostlan.launcher.state == 'running') {
@@ -34,14 +33,14 @@ module.exports = function() {
 				}
 			}
 		} else if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect')) {
-			if (cui.getCursor().hasClass('cui-disabled')) return true;
+			if (cui.$cursor.hasClass('cui-disabled')) return true;
 			if (syst.emus.length > 1) {
 				cui.change('playMenu');
 			} else {
 				$('body > :not(#dialogs)').addClass('dim');
 				await nostlan.launcher.launch(cui.libMain.getCurGame());
 			}
-		} else if (act == 'start' && cui.getLevel(ui) < 10) {
+		} else if (act == 'start' && cui[ui].level < 10) {
 			cui.change('nostlanMenu');
 		} else if (act == 'b' && (/menu/i.test(ui) || /select/i.test(ui)) &&
 			ui != 'donateMenu' && ui != 'setupMenu' &&
@@ -50,7 +49,7 @@ module.exports = function() {
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
 			prefs.ui.autoHideCover = $('nav').hasClass('hide');
-			let $elem = $('#interfaceMenu .cui[name="toggleCover"] .text');
+			let $elem = $('#interfaceMenu_12 .cui[name="toggleCover"] .text');
 			if (!prefs.ui.autoHideCover) {
 				cui.resize(true);
 				$elem.text(lang.interfaceMenu.opt1[0]);
@@ -109,7 +108,7 @@ module.exports = function() {
 		for (let elem in lang[state]) {
 			let txt = lang[state][elem];
 			if (typeof txt != 'string') txt = txt[0];
-			let $elem = $(`${cui[state].id} .${elem}`);
+			let $elem = $(`#${cui[state].id} .${elem}`);
 			if (!$elem.length) $elem = $('#' + elem);
 			if (!$elem.length) continue;
 			$elem.text(txt);

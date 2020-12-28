@@ -11,10 +11,10 @@ setInterval(function() {
 
 let games = []; // array of current games from the systems' db
 
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act, $cur) {
-		let $cursor = cui.getCursor();
+		let $cursor = cui.$cursor;
 		let isBtn = cui.isButton(act);
 		if (act == 'b' && !/menu/i.test(cui.ui)) {
 			cui.change('sysMenu');
@@ -28,7 +28,7 @@ class CuiState {
 			if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 			cui.boxSelect.fitCoverToScreen($cursor);
 			cui.scrollToCursor(500, 0);
-			cui.change('boxSelect', gameSys);
+			cui.change('boxSelect_1', gameSys);
 		} else if (/key-./.test(act)) {
 			// letter by letter search for game
 			this.searchForGame(act.slice(4));
@@ -368,7 +368,7 @@ class CuiState {
 			prefs.ui.mouse.delta =
 				100 * prefs.ui.mouse.wheel.multi;
 		}
-		cui.setMouseOptions(prefs.ui.mouse);
+		cui.mouse = prefs.ui.mouse;
 		games = await nostlan.scraper.loadImages(games, recheckImgs);
 		// determine the amount of columns based on the amount of games
 		let cols = prefs.ui.maxColumns || 8;
@@ -432,6 +432,14 @@ class CuiState {
 		});
 	}
 
+	async rescanLib(fullRescan) {
+		if (!fullRescan) {
+			games = await nostlan.scan.gameLib(games);
+		} else {
+			games = await nostlan.scan.gameLib();
+		}
+	}
+
 	async onChange() {
 		$('#libMain')[0].style.transform = 'scale(1) translate(0,0)';
 		$('#libMain').removeClass('no-outline');
@@ -444,7 +452,7 @@ class CuiState {
 			cui.makeCursor($cursor);
 			cui.scrollToCursor(250, 0);
 		} else if (cui.uiPrev == 'boxSelect') {
-			cui.boxSelect.changeImageResolution(cui.getCursor());
+			cui.boxSelect.changeImageResolution(cui.$cursor);
 		}
 	}
 }

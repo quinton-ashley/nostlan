@@ -1,4 +1,4 @@
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act) {
 		if (act == 'info') {
@@ -6,7 +6,7 @@ class CuiState {
 		} else if (act == 'rumble') {
 			prefs.ui.gamepad.haptic = !prefs.ui.gamepad.haptic;
 			cui.opt.haptic = prefs.ui.gamepad.haptic;
-			let $rumble = $('#controllerMenu .cui[name="rumble"] .text');
+			let $rumble = this.$elem.find('.cui[name="rumble"] .text');
 			if (prefs.ui.gamepad.haptic) {
 				log('rumble enabled');
 				$rumble.text(lang.controllerMenu.opt1[0]);
@@ -27,7 +27,7 @@ class CuiState {
 				prof = 'adaptive';
 			}
 			prefs.ui.gamepad[type].profile = prof;
-			$(`#controllerMenu .cui[name="${act}"]`).text(prof);
+			this.$elem.find(`.cui[name="${act}"]`).text(prof);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-class CuiState {
+class CuiState extends cui.State {
 
 	async onAction(act) {
 		if (act == 'find') {
@@ -34,7 +34,7 @@ class CuiState {
 	}
 
 	async onChange() {
-		$('#emptyGameLibMenu .opt1').text(
+		this.$elem.find('.opt1').text(
 			lang.emptyGameLibMenu.opt1 + ' ' +
 			prefs[emu].name
 		);
@@ -60,7 +60,7 @@ class CuiState {
 		note += ' ' + prefs[emu].name + ' ';
 		// emulator app first."
 		note += lang.emptyGameLibMenu.msg1;
-		$('#emptyGameLibMenu .msg1').text(note);
+		this.$elem.find('.msg1').text(note);
 	}
 }
 module.exports = new CuiState();

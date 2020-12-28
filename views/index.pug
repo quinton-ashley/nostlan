@@ -6,7 +6,7 @@ html
 		link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
 		link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/css/contro-ui.css')
-		link(rel='stylesheet' type='text/css' href='../css/style.css')
+		link(rel='stylesheet' type='text/css' href='./css/style.css')
 
 	body
 		#themeStyles
@@ -255,4 +255,4 @@ html
 		script.
 			console.log('opening index.pug');
 			console.log('#{node_modules}');
-			require('../js/index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));
+			require('./index.js')(JSON.parse('#{arg}'.replace(/&quot;/g, '"')));

@@ -10,7 +10,7 @@ class CuiState extends cui.State {
 			if (!recheckImgs) {
 				await cui.libMain.rescanLib(doFullRescan);
 			}
-			await cui.gameLibMenu.viewerLoad(recheckImgs);
+			await cui.libMain.viewerLoad(recheckImgs);
 			await cui.loading.removeIntro();
 			cui.change('libMain');
 			cui.scrollToCursor(0);

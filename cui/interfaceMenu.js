@@ -19,6 +19,15 @@ class CuiState extends cui.State {
 			$('#themeMenu').append(pug(themeMenu));
 			cui.addView('themeMenu');
 			cui.change('themeMenu');
+		} else if (act == 'altReelsScrolling') {
+			prefs.ui.altReelsScrolling = !prefs.ui.altReelsScrolling;
+			cui.removeView('libMain');
+			cui.change('loading');
+			await cui.loading.intro();
+			await cui.libMain.viewerLoad();
+			await cui.loading.removeIntro();
+			cui.change('libMain');
+			cui.scrollToCursor(0);
 		}
 	}
 }

@@ -321,9 +321,9 @@
   "ryujinx": {
     "name": "Ryujinx",
     "appRegex": {
-      "linux": "Ryujinx",
-      "mac": "Ryujinx",
-      "win": "Ryujinx\\.exe"
+      "linux": "^Ryujinx",
+      "mac": "^Ryujinx",
+      "win": "^Ryujinx\\.exe"
     },
     "cmd": {
       "linux": ["${app}", "${game}"],
@@ -479,6 +479,7 @@
     "getBackCoverHQ": false,
     "getExtraImgs": false,
     "autoHideCover": false,
+		"altReelsScrolling": false,
     "launchFullScreen": true
   },
 	"jsEmu": {

@@ -77,7 +77,7 @@ class Installer {
 		res = false;
 		// 'verifying installation'
 		this.loadLog(lang.emuAppMenu.msg5);
-		res = await this.getEmuApp();
+		res = await nostlan.launcher.getEmuApp();
 		if (!res && ins.installer && win) {
 			// 'Almost done, please finish install manually'
 			cui.alert(lang.emuAppMenu.msg15 + ': ' + prefs[emu].name,

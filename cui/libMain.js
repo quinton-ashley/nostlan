@@ -236,24 +236,29 @@ class CuiState extends cui.State {
 
 	async addGameBoxes(cols) {
 		let mameSetRegex = /set [2-9]/i;
+		// default layout is alphabetical order by column
+		// altReelsScrolling places games alphabetical order by row
 		for (let i = 0, col = 0; i < games.length; i++) {
+			if (prefs.ui.altReelsScrolling &&
+				i >= games.length * (col + 1) / cols) {
+				col++;
+			}
+			if (!prefs.ui.altReelsScrolling && col == cols) {
+				col = 0;
+			}
+			// TODO temp code for hiding other game versions
+			// the ability to select different versions of MAME games
+			// aka "sets" will be added in the future
+			if (sys == 'arcade') {
+				if (mameSetRegex.test(games[i].title)) break;
+				if (i != 0 && games[i - 1].img && games[i].img &&
+					games[i - 1].img.box == games[i].img.box) break;
+			}
+
 			try {
-				while (col < cols) {
-					if (i < games.length * (col + 1) / cols) {
-						// TODO temp code for hiding other game versions
-						// the ability to select different versions of MAME games
-						// aka "sets" will be added in the future
-						if (sys == 'arcade') {
-							if (mameSetRegex.test(games[i].title)) break;
-							if (i != 0 && games[i - 1].img && games[i].img &&
-								games[i - 1].img.box == games[i].img.box) break;
-						}
-						await this.addGameBox(games[i], col);
-						$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading.msg4}`);
-						break;
-					}
-					col++;
-				}
+				await this.addGameBox(games[i], col);
+				$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading.msg4}`);
+				if (!prefs.ui.altReelsScrolling) col++;
 			} catch (ror) {
 				er(ror);
 			}
@@ -385,7 +390,7 @@ class CuiState extends cui.State {
 			`.reel {width: ${1 / cols * 100}%;}`
 		for (let i = 0; i < cols; i++) {
 			$glv.append(pug(
-				`.reel.r${i}.row-y.${((i % 2 == 0)?'reverse':'normal')}`
+				`.reel.r${i}.row-y.${((prefs.ui.altReelsScrolling && i % 2 == 0)?'reverse':'normal')}`
 			));
 			dynColStyle += `.reel.r${i} {left:  ${i / cols * 100}%;}`;
 		}

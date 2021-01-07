@@ -104,6 +104,10 @@ class Launcher {
 			this.game = game;
 		}
 
+		if (identify && sys == 'switch') {
+			emu = 'yuzu';
+		}
+
 		let emuApp = await this.getEmuApp();
 		if (!emuApp) {
 			cui.change('emuAppMenu');
@@ -322,9 +326,9 @@ class Launcher {
 			$('#loadDialog0').text(`${lang.playing.msg1} ${prefs[emu].name}`);
 			// `To close the emulator, press and hold the
 			// ${btn} button for ${time} seconds`
-			$('#loadDialog1').text(lang.playing.msg2 +
-				` "${prefs.inGame.quit.hold}" ` + lang.playing.msg2 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
-				' ' + lang.playing.msg2
+			$('#loadDialog1').text(lang.playing.msg2_0 +
+				` "${prefs.inGame.quit.hold}" ` + lang.playing.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
+				' ' + lang.playing.msg2_2
 			);
 			if (game) $('#loadDialog2').text(game.title);
 		}
@@ -542,7 +546,7 @@ class Launcher {
 			}
 			$('body > :not(#dialogs)').removeClass('dim');
 		}
-		if (!identify && code) {
+		if (!identify && code != 0) {
 			// ``${app} crashed! If the game didn't start it
 			// might be because some emulators require
 			// system firmware, BIOS, decryption keys, and

@@ -82,7 +82,7 @@
     "byte-base64": "^1.1.0",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^3.0.1",
+    "contro-ui": "^3.0.2",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^4.4.0",
@@ -105,11 +105,11 @@
     "mousetrap": "^1.6.5",
     "node-7z": "^2.1.2",
     "node-fetch": "^2.6.1",
-    "open": "^7.3.0",
+    "open": "^7.3.1",
     "popper.js": "^1.16.1",
     "probe-image-size": "^6.0.0",
     "pug": "^3.0.0",
-    "puppeteer-core": "^5.4.1",
+    "puppeteer-core": "^5.5.0",
     "robotjs": "^0.6.0",
     "semver": "^7.3.4",
     "sharp": "^0.27.0",
@@ -154,5 +154,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.19.7"
+  "version": "1.19.8"
 }

@@ -151,10 +151,6 @@ module.exports = async function(args) {
 		syst = systems[sys];
 		cui.mapButtons(sys);
 
-		if (!prefs.ui.lang) {
-			await cui.languageMenu.create();
-		}
-
 		// physical layout always matches the on screen postion of x and y
 		// in the cover menu
 		cui.start({
@@ -204,7 +200,7 @@ module.exports = async function(args) {
 
 	nostlan.start = async () => {
 		if (!prefs.ui.lang) {
-			cui.change('languageMenu');
+			await cui.change('languageMenu');
 			await delay(1000);
 			cui.resize(true);
 			return;
@@ -228,7 +224,7 @@ module.exports = async function(args) {
 			let data = await fs.readFile(file, 'utf8');
 			let fileName = path.parse(file).name;
 			// this file has OS specific text
-			if (fileName == 'setupMenu') {
+			if (fileName == 'setupMenu_1') {
 				data = util.osmd(data);
 			}
 			data = data.replace(/\t/g, '  ');
@@ -262,7 +258,7 @@ module.exports = async function(args) {
 			if (!args.dev && !prefs.saves) {
 				cui.change('addSavesPathMenu');
 			}
-		} else if (await prefsMng.canLoad() && !nostlan.premium.status) {
+		} else if (!args.testSetup && await prefsMng.canLoad() && !nostlan.premium.status) {
 			cui.change('donateMenu');
 		} else {
 			prefs.version = pkg.version;

@@ -332,13 +332,38 @@
     },
     "install": {
       "linux": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-linux_x64.tar.gz"
+        "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6291-linux_x64.tar.gz"
       },
       "mac": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-osx_x64.zip"
+        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.6291-osx_x64.zip"
       },
       "win": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.5439-win_x64.zip"
+        "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6291-win_x64.zip"
+      }
+    },
+		"fullscreenKeyCombo": {
+      "linux": ["f11"],
+      "win": [11000, ["f11"]]
+    }
+  },
+	"ryujinx-ldn": {
+    "name": "Ryujinx LDN",
+    "appRegex": {
+      "linux": "^Ryujinx",
+      "mac": "^Ryujinx",
+      "win": "^Ryujinx\\.exe"
+    },
+    "cmd": {
+      "linux": ["${app}", "${game}"],
+      "mac": ["${app}", "${game}"],
+      "win": ["${app}", "${game}"]
+    },
+    "install": {
+      "linux": {
+        "portable": "https://www.patreon.com/file?h=45268370&i=6979836"
+      },
+      "win": {
+        "portable": "https://www.patreon.com/file?h=45268370&i=6979837"
       }
     },
 		"fullscreenKeyCombo": {

@@ -16,13 +16,11 @@ class CuiState extends cui.State {
 			$('#prof1').text(prefs.ui.gamepad.nintendo.profile);
 			$('#prof2').text(prefs.ui.gamepad.other.profile);
 		} else if (act == 'languageMenu') {
-			await cui.languageMenu.create();
-			cui.addListeners('#languageMenu');
 			if (cui.ui == 'settingsMenu') {
 				cui.removeView('libMain');
 				cui.removeCursor();
 			}
-			cui.change('languageMenu');
+			await cui.change('languageMenu');
 		} else if (act == 'editPrefs') {
 			opn(prefsMng.configPath);
 			cui.doAction('quit');

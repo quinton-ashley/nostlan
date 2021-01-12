@@ -1,6 +1,8 @@
 class CuiState extends cui.State {
 
 	async onAction(act) {
+		if (cui.isButton(act)) return;
+
 		if (act == 'finishSetup') {
 			if (!(await fs.exists(systemsDir))) {
 				// 'You must choose an install location!'

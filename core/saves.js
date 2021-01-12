@@ -79,6 +79,11 @@ class Saves {
 		} else if (emu == 'rpcs3') {
 			dir += '/dev_hdd0/home/00000001/savedata';
 			prefs[emu].saves.dirs = [dir];
+		} else if (emu == 'ryujinx' && win) {
+			if (win) {
+				dir = util.absPath('$home') + 'AppData/Roaming/Ryujinx/bis/user/save';
+			}
+			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'xenia') {
 			dir = util.absPath('$home') + '/Documents/Xenia/content';
 			prefs[emu].saves.dirs = [dir];

@@ -6,7 +6,7 @@ class CuiState extends cui.State {
 		await nostlan.start();
 	}
 
-	async create() {
+	async onChange() {
 		let iso_639_1 = require('iso-639').iso_639_1;
 		let langFolders = await klaw(__root + '/lang');
 		let title = 'Language Menu';

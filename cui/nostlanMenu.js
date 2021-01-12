@@ -23,7 +23,7 @@ class CuiState extends cui.State {
 			opn('https://www.patreon.com/nostlan');
 		} else if (act == 'help') {
 			// nostlan discord invite link
-			opn('https://discord.gg/G8qrmT');
+			opn('https://discord.gg/cT2yNC6');
 		}
 	}
 

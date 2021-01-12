@@ -386,8 +386,9 @@ class Launcher {
 		};
 		if (identify) delete spawnOpt.stdio;
 
-		if (emu == 'ryujinx') delete spawnOpt.detached;
-
+		if (emu == 'ryujinx' || emu == 'ryujinx-ldn') {
+			delete spawnOpt.detached;
+		}
 		this.child = child.spawn(
 			this.cmdArgs[0],
 			this.cmdArgs.slice(1) || [],
@@ -529,6 +530,7 @@ class Launcher {
 	}
 
 	async _close(code) {
+		if (this.state == 'closed') return;
 		cui.disableSticks = false;
 		$('nav').show();
 		if (!identify) {

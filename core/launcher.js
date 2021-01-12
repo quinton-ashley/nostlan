@@ -81,6 +81,7 @@ class Launcher {
 					emuApp = file;
 					if (mac) emuApp = await this.getMacExec(emuApp);
 					if (emuApp && await fs.exists(emuApp)) {
+						prefs[emu].app = emuApp;
 						return emuApp;
 					}
 				}

@@ -81,7 +81,7 @@ class Saves {
 			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'ryujinx' && win) {
 			if (win) {
-				dir = util.absPath('$home') + 'AppData/Roaming/Ryujinx/bis/user/save';
+				dir = util.absPath('$home') + '/AppData/Roaming/Ryujinx/bis/user/save';
 			}
 			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'xenia') {

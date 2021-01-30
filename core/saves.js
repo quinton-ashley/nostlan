@@ -81,8 +81,11 @@ class Saves {
 			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'ryujinx' && win) {
 			if (win) {
-				dir = util.absPath('$home') + '/AppData/Roaming/Ryujinx/bis/user/save';
+				dir = util.absPath('$home') + '/AppData/Roaming';
+			} else if (mac || linux) {
+				dir = util.absPath('$home') + '/.config';
 			}
+			dir += '/Ryujinx/bis/user/save';
 			prefs[emu].saves.dirs = [dir];
 		} else if (emu == 'xenia') {
 			dir = util.absPath('$home') + '/Documents/Xenia/content';
@@ -93,6 +96,7 @@ class Saves {
 				dir0 = util.absPath('$home') + '/AppData/Roaming/yuzu';
 			} else if (mac || linux) {
 				dir = util.absPath('$home') + '/.local/share/yuzu-emu';
+				dir0 = dir;
 			}
 			let dir1 = path.join(prefs.nlaDir, '../switch/yuzu');
 			if (await fs.exists(dir1 + '/nand')) dir = dir1;

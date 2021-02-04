@@ -10,6 +10,10 @@ class CuiState extends cui.State {
 		} else if (act != 'x' && act != 'y') {
 			return;
 		}
+		if (nostlan.launcher.state == 'launching') {
+			log('already launching!');
+			return;
+		}
 		$('body > :not(#dialogs)').addClass('dim');
 		await nostlan.launcher.launch(cui.libMain.getCurGame());
 	}

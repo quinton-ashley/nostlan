@@ -94,6 +94,7 @@ class Launcher {
 
 	async launch(game, opt) {
 		opt = opt || {};
+		this.state = 'launching';
 		$('#dialogs').show();
 		// 'launching'
 		$('#loadDialog0').text(lang.playing.msg4 + ' ' + prefs[emu].name);
@@ -112,12 +113,14 @@ class Launcher {
 		let emuApp = await this.getEmuApp();
 		if (!emuApp) {
 			cui.change('emuAppMenu');
+			this.state = 'closed';
 			return;
 		}
 
 		if (prefs[emu].jsEmu) {
 			if (!game) {
 				cui.alert('Not configurable yet.');
+				this.state = 'closed';
 				return;
 			}
 			let dir = `${systemsDir}/${sys}/${emu}`;
@@ -140,6 +143,7 @@ class Launcher {
 				if (!(await fs.exists(cfg.bios))) {
 					// "This emulator requires system bios file(s)"
 					cui.err(lang.playMenu.err + ': ' + cfg.bios);
+					this.state = 'closed';
 					return;
 				}
 			}

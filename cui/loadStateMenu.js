@@ -9,7 +9,7 @@ class CuiState extends cui.State {
 	}
 
 	async onChange() {
-		let $slots = $('#' + state + ' .cui');
+		let $slots = $('#loadStateMenu_11 .cui');
 		let states = nostlan.launcher.cfg.saveStates;
 		for (let i = 0; i < $slots.length; i++) {
 			let txt = i + ' ';

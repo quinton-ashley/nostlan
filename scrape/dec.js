@@ -3,6 +3,7 @@ let dec = {};
 
 class AndyDecarli {
 	constructor() {
+		this.name = 'Andy Decarli';
 		this.sysMap = {
 			wiiu: 'Nintendo Wii U',
 			'3ds': 'Nintendo 3DS',

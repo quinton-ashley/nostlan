@@ -1,5 +1,7 @@
 class GithubQuintonAshley {
-	constructor() {}
+	constructor() {
+		this.name = "quinton-ashley on Github";
+	}
 
 	wrapUrl(url) {
 		return 'q';

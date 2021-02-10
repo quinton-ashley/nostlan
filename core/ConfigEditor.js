@@ -7,7 +7,7 @@ class ConfigEditor {
 	}
 
 	async getDefaults() {
-		if (!this.configDefaultsPath) return;
+		if (!this.configDefaultsPath) return {};
 		return JSON.parse(
 			await fs.readFile(this.configDefaultsPath)
 		);
@@ -34,6 +34,10 @@ class ConfigEditor {
 	}
 
 	async save(cfg) {
+		if (!cfg) {
+			console.error('must pass configurations to save as parameter');
+			return;
+		}
 		await fs.outputFile(this.configPath,
 			JSON.stringify(cfg, null, '\t'));
 	}

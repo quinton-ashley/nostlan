@@ -21,6 +21,9 @@
 	if (arg.h || arg.help) {
 		log('-h|--help : print command line options');
 		log('-v|--version : get the version of the app');
+		if (arg.dev) {
+			log('--cli : run "scrape" or "db"');
+		}
 	} else if (arg.v || arg.version) {
 		log('v' + require(arg.__root + '/package.json').version);
 	} else {

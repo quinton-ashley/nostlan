@@ -1,7 +1,9 @@
 const dl = require('./dl.js');
 
 class FlyerFeverScraper {
-	constructor() {}
+	constructor() {
+		this.name = 'Flyer Fever';
+	}
 
 	wrapUrl(url) {
 		return url.replace(/https:\/\/66\.media\.tumblr\.com\/(\w+)\/tumblr_(\w+)_1280.png/, 'f $1 $2');

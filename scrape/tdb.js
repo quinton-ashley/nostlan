@@ -20,7 +20,9 @@ let regions = {
 }
 
 class Gamestdb {
-	constructor() {}
+	constructor() {
+		this.name = 'GameTDB';
+	}
 
 	async dlImg(game, dir, name) {
 		// TODO change to just the systems on gametdb

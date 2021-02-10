@@ -116,6 +116,9 @@ class Scanner {
 					} else if (sys == 'snes') {
 						hash = cryptog.createHash('sha256').update(data).digest('hex');
 						game = gameDB.find(x => x.sha256 == hash);
+					} else if (sys == 'n64') {
+						hash = cryptog.createHash('sha1').update(data).digest('hex');
+						game = gameDB.find(x => x.sha1 == hash);
 					}
 					if (game) {
 						this.olog(`exact match:  ${game.title}\r\n`);

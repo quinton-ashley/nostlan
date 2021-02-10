@@ -12,6 +12,8 @@ let sources = {
 	},
 	ds: "https://www.gametdb.com/dstdb.txt?LANG=EN",
 	n3ds: "https://www.gametdb.com/3dstdb.txt?LANG=EN",
+	n64: "https://github.com/libretro/libretro-database/raw/master/metadat/no-intro/Nintendo%20-%20Nintendo%2064.dat",
+	nes: "https://github.com/libretro/libretro-database/raw/master/metadat/no-intro/Nintendo%20-%20Super%20Nintendo%20Entertainment%20System.dat",
 	ps1: "http://psxdatacenter.com/ulist.html",
 	ps2: "https://psxdatacenter.com/psx2/ulist2.html",
 	ps3: "https://www.gametdb.com/ps3tdb.txt?LANG=EN",
@@ -39,6 +41,40 @@ let format = {
 	nes: [{
 		regex: /game \(\s+name "([^\(]+)\(([^\(]+)\)( \([^\d]* *([\d\.]*)\))*[^"]*"[^\n]*\n[^\n]*[^"]*"[^"]*" size \d* crc (\w{8})[^\n]*\n[^\n]*\n\n/gm,
 		replace: `"id": "$5",\n\t\t"title": "$1",\n\t\t"region": "$2",\n\t\t"ver": "$4"\n\t}, {\n\t\t`
+	}],
+	n64: [{
+		regex: /\)\s*game \(/gm,
+		replace: `}, {`
+	}, {
+		regex: /\t*description [^\n]*\n/gm,
+		replace: ``
+	}, {
+		regex: /\tname "/gm,
+		replace: `\t"title": "`
+	}, {
+		regex: /\tregion "/gm,
+		replace: `\t"region": "`
+	}, {
+		regex: /\tserial "/gm,
+		replace: `\t"serial": "`
+	}, {
+		regex: /\tversion "/,
+		replace: `"version": "`
+	}, {
+		regex: /\thomepage "[^"]*"\n/,
+		replace: ``
+	}, {
+		regex: /\t"title": "[^"]*"/,
+		replace: `"sys": "n64"`
+	}, {
+		regex: /clrmamepro \(/,
+		replace: ''
+	}, {
+		regex: /"\n/g,
+		replace: '",\n'
+	}, {
+		regex: /rom \( name "[^"]*" [^ ]* [^ ]* crc ([^ ]*) [^ ]* [^ ]* sha1 ([^ ]*)[^\)]*\)/gm,
+		replace: `"id": "$1",\n\t"sha1": "$2"`
 	}],
 	ps1: [{
 		regex: /\s*"\?[^\n]*(\s*")[^"]*([^\n]*\s*")[^"]*([^,]*),\n[^\n]*\s*\},\s*{/gm,
@@ -91,6 +127,9 @@ let strips = [{
 }, {
 	regex: /&apos;/gm,
 	replace: `'`
+}, {
+	regex: /&amp;/gm,
+	replace: `&`
 }];
 
 class GenDB {
@@ -100,12 +139,13 @@ class GenDB {
 		let file, list;
 
 		if (typeof sources[sys] == 'string') {
-			log('downloading database');
+			log('downloading ' + sys + ' database');
 			log(sources[sys]);
-			let res = await fetch(sources[sys]);
+			await delay(10);
+			list = await (await fetch(sources[sys])).text();
 			file = __root + `/db/${sys}DB_up`;
-			await res.saveTo(file);
-			list = await fs.readFile(file, 'utf-8');
+			await fs.outputFile(file, list);
+
 			log(file);
 		}
 
@@ -128,16 +168,36 @@ class GenDB {
 		// convert windows to unix line endings
 		list = list.replace(/\r\n/gm, '\n');
 
+		if (sys == 'n64') {
+			strips.push({
+				regex: / *\((USA|Europe|Japan|\w\w,[^\)]*)\)/gm,
+				replace: ''
+			});
+		}
+
+		log('re-formatting database...');
+
 		for (let form of format[sys]) {
 			list = list.replace(form.regex, form.replace);
 		}
 		for (let strip of strips) {
 			list = list.replace(strip.regex, strip.replace);
 		}
-		list = '{\n"games": [{\n' + list;
-		list += '\n}]}';
+		if (sys == 'n64') {
+			list = list.slice(0, list.length - 2);
+			list = list.replace('}, {', '"games": [{');
+			list = '{' + list;
+			list += '}]}';
+		} else {
+			list = '{\n"games": [{\n' + list;
+			list += '\n}]}';
+		}
+
+		log('saving file: ' + file);
 		// to check for json formatting errors
 		await fs.outputFile(file, list);
+
+		log('converting to JSON...');
 		try {
 			list = JSON.parse(list);
 		} catch (ror) {
@@ -146,10 +206,31 @@ class GenDB {
 		}
 
 		// special formatting
-		for (let x of list.games) {
-			if (sys == 'psp') {
+		if (sys == 'psp') {
+			for (let x of list.games) {
 				x.id = x.id.slice(0, 4) + x.id.slice(5);
 				x.region = x.region.replace(/[\[\]]/g, '');
+			}
+		}
+
+		// reduction
+		if (sys == 'n64') {
+			let games = [];
+			let sub = 1;
+			for (let i in list.games) {
+				if (i == 0) continue;
+				let x = list.games[i - sub];
+				let y = list.games[i];
+				if (x.title == y.title &&
+					x.region == y.region &&
+					x.serial == y.serial) {
+					x.sha1 = [x.sha1, y.sha1];
+					sub++;
+				} else {
+					games.push(x);
+					if (sub == 1) games.push(y);
+					sub = 1;
+				}
 			}
 		}
 		// remove temp file
@@ -157,7 +238,8 @@ class GenDB {
 
 		list = JSON.stringify(list, null, '\t');
 		list = list.replace(/\},\s+\{/gm, '}, {');
-		await fs.outputFile(file + '.json', list);
+		file += '.json';
+		await fs.outputFile(file, list);
 
 		log('finished!');
 		log('database generated: ' + file);

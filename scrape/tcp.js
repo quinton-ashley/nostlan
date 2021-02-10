@@ -17,10 +17,13 @@ let regions = {
 };
 regions.ps3 = regions.ps2;
 regions.ps4 = regions.ps2;
+regions.n64 = regions.nes;
 let tcp = {};
 
 class TheCoverProjectScraper {
-	constructor() {}
+	constructor() {
+		this.name = 'The Cover Project';
+	}
 
 	wrapUrl(url) {
 		return url.replace(/http:\/\/www\.thecoverproject\.net\/download_cover\.php\?src=cdn&cover_id=(\d+)\.jpg/, 'c $1');
@@ -186,12 +189,15 @@ class TheCoverProjectScraper {
 		tcp[sys] = {};
 
 		let catID;
-		if (sys == 'ps2') catID = 6;
+
 		if (sys == 'gba') catID = 13;
-		if (sys == 'snes') catID = 8;
+		if (sys == 'n64') catID = 4;
 		if (sys == 'nes') catID = 27;
+		if (sys == 'ps2') catID = 6;
+		if (sys == 'snes') catID = 8;
 		if (!catID) {
-			er('no category id for sys: ' + sys);
+			er('no category id for system: ' + sys);
+			await delay(100000000);
 			return;
 		}
 		let urlBase = `http://www.thecoverproject.net/view.php?cat_id=${catID}&view=`;
@@ -229,9 +235,3 @@ class TheCoverProjectScraper {
 }
 
 module.exports = new TheCoverProjectScraper();
-
-
-// image found!
-// E:\dev\apps\bottlenose\scrape\scrape.js:65 found: 292/898 32.52%
-// E:\dev\apps\bottlenose\scrape\scrape.js:66 completed: 898/1130 79.47%
-// E:\dev\apps\bottlenose\scrape\scrape.js:44 Sonic Advance 3

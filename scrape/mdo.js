@@ -1,7 +1,9 @@
 const dl = require('./dl.js');
 
 class MrDo {
-	constructor() {}
+	constructor() {
+		this.name = "Mr. Do's Arcade";
+	}
 
 	async dlImg(game, dir, name) {
 		if (name != 'cabinet' || sys != 'arcade') {

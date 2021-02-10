@@ -18,26 +18,30 @@ module.exports = async function(arg) {
 	let scrapers = ['gfs', 'fly', 'tcp', 'dec'];
 	let scrape = arg.scrape;
 	if (!scrapers.includes(scrape)) {
-		er('invalid scraper use one of the following: ' + scrapers.toString());
+		er('use --scrape and specify the scraper you want to use' +
+			scrapers.toString());
 		return;
 	}
 
-	let prefsMan = require(__root + '/prefs/prefsManager.js');
-	prefsMan.prefsPath = __root + '/scrape/cli/prefs.json';
+	global.ConfigEditor = require(__root + '/core/ConfigEditor.js');
+	global.prefsMng = new ConfigEditor();
+	prefsMng.configPath = __root + '/scrape/cli/prefs_' + osType + '.json';
 	global.prefs = {};
-	prefs = await prefsMan.load();
+	prefs = await prefsMng.load();
 
 	global.browser = require('./browser.js');
 	await browser.load({
 		user: 'qashto@gmail.com'
 	});
-	await prefsMan.save();
+	await prefsMng.save(prefs);
 
 	let scraper = require(`../${scrape}.js`);
 	global.sys = arg.sys || 'snes'; // sys default
 	if (scrape == 'fly') sys = 'arcade';
 
-	if (/(tcp|gfs|dec)/.test(scrape)) {
+	log('scraping ' + sys + ' art from ' + scraper.name);
+
+	if (scraper.load) {
 		await scraper.load(sys);
 	}
 	let name = 'cover';

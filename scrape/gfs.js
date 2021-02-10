@@ -17,7 +17,9 @@ regions.ps4 = regions.ps2;
 let gfs = {};
 
 class GameFaqsScraper {
-	constructor() {}
+	constructor() {
+		this.name = "GameFAQs";
+	}
 
 	wrapUrl(url) {
 		// the site that gamefaqs stores images on might change in the

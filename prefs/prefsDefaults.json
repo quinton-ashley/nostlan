@@ -332,13 +332,13 @@
     },
     "install": {
       "linux": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6291-linux_x64.tar.gz"
+        "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6551-linux_x64.tar.gz"
       },
       "mac": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.6291-osx_x64.zip"
+        "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.6551-osx_x64.zip"
       },
       "win": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6291-win_x64.zip"
+        "portable": "https://ci.appveyor.com/api/buildjobs/7m60tgm9086anlvk/artifacts/ryujinx-1.0.6551-win_x64.zip"
       }
     },
 		"fullscreenKeyCombo": {
@@ -360,10 +360,10 @@
     },
     "install": {
       "linux": {
-        "portable": "https://www.patreon.com/file?h=45268370&i=6979836"
+        "portable": "https://www.patreon.com/file?h=45268370&i=7206532 .zip"
       },
       "win": {
-        "portable": "https://www.patreon.com/file?h=45268370&i=6979837"
+        "portable": "https://www.patreon.com/file?h=45268370&i=7206533 .zip"
       }
     },
 		"fullscreenKeyCombo": {

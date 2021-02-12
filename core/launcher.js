@@ -553,7 +553,7 @@ class Launcher {
 			}
 			$('body > :not(#dialogs)').removeClass('dim');
 		}
-		if (!identify && code != 0) {
+		if (!identify && code) {
 			// ``${app} crashed! If the game didn't start it
 			// might be because some emulators require
 			// system firmware, BIOS, decryption keys, and

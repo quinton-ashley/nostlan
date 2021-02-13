@@ -16,7 +16,7 @@ class CuiState extends cui.State {
 				palette = systems[palette.sys].name + ' ' + palette.name;
 				themeMenu += `.col.cui(name="${p}") ${palette}\n`;
 			}
-			$('#themeMenu').append(pug(themeMenu));
+			$('#themeMenu_13').append(pug(themeMenu));
 			cui.addView('themeMenu');
 			cui.change('themeMenu');
 		} else if (act == 'altReelsScrolling') {

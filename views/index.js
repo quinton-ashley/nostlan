@@ -216,7 +216,7 @@ module.exports = async function(args) {
 			deepExtend(en, lang);
 		}
 
-		$('loadDialog0').text(lang.loading.msg3);
+		$('#loadDialog0').text(lang.loading.msg3 + ' v' + pkg.version);
 
 		// convert all markdown files to html
 		let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);

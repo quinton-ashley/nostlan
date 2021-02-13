@@ -10,6 +10,7 @@
 	let arg = require('minimist')(process.argv);
 	arg.__root = __dirname.replace(/\\/g, '/');
 	arg.node_modules = arg.__root + '/node_modules';
+	let version = require(arg.__root + '/package.json').version;
 
 	const {
 		app,
@@ -25,7 +26,7 @@
 			log('--cli : run "scrape" or "db"');
 		}
 	} else if (arg.v || arg.version) {
-		log('v' + require(arg.__root + '/package.json').version);
+		log('v' + version);
 	} else {
 		arg.electron = true;
 	}
@@ -48,6 +49,7 @@
 		try {
 			const locals = {
 				arg: JSON.stringify(arg).replace(/\\/g, '/').replace(/\/\//g, '/'),
+				version: version,
 				node_modules: arg.node_modules
 			};
 			log(locals);

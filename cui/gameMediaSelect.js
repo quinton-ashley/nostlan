@@ -16,7 +16,7 @@ class CuiState extends cui.State {
 	}
 
 	async afterChange() {
-		$('#boxOpenMenu').show();
+		$('#boxOpenMenu_2').show();
 	}
 }
 module.exports = new CuiState();

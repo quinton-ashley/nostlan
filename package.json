@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.nostlan",
     "copyright": "Copyright © 2018-2020 Quinton Ashley",
-    "electronVersion": "9.3.2",
+    "electronVersion": "11.2.3",
     "electronDownload": {
-      "version": "9.3.2"
+      "version": "11.2.3"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -155,5 +155,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.20.5"
+  "version": "1.20.6"
 }

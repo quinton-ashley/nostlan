@@ -1,6 +1,6 @@
 # <a href="https://www.patreon.com/nostlan"><img src="https://raw.githubusercontent.com/quinton-ashley/nostlan/master/views/img/icon.png" width=32px height=32px></a> Nostlan
 
-Nostlan is a game launcher for retro and current gen video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, _Switch_, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, _Ryujinx_, Xenia, and _Yuzu_.
+Nostlan is a game launcher for retro and current gen video game emulators! Available on Linux, macOS, and Windows. Systems supported: Arcade, DS, GBA, 3DS, PS2, PS3, SNES, Switch, Wii, Wii U, and Xbox 360. Emulators supported: bsnes, Cemu, Citra, Dolphin, DeSmuME, MAME, melonDS, mGBA, PCSX2, RPCS3, Ryujinx, Xenia, and Yuzu.
 
 #### **_[Download Nostlan for free](https://github.com/quinton-ashley/nostlan/releases)_** and if you enjoy the app [please make a donation](https://www.paypal.me/qashto/20), any amount is appreciated. [Support the development of Nostlan on patreon](https://www.patreon.com/nostlan) to gain access to premium features!
 

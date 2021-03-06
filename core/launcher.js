@@ -245,7 +245,7 @@ class Launcher {
 			$('nav').hide();
 			cui.clearDialogs();
 			$('#libMain').hide();
-			$('#boxOpenMenu').hide();
+			$('#boxOpenMenu_2').hide();
 			this.state = 'running';
 			return;
 		}
@@ -326,7 +326,7 @@ class Launcher {
 		if (game && game.id || emu == 'mame') {
 			await cui.change('playing_4');
 			$('#libMain').hide();
-			$('#boxOpenMenu').hide();
+			$('#boxOpenMenu_2').hide();
 			// 'Starting'
 			$('#loadDialog0').text(`${lang.playing.msg1} ${prefs[emu].name}`);
 			// `To close the emulator, press and hold the

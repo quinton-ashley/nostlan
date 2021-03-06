@@ -69,7 +69,7 @@ module.exports = {
 	switch: {
 		name: 'Switch',
 		fullName: 'Nintendo Switch',
-		emus: ['yuzu', 'ryujinx', 'ryujinx-ldn'],
+		emus: ['ryujinx', 'ryujinx-ldn', 'yuzu'],
 		mediaType: 'cart'
 	},
 	wii: {

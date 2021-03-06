@@ -78,30 +78,6 @@ module.exports = async function(args) {
 		document.exitPointerLock();
 	});
 
-	// https://www.geeksforgeeks.org/drag-and-drop-files-in-electronjs/
-	// document.addEventListener('drop', (event) => {
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-	//
-	// 	for (const f of event.dataTransfer.files) {
-	// 		// Using the path attribute to get absolute file path
-	// 		console.log('File Path of dragged files: ', f.path)
-	// 	}
-	// });
-	//
-	// document.addEventListener('dragover', (e) => {
-	// 	e.preventDefault();
-	// 	e.stopPropagation();
-	// });
-	//
-	// document.addEventListener('dragenter', (event) => {
-	// 	console.log('File is in the Drop Space');
-	// });
-	//
-	// document.addEventListener('dragleave', (event) => {
-	// 	console.log('File has left the Drop Space');
-	// });
-
 	nostlan.setup = async () => {
 		// after the user uses the app for the first time
 		// a preferences file is created
@@ -194,6 +170,33 @@ module.exports = async function(args) {
 		cui.keyPress(']', 'y');
 		cui.keyPress('\\', 'b');
 		cui.keyPress('|', 'start');
+
+		// https://www.geeksforgeeks.org/drag-and-drop-files-in-electronjs/
+		document.addEventListener('drop', async (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+
+			for (const f of event.dataTransfer.files) {
+				// Using the path attribute to get absolute file path
+				let file = f.path;
+				log('file dragged: ', file);
+				await fs.move(file, prefs[sys].libs[0] + '/' + path.parse(file).base);
+			}
+			await cui.libMain.rescanLib();
+		});
+
+		document.addEventListener('dragover', (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+		});
+
+		document.addEventListener('dragenter', (event) => {
+			log('file is in the Drop Space');
+		});
+
+		document.addEventListener('dragleave', (event) => {
+			log('file has left the Drop Space');
+		});
 
 		await nostlan.start();
 	}

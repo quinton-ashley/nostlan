@@ -1,4 +1,34 @@
 class CuiState extends cui.State {
+	async load(disableWiki) {
+		let game = cui.libMain.getCurGame();
+		if (!game) return;
+		let template = nostlan.themes[game.sys || sys].template;
+
+		$('#gameManual').prop('src', '');
+		$('#gameMedia').prop('src', '');
+		$('#gameMemory').prop('src', '');
+		$('#gameBoxOpenMask').prop('src', '');
+		$('#gameWiki').html('');
+
+		$('#gameBoxOpen').prop('src', await nostlan.scraper.imgExists(template, 'boxOpen'));
+		$('#gameBoxOpenMask').prop('src',
+			await nostlan.scraper.imgExists(template, 'boxOpenMask'));
+		$('#gameMemory').prop('src', await nostlan.scraper.imgExists(template, 'memory'));
+		$('#gameManual').prop('src', await nostlan.scraper.imgExists(template, 'manual'));
+		if (!disableWiki) {
+			$('#gameWiki').html();
+			nostlan.themes.loadGameWiki(cui.libMain.getCurGame());
+		}
+
+		let mediaImg = await nostlan.scraper.imgExists(game, syst.mediaType);
+		if (!mediaImg) {
+			mediaImg = await nostlan.scraper.getImg(template, syst.mediaType);
+		}
+		if (!mediaImg && syst.mediaType == 'disc') {
+			mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
+		}
+		$('#gameMedia').prop('src', mediaImg);
+	}
 
 	async onAction(act) {
 		if (act == 'x') act = 'manual';

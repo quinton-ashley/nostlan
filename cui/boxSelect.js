@@ -1,5 +1,4 @@
 class CuiState extends cui.State {
-
 	async onAction(act) {
 		let $cursor = cui.$cursor;
 		if ($cursor.hasClass('cui-disabled')) return false;
@@ -10,7 +9,7 @@ class CuiState extends cui.State {
 			this.fitCoverToScreen($cursor);
 			cui.makeCursor($cursor, 'libMain');
 			cui.scrollToCursor();
-		} else if (act == 'a') {
+		} else if (act == 'a' || act == 'y') {
 
 			// try to load/download open box menu images
 			if (!$cursor.attr('class')) return;
@@ -18,37 +17,21 @@ class CuiState extends cui.State {
 			let imgs = nostlan.themes[style].template;
 			if (!(await nostlan.scraper.getExtraImgs(imgs))) return;
 
-			// TODO finish open box menus for all systems
-
-			let game = cui.libMain.getCurGame();
-			if (!game) return;
-			let template = nostlan.themes[game.sys || sys].template;
-
-			$('#gameManual').prop('src', '');
-			$('#gameMedia').prop('src', '');
-			$('#gameMemory').prop('src', '');
-			$('#gameBoxOpenMask').prop('src', '');
-			$('#gameWiki').html('');
-
-			$('#gameBoxOpen').prop('src', await nostlan.scraper.imgExists(template, 'boxOpen'));
-			$('#gameBoxOpenMask').prop('src',
-				await nostlan.scraper.imgExists(template, 'boxOpenMask'));
-			$('#gameMemory').prop('src', await nostlan.scraper.imgExists(template, 'memory'));
-			$('#gameManual').prop('src', await nostlan.scraper.imgExists(template, 'manual'));
-			$('#gameWiki').html();
-			nostlan.themes.loadGameWiki(cui.libMain.getCurGame());
-
-			let mediaImg = await nostlan.scraper.imgExists(game, syst.mediaType);
-			if (!mediaImg) {
-				mediaImg = await nostlan.scraper.getImg(template, syst.mediaType);
+			if (act == 'a') {
+				// TODO finish open box menus for all systems
+				await cui.boxOpenMenu.load();
+				$('#gameBoxOpen').show();
+				$('#gameBoxOpenMask').show();
+				cui.change('boxOpenMenu');
+				$('#libMain').hide();
+			} else if (act == 'y') { // edit
+				await cui.boxOpenMenu.load(true);
+				$('#boxOpenMenu_2').show();
+				$('#gameBoxOpen').hide();
+				$('#gameBoxOpenMask').hide();
+				cui.change('imgMenu');
 			}
-			if (!mediaImg && syst.mediaType == 'disc') {
-				mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
-			}
-			$('#gameMedia').prop('src', mediaImg);
-			cui.change('boxOpenMenu');
-			$('#libMain').hide();
-		} else if (act == 'y') { // flip
+		} else if (act == 'r' || act == 'l') { // flip
 			let ogHeight = $cursor.height();
 			await this.flipGameBox($cursor);
 			if (Math.abs(ogHeight - $cursor.height()) > 10) {

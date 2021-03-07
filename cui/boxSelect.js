@@ -9,7 +9,7 @@ class CuiState extends cui.State {
 			this.fitCoverToScreen($cursor);
 			cui.makeCursor($cursor, 'libMain');
 			cui.scrollToCursor();
-		} else if (act == 'a' || act == 'y') {
+		} else if (act == 'a') {
 
 			// try to load/download open box menu images
 			if (!$cursor.attr('class')) return;
@@ -31,7 +31,7 @@ class CuiState extends cui.State {
 				$('#gameBoxOpenMask').hide();
 				cui.change('imgMenu');
 			}
-		} else if (act == 'r' || act == 'l') { // flip
+		} else if (act == 'y') { // flip
 			let ogHeight = $cursor.height();
 			await this.flipGameBox($cursor);
 			if (Math.abs(ogHeight - $cursor.height()) > 10) {

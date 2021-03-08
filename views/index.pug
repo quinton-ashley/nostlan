@@ -21,7 +21,11 @@ html
 			.cui.opt1(name='patreon') open Patreon page
 			.cui.opt2(name='remind') remind me later
 		#checkDonationMenu_1.menu.row-y
-			input#donorPassword.col-12.form-control(placeholder="patreon subscriber monthly password")
+			h1.title0 Thank you!
+			p.msg0
+			#donorPassword.label-input.col-12
+				img
+				input
 			.cui.opt0(name='continue') verify password
 			.cui.opt1(name='b') I don't support Nostlan yet
 		#welcomeMenu.menu.row-y
@@ -229,6 +233,13 @@ html
 			input#saveName.col-12.form-control(placeholder="Name")
 			input#saveNumOfBackups.col-12.form-control(placeholder="Backup History Amount")
 			.cui.opt0(name='add') add
+		#imgSearchMenu_4.menu.row-y
+			h1.title0 Image Search Term
+			#imgSearchTerm.label-input.col-12
+				img
+				input
+		//- #imgSelect_3
+		//- 	.label
 		#boxOpenMenu_2.row-x.no-outline
 			img#gameBoxOpen.cui(name='b')
 			.row-y
@@ -238,7 +249,6 @@ html
 				img#gameMemory.cui(name='memory')
 				img#gameMedia.cui(name='media')
 			img#gameBoxOpenMask
-		#miniWeb
 		#libMain.main.reels.row-x
 		nav.navbar.fixed-top.p-0
 			button#nav0.navPanel.p-2.m-0: ul.nav.justify-content-left.m-0

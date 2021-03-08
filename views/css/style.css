@@ -33,6 +33,26 @@ html {
 	src: url("../../themes/fonts/edosz.ttf");
 }
 
+@font-face {
+	font-family: handwriting1;
+	src: url("../../themes/fonts/fawn.ttf");
+}
+
+@font-face {
+	font-family: handwriting2;
+	src: url("../../themes/fonts/maxine.ttf");
+}
+
+@font-face {
+	font-family: handwriting3;
+	src: url("../../themes/fonts/TrashHand.ttf");
+}
+
+@font-face {
+	font-family: handwriting4;
+	src: url("../../themes/fonts/Yellowtail.ttf");
+}
+
 /*================General====================*/
 .hiddenRow {
 	padding: 0 !important;
@@ -321,6 +341,34 @@ game .shade {
 	top: 0;
 	left: 0;
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.label-input {
+	font-family: handwriting1;
+	padding-left: 0;
+	padding-right: 0;
+	margin-bottom: 1vh;
+	height: 10vh;
+}
+
+.label-input img {
+	height: inherit;
+}
+
+.label-input input {
+	background: transparent;
+	position: absolute;
+	left: 5%;
+	height: 100%;
+	width: 90%;
+	border: none;
+	box-shadow: none;
+	margin: 0;
+	font-size: 200%;
+}
+
+.label-input input:focus {
+	outline: none;
 }
 
 game .label {

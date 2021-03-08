@@ -255,6 +255,13 @@ module.exports = async function(args) {
 				offline = true;
 			}
 		}
+
+		if (!offline) {
+			await cui.loading.loadSharedAssets();
+		}
+		let lblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
+		$('.label-input img').prop('src', lblImg);
+
 		cui.clearDialogs();
 		if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
 			await cui.libMain.load();

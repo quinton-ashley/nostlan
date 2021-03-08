@@ -1,4 +1,5 @@
 class CuiState extends cui.State {
+
 	async load(disableWiki) {
 		let game = cui.libMain.getCurGame();
 		if (!game) return;

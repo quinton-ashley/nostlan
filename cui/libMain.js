@@ -166,38 +166,9 @@ class CuiState extends cui.State {
 		cui.addView('playMenu');
 		cui.addView('emuMenu');
 
-		await this.loadSharedAssets();
-
 		await cui.loading.removeIntro();
 		cui.change('libMain', sysStyle);
 		cui.resize(true);
-	}
-
-	async loadSharedAssets() {
-		cui.clearDialogs();
-		// 'loading additional images'
-		$('#loadDialog0').text(lang.loading.msg1);
-		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
-		let dir = prefs.nlaDir + '/images';
-
-		let assetPacks = ['discSleeve', 'wraps'];
-
-		for (let pack of assetPacks) {
-			$('#loadDialog1').text(pack);
-			let url = gh + `/${pack}.zip`;
-			let file = dir + `/${pack}.zip`;
-			if (!(await fs.exists(dir + '/' + pack))) {
-				await fs.ensureDir(dir);
-				file = await nostlan.scraper.dl(url, file, {
-					timeout: 10000
-				});
-				if (!file) break;
-				await fs.extract(file, dir);
-			}
-		}
-		$('#loadDialog1').text('');
-		// 'loading complete!'
-		$('#loadDialog0').text(lang.loading.msg2);
 	}
 
 	searchForGame(char) {

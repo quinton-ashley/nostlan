@@ -10,8 +10,8 @@ class CuiState extends cui.State {
 			}
 		} else if (act == 'x') { // file
 			opn(path.parse(cui.libMain.getCurGame().file).dir);
-		} else if (act == 'y') { // imgdir
-			opn(await nostlan.scraper.getImgDir(cui.libMain.getCurGame()));
+		} else if (act == 'y') { // edit
+
 		}
 	}
 

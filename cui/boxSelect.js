@@ -9,7 +9,7 @@ class CuiState extends cui.State {
 			this.fitCoverToScreen($cursor);
 			cui.makeCursor($cursor, 'libMain');
 			cui.scrollToCursor();
-		} else if (act == 'a') {
+		} else if (act == 'a' || act == 'y') {
 
 			// try to load/download open box menu images
 			if (!$cursor.attr('class')) return;
@@ -20,18 +20,14 @@ class CuiState extends cui.State {
 			if (act == 'a') {
 				// TODO finish open box menus for all systems
 				await cui.boxOpenMenu.load();
-				$('#gameBoxOpen').show();
-				$('#gameBoxOpenMask').show();
 				cui.change('boxOpenMenu');
 				$('#libMain').hide();
 			} else if (act == 'y') { // edit
-				await cui.boxOpenMenu.load(true);
-				$('#boxOpenMenu_2').show();
-				$('#gameBoxOpen').hide();
-				$('#gameBoxOpenMask').hide();
-				cui.change('imgMenu');
+				log($cursor.parent()[0].classList[1]);
+				$('.reel:not(.' + $cursor.parent()[0].classList[1] + ')').addClass('hide');
+				cui.change('imgSelect');
 			}
-		} else if (act == 'y') { // flip
+		} else if (act == 'r' || act == 'l') { // flip
 			let ogHeight = $cursor.height();
 			await this.flipGameBox($cursor);
 			if (Math.abs(ogHeight - $cursor.height()) > 10) {
@@ -201,6 +197,7 @@ class CuiState extends cui.State {
 
 	async onChange() {
 		$('#libMain').show();
+		$('.reel').removeClass('hide');
 	}
 }
 module.exports = new CuiState();

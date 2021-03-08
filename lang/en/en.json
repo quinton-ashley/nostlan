@@ -14,8 +14,13 @@
 		"msg0": "You must be a Patreon supporter to access this feature.  Restart Nostlan and enter your donor verfication password."
 	},
 	"checkDonationMenu": {
+		"title0": "Thank You!",
+		"msg0": "Enter this month's member verification password:",
 		"opt0": "verify password",
 		"opt1": "I don't support Nostlan yet"
+	},
+	"imgSearchMenu": {
+		"title0": "Image Search Term"
 	},
 	"setupMenu": {
 		"opt0": "install at ~\/Documents\/emu",
@@ -34,7 +39,12 @@
 	},
 	"boxSelect": {
 		"nav0Lbl": "Play",
-		"nav2Lbl": "Flip",
+		"nav2Lbl": "Edit",
+		"nav3Lbl": "Back"
+	},
+	"imgSelect": {
+		"nav0Lbl": "Search",
+		"nav2Lbl": "ImgDir",
 		"nav3Lbl": "Back"
 	},
 	"boxOpenMenu": {
@@ -44,7 +54,7 @@
 	},
 	"gameMediaSelect": {
 		"nav0Lbl": "File",
-		"nav2Lbl": "ImgDir",
+		"nav2Lbl": "Edit",
 		"nav3Lbl": "Back"
 	},
 	"nostlanMenu": {

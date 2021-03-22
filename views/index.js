@@ -8,6 +8,7 @@ module.exports = async function(args) {
 	log('version: ' + pkg.version);
 	global.util = require(__root + '/core/util.js');
 	require(__root + '/core/jquery.textfill.min.js')();
+	require('jquery-ui-dist/jquery-ui');
 
 	// Users can put their emu folder with all their games
 	// emulator apps, and box art images anywhere they want but
@@ -54,6 +55,7 @@ module.exports = async function(args) {
 	global.nostlan = {};
 
 	let core = __root + '/core';
+	nostlan.browser = require(core + '/browser.js');
 	nostlan.launcher = require(core + '/launcher.js');
 	nostlan.installer = require(core + '/installer.js');
 	nostlan.saves = require(core + '/saves.js');

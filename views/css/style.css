@@ -17,6 +17,13 @@ html {
 	user-select: none;
 }
 
+#browser {
+	position: absolute;
+	width: 40%;
+	height: 100%;
+	border: none;
+}
+
 /*================Themes====================*/
 :root {
 	--nav-color: rgb(130, 130, 130);
@@ -51,6 +58,11 @@ html {
 @font-face {
 	font-family: handwriting4;
 	src: url("../../themes/fonts/Yellowtail.ttf");
+}
+
+@font-face {
+	font-family: handwriting5;
+	src: url("../../themes/fonts/Tahu.ttf");
 }
 
 /*================General====================*/
@@ -88,7 +100,8 @@ game {
 	animation-timing-function: linear;
 }
 
-#boxOpenMenu_2 {
+#boxOpenMenu_2,
+#imgSelect_3 {
 	z-index: 10;
 	position: fixed;
 	top: 0;
@@ -348,30 +361,42 @@ game .shade {
 	padding-left: 0;
 	padding-right: 0;
 	margin-bottom: 1vh;
-	height: 10vh;
+}
+
+game .label-input {
+	font-family: 'handwriting0';
+	position: absolute;
+	left: 5%;
+	right: 5%;
 }
 
 .label-input img {
 	height: inherit;
 }
 
-.label-input input {
+.label-input input,
+.label-input textarea {
 	background: transparent;
 	position: absolute;
-	left: 5%;
-	height: 100%;
-	width: 90%;
+	left: 2%;
+	right: 2%;
+	height: fit-content;
+	width: 96%;
 	border: none;
 	box-shadow: none;
-	margin: 0;
-	font-size: 200%;
 }
 
-.label-input input:focus {
+.label-input textarea {
+	text-align: center;
+	padding-top: 2vw;
+}
+
+.label-input input:focus,
+.label-input textarea:focus {
 	outline: none;
 }
 
-game .label {
+.label {
 	font-family: handwriting0;
 	font-size: 24px;
 	text-align: center;
@@ -385,15 +410,22 @@ game .label {
 	padding: 5px;
 }
 
-game .title.label {
+game .title.label,
+game .title.label-input {
 	top: 20%;
 	left: 5%;
+	right: 5%;
+	font-size: 3.8vw;
+	line-height: initial;
 }
 
-game .file.label {
-	font-size: 8px;
-	top: 87%;
+game .file.label,
+game .file.label-input {
+	font-family: 'handwriting5';
+	top: 89%;
 	left: 5%;
+	font-size: 1vh;
+	height: 1.4vh;
 }
 
 game.flip .shade {

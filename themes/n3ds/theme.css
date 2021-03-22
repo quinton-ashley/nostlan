@@ -68,3 +68,41 @@ game.n3ds.flip img.coverFull {
 	width: 204%;
 	transform: translate(1%, .7%);
 }
+
+game.n3ds .title.label {
+	top: 5%;
+	font-size: 1.5vw;
+}
+
+game.n3ds .file.label {
+	top: 70%;
+	font-size: 0.5vw;
+}
+
+.n3ds #boxOpenMenu_2 {
+	transform: scale(.6);
+}
+
+.n3ds #gameManual,
+.n3ds #gameWiki webview {
+	width: 85vh;
+	transform: translate(-109%, -46%);
+}
+
+.n3ds #gameMedia {
+	width: 26.6vh;
+	transform: translate(137%, -2.5%);
+	border-radius: 0;
+}
+
+.n3ds #boxOpenMenu_2.zoom-gameManual {
+	transform: translate(48vh, -4vh) scale(1.17);
+}
+
+.n3ds #boxOpenMenu_2.zoom-gameMedia {
+	transform: translate(-95vh, -24vh) scale(2);
+}
+
+.n3ds #boxOpenMenu_2.zoom-gameMemory {
+	transform: translate(-146vh, 129vh) scale(4);
+}

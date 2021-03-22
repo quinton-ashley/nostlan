@@ -10,6 +10,7 @@ setInterval(function() {
 }, 1000);
 
 let games = []; // array of current games from the systems' db
+let gameDB = [];
 
 class CuiState extends cui.State {
 
@@ -62,6 +63,10 @@ class CuiState extends cui.State {
 			break;
 		}
 		await cui.loading.intro();
+
+		let dbPath = `${__root}/db/${sys}DB.json`;
+		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
+
 		let gamesPath = `${systemsDir}/${sys}/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		games = [];
@@ -116,7 +121,7 @@ class CuiState extends cui.State {
 			if (!prefs[sys].libs.includes(gameLibDir)) {
 				prefs[sys].libs.push(gameLibDir);
 			}
-			games = await nostlan.scan.gameLib();
+			games = await nostlan.scan.gameLib(gameDB);
 			if (!games.length) {
 				await cui.loading.removeIntro(0);
 				await cui.change('sysMenu');
@@ -314,29 +319,45 @@ class CuiState extends cui.State {
 		}
 		if (hasNoImages) {
 			if (game.title == '') game.title = ' ';
-			if (!game.lblColor) game.lblColor = this.randomColor();
-			box += `\n  .title.label.editable(contenteditable="true" style="background-color: #${game.lblColor}") ${game.title}`;
-			box += `\n  .file.label(style="background-color: #${game.lblColor}") ${path.parse(game.file).base}`;
+			if (!game.lblColor || (game.lblColor + '').length > 3) {
+				game.lblColor = this.randomHue();
+				this.shouldSaveChanges = true;
+			}
+			let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
+			box += `\n  .title.label-input`;
+			box += `\n    img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
+			box += `\n    textarea(game_id="${game.id}") ${game.title}`;
+			box += `\n  .file.label-input`;
+			let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
+			box += `\n    img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
+			box += `\n    input(value="${sys + game.file.slice(1)}")`;
 		}
 		$('.reel.r' + column).append(pug(box));
+		$('input').attr('spellcheck', false);
+		$('textarea').attr('spellcheck', false);
 	}
 
-	randomColor() {
-		// creates random saturated colors, no grays
-		let color = '';
-		let brighter = Math.floor(Math.random() * 3);
-		for (let i = 0; i < 3; i++) {
-			let num;
-			if (i != brighter) {
-				num = Math.random() * 155 + 100;
-			} else {
-				num = Math.random() * 200 + 55;
-			}
-			let hex = Math.floor(num).toString(16);
-			color += hex;
-		}
-		return color;
+	randomHue() {
+		let hues = [0, 15, 80, 100, 110, 140, 160, 180, 215, 250, 280, 300, 320, 335];
+		return hues[Math.floor(Math.random() * hues.length)];
 	}
+
+	// randomColor() {
+	// 	// creates random saturated colors, no grays
+	// 	let color = '';
+	// 	let brighter = Math.floor(Math.random() * 3);
+	// 	for (let i = 0; i < 3; i++) {
+	// 		let num;
+	// 		if (i != brighter) {
+	// 			num = Math.random() * 155 + 100;
+	// 		} else {
+	// 			num = Math.random() * 200 + 55;
+	// 		}
+	// 		let hex = Math.floor(num).toString(16);
+	// 		color += hex;
+	// 	}
+	// 	return color;
+	// }
 
 	async viewerLoad(recheckImgs) {
 		cui.resize(true);
@@ -377,24 +398,68 @@ class CuiState extends cui.State {
 		await this.addGameBoxes(cols);
 		await this.addTemplateBoxes(cols);
 
-		$('#libMain game .label').click(function(e) {
-			e.stopPropagation();
-			if ($(this).hasClass('file')) {
-				let game = cui.libMain.getCurGame();
-				opn(path.parse(game.file).dir);
-			}
-		});
+		if (this.shouldSaveChanges) {
+			await nostlan.scan.outputUsersGamesDB(games);
+		}
 
-		$('#libMain game .title.label').on('keydown', function(e) {
-			if (e.key == 'Enter') {
-				e.preventDefault();
-				let game = cui.libMain.getCurGame();
-				game.title = $(this).text();
-				log('user edited game title: ');
-				log(game);
-				nostlan.scan.outputUsersGamesDB(games);
-			}
-		});
+		// $('#libMain game .label-input').click(function(e) {
+		// 	e.stopPropagation();
+		// 	// if ($(this).hasClass('file')) {
+		// 	// 	let game = cui.libMain.getCurGame();
+		// 	// 	opn(path.parse(game.file).dir);
+		// 	// }
+		// });
+
+		let ac_gameDB = [];
+
+		for (let game of gameDB) {
+			game.value = game.title;
+			ac_gameDB.push(game);
+		}
+
+		$('#libMain game .title.label-input textarea').autocomplete({
+				minLength: 1,
+				source: ac_gameDB,
+				focus: (event, ui) => {
+					let $this = $(event.target);
+					$this = ui.item.title;
+					return false;
+				},
+				select: (event, ui) => {
+					let $this = $(event.target);
+					$this.val(ui.item.title);
+					// let $game = $this.parent().parent();
+					// let id = $game.attr('id');
+					// $game.attr('id', ui.item.id);
+					// for (let i in games) {
+					// 	if (games[i].id != id) continue;
+					//
+					// 	games[i] = ui.item;
+					// }
+					let game = cui.libMain.getCurGame();
+					let sel = Object.assign({}, ui.item);
+					delete sel.value;
+					game = sel;
+
+					return false;
+				}
+			})
+			.autocomplete('instance')._renderItem = (ul, item) => {
+				return $('<li>')
+					.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
+					.appendTo(ul);
+			};
+
+		// $('#libMain game .title.label-input').on('keydown', function(e) {
+		// 	if (e.key == 'Enter') {
+		// 		e.preventDefault();
+		// 		let game = cui.libMain.getCurGame();
+		// 		game.title = $(this).text();
+		// 		log('user edited game title: ');
+		// 		log(game);
+		// 		nostlan.scan.outputUsersGamesDB(games);
+		// 	}
+		// });
 
 		cui.addView('libMain', {
 			hoverCurDisabled: true
@@ -410,9 +475,9 @@ class CuiState extends cui.State {
 
 	async rescanLib(fullRescan) {
 		if (!fullRescan) {
-			games = await nostlan.scan.gameLib(games);
+			games = await nostlan.scan.gameLib(gameDB, games);
 		} else {
-			games = await nostlan.scan.gameLib();
+			games = await nostlan.scan.gameLib(gameDB);
 		}
 	}
 

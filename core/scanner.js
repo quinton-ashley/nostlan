@@ -38,7 +38,7 @@ class Scanner {
 		this.outLog = '';
 	}
 
-	async gameLib(games) {
+	async gameLib(gameDB, games) {
 		if (!games) {
 			// 'Indexing your game library'
 			$('#loadDialog0').text(lang.loading.msg5);
@@ -50,9 +50,6 @@ class Scanner {
 		let unidentifiedAmt = 0;
 		let fullRescan = !games;
 		games = games || [];
-		let gameDB = [];
-		let dbPath = `${__root}/db/${sys}DB.json`;
-		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
 		let fuse, searcher;
 		fuse = new Fuse(gameDB, searcharg);

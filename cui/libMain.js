@@ -41,7 +41,6 @@ class CuiState extends cui.State {
 		if (/^_TEMPLATE/.test(id)) return;
 		let game = games.find(x => x.id === id);
 		if (game && game.file) {
-			game.file = util.absPath(game.file);
 			return game;
 		}
 		cui.err(lang.libMain.err0 + ': ' + id);
@@ -323,10 +322,11 @@ class CuiState extends cui.State {
 				game.lblColor = this.randomHue();
 				this.shouldSaveChanges = true;
 			}
+			let fontSize = 4.3 - game.title.length / 25;
 			let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 			box += `\n  .title.label-input`;
 			box += `\n    img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
-			box += `\n    textarea(game_id="${game.id}") ${game.title}`;
+			box += `\n    textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize/3}vw;") ${game.title}`;
 			box += `\n  .file.label-input`;
 			let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 			box += `\n    img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
@@ -341,23 +341,6 @@ class CuiState extends cui.State {
 		let hues = [0, 15, 80, 100, 110, 140, 160, 180, 215, 250, 280, 300, 320, 335];
 		return hues[Math.floor(Math.random() * hues.length)];
 	}
-
-	// randomColor() {
-	// 	// creates random saturated colors, no grays
-	// 	let color = '';
-	// 	let brighter = Math.floor(Math.random() * 3);
-	// 	for (let i = 0; i < 3; i++) {
-	// 		let num;
-	// 		if (i != brighter) {
-	// 			num = Math.random() * 155 + 100;
-	// 		} else {
-	// 			num = Math.random() * 200 + 55;
-	// 		}
-	// 		let hex = Math.floor(num).toString(16);
-	// 		color += hex;
-	// 	}
-	// 	return color;
-	// }
 
 	async viewerLoad(recheckImgs) {
 		cui.resize(true);
@@ -402,13 +385,9 @@ class CuiState extends cui.State {
 			await nostlan.scan.outputUsersGamesDB(games);
 		}
 
-		// $('#libMain game .label-input').click(function(e) {
-		// 	e.stopPropagation();
-		// 	// if ($(this).hasClass('file')) {
-		// 	// 	let game = cui.libMain.getCurGame();
-		// 	// 	opn(path.parse(game.file).dir);
-		// 	// }
-		// });
+		$('#libMain game .label-input').click(function(e) {
+			e.stopPropagation();
+		});
 
 		let ac_gameDB = [];
 
@@ -422,25 +401,30 @@ class CuiState extends cui.State {
 				source: ac_gameDB,
 				focus: (event, ui) => {
 					let $this = $(event.target);
-					$this = ui.item.title;
+					$this.val(ui.item.title);
+					let fontSize = 4.3 - ui.item.title.length / 25;
+					$this.css('font-size', fontSize + 'vw');
+					$this.css('padding-top', fontSize / 3 + 'vw');
+					log(fontSize);
 					return false;
 				},
 				select: (event, ui) => {
 					let $this = $(event.target);
 					$this.val(ui.item.title);
-					// let $game = $this.parent().parent();
-					// let id = $game.attr('id');
-					// $game.attr('id', ui.item.id);
-					// for (let i in games) {
-					// 	if (games[i].id != id) continue;
-					//
-					// 	games[i] = ui.item;
-					// }
-					let game = cui.libMain.getCurGame();
-					let sel = Object.assign({}, ui.item);
-					delete sel.value;
-					game = sel;
-
+					let $game = $this.parent().parent();
+					let id = $game.attr('id');
+					$game.attr('id', ui.item.id);
+					for (let i in games) {
+						if (games[i].id != id) continue;
+						let sel = Object.assign({}, ui.item);
+						delete sel.value;
+						delete sel.label;
+						let file = games[i].file;
+						games[i] = sel;
+						games[i].file = file;
+						nostlan.scan.outputUsersGamesDB(games);
+						break;
+					}
 					return false;
 				}
 			})

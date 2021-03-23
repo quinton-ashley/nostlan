@@ -103,6 +103,7 @@ class Launcher {
 			log(game.id);
 			if (!prefs.session[sys]) prefs.session[sys] = {};
 			prefs.session[sys].gameID = game.id;
+			game.file = util.absPath(game.file);
 			this.game = game;
 		}
 

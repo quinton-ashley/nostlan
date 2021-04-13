@@ -21,7 +21,7 @@
         "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_mac.zip"
       },
       "win": {
-        "portable": "https://github.com/bsnes-emu/bsnes/releases/download/v115/bsnes_v115-windows.zip"
+        "portable": "https://github.com/bsnes-emu/bsnes/releases/download/nightly/bsnes-windows.zip"
       }
     }
   },
@@ -330,6 +330,8 @@
       "mac": ["${app}", "${game}"],
       "win": ["${app}", "${game}"]
     },
+		"site": "https://ryujinx.org/",
+		"patreon": "https://www.patreon.com/ryujinx",
     "install": {
       "linux": {
         "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6551-linux_x64.tar.gz"
@@ -437,16 +439,18 @@
       ]
     },
     "appRegex": {
-      "linux": "yuzu",
+      "linux": "yuzu-.*\\.AppImage",
       "win": "yuzu\\.exe"
     },
     "cmd": {
       "linux": ["wine", "${app}", "${game}"],
       "win": ["${app}", "${game}"]
     },
+		"site": "https://yuzu-emu.org/",
+		"patreon": "https://www.patreon.com/yuzuteam",
     "install": {
       "linux": {
-        "portable": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-390/yuzu-linux-20200926-59c572363.tar.xz"
+        "standalone": "https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-588/yuzu-20210411-9c1e7b5f5.AppImage"
       },
       "win": {
 				"prereq": "https://aka.ms/vs/16/release/vc_redist.x64.exe",

@@ -317,24 +317,34 @@ class CuiState extends cui.State {
 			box += '.hide';
 		}
 		if (hasNoImages) {
-			if (game.title == '') game.title = ' ';
-			if (!game.lblColor || (game.lblColor + '').length > 3) {
-				game.lblColor = this.randomHue();
-				this.shouldSaveChanges = true;
-			}
-			let fontSize = 4.3 - game.title.length / 25;
-			let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
-			box += `\n  .title.label-input`;
-			box += `\n    img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
-			box += `\n    textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize/3}vw;") ${game.title}`;
-			box += `\n  .file.label-input`;
-			let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
-			box += `\n    img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
-			box += `\n    input(value="${sys + game.file.slice(1)}")`;
+			box += '\n' + this.labelMaker(game).replace('\n', '\n  ');
 		}
 		$('.reel.r' + column).append(pug(box));
 		$('input').attr('spellcheck', false);
 		$('textarea').attr('spellcheck', false);
+	}
+
+	addLabels($game, game) {
+		let lbls = this.labelMaker(game);
+		$game.append(pug(lbls));
+	}
+
+	labelMaker(game) {
+		if (game.title == '') game.title = ' ';
+		if (!game.lblColor || (game.lblColor + '').length > 3) {
+			game.lblColor = this.randomHue();
+			this.shouldSaveChanges = true;
+		}
+		let fontSize = 4.3 - game.title.length / 25;
+		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
+		let lbls = `.title.label-input`;
+		lbls += `\n  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
+		lbls += `\n  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize/3}vw;") ${game.title}`;
+		lbls += `\n.file.label-input`;
+		let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
+		lbls += `\n  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
+		lbls += `\n  input(value="${sys + game.file.slice(1)}")`;
+		return lbls;
 	}
 
 	randomHue() {
@@ -396,54 +406,58 @@ class CuiState extends cui.State {
 			ac_gameDB.push(game);
 		}
 
-		$('#libMain game .title.label-input textarea').autocomplete({
-				minLength: 1,
-				source: ac_gameDB,
-				focus: (event, ui) => {
-					let $this = $(event.target);
-					$this.val(ui.item.title);
-					let fontSize = 4.3 - ui.item.title.length / 25;
-					$this.css('font-size', fontSize + 'vw');
-					$this.css('padding-top', fontSize / 3 + 'vw');
-					log(fontSize);
-					return false;
-				},
-				select: (event, ui) => {
-					let $this = $(event.target);
-					$this.val(ui.item.title);
-					let $game = $this.parent().parent();
-					let id = $game.attr('id');
-					$game.attr('id', ui.item.id);
-					for (let i in games) {
-						if (games[i].id != id) continue;
-						let sel = Object.assign({}, ui.item);
-						delete sel.value;
-						delete sel.label;
-						let file = games[i].file;
-						games[i] = sel;
-						games[i].file = file;
-						nostlan.scan.outputUsersGamesDB(games);
-						break;
-					}
-					return false;
-				}
-			})
-			.autocomplete('instance')._renderItem = (ul, item) => {
-				return $('<li>')
-					.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
-					.appendTo(ul);
-			};
+		let $titles = $('#libMain game .title.label-input textarea');
 
-		// $('#libMain game .title.label-input').on('keydown', function(e) {
-		// 	if (e.key == 'Enter') {
-		// 		e.preventDefault();
-		// 		let game = cui.libMain.getCurGame();
-		// 		game.title = $(this).text();
-		// 		log('user edited game title: ');
-		// 		log(game);
-		// 		nostlan.scan.outputUsersGamesDB(games);
-		// 	}
-		// });
+		if ($titles.length) {
+			$titles.autocomplete({
+					minLength: 1,
+					source: ac_gameDB,
+					focus: (event, ui) => {
+						let $this = $(event.target);
+						$this.val(ui.item.title);
+						let fontSize = 4.3 - ui.item.title.length / 25;
+						$this.css('font-size', fontSize + 'vw');
+						$this.css('padding-top', fontSize / 3 + 'vw');
+						log(fontSize);
+						return false;
+					},
+					select: (event, ui) => {
+						let $this = $(event.target);
+						$this.val(ui.item.title);
+						let $game = $this.parent().parent();
+						let id = $game.attr('id');
+						$game.attr('id', ui.item.id);
+						for (let i in games) {
+							if (games[i].id != id) continue;
+							let sel = Object.assign({}, ui.item);
+							delete sel.value;
+							delete sel.label;
+							let file = games[i].file;
+							games[i] = sel;
+							games[i].file = file;
+							nostlan.scan.outputUsersGamesDB(games);
+							break;
+						}
+						return false;
+					}
+				})
+				.autocomplete('instance')._renderItem = (ul, item) => {
+					return $('<li>')
+						.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
+						.appendTo(ul);
+				};
+
+			// $('#libMain game .title.label-input').on('keydown', function(e) {
+			// 	if (e.key == 'Enter') {
+			// 		e.preventDefault();
+			// 		let game = cui.libMain.getCurGame();
+			// 		game.title = $(this).text();
+			// 		log('user edited game title: ');
+			// 		log(game);
+			// 		nostlan.scan.outputUsersGamesDB(games);
+			// 	}
+			// });
+		}
 
 		cui.addView('libMain', {
 			hoverCurDisabled: true

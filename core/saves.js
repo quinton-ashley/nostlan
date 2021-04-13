@@ -95,7 +95,7 @@ class Saves {
 			if (win) {
 				dir0 = util.absPath('$home') + '/AppData/Roaming/yuzu';
 			} else if (mac || linux) {
-				dir = util.absPath('$home') + '/.local/share/yuzu-emu';
+				dir = util.absPath('$home') + '/.local/share/yuzu';
 				dir0 = dir;
 			}
 			let dir1 = path.join(prefs.nlaDir, '../switch/yuzu');

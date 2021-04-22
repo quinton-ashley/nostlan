@@ -29,7 +29,7 @@
 		"err0": "You must choose an install location!",
 		"msg0": "choose the folder you want the template to go in",
 		"err1": "Can not write to folder!",
-		"err2": "This folder is read only! Right click the folder, click open as administrator, right click the folder, click edit file permissions. Change to read/write and create/delete for all user groups."
+		"err2": "This folder is read only! Right click the folder, click open as administrator, right click the folder, click edit file permissions. Change to read/write and create/delete for all user groups. Or set prefs.load.readOnlyFS to true in your prefs.json file."
 	},
 	"libMain": {
 		"nav0Lbl": "Play",
@@ -190,7 +190,8 @@
 		"msg1_2": "If you don't have any",
 		"msg1_3": "games yet you might want to install the",
 		"msg1_4": "emulator app first.",
-		"err0": "You already have this emulator installed on your computer!"
+		"err0": "You already have this emulator installed on your computer!",
+		"err1": "If you don't have this app, install it using your linux package manager to add/remove software"
 	},
 	"alertMenu": {
 		"title0": "Success!",

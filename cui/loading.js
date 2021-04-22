@@ -22,6 +22,7 @@ class CuiState extends cui.State {
 		// 'loading additional images'
 		$('#loadDialog0').text(lang.loading.msg1);
 		let gh = 'https://github.com/quinton-ashley/nostlan-img/raw/master/shared';
+		if (!prefs.nlaDir) return;
 		let dir = prefs.nlaDir + '/images';
 
 		let assetPacks = ['discSleeve', 'labels', 'stickers', 'wraps'];

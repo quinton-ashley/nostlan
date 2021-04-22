@@ -9,8 +9,10 @@ class CuiState extends cui.State {
 				cui.err(lang.setupMenu.err0);
 				return false;
 			}
+			systemsDir = systemsDir.replace(/\\/g, '/');
+			prefs.nlaDir = systemsDir + '/nostlan';
 			await prefsMng.save(prefs);
-			cui.change('sysMenu');
+			nostlan.start();
 			return;
 		}
 		if (act == 'newDefaultInstall') {
@@ -59,7 +61,7 @@ class CuiState extends cui.State {
 					}
 					break;
 				}
-				if (!(await fs.exists(templateDir))) {
+				if (!prefs[_emu].appDirs && !(await fs.exists(templateDir))) {
 					await fs.ensureDir(templateDir);
 				}
 				if (i > 0) continue;
@@ -74,19 +76,6 @@ class CuiState extends cui.State {
 						// look for dedicated games dir
 						let dir = templateDir + '/' + prefs[_emu][dirType];
 						await fs.ensureDir(dir);
-						if (linux) {
-							let testDir = dir + '/nostlanTest';
-							try {
-								await fs.ensureDir(testDir);
-								await fs.remove(testDir);
-							} catch (ror) {
-								if (!prefs.load.readOnlyFS) {
-									opn(dir);
-									await cui.error(lang.setupMenu.err2 + '\n' + dir,
-										lang.setupMenu.err1, 'quit');
-								}
-							}
-						}
 						try {
 							await fs.ensureSymlink(dir, defaultDir, 'dir');
 						} catch (ror) {

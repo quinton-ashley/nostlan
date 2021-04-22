@@ -43,14 +43,15 @@ module.exports = async function(args) {
 		prefs.ui.mouse.wheel.multi = 0.5;
 		prefs.ui.mouse.wheel.smooth = true;
 	}
-
-	try {
-		global.kb = require('robotjs');
-		kb.setKeyboardDelay(0);
-	} catch (ror) {
-		er(ror);
+	if (!linux) {
+		try {
+			global.kb = require('robotjs');
+			kb.setKeyboardDelay(0);
+		} catch (ror) {
+			er(ror);
+		}
+		global.sharp = require('sharp');
 	}
-	global.sharp = require('sharp');
 
 	global.nostlan = {};
 
@@ -87,8 +88,6 @@ module.exports = async function(args) {
 		if (await prefsMng.canLoad()) {
 			prefs = await prefsMng.load(prefs);
 			prefs.args = args;
-		} else if (args.dev) {
-			args.testSetup = true;
 		}
 		electron.getCurrentWindow().setFullScreen(
 			prefs.ui.launchFullScreen);

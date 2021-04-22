@@ -56,7 +56,7 @@ class Launcher {
 			}
 		}
 		let emuAppDirs = prefs[emu].appDirs || [];
-		emuAppDirs.push(`${systemsDir}/${sys}/${emu}`);
+		if (!emuAppDirs.length) emuAppDirs.push(`${systemsDir}/${sys}/${emu}`);
 		if (mac) emuAppDirs.push('/Applications');
 
 		for (let dir of emuAppDirs) {

@@ -219,6 +219,8 @@ module.exports = async function(args) {
 			let en = JSON.parse(
 				await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
 			deepExtend(en, lang);
+			lang = en;
+			log(lang);
 		}
 
 		$('#loadDialog0').text(lang.loading.msg3 + ' v' + pkg.version);

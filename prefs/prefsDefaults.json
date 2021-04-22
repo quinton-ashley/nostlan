@@ -15,10 +15,10 @@
     },
     "install": {
       "linux": {
-        "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_linux.zip"
+        "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_4h2/bsnes_hd_beta_10_4_mac.tar.bz2"
       },
       "mac": {
-        "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_3/bsnes_hd_beta_10_3_mac.zip"
+        "portable": "https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_4h2/bsnes_hd_beta_10_4_linux.tar.bz2"
       },
       "win": {
         "portable": "https://github.com/bsnes-emu/bsnes/releases/download/nightly/bsnes-windows.zip"

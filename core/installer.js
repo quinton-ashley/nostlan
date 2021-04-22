@@ -105,8 +105,7 @@ class Installer {
 			_url = (prmIdx != -1) ? url.slice(prmIdx)[0] : url;
 			ext = path.parse(_url).ext.toLowerCase();
 		}
-		if (ext == '.gz') ext = '.tar.gz';
-		if (ext == '.xz') ext = '.tar.xz';
+		if (/.(bz2|gz|xz)/.test(ext)) ext = '.tar' + ext;
 		if (!ins.jsEmu) {
 			file = dir + '/pkg' + ext;
 		} else {

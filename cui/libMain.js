@@ -317,7 +317,7 @@ class CuiState extends cui.State {
 			box += '.hide';
 		}
 		if (hasNoImages) {
-			box += '\n' + this.labelMaker(game).replace('\n', '\n  ');
+			box += '\n  ' + this.labelMaker(game).replace(/\n/g, '\n  ');
 		}
 		$('.reel.r' + column).append(pug(box));
 		$('input').attr('spellcheck', false);
@@ -330,20 +330,21 @@ class CuiState extends cui.State {
 	}
 
 	labelMaker(game) {
-		if (game.title == '') game.title = ' ';
+		let title = game.title;
+		if (title == '') title = ' ';
 		if (!game.lblColor || (game.lblColor + '').length > 3) {
 			game.lblColor = this.randomHue();
 			this.shouldSaveChanges = true;
 		}
-		let fontSize = 4.3 - game.title.length / 25;
+		let fontSize = 4.3 - title.length / 25;
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
-		let lbls = `.title.label-input`;
-		lbls += `\n  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
-		lbls += `\n  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize/3}vw;") ${game.title}`;
-		lbls += `\n.file.label-input`;
+		let lbls = `.title.label-input\n`;
+		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
+		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize/3}vw;") ${title}\n`;
+		lbls += `.file.label-input\n`;
 		let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
-		lbls += `\n  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")`
-		lbls += `\n  input(value="${sys + game.file.slice(1)}")`;
+		lbls += `  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
+		lbls += `  input(value="${sys + game.file.slice(1)}")\n`;
 		return lbls;
 	}
 
@@ -396,6 +397,7 @@ class CuiState extends cui.State {
 		}
 
 		$('#libMain game .label-input').click(function(e) {
+			if (cui.ui != 'imgSearchMenu') return;
 			e.stopPropagation();
 		});
 

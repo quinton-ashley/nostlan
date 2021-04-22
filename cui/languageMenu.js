@@ -21,6 +21,7 @@ class CuiState extends cui.State {
 		log(elems);
 		this.$elem.empty();
 		this.$elem.append(pug(elems));
+		cui.addView('languageMenu');
 	}
 }
 module.exports = new CuiState();

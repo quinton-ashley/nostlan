@@ -85,7 +85,7 @@
 		"title0": "Game Library Menu",
 		"opt0": "add new games",
 		"opt1": "manually identify games",
-		"opt2": "auto-scan for images",
+		"opt2": "scan for images",
 		"opt3": "manually search for images",
 		"opt4": "info",
 		"opt5": "rescan all games"

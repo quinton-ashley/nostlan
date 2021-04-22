@@ -43,7 +43,7 @@ module.exports = function() {
 		} else if (act == 'start' && cui[ui].level < 10) {
 			cui.change('nostlanMenu');
 		} else if (act == 'b' && (/menu/i.test(ui) || /select/i.test(ui)) &&
-			ui != 'donateMenu' && ui != 'setupMenu' && ui != 'imgSelect' &&
+			ui != 'donateMenu' && ui != 'setupMenu' && ui != 'imgSearchMenu' &&
 			ui != 'pauseMenu' && cui.getParent() != 'loading') {
 			cui.doAction('back');
 		} else if (act == 'select') {

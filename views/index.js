@@ -43,15 +43,14 @@ module.exports = async function(args) {
 		prefs.ui.mouse.wheel.multi = 0.5;
 		prefs.ui.mouse.wheel.smooth = true;
 	}
-	if (!linux) {
-		try {
-			global.kb = require('robotjs');
-			kb.setKeyboardDelay(0);
-		} catch (ror) {
-			er(ror);
-		}
-		global.sharp = require('sharp');
+
+	try {
+		global.kb = require('robotjs');
+		kb.setKeyboardDelay(0);
+	} catch (ror) {
+		er(ror);
 	}
+	global.sharp = require('sharp');
 
 	global.nostlan = {};
 

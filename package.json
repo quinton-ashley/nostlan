@@ -113,7 +113,7 @@
     "puppeteer-core": "^8.0.0",
     "robotjs": "^0.6.0",
     "semver": "^7.3.4",
-    "sharp": "0.26.2",
+    "sharp": "^0.27.1",
     "tabletojson": "^2.0.4",
     "tether": "^1.4.7",
     "three": "*",
@@ -156,5 +156,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.20.14"
+  "version": "1.20.15"
 }

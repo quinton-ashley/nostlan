@@ -13,7 +13,7 @@ class CuiState extends cui.State {
 		$('body > :not(#dialogs)').addClass('dim');
 		if (acts[1] == 'update') {
 			await nostlan.launcher.updateEmu();
-		} else if (acts[1] == 'config') {
+		} else {
 			await nostlan.launcher.configEmu();
 		}
 	}

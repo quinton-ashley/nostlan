@@ -195,8 +195,8 @@
     "gamesDir": "roms",
     "imagesDir": "artwork",
     "appRegex": {
-      "mac": "mame64",
-      "win": "mame64\\.exe"
+      "mac": "mame",
+      "win": "mame\\.exe"
     },
     "cmd": {
       "linux": ["${app}", "-inipath", "${cwd}", "${game.id}"],
@@ -205,10 +205,10 @@
     },
     "install": {
       "mac": {
-        "portable": "https://sdlmame.lngn.net/mame0224-64bit.zip"
+        "portable": "https://sdlmame.lngn.net/mame0230-x86.zip"
       },
       "win": {
-        "portable": "https://github.com/mamedev/mame/releases/download/mame0224/mame0224b_64bit.exe"
+        "portable": "https://github.com/mamedev/mame/releases/download/mame0230/mame0230b_64bit.exe"
       }
     }
   },

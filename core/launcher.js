@@ -266,9 +266,14 @@ class Launcher {
 		}
 		if (emu == 'mame' &&
 			!(await fs.exists(this.emuAppDir + '/mame.ini'))) {
-			await spawn('mame', ['-cc'], {
-				cwd: this.emuAppDir
-			});
+			await fs.remove('~/Library/Application Support/mame');
+			try {
+				await spawn('./mame', ['-cc'], {
+					cwd: this.emuAppDir
+				});
+			} catch (ror) {
+				cui.err(ror);
+			}
 		}
 		if (linux) {
 			if (emu == 'citra') {

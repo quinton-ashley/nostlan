@@ -18,7 +18,8 @@ class CuiState extends cui.State {
 				return;
 			}
 			await cui.libMain.load(gameLibDir);
-		} else if (act == 'install') {
+		} else if (act.slice(0,7) == 'install') {
+			emu = act.slice(8);
 			let app = await nostlan.launcher.getEmuApp();
 			if (app && linux && !/\//.test(app)) {
 				// If you don't have this app, install it using your linux package manager to add/remove software
@@ -39,10 +40,22 @@ class CuiState extends cui.State {
 	}
 
 	async onChange() {
-		this.$elem.find('.opt1').text(
-			lang.emptyGameLibMenu.opt1 + ' ' +
-			prefs[emu].name
-		);
+		this.$elem.find('.cui').remove();
+		this.$elem.append(pug(`
+.cui(name='find')
+	i.material-icons.md-left wysiwyg
+	.text.opt0 browse for games folder
+	i.material-icons.md-right.invis wysiwyg`));
+		for (let i in syst.emus) {
+			let _emu = syst.emus[i];
+			let instOpt = `
+.cui(name='install-${_emu}')
+	i.material-icons.md-left get_app
+	.text.opt${i+1} install ${prefs[_emu].name}
+	i.material-icons.md-right.invis get_app`
+			this.$elem.append(pug(instOpt));
+		}
+		cui.addListeners(this.id);
 		let note = '';
 		if (syst.gameExts) {
 			// 'Game files must have the file extension'

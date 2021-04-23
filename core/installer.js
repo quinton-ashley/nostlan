@@ -106,7 +106,7 @@ class Installer {
 			ext = path.parse(_url).ext.toLowerCase();
 		}
 		if (/.(bz2|gz|xz)/.test(ext)) ext = '.tar' + ext;
-		if (!ins.jsEmu) {
+		if (!ins.jsEmu && !(linux && ins.standalone)) {
 			file = dir + '/pkg' + ext;
 		} else {
 			file = dir + '/' + path.parse(_url).name + ext;

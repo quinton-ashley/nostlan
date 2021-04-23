@@ -334,7 +334,7 @@
 		"patreon": "https://www.patreon.com/ryujinx",
     "install": {
       "linux": {
-        "portable": "https://ci.appveyor.com/api/buildjobs/46l2p2i5bbpbvc9h/artifacts/ryujinx-1.0.6551-linux_x64.tar.gz"
+        "portable": "https://ci.appveyor.com/api/buildjobs/kqvbvvbkpmwe2nh6/artifacts/ryujinx-1.0.6846-linux_x64.tar.gz"
       },
       "mac": {
         "portable": "https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.6551-osx_x64.zip"
@@ -443,7 +443,7 @@
       "win": "yuzu\\.exe"
     },
     "cmd": {
-      "linux": ["wine", "${app}", "${game}"],
+      "linux": ["${app}", "${game}"],
       "win": ["${app}", "${game}"]
     },
 		"site": "https://yuzu-emu.org/",

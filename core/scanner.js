@@ -104,7 +104,7 @@ class Scanner {
 				$('#loadDialog1').text(term);
 				await delay(1);
 
-				if (/(snes|nes)/.test(sys)) {
+				if (/(snes|nes|n64)/.test(sys)) {
 					let data = await fs.readFile(file);
 					let game, hash;
 					if (sys == 'nes') {

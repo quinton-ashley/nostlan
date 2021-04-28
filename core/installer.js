@@ -26,7 +26,7 @@ class Installer {
 			' ' + prefs[emu].name);
 		// 'preparing to install'
 		this.loadLog(lang.emuAppMenu.msg1);
-		let ins = prefs[emu].install;
+		let ins = prefs[emu + '-' + prefs.chip_arch].install;
 		if (!ins && !prefs[emu].jsEmu) {
 			// This emulator is not available for your
 			// computer's operating system

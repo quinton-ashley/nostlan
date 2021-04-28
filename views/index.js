@@ -50,7 +50,12 @@ module.exports = async function(args) {
 	} catch (ror) {
 		er(ror);
 	}
-	global.sharp = require('sharp');
+	try {
+		global.sharp = require('sharp');
+	} catch (ror) {
+		er(ror);
+		global.jimp = require('jimp');
+	}
 
 	global.nostlan = {};
 

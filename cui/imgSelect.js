@@ -9,7 +9,7 @@ class CuiState extends cui.State {
 		log(act);
 
 		if (act == 'x') {
-			cui.change('imgSearchMenu');
+
 		} else if (act == 'y') { // imgDir
 			opn(this.imgDir);
 		}

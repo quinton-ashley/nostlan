@@ -21,10 +21,12 @@ module.exports = async function(defaults) {
 					(!/(install|appDirs|appRegex)/.test(prop) && typeof prefs[_emu][prop] == 'string')) {
 					continue;
 				}
-				if (prefs[_emu][prop][osType]) {
-					prefs[_emu][prop] = prefs[_emu][prop][osType];
-				} else if (defaults[_emu][prop] && defaults[_emu][prop][osType]) {
-					prefs[_emu][prop] = defaults[_emu][prop][osType];
+				let type = osType;
+				if (prop == 'install') type += '-' + prefs.chip_arch;
+				if (prefs[_emu][prop][type]) {
+					prefs[_emu][prop] = prefs[_emu][prop][type];
+				} else if (defaults[_emu][prop] && defaults[_emu][prop][type]) {
+					prefs[_emu][prop] = defaults[_emu][prop][type];
 				} else if (prefs[_emu][prop].linux ||
 					prefs[_emu][prop].mac ||
 					prefs[_emu][prop].win) {

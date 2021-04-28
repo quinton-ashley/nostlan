@@ -19,9 +19,6 @@
 		"opt0": "verify password",
 		"opt1": "I don't support Nostlan yet"
 	},
-	"imgSearchMenu": {
-		"title0": "Image Search Term"
-	},
 	"setupMenu": {
 		"opt0": "install at ~\/Documents\/emu",
 		"opt1": "choose install location",

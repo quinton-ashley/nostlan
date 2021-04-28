@@ -211,11 +211,17 @@ class Scraper {
 		if (await fs.exists(thumb)) return thumb;
 		$('#loadDialog0').text('generating thumbnail images');
 
-		await sharp(og).resize({
-			height: 720
-		}).jpeg({
-			quality: 89
-		}).toFile(thumb);
+		if (global.sharp) {
+			await sharp(og).resize({
+				height: 720
+			}).jpeg({
+				quality: 89
+			}).toFile(thumb);
+		} else {
+			img = await jimp.read(og);
+			await img.resize(jimp.AUTO, 720);
+			await img.writeAsync(thumb);
+		}
 
 		return thumb;
 	}

@@ -19,7 +19,7 @@ module.exports = {
 	ds: {
 		name: 'DS',
 		fullName: 'Nintendo DS',
-		emus: ['desmume', 'melonds'],
+		emus: ['melonds', 'desmume'],
 		mediaType: 'cart',
 		gameExts: ['nds']
 	},

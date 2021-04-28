@@ -397,7 +397,6 @@ class CuiState extends cui.State {
 		}
 
 		$('#libMain game .label-input').click(function(e) {
-			if (cui.ui != 'imgSearchMenu') return;
 			e.stopPropagation();
 		});
 

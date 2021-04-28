@@ -266,13 +266,17 @@ class Launcher {
 		}
 		if (emu == 'mame' &&
 			!(await fs.exists(this.emuAppDir + '/mame.ini'))) {
-			await fs.remove('~/Library/Application Support/mame');
-			try {
-				await spawn('./mame', ['-cc'], {
-					cwd: this.emuAppDir
-				});
-			} catch (ror) {
-				cui.err(ror);
+			let defaultMameIni = '~/Library/Application Support/mame/mame.ini';
+			if (await fs.exists(defaultMameIni)) {
+				await fs.move(defaultMameIni, this.emuAppDir + '/mame.ini');
+			} else {
+				try {
+					await spawn('./mame', ['-cc'], {
+						cwd: this.emuAppDir
+					});
+				} catch (ror) {
+					cui.err(ror);
+				}
 			}
 		}
 		if (linux) {
@@ -313,9 +317,7 @@ class Launcher {
 		for (let cmdArg of cmdArray) {
 			if (cmdArg == '${app}') {
 				this.cmdArgs.push(emuApp);
-				if (!game) {
-					break;
-				}
+				if (!game && emu != 'mame') break;
 			} else if (cmdArg == '${game}' || cmdArg == '${game.file}') {
 				this.cmdArgs.push(gameFile);
 			} else if (cmdArg == '${game.id}') {
@@ -324,6 +326,7 @@ class Launcher {
 				this.cmdArgs.push(game.title);
 			} else if (cmdArg == '${cwd}') {
 				this.cmdArgs.push(this.emuAppDir);
+				if (!game) break;
 			} else {
 				this.cmdArgs.push(cmdArg);
 			}

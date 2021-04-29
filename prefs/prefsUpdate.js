@@ -10,27 +10,13 @@ module.exports = async function(defaults) {
 		let _syst = systems[_sys];
 		if (!_syst.emus) continue;
 		for (let _emu of _syst.emus) {
+			if (!prefs[_emu]) prefs[_emu] = {};
 
-			prefs[_emu].latestVersion = defaults[_emu].latestVersion;
-
-			let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install', 'fullscreenKeyCombo'];
-
+			let props = ['app', 'cmd', 'fullscreenKeyCombo'];
 			for (let prop of props) {
-				// always update install, appDirs, appRegex
-				if (!prefs[_emu][prop] ||
-					(!/(install|appDirs|appRegex)/.test(prop) && typeof prefs[_emu][prop] == 'string')) {
-					continue;
-				}
-				let type = osType;
-				if (prop == 'install') type += '-' + prefs.chip_arch;
-				if (prefs[_emu][prop][type]) {
-					prefs[_emu][prop] = prefs[_emu][prop][type];
-				} else if (defaults[_emu][prop] && defaults[_emu][prop][type]) {
-					prefs[_emu][prop] = defaults[_emu][prop][type];
-				} else if (prefs[_emu][prop].linux ||
-					prefs[_emu][prop].mac ||
-					prefs[_emu][prop].win) {
-					delete prefs[_emu][prop];
+				// init to defaults if nothing is there yet
+				if (!prefs[_emu][prop] && emus[_emu][prop]) {
+					prefs[_emu][prop] = emus[_emu][prop];
 				}
 			}
 		}
@@ -45,17 +31,28 @@ module.exports = async function(defaults) {
 		}
 	}
 
+	if (semver.gte(ver, '1.20.17')) return;
+
+	for (let _sys in systems) {
+		let _syst = systems[_sys];
+		if (!_syst.emus) continue;
+		for (let _emu of _syst.emus) {
+			let props = ['app', 'cmd', 'saves'];
+			let obj = {};
+			for (let prop of props) {
+				obj[prop] = prefs[_emu][prop];
+			}
+			prefs[_emu] = obj;
+		}
+	}
+
 	if (semver.gte(ver, '1.16.4')) return;
 
 	if (linux) {
-		prefs.mame.appDirs = [
+		emus.mame.appDirs.linux = [
 			"$home/.mame"
 		];
 	}
-
-	if (semver.gte(ver, '1.15.0')) return;
-
-	delete prefs.mgba.appDirs;
 
 	if (semver.gte(ver, '1.13.5')) return;
 

@@ -37,7 +37,7 @@ class CuiState extends cui.State {
 				let _emu = _syst.emus[i];
 				let templateDir = `${systemsDir}/${_sys}/${_emu}`;
 
-				let emuAppDirs = prefs[_emu].appDirs || [];
+				let emuAppDirs = emus[_emu].appDirs || [];
 				for (let dir of emuAppDirs) {
 					dir = util.absPath(dir);
 					if (!(await fs.exists(dir))) continue;
@@ -61,7 +61,7 @@ class CuiState extends cui.State {
 					}
 					break;
 				}
-				if (!prefs[_emu].appDirs && !(await fs.exists(templateDir))) {
+				if (!emus[_emu].appDirs && !(await fs.exists(templateDir))) {
 					await fs.ensureDir(templateDir);
 				}
 				if (i > 0) continue;

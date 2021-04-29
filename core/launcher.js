@@ -55,7 +55,7 @@ class Launcher {
 				return emuApp;
 			}
 		}
-		let emuAppDirs = prefs[emu].appDirs || [];
+		let emuAppDirs = emus[emu].appDirs || [];
 		if (!emuAppDirs.length) emuAppDirs.push(`${systemsDir}/${sys}/${emu}`);
 		if (mac) emuAppDirs.push('/Applications');
 
@@ -71,8 +71,8 @@ class Launcher {
 				// 'Incorrect path to emulator app directory. Delete or edit your user preferences file.'
 				await cui.err(lang.playing.err0 + ' ' + ror, '406');
 			}
-			if (!prefs[emu].appRegex) return;
-			let regex = new RegExp(prefs[emu].appRegex, 'i');
+			if (!emus[emu].appRegex) return;
+			let regex = new RegExp(emus[emu].appRegex, 'i');
 
 			for (let file of files) {
 				let f = path.parse(file);
@@ -118,7 +118,7 @@ class Launcher {
 			return;
 		}
 
-		if (prefs[emu].jsEmu) {
+		if (emus[emu].jsEmu) {
 			if (!game) {
 				cui.alert('Not configurable yet.');
 				this.state = 'closed';
@@ -309,7 +309,7 @@ class Launcher {
 		}
 		if (!game && opt.update) {
 			cmdArray = [];
-			for (let cmdArg of prefs[emu].update) {
+			for (let cmdArg of emus[emu].update) {
 				cmdArray.push(util.absPath(cmdArg));
 			}
 		}
@@ -486,7 +486,7 @@ class Launcher {
 
 	reset() {
 		this.state = 'resetting';
-		if (!prefs[emu].jsEmu) {
+		if (!emus[emu].jsEmu) {
 			this.child.kill('SIGINT');
 		} else {
 			this.jsEmu.executeJavaScript('jsEmu.close();');
@@ -498,7 +498,7 @@ class Launcher {
 
 	close() {
 		this.state = 'closing';
-		if (!prefs[emu].jsEmu) {
+		if (!emus[emu].jsEmu) {
 			this.child.kill('SIGINT');
 		} else {
 			this._close();

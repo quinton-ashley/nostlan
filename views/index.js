@@ -34,6 +34,7 @@ module.exports = async function(args) {
 
 	// get the built-in supported systems + emulators
 	global.systems = require(__root + '/core/systems.js');
+	global.emus = require(__root + '/core/emulators.js');
 	global.systemsDir = ''; // nostlan dir is stored here
 
 	// Set default settings for scrolling on a Mac.

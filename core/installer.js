@@ -26,14 +26,14 @@ class Installer {
 			' ' + prefs[emu].name);
 		// 'preparing to install'
 		this.loadLog(lang.emuAppMenu.msg1);
-		let ins = prefs[emu + '-' + prefs.chip_arch].install;
-		if (!ins && !prefs[emu].jsEmu) {
+		let ins = emus[emu + '-' + prefs.chip_arch].install;
+		if (!ins && !emus[emu].jsEmu) {
 			// This emulator is not available for your
 			// computer's operating system
 			cui.err(lang.emuAppMenu.err0 + ": " + osType);
 			return;
 		}
-		if (prefs[emu].jsEmu) {
+		if (emus[emu].jsEmu) {
 			let dir = `${systemsDir}/${sys}/${emu}`;
 			let jsEmuDir = `${__root}/jsEmu/${sys}/${emu}`;
 			await fs.copy(jsEmuDir, dir, {

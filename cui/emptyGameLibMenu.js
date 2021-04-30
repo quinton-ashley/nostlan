@@ -34,7 +34,7 @@ class CuiState extends cui.State {
 			if (!app) return;
 			// 'Success!' 'Installed'
 			cui.alert(lang.emuAppMenu.msg11 + ' ' +
-				prefs[emu].name, lang.alertMenu.title0,
+				emus[emu].name, lang.alertMenu.title0,
 				'sysMenu');
 		}
 	}
@@ -51,7 +51,7 @@ class CuiState extends cui.State {
 			let instOpt = `
 .cui(name='install-${_emu}')
 	i.material-icons.md-left get_app
-	.text.opt${i+1} install ${prefs[_emu].name}
+	.text.opt${i+1} install ${emus[_emu].name}
 	i.material-icons.md-right.invis get_app`
 			this.$elem.append(pug(instOpt));
 		}
@@ -75,7 +75,7 @@ class CuiState extends cui.State {
 		note += '\n' + lang.emptyGameLibMenu.msg1_2 + ' ';
 		// games yet you might want to install the
 		note += syst.name + ' ' + lang.emptyGameLibMenu.msg1_3;
-		note += ' ' + prefs[emu].name + ' ';
+		note += ' ' + emus[emu].name + ' ';
 		// emulator app first."
 		note += lang.emptyGameLibMenu.msg1_4;
 		this.$elem.find('.msg1').text(note);

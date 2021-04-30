@@ -21,9 +21,9 @@ class Installer {
 	}
 
 	async install() {
-		log('installing ' + prefs[emu].name);
+		log('installing ' + emus[emu].name);
 		$('#loadDialog0').text(lang.emuAppMenu.msg0 +
-			' ' + prefs[emu].name);
+			' ' + emus[emu].name);
 		// 'preparing to install'
 		this.loadLog(lang.emuAppMenu.msg1);
 		let ins = emus[emu + '-' + prefs.chip_arch].install;
@@ -80,11 +80,11 @@ class Installer {
 		res = await nostlan.launcher.getEmuApp();
 		if (!res && ins.installer && win) {
 			// 'Almost done, please finish install manually'
-			cui.alert(lang.emuAppMenu.msg15 + ': ' + prefs[emu].name,
+			cui.alert(lang.emuAppMenu.msg15 + ': ' + emus[emu].name,
 				lang.alertMenu.title5);
 		} else if (!res) {
 			// 'Install failed, you must manually install'
-			cui.err(lang.emuAppMenu.err5 + ': ' + prefs[emu].name);
+			cui.err(lang.emuAppMenu.err5 + ': ' + emus[emu].name);
 		}
 		if (mac && res) {
 			// fixes non-executable apps on macOS 10.15+

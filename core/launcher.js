@@ -28,7 +28,7 @@ class Launcher {
 
 		macExec += '/Contents/MacOS/';
 
-		let name = prefs[emu].name.replace(/ /g, '');
+		let name = emus[emu].name.replace(/ /g, '');
 		let execNames = [
 			file.base,
 			name,
@@ -97,7 +97,7 @@ class Launcher {
 		this.state = 'launching';
 		$('#dialogs').show();
 		// 'launching'
-		$('#loadDialog0').text(lang.playing.msg4 + ' ' + prefs[emu].name);
+		$('#loadDialog0').text(lang.playing.msg4 + ' ' + emus[emu].name);
 		if (game && game.id) {
 			identify = false;
 			log(game.id);
@@ -133,7 +133,7 @@ class Launcher {
 					overwrite: true
 				});
 				prefs[emu].version = prefs[emu].latestVersion;
-				log('updated ' + prefs[emu].name + ' to ' + prefs[emu].version);
+				log('updated ' + emus[emu].name + ' to ' + prefs[emu].version);
 			}
 
 			let cfg = {};
@@ -266,23 +266,35 @@ class Launcher {
 		}
 		if (emu == 'mame' &&
 			!(await fs.exists(this.emuAppDir + '/mame.ini'))) {
-			let defaultMameIni = '~/Library/Application Support/mame/mame.ini';
-			if (await fs.exists(defaultMameIni)) {
-				await fs.move(defaultMameIni, this.emuAppDir + '/mame.ini');
+			let defaultIni = '~/Library/Application Support/mame/mame.ini';
+			let ini;
+			if (await fs.exists(defaultIni)) {
+				ini = await fs.readFile(defaultIni, 'utf8');
+				await fs.remove(defaultIni);
 			} else {
 				try {
 					await spawn('./mame', ['-cc'], {
 						cwd: this.emuAppDir
 					});
+					ini = await fs.readFile(this.emuAppDir + '/mame.ini', 'utf8');
 				} catch (ror) {
 					cui.err(ror);
+					return;
 				}
 			}
+			// Nostlan's MAME defaults:
+			// bitmap prescale to 3x native resolution
+			// wait for vertical sync to avoid screen tearing
+			// window mode for a better user experience
+			ini = ini.replace(/bgfx_screen_chains\s*default/,
+				'bgfx_screen_chains unfiltered');
+			ini = ini.replace(/prescale\s*0/, 'prescale 3');
+			ini = ini.replace(/waitvsync\s*0/, 'waitvsync 1');
+			ini = ini.replace(/window\s*0/, 'window 1');
+			await fs.writeFile(this.emuAppDir + '/mame.ini', ini);
 		}
-		if (linux) {
-			if (emu == 'citra') {
-				emuApp = 'org.citra.citra-nightly'
-			}
+		if (linux && emu == 'citra') {
+			emuApp = 'org.citra.citra-nightly';
 		}
 		if (!identify) log(emu);
 		let cmdArray = prefs[emu].cmd || [];
@@ -337,7 +349,7 @@ class Launcher {
 			$('#libMain').hide();
 			$('#boxOpenMenu_2').hide();
 			// 'Starting'
-			$('#loadDialog0').text(`${lang.playing.msg1} ${prefs[emu].name}`);
+			$('#loadDialog0').text(`${lang.playing.msg1} ${emus[emu].name}`);
 			// `To close the emulator, press and hold the
 			// ${btn} button for ${time} seconds`
 			$('#loadDialog1').text(lang.playing.msg2_0 +
@@ -569,9 +581,9 @@ class Launcher {
 			// other files not included with the emulator.
 			// Search the internet for instructions on how to
 			// fully setup ${app}`
-			let erMsg = '<p>' + prefs[emu].name + ' ' +
+			let erMsg = '<p>' + emus[emu].name + ' ' +
 				lang.playing.err2 + ' ' +
-				`${prefs[emu].name}.</p>\n`;
+				`${emus[emu].name}.</p>\n`;
 			erMsg += '<textarea rows=8>';
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';

@@ -172,7 +172,7 @@ module.exports = async function(defaults) {
 		if (!_syst.emus) continue;
 		let _emu = _syst.emus[0];
 		let moveDirs = [{
-			src: `${systemsDir}/${prefs[_emu].name}`,
+			src: `${systemsDir}/${emus[_emu].name}`,
 			dest: `${systemsDir}/${_sys}`
 		}, {
 			src: `${systemsDir}/nostlan/${_sys}`,

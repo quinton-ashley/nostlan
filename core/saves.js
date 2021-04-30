@@ -16,7 +16,7 @@ class Saves {
 		}
 		let emuApp = util.absPath(prefs[emu].app);
 		if (!emuApp || !(await fs.exists(emuApp))) {
-			er('nostlan must know the location of ' + prefs[emu].name +
+			er('nostlan must know the location of ' + emus[emu].name +
 				' before you can backup/update emulator saves');
 			return;
 		}
@@ -123,7 +123,7 @@ class Saves {
 			}
 
 			if (prefs[emu].saves.noSaveOnQuit) {
-				log('no save on quit for ' + prefs[emu].name);
+				log('no save on quit for ' + emus[emu].name);
 				continue;
 			}
 

@@ -70,11 +70,11 @@ class CuiState extends cui.State {
 				async function ensureSysDirs(dirType) {
 					let defaultDir = `${systemsDir}/${_sys}/${dirType}`;
 					dirType += 'Dir';
-					if (!prefs[_emu][dirType]) {
+					if (!emus[_emu][dirType]) {
 						await fs.ensureDir(defaultDir);
 					} else if (!(await fs.exists(defaultDir))) {
 						// look for dedicated games dir
-						let dir = templateDir + '/' + prefs[_emu][dirType];
+						let dir = templateDir + '/' + emus[_emu][dirType];
 						await fs.ensureDir(dir);
 						try {
 							await fs.ensureSymlink(dir, defaultDir, 'dir');

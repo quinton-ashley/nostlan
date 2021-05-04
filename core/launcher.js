@@ -267,10 +267,10 @@ class Launcher {
 		if (emu == 'mame' &&
 			!(await fs.exists(this.emuAppDir + '/mame.ini'))) {
 			let defaultIni = '~/Library/Application Support/mame/mame.ini';
+			if (linux) defaultIni = '~/.mame/mame.ini';
 			let ini;
 			if (await fs.exists(defaultIni)) {
 				ini = await fs.readFile(defaultIni, 'utf8');
-				await fs.remove(defaultIni);
 			} else {
 				try {
 					await spawn('./mame', ['-cc'], {
@@ -285,7 +285,7 @@ class Launcher {
 			// Nostlan's MAME defaults:
 			// bitmap prescale to 3x native resolution
 			// wait for vertical sync to avoid screen tearing
-			// window mode for a better user experience
+			// window mode for a better casual user experience
 			ini = ini.replace(/bgfx_screen_chains\s*default/,
 				'bgfx_screen_chains unfiltered');
 			ini = ini.replace(/prescale\s*0/, 'prescale 3');

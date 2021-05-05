@@ -305,6 +305,9 @@ class Launcher {
 			if (emu == 'rpcs3') {
 				gameFile += '/USRDIR/EBOOT.BIN';
 			}
+			if (emu == 'xenia' && path.parse(gameFile).ext != 'iso') {
+				gameFile += '/default.xex';
+			}
 			if (emu == 'cemu') {
 				let files = await klaw(game.file + '/code');
 				log(files);

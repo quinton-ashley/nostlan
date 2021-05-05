@@ -512,13 +512,16 @@ module.exports = (() => {
 				win: [
 					'${app}',
 					'${game}',
-					'--d3d12_resolution_scale=2',
+					'--draw_resolution_scale=2',
 					'--fullscreen'
 				]
 			},
 			install: {
 				'win-x86_64': {
-					portable: 'https://ci.appveyor.com/api/projects/benvanik/xenia/artifacts/xenia_master.zip?branch=master&job=Configuration%3A%20Release&pr=false'
+					portable: [
+						'https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.6.2104/dxc_2021_04-20.zip',
+						'https://ci.appveyor.com/api/projects/benvanik/xenia/artifacts/xenia_master.zip?branch=master&job=Configuration%3A%20Release&pr=false .zip'
+					]
 				}
 			}
 		}

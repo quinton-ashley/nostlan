@@ -31,6 +31,12 @@ module.exports = async function(defaults) {
 		}
 	}
 
+	if (semver.gte(ver, '1.20.22')) return;
+
+	// force update user prefs due to command name change
+	// from d3d12_resolution_scale to draw_resolution_scale
+	prefs.xenia.cmd = emus.xenia.cmd;
+
 	if (semver.gte(ver, '1.20.17')) return;
 
 	for (let _sys in systems) {

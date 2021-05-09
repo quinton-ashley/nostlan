@@ -1,45 +1,43 @@
 class Browser {
-	constructor() {
-		this.url;
-		this.browser;
-	}
+	constructor() {}
 
 	async goTo(url) {
-		if (!this.browser) {
-			const wind = electron.BrowserWindow.getFocusedWindow();
-			this.browser = new electron.BrowserView({
-				webPreferences: {
-					sandbox: true,
-					nodeIntegration: false,
-					contextIsolation: true,
-					preload: __root + '/core/browser_preload.js'
-				}
+		let preloadJS = __root + '/core/browser_preload.js';
+		$('body').append(`<webview id="browser" enableremotemodule="false" src="${url}" preload="${preloadJS}"></webview>`);
+
+		let page = $('#browser').eq(0)[0];
+		await new Promise((resolve) => {
+			page.addEventListener('dom-ready', () => {
+				resolve();
 			});
-			wind.setBrowserView(this.browser);
-		}
-
-		let w = $('body').width();
-		let h = $('body').height();
-		this.browser.setBounds({
-			x: Math.round(w / 4),
-			y: Math.round(h / 4),
-			width: Math.round(w / 2),
-			height: Math.round(h / 2)
 		});
+		page.openDevTools();
 
-		if (this.url != url) {
-			this.browser.webContents.loadURL(url);
-			this.url = url;
-		}
+		page.addEventListener('ipc-message', async (event) => {
+			let ping = JSON.parse(event.channel);
+
+			log(ping);
+		});
+		await delay(1000);
+		await page.executeJavaScript(`
+const log = console.log;
+let imgs = document.getElementsByClassName('tile');
+log(imgs);
+for (let img of imgs) {
+	log(img);
+	img.onclick = () => {
+		log('img clicked');
+		let a = img.getElementsByClassName('tile--img__sub')[0];
+		sendToNostlan(JSON.stringify({
+			src: a.href
+		}));
+	}
+}
+`);
 	}
 
 	close() {
-		this.browser.setBounds({
-			x: 0,
-			y: 0,
-			width: 0,
-			height: 0
-		});
+		$('#browser').remove();
 	}
 }
 

@@ -19,8 +19,10 @@ html {
 
 #browser {
 	position: absolute;
-	width: 40%;
+	width: 75%;
 	height: 100%;
+	left: 12.5%;
+	top: 0;
 	border: none;
 }
 

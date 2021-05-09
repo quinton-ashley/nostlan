@@ -20,9 +20,7 @@ class CuiState extends cui.State {
 		let url = 'https://duckduckgo.com/?t=ffab&q=' + query +
 			'&iax=images&ia=images&iaf=size%3AWallpaper';
 
-		let $page = await nostlan.browser.goTo(url);
-
-		// log($page.find('.tile--img'));
+		nostlan.browser.goTo(url);
 
 	}
 }

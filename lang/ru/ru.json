@@ -39,10 +39,10 @@
 		"nav2Lbl": "Перевернуть",
 		"nav3Lbl": "Назад"
 	},
-	"imgSelect": {
-		"nav0Lbl": "Search",
-		"nav2Lbl": "Image Folder",
-		"nav3Lbl": "Cancel"
+	"editSelect": {
+		"nav0Lbl": "ImgDir",
+		"nav2Lbl": "Image",
+		"nav3Lbl": "Back"
 	},
 	"boxOpenMenu": {
 		"nav0Lbl": "Руководство пользователя",

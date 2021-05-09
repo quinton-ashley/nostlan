@@ -46,3 +46,10 @@ game.xbox360 img.coverFull {
 game.xbox360.flip .shade {
 	width: 2%;
 }
+
+.xbox360 #gameMedia {
+	width: 60vh;
+	height: 60vh;
+	transform: translate(12%, -50%);
+	border-radius: 10%;
+}

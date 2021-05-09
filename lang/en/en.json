@@ -39,10 +39,10 @@
 		"nav2Lbl": "Edit",
 		"nav3Lbl": "Back"
 	},
-	"imgSelect": {
-		"nav0Lbl": "Search",
-		"nav2Lbl": "ImgDir",
-		"nav3Lbl": "Cancel"
+	"editSelect": {
+		"nav0Lbl": "ImgDir",
+		"nav2Lbl": "Image",
+		"nav3Lbl": "Back"
 	},
 	"boxOpenMenu": {
 		"nav0Lbl": "Manual",

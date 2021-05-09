@@ -23,7 +23,7 @@ class CuiState extends cui.State {
 				cui.change('boxOpenMenu');
 				$('#libMain').hide();
 			} else if (act == 'y') { // edit
-				cui.change('imgSelect_3');
+				cui.change('editSelect_3');
 			}
 		} else if (act == 'r' || act == 'l') { // flip
 			let ogHeight = $cursor.height();

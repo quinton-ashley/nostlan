@@ -101,7 +101,7 @@ game {
 }
 
 #boxOpenMenu_2,
-#imgSelect_3 {
+#editSelect_3 {
 	z-index: 10;
 	position: fixed;
 	top: 0;

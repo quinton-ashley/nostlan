@@ -320,8 +320,9 @@ class CuiState extends cui.State {
 			box += '\n  ' + this.labelMaker(game).replace(/\n/g, '\n  ');
 		}
 		$('.reel.r' + column).append(pug(box));
-		$('input').attr('spellcheck', false);
-		$('textarea').attr('spellcheck', false);
+		$(`#${game.id} input`).attr('spellcheck', false);
+		$(`#${game.id} textarea`).attr('spellcheck', false);
+		$(`#${game.id} textarea`).attr('readonly', true);
 	}
 
 	addLabels($game, game) {
@@ -397,7 +398,7 @@ class CuiState extends cui.State {
 		}
 
 		$('#libMain game .label-input').click(function(e) {
-			if (cui.ui != 'imgSelect_4') e.stopPropagation();
+			if (cui.ui == 'editSelect') e.stopPropagation();
 		});
 
 		let ac_gameDB = [];

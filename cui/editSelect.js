@@ -11,12 +11,19 @@ class CuiState extends cui.State {
 		if (act == 'x') {
 			opn(this.imgDir);
 		} else if (act == 'y') {
-			cui.change('imgSelect_4');
+			cui.change('imgSearchMenu');
+		} else if (act == 'b') {
+			$(`#${game.id} textarea`).attr('readonly', true);
 		}
 	}
 
 	async onChange() {
+		let game = cui.libMain.getCurGame();
 
+		$(`#${game.id} textarea`).attr('readonly', false);
+
+		this.imgDir = await nostlan.scraper.getImgDir(game);
+		this.game = game;
 	}
 }
 module.exports = new CuiState();

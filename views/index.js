@@ -256,7 +256,7 @@ module.exports = async function(args) {
 		if (prefs.load.online) {
 			try {
 				if (!args.dev && await nostlan.updater.check()) {
-					app.quit();
+					electron.app.quit();
 				}
 			} catch (ror) {
 				log('running in offline mode');
@@ -299,7 +299,7 @@ module.exports = async function(args) {
 		// save the prefs file
 		delete prefs.args;
 		if (prefs.nlaDir) await prefsMng.save(prefs);
-		app.quit();
+		electron.app.quit();
 	}
 
 	// first function to be called

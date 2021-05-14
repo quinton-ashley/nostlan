@@ -44,7 +44,7 @@ module.exports = function() {
 			cui.change('nostlanMenu');
 		} else if (act == 'b' && (/menu/i.test(ui) || /select/i.test(ui)) &&
 			ui != 'donateMenu' && ui != 'setupMenu' &&
-			ui != 'pauseMenu' && cui.getParent() != 'loading') {
+			ui != 'pauseMenu' && ui != 'imgSearchMenu' && cui.getParent() != 'loading') {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');

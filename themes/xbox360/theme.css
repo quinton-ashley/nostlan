@@ -22,8 +22,8 @@
 /*=====Xbox 360===*/
 game.xbox360 .crop.coverFull {
 	width: 200.4%;
-	top: 1.2%;
-	left: 0;
+	top: -.4%;
+	left: 0%;
 }
 
 game.xbox360 .crop.cover {
@@ -40,7 +40,7 @@ game.xbox360 img.cover {
 }
 
 game.xbox360 img.coverFull {
-	transform: translate(-51.5%, 0%);
+	transform: translate(-51.5%, 0%) scale(1,.966);
 }
 
 game.xbox360.flip .shade {

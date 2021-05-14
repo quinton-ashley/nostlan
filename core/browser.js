@@ -12,43 +12,12 @@ class Browser {
 				resolve();
 			});
 		});
-		page.openDevTools();
-
-		page.executeJavaScript(`
-const log = console.log;
-let attempts = 0;
-function attachClicks() {
-	let imgs = document.getElementsByClassName('tile');
-	if (!imgs || !imgs.length) {
-		if (attempts < 30) {
-			setTimeout(attachClicks, 250);
-		} else {
-			close();
-		}
-		return;
-	}
-	for (let img of imgs) {
-		log(img);
-		let attempts = 0;
-		function lookForImg() {
-			log('img clicked');
-
-			let a = document.getElementsByClassName('detail__media__img-link')[0];
-			log(a);
-			sendToNostlan(JSON.stringify({
-				src: a.href
-			}));
-		}
-		img.onclick = () => {
-			setTimeout(lookForImg, 250);
-		};
-	}
-}
-setTimeout(attachClicks, 250);`);
-		await delay(2000);
-		page.addEventListener('ipc-message', async (event) => {
+		// page.openDevTools();
+		await page.insertCSS(await fs.readFile(__root + '/views/css/genericDark.css', 'utf8'));
+		await page.insertCSS(await fs.readFile(__root + '/views/css/duckduckgo.css', 'utf8'));
+		await page.executeJavaScript(await fs.readFile(__root + '/core/imageSearch.js', 'utf8'));
+		await page.addEventListener('ipc-message', async (event) => {
 			let ping = JSON.parse(event.channel);
-
 			log(ping);
 			cui.editSelect.imgUrl = ping.src;
 		});

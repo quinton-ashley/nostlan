@@ -66,7 +66,6 @@ module.exports = async function(arg) {
 	}
 
 	global.electron = require('electron').remote;
-	electron.app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
 	global.dialog = {};
 
 	dialog.select = async function(opt) {

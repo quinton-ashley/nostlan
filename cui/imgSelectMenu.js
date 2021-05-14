@@ -4,7 +4,8 @@ class CuiState extends cui.State {
 		log(act);
 		let game = cui.editSelect.game;
 		if (!game.img) game.img = {};
-		game.img[act] = cui.editSelect.imgUrl;
+		let url = cui.editSelect.imgUrl.split('?')[0];
+		game.img[act] = url;
 		$('#dialogs').show();
 		let img = await nostlan.scraper.getImg(game, act);
 		await nostlan.scraper.genThumb(img);

@@ -66,10 +66,10 @@ class CuiState extends cui.State {
 		return img;
 	}
 
-	async flipGameBox($cursor) {
+	async flipGameBox($cursor, flipToFront) {
 		let game = cui.libMain.getCurGame();
 		let template = nostlan.themes[game.sys || sys].template;
-		if (!$cursor.hasClass('flip')) {
+		if (!$cursor.hasClass('flip') && !flipToFront) {
 			$cursor.addClass('flip');
 			let $box = $cursor.find('.box.hq').eq(0);
 			if (!(await this.editImgSrc($cursor, $box, game, 'boxBack'))) {
@@ -196,6 +196,12 @@ class CuiState extends cui.State {
 	async onChange() {
 		$('#libMain').show();
 		$('.reel').removeClass('hide');
+
+		let game = cui.libMain.getCurGame();
+		$(`#${game.id} textarea`).attr('readonly', true);
+		if ($(`#${game.id} img.hq`).attr('src')) {
+			$(`#${game.id} .label-input`).hide();
+		}
 	}
 }
 module.exports = new CuiState();

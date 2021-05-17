@@ -55,7 +55,11 @@ module.exports = async function(arg) {
 
 	String.prototype.insert = function(insert, index) {
 		return this.slice(0, index) + insert + this.slice(index);
-	}
+	};
+
+	Number.prototype.map = function(a, b, c, d) {
+		return c + (d - c) * ((this - a) / (b - a));
+	};
 
 	path.nx = (file) => {
 		return file.replace(/\\/g, '/');

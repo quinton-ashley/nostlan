@@ -23,6 +23,7 @@ class CuiState extends cui.State {
 			await cui.change('languageMenu');
 		} else if (act == 'editPrefs') {
 			opn(prefsMng.configPath);
+			await delay(2000);
 			cui.doAction('quit');
 		} else if (act == 'toggleConsole') {
 			electron.getCurrentWindow().toggleDevTools();

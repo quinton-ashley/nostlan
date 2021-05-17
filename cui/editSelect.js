@@ -12,14 +12,18 @@ class CuiState extends cui.State {
 			opn(this.imgDir);
 		} else if (act == 'y') {
 			cui.change('imgSearchMenu');
-		} else if (act == 'b') {
-			$(`#${game.id} textarea`).attr('readonly', true);
 		}
 	}
 
 	async onChange() {
 		let game = cui.libMain.getCurGame();
 
+		let $ta = $(`#${game.id} textarea`);
+		if (!$ta.length) {
+			cui.libMain.addLabels($('#' + game.id), game);
+		} else {
+			$(`#${game.id} .label-input`).show();
+		}
 		$(`#${game.id} textarea`).attr('readonly', false);
 
 		this.imgDir = await nostlan.scraper.getImgDir(game);

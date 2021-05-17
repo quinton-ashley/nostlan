@@ -1,8 +1,8 @@
-*:not(textarea)::-webkit-scrollbar {
+*::-webkit-scrollbar {
 	display: none;
 }
 
-*:not(textarea) {
+* {
 	scrollbar-width: none !important;
 }
 
@@ -100,7 +100,7 @@ game {
 
 #imgSearchMenu_4 {
 	width: 90%;
-	left:-20%;
+	left: -20%;
 }
 
 #boxOpenMenu_2,
@@ -386,6 +386,7 @@ game .label-input {
 	height: 100%;
 	width: 96%;
 	border: none;
+	font-size: 6px;
 	box-shadow: none;
 }
 
@@ -427,8 +428,8 @@ game .file.label-input {
 	font-family: 'handwriting5';
 	top: 89%;
 	left: 5%;
-	font-size: 1vh;
-	height: 1.4vh;
+	font-size: 1em;
+	height: 1vh;
 }
 
 game.flip .shade {

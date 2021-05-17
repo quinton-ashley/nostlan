@@ -16,7 +16,7 @@ class CuiState extends cui.State {
 
 		let searchTerm = game.title + ' cover';
 
-		let query = searchTerm.replace(/[^0-9a-zA-Z]/, '').replace(' ', '+');
+		let query = searchTerm.replace(/[^0-9a-zA-Z ]+/g, '').replace(' ', '+');
 
 		let url = 'https://duckduckgo.com/?t=ffab&q=' + query +
 			'&iax=images&ia=images&iaf=size%3AWallpaper';

@@ -84,3 +84,7 @@ a.header__logo-wrap.js-header-logo,
 input:not([type="checkbox"]):not([type="submit"]) {
 	border: none !important;
 }
+
+.set-header--floating .zci-wrap {
+	margin-top: -70px;
+}

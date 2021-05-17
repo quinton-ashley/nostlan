@@ -10,6 +10,8 @@ class CuiState extends cui.State {
 		let img = await nostlan.scraper.getImg(game, act);
 		await nostlan.scraper.genThumb(img);
 		nostlan.browser.close();
+		let $game = $('#' + game.id);
+		cui.boxSelect.flipGameBox($game, true);
 		cui.hideDialogs();
 		cui.doAction('doubleBack');
 	}

@@ -225,9 +225,9 @@ class CuiState extends cui.State {
 			// the ability to select different versions of MAME games
 			// aka "sets" will be added in the future
 			if (sys == 'arcade') {
-				if (mameSetRegex.test(games[i].title)) break;
+				if (mameSetRegex.test(games[i].title)) continue;
 				if (i != 0 && games[i - 1].img && games[i].img &&
-					games[i - 1].img.box == games[i].img.box) break;
+					games[i - 1].img.box == games[i].img.box) continue;
 			}
 
 			try {
@@ -328,6 +328,7 @@ class CuiState extends cui.State {
 	addLabels($game, game) {
 		let lbls = this.labelMaker(game);
 		$game.append(pug(lbls));
+		this.addAutocomplete($game.find('.title.label-input textarea'));
 	}
 
 	labelMaker(game) {
@@ -337,15 +338,15 @@ class CuiState extends cui.State {
 			game.lblColor = this.randomHue();
 			this.shouldSaveChanges = true;
 		}
-		let fontSize = 4.3 - title.length / 25;
+		let fontSize = title.length.map(4, 60, .5, .2);
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 		let lbls = `.title.label-input\n`;
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
-		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize/3}vw;") ${title}\n`;
+		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}em; padding-top:${fontSize*1.8}em;") ${title}\n`;
 		lbls += `.file.label-input\n`;
 		let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 		lbls += `  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
-		lbls += `  input(value="${sys + game.file.slice(1)}")\n`;
+		lbls += `  input(readonly="true" value="${game.file.slice(1)}")\n`;
 		return lbls;
 	}
 
@@ -401,64 +402,17 @@ class CuiState extends cui.State {
 			if (cui.ui == 'editSelect') e.stopPropagation();
 		});
 
-		let ac_gameDB = [];
-
+		// full database for autocomplete
+		this.ac_gameDB = [];
 		for (let game of gameDB) {
-			game.value = game.title;
-			ac_gameDB.push(game);
+			let g = Object.assign({}, game);
+			g.value = g.title;
+			this.ac_gameDB.push(g);
 		}
 
 		let $titles = $('#libMain game .title.label-input textarea');
-
 		if ($titles.length) {
-			$titles.autocomplete({
-					minLength: 1,
-					source: ac_gameDB,
-					focus: (event, ui) => {
-						let $this = $(event.target);
-						$this.val(ui.item.title);
-						let fontSize = 4.3 - ui.item.title.length / 25;
-						$this.css('font-size', fontSize + 'vw');
-						$this.css('padding-top', fontSize / 3 + 'vw');
-						log(fontSize);
-						return false;
-					},
-					select: (event, ui) => {
-						let $this = $(event.target);
-						$this.val(ui.item.title);
-						let $game = $this.parent().parent();
-						let id = $game.attr('id');
-						$game.attr('id', ui.item.id);
-						for (let i in games) {
-							if (games[i].id != id) continue;
-							let sel = Object.assign({}, ui.item);
-							delete sel.value;
-							delete sel.label;
-							let file = games[i].file;
-							games[i] = sel;
-							games[i].file = file;
-							nostlan.scan.outputUsersGamesDB(games);
-							break;
-						}
-						return false;
-					}
-				})
-				.autocomplete('instance')._renderItem = (ul, item) => {
-					return $('<li>')
-						.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
-						.appendTo(ul);
-				};
-
-			// $('#libMain game .title.label-input').on('keydown', function(e) {
-			// 	if (e.key == 'Enter') {
-			// 		e.preventDefault();
-			// 		let game = cui.libMain.getCurGame();
-			// 		game.title = $(this).text();
-			// 		log('user edited game title: ');
-			// 		log(game);
-			// 		nostlan.scan.outputUsersGamesDB(games);
-			// 	}
-			// });
+			this.addAutocomplete($titles);
 		}
 
 		cui.addView('libMain', {
@@ -471,6 +425,57 @@ class CuiState extends cui.State {
 			keepBackground: true,
 			hoverCurDisabled: true
 		});
+	}
+
+	addAutocomplete($el) {
+		let _this = this;
+		$el.autocomplete({
+				minLength: 1,
+				source: _this.ac_gameDB,
+				focus: (event, ui) => {
+					let $this = $(event.target);
+					$this.val(ui.item.title);
+					let fontSize = ui.item.title.length.map(4, 60, .5, .2);
+					$this.css('font-size', fontSize + 'em');
+					$this.css('padding-top', fontSize * 1.8 + 'em');
+					return false;
+				},
+				select: (event, ui) => {
+					let $this = $(event.target);
+					$this.val(ui.item.title);
+					let $game = $this.parent().parent();
+					let id = $game.attr('id');
+					$game.attr('id', ui.item.id);
+					for (let i in games) {
+						if (games[i].id != id) continue;
+						let sel = Object.assign({}, ui.item);
+						delete sel.value;
+						delete sel.label;
+						let file = games[i].file;
+						games[i] = sel;
+						games[i].file = file;
+						nostlan.scan.outputUsersGamesDB(games);
+						break;
+					}
+					return false;
+				}
+			})
+			.autocomplete('instance')._renderItem = (ul, item) => {
+				return $('<li>')
+					.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
+					.appendTo(ul);
+			};
+
+		// $el.on('keydown', function(e) {
+		// 	if (e.key == 'Enter') {
+		// 		e.preventDefault();
+		// 		let game = cui.libMain.getCurGame();
+		// 		game.title = $(this).text();
+		// 		log('user edited game title: ');
+		// 		log(game);
+		// 		nostlan.scan.outputUsersGamesDB(games);
+		// 	}
+		// });
 	}
 
 	async rescanLib(fullRescan) {

@@ -338,11 +338,11 @@ class CuiState extends cui.State {
 			game.lblColor = this.randomHue();
 			this.shouldSaveChanges = true;
 		}
-		let fontSize = title.length.map(4, 60, .5, .2);
+		let fontSize = title.length.map(4, 60, 4, 2);
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 		let lbls = `.title.label-input\n`;
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
-		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}em; padding-top:${fontSize*1.8}em;") ${title}\n`;
+		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize*.25}vw;") ${title}\n`;
 		lbls += `.file.label-input\n`;
 		let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 		lbls += `  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
@@ -435,9 +435,9 @@ class CuiState extends cui.State {
 				focus: (event, ui) => {
 					let $this = $(event.target);
 					$this.val(ui.item.title);
-					let fontSize = ui.item.title.length.map(4, 60, .5, .2);
-					$this.css('font-size', fontSize + 'em');
-					$this.css('padding-top', fontSize * 1.8 + 'em');
+					let fontSize = ui.item.title.length.map(4, 60, 4, 2);
+					$this.css('font-size', fontSize + 'vw');
+					$this.css('padding-top', fontSize * .25 + 'vw');
 					return false;
 				},
 				select: (event, ui) => {

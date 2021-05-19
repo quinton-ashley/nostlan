@@ -6,21 +6,22 @@ class Browser {
 		$(id).prepend(`<webview id="browser" enableremotemodule="false" src="${url}" preload="${preloadJS}"></webview>`);
 
 		let page = $('#browser').eq(0)[0];
-		await new Promise((resolve) => {
-			page.addEventListener('dom-ready', () => {
-				// log('hi');
-				resolve();
-			});
+		let isFirstPage = true;
+		page.addEventListener('dom-ready', async () => {
+			// page.openDevTools();
+			await page.insertCSS(await fs.readFile(__root + '/views/css/genericDark.css', 'utf8'));
+			await page.insertCSS(await fs.readFile(__root + '/views/css/duckduckgo.css', 'utf8'));
+			await page.executeJavaScript(await fs.readFile(__root + '/core/imageSearch.js', 'utf8'));
+			if (isFirstPage) {
+				await page.addEventListener('ipc-message', async (event) => {
+					let ping = JSON.parse(event.channel);
+					log(ping);
+					cui.editSelect.imgUrl = ping.src;
+				});
+				isFirstPage = false;
+			}
 		});
-		// page.openDevTools();
-		await page.insertCSS(await fs.readFile(__root + '/views/css/genericDark.css', 'utf8'));
-		await page.insertCSS(await fs.readFile(__root + '/views/css/duckduckgo.css', 'utf8'));
-		await page.executeJavaScript(await fs.readFile(__root + '/core/imageSearch.js', 'utf8'));
-		await page.addEventListener('ipc-message', async (event) => {
-			let ping = JSON.parse(event.channel);
-			log(ping);
-			cui.editSelect.imgUrl = ping.src;
-		});
+		this.page = page;
 	}
 
 	close() {

@@ -286,11 +286,10 @@ class Launcher {
 			// bitmap prescale to 3x native resolution
 			// wait for vertical sync to avoid screen tearing
 			// window mode for a better casual user experience
-			ini = ini.replace(/bgfx_screen_chains\s*default/,
-				'bgfx_screen_chains unfiltered');
-			ini = ini.replace(/prescale\s*0/, 'prescale 3');
-			ini = ini.replace(/waitvsync\s*0/, 'waitvsync 1');
-			ini = ini.replace(/window\s*0/, 'window 1');
+			ini = ini.replace(/prescale\s*\d/, 'prescale 3');
+			ini = ini.replace(/waitvsync\s*\d/, 'waitvsync 1');
+			ini = ini.replace(/window\s*\d/, 'window 1');
+			await fs.outputFile(this.emuAppDir + '/mame.ini', ini);
 			await fs.writeFile(this.emuAppDir + '/mame.ini', ini);
 		}
 		if (linux && emu == 'citra') {

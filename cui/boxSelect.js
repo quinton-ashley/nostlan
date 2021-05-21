@@ -199,7 +199,7 @@ class CuiState extends cui.State {
 
 		let game = cui.libMain.getCurGame();
 		$(`#${game.id} textarea`).attr('readonly', true);
-		if ($(`#${game.id} img.hq`).attr('src')) {
+		if (!game.hasNoImages) {
 			$(`#${game.id} .label-input`).hide();
 		}
 	}

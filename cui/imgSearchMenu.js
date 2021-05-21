@@ -6,7 +6,7 @@ class CuiState extends cui.State {
 			cui.change('imgSelectMenu');
 		} else if (act == 'b') {
 			nostlan.browser.close();
-			cui.doAction('back');
+			cui.change('editSelect');
 		}
 	}
 

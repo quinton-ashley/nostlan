@@ -245,7 +245,7 @@ class CuiState extends cui.State {
 		let _sys = game.sys || sys;
 		let isTemplate = (game.id.slice(1, 9) == 'TEMPLATE');
 		let isUnidentified = (game.id.slice(1, 13) == 'UNIDENTIFIED');
-		let hasNoImages = isUnidentified;
+		game.hasNoImages = isUnidentified;
 
 		let noBox;
 		let boxImg = '';
@@ -271,7 +271,7 @@ class CuiState extends cui.State {
 			if (!coverImg) {
 				if (!isTemplate) {
 					log(`no images found for game: [${game.id}] ${game.title}`);
-					hasNoImages = true;
+					game.hasNoImages = true;
 				}
 				coverImg = '';
 				coverType = '';
@@ -282,13 +282,13 @@ class CuiState extends cui.State {
 		if ((noBox && !isUnidentified) || isTemplate) {
 			await getCoverImg();
 		}
-		if (hasNoImages) {
+		if (game.hasNoImages) {
 			if (prefs[sys].onlyShowGamesWithImages) return;
 			let id = game.id;
-			game.id = '_TEMPLATE_' + _sys;
+			game.id = '_TEMPLATE_' + _sys; // temporary
 			await getBoxImg();
 			await getCoverImg();
-			game.id = id;
+			game.id = id; // set back to original id
 		}
 		boxImg = await nostlan.scraper.genThumb(boxImg);
 		if (coverImg) coverImg = await nostlan.scraper.genThumb(coverImg);
@@ -316,8 +316,10 @@ class CuiState extends cui.State {
 		if (!(coverType || _sys == 'switch' || _sys == 'gba')) {
 			box += '.hide';
 		}
-		if (hasNoImages) {
+		if (game.hasNoImages) {
 			box += '\n  ' + this.labelMaker(game).replace(/\n/g, '\n  ');
+		} else {
+			delete game.hasNoImages;
 		}
 		$('.reel.r' + column).append(pug(box));
 		$(`#${game.id} input`).attr('spellcheck', false);
@@ -338,7 +340,7 @@ class CuiState extends cui.State {
 			game.lblColor = this.randomHue();
 			this.shouldSaveChanges = true;
 		}
-		let fontSize = title.length.map(4, 60, 4, 2);
+		let fontSize = title.length.map(1, 80, 2, .5);
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 		let lbls = `.title.label-input\n`;
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
@@ -435,7 +437,7 @@ class CuiState extends cui.State {
 				focus: (event, ui) => {
 					let $this = $(event.target);
 					$this.val(ui.item.title);
-					let fontSize = ui.item.title.length.map(4, 60, 4, 2);
+					let fontSize = ui.item.title.length.map(1, 80, 2, .5);
 					$this.css('font-size', fontSize + 'vw');
 					$this.css('padding-top', fontSize * .25 + 'vw');
 					return false;

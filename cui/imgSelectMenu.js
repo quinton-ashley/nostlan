@@ -2,6 +2,7 @@ class CuiState extends cui.State {
 
 	async onAction(act) {
 		log(act);
+		if (act == 'doubleBack') return;
 		let game = cui.editSelect.game;
 		if (!game.img) game.img = {};
 		let url = cui.editSelect.imgUrl.split('?')[0];

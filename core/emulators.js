@@ -212,6 +212,7 @@ module.exports = (() => {
 				mac: ['${app}', '-inipath', '${cwd}', '${game.id}'],
 				win: ['${app}', '-inipath', '${cwd}', '${game.id}']
 			},
+			site: "https://www.mamedev.org/",
 			install: {
 				'mac-x86_64': {
 					portable: 'https://sdlmame.lngn.net/mame0230-x86.zip'
@@ -226,12 +227,16 @@ module.exports = (() => {
 			sys: 'ds',
 			appRegex: {
 				linux: 'melonDS',
+				mac: 'melonDS\\.app',
 				win: 'melonDS\\.exe'
 			},
 			cmd: {
 				linux: ['${app}', '${game}'],
+				mac: ['${app}', '${game}'],
 				win: ['${app}', '${game}']
 			},
+			site: "http://melonds.kuribo64.net/",
+			patreon: "https://www.patreon.com/staplebutter",
 			install: {
 				'linux-x86_64': {
 					portable: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_linux64.7z'

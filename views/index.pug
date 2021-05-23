@@ -6,7 +6,7 @@ html
 		link(rel='stylesheet' type='text/css' href=node_modules + '/material-design-icons-iconfont/dist/material-design-icons.css')
 		link(rel='stylesheet' type='text/css' href=node_modules + '/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet' type='text/css' href=node_modules + '/jquery-ui-dist/jquery-ui.min.css')
-		link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/dist/contro-ui.css')
+		link(rel='stylesheet' type='text/css' href=node_modules + '/contro-ui/contro-ui.css')
 		link(rel='stylesheet' type='text/css' href='./css/style.css')
 
 	body
@@ -159,6 +159,10 @@ html
 					i.material-icons.md-right.invis perm_data_setting
 		#gameLibMenu_11.menu.row-y
 			h1.title0 Game Library Menu
+			.cui(name='openGameLibs')
+				i.material-icons.md-left folder
+				.text.opt0 open folder
+				i.material-icons.md-right.invis folder
 			.cui(name='scanForGames')
 				i.material-icons.md-left library_add
 				.text.opt0 add new games
@@ -225,10 +229,13 @@ html
 				img#gameMedia.cui(name='media')
 			img#gameBoxOpenMask
 		#imgSearchMenu_4.menu.row-y
-			.cui(name='selectImg')
-				i.material-icons.md-left add_photo_alternate
-				.text.opt0 Download Image
-				i.material-icons.md-right.invis add_photo_alternate
+			.row.row-x
+				.cui.col-11(name='selectImg')
+					i.material-icons.md-left add_photo_alternate
+					.text.opt0 Download Image
+					i.material-icons.md-right.invis add_photo_alternate
+				.cui.col(name='b')
+					i.material-icons clear
 		#imgSelectMenu_5.menu.row-y
 		#libMain.main.reels.row-x
 		nav.navbar.fixed-top.p-0

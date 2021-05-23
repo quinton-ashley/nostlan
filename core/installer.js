@@ -143,6 +143,7 @@ class Installer {
 			});
 			await fs.remove(files[0]);
 		}
+		let macDMG = false;
 		if (ins.installer) {
 			files = await klaw(dir);
 			res = false;
@@ -151,6 +152,7 @@ class Installer {
 				if (ext == '.dmg') {
 					// "opening macOS .dmg file"
 					this.loadLog(lang.emuAppMenu.msg13);
+					macDMG = file;
 					await opn(file);
 					res = file;
 				} else if (ext == '.exe') {
@@ -193,9 +195,11 @@ class Installer {
 					return true;
 				}
 				files = await klaw(disk, {
-					depthLimit: 2
+					depthLimit: 0
 				});
-				for (let file of files) {
+				for (let i = 0; i < files.length; i++) {
+					let file = files[i];
+					if (file.includes('Applications')) continue;
 					if (path.parse(file).ext == '.app') {
 						if (/setup/i.test(file)) {
 							file += '/Contents/MacOS/' +
@@ -212,10 +216,16 @@ class Installer {
 								' /Applications');
 							let dest = '/Applications';
 							dest += '/' + path.parse(file).base;
+							log(file, dest);
 							await fs.copy(file, dest, {
 								overwrite: true
 							});
 						}
+					} else if ((await fs.stat(file)).isDirectory()) {
+						let moreFiles = await klaw(file, {
+							depthLimit: 1
+						});
+						files.push(...moreFiles);
 					}
 				}
 				// 'finishing, ejecting all install disks'
@@ -234,10 +244,11 @@ class Installer {
 					// 'moving stand alone app to /Applications'
 					this.loadLog(lang.emuAppMenu.msg6 +
 						' /Applications');
-					await fs.move(file, '/Applications/' +
-						path.parse(file).base, {
-							overwrite: true
-						});
+					let newLocation = '/Applications/' +
+						path.parse(file).base;
+					await fs.move(file, newLocation, {
+						overwrite: true
+					});
 					break;
 				}
 			}

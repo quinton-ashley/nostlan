@@ -6,7 +6,10 @@
 .detail__media__img-bg,
 .detail__media__img-thumbnail,
 a.header__logo-wrap.js-header-logo,
-.footer {
+.footer,
+.tile--img__sub,
+.set-header--floating #header,
+.has-open-detail #header {
 	display: none !important;
 }
 
@@ -87,4 +90,13 @@ input:not([type="checkbox"]):not([type="submit"]) {
 
 .set-header--floating .zci-wrap {
 	margin-top: -70px;
+}
+
+.tile--img {
+	margin-left: 5px !important;
+	margin-bottom: 10px !important;
+}
+
+.tileview--grid .metabar--fixed.is-stuck+.tile-wrap {
+	padding-top: 0 !important;
 }

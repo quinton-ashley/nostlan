@@ -340,11 +340,12 @@ class CuiState extends cui.State {
 			game.lblColor = this.randomHue();
 			this.shouldSaveChanges = true;
 		}
-		let fontSize = title.length.map(1, 80, 2, .5);
+		let fontSize = title.length.map(1, 80, 100, 50);
+		let padding = title.length.map(1, 40, 15, 0);
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 		let lbls = `.title.label-input\n`;
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
-		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${fontSize*.25}vw;") ${title}\n`;
+		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}%; padding-top:${padding}%;") ${title}\n`;
 		lbls += `.file.label-input\n`;
 		let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 		lbls += `  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
@@ -436,10 +437,12 @@ class CuiState extends cui.State {
 				source: _this.ac_gameDB,
 				focus: (event, ui) => {
 					let $this = $(event.target);
-					$this.val(ui.item.title);
-					let fontSize = ui.item.title.length.map(1, 80, 2, .5);
-					$this.css('font-size', fontSize + 'vw');
-					$this.css('padding-top', fontSize * .25 + 'vw');
+					let title = ui.item.title;
+					$this.val(title);
+					let fontSize = title.length.map(1, 80, 100, 50);
+					let padding = title.length.map(1, 40, 15, 0);
+					$this.css('font-size', fontSize + '%');
+					$this.css('padding-top', padding + '%');
 					return false;
 				},
 				select: (event, ui) => {
@@ -498,6 +501,7 @@ class CuiState extends cui.State {
 			let $cursor = $('#' + prefs.session[sys].gameID).eq(0);
 			if (!$cursor.length) $cursor = $('#' + games[0].id).eq(0);
 			cui.makeCursor($cursor);
+			await cui.boxOpenMenu.load(true);
 			cui.scrollToCursor(250, 0);
 		} else if (cui.uiPrev == 'boxSelect') {
 			cui.boxSelect.changeImageResolution(cui.$cursor);

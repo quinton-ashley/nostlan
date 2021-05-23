@@ -18,6 +18,7 @@ class Browser {
 					log(ping);
 					cui.editSelect.imgUrl = ping.src;
 				});
+				// page.openDevTools();
 				isFirstPage = false;
 			}
 		});

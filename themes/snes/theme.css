@@ -31,17 +31,18 @@
 	line-height: 3vw;
 	font-weight: bold;
 	text-align-last: center;
-	-webkit-appearance: none;
+	appearance: none;
 	border-width: 0.5vw;
 	border-style: solid;
 	border-color: var(--nav1-text-color, var(--nav-text-color));
 	color: var(--nav1-text-color, var(--nav-text-color));
-	background-color: var(--nav1-button-color);
+	background-color: transparent;
 	border-radius: 3vw;
 	padding-left: 5%;
-	padding-right: 6%;
+	padding-right: 4%;
 	padding-top: 1%;
-	text-shadow: none;
+	box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+	width: fit-content;
 }
 
 .snes.game-box #nav3 .nav-link {

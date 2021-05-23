@@ -3,7 +3,11 @@ class CuiState extends cui.State {
 	async onAction(act) {
 		let recheckImgs = (act == 'scanForImages');
 		let doFullRescan = (act == 'rescanGameLib');
-		if (act == 'scanForGames' || recheckImgs || doFullRescan) {
+		if (act == 'openGameLibs') {
+			for (let lib of prefs[sys].libs) {
+				opn(lib);
+			}
+		} else if (act == 'scanForGames' || recheckImgs || doFullRescan) {
 			cui.removeView('libMain');
 			cui.change('loading');
 			await cui.loading.intro();

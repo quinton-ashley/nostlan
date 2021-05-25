@@ -136,12 +136,11 @@ Update Logs
 User Preferences  
 Using Nostlan
 
-## Error Reporting
+## Contact
 
-Please report issues and request features on this project's Github and [send me an email](mailto:qashto@gmail.com) with your comments, question, suggestions, or if you need any help using the app. :)
+Contact me on [Discord](https://discord.gg/cT2yNC6) with your comments, question, suggestions, or if you need any general help using the app.
 
-[Discord](https://discord.gg/cT2yNC6)  
-<mailto:qashto@gmail.com>
+Please report technical issues and make specific feature requests on this project's Github.
 
 ## Legal Disclaimer
 

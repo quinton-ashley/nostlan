@@ -44,10 +44,10 @@ class CuiState extends cui.State {
 	}
 
 	async onChange() {
-		$('#emuAppMenu .opt0').text(
+		$('#emuAppMenu_6 .opt0').text(
 			lang.emuAppMenu.opt0 + ' ' + emus[emu].name
 		);
-		$('#emuAppMenu .opt1').text(
+		$('#emuAppMenu_6 .opt1').text(
 			lang.emuAppMenu.opt1 + ' ' + emus[emu].name
 		);
 	}

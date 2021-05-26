@@ -41,7 +41,7 @@ class CuiState extends cui.State {
 			`\t.cui.col.opt14(name='promo') promo\n`
 		));
 
-		cui.addView(this.ui);
+		cui.addView('imgSelectMenu');
 	}
 }
 module.exports = new CuiState();

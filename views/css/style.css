@@ -31,6 +31,7 @@ html {
 	--navBtns-text-color: rgba(0, 0, 0, .5);
 	--navBtns-border-color: #000;
 	--box-bg-color: #000;
+	font-size: 1vh;
 }
 
 @font-face {
@@ -386,13 +387,11 @@ game .label-input {
 	height: 100%;
 	width: 96%;
 	border: none;
-	font-size: 6px;
 	box-shadow: none;
 }
 
 .label-input textarea {
 	text-align: center;
-	padding-top: 2vw;
 }
 
 .label-input input:focus,
@@ -419,8 +418,9 @@ game .title.label-input {
 	top: 10%;
 	left: 5%;
 	right: 5%;
-	font-size: 3.8vw;
 	line-height: initial;
+	font-size: 2.7vh;
+	height: 10vh;
 }
 
 game .file.label,
@@ -428,8 +428,8 @@ game .file.label-input {
 	font-family: 'handwriting5';
 	top: 84%;
 	left: 5%;
-	font-size: 1em;
-	height: 1vh;
+	font-size: 1vh;
+	height: 2vh;
 }
 
 game.flip .shade {

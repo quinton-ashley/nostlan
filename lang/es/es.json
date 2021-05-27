@@ -4,25 +4,28 @@
 	},
 	"welcomeMenu": {
 		"title0": "¡Gracias por instalar Nostlan!",
-		"opt0": "configuración de inicio"
+		"opt0": "configuración inicial"
 	},
 	"donateMenu": {
-		"opt0": "acceso a las características",
-		"opt1": "página abierta de Patreon",
-		"opt2": "recordarme después",
-		"err0": "contraseña de miembro incorrecta",
-		"msg0": "Debe ser miembro de Patreon para acceder a esta característica.  Reinicie Nostlan y especifique la contraseña de la verficación de miembro."
+		"opt0": "acceso a funciones premium",
+		"opt1": "abrir la página de Pateron",
+		"opt2": "recuérdame más tarde",
+		"err0": "contraseña de donante incorrecta",
+		"msg0": "Debe ser miembro de Patreon para acceder a esta función.  Reinicie Nostlan e ingrese su contraseña de verficación de donante."
 	},
 	"checkDonationMenu": {
+		"title0": "¡Gracias!",
+		"msg0": "Introduzca la contraseña de verificacion de donante de este mes:",
 		"opt0": "verificar contraseña",
-		"opt1": "No soy miembro todavía"
+		"opt1": "No soy donante todavía"
 	},
 	"setupMenu": {
 		"opt0": "instalar en ~\/Documents\/emu",
 		"opt1": "elegir ubicación de instalación",
-		"opt2": "configuración de acabado",
+		"opt2": "acabar instalación",
 		"err0": "Debe elegir una ubicación de instalación.",
-		"msg0": "elija la carpeta en la que desea que se vaya la plantilla"
+		"msg0": "elija la carpeta en la que desea colocar la plantilla",
+		"err1": "No se puede escribir a esta carpeta!"
 	},
 	"libMain": {
 		"nav0Lbl": "Jugar",
@@ -32,28 +35,33 @@
 	},
 	"boxSelect": {
 		"nav0Lbl": "Jugar",
-		"nav2Lbl": "Flip",
-		"nav3Lbl": "Volver"
+		"nav2Lbl": "Editar",
+		"nav3Lbl": "Atrás"
+	},
+	"editSelect": {
+		"nav0Lbl": "ImgDir",
+		"nav2Lbl": "Imagen",
+		"nav3Lbl": "Atrás"
 	},
 	"boxOpenMenu": {
 		"nav0Lbl": "Manual",
 		"nav2Lbl": "Memoria",
-		"nav3Lbl": "Volver"
+		"nav3Lbl": "Atrás"
 	},
 	"gameMediaSelect": {
 		"nav0Lbl": "Archivo",
-		"nav2Lbl": "Carpeta de imágenes",
+		"nav2Lbl": "Editar",
 		"nav3Lbl": "Volver"
 	},
 	"nostlanMenu": {
 		"title0": "Menú principal",
-		"nav0Lbl": "Salida",
+		"nav0Lbl": "Salir",
 		"nav2Lbl": "Minimizar",
-		"nav3Lbl": "Volver",
-		"msg0": "Volver",
+		"nav3Lbl": "Atrás",
+		"msg0": "Atrás",
 		"opt0": "minimizar",
 		"opt1": "pantalla completa",
-		"opt2": "salida",
+		"opt2": "salir",
 		"opt3": "editar colección de juegos",
 		"opt4": "copia de seguridad",
 		"opt5": "sincronizar",
@@ -63,39 +71,41 @@
 	},
 	"settingsMenu": {
 		"title0": "Menú Configuración",
-		"opt0": "aspecto de cambio",
-		"opt1": "valores de controlador",
-		"opt2": ["mostrar herramientas de desarrollo web", "ocultar herramientas de desarrollo web"],
-		"opt3": "preferencias de edición",
+		"opt0": "cambiar aspecto",
+		"opt1": "configuración de controlador",
+		"opt2": ["mostrar consola", "ocultar consola"],
+		"opt3": "editar preferencias",
 		"opt4": "menú de idioma"
 	},
 	"gameLibMenu": {
 		"title0": "Menú Colección de juegos",
 		"opt0": "añadir nuevos juegos",
-		"opt2": "Exploración automática de imágenes"
+		"opt1": "reescanear todos los juegos",
+		"opt2": "escanear en busca de imagenes",
+		"opt3": "abrir la carpeta de juegos"
 	},
 	"gameLibInfoMenu": {
-		"opt0": "dorso"
+		"opt0": "atrás"
 	},
 	"controllerMenu": {
-		"title0": "Configuración De Gamepad",
+		"title0": "Configuración de Controlador",
 		"opt0": "información",
 		"opt1": ["desactivar la vibración", "activar la vibración"],
 		"prof2Lbl": "Otros"
 	},
 	"controInfoMenu": {
-		"opt0": "dorso"
+		"opt0": "atrás"
 	},
 	"addSavesPathMenu": {
 		"opt0": "añadir",
-		"err0": "nombre y número de copias de seguridad necesarias",
-		"err1": "1 guardar copia de seguridad necesaria",
+		"err0": "nombre y número de copias de seguridad deseadas",
+		"err1": "1 copia de seguridad necesaria",
 		"err2": "No es una carpeta válida",
-		"msg0": "Seleccionar una ubicación de sincronización de salvar"
+		"msg0": "Seleccionar una ubicación para la sincronizacion de las partidas guardadas"
 	},
 	"interfaceMenu": {
 		"title0": "Cambio de aspecto",
-		"opt0": "tema de cambio",
+		"opt0": "cambiar tema",
 		"opt1": ["ocultar botones de superposición", "mostrar botones de superposición"]
 	},
 	"themeMenu": {
@@ -113,7 +123,7 @@
 		"msg6": "o"
 	},
 	"playMenu": {
-		"title0": "Jugar juego con"
+		"title0": "Jugar con"
 	},
 	"emuMenu": {
 		"title0": "Menú de emulador",
@@ -122,11 +132,13 @@
 		"msg3": "Instalación"
 	},
 	"loading": {
-		"msg0_0": "cargar su",
-		"msg0_1": "biblioteca de juegos",
+		"msg0_0": "cargando su",
+		"msg0_1": "colección de juegos",
 		"msg0": "cargar imágenes adicionales",
 		"msg1": "carga completa!",
-		"msg3": "inicio de Nostlan",
-		"msg4": "juegos"
+		"msg3": "iniciando Nostlan",
+		"msg4": "juegos",
+		"msg5": "Indexando su colección de juegos",
+		"msg6": "Indexando nuevos juegos en su colección de juegos"
 	}
 }

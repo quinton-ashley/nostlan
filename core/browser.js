@@ -12,11 +12,12 @@ class Browser {
 			await page.insertCSS(await fs.readFile(__root + '/views/css/genericDark.css', 'utf8'));
 			await page.insertCSS(await fs.readFile(__root + '/views/css/duckduckgo.css', 'utf8'));
 			await page.executeJavaScript(await fs.readFile(__root + '/core/imageSearch.js', 'utf8'));
+			cui.imgSearchMenu.imgUrl = '';
 			if (isFirstPage) {
 				await page.addEventListener('ipc-message', async (event) => {
 					let ping = JSON.parse(event.channel);
 					log(ping);
-					cui.editSelect.imgUrl = ping.src;
+					cui.imgSearchMenu.imgUrl = ping.src;
 				});
 				// page.openDevTools();
 				isFirstPage = false;

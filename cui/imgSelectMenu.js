@@ -1,47 +1,38 @@
 class CuiState extends cui.State {
+	constructor() {
+		super();
+		this.imgTypes = ['cover', 'coverBack', 'coverSide', 'coverFull', 'disc', 'box', 'boxBack', 'boxSide', 'boxOpen', 'boxOpenMask', 'coverInner', 'manual', 'memory', 'memoryBack', 'promo'];
+		this.imgNames = ['front cover', 'back cover', 'side cover', 'full cover', 'disc', 'front box', 'back box', 'side box', 'open box', 'open box mask', 'inner cover', 'manual', 'memory', 'back memory', 'promo'];
+	}
 
 	async onAction(act) {
-		log(act);
-		if (act == 'doubleBack') return;
-		let game = cui.editSelect.game;
-		if (!game.img) game.img = {};
-		let url = cui.editSelect.imgUrl.split('?')[0];
-		game.img[act] = url;
-		$('#dialogs').show();
-		let img = await nostlan.scraper.getImg(game, act);
-		await nostlan.scraper.genThumb(img);
-		nostlan.browser.close();
-		let $game = $('#' + game.id);
-		cui.boxSelect.flipGameBox($game, true);
-		cui.hideDialogs();
-		cui.doAction('doubleBack');
+		if (this.imgTypes.includes(act)) {
+			log(act);
+			this.imgType = act;
+			cui.change('imgSearchMenu');
+		}
 	}
 
 	async onChange() {
-		$('#' + this.id).append(pug(
-			`.row.row-x\n` +
-			`\t.cui.col.opt0(name='cover') front cover\n` +
-			`\t.cui.col.opt1(name='coverBack') back cover\n` +
-			`\t.cui.col.opt2(name='coverSide') side cover\n` +
-			`.row.row-x\n` +
-			`\t.cui.col.opt3(name='coverFull') full cover\n` +
-			`\t.cui.col.opt4(name='${syst.mediaType}') ${syst.mediaType}\n` +
-			`\t.cui.col.opt5(name='box') front box\n` +
-			`.row.row-x\n` +
-			`\t.cui.col.opt6(name='boxBack') back box\n` +
-			`\t.cui.col.opt7(name='boxSide') side box\n` +
-			`\t.cui.col.opt8(name='boxOpen') open box\n` +
-			`.row.row-x\n` +
-			`\t.cui.col.opt9(name='boxOpenMask ') open box mask\n` +
-			`\t.cui.col.opt10(name='coverInner') inner cover\n` +
-			`\t.cui.col.opt11(name='manual') manual\n` +
-			`.row.row-x\n` +
-			`\t.cui.col.opt12(name='memory') memory\n` +
-			`\t.cui.col.opt13(name='memoryBack') back memory\n` +
-			`\t.cui.col.opt14(name='promo') promo\n`
-		));
+		if (cui.uiPrev == 'imgSearchMenu') return;
+
+		$('#' + this.id).empty();
+
+		this.imgTypes[4] = syst.mediaType;
+		this.imgNames[4] = syst.mediaType;
+
+		let menu = '';
+		for (let i in this.imgTypes) {
+			if (i % 3 == 0) menu += `.row.row-x\n`;
+			let type = this.imgTypes[i];
+			let name = this.imgNames[i];
+			menu += `\t.cui.col.opt${i}(name='${type}') ${name}\n`;
+		}
+
+		$('#' + this.id).append(pug(menu));
 
 		cui.addView('imgSelectMenu');
+		cui.makeCursor($('#' + this.id + ' .cui.opt0'));
 	}
 }
 module.exports = new CuiState();

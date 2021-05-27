@@ -81,11 +81,9 @@
 	"gameLibMenu": {
 		"title0": "Меню коллекции игр",
 		"opt0": "добавить новые игры",
-		"opt1": "распознавание игр",
+		"opt1": "rescan all games",
 		"opt2": "автоматическое сканирование изображений",
-		"opt3": "поиск изображений",
-		"opt4": "информация",
-		"opt5": "rescan all games"
+		"opt3": "open games folder"
 	},
 	"gameLibInfoMenu": {
 		"opt0": "назад"

@@ -72,10 +72,7 @@
 	"gameLibMenu": {
 		"title0": "Menú Colección de juegos",
 		"opt0": "añadir nuevos juegos",
-		"opt1": "identificar juegos (próximamente)",
-		"opt2": "Exploración automática de imágenes",
-		"opt3": "buscar imágenes (próximamente)",
-		"opt4": "información"
+		"opt2": "Exploración automática de imágenes"
 	},
 	"gameLibInfoMenu": {
 		"opt0": "dorso"

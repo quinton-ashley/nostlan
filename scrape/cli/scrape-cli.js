@@ -1,14 +1,14 @@
 // DEVELOPMENT USE ONLY!
+//
 // This code is not for end users, it's for creating the
 // game art database files.
-// Finds direct download
-// links to images so that end users will not have to
-// individually scrape for images.
-// Even though I have decided to open source these files please
-// do not run them yourself.
 //
-// If you have any questions email me:
-// qashto@gmail.com
+// Finds direct download links to images so that end users will not have to
+// individually scrape for images.
+//
+// Even though I have decided to open source these files please do not run them
+// yourself. If you think I should update Nostlan's databases or if you have
+// any questions email me: qashto@gmail.com
 //
 module.exports = async function(arg) {
 	global.path = require('path');

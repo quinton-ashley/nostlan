@@ -17,6 +17,10 @@ html {
 	user-select: none;
 }
 
+.waiting {
+	cursor: progress;
+}
+
 #browser {
 	height: 80vh;
 	padding-bottom: 1.1vh;
@@ -360,11 +364,143 @@ game .shade {
 	background: linear-gradient(0.25turn, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
+.sticker {
+	position:absolute;
+}
+
+.sticker.sm {
+	top: 2%;
+	left: 87%;
+	width: 8%;
+}
+
+.sticker.sm.s0 {
+	top: 1.5%;
+	left: 4%;
+	width: 12%;
+}
+
+.sticker.sm.s3 {
+	top: 1.5%;
+	left: 24%;
+	width: 12%;
+}
+
+.sticker.sm.s4 {
+	top: 3%;
+	left: 63%;
+	width: 13%;
+}
+
+.sticker.sm.s5 {
+	top: 1%;
+	left: 62%;
+	width: 13%;
+}
+
+.sticker.sm.s7 {
+	top: 2%;
+	left: 10%;
+	width: 15%;
+}
+
+.sticker.md {
+	top: 70%;
+	left: 70%;
+	width: 13%;
+}
+
+.sticker.md.s0 {
+	top: 66%;
+	left: 74%;
+	width: 19%;
+}
+
+.sticker.md.s3 {
+	top: 67%;
+	left: 60%;
+	width: 39%;
+}
+
+.sticker.md.s5 {
+	top: 61%;
+	left: 70%;
+	width: 26%;
+}
+
+.sticker.md.s1 {
+	top: 60%;
+	left: 60%;
+}
+
+.sticker.md.s2 {
+	top: 80%;
+	left: 60%;
+	width: 30%
+}
+
+.sticker.md.s4 {
+	top: 44%;
+	left: 20%;
+	width:23%;
+}
+
+.sticker.md.s6 {
+	top: 67%;
+	left: 50%;
+	width: 40%;
+}
+
+.sticker.lg {
+	top: 77%;
+	left: 3%;
+	width: 45%;
+}
+
+.sticker.lg.s0 {
+	top: 67%;
+	left: 9%;
+	width: 70%;
+}
+
+.sticker.lg.s1 {
+	top: 61%;
+	left: 2%;
+	width: 27%;
+}
+
+.sticker.lg.s2 {
+	top: 61%;
+	left: 2%;
+	width: 40%;
+}
+
+.sticker.lg.s4 {
+	top: 62%;
+	left: 4%;
+}
+
+.sticker.lg.s5 {
+	top: 66%;
+	left: 7%;
+	width: 34%;
+}
+
 .label-input {
 	font-family: handwriting1;
 	padding-left: 0;
 	padding-right: 0;
 	margin-bottom: 1vh;
+}
+
+.label-input textarea,
+.label-input input {
+	cursor: default;
+}
+
+.editSelect .label-input textarea,
+.editSelect .label-input input {
+	cursor: text;
 }
 
 game .label-input {
@@ -392,6 +528,7 @@ game .label-input {
 
 .label-input textarea {
 	text-align: center;
+	resize: none;
 }
 
 .label-input input:focus,
@@ -401,7 +538,6 @@ game .label-input {
 
 .label {
 	font-family: handwriting0;
-	font-size: 24px;
 	text-align: center;
 	position: absolute;
 	width: fit-content;
@@ -419,8 +555,18 @@ game .title.label-input {
 	left: 5%;
 	right: 5%;
 	line-height: initial;
-	font-size: 2.7vh;
-	height: 10vh;
+	font-size: 3.2vh;
+	height: 12vh;
+}
+
+game .id.label,
+game .id.label-input {
+	font-family: 'handwriting3';
+	top: 45%;
+	left: 55%;
+	font-size: 1vh;
+	width: 35%;
+	height: 2vh;
 }
 
 game .file.label,

@@ -10,17 +10,19 @@ class CuiState extends cui.State {
 			let url = cui.imgSearchMenu.imgUrl.split('?')[0];
 			game.img[imgType] = url;
 			$('#dialogs').show();
+			$('body').addClass('waiting');
 			let img = await nostlan.scraper.imgExists(game, imgType);
 			if (img) await fs.remove(img);
+			await fs.ensureDir(nostlan.scraper.getImgDir(game));
 			img = await nostlan.scraper.getImg(game, imgType);
-			if (imgType == 'cover' || imgType == 'box') {
-				await nostlan.scraper.genThumb(img);
-			}
+			await cui.libMain.addGameBox(game);
+			cui.editSelect.game.hasNoImages = false;
 			nostlan.browser.close();
 			let $game = $('#' + game.id);
 			cui.boxSelect.flipGameBox($game, true);
 			cui.hideDialogs();
-			cui.change('editSelect');
+			$('body').removeClass('waiting');
+			cui.change('boxSelect');
 		} else if (act == 'b') {
 			nostlan.browser.close();
 			cui.change('imgSelectMenu');

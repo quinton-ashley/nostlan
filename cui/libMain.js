@@ -321,6 +321,7 @@ class CuiState extends cui.State {
 		} else {
 			delete game.hasNoImages;
 		}
+		if (typeof column == 'undefined') return;
 		$('.reel.r' + column).append(pug(box));
 		$(`#${game.id} input`).attr('spellcheck', false);
 		$(`#${game.id} textarea`).attr('spellcheck', false);
@@ -340,12 +341,36 @@ class CuiState extends cui.State {
 			game.lblColor = this.randomHue();
 			this.shouldSaveChanges = true;
 		}
+		let lbls = '';
+		let stksDir = prefs.nlaDir + '/images/stickers';
+
+		let idx = Math.floor(Math.random() * 8);
+		let stkSml = `${stksDir}/small/stk${idx}.png`;
+		lbls += `img.sticker.sm.s${idx}(src="${stkSml}")\n`;
+
+		if (Math.random() > .5) {
+			idx = Math.floor(Math.random() * 7);
+			let stkMed = `${stksDir}/medium/stk${idx}.png`;
+			lbls += `img.sticker.md.s${idx}(src="${stkMed}")\n`;
+		} else {
+			idx = Math.floor(Math.random() * 6);
+			let stkLrg = `${stksDir}/large/stk${idx}.png`;
+			lbls += `img.sticker.lg.s${idx}(src="${stkLrg}")\n`;
+		}
+		lbls += `.title.label-input\n`;
 		let fontSize = title.length.map(1, 80, 100, 50);
 		let padding = title.length.map(1, 40, 15, 0);
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
-		let lbls = `.title.label-input\n`;
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
 		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}%; padding-top:${padding}%;") ${title}\n`;
+
+		lbls += `.id.label-input\n`;
+		let unidentified = game.id.includes("UNIDENTIFIED");
+		let idLblImg = prefs.nlaDir + '/images/labels/medium/lbl0.png';
+		if (unidentified) idLblImg = prefs.nlaDir + '/images/labels/long/lbl1.png';
+		lbls += `  img(src="${idLblImg}")\n`;
+		lbls += `  input(readonly="true" value="${game.id}")\n`;
+
 		lbls += `.file.label-input\n`;
 		let fileLblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 		lbls += `  img(src="${fileLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
@@ -424,6 +449,9 @@ class CuiState extends cui.State {
 		if (prefs[sys].colorPalette) {
 			$('body').addClass(prefs[sys].colorPalette);
 		}
+		cui.editView('boxSelect', {
+			clickCurDisabled: true
+		});
 		cui.editView('boxOpenMenu', {
 			keepBackground: true,
 			hoverCurDisabled: true
@@ -445,7 +473,8 @@ class CuiState extends cui.State {
 					$this.css('padding-top', padding + '%');
 					return false;
 				},
-				select: (event, ui) => {
+				select: async (event, ui) => {
+					await cui.change('boxSelect');
 					let $this = $(event.target);
 					$this.val(ui.item.title);
 					let $game = $this.parent().parent();
@@ -459,7 +488,20 @@ class CuiState extends cui.State {
 						let file = games[i].file;
 						games[i] = sel;
 						games[i].file = file;
-						nostlan.scan.outputUsersGamesDB(games);
+						$game.find('.id.label-input input').val(games[i].id);
+						let unidentified = games[i].id.includes("UNIDENTIFIED");
+						let idLblImg = prefs.nlaDir + '/images/labels/medium/lbl0.png';
+						if (unidentified) idLblImg = prefs.nlaDir + '/images/labels/long/lbl1.png';
+						$game.find('.id.label-input img').prop('src', idLblImg);
+						$('#dialogs').show();
+						$('body').addClass('waiting');
+						let _games = await nostlan.scraper.loadImages([games[i]], true);
+						if (_games.length) games[i] = _games[0];
+						await this.addGameBox(games[i]);
+						await nostlan.scan.outputUsersGamesDB(games);
+						cui.boxSelect.flipGameBox($game, true);
+						cui.hideDialogs();
+						$('body').removeClass('waiting');
 						break;
 					}
 					return false;

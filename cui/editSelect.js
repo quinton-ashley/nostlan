@@ -23,10 +23,11 @@ class CuiState extends cui.State {
 			cui.libMain.addLabels($('#' + game.id), game);
 		} else {
 			$(`#${game.id} .label-input`).show();
+			$(`#${game.id} .sticker`).show();
 		}
 		$(`#${game.id} textarea`).attr('readonly', false);
 
-		this.imgDir = await nostlan.scraper.getImgDir(game);
+		this.imgDir = nostlan.scraper.getImgDir(game);
 		this.game = game;
 	}
 }

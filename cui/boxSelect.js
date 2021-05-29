@@ -6,25 +6,18 @@ class CuiState extends cui.State {
 		let isBtn = cui.isButton(act);
 
 		if (act == 'a' && $cursor[0].id != cui.getCursor('libMain')[0].id) {
-			this.fitCoverToScreen($cursor);
-			cui.makeCursor($cursor, 'libMain');
-			cui.scrollToCursor();
-		} else if (act == 'a' || act == 'y') {
-
+			this.doAction('back');
+		} else if (act == 'a') {
 			// try to load/download open box menu images
 			if (!$cursor.attr('class')) return;
 			let style = $cursor.attr('class').split(/\s+/)[0] || sysStyle;
 			let imgs = nostlan.themes[style].template;
 			if (!(await nostlan.scraper.getExtraImgs(imgs))) return;
-
-			if (act == 'a') {
-				// TODO finish open box menus for all systems
-				await cui.boxOpenMenu.load();
-				cui.change('boxOpenMenu');
-				$('#libMain').hide();
-			} else if (act == 'y') { // edit
-				cui.change('editSelect_3');
-			}
+			await cui.boxOpenMenu.load();
+			cui.change('boxOpenMenu');
+			$('#libMain').hide();
+		} else if (act == 'y') { // edit
+			cui.change('editSelect_3');
 		} else if (act == 'r' || act == 'l' || act == 'rt' || act == 'lt') { // flip
 			let ogHeight = $cursor.height();
 			await this.flipGameBox($cursor);
@@ -201,6 +194,7 @@ class CuiState extends cui.State {
 		$(`#${game.id} textarea`).attr('readonly', true);
 		if (!game.hasNoImages) {
 			$(`#${game.id} .label-input`).hide();
+			$(`#${game.id} .sticker`).hide();
 		}
 	}
 }

@@ -31,7 +31,7 @@ class Scraper {
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
 		$('#loadDialog0').html(md(`scraping for the  \n${name}  \nof  \n${game.title} [${game.id}]`));
-		let imgDir = await this.getImgDir(game);
+		let imgDir = this.getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
 		if (game.img && game.img[name]) {
@@ -109,7 +109,7 @@ class Scraper {
 			if (game.title) {
 				game.title = rmDiacritics(game.title);
 			}
-			imgDir = await this.getImgDir(game);
+			imgDir = this.getImgDir(game);
 
 			if (recheckImgs || !(await fs.exists(imgDir))) {
 				try {
@@ -161,7 +161,7 @@ class Scraper {
 				await this.getImg(game, 'boxSide');
 				if (!(await this.imgExists(game, 'box'))) {
 					cui.err('ERROR: No default box image found in the directory ' +
-						await this.getImgDir(game), 404, 'sysMenu');
+						this.getImgDir(game), 404, 'sysMenu');
 					return [];
 				}
 			}
@@ -185,12 +185,12 @@ class Scraper {
 		return res;
 	}
 
-	async getImgDir(game) {
+	getImgDir(game) {
 		return `${systemsDir}/${sys}/images/${game.id}`;
 	}
 
 	async imgExists(game, name) {
-		let imgDir = await this.getImgDir(game);
+		let imgDir = this.getImgDir(game);
 		let file = `${imgDir}/${name}.png`;
 		if (!(await fs.exists(file))) {
 			file = file.slice(0, -3) + 'jpg';

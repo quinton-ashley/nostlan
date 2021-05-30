@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.nostlan",
     "copyright": "Copyright © 2018-2021 Quinton Ashley",
-    "electronVersion": "9.3.2",
+    "electronVersion": "11.2.3",
     "electronDownload": {
-      "version": "9.3.2"
+      "version": "11.2.3"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -19,7 +19,7 @@
         {
           "target": "zip",
           "arch": [
-            "arm64"
+            "x64"
           ]
         }
       ],
@@ -74,15 +74,15 @@
     }
   ],
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
     "7zip-bin": "*",
+    "@popperjs/core": "^2.9.2",
     "acorn": "^8.2.4",
     "await-spawn": "^4.0.2",
     "bootstrap": "*",
     "byte-base64": "^1.1.0",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^3.2.1",
+    "contro-ui": "^3.3.0",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^5.0.0",
@@ -158,5 +158,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.20.40"
+  "version": "1.20.41"
 }

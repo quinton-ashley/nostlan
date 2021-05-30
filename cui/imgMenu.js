@@ -9,6 +9,7 @@ class CuiState extends cui.State {
 		if (this.imgTypes.includes(act)) {
 			log(act);
 			this.imgType = act;
+			this.imgName = this.imgNames[this.imgTypes.indexOf(act)];
 			cui.change('imgSearchMenu');
 		}
 	}
@@ -31,7 +32,7 @@ class CuiState extends cui.State {
 
 		$('#' + this.id).append(pug(menu));
 
-		cui.addView('imgSelectMenu');
+		cui.addView('imgMenu');
 		cui.makeCursor($('#' + this.id + ' .cui.opt0'));
 	}
 }

@@ -365,7 +365,7 @@ game .shade {
 }
 
 .sticker {
-	position:absolute;
+	position: absolute;
 }
 
 .sticker.sm {
@@ -442,7 +442,7 @@ game .shade {
 .sticker.md.s4 {
 	top: 44%;
 	left: 20%;
-	width:23%;
+	width: 23%;
 }
 
 .sticker.md.s6 {

@@ -29,7 +29,7 @@ class CuiState extends cui.State {
 			if (gameSys) gameSys = gameSys.split(/\s+/)[0];
 			cui.boxSelect.fitCoverToScreen($cursor);
 			cui.scrollToCursor(500, 0);
-			cui.change('boxSelect_1', gameSys);
+			cui.change('boxSelect', gameSys);
 		} else if (/key-./.test(act)) {
 			// letter by letter search for game
 			this.searchForGame(act.slice(4));
@@ -449,8 +449,13 @@ class CuiState extends cui.State {
 		if (prefs[sys].colorPalette) {
 			$('body').addClass(prefs[sys].colorPalette);
 		}
-		cui.editView('boxSelect', {
-			clickCurDisabled: true
+		cui.editView('boxSelect_1', {
+			clickCurDisabled: true,
+			clickCurAct: 'b'
+		});
+		cui.editView('editSelect_2', {
+			clickCurDisabled: true,
+			clickCurAct: 'b'
 		});
 		cui.editView('boxOpenMenu', {
 			keepBackground: true,

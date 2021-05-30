@@ -4,7 +4,7 @@ class CuiState extends cui.State {
 		log(act);
 		if (act == 'selectImg') {
 			if (!cui.imgSearchMenu.imgUrl) return;
-			let imgType = cui.imgSelectMenu.imgType;
+			let imgType = cui.imgMenu.imgType;
 			let game = cui.editSelect.game;
 			if (!game.img) game.img = {};
 			let url = cui.imgSearchMenu.imgUrl.split('?')[0];
@@ -25,14 +25,14 @@ class CuiState extends cui.State {
 			cui.change('boxSelect');
 		} else if (act == 'b') {
 			nostlan.browser.close();
-			cui.change('imgSelectMenu');
+			cui.doAction('doubleBack');
 		}
 	}
 
 	async onChange() {
 		let game = cui.editSelect.game;
-		let imgType = cui.imgSelectMenu.imgType;
-		let searchTerm = game.title + ' ' + imgType;
+		let imgName = cui.imgMenu.imgName;
+		let searchTerm = game.title + ' ' + imgName;
 
 		let query = searchTerm.replace(/[^0-9a-zA-Z ]+/g, '').replace(' ', '+');
 

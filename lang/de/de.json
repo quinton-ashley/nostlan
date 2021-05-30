@@ -1,0 +1,210 @@
+{
+	"languageMenu": {
+		"title0": "Sprachmenü"
+	},
+	"welcomeMenu": {
+		"title0": "Danke für das Benutzen von Nostlan!",
+		"opt0": "Setup starten"
+	},
+	"donateMenu": {
+		"opt0": "Premium Features entdecken",
+		"opt1": "Patreon Seite öffnen",
+		"opt2": "Errinere mich später",
+		"err0": "Falsches Spenden Passwort",
+		"msg0": "Du braucht eine Patreon Konto für das Feature. Starte Nostlan neu und gebe dein Spenden Passwort ein."
+	},
+	"checkDonationMenu": {
+		"title0": "Vielen Dank!",
+		"msg0": "Gib das Passwort für die Mitgliederüberprüfung dieses Monats ein:",
+		"opt0": "Passwort Verifizierung",
+		"opt1": "Ich supporte Nostlan zur Zeit nicht"
+	},
+	"setupMenu": {
+		"opt0": "Installieren im Verzeichnis ~\/Documents\/emu",
+		"opt1": "Installationsverzeichnis auswählen",
+		"opt2": "Setup fertigstellen",
+		"err0": "Du musst ein Installationsverzeichnis auswählen!",
+		"msg0": "choose the folder you want the template to go in",
+		"err1": "Kann in diesen Ordner nicht schreiben!",
+		"err2": "Dieser Ordner ist read only! Right click the folder, click open as administrator, right click the folder, click edit file permissions. Change to read/write and create/delete for all user groups. Or set prefs.load.readOnlyFS to true in your prefs.json file."
+	},
+	"libMain": {
+		"nav0Lbl": "Spielen",
+		"nav2Lbl": "Emu",
+		"nav3Lbl": "Sys",
+		"err0": "Spiel nicht gefunden"
+	},
+	"boxSelect": {
+		"nav0Lbl": "Spielen",
+		"nav2Lbl": "Editieren",
+		"nav3Lbl": "Zurück"
+	},
+	"editSelect": {
+		"nav0Lbl": "ImgDir",
+		"nav2Lbl": "Image",
+		"nav3Lbl": "Zurück"
+	},
+	"boxOpenMenu": {
+		"nav0Lbl": "Manuell",
+		"nav2Lbl": "Speicher",
+		"nav3Lbl": "Zurück"
+	},
+	"gameMediaSelect": {
+		"nav0Lbl": "Datei",
+		"nav2Lbl": "Bearbeiten",
+		"nav3Lbl": "Zurück"
+	},
+	"nostlanMenu": {
+		"title0": "Hauptmenü",
+		"nav0Lbl": "Verlassen",
+		"nav2Lbl": "Mini",
+		"nav3Lbl": "Zurück",
+		"msg0": "Zurück",
+		"opt0": "mini",
+		"opt1": "Fullscreen",
+		"opt2": "Verlassen",
+		"opt3": "Spielbibliothek bearbeiten",
+		"opt4": "backup",
+		"opt5": "sync",
+		"opt6": "Patreon",
+		"opt7": "Hilfe",
+		"opt8": "Einstellungen"
+	},
+	"settingsMenu": {
+		"title0": "Einstellungen",
+		"opt0": "Erscheinungsbild ändern",
+		"opt1": "Controller Einstellungen",
+		"opt2": ["Console anzeigen", "Console verstecken"],
+		"opt3": "Präferenzen bearbeiten",
+		"opt4": "Sprachmenü"
+	},
+	"gameLibMenu": {
+		"title0": "Spielebibliothek Menü",
+		"opt0": "Neue Spiele hinzufügen",
+		"opt1": "Alle Spiele aktualisieren",
+		"opt2": "Nach Bildern scannen",
+		"opt3": "Spieleordner öffnen"
+	},
+	"gameLibInfoMenu": {
+		"opt0": "Zurück"
+	},
+	"controllerMenu": {
+		"title0": "Controller Einstellungen",
+		"opt0": "Info",
+		"opt1": ["Rumble deaktivieren", "Rumble aktivieren"],
+		"prof2Lbl": "Anderes"
+	},
+	"controInfoMenu": {
+		"opt0": "Zurück"
+	},
+	"addSavesPathMenu": {
+		"opt0": "Hinzufügen",
+		"err0": "Name und Anzahl der gewünschten Backups",
+		"err1": "1 Sicherungskopie erforderlich",
+		"err2": "Kein gültiger Ordner",
+		"msg0": "Wähle einen Speicherort für die Synchronisierung"
+	},
+	"interfaceMenu": {
+		"title0": "Erscheinungsbild ändern",
+		"opt0": "Theme ändern",
+		"opt1": ["Overlay buttons verstecken", "Overlay Buttons anzeigen"]
+	},
+	"themeMenu": {
+		"title0": "Theme ändern"
+	},
+	"sysMenu": {
+		"title0": "Wähle ein System",
+		"msg0": "Spielbibliothek existiert nicht",
+		"msg1": "Spielebibliothek hat keine Spieldateien"
+	},
+	"playMenu": {
+		"title0": "Spiele das Spien mit"
+	},
+	"emuMenu": {
+		"title0": "Emulator Menü",
+		"msg0": "Konfigurieren",
+		"msg1": "Update",
+		"msg2": "Installieren"
+	},
+	"loading": {
+		"msg0_0": "Lade deine",
+		"msg0_1": "Spielbibliothek",
+		"msg1": "Lade zusätzliche Bilder",
+		"msg2": "Ladevorgang abgeschlossem!",
+		"msg3": "Nostlan starten",
+		"msg4": "Spiele",
+		"msg5": "Indexing your game library",
+		"msg6": "Indexing new games in your game library"
+	},
+	"playing": {
+		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",
+		"err1": "Emulator app not found at: ",
+		"err2": "crashed! If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator. Search the internet for instructions on how to fully setup",
+		"err3": "This emulator requires system bios file(s)",
+		"msg0": "Select emulator app",
+		"msg1": "Starting",
+		"msg2_0": "To close the emulator, press and hold the",
+		"msg2_1": "button for",
+		"msg2_2": "seconds",
+		"msg3": "Unfortunately only one app at a time can be connected to your Gamecube Controller Adapter.  Nostlan will quit.",
+		"msg4": "launching"
+	},
+	"emuAppMenu": {
+		"opt0": "install",
+		"opt1": "browse for",
+		"err0": "This emulator is not available for your computer's operating system",
+		"err1": "Automated install of this emulator with Nostlan is not possible. You must install manually.",
+		"err2": "Could not download app from",
+		"err3": "Installer not found in package",
+		"err4": "couldn't find install disk, finish install manually",
+		"err5": "Install failed, you must manually install",
+		"msg0": "installing",
+		"msg1": "preparing to install...",
+		"msg2": "running install script, please wait...",
+		"msg3": "downloading, please wait...",
+		"msg4": "download complete, extracting files...",
+		"msg5": "verifying installation...",
+		"msg6": "moving stand alone app to",
+		"msg7": "running setup app",
+		"msg8": "moving apps to",
+		"msg9": "finishing, ejecting all install disks",
+		"msg10": "finishing, deleting package file",
+		"msg11": "Installed",
+		"msg12": "download complete",
+		"msg13": "opening macOS .dmg file",
+		"msg14": "opening installer executable",
+		"msg15": "Almost done, please finish install manually"
+	},
+	"emptyGameLibMenu": {
+		"opt0": "browse for games folder",
+		"opt1": "install",
+		"msg0_0": "select",
+		"msg0_1": "games folder",
+		"msg1_0": "Game files must have the file extension",
+		"msg1_1": "or",
+		"msg1_2": "If you don't have any",
+		"msg1_3": "games yet you might want to install the",
+		"msg1_4": "emulator app first.",
+		"err0": "You already have this emulator installed on your computer!",
+		"err1": "If you don't have this app, install it using your linux package manager to add/remove software"
+	},
+	"alertMenu": {
+		"title0": "Success!",
+		"title1": "Failed",
+		"title2": "Error Code",
+		"title3": "Error",
+		"title4": "Not Implemented",
+		"title5": "Alert",
+		"msg0": "This option is not available yet!",
+		"opt0": "okay"
+	},
+	"pauseMenu": {
+		"title0": "Pause Menu",
+		"err0": "Nostlan's main menu is not available when emulators are running",
+		"opt0": "unpause emulation",
+		"opt1": "load state",
+		"opt2": "save state",
+		"opt3": "stop emulation",
+		"opt4": ["mute", "unmute"]
+	}
+}

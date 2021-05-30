@@ -11,10 +11,10 @@ class CuiState extends cui.State {
 		let langFolders = await klaw(__root + '/lang');
 		let title = 'Language Menu';
 		if (global.lang) title = lang.languageMenu.title0;
-		let elems = `h1 ${title}\n`;
+		let elems = `h1 ${title}\n.cui(name='en') English\n`;
 		for (let x of langFolders) {
 			x = path.parse(x).base;
-			if (!iso_639_1[x]) continue;
+			if (x == 'en' || !iso_639_1[x]) continue;
 			elems += `.cui(name='${x}') `;
 			elems += iso_639_1[x].name + '\n';
 		}

@@ -214,6 +214,7 @@ module.exports = async function(args) {
 			cui.resize(true);
 			return;
 		}
+		$('body').addClass('waiting');
 
 		global.lang = JSON.parse(
 			await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
@@ -226,16 +227,20 @@ module.exports = async function(args) {
 			lang = en;
 			log(lang);
 		}
-
+		$('#dialogs').show();
 		$('#loadDialog0').text(lang.loading.msg3 + ' v' + pkg.version);
 
 		// convert all markdown files to html
-		let files = await klaw(`${__root}/lang/${prefs.ui.lang}/md`);
+		let files = await klaw(`${__root}/lang/en/md`);
 		for (let file of files) {
-			let data = await fs.readFile(file, 'utf8');
-			let fileName = path.parse(file).name;
+			let dir = `${__root}/lang/${prefs.ui.lang}/md`;
+			if (prefs.ui.lang != 'en' && !(await fs.exists())) {
+				dir = `${__root}/lang/en/md`;
+			}
+			let base = path.parse(file).base;
+			let data = await fs.readFile(dir + '/' + base, 'utf8');
 			// this file has OS specific text
-			if (fileName == 'setupMenu_1') {
+			if (base == 'setupMenu_1.md') {
 				data = util.osmd(data);
 			}
 			data = data.replace(/\t/g, '  ');
@@ -245,7 +250,7 @@ module.exports = async function(args) {
 			$('#' + file.name).prepend(data);
 		}
 		files = null;
-		delete files;
+		delete files; // remove references to these variables
 
 		// ensures the template dir structure exists
 		// makes folders if they aren't there
@@ -275,6 +280,7 @@ module.exports = async function(args) {
 			hoverCurDisabled: true
 		});
 
+		$('body').removeClass('waiting');
 		cui.clearDialogs();
 		if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
 			await cui.libMain.load();

@@ -12,6 +12,7 @@ class CuiState extends cui.State {
 			systemsDir = systemsDir.replace(/\\/g, '/');
 			prefs.nlaDir = systemsDir + '/nostlan';
 			await prefsMng.save(prefs);
+			$('#' + this.id).hide();
 			nostlan.start();
 			return;
 		}

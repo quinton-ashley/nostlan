@@ -18,6 +18,7 @@ class CuiState extends cui.State {
 	}
 
 	async loadSharedAssets() {
+		$('#dialogs').show();
 		cui.clearDialogs();
 		// 'loading additional images'
 		$('#loadDialog0').text(lang.loading.msg1);
@@ -28,7 +29,8 @@ class CuiState extends cui.State {
 		let assetPacks = ['discSleeve', 'labels', 'stickers', 'wraps'];
 
 		for (let pack of assetPacks) {
-			$('#loadDialog1').text(pack);
+			$('#loadDialog2').text(pack);
+			await delay(16);
 			let url = gh + `/${pack}.zip`;
 			let file = dir + `/${pack}.zip`;
 			if (!(await fs.exists(dir + '/' + pack))) {

@@ -197,10 +197,10 @@ game {
 	outline: none !important;
 }
 
-#welcomeMenu img {
-	margin-top: -10%;
-	margin-bottom: -10%;
-	transform: scale(.8);
+#welcomeMenu .center {
+	margin: auto;
+	width: 50vh;
+	margin-top: -2.5%;
 }
 
 .menu-wide {
@@ -339,7 +339,7 @@ img {
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 150;
+	z-index: 1000;
 	pointer-events: none;
 }
 

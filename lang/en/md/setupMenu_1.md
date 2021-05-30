@@ -1,10 +1,10 @@
 # Nostlan Setup
 
-Choose the location of the `nostlan` image folder and a template file structure for organizing your game libraries. If you don't want to put your games in these folders that's okay, Nostlan will prompt you for their location. [More info](https://github.com/quinton-ashley/nostlan#nostlan-file-structure)
+Choose where Nostlan should put the images it will download. You can also put your games within this folder structure that Nostlan will create. If you want to keep your games somewhere else on your computer that's fine too, Nostlan will just ask you where they are. [More info](https://github.com/quinton-ashley/nostlan#nostlan-file-structure)
 
 # os win
 
-Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. Nostlan will look for emulator executables in the `emu/{system}/{emulator}` folder or the default install location of that emulator (no need to move Yuzu).
+Windows users should not store emulator apps or games in `Program Files` or any other folder that Nostlan will not have read/write access to. Nostlan will look for emulator executables in their default install location (if they had one) and then in the `emu/{system}/{emulator}` folder.
 
 ```
 📁 ~/Documents/emu
@@ -22,7 +22,7 @@ Windows users should not store emulator apps or games in `Program Files` or any 
 
 # os mac
 
-On macOS, Nostlan will look for emulator apps in `/Applications` or `emu/{system}/{emulator}`. Nostlan needs read/write permission to the install folder. You can have the nostlan.app in `/Applications` but don't install your emulator folder `emu` there.
+On macOS, Nostlan needs read/write permission to your Documents folder so be sure to enable that in System Preferences. Nostlan will look for emulator apps in `/Applications`, then in `emu/{system}/{emulator}`. You should put the `nostlan.app` itself in `/Applications` but don't install your emulator folder `emu` there.
 
 # os linux
 

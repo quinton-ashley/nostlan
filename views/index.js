@@ -270,6 +270,11 @@ module.exports = async function(args) {
 		let lblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 		$('.label-input img').prop('src', lblImg);
 
+		cui.editView('boxOpenMenu', {
+			keepBackground: true,
+			hoverCurDisabled: true
+		});
+
 		cui.clearDialogs();
 		if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
 			await cui.libMain.load();

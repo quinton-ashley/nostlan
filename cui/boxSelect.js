@@ -17,7 +17,7 @@ class CuiState extends cui.State {
 			cui.change('boxOpenMenu');
 			$('#libMain').hide();
 		} else if (act == 'y') { // edit
-			cui.change('editSelect');
+			cui.change('editSelect_2');
 		} else if (act == 'r' || act == 'l' || act == 'rt' || act == 'lt') { // flip
 			let ogHeight = $cursor.height();
 			await this.flipGameBox($cursor);

@@ -142,7 +142,9 @@ class CuiState extends cui.State {
 			await nostlan.saves.update();
 		}
 		await this.viewerLoad();
-
+		if (!offline) {
+			await cui.loading.loadSharedAssets();
+		}
 		cui.removeView('playMenu');
 		cui.removeView('emuMenu');
 		let playMenu = 'h1.title0\n';

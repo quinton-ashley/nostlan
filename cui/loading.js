@@ -17,7 +17,7 @@ class CuiState extends cui.State {
 		cui.hideDialogs();
 	}
 
-	async loadSharedAssets() {
+	async loadSharedAssets(specificAssets) {
 		$('#dialogs').show();
 		cui.clearDialogs();
 		// 'loading additional images'
@@ -29,8 +29,8 @@ class CuiState extends cui.State {
 		let assetPacks = ['discSleeve', 'labels', 'stickers', 'wraps'];
 
 		for (let pack of assetPacks) {
+			if (specificAssets && !specificAssets.includes(pack)) continue;
 			$('#loadDialog2').text(pack);
-			await delay(16);
 			let url = gh + `/${pack}.zip`;
 			let file = dir + `/${pack}.zip`;
 			if (!(await fs.exists(dir + '/' + pack))) {
@@ -43,6 +43,7 @@ class CuiState extends cui.State {
 			}
 		}
 		$('#loadDialog1').text('');
+		$('#loadDialog2').text('');
 		// 'loading complete!'
 		$('#loadDialog0').text(lang.loading.msg2);
 	}

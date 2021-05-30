@@ -25,7 +25,7 @@ class CuiState extends cui.State {
 		if (!mediaImg) {
 			mediaImg = await nostlan.scraper.getImg(template, syst.mediaType);
 		}
-		mediaImg += '?' + new Date().getTime();
+		mediaImg += '?' + Date.now();
 		if (!mediaImg && syst.mediaType == 'disc') {
 			mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
 		}

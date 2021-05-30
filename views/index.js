@@ -270,10 +270,10 @@ module.exports = async function(args) {
 		}
 
 		if (!offline) {
-			await cui.loading.loadSharedAssets();
+			await cui.loading.loadSharedAssets(['labels']);
 		}
 		let lblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
-		$('.label-input img').prop('src', lblImg);
+		$('.label-input img').prop('src', lblImg + '?' + Date.now());
 
 		cui.editView('boxOpenMenu', {
 			keepBackground: true,

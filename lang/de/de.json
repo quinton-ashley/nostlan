@@ -24,9 +24,9 @@
 		"opt1": "Installationsverzeichnis auswählen",
 		"opt2": "Setup fertigstellen",
 		"err0": "Du musst ein Installationsverzeichnis auswählen!",
-		"msg0": "choose the folder you want the template to go in",
+		"msg0": "Wähle den Ordner, in dem die Vorlage abgelegt werden soll",
 		"err1": "Kann in diesen Ordner nicht schreiben!",
-		"err2": "Dieser Ordner ist read only! Right click the folder, click open as administrator, right click the folder, click edit file permissions. Change to read/write and create/delete for all user groups. Or set prefs.load.readOnlyFS to true in your prefs.json file."
+		"err2": "Dieser Ordner ist read only! Klicke mit der rechten Maustaste auf den Ordner, klicke auf Als Administrator öffnen, klicke mit der rechten Maustaste auf den Ordner, klicke auf Dateiberechtigungen bearbeiten. Ändere auf Lesen/Schreiben und Erstellen/Löschen für alle Benutzergruppen. Oder setzee prefs.load.readOnlyFS in deiner prefs.json-Datei auf true."
 	},
 	"libMain": {
 		"nav0Lbl": "Spielen",
@@ -41,7 +41,7 @@
 	},
 	"editSelect": {
 		"nav0Lbl": "ImgDir",
-		"nav2Lbl": "Image",
+		"nav2Lbl": "Bild",
 		"nav3Lbl": "Zurück"
 	},
 	"boxOpenMenu": {

@@ -172,8 +172,9 @@ class CuiState extends cui.State {
 		cui.addView('playMenu');
 		cui.addView('emuMenu');
 
+		await cui.change('libMain', sysStyle);
+		await cui.boxOpenMenu.load(true);
 		await cui.loading.removeIntro();
-		cui.change('libMain', sysStyle);
 		cui.resize(true);
 	}
 
@@ -538,7 +539,6 @@ class CuiState extends cui.State {
 			let $cursor = $('#' + prefs.session[sys].gameID).eq(0);
 			if (!$cursor.length) $cursor = $('#' + games[0].id).eq(0);
 			cui.makeCursor($cursor);
-			await cui.boxOpenMenu.load(true);
 			cui.scrollToCursor(250, 0);
 		} else if (cui.uiPrev == 'boxSelect') {
 			cui.boxSelect.changeImageResolution(cui.$cursor);

@@ -1,4 +1,3 @@
-/*================3DS Cover========================*/
 @font-face {
 	font-family: contb;
 	src: url("../fonts/contb.ttf");
@@ -34,7 +33,6 @@
 	width: fit-content;
 }
 
-/*================3ds Game Lib Viewer====================*/
 game.n3ds .crop.coverFull {
 	width: 203.9%;
 	top: 2.2%;
@@ -57,7 +55,7 @@ game.n3ds img.coverFull {
 
 game.n3ds .shade {
 	width: 0.5%;
-	left: 0;
+	left: 0px;
 }
 
 game.n3ds.flip .shade {
@@ -67,7 +65,7 @@ game.n3ds.flip .shade {
 
 game.n3ds.flip img.coverFull {
 	width: 204%;
-	transform: translate(1%, .7%);
+	transform: translate(1%, 0.7%);
 }
 
 game.n3ds .title.label {
@@ -81,19 +79,19 @@ game.n3ds .file.label {
 }
 
 .n3ds #boxOpenMenu_2 {
-	transform: scale(.6);
+	height: 75vh;
 }
 
-.n3ds #gameManual,
-.n3ds #gameWiki webview {
-	width: 85vh;
-	transform: translate(-109%, -46%);
+.n3ds #gameManual, .n3ds #gameWiki webview {
+	width: 69.5vh;
+	height: 69.5vh;
+	transform: translate(-106%, -50%);
 }
 
 .n3ds #gameMedia {
-	width: 26.6vh;
-	transform: translate(137%, -2.5%);
-	border-radius: 0;
+	width: 23vh;
+	transform: translate(139%, 12%);
+	border-radius: 0px;
 }
 
 .n3ds #boxOpenMenu_2.zoom-gameManual {

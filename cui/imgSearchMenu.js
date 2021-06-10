@@ -9,17 +9,25 @@ class CuiState extends cui.State {
 			if (!game.img) game.img = {};
 			let url = cui.imgSearchMenu.imgUrl.split('?')[0];
 			game.img[imgType] = url;
+
 			$('#dialogs').show();
 			$('body').addClass('waiting');
-			let img = await nostlan.scraper.imgExists(game, imgType);
+
+			let img = await nostlan.scraper.imgExists(game, imgType + 'Thumb');
 			if (img) await fs.remove(img);
+			img = await nostlan.scraper.imgExists(game, imgType);
+			if (img) await fs.remove(img);
+
 			await fs.ensureDir(nostlan.scraper.getImgDir(game));
 			img = await nostlan.scraper.getImg(game, imgType);
-			await cui.libMain.addGameBox(game);
+			let $box = await cui.libMain.makeGameBox(game);
 			cui.editSelect.game.hasNoImages = false;
 			nostlan.browser.close();
 			let $game = $('#' + game.id);
+			$game.empty();
+			$game.append($box.children());
 			cui.boxSelect.flipGameBox($game, true);
+
 			cui.hideDialogs();
 			$('body').removeClass('waiting');
 			cui.change('boxSelect');
@@ -32,8 +40,8 @@ class CuiState extends cui.State {
 	async onChange() {
 		let game = cui.editSelect.game;
 		let imgName = cui.imgMenu.imgName;
+		imgName = imgName.replace('front', '');
 		let searchTerm = game.title + ' ' + imgName;
-
 		let query = searchTerm.replace(/[^0-9a-zA-Z ]+/g, '').replace(' ', '+');
 
 		let url = 'https://duckduckgo.com/?t=ffab&q=' + query +

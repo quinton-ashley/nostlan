@@ -5,3 +5,4 @@ usr
 node_modules
 wit
 *.log
+package-lock.json

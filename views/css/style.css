@@ -510,6 +510,14 @@ game .label-input {
 	right: 5%;
 }
 
+#checkDonationMenu_1 .label-input {
+	height: 7vh;
+}
+
+#checkDonationMenu_1 input {
+	font-size: 5.5vh;
+}
+
 .label-input img {
 	height: inherit;
 }
@@ -520,7 +528,7 @@ game .label-input {
 	position: absolute;
 	left: 2%;
 	right: 2%;
-	height: 100%;
+	height: inherit;
 	width: 96%;
 	border: none;
 	box-shadow: none;

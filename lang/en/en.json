@@ -134,7 +134,9 @@
 		"msg3": "starting Nostlan",
 		"msg4": "games",
 		"msg5": "Indexing your game library",
-		"msg6": "Indexing new games in your game library"
+		"msg6": "Indexing new games in your game library",
+		"msg7_0": "searching for the",
+		"msg7_1": "image for"
 	},
 	"playing": {
 		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",

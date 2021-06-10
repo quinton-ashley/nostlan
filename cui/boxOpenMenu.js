@@ -24,8 +24,9 @@ class CuiState extends cui.State {
 		let mediaImg = await nostlan.scraper.imgExists(game, syst.mediaType);
 		if (!mediaImg) {
 			mediaImg = await nostlan.scraper.getImg(template, syst.mediaType);
+		} else {
+			mediaImg += '?' + Date.now();
 		}
-		mediaImg += '?' + Date.now();
 		if (!mediaImg && syst.mediaType == 'disc') {
 			mediaImg = prefs.nlaDir + '/images/discSleeve/disc.png';
 		}

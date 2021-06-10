@@ -133,17 +133,15 @@ class CuiState extends cui.State {
 			if (!img) continue;
 			img = path.parse(img);
 			img.name = img.name.replace('Thumb', '');
+			let date;
+			[img.ext, date] = img.ext.split('?');
 			let src = img.dir + '/' + img.name + img.ext;
-			let sliceAmt = (win) ? 8 : 7;
-			if (!(await fs.exists(src.slice(sliceAmt)))) {
-				src = img.dir + '/' + img.name;
-				if (img.ext != '.jpg') {
-					src += '.jpg';
-				} else {
-					src += '.png';
-				}
+			if (!(await fs.exists(src.slice((win) ? 8 : 7)))) {
+				src = img.dir + '/' + img.name +
+					((img.ext == '.png') ? '.jpg' : '.png');
 			}
 			let $img = $images.eq(i + 1);
+			src += '?' + date;
 			if ($img.prop('src') != src) {
 				$img.prop('src', src);
 			}

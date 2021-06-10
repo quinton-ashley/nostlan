@@ -20,11 +20,6 @@ class CuiState extends cui.State {
 			cui.scrollToCursor(0);
 		} else if (act == 'info') {
 			cui.change('gameLibInfoMenu');
-		} else if (act == 'identifyGames' || act == 'imageSearch') {
-			// "This option is not available yet!"
-			// "Not Implemented"
-			cui.alert(lang.alertMenu.msg0,
-				lang.alertMenu.title4);
 		}
 	}
 }

@@ -207,7 +207,9 @@ class CuiState extends cui.State {
 	async addTemplateBoxes(cols) {
 		for (let i = 0; i < cols; i++) {
 			for (let j = 0; j < 4; j++) {
-				await this.addGameBox(nostlan.themes[sysStyle].template, i);
+				let $box = await this.makeGameBox(
+					nostlan.themes[sysStyle].template);
+				$('.reel.r' + i).append($box);
 			}
 		}
 	}
@@ -234,7 +236,8 @@ class CuiState extends cui.State {
 			}
 
 			try {
-				await this.addGameBox(games[i], col);
+				let $box = await this.makeGameBox(games[i]);
+				$('.reel.r' + col).append($box);
 				$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading.msg4}`);
 				if (!prefs.ui.altReelsScrolling) col++;
 			} catch (ror) {
@@ -243,7 +246,7 @@ class CuiState extends cui.State {
 		}
 	}
 
-	async addGameBox(game, column) {
+	async makeGameBox(game) {
 		$('#loadDialog1').text(game.title);
 		let _sys = game.sys || sys;
 		let isTemplate = (game.id.slice(1, 9) == 'TEMPLATE');
@@ -301,19 +304,20 @@ class CuiState extends cui.State {
 				await nostlan.scraper.genThumb(img);
 			}
 		}
+		let date = '?' + Date.now();
 		let box = `game#${game.id}.${_sys}.cui`;
 		// if game is a template don't let the user select it
 		if (isTemplate) {
 			box += '.cui-disabled';
 		}
 		box += '\n';
-		box += `  img.box.lq(src="${boxImg}")\n`;
+		box += `  img.box.lq(src="${boxImg+date}")\n`;
 		box += `  img.box.hq\n`;
 		// used to crop the cover/coverfull image
 		box += `  section.crop${coverType}\n`;
 		box += `    img${coverType}.lq`;
 		if (!coverType) box += '.hide';
-		box += `(src="${coverImg}")\n`;
+		box += `(src="${coverImg+date}")\n`;
 		box += `    img${coverType}.hq\n`;
 		box += `    .shade.p-0.m-0`;
 		if (!(coverType || _sys == 'switch' || _sys == 'gba')) {
@@ -324,11 +328,7 @@ class CuiState extends cui.State {
 		} else {
 			delete game.hasNoImages;
 		}
-		if (typeof column == 'undefined') return;
-		$('.reel.r' + column).append(pug(box));
-		$(`#${game.id} input`).attr('spellcheck', false);
-		$(`#${game.id} textarea`).attr('spellcheck', false);
-		$(`#${game.id} textarea`).attr('readonly', true);
+		return $(pug(box));
 	}
 
 	addLabels($game, game) {
@@ -493,7 +493,7 @@ class CuiState extends cui.State {
 						$('body').addClass('waiting');
 						let _games = await nostlan.scraper.loadImages([games[i]], true);
 						if (_games.length) games[i] = _games[0];
-						await this.addGameBox(games[i]);
+						await this.makeGameBox(games[i]);
 						await nostlan.scan.outputUsersGamesDB(games);
 						cui.boxSelect.flipGameBox($game, true);
 						cui.hideDialogs();

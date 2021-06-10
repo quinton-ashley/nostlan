@@ -51,10 +51,14 @@ module.exports = async function(args) {
 	} catch (ror) {
 		er(ror);
 	}
-	try {
-		global.sharp = require('sharp');
-	} catch (ror) {
-		er(ror);
+	if (!mac) {
+		try {
+			global.sharp = require('sharp');
+		} catch (ror) {
+			er(ror);
+			global.jimp = require('jimp');
+		}
+	} else {
 		global.jimp = require('jimp');
 	}
 

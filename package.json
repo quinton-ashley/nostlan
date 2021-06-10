@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.nostlan",
     "copyright": "Copyright © 2018-2021 Quinton Ashley",
-    "electronVersion": "9.3.2",
+    "electronVersion": "11.2.3",
     "electronDownload": {
-      "version": "9.3.2"
+      "version": "11.2.3"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -146,7 +146,7 @@
     "start": "electron . --dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
-    "clean": "sudo chmod -R 777 node_modules/robotjs",
+    "clean": "sudo chmod -R 777 .",
     "rebuild-l": "rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
     "rebuild-m": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
     "rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=9.3.2 --disturl=https://atom.io/download/atom-shell",
@@ -158,5 +158,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.21.0"
+  "version": "1.21.1"
 }

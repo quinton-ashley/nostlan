@@ -305,19 +305,21 @@ class CuiState extends cui.State {
 			}
 		}
 		let date = '?' + Date.now();
+		if (boxImg) boxImg += date;
+		if (coverImg) coverImg += date;
 		let box = `game#${game.id}.${_sys}.cui`;
 		// if game is a template don't let the user select it
 		if (isTemplate) {
 			box += '.cui-disabled';
 		}
 		box += '\n';
-		box += `  img.box.lq(src="${boxImg+date}")\n`;
+		box += `  img.box.lq(src="${boxImg}")\n`;
 		box += `  img.box.hq\n`;
 		// used to crop the cover/coverfull image
 		box += `  section.crop${coverType}\n`;
 		box += `    img${coverType}.lq`;
 		if (!coverType) box += '.hide';
-		box += `(src="${coverImg+date}")\n`;
+		box += `(src="${coverImg}")\n`;
 		box += `    img${coverType}.hq\n`;
 		box += `    .shade.p-0.m-0`;
 		if (!(coverType || _sys == 'switch' || _sys == 'gba')) {

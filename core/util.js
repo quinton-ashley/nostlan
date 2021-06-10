@@ -16,7 +16,7 @@ global.fs.extract = async (input, output, opt) => {
 					resolve(output);
 				})
 				.on('error', (ror) => {
-					// er(ror);
+					console.error(ror);
 					resolve();
 				});
 		});

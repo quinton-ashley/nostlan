@@ -3,6 +3,7 @@
 	font-family: ryp;
 	src: url("../fonts/ryp.ttf");
 }
+
 @font-face {
 	font-family: 'Sownie';
 	src: url("../fonts/sownie.ttf");
@@ -70,20 +71,17 @@
 }
 
 .ps3 .triangle span {
-	display: block;
+	position: absolute;
 	font-size: 0;
 	border-left: 1.7vw solid transparent;
 	border-right: 1.7vw solid transparent;
 	border-bottom: 2.8vw solid #1d6f56;
-	position: absolute;
-	transform: translate(15%, 20%);
+	top: -3.6vh;
 }
 
 .ps3 .triangle span:after {
 	content: "";
 	position: absolute;
-	width: 100%;
-	height: 100%;
 	border-left: 1.7vw solid transparent;
 	border-right: 1.7vw solid transparent;
 	border-bottom: 2.8vw solid #2e3335;
@@ -91,6 +89,7 @@
 	top: 0.2vw;
 	transform: scale(0.65);
 }
+
 /*===== ps3 Game Lib Viewer ===*/
 game.ps3 .crop.coverFull {
 	width: 200.4%;

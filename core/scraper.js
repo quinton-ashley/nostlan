@@ -30,7 +30,8 @@ class Scraper {
 	async getImg(game, name, hq) {
 		let res = await this.imgExists(game, name);
 		if (res || offline) return res;
-		$('#loadDialog0').html(md(`${lang.loading.msg7_0}\n\n${name}  \n${lang.loading.msg7_1}\n\n${game.title} [${game.id}]`));
+		$('#loadDialog0').text(`${lang.loading.msg7_0} ${name} ${lang.loading.msg7_1}`);
+		$('#loadDialog1').text(`${game.title} [${game.id}]`);
 		let imgDir = this.getImgDir(game);
 		let file, url;
 		// check if game img is specified in the gamesDB
@@ -222,7 +223,7 @@ class Scraper {
 			await img.resize(jimp.AUTO, 720);
 			await img.writeAsync(thumb);
 		}
-
+		$('#loadDialog0').empty();
 		return thumb;
 	}
 }

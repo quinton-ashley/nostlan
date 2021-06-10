@@ -308,7 +308,7 @@ module.exports = (() => {
 			name: 'PCSX2',
 			sys: 'ps2',
 			app: {
-				linux: 'pcsx2'
+				linux: 'PCSX2'
 			},
 			appRegex: {
 				win: 'pcsx2\\.exe'
@@ -322,7 +322,7 @@ module.exports = (() => {
 					pkgManager_arch: ['pacman', '-S', '${app}']
 				},
 				'win-x86_64': {
-					portable: 'https://pcsx2.net/download/releases/windows/send/40-windows/119-pcsx2-1-4-0-binaries.html'
+					portable: 'https://pcsx2.net/download/releases/windows.html?task=download.send&id=125&catid=40&m=0 .7z'
 				}
 			}
 		},

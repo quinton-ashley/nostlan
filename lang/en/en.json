@@ -178,6 +178,7 @@
 		"msg15": "Almost done, please finish install manually"
 	},
 	"emptyGameLibMenu": {
+		"title0": "No games found",
 		"opt0": "browse for games folder",
 		"opt1": "install",
 		"msg0_0": "select",

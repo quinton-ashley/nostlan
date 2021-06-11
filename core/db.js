@@ -116,8 +116,8 @@ let format = {
 };
 
 let strips = [{
-	regex: /("[^\n"]*"[^:"\n]*)"([^"\n]*)"/gm,
-	replace: `$1\\"$2\\"`
+	regex: /("title": "[^\n"]*)"([^"\n]*)"([^"\n]*)"/gm,
+	replace: `$1\\"$2\\"$3"`
 }, {
 	regex: /(™|©|®|℗)/gm,
 	replace: ``

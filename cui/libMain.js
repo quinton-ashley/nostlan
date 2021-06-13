@@ -472,7 +472,6 @@ class CuiState extends cui.State {
 					return false;
 				},
 				select: async (event, ui) => {
-					await cui.change('boxSelect');
 					let $this = $(event.target);
 					$this.val(ui.item.title);
 					let $game = $this.parent().parent();
@@ -495,11 +494,17 @@ class CuiState extends cui.State {
 						$('body').addClass('waiting');
 						let _games = await nostlan.scraper.loadImages([games[i]], true);
 						if (_games.length) games[i] = _games[0];
-						await this.makeGameBox(games[i]);
-						await nostlan.scan.outputUsersGamesDB(games);
-						cui.boxSelect.flipGameBox($game, true);
+						let $box = await cui.libMain.makeGameBox(games[i]);
 						cui.hideDialogs();
+						cui.editSelect.game.hasNoImages = false;
+						$game.empty();
+						$game.append($box.children());
+						await cui.boxSelect.flipGameBox($game, true);
+						await cui.boxSelect.changeImageResolution($game, 'full');
+						await nostlan.scan.outputUsersGamesDB(games);
+						await delay(320);
 						$('body').removeClass('waiting');
+						await cui.change('boxSelect');
 						break;
 					}
 					return false;

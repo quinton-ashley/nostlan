@@ -21,16 +21,17 @@ class CuiState extends cui.State {
 			await fs.ensureDir(nostlan.scraper.getImgDir(game));
 			img = await nostlan.scraper.getImg(game, imgType);
 			let $box = await cui.libMain.makeGameBox(game);
+			cui.hideDialogs();
 			cui.editSelect.game.hasNoImages = false;
 			nostlan.browser.close();
 			let $game = $('#' + game.id);
 			$game.empty();
 			$game.append($box.children());
-			cui.boxSelect.flipGameBox($game, true);
-
-			cui.hideDialogs();
+			await cui.boxSelect.flipGameBox($game, true);
+			await cui.boxSelect.changeImageResolution($game, 'full');
+			await delay(320);
 			$('body').removeClass('waiting');
-			cui.change('boxSelect');
+			await cui.change('boxSelect');
 		} else if (act == 'b') {
 			nostlan.browser.close();
 			cui.doAction('doubleBack');

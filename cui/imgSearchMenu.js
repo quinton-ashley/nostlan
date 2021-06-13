@@ -39,7 +39,8 @@ class CuiState extends cui.State {
 	async onChange() {
 		let game = cui.editSelect.game;
 		let imgName = cui.imgMenu.imgName;
-		imgName = imgName.replace('front', '');
+		imgName = imgName.replace('front ', '');
+		if (imgName == 'cover') imgName = '';
 		let searchTerm = game.title + ' ' + imgName;
 		let query = searchTerm.replace(/[^0-9a-zA-Z ]+/g, '').replace(' ', '+');
 

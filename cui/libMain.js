@@ -268,11 +268,11 @@ class CuiState extends cui.State {
 		}
 
 		async function getCoverImg() {
-			coverImg = await nostlan.scraper.imgExists(game, 'coverFull');
-			coverType = '.coverFull';
+			coverImg = await nostlan.scraper.imgExists(game, 'cover');
+			coverType = '.cover';
 			if (!coverImg) {
-				coverImg = await nostlan.scraper.imgExists(game, 'cover');
-				coverType = '.cover';
+				coverImg = await nostlan.scraper.imgExists(game, 'coverFull');
+				coverType = '.coverFull';
 			}
 			if (!coverImg) {
 				if (!isTemplate) {
@@ -546,7 +546,8 @@ class CuiState extends cui.State {
 			cui.makeCursor($cursor);
 			cui.scrollToCursor(250, 0);
 		} else if (cui.uiPrev == 'boxSelect') {
-			cui.boxSelect.changeImageResolution(cui.$cursor);
+			await cui.boxSelect.flipGameBox(cui.$cursor, true);
+			await cui.boxSelect.changeImageResolution(cui.$cursor);
 		}
 	}
 }

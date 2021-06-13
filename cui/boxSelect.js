@@ -31,9 +31,9 @@ class CuiState extends cui.State {
 		}
 	}
 
-	async editImgSrc($cursor, $img, game, name) {
+	async editImgSrc($cursor, $img, game, imgType) {
 		if (!game) return;
-		let img = await nostlan.scraper.imgExists(game, name);
+		let img = await nostlan.scraper.imgExists(game, imgType);
 		// log(img);
 		if (!img) return;
 		$img.prop('src', img);
@@ -54,7 +54,7 @@ class CuiState extends cui.State {
 		}
 		for (let $elem of $elems) {
 			$elem.removeClass(prevClass);
-			$elem.addClass(name);
+			$elem.addClass(imgType);
 		}
 		return img;
 	}
@@ -62,6 +62,7 @@ class CuiState extends cui.State {
 	async flipGameBox($cursor, flipToFront) {
 		let game = cui.libMain.getCurGame();
 		let template = nostlan.themes[game.sys || sys].template;
+		let imgType = '';
 		if (!$cursor.hasClass('flip') && !flipToFront) {
 			$cursor.addClass('flip');
 			let $box = $cursor.find('.box.hq').eq(0);
@@ -83,9 +84,9 @@ class CuiState extends cui.State {
 				$cover = $cursor.find('section img.hq');
 			}
 			$cover = $cover.eq(0);
-			for (let name of ['coverFull', 'coverBack']) {
+			for (imgType of ['coverBack', 'coverFull']) {
 				for (let g of [game, template]) {
-					if (await this.editImgSrc($cursor, $cover, g, name)) break;
+					if (await this.editImgSrc($cursor, $cover, g, imgType)) break;
 				}
 			}
 			$cover.removeClass('hide');
@@ -110,12 +111,20 @@ class CuiState extends cui.State {
 			if (hasBox) {
 				$cover.addClass('hide');
 			} else {
-				let name = '';
-				for (name of ['coverFull', 'cover']) {
-					if (await this.editImgSrc($cursor, $cover, game, name)) break;
+				for (imgType of ['cover', 'coverFull']) {
+					if (await this.editImgSrc($cursor, $cover, game, imgType)) break;
 				}
-				if (name == 'coverFull') $cursor.find('.shade').removeClass('hide');
 			}
+		}
+
+		let $sect = $cursor.find('section');
+		if (imgType == 'coverFull') {
+			$cursor.find('.shade').removeClass('hide');
+			$sect.removeClass('cover');
+			$sect.addClass('coverFull');
+		} else {
+			$sect.removeClass('coverFull');
+			$sect.addClass('cover');
 		}
 	}
 

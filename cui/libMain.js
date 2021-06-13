@@ -492,19 +492,17 @@ class CuiState extends cui.State {
 						$game.find('.id.label-input img').prop('src', idLblImg);
 						$('#dialogs').show();
 						$('body').addClass('waiting');
-						let _games = await nostlan.scraper.loadImages([games[i]], true);
+						let _games = await nostlan.scraper.loadImages([games[i]], true, true);
 						if (_games.length) games[i] = _games[0];
 						let $box = await cui.libMain.makeGameBox(games[i]);
 						cui.hideDialogs();
 						cui.editSelect.game.hasNoImages = false;
 						$game.empty();
 						$game.append($box.children());
-						await cui.boxSelect.flipGameBox($game, true);
-						await cui.boxSelect.changeImageResolution($game, 'full');
-						await nostlan.scan.outputUsersGamesDB(games);
-						await delay(320);
-						$('body').removeClass('waiting');
+						await cui.boxSelect.fitCoverToScreen($game);
 						await cui.change('boxSelect');
+						await nostlan.scan.outputUsersGamesDB(games);
+						$('body').removeClass('waiting');
 						break;
 					}
 					return false;

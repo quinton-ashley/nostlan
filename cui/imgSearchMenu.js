@@ -27,11 +27,9 @@ class CuiState extends cui.State {
 			let $game = $('#' + game.id);
 			$game.empty();
 			$game.append($box.children());
-			await cui.boxSelect.flipGameBox($game, true);
-			await cui.boxSelect.changeImageResolution($game, 'full');
-			await delay(320);
-			$('body').removeClass('waiting');
+			await cui.boxSelect.fitCoverToScreen($game);
 			await cui.change('boxSelect');
+			$('body').removeClass('waiting');
 		} else if (act == 'b') {
 			nostlan.browser.close();
 			cui.doAction('doubleBack');

@@ -251,7 +251,7 @@ class CuiState extends cui.State {
 		let _sys = game.sys || sys;
 		let isTemplate = (game.id.slice(1, 9) == 'TEMPLATE');
 		let isUnidentified = (game.id.slice(1, 13) == 'UNIDENTIFIED');
-		game.hasNoImages = isUnidentified;
+		game.hasNoImages = false;
 
 		let noBox;
 		let boxImg = '';
@@ -285,7 +285,7 @@ class CuiState extends cui.State {
 		}
 
 		await getBoxImg();
-		if ((noBox && !isUnidentified) || isTemplate) {
+		if (noBox || isTemplate) {
 			await getCoverImg();
 		}
 		if (game.hasNoImages) {
@@ -314,13 +314,13 @@ class CuiState extends cui.State {
 		}
 		box += '\n';
 		box += `  img.box.lq(src="${boxImg}")\n`;
-		box += `  img.box.hq\n`;
+		box += `  img.box.hq(style="display:none;")\n`;
 		// used to crop the cover/coverfull image
 		box += `  section.crop${coverType}\n`;
 		box += `    img${coverType}.lq`;
 		if (!coverType) box += '.hide';
 		box += `(src="${coverImg}")\n`;
-		box += `    img${coverType}.hq\n`;
+		box += `    img${coverType}.hq(style="display:none;")\n`;
 		box += `    .shade.p-0.m-0`;
 		if (!(coverType || _sys == 'switch' || _sys == 'gba')) {
 			box += '.hide';

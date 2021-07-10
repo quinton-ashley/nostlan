@@ -133,11 +133,11 @@
 		"msg2": "Ladevorgang abgeschlossem!",
 		"msg3": "Nostlan starten",
 		"msg4": "Spiele",
-		"msg5": "Indexing your game library",
-		"msg6": "Indexing new games in your game library"
+		"msg5": "Indizierung deine Spielebibliothek",
+		"msg6": "Indizierung neuer Spiele in deine Spielebbibliothek"
 	},
 	"playing": {
-		"err0": "Incorrect path to emulator app directory. Delete or edit your user preferences file.",
+		"err0": "Falscher Pfad zum Emulator-App-Verzeichnis. Lösche oder bearbeite deine Benutzereinstellungsdatei.",
 		"err1": "Emulator app not found at: ",
 		"err2": "crashed! If the game didn't start it might be because some emulators require  system firmware, BIOS, decryption keys, and other files not included with the emulator. Search the internet for instructions on how to fully setup",
 		"err3": "This emulator requires system bios file(s)",

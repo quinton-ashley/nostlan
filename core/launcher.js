@@ -292,9 +292,6 @@ class Launcher {
 			await fs.outputFile(this.emuAppDir + '/mame.ini', ini);
 			await fs.writeFile(this.emuAppDir + '/mame.ini', ini);
 		}
-		if (linux && emu == 'citra') {
-			emuApp = 'org.citra.citra-nightly';
-		}
 		if (!identify) log(emu);
 		let cmdArray = prefs[emu].cmd || [];
 

@@ -54,7 +54,7 @@ module.exports = (() => {
 			name: 'Citra',
 			sys: 'n3ds',
 			app: {
-				linux: 'org.citra.citra-nightly'
+				linux: 'org.citra_emu.citra'
 			},
 			appDirs: {
 				mac: [
@@ -81,8 +81,7 @@ module.exports = (() => {
 				'linux-x86_64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
-						['flatpak', 'install', 'https://flatpak.citra-emu.org/citra-nightly.flatpakref'],
-						['flatpak', 'install', 'https://flatpak.citra-emu.org/citra-canary.flatpakref']
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.citra_emu.citra.flatpakref']
 					]
 				},
 				'mac-x86_64': {
@@ -102,20 +101,23 @@ module.exports = (() => {
 			name: 'DeSmuME',
 			sys: 'ds',
 			app: {
-				linux: 'desmume'
+				linux: 'org.desmume.DeSmuME'
 			},
 			appRegex: {
 				mac: 'DeSmuME.*\\.app',
 				win: 'DeSmuME.*\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '${game}'],
+				linux: ['flatpak', 'run', '${app}', '${game}'],
 				mac: ['${app}', '${game}'],
 				win: ['${app}', '${game}']
 			},
 			install: {
 				'linux-x86_64': {
-					pkgManager_arch: ['pacman', '-s', '${app}']
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.desmume.DeSmuME.flatpakref']
+					]
 				},
 				'mac-x86_64': {
 					standalone: 'https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK .zip'
@@ -133,20 +135,23 @@ module.exports = (() => {
 			name: 'Dolphin',
 			sys: 'wii',
 			app: {
-				linux: 'dolphin-emu'
+				linux: 'org.DolphinEmu.dolphin-emu'
 			},
 			appRegex: {
 				mac: 'dolphin\\.app',
 				win: 'Dolphin\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '-e', '${game}'],
+				linux: ['flatpak', 'run', '${app}', '-e', '${game}'],
 				mac: ['${app}', '-e', '${game}'],
 				win: ['${app}', '-e', '${game}']
 			},
 			install: {
 				'linux-x86_64': {
-					pkgManager_arch: ['pacman', '-S', '${app}']
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.DolphinEmu.dolphin-emu.flatpakref']
+					]
 				},
 				'mac-x86_64': {
 					installer: 'https://dl.dolphin-emu.org/builds/84/d3/dolphin-master-5.0-12247.dmg'
@@ -226,12 +231,12 @@ module.exports = (() => {
 			name: 'melonDS',
 			sys: 'ds',
 			appRegex: {
-				linux: 'melonDS',
+				linux: 'net.kuribo64.melonDS',
 				mac: 'melonDS\\.app',
 				win: 'melonDS\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '${game}'],
+				linux: ['flatpak', 'run', '${app}', '${game}'],
 				mac: ['${app}', '${game}'],
 				win: ['${app}', '${game}']
 			},
@@ -239,10 +244,10 @@ module.exports = (() => {
 			patreon: "https://www.patreon.com/staplebutter",
 			install: {
 				'linux-x86_64': {
-					portable: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_linux64.7z'
-				},
-				'linux-arm': {
-					portable: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_linuxARM.7z'
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/net.kuribo64.melonDS.flatpakref']
+					]
 				},
 				'mac-x86_64': {
 					installer: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_mac64.dmg'
@@ -278,20 +283,23 @@ module.exports = (() => {
 			name: 'mGBA',
 			sys: 'gba',
 			app: {
-				linux: 'mgba-sdl'
+				linux: 'io.mgba.mGBA'
 			},
 			appRegex: {
 				mac: 'mGBA\\.app',
 				win: 'mgba-sdl\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '-f', '${game}'],
+				linux: ['flatpak', 'run', '${app}', '-f', '${game}'],
 				mac: ['${app}', '-f', '${game}'],
 				win: ['${app}', '-f', '${game}']
 			},
 			install: {
 				'linux-x86_64': {
-					pkgManager_arch: ['pacman', '-S', '${app}']
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/io.mgba.mGBA.flatpakref']
+					]
 				},
 				'mac-x86_64': {
 					standalone: 'https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-osx.tar.xz'
@@ -308,18 +316,21 @@ module.exports = (() => {
 			name: 'PCSX2',
 			sys: 'ps2',
 			app: {
-				linux: 'PCSX2'
+				linux: 'net.pcsx2.PCSX2'
 			},
 			appRegex: {
 				win: 'pcsx2\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '${game}', '--nogui', '--fullscreen'],
+				linux: ['flatpak', 'run', '${app}', '${game}', '--nogui', '--fullscreen'],
 				win: ['${app}', '${game}', '--nogui', '--fullscreen']
 			},
 			install: {
 				'linux-x86_64': {
-					pkgManager_arch: ['pacman', '-S', '${app}']
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/net.pcsx2.PCSX2.flatpakref']
+					]
 				},
 				'win-x86_64': {
 					portable: 'https://pcsx2.net/download/releases/windows.html?task=download.send&id=125&catid=40&m=0 .7z'
@@ -329,17 +340,22 @@ module.exports = (() => {
 		rpcs3: {
 			name: 'RPCS3',
 			sys: 'ps3',
+			app: {
+				linux: 'net.rpcs3.RPCS3'
+			},
 			appRegex: {
-				linux: 'rpcs3.*\\.AppImage',
 				win: 'rpcs3\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '${game}'],
+				linux: ['flatpak', 'run', '${app}', '${game}'],
 				win: ['${app}', '${game}']
 			},
 			install: {
 				'linux-x86_64': {
-					standalone: 'https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_linux64.AppImage'
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/net.rpcs3.RPCS3.flatpakref']
+					]
 				},
 				'win-x86_64': {
 					portable: 'https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_win64.7z'
@@ -407,18 +423,24 @@ module.exports = (() => {
 			name: 'snes9x',
 			sys: 'snes',
 			app: {
-				linux: 'snes9x-gtk'
+				linux: 'com.snes9x.Snes9x'
 			},
 			appRegex: {
 				mac: 'snes9x-x64\\.exe',
 				win: 'snes9x-x64\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '${game}', '-fullscreen'],
+				linux: ['flatpak', 'run', '${app}', '${game}', '-fullscreen'],
 				mac: ['wine64', '${app}', '${game}', '-fullscreen'],
 				win: ['${app}', '${game}', '-fullscreen']
 			},
 			install: {
+				'linux-x86_64': {
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/com.snes9x.Snes9x.flatpakref']
+					]
+				},
 				'mac-x86_64': {
 					portable: 'https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip'
 				},
@@ -469,6 +491,9 @@ module.exports = (() => {
 		yuzu: {
 			name: 'Yuzu',
 			sys: 'switch',
+			app: {
+				linux: 'org.yuzu_emu.yuzu'
+			},
 			appDirs: {
 				win: [
 					'$home/AppData/Local/yuzu/yuzu-windows-msvc',
@@ -476,18 +501,20 @@ module.exports = (() => {
 				]
 			},
 			appRegex: {
-				linux: 'yuzu-.*\\.AppImage',
 				win: 'yuzu\\.exe'
 			},
 			cmd: {
-				linux: ['${app}', '${game}'],
+				linux: ['flatpak', 'run', '${app}', '${game}'],
 				win: ['${app}', '${game}']
 			},
 			site: 'https://yuzu-emu.org/',
 			patreon: 'https://www.patreon.com/yuzuteam',
 			install: {
 				'linux-x86_64': {
-					standalone: 'https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-588/yuzu-20210411-9c1e7b5f5.AppImage'
+					pkgManager_flatpak: [
+						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.yuzu_emu.yuzu.flatpakref']
+					]
 				},
 				'win-x86_64': {
 					prereq: 'https://aka.ms/vs/16/release/vc_redist.x64.exe',

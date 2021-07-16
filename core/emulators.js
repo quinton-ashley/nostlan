@@ -54,7 +54,7 @@ module.exports = (() => {
 			name: 'Citra',
 			sys: 'n3ds',
 			app: {
-				linux: 'org.citra.citra-nightly'
+				linux: 'org.citra_emu.citra'
 			},
 			appDirs: {
 				mac: [
@@ -81,8 +81,7 @@ module.exports = (() => {
 				'linux-x86_64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
-						['flatpak', 'install', 'https://flatpak.citra-emu.org/citra-nightly.flatpakref'],
-						['flatpak', 'install', 'https://flatpak.citra-emu.org/citra-canary.flatpakref']
+						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.citra_emu.citra.flatpakref']
 					]
 				},
 				'mac-x86_64': {

@@ -64,7 +64,7 @@ class Nostlan_iodine {
 	}
 
 	mute(toggle) {
-		if (toggle) {
+		if (toggle || typeof toggle == 'undefined') {
 			IodineGUI.mixerInput.setVolume(0);
 		} else {
 			this.unmute();

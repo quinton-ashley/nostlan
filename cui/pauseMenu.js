@@ -22,6 +22,8 @@ class CuiState extends cui.State {
 				// 'unmute'
 				$elem.text(lang.pauseMenu.opt4[0]);
 			}
+		} else if (act == 'openDevTools') {
+			nostlan.launcher.openDevTools();
 		} else if (act == 'stop') {
 			await cui.change('playing_4');
 			nostlan.launcher.close();

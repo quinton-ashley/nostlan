@@ -558,6 +558,10 @@ class Launcher {
 		this.jsEmu.executeJavaScript(`jsEmu.unmute();`);
 	}
 
+	openDevTools() {
+		this.jsEmu.openDevTools();
+	}
+
 	async _close(code) {
 		if (this.state == 'closed') return;
 		cui.disableSticks = false;

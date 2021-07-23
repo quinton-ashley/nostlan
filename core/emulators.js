@@ -1,6 +1,6 @@
 module.exports = (() => {
 	let emus = {
-		bsnes: {
+		bsnes: { // RIP Near 6/27/2021 :(
 			name: 'bsnes',
 			sys: 'snes',
 			appRegex: {
@@ -15,10 +15,13 @@ module.exports = (() => {
 			},
 			install: {
 				'linux-x86_64': {
-					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_4h2/bsnes_hd_beta_10_4_mac.tar.bz2'
+					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_linux.tar.bz2'
 				},
 				'mac-x86_64': {
-					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_4h2/bsnes_hd_beta_10_4_linux.tar.bz2'
+					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_mac.tar.bz2'
+				},
+				'mac-arm64': {
+					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_mac.tar.bz2'
 				},
 				'win-x86_64': {
 					portable: 'https://github.com/bsnes-emu/bsnes/releases/download/nightly/bsnes-windows.zip'
@@ -40,13 +43,13 @@ module.exports = (() => {
 			},
 			install: {
 				'linux-x86_64': {
-					portable: 'https://cemu.info/releases/cemu_1.22.11.zip'
+					portable: 'https://cemu.info/releases/cemu_1.24.0.zip'
 				},
 				'mac-x86_64': {
-					portable: 'https://cemu.info/releases/cemu_1.22.11.zip'
+					portable: 'https://cemu.info/releases/cemu_1.24.0.zip'
 				},
 				'win-x86_64': {
-					portable: 'https://cemu.info/releases/cemu_1.22.11.zip'
+					portable: 'https://cemu.info/releases/cemu_1.24.0.zip'
 				}
 			}
 		},
@@ -85,6 +88,9 @@ module.exports = (() => {
 					]
 				},
 				'mac-x86_64': {
+					installer: 'https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-mac.dmg'
+				},
+				'mac-arm64': {
 					installer: 'https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-mac.dmg'
 				},
 				'win-x86_64': {
@@ -154,7 +160,10 @@ module.exports = (() => {
 					]
 				},
 				'mac-x86_64': {
-					installer: 'https://dl.dolphin-emu.org/builds/84/d3/dolphin-master-5.0-12247.dmg'
+					installer: 'https://dl.dolphin-emu.org/builds/9e/de/dolphin-master-5.0-14344-universal.dmg'
+				},
+				'mac-arm64': {
+					installer: 'https://dl.dolphin-emu.org/builds/9e/de/dolphin-master-5.0-14344-universal.dmg'
 				},
 				'win-x86_64': {
 					portable: 'https://dl.dolphin-emu.org/builds/99/df/dolphin-master-5.0-12247-x64.7z'
@@ -220,10 +229,13 @@ module.exports = (() => {
 			site: "https://www.mamedev.org/",
 			install: {
 				'mac-x86_64': {
-					portable: 'https://sdlmame.lngn.net/mame0230-x86.zip'
+					portable: 'https://sdlmame.lngn.net/mame0233-x86.zip'
+				},
+				'mac-arm64': {
+					portable: 'https://sdlmame.lngn.net/mame0233-arm64.zip'
 				},
 				'win-x86_64': {
-					portable: 'https://github.com/mamedev/mame/releases/download/mame0230/mame0230b_64bit.exe'
+					portable: 'https://github.com/mamedev/mame/releases/download/mame0233/mame0233b_64bit.exe'
 				}
 			}
 		},
@@ -252,7 +264,7 @@ module.exports = (() => {
 				'mac-x86_64': {
 					installer: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_mac64.dmg'
 				},
-				'mac-arm': {
+				'mac-arm64': {
 					installer: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_macARM.dmg'
 				},
 				'win-x86_64': {
@@ -310,6 +322,18 @@ module.exports = (() => {
 			},
 			fullscreenKeyCombo: {
 				mac: ['f', 'command']
+			}
+		},
+		mupen64plus: {
+			name: 'mupen64plus',
+			sys: 'n64',
+			install: {
+				'mac-x86_64': {
+					installer: 'https://github.com/mupen64plus/mupen64plus-ui-python/releases/download/0.2.4/m64py-0.2.4.dmg'
+				},
+				'mac-arm64': {
+					installer: 'https://github.com/mupen64plus/mupen64plus-ui-python/releases/download/0.2.4/m64py-0.2.4.dmg'
+				}
 			}
 		},
 		pcsx2: {
@@ -380,9 +404,6 @@ module.exports = (() => {
 			install: {
 				'linux-x86_64': {
 					portable: 'https://ci.appveyor.com/api/buildjobs/kqvbvvbkpmwe2nh6/artifacts/ryujinx-1.0.6846-linux_x64.tar.gz'
-				},
-				'mac-x86_64': {
-					portable: 'https://ci.appveyor.com/api/buildjobs/xfcucfdape4klhwa/artifacts/ryujinx-1.0.6551-osx_x64.zip'
 				},
 				'win-x86_64': {
 					portable: 'https://ci.appveyor.com/api/buildjobs/7m60tgm9086anlvk/artifacts/ryujinx-1.0.6551-win_x64.zip'
@@ -477,6 +498,9 @@ module.exports = (() => {
 					]
 				},
 				'mac-x86_64': {
+					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
+				},
+				'mac-arm64': {
 					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
 				},
 				'win-x86_64': {

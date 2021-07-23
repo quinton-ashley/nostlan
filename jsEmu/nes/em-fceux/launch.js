@@ -73,7 +73,7 @@ class Nostlan_emfceux {
 
 	mute(toggle) {
 		if (typeof toggle == 'undefined') {
-			toggle = this.fceux.muted();
+			toggle = !this.fceux.muted();
 		}
 		this.fceux.setMuted(toggle);
 	}

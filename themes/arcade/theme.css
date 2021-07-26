@@ -10,9 +10,7 @@
 .arcade .navPanel .text {
 	font-family: Orbitron, sans-serif;
 	text-transform: uppercase;
-	transform: scale(1, 2);
 	text-shadow: 0 0.5px 0 rgba(255, 255, 255, .5);
-	text-height: 2.5;
 }
 
 .arcade #nav1Btn {
@@ -32,7 +30,7 @@
 
 .arcade .navPanel:hover .nav-link {
 	filter: none;
-	background: var(--navBtns-hover-color);
+	background-image: var(--navBtns-hover-image) !important;
 }
 
 /*================MAME Game Lib Viewer====================*/

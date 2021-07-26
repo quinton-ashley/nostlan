@@ -3,7 +3,7 @@
 	--nav-text-color: #56429c;
 	--navBtns-color: #6a56b9;
 	--nav0Btn-color: #A2ADC1;
-	--nav3Btn-color: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
+	--nav3Btn-image: radial-gradient(circle at 50%, #493c7a 15%, #6a56b9 40%);
 }
 
 .gcn.orange {
@@ -11,7 +11,7 @@
 	--nav-text-color: #D56907;
 	--navBtns-color: #EB901D;
 	--nav0Btn-color: #A2ADC1;
-	--nav3Btn-color: radial-gradient(circle at 50%, #D56907 15%, #EB901D 40%);
+	--nav3Btn-image: radial-gradient(circle at 50%, #D56907 15%, #EB901D 40%);
 }
 
 .gcn.silver {
@@ -19,7 +19,7 @@
 	--nav-text-color: #656565;
 	--navBtns-color: #E6E4E5;
 	--nav0Btn-color: #A2ADC1;
-	--nav3Btn-color: radial-gradient(circle at 50%, #656565 15%, #E6E4E5 40%);
+	--nav3Btn-image: radial-gradient(circle at 50%, #656565 15%, #E6E4E5 40%);
 }
 
 .gcn.panasonic-Q {
@@ -28,7 +28,7 @@
 	--navBtns-color: #7A7579;
 	--navBtns-border-color: #0887EE;
 	--nav0Btn-color: #A2ADC1;
-	--nav3Btn-color: radial-gradient(circle at 50%, #3F4249 15%, #7A7579 40%);
+	--nav3Btn-image: radial-gradient(circle at 50%, #3F4249 15%, #7A7579 40%);
 }
 
 .gcn.black {
@@ -36,5 +36,5 @@
 	--nav-text-color: #030102;
 	--navBtns-color: #121617;
 	--nav0Btn-color: #CCC;
-	--nav3Btn-color: radial-gradient(circle at 50%, #030102 15%, #121617 40%);
+	--nav3Btn-image: radial-gradient(circle at 50%, #030102 15%, #121617 40%);
 }

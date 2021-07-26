@@ -265,7 +265,7 @@ game {
 }
 
 .menu * {
-	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+	text-shadow: .5px 1px 0 rgba(255, 255, 255, .5);
 }
 
 .menu code,
@@ -282,6 +282,7 @@ game {
 }
 
 .menu .cui {
+	background-color: var(--nav-color);
 	margin-bottom: 10px;
 	border: 3px solid var(--nav-text-color);
 	border-radius: 10px;
@@ -674,7 +675,8 @@ nav * {
 
 #nav0 {
 	color: var(--nav0-text-color, var(--nav-text-color));
-	background: var(--nav0-color, var(--nav-color));
+	background-color: var(--nav0-color, var(--nav-color));
+	background-image: var(--nav0-image, var(--nav-image, url(https://img.cadnav.com/allimg/131005/1-13100512593X10.jpg)));
 	border-color: var(--nav0-border-color, var(--nav-border-color, var(--nav0-text-color, var(--nav-text-color))));
 	border-radius: 0 0 32px 0;
 	border-width: 0 0 8px 0;
@@ -682,13 +684,15 @@ nav * {
 
 #nav0Btn {
 	color: var(--nav0Btn-text-color, var(--navBtns-text-color));
-	background: var(--nav0Btn-color, var(--navBtns-color));
+	background-color: var(--nav0Btn-color, var(--navBtns-color));
+	background-image: var(--nav0Btn-image, var(--navBtns-image));
 	border-color: var(--nav0Btn-border-color, var(--navBtns-border-color));
 }
 
 #nav1 {
 	color: var(--nav1-text-color, var(--nav-text-color));
-	background: var(--nav1-color, var(--nav-color));
+	background-color: var(--nav1-color, var(--nav-color));
+	background-image: var(--nav1-image, var(--nav-image, url(https://img.cadnav.com/allimg/131005/1-13100512593X10.jpg)));
 	border-color: var(--nav1-border-color, var(--nav-border-color, var(--nav1-text-color, var(--nav-text-color))));
 	height: 100%;
 	border-radius: 0 0 0 32px;
@@ -697,7 +701,8 @@ nav * {
 
 #nav2 {
 	color: var(--nav2-text-color, var(--nav-text-color));
-	background: var(--nav2-color, var(--nav-color));
+	background-color: var(--nav2-color, var(--nav-color));
+	background-image: var(--nav2-image, var(--nav-image, url(https://img.cadnav.com/allimg/131005/1-13100512593X10.jpg)));
 	border-color: var(--nav2-border-color, var(--nav-border-color, var(--nav2-text-color, var(--nav-text-color))));
 	height: 100%;
 	border-radius: 0 32px 0 0;
@@ -706,13 +711,15 @@ nav * {
 
 #nav2Btn {
 	color: var(--nav2Btn-text-color, var(--navBtns-text-color));
-	background: var(--nav2Btn-color, var(--navBtns-color));
+	background-color: var(--nav2Btn-color, var(--navBtns-color));
+	background-image: var(--nav2Btn-image, var(--navBtns-image));
 	border-color: var(--nav2Btn-border-color, var(--navBtns-border-color));
 }
 
 #nav3 {
 	color: var(--nav3-text-color, var(--nav-text-color));
-	background: var(--nav3-color, var(--nav-color));
+	background-color: var(--nav3-color, var(--nav-color));
+	background-image: var(--nav3-image, var(--nav-image, url(https://img.cadnav.com/allimg/131005/1-13100512593X10.jpg)));
 	border-color: var(--nav3-border-color, var(--nav-border-color, var(--nav3-text-color, var(--nav-text-color))));
 	height: 100%;
 	border-width: 8px 0 0 0;
@@ -721,7 +728,8 @@ nav * {
 
 #nav3Btn {
 	color: var(--nav3Btn-text-color, var(--navBtns-text-color));
-	background: var(--nav3Btn-color, var(--navBtns-color));
+	background-color: var(--nav3Btn-color, var(--navBtns-color));
+	background-image: var(--nav3Btn-image, var(--navBtns-image));
 	border-color: var(--nav3Btn-border-color, var(--navBtns-border-color));
 }
 
@@ -735,7 +743,9 @@ nav * {
 	margin-right: 5%;
 }
 
-#nav0 .nav-item, #nav2 .nav-item, #nav3 .nav-item {
+#nav0 .nav-item,
+#nav2 .nav-item,
+#nav3 .nav-item {
 	position: relative;
 }
 
@@ -856,4 +866,20 @@ ul.nav {
 
 .imgSearchMenu .navbar {
 	top: -100000px;
+}
+
+.plastic0,
+.menu .cui {
+	background-image: url(https://img.cadnav.com/allimg/131005/1-13100512593X10.jpg);
+	background-blend-mode: soft-light;
+	background-repeat: repeat;
+	background-size: 200px;
+}
+
+.plastic1,
+.menu {
+	background-image: url(https://img.cadnav.com/allimg/131005/1-131005005Q0321.jpg);
+	background-blend-mode: soft-light;
+	background-repeat: repeat;
+	background-size: 250px;
 }

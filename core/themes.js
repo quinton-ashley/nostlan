@@ -82,6 +82,10 @@ class Themes {
 			await fs.outputFile(fileHtml, pug(filePugContent, this.guestLibs));
 		}
 		$('body').prepend(`<webview id="${name}" enableremotemodule="false" src="${fileHtml}"></webview>`);
+		let intro = $('#intro').eq(0)[0];
+		intro.addEventListener('dom-ready', () => {
+			if (prefs.args.testIntro) intro.openDevTools();
+		});
 	}
 
 	async getStyles(name) {

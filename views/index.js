@@ -3,7 +3,7 @@
  *
  * Main file. Handles user interaction with the UI.
  */
-module.exports = async function(args) {
+module.exports = async function (args) {
 	await require(args.__root + '/core/setup.js')(args);
 	log('version: ' + pkg.version);
 	global.util = require(__root + '/core/util.js');
@@ -64,16 +64,17 @@ module.exports = async function(args) {
 
 	global.nostlan = {};
 
-	let core = __root + '/core';
-	nostlan.browser = require(core + '/browser.js');
-	nostlan.launcher = require(core + '/launcher.js');
-	nostlan.installer = require(core + '/installer.js');
-	nostlan.saves = require(core + '/saves.js');
-	nostlan.scan = require(core + '/scanner.js');
-	nostlan.scraper = require(core + '/scraper.js');
-	nostlan.themes = require(core + '/themes.js');
-	nostlan.updater = require(core + '/updater.js');
-	delete core;
+	{
+		let core = __root + '/core';
+		nostlan.browser = require(core + '/browser.js');
+		nostlan.launcher = require(core + '/launcher.js');
+		nostlan.installer = require(core + '/installer.js');
+		nostlan.saves = require(core + '/saves.js');
+		nostlan.scan = require(core + '/scanner.js');
+		nostlan.scraper = require(core + '/scraper.js');
+		nostlan.themes = require(core + '/themes.js');
+		nostlan.updater = require(core + '/updater.js');
+	}
 
 	// only Patreon supporters can use premium features
 	if (!args.dev) {
@@ -86,7 +87,7 @@ module.exports = async function(args) {
 
 	// if the mouse moves show it
 	// mouse is hidden when the user starts using a gamepad
-	document.body.addEventListener('mousemove', function(e) {
+	document.body.addEventListener('mousemove', function (e) {
 		document.exitPointerLock();
 	});
 
@@ -102,15 +103,17 @@ module.exports = async function(args) {
 			prefs.ui.launchFullScreen);
 
 		let sysMenu = `h1.title0\n`;
-		let i = 0;
-		for (let _sys in systems) {
-			let _syst = systems[_sys];
-			if (!_syst.emus) continue;
-			if (i % 2 == 0) sysMenu += `.row.row-x\n`;
-			sysMenu += `\t.col.cui(name="${_sys}") ${_syst.name}\n`;
-			i++;
+
+		{
+			let i = 0;
+			for (let _sys in systems) {
+				let _syst = systems[_sys];
+				if (!_syst.emus) continue;
+				if (i % 2 == 0) sysMenu += `.row.row-x\n`;
+				sysMenu += `\t.col.cui(name="${_sys}") ${_syst.name}\n`;
+				i++;
+			}
 		}
-		delete i;
 		$('#sysMenu_5').append(pug(sysMenu));
 		if (prefs.ui.autoHideCover) {
 			$('nav').toggleClass('hide');
@@ -235,8 +238,7 @@ module.exports = async function(args) {
 		$('#loadDialog0').text(lang.loading.msg3 + ' v' + pkg.version);
 
 		// convert all markdown files to html
-		let files = await klaw(`${__root}/lang/en/md`);
-		for (let file of files) {
+		for (let file of (await klaw(`${__root}/lang/en/md`))) {
 			let dir = `${__root}/lang/${prefs.ui.lang}/md`;
 			if (prefs.ui.lang != 'en' && !(await fs.exists())) {
 				dir = `${__root}/lang/en/md`;
@@ -253,8 +255,6 @@ module.exports = async function(args) {
 			$(`#${file.name} .md`).remove();
 			$('#' + file.name).prepend(data);
 		}
-		files = null;
-		delete files; // remove references to these variables
 
 		// ensures the template dir structure exists
 		// makes folders if they aren't there
@@ -274,7 +274,7 @@ module.exports = async function(args) {
 		}
 
 		if (!offline) {
-			await cui.loading.loadSharedAssets(['labels']);
+			await cui.loading.loadSharedAssets(['labels', 'plastic']);
 		}
 		let lblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
 		$('.label-input img').prop('src', lblImg + '?' + Date.now());

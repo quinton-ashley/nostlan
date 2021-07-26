@@ -1,10 +1,10 @@
 .wii {
 	--nav-color: #caccd1;
 	--nav-text-color: #999999;
-	--navBtns-color: radial-gradient(circle at 40% 40%, #e5e5e5 30%, #d2d2d2 50%);
+	--navBtns-image: radial-gradient(circle at 40% 40%, #e5e5e5 30%, #d2d2d2 50%);
 	--navBtns-border-color: #4bc4ed;
-	--nav0-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
-	--nav1-color: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
+	--nav0-image: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
+	--nav1-image: repeating-linear-gradient(#ececec, #ececec 4px, #e3e3e3 4px, #e3e3e3 12px);
 	--nav0Btn-border-color: #d2d2d2;
-	--nav0Btn-color: radial-gradient(circle at 50%, #f7f7f7 0%, #f7f7f7 15%, #d2d2d2 15%, #d2d2d2 20%, #f7f7f7 20%, #f7f7f7 25%, #d2d2d2 25%, #d2d2d2 65%, #f7f7f7 65%, #f7f7f7 100%);
+	--nav0Btn-image: radial-gradient(circle at 50%, #f7f7f7 0%, #f7f7f7 15%, #d2d2d2 15%, #d2d2d2 20%, #f7f7f7 20%, #f7f7f7 25%, #d2d2d2 25%, #d2d2d2 65%, #f7f7f7 65%, #f7f7f7 100%);
 }

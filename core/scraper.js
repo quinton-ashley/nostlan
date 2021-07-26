@@ -162,7 +162,7 @@ class Scraper {
 				await this.getImg(game, 'boxBack');
 				await this.getImg(game, 'boxSide');
 				if (!(await this.imgExists(game, 'box'))) {
-					cui.err('ERROR: No default box image found in the directory ' +
+					await cui.err('ERROR: No default box image found in the directory ' +
 						this.getImgDir(game), 404, 'sysMenu');
 					return [];
 				}
@@ -207,6 +207,10 @@ class Scraper {
 	}
 
 	async genThumb(img) {
+		if (!img) {
+			console.error('thumbnail image could not be generated');
+			return;
+		}
 		let og = img;
 		img = path.parse(img);
 		let thumb = img.dir + '/' + img.name + 'Thumb.jpg';

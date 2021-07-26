@@ -1,7 +1,7 @@
 // users can type to search, which has an auto timeout
 let searchTerm = '';
 let searchTimeout = 0;
-setInterval(function() {
+setInterval(function () {
 	if (searchTimeout > 1000) {
 		searchTimeout -= 1000;
 	} else {
@@ -62,6 +62,8 @@ class CuiState extends cui.State {
 			break;
 		}
 		await cui.loading.intro();
+
+		if (prefs.args.testIntro) await delay(10000000);
 
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
@@ -296,6 +298,7 @@ class CuiState extends cui.State {
 			await getCoverImg();
 			game.id = id; // set back to original id
 		}
+		if (!boxImg) return $('<game></game>');
 		boxImg = await nostlan.scraper.genThumb(boxImg);
 		if (coverImg) coverImg = await nostlan.scraper.genThumb(coverImg);
 		if (coverType != '.coverFull') {
@@ -431,7 +434,7 @@ class CuiState extends cui.State {
 			await nostlan.scan.outputUsersGamesDB(games);
 		}
 
-		$('#libMain game .label-input').click(function(e) {
+		$('#libMain game .label-input').click(function (e) {
 			if (cui.ui == 'editSelect') e.stopPropagation();
 		});
 

@@ -22,9 +22,6 @@
             "x64"
           ]
         }
-      ],
-      "publish": [
-        "github"
       ]
     },
     "linux": {
@@ -35,16 +32,7 @@
           "arch": [
             "x64"
           ]
-        },
-        {
-          "target": "zip",
-          "arch": [
-            "x64"
-          ]
         }
-      ],
-      "publish": [
-        "github"
       ]
     },
     "win": {
@@ -54,16 +42,7 @@
           "arch": [
             "x64"
           ]
-        },
-        {
-          "target": "zip",
-          "arch": [
-            "x64"
-          ]
         }
-      ],
-      "publish": [
-        "github"
       ]
     }
   },
@@ -74,15 +53,15 @@
     }
   ],
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
     "7zip-bin": "*",
-    "acorn": "^8.2.4",
+    "@popperjs/core": "^2.9.2",
+    "acorn": "^8.4.1",
     "await-spawn": "^4.0.2",
-    "bootstrap": "*",
+    "bootstrap": "^5.0.2",
     "byte-base64": "^1.1.0",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^3.3.1",
+    "contro-ui": "^3.3.2",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^5.0.0",
@@ -100,22 +79,22 @@
     "klaw": "^3.0.0",
     "linux-distro": "^4.0.1",
     "lodash": "*",
-    "markdown-it": "^12.0.6",
+    "markdown-it": "^12.1.0",
     "material-design-icons-iconfont": "^6.1.0",
     "minimist": "^1.2.5",
     "moment": "^2.29.1",
     "mousetrap": "^1.6.5",
     "node-7z": "^2.1.2",
     "node-fetch": "^2.6.1",
-    "open": "^8.0.8",
+    "open": "^8.2.1",
     "popper.js": "^1.16.1",
-    "probe-image-size": "^7.1.0",
+    "probe-image-size": "^7.2.1",
     "pug": "*",
-    "puppeteer-core": "*",
+    "puppeteer-core": "^10.1.0",
     "robotjs": "^0.6.0",
     "semver": "^7.3.5",
-    "sharp": "^0.27.1",
-    "tabletojson": "^2.0.6",
+    "sharp": "^0.27.2",
+    "tabletojson": "^2.0.7",
     "tether": "*",
     "three": "^0.128.0",
     "usb": "^1.7.1",
@@ -123,11 +102,15 @@
   },
   "description": "Nostlan is a nostlagia launcher for retro and current gen video game emulators!",
   "devDependencies": {
-    "node-abi": "^2.26.0"
+    "node-abi": "^2.30.0"
   },
   "entry point": "app.js",
   "keywords": [
-    "app"
+    "emulation",
+    "emulator",
+    "launcher",
+    "app",
+    "video game"
   ],
   "license": "MIT",
   "main": "app.js",
@@ -148,7 +131,8 @@
     "up-outdated": "npm install --save $(npm outdated | cut -d ' ' -f -1 | sed '1d' | sed 's/$/@*/')",
     "clean": "sudo chmod -R 777 .",
     "rebuild-l": "rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
-    "rebuild-m": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
+    "rebuild-mi": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
+    "rebuild-m1": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --host_arch=arm64 --target_arch=arm64 --disturl=https://atom.io/download/atom-shell",
     "rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=9.3.2 --disturl=https://atom.io/download/atom-shell",
     "dist-l": "electron-builder -l",
     "delete-tags": "git tag | xargs git tag -d",
@@ -158,5 +142,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.21.8"
+  "version": "1.21.9"
 }

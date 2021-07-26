@@ -5,7 +5,7 @@
  *
  * Parses command line args. Starts the app.
  */
-(async function() {
+(async function () {
 	const log = console.log;
 	let arg = require('minimist')(process.argv);
 	arg.__root = __dirname.replace(/\\/g, '/');
@@ -57,7 +57,7 @@
 				pretty: true
 			}, locals);
 			// pug.on('error', err => console.error('electron-pug error', err))
-			pug.on('error', function() {});
+			pug.on('error', function () {});
 		} catch (err) {
 			// Could not initiate 'electron-pug'
 			log(err);
@@ -65,6 +65,7 @@
 
 		let windowPrms = {
 			webPreferences: {
+				contextIsolation: false,
 				enableRemoteModule: true,
 				nodeIntegration: true,
 				webviewTag: true
@@ -97,7 +98,7 @@
 		}
 
 		// Emitted when the window is closed.
-		mainWindow.on('closed', function() {
+		mainWindow.on('closed', function () {
 			// Dereference the window object, usually you would store windows
 			// in an array if your app supports multi windows, this is the time
 			// when you should delete the corresponding element.
@@ -111,11 +112,11 @@
 	app.on('ready', createWindow);
 
 	// Quit when all windows are closed.
-	app.on('window-all-closed', function() {
+	app.on('window-all-closed', function () {
 		app.quit();
 	});
 
-	app.on('activate', function() {
+	app.on('activate', function () {
 		// On macOS it's common to re-create a window in the app when the
 		// dock icon is clicked and there are no other windows open.
 		if (mainWindow === null) {

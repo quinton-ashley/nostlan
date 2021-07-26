@@ -43,6 +43,11 @@
 	font-family: "contb";
 }
 
+.wii #nav0,
+.wii #nav1 {
+	background-blend-mode: normal;
+}
+
 .wii #nav1Btn {
 	font-family: Nintender;
 	font-size: 3vw;

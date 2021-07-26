@@ -144,12 +144,14 @@ Please report technical issues and make specific feature requests on this projec
 
 ## Legal Disclaimer
 
-Although [Emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal. Nostlan does not condone piracy. Nostlan is open source software that does not infringe on any copyrights of texture packers, developers, or publishers. Nostlan is not affiliated with Nintendo, Sony, or Microsoft. Anyone asking for or sharing information related to digital piracy on this project's Github issues will have their comments removed and flagged.
+Although [emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal. Nostlan does not condone piracy. Nostlan is open source software that does not infringe on any copyrights of publishers, developers, artists, or texture packers. Anyone asking for or sharing information related to digital piracy on Nostlan's Discord server or GitHub page will be blocked and have their comments removed and flagged.
 
 ## COPYRIGHT AND TRADEMARK INFO
 
+Nostlan is not affiliated with Nintendo, Sony, SEGA, or Microsoft. All trademarks and servicemarks referenced in this app are the property of their respective owners.
+
 MAME and the MAME Logo are Copyright © 1997-2019 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
 
-Nostlan and the Nostlan logo are Copyright © 2019-2020 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images using the Public Domain License CC0. The Nostlan software itself is fully open source and licensed under the copyleft [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+Nostlan and the Nostlan logo are Copyright © 2019-2021 Quinton Ashley. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images using the Public Domain License CC0. The Nostlan software itself is fully open source and licensed under the copyleft [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 
 ![GNU GPLv3 logo](https://www.gnu.org/graphics/gpl-v3-logo.svg)

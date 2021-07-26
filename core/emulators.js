@@ -14,16 +14,16 @@ module.exports = (() => {
 				win: ['${app}', '${game}', '--fullscreen']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_linux.tar.bz2'
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_mac.tar.bz2'
 				},
 				'mac-arm64': {
 					portable: 'https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_mac.tar.bz2'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://github.com/bsnes-emu/bsnes/releases/download/nightly/bsnes-windows.zip'
 				}
 			}
@@ -42,13 +42,13 @@ module.exports = (() => {
 				win: ['${app}', '-g', '${game}', '-f']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					portable: 'https://cemu.info/releases/cemu_1.24.0.zip'
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					portable: 'https://cemu.info/releases/cemu_1.24.0.zip'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://cemu.info/releases/cemu_1.24.0.zip'
 				}
 			}
@@ -81,19 +81,19 @@ module.exports = (() => {
 				win: ['${app}', '${game}', '-f']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.citra_emu.citra.flatpakref']
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					installer: 'https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-mac.dmg'
 				},
 				'mac-arm64': {
 					installer: 'https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-mac.dmg'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					installer: 'https://github.com/citra-emu/citra-web/releases/latest/download/citra-setup-windows.exe'
 				}
 			},
@@ -119,16 +119,16 @@ module.exports = (() => {
 				win: ['${app}', '${game}']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.desmume.DeSmuME.flatpakref']
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					standalone: 'https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK .zip'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					standalone: 'https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe'
 				}
 			},
@@ -153,19 +153,19 @@ module.exports = (() => {
 				win: ['${app}', '-e', '${game}']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.DolphinEmu.dolphin-emu.flatpakref']
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					installer: 'https://dl.dolphin-emu.org/builds/9e/de/dolphin-master-5.0-14344-universal.dmg'
 				},
 				'mac-arm64': {
 					installer: 'https://dl.dolphin-emu.org/builds/9e/de/dolphin-master-5.0-14344-universal.dmg'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://dl.dolphin-emu.org/builds/99/df/dolphin-master-5.0-12247-x64.7z'
 				}
 			}
@@ -228,13 +228,13 @@ module.exports = (() => {
 			},
 			site: "https://www.mamedev.org/",
 			install: {
-				'mac-x86_64': {
+				'mac-x64': {
 					portable: 'https://sdlmame.lngn.net/mame0233-x86.zip'
 				},
 				'mac-arm64': {
 					portable: 'https://sdlmame.lngn.net/mame0233-arm64.zip'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://github.com/mamedev/mame/releases/download/mame0233/mame0233b_64bit.exe'
 				}
 			}
@@ -255,19 +255,19 @@ module.exports = (() => {
 			site: "http://melonds.kuribo64.net/",
 			patreon: "https://www.patreon.com/staplebutter",
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/net.kuribo64.melonDS.flatpakref']
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					installer: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_mac64.dmg'
 				},
 				'mac-arm64': {
 					installer: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_macARM.dmg'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'http://melonds.kuribo64.net/downloads/melonDS_0.9.2_win64.7z'
 				}
 			}
@@ -282,7 +282,7 @@ module.exports = (() => {
 				win: ['${app}', '${game}']
 			},
 			install: {
-				'win-x86_64': {
+				'win-x64': {
 					standalone: 'https://www.mesen.ca/download.php'
 				}
 			},
@@ -307,16 +307,16 @@ module.exports = (() => {
 				win: ['${app}', '-f', '${game}']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/io.mgba.mGBA.flatpakref']
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					standalone: 'https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-osx.tar.xz'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-win64.7z'
 				}
 			},
@@ -327,8 +327,14 @@ module.exports = (() => {
 		mupen64plus: {
 			name: 'mupen64plus',
 			sys: 'n64',
+			appRegex: {
+				mac: 'M64Py\\.app'
+			},
+			cmd: {
+				mac: ['${app}', '${game}']
+			},
 			install: {
-				'mac-x86_64': {
+				'mac-x64': {
 					installer: 'https://github.com/mupen64plus/mupen64plus-ui-python/releases/download/0.2.4/m64py-0.2.4.dmg'
 				},
 				'mac-arm64': {
@@ -350,13 +356,13 @@ module.exports = (() => {
 				win: ['${app}', '${game}', '--nogui', '--fullscreen']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/net.pcsx2.PCSX2.flatpakref']
 					]
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://pcsx2.net/download/releases/windows.html?task=download.send&id=125&catid=40&m=0 .7z'
 				}
 			}
@@ -375,13 +381,13 @@ module.exports = (() => {
 				win: ['${app}', '${game}']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/net.rpcs3.RPCS3.flatpakref']
 					]
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_win64.7z'
 				}
 			}
@@ -390,9 +396,9 @@ module.exports = (() => {
 			name: 'Ryujinx',
 			sys: 'switch',
 			appRegex: {
-				linux: '^Ryujinx',
-				mac: '^Ryujinx',
-				win: '^Ryujinx\\.exe'
+				linux: 'Ryujinx',
+				mac: 'Ryujinx',
+				win: 'Ryujinx\\.exe'
 			},
 			cmd: {
 				linux: ['${app}', '${game}'],
@@ -402,10 +408,10 @@ module.exports = (() => {
 			site: 'https://ryujinx.org/',
 			patreon: 'https://www.patreon.com/ryujinx',
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					portable: 'https://ci.appveyor.com/api/buildjobs/kqvbvvbkpmwe2nh6/artifacts/ryujinx-1.0.6846-linux_x64.tar.gz'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://ci.appveyor.com/api/buildjobs/7m60tgm9086anlvk/artifacts/ryujinx-1.0.6551-win_x64.zip'
 				}
 			},
@@ -418,9 +424,9 @@ module.exports = (() => {
 			name: 'Ryujinx LDN',
 			sys: 'switch',
 			appRegex: {
-				linux: '^Ryujinx',
-				mac: '^Ryujinx',
-				win: '^Ryujinx\\.exe'
+				linux: 'Ryujinx',
+				mac: 'Ryujinx',
+				win: 'Ryujinx\\.exe'
 			},
 			cmd: {
 				linux: ['${app}', '${game}'],
@@ -428,10 +434,10 @@ module.exports = (() => {
 				win: ['${app}', '${game}']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					portable: 'https://www.patreon.com/file?h=45268370&i=7206532 .zip'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://www.patreon.com/file?h=45268370&i=7206533 .zip'
 				}
 			},
@@ -456,16 +462,16 @@ module.exports = (() => {
 				win: ['${app}', '${game}', '-fullscreen']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/com.snes9x.Snes9x.flatpakref']
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					portable: 'https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					portable: 'https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip'
 				}
 			},
@@ -490,20 +496,20 @@ module.exports = (() => {
 				win: ['${app}', '${game}']
 			},
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_arch: [
 						'pacman',
 						'-S',
 						'${app}'
 					]
 				},
-				'mac-x86_64': {
+				'mac-x64': {
 					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
 				},
 				'mac-arm64': {
 					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
 				},
-				'win-x86_64': {
+				'win-x64': {
 					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip'
 				}
 			},
@@ -534,13 +540,13 @@ module.exports = (() => {
 			site: 'https://yuzu-emu.org/',
 			patreon: 'https://www.patreon.com/yuzuteam',
 			install: {
-				'linux-x86_64': {
+				'linux-x64': {
 					pkgManager_flatpak: [
 						['flatpak', 'remote-add', '--if-not-exists', 'flathub', 'https://flathub.org/repo/flathub.flatpakrepo'],
 						['flatpak', 'install', 'https://dl.flathub.org/repo/appstream/org.yuzu_emu.yuzu.flatpakref']
 					]
 				},
-				'win-x86_64': {
+				'win-x64': {
 					prereq: 'https://aka.ms/vs/16/release/vc_redist.x64.exe',
 					installer: 'https://github.com/yuzu-emu/liftinstall/releases/download/1.8/yuzu_install.exe'
 				}
@@ -573,7 +579,7 @@ module.exports = (() => {
 				]
 			},
 			install: {
-				'win-x86_64': {
+				'win-x64': {
 					portable: [
 						'https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.6.2104/dxc_2021_04-20.zip',
 						'https://ci.appveyor.com/api/projects/benvanik/xenia/artifacts/xenia_master.zip?branch=master&job=Configuration%3A%20Release&pr=false .zip'
@@ -583,15 +589,17 @@ module.exports = (() => {
 		}
 	};
 
+	if (!prefs.arch) prefs.arch = require('process').arch;
+
 	// only keeps the info necessary for the current os + chip arch
 	for (let _emu in emus) {
 
-		let props = ['app', 'appDirs', 'appRegex', 'cmd', 'update', 'install', 'fullscreenKeyCombo'];
+		let props = ['app', 'appDirs', 'appRegex', 'cmd', 'fullscreenKeyCombo', 'install', 'update'];
 
 		for (let prop of props) {
 			if (!emus[_emu][prop]) continue;
 			let type = osType;
-			if (prop == 'install') type += '-' + prefs.chip_arch;
+			if (prop == 'install') type += '-' + prefs.arch;
 
 			if (emus[_emu][prop][type]) {
 				emus[_emu][prop] = emus[_emu][prop][type];

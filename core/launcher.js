@@ -30,7 +30,7 @@ class Launcher {
 
 		let name = emus[emu].name.replace(/ /g, '');
 		let execNames = [
-			file.base,
+			file.name,
 			name,
 			name.toLowerCase(),
 			name.toUpperCase()
@@ -237,7 +237,7 @@ class Launcher {
 				}
 			});
 			await delay(1500);
-			await jsEmu.executeJavaScript(
+			jsEmu.executeJavaScript(
 				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
 			);
 			this.cfg = cfg;

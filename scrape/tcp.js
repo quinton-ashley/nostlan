@@ -61,18 +61,25 @@ class TheCoverProjectScraper {
 		let $links = $page.find('#covers a');
 		let found = false;
 		for (let i = 0; i < $links.length; i++) {
-			let flag = $links.eq(i).find('img').eq(0).attr('src').split('/');
+			let flag = $links.eq(i).find('img').eq(0).attr('src');
+			if (!flag) return;
+			flag = flag.split('/');
 			flag = flag[flag.length - 1].slice(0, 2);
 			if (flag == region) {
 				if (i != 0) $page = null;
+				let href = $links.eq(i).attr('href');
+				if (href.slice(0, 4) != 'http') {
+					href = 'http://www.thecoverproject.net/' + href;
+				}
+				log(href);
 				if (!$page) {
-					$page = await browser.goTo($links.eq(i).attr('href'));
+					$page = await browser.goTo(href);
 				}
 				if (!$page) {
-					$page = await browser.goTo($links.eq(i).attr('href'));
+					$page = await browser.goTo(href);
 				}
 				if (!$page) {
-					$page = await browser.goTo($links.eq(i).attr('href'));
+					$page = await browser.goTo(href);
 				}
 				if (!$page) return;
 				found = true;

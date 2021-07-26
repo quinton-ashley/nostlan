@@ -175,13 +175,14 @@ class Installer {
 			if (mac) {
 				// find the ejectable install disk
 				let disk;
-				for (let i = 0; !disk || i < 20; i++) {
+				for (let i = 0; !disk && i < 20; i++) {
 					await delay(500);
 					files = await klaw('/Volumes', {
 						depthLimit: 0
 					});
-					let regex = `(${emu}|${emu.name}`;
+					let regex = `(${emu}|${emus[emu].name}`;
 					if (emu == 'citra') regex += '|dist';
+					if (emu == 'mupen64plus') regex += '|dmg';
 					regex += ')';
 					regex = new RegExp(regex, 'i');
 					for (let file of files) {
@@ -221,7 +222,7 @@ class Installer {
 								overwrite: true
 							});
 						}
-					} else if ((await fs.stat(file)).isDirectory()) {
+					} else if (!/Trashes|Trash/i.test(file) && (await fs.stat(file)).isDirectory()) {
 						let moreFiles = await klaw(file, {
 							depthLimit: 1
 						});

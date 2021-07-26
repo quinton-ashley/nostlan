@@ -53,7 +53,7 @@ class Scanner {
 
 		let fuse, searcher;
 		fuse = new Fuse(gameDB, searcharg);
-		searcher = function(term) {
+		searcher = function (term) {
 			return new Promise((resolve, reject) => {
 				resolve(fuse.search(term));
 			});
@@ -114,7 +114,7 @@ class Scanner {
 						hash = cryptog.createHash('sha256').update(data).digest('hex');
 						game = gameDB.find(x => x.sha256 == hash);
 					} else if (sys == 'n64') {
-						hash = cryptog.createHash('sha1').update(data).digest('hex');
+						hash = cryptog.createHash('sha1').update(data).digest('hex').toUpperCase();
 						game = gameDB.find(x => x.sha1 == hash);
 					}
 					if (game) {
@@ -124,6 +124,8 @@ class Scanner {
 							path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
+					} else if (hash) {
+						this.olog('hash: ' + hash);
 					}
 				}
 

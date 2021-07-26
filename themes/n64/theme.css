@@ -1,0 +1,122 @@
+/*================n64 Cover====================*/
+@font-face {
+	font-family: Nintender;
+	src: url("../fonts/Nintender.ttf");
+}
+
+.n64 .menu .cui,
+.n64 .text {
+	text-shadow: none;
+}
+
+.n64.box .menu .cursor,
+.n64.box .menu .cursor * {
+	filter: brightness(20);
+}
+
+.n64 #nav1Btn {
+	font-family: Nintender;
+	font-size: 3vw;
+	line-height: 3vw;
+	font-weight: bold;
+	text-align-last: center;
+	appearance: none;
+	border-width: 0.5vw;
+	border-style: solid;
+	border-color: var(--nav1-text-color, var(--nav-text-color));
+	color: var(--nav1-text-color, var(--nav-text-color));
+	background-color: transparent;
+	border-radius: 3vw;
+	padding-left: 5%;
+	padding-right: 4%;
+	padding-top: 1%;
+	box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+	width: fit-content;
+}
+
+.n64.game-box #nav3 .nav-link {
+	border-width: 0;
+}
+
+.n64.game-box .nav-link {
+	border-width: 0.5vw;
+}
+
+/*================n64 Game Lib Viewer====================*/
+game.n64 .crop.coverFull {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0%;
+}
+
+game.n64 .crop.cover {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0%;
+}
+
+game.n64 img.cover {
+	width: 100%;
+	height: 100%;
+}
+
+game.n64 img.coverFull {
+	width: 100%;
+	transform: rotateZ(-90deg) translate(-49%, 0%) scale(1.599);
+}
+
+game.n64.flip .crop.cover {
+	top: 0%;
+}
+
+game.n64.flip .crop.coverFull {
+	top: 0%;
+}
+
+game.n64.flip img.coverFull {
+	width: 100%;
+	height: 100%;
+	transform: transform: rotateZ(-90deg) translate(-40%, 0%) scale(1.4);
+}
+
+game.n64 .shade {
+	width: 0;
+}
+
+game.n64.flip .shade {
+	left: 99%;
+	width: 0;
+}
+
+game.n64 .box {
+	border-radius: 1.6%;
+}
+
+game .title.label,
+game .title.label-input {
+	top: 6%;
+	left: 3%;
+	right: 20%;
+}
+
+game .file.label,
+game .file.label-input {
+	top: 72%;
+	left: 3%;
+	right: 20%;
+}
+
+.n64 #gameMedia {
+	position: absolute;
+	border-radius: 0;
+	height: 50vh;
+	width: auto;
+	left: 75vw;
+	transform: translate(-50%, -50%);
+}
+
+.n64 .zoom-gameMedia {
+	transform: translate(-48vw) scale(1.9);
+}

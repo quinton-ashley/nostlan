@@ -41,6 +41,12 @@ module.exports = {
 		emus: ['citra'],
 		mediaType: 'cart'
 	},
+	n64: {
+		name: 'N64',
+		fullName: 'Nintendo 64',
+		emus: ['mupen64plus'],
+		mediaType: 'cart'
+	},
 	nes: {
 		name: 'NES',
 		fullName: 'Nintendo Entertainment System',
@@ -59,6 +65,12 @@ module.exports = {
 		emus: ['rpcs3'],
 		mediaType: 'disc'
 	},
+	// smd: {
+	// 	name: 'SMD',
+	// 	fullName: 'SEGA Genesis',
+	// 	emus: ['emulatrix-sega-genesis'],
+	// 	mediaType: 'cart'
+	// },
 	snes: {
 		name: 'SNES',
 		fullName: 'Super Nintendo',

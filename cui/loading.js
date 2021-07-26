@@ -26,7 +26,7 @@ class CuiState extends cui.State {
 		if (!prefs.nlaDir) return;
 		let dir = prefs.nlaDir + '/images';
 
-		let assetPacks = ['discSleeve', 'labels', 'stickers', 'wraps'];
+		let assetPacks = ['discSleeve', 'labels', 'plastic', 'stickers', 'wraps'];
 
 		for (let pack of assetPacks) {
 			if (specificAssets && !specificAssets.includes(pack)) continue;

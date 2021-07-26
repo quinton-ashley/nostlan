@@ -1,11 +1,10 @@
-module.exports = async function(defaults) {
+module.exports = async function (defaults) {
 	let ver = prefs.version || pkg.version;
 	prefs.version = pkg.version;
 
 	systemsDir = path.join(prefs.nlaDir, '..');
 	systemsDir = systemsDir.replace(/\\/g, '/');
 
-	// only keeps the emu app path for the current os
 	for (let _sys in systems) {
 		let _syst = systems[_sys];
 		if (!_syst.emus) continue;
@@ -14,10 +13,15 @@ module.exports = async function(defaults) {
 
 			let props = ['app', 'cmd', 'fullscreenKeyCombo'];
 			for (let prop of props) {
-				// init to defaults if nothing is there yet
+				// initialize to defaults if nothing is there yet
 				if (!prefs[_emu][prop] && emus[_emu][prop]) {
 					prefs[_emu][prop] = emus[_emu][prop];
 				}
+			}
+			props = ['latestVersion'];
+			for (let prop of props) {
+				// always update
+				prefs[_emu][prop] = emus[_emu][prop];
 			}
 		}
 
@@ -30,6 +34,10 @@ module.exports = async function(defaults) {
 			}
 		}
 	}
+
+	if (semver.gte(ver, '1.22.1')) return;
+
+	delete prefs.chip_arch;
 
 	if (semver.gte(ver, '1.20.22')) return;
 

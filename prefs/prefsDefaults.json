@@ -1,109 +1,109 @@
 {
-  "nlaDir": "",
-  "region": "E",
-  "ui": {
-    "mouse": {
-      "wheel": {
-        "multi": 1,
-        "smooth": false
-      }
-    },
-    "gamepad": {
-      "gca": true,
-      "haptic": true,
-      "nintendo": {
-        "profile": "adaptive",
-        "map": {}
-      },
+	"nlaDir": "",
+	"region": "E",
+	"ui": {
+		"mouse": {
+			"wheel": {
+				"multi": 1,
+				"smooth": false
+			}
+		},
+		"gamepad": {
+			"gca": true,
+			"haptic": true,
+			"nintendo": {
+				"profile": "adaptive",
+				"map": {}
+			},
 			"xbox_ps": {
-        "profile": "adaptive",
-        "map": {}
-      },
+				"profile": "adaptive",
+				"map": {}
+			},
 			"other": {
 				"profile": "adaptive",
 				"map": {}
 			}
-    },
-    "maxColumns": 8,
-    "getBackCoverHQ": false,
-    "getExtraImgs": false,
-    "autoHideCover": false,
+		},
+		"maxColumns": 8,
+		"getBackCoverHQ": false,
+		"getExtraImgs": false,
+		"autoHideCover": false,
 		"altReelsScrolling": false,
-    "launchFullScreen": true
-  },
+		"launchFullScreen": true
+	},
 	"load": {
-    "delay": 2000,
-    "online": true,
+		"delay": 2000,
+		"online": true,
 		"readOnlyFS": false
-  },
-  "inGame": {
+	},
+	"inGame": {
 		"pause": {
-      "hold": "start",
-      "time": 2000
-    },
-    "quit": {
-      "hold": "start",
-      "time": 5000
-    },
-    "reset": {
-      "hold": "select",
-      "time": 5000
-    }
-  },
-	"chip_arch": "x86_64",
-  "donor": {},
+			"hold": "start",
+			"time": 2000
+		},
+		"quit": {
+			"hold": "start",
+			"time": 5000
+		},
+		"reset": {
+			"hold": "select",
+			"time": 5000
+		}
+	},
+	"donor": {},
 	"jsEmu": {
 		"keyboard": [{
-			"pause": "esc",
-			"load0": "shift+0",
-			"load1": "shift+1",
-			"load2": "shift+2",
-			"load3": "shift+3",
-			"load4": "shift+4",
-			"load5": "shift+5",
-			"load6": "shift+6",
-			"load7": "shift+7",
-			"load8": "shift+8",
-			"load9": "shift+9",
-			"save0": "alt+0",
-			"save1": "alt+1",
-			"save2": "alt+2",
-			"save3": "alt+3",
-			"save4": "alt+4",
-			"save5": "alt+5",
-			"save6": "alt+6",
-			"save7": "alt+7",
-			"save8": "alt+8",
-			"save9": "alt+9",
-			"up": "w",
-			"down": "s",
-			"left": "a",
-			"right": "d",
-			"start": "x",
-			"select": "z",
-			"a": "g",
-			"b": "v",
-			"x": "f",
-			"y": "c",
-			"l": "q",
-			"r": "e"
-		},
-		{
-			"up": "i",
-			"down": "k",
-			"left": "j",
-			"right": "l",
-			"start": ",",
-			"select": "m",
-			"a": "'",
-			"b": "/",
-			"x": ";",
-			"y": ".",
-			"l": "u",
-			"r": "o"
-		}]
+				"pause": "esc",
+				"load0": "shift+0",
+				"load1": "shift+1",
+				"load2": "shift+2",
+				"load3": "shift+3",
+				"load4": "shift+4",
+				"load5": "shift+5",
+				"load6": "shift+6",
+				"load7": "shift+7",
+				"load8": "shift+8",
+				"load9": "shift+9",
+				"save0": "alt+0",
+				"save1": "alt+1",
+				"save2": "alt+2",
+				"save3": "alt+3",
+				"save4": "alt+4",
+				"save5": "alt+5",
+				"save6": "alt+6",
+				"save7": "alt+7",
+				"save8": "alt+8",
+				"save9": "alt+9",
+				"up": "w",
+				"down": "s",
+				"left": "a",
+				"right": "d",
+				"start": "x",
+				"select": "z",
+				"a": "g",
+				"b": "v",
+				"x": "f",
+				"y": "c",
+				"l": "q",
+				"r": "e"
+			},
+			{
+				"up": "i",
+				"down": "k",
+				"left": "j",
+				"right": "l",
+				"start": ",",
+				"select": "m",
+				"a": "'",
+				"b": "/",
+				"x": ";",
+				"y": ".",
+				"l": "u",
+				"r": "o"
+			}
+		]
 	},
-  "session": {
-    "sys": "wii"
-  }
+	"session": {
+		"sys": "wii"
+	}
 }

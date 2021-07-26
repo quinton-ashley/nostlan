@@ -1,0 +1,48 @@
+.snes {
+	--nav-color: #cac9ce;
+	--nav-text-color: #94929B;
+	--navBtns-color: #BBB6ED;
+	--nav3Btn-color: #5F3C96;
+}
+
+.snes.super-famicom {
+	--nav-color: #A3A9AC;
+	--nav-text-color: #6C6C6C;
+	--nav0Btn-color: #0B60C6;
+	--nav0Btn-border-color: #004AB8;
+	--nav2Btn-color: #00B683;
+	--nav2Btn-border-color: #20956C;
+	--nav3Btn-color: #FFD600;
+	--nav3Btn-border-color: #FCC648;
+}
+
+.snes.super-nintendo {
+	--nav-color: #cac9ce;
+	--nav-text-color: #a9a7aa;
+	--nav-border-color: #64a;
+	--navBtns-color: #7a62ae;
+	--navBtns-border-color: #7a62ae;
+	--nav0-color: #7a62ae;
+	--nav0-text-color: #ababde;
+	--nav2-color: #7a62ae;
+	--nav2-text-color: #ababde;
+	--nav3-color: #9b999e;
+	--nav3-text-color: #cecdd2;
+	--nav3-border-color: #7d7b80;
+	--nav3Btn-border-color: #9b999e;
+	--nav3Btn-color: #9b999e;
+	--nav1-border-color: #a9a7aa;
+}
+
+.snes.game-box {
+	--nav-color: #000000;
+	--nav-text-color: #fc0c19;
+	--nav-border-color: #fc0c19;
+	--navBtns-color: #000000;
+	--nav3Btn-color: repeating-linear-gradient(#626763 0%, #626763 6%, #000000 6%, #000000 11.75%);
+	--nav0Btn-border-color: #fea12a;
+	--nav2Btn-border-color: #b82899;
+	--nav1-text-color: #fc0c19;
+	--nav1-button-color: #eee;
+	--nav1-color: #000;
+}

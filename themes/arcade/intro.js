@@ -169,15 +169,16 @@ plane.rotation.x -= Math.PI * .50;
 
 scene.add(plane);
 
-var geometry = new THREE.Geometry();
+let points = [];
 
 for (let i = 0; i < totalObjects; i++) {
 	var vertex = new THREE.Vector3();
 	vertex.x = Math.random() * planeSize - (planeSize * .5);
 	vertex.y = (Math.random() * 100000) + 10000;
 	vertex.z = Math.random() * planeSize - (planeSize * .5);
-	geometry.vertices.push(vertex);
+	points.push(vertex);
 }
+var geometry = new THREE.BufferGeometry().setFromPoints(points);
 
 var material = new THREE.PointsMaterial({
 	size: 400

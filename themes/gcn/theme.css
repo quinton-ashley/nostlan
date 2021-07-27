@@ -36,6 +36,10 @@
 	width: fit-content;
 }
 
+.gcn #nav0 ::first-letter {
+	letter-spacing: 3px;
+}
+
 /*================Wii/Gamecube Box====================*/
 game.gcn .crop.coverFull,
 game.wii .crop.coverFull {

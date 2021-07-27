@@ -265,7 +265,7 @@ module.exports = async function (args) {
 		if (prefs.load.online) {
 			try {
 				if (!args.dev && await nostlan.updater.check()) {
-					electron.app.quit();
+					electron.app.quit(); // TODO make updating optional
 				}
 			} catch (ror) {
 				log('running in offline mode');

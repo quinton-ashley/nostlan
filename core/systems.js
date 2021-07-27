@@ -89,7 +89,7 @@ module.exports = {
 		fullName: 'Nintendo Wii',
 		emus: ['dolphin'],
 		mediaType: 'disc',
-		gameExts: ['gcm', 'iso', 'tgc', 'gcz', 'wbfs', 'wad', 'elf', 'dol']
+		gameExts: ['gcm', 'iso', 'tgc', 'gcz', 'rvz', 'wbfs', 'wad', 'elf', 'dol']
 	},
 	wiiu: {
 		name: 'Wii U',

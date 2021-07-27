@@ -871,7 +871,7 @@ ul.nav {
 .plastic0,
 .menu .cui {
 	background-image: url(https://img.cadnav.com/allimg/131005/1-13100512593X10.jpg);
-	background-blend-mode: soft-light;
+	background-blend-mode: overlay;
 	background-repeat: repeat;
 	background-size: 200px;
 }

@@ -63,7 +63,7 @@ class CuiState extends cui.State {
 		}
 		await cui.loading.intro();
 
-		if (prefs.args.testIntro) await delay(10000000);
+		if (prefs.args.testIntro) return;
 
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;

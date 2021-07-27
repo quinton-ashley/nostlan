@@ -28,9 +28,9 @@ function attachClicks() {
 				if (matrixValues[4] == 0) {
 					let a = pane.getElementsByClassName('js-image-detail-link')[0];
 					if (!a) pane.getElementsByClassName('detail__media__img-link')[0];
-					sendToNostlan(JSON.stringify({
+					nostlan.send({
 						src: a.href
-					}));
+					});
 					break;
 				}
 			}

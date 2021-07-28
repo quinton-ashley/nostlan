@@ -229,9 +229,21 @@ module.exports = (() => {
 			site: "https://www.mamedev.org/",
 			install: {
 				'mac-x64': {
+					prereqs: [{
+						installer: {
+							url: 'http://www.libsdl.org/release/SDL2-2.0.14.dmg',
+							dest: '/Library/Frameworks'
+						}
+					}],
 					portable: 'https://sdlmame.lngn.net/mame0233-x86.zip'
 				},
 				'mac-arm64': {
+					prereqs: [{
+						installer: {
+							url: 'http://www.libsdl.org/release/SDL2-2.0.14.dmg',
+							dest: '/Library/Frameworks'
+						}
+					}],
 					portable: 'https://sdlmame.lngn.net/mame0233-arm64.zip'
 				},
 				'win-x64': {
@@ -547,7 +559,9 @@ module.exports = (() => {
 					]
 				},
 				'win-x64': {
-					prereq: 'https://aka.ms/vs/16/release/vc_redist.x64.exe',
+					prereqs: [{
+						installer: 'https://aka.ms/vs/16/release/vc_redist.x64.exe'
+					}],
 					installer: 'https://github.com/yuzu-emu/liftinstall/releases/download/1.8/yuzu_install.exe'
 				}
 			},

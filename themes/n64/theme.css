@@ -4,6 +4,15 @@
 	src: url("../fonts/Nintender.ttf");
 }
 
+@font-face {
+	font-family: aBigDeal;
+	src: url("../fonts/aBigDeal.ttf");
+}
+
+.n64 .navPanel .text {
+	font-family: aBigDeal;
+}
+
 .n64 .menu .cui,
 .n64 .text {
 	text-shadow: none;

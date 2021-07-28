@@ -396,9 +396,9 @@ module.exports = (() => {
 			name: 'Ryujinx',
 			sys: 'switch',
 			appRegex: {
-				linux: 'Ryujinx',
-				mac: 'Ryujinx',
-				win: 'Ryujinx\\.exe'
+				linux: '^Ryujinx',
+				mac: '^Ryujinx',
+				win: '^Ryujinx\\.exe'
 			},
 			cmd: {
 				linux: ['${app}', '${game}'],
@@ -424,9 +424,9 @@ module.exports = (() => {
 			name: 'Ryujinx LDN',
 			sys: 'switch',
 			appRegex: {
-				linux: 'Ryujinx',
-				mac: 'Ryujinx',
-				win: 'Ryujinx\\.exe'
+				linux: '^Ryujinx',
+				mac: '^Ryujinx',
+				win: '^Ryujinx\\.exe'
 			},
 			cmd: {
 				linux: ['${app}', '${game}'],

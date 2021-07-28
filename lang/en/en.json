@@ -209,5 +209,11 @@
 		"opt2": "save state",
 		"opt3": "stop emulation",
 		"opt4": ["mute", "unmute"]
+	},
+	"imgMenu": {
+		"title0": "Select image type"
+	},
+	"imageSearchMenu": {
+		"opt0": "Download image"
 	}
 }

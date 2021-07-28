@@ -22,7 +22,7 @@ class CuiState extends cui.State {
 		this.imgTypes[4] = syst.mediaType;
 		this.imgNames[4] = syst.mediaType;
 
-		let menu = '';
+		let menu = 'h1.title0 ' + lang.imgMenu.title0;
 		for (let i in this.imgTypes) {
 			if (i % 3 == 0) menu += `.row.row-x\n`;
 			let type = this.imgTypes[i];

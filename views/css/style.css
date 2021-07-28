@@ -776,7 +776,13 @@ button:focus {
 }
 
 .navPanel:hover .nav-link {
-	filter: brightness(0.8);
+	filter: brightness(1.1);
+	outline: none;
+}
+
+.navPanel:active .nav-link,
+.navPanel.active .nav-link {
+	filter: brightness(0.9);
 	outline: none;
 }
 
@@ -882,4 +888,69 @@ ul.nav {
 	background-blend-mode: soft-light;
 	background-repeat: repeat;
 	background-size: 250px;
+}
+
+@keyframes pressMenuBtn {
+	from {
+		transform: scale(1) translate(0);
+		box-shadow: 2px 2px 0 2px var(--nav-border-color, var(--nav-text-color)) inset,
+			0 0 0px 3px rgba(0, 0, 0, .6),
+			3px 3px 4px 3px rgba(0, 0, 0, .7),
+			0 0 50px -10px rgba(0, 0, 0, -0.05);
+	}
+
+	to {
+		transform: scale(.99) translate(-2px, -.5px);
+		box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, .4) inset,
+			0 0 0px 3px rgba(0, 0, 0, .8),
+			3px 3px 4px 0px rgba(0, 0, 0, .8),
+			0 0 50px -10px rgba(0, 0, 0, -0.05);
+	}
+}
+
+
+@keyframes springMenuBtn {
+
+	33% {
+		transform: scale(.9975) translate(-.25px, -.125px);
+		box-shadow: 2px 2px 0 1px var(--nav-border-color, var(--nav-text-color)) inset,
+			0 0 0px 3px rgba(0, 0, 0, .6),
+			3px 3px 4px 1px rgba(0, 0, 0, .7),
+			0 0 50px -10px rgba(0, 0, 0, -0.05);
+	}
+}
+
+.menu .cui {
+	border: 0;
+	margin-bottom: 16px;
+	padding-top: 4px;
+	padding-left: 2px;
+	box-shadow: 2px 2px 0 2px var(--nav-border-color, var(--nav-text-color)) inset,
+		0 0 0px 3px rgba(0, 0, 0, .6),
+		3px 3px 4px 3px rgba(0, 0, 0, .7),
+		0 0 50px -10px rgba(0, 0, 0, -0.05);
+}
+
+.menu .cui:active,
+.menu .cui.active {
+	transform: scale(.99) translate(-2px, -.5px);
+	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, .4) inset,
+		0 0 0px 3px rgba(0, 0, 0, .8),
+		3px 3px 4px 0px rgba(0, 0, 0, .8),
+		0 0 50px -10px rgba(0, 0, 0, -0.05);
+	animation-name: pressMenuBtn;
+	animation-duration: 48ms;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+}
+
+.menu .cui.cursor:not(:active):not(.active) {
+	animation-name: springMenuBtn;
+	animation-duration: 300ms;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+}
+
+.menu .row-x {
+	margin-bottom: 16px;
 }

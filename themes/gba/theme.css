@@ -1,7 +1,7 @@
 /*================gba Cover====================*/
 @font-face {
-	font-family: Early_GameBoy;
-	src: local("Early_GameBoy"), local("Early_GameBoy"), url("../fonts/Early_GameBoy.ttf");
+	font-family: Gamecuben;
+	src: url("../fonts/Gamecuben.ttf");
 }
 
 @font-face {
@@ -10,9 +10,10 @@
 }
 
 .gba .navPanel .text {
-	font-family: "Early_GameBoy", "Early_GameBoy", Early_GameBoy;
+	font-family: Gamecuben;
 	font-weight: 900;
-	transform: scaleY(1.5);
+	letter-spacing: -.2vw;
+	font-variant: all-small-caps;
 }
 
 .gba #nav1Btn {

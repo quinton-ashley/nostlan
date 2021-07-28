@@ -68,6 +68,23 @@
 	width: fit-content;
 }
 
+.wii .menu .cui {
+	box-shadow: 2px 2px 3px 0 rgba(112, 112, 112, 1) inset,
+		5px 5px 3px -1px rgba(174, 174, 174, 1) inset,
+		2px 2px 0 2px rgba(36, 36, 36, 1) inset,
+		0 0 0px 3px rgba(0, 0, 0, .6),
+		3px 3px 4px 3px rgba(0, 0, 0, .7),
+		0 0 50px -10px rgba(0, 0, 0, -0.05);
+}
+
+.wii .menu .cui:active,
+.wii .menu .cui.active {
+	box-shadow: 2px 2px 3px -1px #aeaeae inset,
+		0 0 0px 3px rgba(0, 0, 0, .8),
+		3px 3px 4px 0px rgba(0, 0, 0, .8),
+		0 0 50px -10px rgba(0, 0, 0, -0.05);
+}
+
 /*================Wii Box====================*/
 game.wii .crop.coverFull {
 	width: 200.1%;

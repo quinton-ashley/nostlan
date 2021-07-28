@@ -2,7 +2,7 @@
 	font-family: 'Coda Caption';
 	font-style: normal;
 	font-weight: 800;
-	src: local('Coda Caption'), local('CodaCaption'), url(https://fonts.gstatic.com/s/codacaption/v13/ieVm2YRII2GMY7SyXSoDRiQGqcxKwPWe.woff2) format('woff2');
+	src: url(../fonts/Coda_Caption.woff2) format('woff2');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -271,7 +271,8 @@ h1 {
 	box-shadow: inset 0 0 0.5em 0.2em #F1270B, 0 0 0.5em #F1550B, -0.1em -0.1em 0.1em rgba(0, 0, 0, 0.3), 0.1em 0.1em 0.1em rgba(255, 255, 255, 0.1);
 }
 
-#power:checked+.reset:active~.light, #power:checked+.reset:focus~.light {
+#power:checked+.reset:active~.light,
+#power:checked+.reset:focus~.light {
 	background-color: rgba(255, 255, 255, 0.06);
 	background-image: linear-gradient(45deg, #3D3D3D 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #3D3D3D 75%, #3D3D3D), linear-gradient(-45deg, #3D3D3D 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #3D3D3D 75%, #3D3D3D);
 	box-shadow: none;
@@ -282,7 +283,8 @@ h1 {
 	left: -9999px;
 }
 
-.power, .reset {
+.power,
+.reset {
 	position: absolute;
 	cursor: pointer;
 	width: 6em;
@@ -303,7 +305,8 @@ h1 {
 	top: 5em;
 }
 
-.power:before, .reset:before {
+.power:before,
+.reset:before {
 	content: "POWER";
 	position: absolute;
 	width: 94%;
@@ -329,13 +332,18 @@ h1 {
 	content: "RESET";
 }
 
-.power:hover:before, .reset:hover:before, #power:checked+.power:before {
+.power:hover:before,
+.reset:hover:before,
+#power:checked+.power:before {
 	top: 0;
 	-webkit-box-shadow: 0 -0.2em 0 #665E64, 0 0.2em 0.6em -0.3em rgba(0, 0, 0, 0.69);
 	box-shadow: 0 -0.2em 0 #665E64, 0 0.2em 0.6em -0.3em rgba(0, 0, 0, 0.69);
 }
 
-.power:focus:before, .power:active:before, .reset:focus:before, .reset:active:before {
+.power:focus:before,
+.power:active:before,
+.reset:focus:before,
+.reset:active:before {
 	top: -0.1em;
 	-webkit-box-shadow: 0 -0.1em 0 #665E64, 0 0.1em 0.6em -0.3em rgba(0, 0, 0, 0.69), inset 0 0.2em 1em rgba(0, 0, 0, 0.07);
 	box-shadow: 0 -0.1em 0 #665E64, 0 0.1em 0.6em -0.3em rgba(0, 0, 0, 0.69), inset 0 0.2em 1em rgba(0, 0, 0, 0.07);

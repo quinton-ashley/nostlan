@@ -1,4 +1,6 @@
-module.exports = function() {
+const delay = require("delay");
+
+module.exports = function () {
 
 	cui.passthrough = (contro) => {
 		if (!nostlan.launcher.jsEmu) return;
@@ -25,6 +27,7 @@ module.exports = function() {
 		let ui = cui.ui;
 		if (act == 'quit') {
 			await nostlan.quit();
+			return;
 		} else if (nostlan.launcher.state == 'running') {
 			if (nostlan.launcher.jsEmu && ui == 'playing') {
 				if (act == 'pause') {
@@ -32,7 +35,28 @@ module.exports = function() {
 					nostlan.launcher.pause();
 				}
 			}
-		} else if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect')) {
+			return;
+		}
+		if (/^(x|start|y|b)/.test(act)) {
+			let $btn;
+			if (act == 'x') {
+				$btn = $('#nav0');
+			} else if (act == 'start') {
+				$btn = $('#nav1');
+			} else if (act == 'y') {
+				$btn = $('#nav2');
+			} else if (act == 'b') {
+				$btn = $('#nav3');
+			}
+			$btn.addClass('active');
+			async function deactivate() {
+				await delay(100);
+				$btn.removeClass('active');
+			}
+			deactivate();
+		}
+
+		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect')) {
 			if (cui.$cursor.hasClass('cui-disabled')) return true;
 			if (syst.emus.length > 1) {
 				cui.change('playMenu');

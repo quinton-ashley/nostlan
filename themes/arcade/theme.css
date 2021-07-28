@@ -24,11 +24,13 @@
 }
 
 .arcade .navPanel .nav-link {
+	filter: none;
 	border-width: 0;
 	transform: scale(1.05);
 }
 
-.arcade .navPanel:hover .nav-link {
+.arcade .navPanel:active .nav-link,
+.arcade .navPanel.active .nav-link {
 	filter: none;
 	background-image: var(--navBtns-hover-image) !important;
 }

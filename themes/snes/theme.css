@@ -1,7 +1,7 @@
 /*================snes Cover====================*/
 @font-face {
 	font-family: SNES_Italic;
-	src: local("SNES_Italic"), local("SNES_Italic"), url("../fonts/SNES_Italic.ttf");
+	src: url("../fonts/SNES_Italic.ttf");
 }
 
 @font-face {

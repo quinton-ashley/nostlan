@@ -1,7 +1,7 @@
 /*================nes Cover====================*/
 @font-face {
-	font-family: Early_GameBoy;
-	src: local("Early_GameBoy"), local("Early_GameBoy"), url("../fonts/Early_GameBoy.ttf");
+	font-family: NeedEverySoundBold-11yv;
+	src: url("../fonts/NeedEverySoundBold-11yv.ttf");
 }
 
 @font-face {
@@ -10,7 +10,7 @@
 }
 
 .nes .navPanel .text {
-	font-family: "Early_GameBoy", "Early_GameBoy", Early_GameBoy;
+	font-family: NeedEverySoundBold-11yv;
 	font-weight: 900;
 }
 

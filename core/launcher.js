@@ -375,36 +375,6 @@ class Launcher {
 			await cui.doAction('quit');
 			return;
 		}
-
-		if (kb && cui.ui == 'playing') {
-			let combos = prefs[emu].fullscreenKeyCombo;
-			if (combos) {
-				// delay through emulator app start
-				await delay(1500);
-				// if there's just one combo array
-				if (typeof combos[0] == 'string') {
-					combos = [combos];
-				}
-				for (let combo of combos) {
-					if (typeof combo == 'number') {
-						await delay(combo);
-						log('delay: ' + combo + 'ms');
-					} else if (combo[1]) {
-						kb.keyTap(combo[0], combo[1]);
-						log('kb: ' + combo);
-					} else {
-						kb.keyTap(combo[0]);
-						log('kb: ' + combo);
-					}
-				}
-			} else if (mac && emu == 'vba') {
-				await delay(1500);
-				kb.keyToggle('tab', 'down', ['command', 'shift']);
-				await delay(500);
-				kb.keyToggle('tab', 'up', ['command', 'shift']);
-				kb.keyTap('enter');
-			}
-		}
 	}
 
 	_launch() {

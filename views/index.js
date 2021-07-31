@@ -45,14 +45,6 @@ module.exports = async function (args) {
 		prefs.ui.mouse.wheel.smooth = true;
 	}
 
-	global.kb = null;
-	try {
-		global.kb = require('robotjs');
-		kb.setKeyboardDelay(0);
-	} catch (ror) {
-		er(ror);
-	}
-
 	global.sharp = null;
 	global.jimp = null;
 	if (!mac) {

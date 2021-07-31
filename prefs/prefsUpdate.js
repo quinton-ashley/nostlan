@@ -11,7 +11,7 @@ module.exports = async function (defaults) {
 		for (let _emu of _syst.emus) {
 			if (!prefs[_emu]) prefs[_emu] = {};
 
-			let props = ['app', 'cmd', 'fullscreenKeyCombo'];
+			let props = ['app', 'cmd'];
 			for (let prop of props) {
 				// initialize to defaults if nothing is there yet
 				if (!prefs[_emu][prop] && emus[_emu][prop]) {
@@ -80,10 +80,6 @@ module.exports = async function (defaults) {
 		prefs.ui.gamepad[type].profile = 'adaptive';
 		prefs.ui.gamepad[type].map = {};
 	}
-
-	if (semver.gte(ver, '1.13.3')) return;
-
-	prefs.yuzu.fullscreenKeyCombo = [2000, ["f11"]];
 
 	if (semver.gte(ver, '1.11.1')) return;
 

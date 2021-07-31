@@ -131,10 +131,6 @@ module.exports = (() => {
 				'win-x64': {
 					standalone: 'https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe'
 				}
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: ['enter', 'alt']
 			}
 		},
 		dolphin: {
@@ -148,9 +144,9 @@ module.exports = (() => {
 				win: 'Dolphin\\.exe'
 			},
 			cmd: {
-				linux: ['flatpak', 'run', '${app}', '-e', '${game}'],
-				mac: ['${app}', '-e', '${game}'],
-				win: ['${app}', '-e', '${game}']
+				linux: ['flatpak', 'run', '${app}', '-e', '${game}', '--config', '"Dolphin.Display.Fullscreen=True"'],
+				mac: ['${app}', '-e', '${game}', '--config', '"Dolphin.Display.Fullscreen=True"'],
+				win: ['${app}', '-e', '${game}', '--config', '"Dolphin.Display.Fullscreen=True"']
 			},
 			install: {
 				'linux-x64': {
@@ -291,16 +287,12 @@ module.exports = (() => {
 				win: 'Mesen\\.exe'
 			},
 			cmd: {
-				win: ['${app}', '${game}']
+				win: ['${app}', '${game}', '-fullscreen']
 			},
 			install: {
 				'win-x64': {
 					standalone: 'https://www.mesen.ca/download.php'
 				}
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: ['f11']
 			}
 		},
 		mgba: {
@@ -331,9 +323,6 @@ module.exports = (() => {
 				'win-x64': {
 					portable: 'https://github.com/mgba-emu/mgba/releases/download/0.8.3/mGBA-0.8.3-win64.7z'
 				}
-			},
-			fullscreenKeyCombo: {
-				mac: ['f', 'command']
 			}
 		},
 		mupen64plus: {
@@ -426,10 +415,6 @@ module.exports = (() => {
 				'win-x64': {
 					portable: 'https://ci.appveyor.com/api/buildjobs/7m60tgm9086anlvk/artifacts/ryujinx-1.0.6551-win_x64.zip'
 				}
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: [11000, ['f11']]
 			}
 		},
 		'ryujinx-ldn': {
@@ -452,10 +437,6 @@ module.exports = (() => {
 				'win-x64': {
 					portable: 'https://www.patreon.com/file?h=45268370&i=7206533 .zip'
 				}
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: [11000, ['f11']]
 			}
 		},
 		snes9x: {
@@ -486,10 +467,6 @@ module.exports = (() => {
 				'win-x64': {
 					portable: 'https://www.emulator-zone.com/download.php/emulators/snes/snes9x/snes9x-1.60-win32-x64.zip'
 				}
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: ['f11']
 			}
 		},
 		vba: {
@@ -524,10 +501,6 @@ module.exports = (() => {
 				'win-x64': {
 					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip'
 				}
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: ['f11']
 			}
 		},
 		yuzu: {
@@ -546,8 +519,8 @@ module.exports = (() => {
 				win: 'yuzu\\.exe'
 			},
 			cmd: {
-				linux: ['flatpak', 'run', '${app}', '${game}'],
-				win: ['${app}', '${game}']
+				linux: ['flatpak', 'run', '${app}', '${game}', '-f', '-g'],
+				win: ['${app}', '${game}', '-f', '-g']
 			},
 			site: 'https://yuzu-emu.org/',
 			patreon: 'https://www.patreon.com/yuzuteam',
@@ -570,10 +543,6 @@ module.exports = (() => {
 					'$home/AppData/Local/yuzu/maintenancetool.exe',
 					'--launcher', '${app}'
 				]
-			},
-			fullscreenKeyCombo: {
-				linux: ['f11'],
-				win: [4000, ['f11']]
 			}
 		},
 		xenia: {
@@ -608,7 +577,7 @@ module.exports = (() => {
 	// only keeps the info necessary for the current os + chip arch
 	for (let _emu in emus) {
 
-		let props = ['app', 'appDirs', 'appRegex', 'cmd', 'fullscreenKeyCombo', 'install', 'update'];
+		let props = ['app', 'appDirs', 'appRegex', 'cmd', 'install', 'update'];
 
 		for (let prop of props) {
 			if (!emus[_emu][prop]) continue;
@@ -621,6 +590,7 @@ module.exports = (() => {
 				delete emus[_emu][prop];
 			}
 		}
+		delete emus[_emu].fullscreenKeyCombo;
 	}
 
 	return emus;

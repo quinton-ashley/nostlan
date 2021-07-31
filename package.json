@@ -9,9 +9,9 @@
   "build": {
     "appId": "com.qashto.nostlan",
     "copyright": "Copyright © 2018-2021 Quinton Ashley",
-    "electronVersion": "11.2.3",
+    "electronVersion": "13.1.7",
     "electronDownload": {
-      "version": "11.2.3"
+      "version": "13.1.7"
     },
     "mac": {
       "category": "public.app-category.game",
@@ -19,7 +19,7 @@
         {
           "target": "zip",
           "arch": [
-            "x64"
+            "arm64"
           ]
         }
       ]
@@ -132,7 +132,7 @@
     "clean": "sudo chmod -R 777 .",
     "rebuild-l": "rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
     "rebuild-mi": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --disturl=https://atom.io/download/atom-shell",
-    "rebuild-m1": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --host_arch=arm64 --target_arch=arm64 --disturl=https://atom.io/download/atom-shell",
+    "rebuild-m1": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=11.2.3 --host_arch=arm64 --target_arch=arm64 --arch=arm64 --disturl=https://atom.io/download/atom-shell",
     "rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=9.3.2 --disturl=https://atom.io/download/atom-shell",
     "dist-l": "electron-builder -l",
     "delete-tags": "git tag | xargs git tag -d",
@@ -142,5 +142,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.21.12"
+  "version": "1.21.13"
 }

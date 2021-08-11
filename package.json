@@ -54,14 +54,14 @@
   ],
   "dependencies": {
     "7zip-bin": "*",
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.9.3",
     "acorn": "^8.4.1",
     "await-spawn": "^4.0.2",
     "bootstrap": "^5.0.2",
     "byte-base64": "^1.1.0",
     "chrome-finder": "^1.0.7",
     "circletype": "^2.3.0",
-    "contro-ui": "^3.3.3",
+    "contro-ui": "^3.3.5",
     "crc": "^3.8.0",
     "deep-extend": "^0.6.0",
     "delay": "^5.0.0",
@@ -142,5 +142,5 @@
     "postversion": "git push",
     "V": "npm version minor --force"
   },
-  "version": "1.21.13"
+  "version": "1.21.14"
 }

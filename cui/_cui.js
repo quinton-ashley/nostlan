@@ -1,7 +1,6 @@
-const delay = require("delay");
+const delay = require('delay');
 
 module.exports = function () {
-
 	cui.passthrough = (contro) => {
 		if (!nostlan.launcher.jsEmu) return;
 
@@ -16,12 +15,12 @@ module.exports = function () {
 		$('#loadDialog0').text('');
 		$('#loadDialog1').text('');
 		$('#loadDialog2').text('');
-	}
+	};
 
 	cui.hideDialogs = () => {
 		$('#dialogs').hide();
 		cui.clearDialogs();
-	}
+	};
 
 	cui.onAction = async (act) => {
 		let ui = cui.ui;
@@ -48,12 +47,14 @@ module.exports = function () {
 			} else if (act == 'b') {
 				$btn = $('#nav3');
 			}
-			$btn.addClass('active');
-			async function deactivate() {
-				await delay(100);
-				$btn.removeClass('active');
+			if ($btn) {
+				$btn.addClass('active');
+				async function deactivate() {
+					await delay(100);
+					$btn.removeClass('active');
+				}
+				deactivate();
 			}
-			deactivate();
 		}
 
 		if (act == 'x' && (ui == 'libMain' || ui == 'boxSelect')) {
@@ -66,9 +67,15 @@ module.exports = function () {
 			}
 		} else if (act == 'start' && cui[ui].level < 10) {
 			cui.change('nostlanMenu');
-		} else if (act == 'b' && (/menu/i.test(ui) || /select/i.test(ui)) &&
-			ui != 'donateMenu' && ui != 'setupMenu' &&
-			ui != 'pauseMenu' && ui != 'imgSearchMenu' && cui.getParent() != 'loading') {
+		} else if (
+			act == 'b' &&
+			(/menu/i.test(ui) || /select/i.test(ui)) &&
+			ui != 'donateMenu' &&
+			ui != 'setupMenu' &&
+			ui != 'pauseMenu' &&
+			ui != 'imgSearchMenu' &&
+			cui.getParent() != 'loading'
+		) {
 			cui.doAction('back');
 		} else if (act == 'select') {
 			$('nav').toggleClass('hide');
@@ -84,7 +91,7 @@ module.exports = function () {
 			// return true if ui state onAction should be called
 			return true;
 		}
-	}
+	};
 
 	cui.onHeldAction = async (act, timeHeld) => {
 		if (timeHeld < 2000) {
@@ -112,7 +119,7 @@ module.exports = function () {
 				nostlan.launcher.reset();
 			}
 		}
-	}
+	};
 
 	cui.onChange = async (state, subState) => {
 		if (state == 'languageMenu') {
@@ -156,30 +163,38 @@ module.exports = function () {
 
 		function adjust(flip) {
 			if (flip && $('nav.fixed-top').find('#nav1Btn').length) {
-				$('#nav3').css({
-					'border-radius': '0 0 0 32px',
-					'border-width': '0 0 8px 0'
-				}).appendTo('nav.fixed-top');
-				$('#nav1').css({
-					'border-radius': '32px 0 0 0',
-					'border-width': '8px 0 0 0'
-				}).appendTo('nav.fixed-bottom');
+				$('#nav3')
+					.css({
+						'border-radius': '0 0 0 32px',
+						'border-width': '0 0 8px 0',
+					})
+					.appendTo('nav.fixed-top');
+				$('#nav1')
+					.css({
+						'border-radius': '32px 0 0 0',
+						'border-width': '8px 0 0 0',
+					})
+					.appendTo('nav.fixed-bottom');
 			} else if (!flip && $('nav.fixed-top').find('#nav3Btn').length) {
-				$('#nav3').css({
-					'border-radius': '32px 0 0 0',
-					'border-width': '8px 0 0 0'
-				}).appendTo('nav.fixed-bottom');
-				$('#nav1').css({
-					'border-radius': '0 0 0 32px',
-					'border-width': '0 0 8px 0'
-				}).appendTo('nav.fixed-top');
+				$('#nav3')
+					.css({
+						'border-radius': '32px 0 0 0',
+						'border-width': '8px 0 0 0',
+					})
+					.appendTo('nav.fixed-bottom');
+				$('#nav1')
+					.css({
+						'border-radius': '0 0 0 32px',
+						'border-width': '0 0 8px 0',
+					})
+					.appendTo('nav.fixed-top');
 			}
 		}
 		let buttons = ['X', 'Y', 'B'];
-		if ((/(xbox|arcade)/i).test(subState)) {
+		if (/(xbox|arcade)/i.test(subState)) {
 			buttons = ['Y', 'X', 'B'];
 			adjust(true);
-		} else if ((/ps/i).test(subState)) {
+		} else if (/ps/i.test(subState)) {
 			buttons = ['', '', ''];
 			adjust(true);
 		} else {
@@ -192,5 +207,5 @@ module.exports = function () {
 		$('#nav0Btn span').text(buttons[0]);
 		$('#nav2Btn span').text(buttons[1]);
 		$('#nav3Btn span').text(buttons[2]);
-	}
-}
+	};
+};

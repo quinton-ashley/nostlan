@@ -16,9 +16,11 @@ class CuiState extends cui.State {
 			await cui.boxOpenMenu.load();
 			cui.change('boxOpenMenu');
 			$('#libMain').hide();
-		} else if (act == 'y') { // edit
+		} else if (act == 'y') {
+			// edit
 			cui.change('editSelect_2');
-		} else if (act == 'r' || act == 'l' || act == 'rt' || act == 'lt') { // flip
+		} else if (act == 'r' || act == 'l' || act == 'rt' || act == 'lt') {
+			// flip
 			let ogHeight = $cursor.height();
 			await this.flipGameBox($cursor);
 			if (Math.abs(ogHeight - $cursor.height()) > 10) {
@@ -43,14 +45,9 @@ class CuiState extends cui.State {
 		}
 		let $elems;
 		if (prevClass && prevClass != 'hide') {
-			$elems = [
-				$cursor.find('.hq.' + prevClass)
-			];
+			$elems = [$cursor.find('.hq.' + prevClass)];
 		} else {
-			$elems = [
-				$cursor.find('section'),
-				$cursor.find('section img.hq')
-			];
+			$elems = [$cursor.find('section'), $cursor.find('section img.hq')];
 		}
 		for (let $elem of $elems) {
 			$elem.removeClass(prevClass);
@@ -61,6 +58,7 @@ class CuiState extends cui.State {
 
 	async flipGameBox($cursor, flipToFront) {
 		let game = cui.libMain.getCurGame();
+		if (!game) return;
 		let template = nostlan.themes[game.sys || sys].template;
 		let imgType = '';
 		if (!$cursor.hasClass('flip') && !flipToFront) {
@@ -103,7 +101,8 @@ class CuiState extends cui.State {
 				if (await this.editImgSrc($cursor, $box, g, 'box')) break;
 				hasBox = false;
 			}
-			if ((game.sys || sys) != 'switch') $cursor.find('.shade').addClass('hide');
+			if ((game.sys || sys) != 'switch')
+				$cursor.find('.shade').addClass('hide');
 			let $cover = $cursor.find('img.coverBack.hq');
 			if (!$cover.length) $cover = $cursor.find('img.coverFull.hq');
 			if (!$cover.length) $cover = $cursor.find('section img.hq');
@@ -132,10 +131,10 @@ class CuiState extends cui.State {
 		let $images = $cursor.find('img');
 		for (let i = 0; i < 4; i += 2) {
 			if ($images.eq(i).hasClass('hide')) continue;
-			if ((changeToFullRes &&
-					$images.eq(i).css('display') == 'none') ||
-				(!changeToFullRes &&
-					$images.eq(i).css('display') == 'block')) {
+			if (
+				(changeToFullRes && $images.eq(i).css('display') == 'none') ||
+				(!changeToFullRes && $images.eq(i).css('display') == 'block')
+			) {
 				continue;
 			}
 			let img = $images.eq(i).prop('src');
@@ -145,9 +144,8 @@ class CuiState extends cui.State {
 			let date;
 			[img.ext, date] = img.ext.split('?');
 			let src = img.dir + '/' + img.name + img.ext;
-			if (!(await fs.exists(src.slice((win) ? 8 : 7)))) {
-				src = img.dir + '/' + img.name +
-					((img.ext == '.png') ? '.jpg' : '.png');
+			if (!(await fs.exists(src.slice(win ? 8 : 7)))) {
+				src = img.dir + '/' + img.name + (img.ext == '.png' ? '.jpg' : '.png');
 			}
 			let $img = $images.eq(i + 1);
 			src += '?' + date;
@@ -180,7 +178,11 @@ class CuiState extends cui.State {
 		let $menu = $reel.parent();
 		let idx = $menu.children().index($reel);
 		let scale = $(window).height() / $cursor.height();
-		$menu[0].style.transform = `scale(${scale}) translate(${-($reel.width()*idx + $cursor.width()*.5 - $(window).width()*.5)}px, 0)`;
+		$menu[0].style.transform = `scale(${scale}) translate(${-(
+			$reel.width() * idx +
+			$cursor.width() * 0.5 -
+			$(window).width() * 0.5
+		)}px, 0)`;
 	}
 
 	beforeMove($cursor, state) {

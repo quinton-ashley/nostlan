@@ -1,8 +1,40 @@
 class CuiState extends cui.State {
 	constructor() {
 		super();
-		this.imgTypes = ['cover', 'coverBack', 'coverSide', 'coverFull', 'disc', 'box', 'boxBack', 'boxSide', 'boxOpen', 'boxOpenMask', 'coverInner', 'manual', 'memory', 'memoryBack', 'promo'];
-		this.imgNames = ['front cover', 'back cover', 'side cover', 'full cover', 'disc', 'front box', 'back box', 'side box', 'open box', 'open box mask', 'inner cover', 'manual', 'memory', 'back memory', 'promo'];
+		this.imgTypes = [
+			'cover',
+			'coverBack',
+			'coverSide',
+			'coverFull',
+			'disc',
+			'box',
+			'boxBack',
+			'boxSide',
+			'boxOpen',
+			'boxOpenMask',
+			'coverInner',
+			'manual',
+			'memory',
+			'memoryBack',
+			'promo',
+		];
+		this.imgNames = [
+			'front cover',
+			'back cover',
+			'side cover',
+			'full cover',
+			'disc',
+			'front box',
+			'back box',
+			'side box',
+			'open box',
+			'open box mask',
+			'inner cover',
+			'manual',
+			'memory',
+			'back memory',
+			'promo',
+		];
 	}
 
 	async onAction(act) {
@@ -22,7 +54,7 @@ class CuiState extends cui.State {
 		this.imgTypes[4] = syst.mediaType;
 		this.imgNames[4] = syst.mediaType;
 
-		let menu = 'h1.title0 ' + lang.imgMenu.title0;
+		let menu = 'h1.title0 ' + lang.imgMenu.title0 + '\n';
 		for (let i in this.imgTypes) {
 			if (i % 3 == 0) menu += `.row.row-x\n`;
 			let type = this.imgTypes[i];

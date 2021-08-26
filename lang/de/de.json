@@ -206,5 +206,11 @@
 		"opt2": "Spielstand speichern",
 		"opt3": "Emulation stoppen",
 		"opt4": ["mute", "unmute"]
+	},
+        "imgMenu": {
+		"title0": "Image Typ auswählen"
+	},
+	"imageSearchMenu": {
+		"opt0": "Image typ wird heruntergeladen"
 	}
 }

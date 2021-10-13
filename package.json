@@ -129,6 +129,7 @@
 		"rebuild-mi": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
 		"rebuild-m1": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --host_arch=arm64 --target_arch=arm64 --arch=arm64 --disturl=https://atom.io/download/atom-shell",
 		"rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
+		"relink": "npm link ../../pkg/contro-ui",
 		"dist-l": "electron-builder -l",
 		"delete-tags": "git tag | xargs git tag -d",
 		"delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
@@ -137,5 +138,5 @@
 		"postversion": "git push",
 		"V": "npm version minor --force"
 	},
-	"version": "1.21.16"
+	"version": "1.21.17"
 }

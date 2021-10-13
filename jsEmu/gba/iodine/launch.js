@@ -33,7 +33,7 @@ class Nostlan_iodine {
 	// The array index below corresponds to the button bit index.
 	controIn(contro) {
 		if (!this.ready) return;
-		let port = contro.port;
+
 		for (let i in this.btns) {
 			if (contro.btns[this.btns[i]] == 1) {
 				IodineGUI.Iodine.keyDown(i);
@@ -46,7 +46,7 @@ class Nostlan_iodine {
 	close() {}
 
 	pause(toggle) {
-		if (typeof toggle == 'undefined') toggle = true;
+		toggle ??= true;
 		if (toggle) {
 			IodineGUI.Iodine.pause();
 		} else {

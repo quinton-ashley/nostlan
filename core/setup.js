@@ -2,8 +2,9 @@
  * setup.js : quinton-ashley
  *
  * Quinton's basecode setup file for electron apps.
+ * Includes many necessary additions to nodejs!
  */
-module.exports = async function(arg) {
+module.exports = async function (arg) {
 	global.arg = arg;
 	global.log = console.log;
 	global.er = console.error;
@@ -21,7 +22,7 @@ module.exports = async function(arg) {
 	global.spawn = require('await-spawn');
 	global.semver = require('semver');
 
-	global.klaw = function(dir, opt) {
+	global.klaw = function (dir, opt) {
 		return new Promise((resolve, reject) => {
 			let items = [];
 			let i = 0;
@@ -53,11 +54,11 @@ module.exports = async function(arg) {
 		osType = 'linux';
 	}
 
-	String.prototype.insert = function(insert, index) {
+	String.prototype.insert = function (insert, index) {
 		return this.slice(0, index) + insert + this.slice(index);
 	};
 
-	Number.prototype.map = function(a, b, c, d) {
+	Number.prototype.map = function (a, b, c, d) {
 		return c + (d - c) * ((this - a) / (b - a));
 	};
 
@@ -72,7 +73,7 @@ module.exports = async function(arg) {
 	global.electron = require('electron').remote;
 	global.dialog = {};
 
-	dialog.select = async function(opt) {
+	dialog.select = async function (opt) {
 		opt = opt || {};
 		if (opt.types || opt.type) {
 			let types = opt.types || opt.type;
@@ -108,14 +109,14 @@ module.exports = async function(arg) {
 		return (files && files.length == 1) ? files[0] : files;
 	};
 
-	dialog.selectFile = async function(msg, opt) {
+	dialog.selectFile = async function (msg, opt) {
 		opt = opt || {};
 		opt.type = 'file';
 		opt.msg = 'Select File: ' + msg;
 		return await dialog.select(opt);
 	};
 
-	dialog.selectFiles = async function(msg, opt) {
+	dialog.selectFiles = async function (msg, opt) {
 		opt = opt || {};
 		opt.type = 'files';
 		opt.msg = 'Select Files: ' + msg;
@@ -123,7 +124,7 @@ module.exports = async function(arg) {
 	};
 	dialog.selectMulti = dialog.selectFiles;
 
-	dialog.selectDir = async function(msg, opt) {
+	dialog.selectDir = async function (msg, opt) {
 		opt = opt || {};
 		opt.type = 'dir';
 		opt.msg = 'Select Folder: ' + msg;
@@ -155,18 +156,18 @@ module.exports = async function(arg) {
 	if (mac) toggleDev = ['command+option+i', 'command+shift+i'];
 	if (win || linux) toggleDev = ['ctrl+alt+i', 'ctrl+shift+i'];
 
-	Mousetrap.bind(toggleDev, function() {
+	Mousetrap.bind(toggleDev, function () {
 		electron.getCurrentWindow().toggleDevTools();
 		return false;
 	});
-	Mousetrap.bind(['command+r', 'ctrl+r'], function() {
+	Mousetrap.bind(['command+r', 'ctrl+r'], function () {
 		electron.getCurrentWindow().reload();
 		return false;
 	});
-	Mousetrap.bind('space', function() {
+	Mousetrap.bind('space', function () {
 		return false;
 	});
-	Mousetrap.bind('escape', function() {
+	Mousetrap.bind('escape', function () {
 		electron.getCurrentWindow().minimize();
 	});
 

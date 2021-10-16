@@ -51,6 +51,8 @@
 	],
 	"dependencies": {
 		"7zip-bin": "*",
+		"@electron/remote": "^2.0.1",
+		"@mapbox/node-pre-gyp": "^1.0.5",
 		"@popperjs/core": "^2.9.3",
 		"acorn": "^8.5.0",
 		"await-spawn": "^4.0.2",
@@ -82,6 +84,7 @@
 		"moment": "^2.29.1",
 		"mousetrap": "^1.6.5",
 		"node-7z": "^3.0.0",
+		"node-abi": "^3.2.0",
 		"node-fetch": "^2.6.2",
 		"open": "^8.3.0",
 		"popper.js": "^1.16.1",
@@ -93,7 +96,7 @@
 		"tabletojson": "^2.0.7",
 		"tether": "*",
 		"three": "^0.133.1",
-		"usb": "^1.7.2",
+		"usb": "1.7.0",
 		"yauzl-promise": "^2.1.3"
 	},
 	"description": "Nostlan is a nostlagia launcher for retro and current gen video game emulators!",
@@ -126,7 +129,7 @@
 		"rebuild-l": "rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
 		"rebuild-mi": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
 		"rebuild-m1": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --host_arch=arm64 --target_arch=arm64 --arch=arm64 --disturl=https://atom.io/download/atom-shell",
-		"rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
+		"rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=15.2.0 --disturl=https://atom.io/download/atom-shell",
 		"relink": "npm link ../../pkg/contro-ui",
 		"dist-l": "electron-builder -l",
 		"delete-tags": "git tag | xargs git tag -d",
@@ -136,5 +139,5 @@
 		"postversion": "git push",
 		"V": "npm version minor --force"
 	},
-	"version": "1.21.20"
+	"version": "1.21.21"
 }

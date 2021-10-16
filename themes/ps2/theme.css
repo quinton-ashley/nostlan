@@ -1,27 +1,31 @@
 /*================ PS2 Cover========================*/
 @font-face {
 	font-family: ryp;
-	src: url("../fonts/ryp.ttf");
+	size-adjust: 62%;
+	src: url('../fonts/ryp.ttf');
 }
 @font-face {
 	font-family: 'Sownie';
-	src: url("../fonts/sownie.ttf");
+	src: url('../fonts/sownie.ttf');
 }
 
 .ps2 #nav1Btn {
 	font-family: 'Sownie', sans-serif;
 	font-size: 2.6vw;
-	line-height: 2.6vw;
 	text-transform: uppercase;
 	border: none;
 	box-shadow: none;
-	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
+	text-shadow: 0 0.3px 0 rgba(255, 255, 255, 0.5);
 	transform: scale(1, 1.4);
 	text-rendering: geometricPrecision;
 }
 
+/* hacky stuff to change the width of the letters */
 .ps2 .navPanel .text {
 	font-family: ryp, sans-serif;
+	transform: scale(0.8, 1);
+	margin-left: -1.5vw;
+	margin-right: -1.5vw;
 }
 
 .ps2 .square span {
@@ -31,7 +35,7 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
-	transform: scale(.6);
+	transform: scale(0.6);
 }
 
 .ps2 .circle span {
@@ -54,7 +58,7 @@
 
 .ps2 .cross span:after,
 .ps2 .cross span:before {
-	content: "";
+	content: '';
 	font-size: 0;
 	width: 0;
 	height: 100%;
@@ -70,16 +74,17 @@
 }
 
 .ps2 .triangle span {
-    position: absolute;
+	position: relative;
+	top: -2.55vw;
+	left: -0.5vw;
 	font-size: 0;
 	border-left: 1.7vw solid transparent;
 	border-right: 1.7vw solid transparent;
 	border-bottom: 2.8vw solid #1d6f56;
-	top: -3.6vh;
 }
 
 .ps2 .triangle span:after {
-	content: "";
+	content: '';
 	position: absolute;
 	border-left: 1.7vw solid transparent;
 	border-right: 1.7vw solid transparent;
@@ -105,7 +110,7 @@ game.ps2 .crop.cover {
 game.ps2 img.cover {
 	height: 100%;
 	width: 100%;
-	transform: scale(.966);
+	transform: scale(0.966);
 }
 
 game.ps2 img.coverFull {

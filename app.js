@@ -12,10 +12,10 @@
 	arg.node_modules = arg.__root + '/node_modules';
 	let version = require(arg.__root + '/package.json').version;
 
-	const {
-		app,
-		BrowserWindow
-	} = require('electron');
+	let remote = require('@electron/remote/main');
+	remote.initialize();
+
+	const { app, BrowserWindow } = require('electron');
 	app.allowRendererProcessReuse = false;
 
 	// command line options
@@ -53,9 +53,12 @@
 				node_modules: arg.node_modules
 			};
 			log(locals);
-			let pug = await setupPug({
-				pretty: true
-			}, locals);
+			let pug = await setupPug(
+				{
+					pretty: true
+				},
+				locals
+			);
 			// pug.on('error', err => console.error('electron-pug error', err))
 			pug.on('error', function () {});
 		} catch (err) {
@@ -81,6 +84,7 @@
 		}
 
 		mainWindow = new BrowserWindow(windowPrms);
+		remote.enable(mainWindow.webContents);
 
 		let url = 'file://' + arg.__root;
 		if (!arg.cli) {
@@ -123,5 +127,4 @@
 			createWindow();
 		}
 	});
-
 })();

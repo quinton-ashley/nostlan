@@ -64,13 +64,15 @@ class CuiState extends cui.State {
 
 		if (prefs.args.testIntro) return;
 
+		prefs[sys] ??= {};
+
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
 		let gamesPath = `${systemsDir}/${sys}/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		games = [];
-		if (await fs.exists(gamesPath)) {
+		if ((await fs.exists(gamesPath)) && prefs[sys]?.libs) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games || [];
 		}
 		if (games.length == 0) {
@@ -83,7 +85,6 @@ class CuiState extends cui.State {
 			gameLibDir = gameLibDir || `${systemsDir}/${sys}/games`;
 			log('searching for games in: ' + gameLibDir);
 
-			prefs[sys] ??= {};
 			prefs[sys].libs ??= [];
 			if (!prefs[sys].libs.includes(gameLibDir)) {
 				prefs[sys].libs.push(gameLibDir);
@@ -337,11 +338,13 @@ class CuiState extends cui.State {
 			lbls += `img.sticker.lg.s${idx}(src="${stkLrg}")\n`;
 		}
 		lbls += `.title.label-input\n`;
-		let fontSize = title.length.map(1, 80, 100, 50);
-		let padding = title.length.map(1, 40, 15, 0);
+		let fontSize = title.length.map(1, 80, 2, 0.5);
+		if (title.length <= 7) fontSize = 2.5;
+		let padding = title.length.map(1, 40, 2, 0);
+		if (padding < 0.5) padding = 0.5;
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
-		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}%; padding-top:${padding}%;") ${title}\n`;
+		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${padding}vw;") ${title}\n`;
 
 		lbls += `.id.label-input\n`;
 		let unidentified = game.id.includes('UNIDENTIFIED');

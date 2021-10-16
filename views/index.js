@@ -7,9 +7,6 @@ module.exports = async function (args) {
 	await require(args.__root + '/core/setup.js')(args);
 	log('version: ' + pkg.version);
 	global.util = require(__root + '/core/util.js');
-	// TODO: make/find something better than textfill
-	// I want the button text to be centered regardless of its size
-	require(__root + '/core/jquery.textfill.min.js')();
 	require('jquery-ui-dist/jquery-ui'); // used for autocomplete
 
 	// Users can put their emu folder with all their games

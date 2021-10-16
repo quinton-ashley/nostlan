@@ -101,7 +101,9 @@ module.exports = async function (args) {
 			prefs = await prefsMng.load(prefs);
 			prefs.args = args;
 		}
-		electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
+		if (!args.dev) {
+			electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
+		}
 
 		let sysMenu = `h1.title0\n`;
 

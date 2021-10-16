@@ -9,7 +9,7 @@
 	"build": {
 		"appId": "com.qashto.nostlan",
 		"copyright": "Copyright © 2018-2021 Quinton Ashley",
-		"electronVersion": "13.1.7",
+		"electronVersion": "15.2.0",
 		"mac": {
 			"category": "public.app-category.game",
 			"target": [
@@ -128,7 +128,7 @@
 		"clean": "sudo chmod -R 777 .",
 		"rebuild-l": "rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
 		"rebuild-mi": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --disturl=https://atom.io/download/atom-shell",
-		"rebuild-m1": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=13.1.7 --host_arch=arm64 --target_arch=arm64 --arch=arm64 --disturl=https://atom.io/download/atom-shell",
+		"rebuild-m": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=15.2.0 --host_arch=arm64 --target_arch=arm64 --arch=arm64 --disturl=https://atom.io/download/atom-shell",
 		"rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=15.2.0 --disturl=https://atom.io/download/atom-shell",
 		"relink": "npm link ../../pkg/contro-ui",
 		"dist-l": "electron-builder -l",
@@ -139,5 +139,5 @@
 		"postversion": "git push",
 		"V": "npm version minor --force"
 	},
-	"version": "1.21.21"
+	"version": "1.21.22"
 }

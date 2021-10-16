@@ -1,6 +1,26 @@
 .arcade {
-	--nav-color: #11426C;
-	--nav-text-color: #00274f;
-	--navBtns-image: radial-gradient(circle at 50%, #00274f 0%, #00274f 5%, #11426C 40%, #11426C 45%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
-	--navBtns-hover-image: radial-gradient(circle at 50%, #00274f 0%, #00274f 15%, #11426C 40%, #00274f 50%, #000 55%, #11426C 55%, #00274f 80%);
+	--nav-color: #11426c;
+	--nav-text-color: #001;
+	--nav-border-color: #00274f;
+	--navBtns-image: radial-gradient(
+		circle at 50%,
+		#00274f 0%,
+		#00274f 5%,
+		#11426c 40%,
+		#11426c 45%,
+		#00274f 50%,
+		#000 55%,
+		#11426c 55%,
+		#00274f 80%
+	);
+	--navBtns-hover-image: radial-gradient(
+		circle at 50%,
+		#00274f 0%,
+		#00274f 15%,
+		#11426c 40%,
+		#00274f 50%,
+		#000 55%,
+		#11426c 55%,
+		#00274f 80%
+	);
 }

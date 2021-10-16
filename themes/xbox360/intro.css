@@ -1,3 +1,7 @@
+body {
+	background: #000;
+}
+
 .spinner {
 	position: absolute;
 	top: calc(50% - 50px);

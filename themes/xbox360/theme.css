@@ -1,23 +1,19 @@
 /*================Xbox 360 Cover========================*/
 @font-face {
 	font-family: X360;
-	src: url("../fonts/X360.ttf");
+	src: url('../fonts/X360.ttf');
 }
 
 .xbox360 .navPanel .text {
-	font-family: X360;
-	font-weight: 700;
+	font-family: X360, sans-serif;
 }
 
 .xbox360 #nav1Btn {
-	font-family: X360;
+	font-family: X360, sans-serif;
 	font-size: 3.6vw;
-	line-height: 3.6vw;
 	text-transform: uppercase;
-	vertical-align: middle;
-	border: none;
-	box-shadow: none;
-	text-shadow: 0 0.3px 0 rgba(255, 255, 255, .5);
+	text-shadow: 0 0.3px 0 rgba(255, 255, 255, 0.5);
+	transform: translate(0, 10%);
 }
 /*=====Xbox 360===*/
 game.xbox360 .crop.coverFull {
@@ -37,7 +33,7 @@ game.xbox360 .crop.cover {
 game.xbox360 img.cover {
 	height: 100%;
 	width: 100%;
-	transform: scale(.966);
+	transform: scale(0.966);
 }
 
 game.xbox360 img.coverFull {

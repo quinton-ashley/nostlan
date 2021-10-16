@@ -56,19 +56,20 @@ class CuiState extends cui.State {
 		if (syst.gameExts) {
 			// 'Game files must have the file extension'
 			note += lang.emptyGameLibMenu.msg1_0 + ':<br>';
-		}
-		for (let i in syst.gameExts) {
-			note += '.' + syst.gameExts[i];
-			if (i != syst.gameExts.length - 1) {
-				note += ', ';
+			for (let i in syst.gameExts) {
+				note += '.' + syst.gameExts[i];
+				if (i != syst.gameExts.length - 1) {
+					note += ', ';
+				}
+				if (i == syst.gameExts.length - 2) {
+					// 'or '
+					note += lang.emptyGameLibMenu.msg1_1 + ' ';
+				}
 			}
-			if (i == syst.gameExts.length - 2) {
-				// 'or '
-				note += lang.emptyGameLibMenu.msg1_1 + ' ';
-			}
+			note += '<br><br>';
 		}
 		// "If you don't have any
-		note += '<br><br>' + lang.emptyGameLibMenu.msg1_2 + ' ';
+		note += lang.emptyGameLibMenu.msg1_2 + ' ';
 		// games yet you might want to install the
 		note += syst.name + ' ' + lang.emptyGameLibMenu.msg1_3;
 		note += ' ' + emus[emu].name + ' ';

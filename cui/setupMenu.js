@@ -1,5 +1,4 @@
 class CuiState extends cui.State {
-
 	async onAction(act) {
 		if (cui.isButton(act)) return;
 
@@ -50,8 +49,7 @@ class CuiState extends cui.State {
 						} catch (ror) {
 							if (!prefs.load.readOnlyFS) {
 								opn(dir);
-								await cui.error(lang.setupMenu.err2 + '\n' + dir,
-									lang.setupMenu.err1, 'quit');
+								await cui.error(lang.setupMenu.err2 + '\n' + dir, lang.setupMenu.err1, 'quit');
 							}
 						}
 					}

@@ -52,9 +52,9 @@
 	"dependencies": {
 		"7zip-bin": "*",
 		"@popperjs/core": "^2.9.3",
-		"acorn": "^8.4.1",
+		"acorn": "^8.5.0",
 		"await-spawn": "^4.0.2",
-		"bootstrap": "^5.0.2",
+		"bootstrap": "^5.1.3",
 		"byte-base64": "^1.1.0",
 		"chrome-finder": "^1.0.7",
 		"circletype": "^2.3.0",
@@ -73,33 +73,31 @@
 		"jimp": "^0.16.1",
 		"jquery": "*",
 		"jquery-ui-dist": "^1.12.1",
-		"klaw": "^3.0.0",
+		"klaw": "^4.0.1",
 		"linux-distro": "^4.0.1",
 		"lodash": "*",
-		"markdown-it": "^12.1.0",
+		"markdown-it": "^12.2.0",
 		"material-design-icons-iconfont": "^6.1.0",
 		"minimist": "^1.2.5",
 		"moment": "^2.29.1",
 		"mousetrap": "^1.6.5",
 		"node-7z": "^3.0.0",
-		"node-fetch": "^2.6.1",
-		"open": "^8.2.1",
+		"node-fetch": "^2.6.2",
+		"open": "^8.3.0",
 		"popper.js": "^1.16.1",
 		"probe-image-size": "^7.2.1",
 		"pug": "*",
-		"puppeteer-core": "^10.1.0",
+		"puppeteer-core": "^10.4.0",
 		"semver": "^7.3.5",
 		"sharp": "^0.27.2",
 		"tabletojson": "^2.0.7",
 		"tether": "*",
-		"three": "^0.131.3",
-		"usb": "^1.7.1",
+		"three": "^0.133.1",
+		"usb": "^1.7.2",
 		"yauzl-promise": "^2.1.3"
 	},
 	"description": "Nostlan is a nostlagia launcher for retro and current gen video game emulators!",
-	"devDependencies": {
-		"node-abi": "^2.30.0"
-	},
+	"devDependencies": {},
 	"entry point": "app.js",
 	"keywords": [
 		"emulation",
@@ -138,5 +136,5 @@
 		"postversion": "git push",
 		"V": "npm version minor --force"
 	},
-	"version": "1.21.17"
+	"version": "1.21.18"
 }

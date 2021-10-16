@@ -159,11 +159,7 @@ module.exports = async function (args) {
 		});
 		process.on('uncaughtException', (ror) => {
 			console.error(ror);
-			cui.err(
-				`<textarea rows=8>${ror.stack}</textarea>`,
-				'Nostlan crashed :(',
-				'quit'
-			);
+			cui.err(`<textarea rows=8>${ror.stack}</textarea>`, 'Nostlan crashed :(', 'quit');
 		});
 		cui.bindWheel($('.reels'));
 
@@ -229,19 +225,12 @@ module.exports = async function (args) {
 		}
 		$('body').addClass('waiting'); // changes mouse pointer into progress indicator
 
-		global.lang = JSON.parse(
-			await fs.readFile(
-				`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`,
-				'utf8'
-			)
-		);
+		global.lang = JSON.parse(await fs.readFile(`${__root}/lang/${prefs.ui.lang}/${prefs.ui.lang}.json`, 'utf8'));
 
 		// fill in incomplete translations with english so the app doesn't crash
 		if (prefs.ui.lang != 'en') {
 			const deepExtend = require('deep-extend');
-			let en = JSON.parse(
-				await fs.readFile(`${__root}/lang/en/en.json`, 'utf8')
-			);
+			let en = JSON.parse(await fs.readFile(`${__root}/lang/en/en.json`, 'utf8'));
 			deepExtend(en, lang);
 			lang = en;
 			log(lang);
@@ -289,7 +278,7 @@ module.exports = async function (args) {
 			await cui.loading.loadSharedAssets(['labels', 'plastic']);
 		}
 		let lblImg = prefs.nlaDir + '/images/labels/long/lbl0.png';
-		$('.label-input img').prop('src', lblImg + '?' + Date.now());
+		if (prefs.nlaDir) $('.label-input img').prop('src', lblImg + '?' + Date.now());
 
 		cui.editView('boxOpenMenu', {
 			keepBackground: true,
@@ -299,19 +288,16 @@ module.exports = async function (args) {
 		$('body').removeClass('waiting');
 		cui.clearDialogs();
 
-		if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
-			await cui.libMain.load();
-			if (!args.dev && !prefs.saves) {
-				cui.change('addSavesPathMenu');
+		if (prefs.nlaDir) {
+			if ((args.dev && !args.testSetup) || nostlan.premium.verify()) {
+				await cui.libMain.load();
+				if (!args.dev && !prefs.saves) {
+					cui.change('addSavesPathMenu');
+				}
+			} else if ((await prefsMng.canLoad()) && !nostlan.premium.status) {
+				cui.change('donateMenu');
 			}
-		} else if (
-			!args.testSetup &&
-			(await prefsMng.canLoad()) &&
-			!nostlan.premium.status
-		) {
-			cui.change('donateMenu');
 		} else {
-			prefs.version = pkg.version;
 			cui.change('welcomeMenu');
 		}
 		await delay(1000);

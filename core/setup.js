@@ -27,10 +27,9 @@ module.exports = async function (arg) {
 			let items = [];
 			let i = 0;
 			require('klaw')(dir, opt)
-				.on('data', item => {
+				.on('data', (item) => {
 					if (i > 0) {
-						if (!(mac && i == 1 &&
-								path.parse(item.path).base == '.DS_Store')) {
+						if (!(mac && i == 1 && path.parse(item.path).base == '.DS_Store')) {
 							if (win) item.path = item.path.replace(/\\/g, '/');
 							items.push(item.path);
 						}
@@ -43,9 +42,9 @@ module.exports = async function (arg) {
 	};
 
 	global.osType = os.type();
-	global.linux = (osType == 'Linux');
-	global.mac = (osType == 'Darwin');
-	global.win = (osType == 'Windows_NT');
+	global.linux = osType == 'Linux';
+	global.mac = osType == 'Darwin';
+	global.win = osType == 'Windows_NT';
 	if (win) {
 		osType = 'win';
 	} else if (mac) {
@@ -106,7 +105,7 @@ module.exports = async function (arg) {
 				files[i] = files[i].replace(/\\/g, '/');
 			}
 		}
-		return (files && files.length == 1) ? files[0] : files;
+		return files && files.length == 1 ? files[0] : files;
 	};
 
 	dialog.selectFile = async function (msg, opt) {

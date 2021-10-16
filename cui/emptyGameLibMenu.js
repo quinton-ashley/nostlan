@@ -1,24 +1,20 @@
 class CuiState extends cui.State {
-
 	async onAction(act) {
 		if (act == 'find') {
 			log('user selecting gameLibDir');
 			// `select ${syst.name} games folder`
 			let gameLibDir = await dialog.selectDir(
-				lang.emptyGameLibMenu.msg0_0 + ' ' +
-				syst.name + ' ' +
-				lang.emptyGameLibMenu.msg0_1);
+				lang.emptyGameLibMenu.msg0_0 + ' ' + syst.name + ' ' + lang.emptyGameLibMenu.msg0_1
+			);
 			log('user selected: ' + gameLibDir);
-			if (!gameLibDir ||
-				!(await fs.exists(gameLibDir))) {
+			if (!gameLibDir || !(await fs.exists(gameLibDir))) {
 				// 'Game library does not exist'
-				cui.err(syst.name + ' ' +
-					lang.sysMenu.msg0 + ': ' +
-					gameLibDir, 404);
+				cui.err(syst.name + ' ' + lang.sysMenu.msg0 + ': ' + gameLibDir, 404);
 				return;
 			}
+
 			await cui.libMain.load(gameLibDir);
-		} else if (act.slice(0,7) == 'install') {
+		} else if (act.slice(0, 7) == 'install') {
 			emu = act.slice(8);
 			let app = await nostlan.launcher.getEmuApp();
 			if (app && linux && !/\//.test(app)) {
@@ -33,33 +29,33 @@ class CuiState extends cui.State {
 			app = await cui.emuAppMenu.installEmuApp();
 			if (!app) return;
 			// 'Success!' 'Installed'
-			cui.alert(lang.emuAppMenu.msg11 + ' ' +
-				emus[emu].name, lang.alertMenu.title0,
-				'sysMenu');
+			cui.alert(lang.emuAppMenu.msg11 + ' ' + emus[emu].name, lang.alertMenu.title0, 'sysMenu');
 		}
 	}
 
 	async onChange() {
 		this.$elem.find('.cui').remove();
-		this.$elem.append(pug(`
+		this.$elem.append(
+			pug(`
 .cui(name='find')
 	i.material-icons.md-left wysiwyg
 	.text.opt0 browse for games folder
-	i.material-icons.md-right.invis wysiwyg`));
+	i.material-icons.md-right.invis wysiwyg`)
+		);
 		for (let i in syst.emus) {
 			let _emu = syst.emus[i];
 			let instOpt = `
 .cui(name='install-${_emu}')
 	i.material-icons.md-left get_app
-	.text.opt${i+1} install ${emus[_emu].name}
-	i.material-icons.md-right.invis get_app`
+	.text.opt${i + 1} install ${emus[_emu].name}
+	i.material-icons.md-right.invis get_app`;
 			this.$elem.append(pug(instOpt));
 		}
 		cui.addListeners(this.id);
 		let note = '';
 		if (syst.gameExts) {
 			// 'Game files must have the file extension'
-			note += lang.emptyGameLibMenu.msg1_0 + ': ';
+			note += lang.emptyGameLibMenu.msg1_0 + ':<br>';
 		}
 		for (let i in syst.gameExts) {
 			note += '.' + syst.gameExts[i];
@@ -72,13 +68,13 @@ class CuiState extends cui.State {
 			}
 		}
 		// "If you don't have any
-		note += '\n' + lang.emptyGameLibMenu.msg1_2 + ' ';
+		note += '<br><br>' + lang.emptyGameLibMenu.msg1_2 + ' ';
 		// games yet you might want to install the
 		note += syst.name + ' ' + lang.emptyGameLibMenu.msg1_3;
 		note += ' ' + emus[emu].name + ' ';
 		// emulator app first."
 		note += lang.emptyGameLibMenu.msg1_4;
-		this.$elem.find('.msg1').text(note);
+		this.$elem.find('.msg1').html(note);
 	}
 }
 module.exports = new CuiState();

@@ -1,9 +1,10 @@
 module.exports = async function (defaults) {
 	let ver = prefs.version || pkg.version;
 	prefs.version = pkg.version;
-
-	systemsDir = path.join(prefs.nlaDir, '..');
-	systemsDir = systemsDir.replace(/\\/g, '/');
+	if (prefs.nlaDir) {
+		systemsDir = path.join(prefs.nlaDir, '..');
+		systemsDir = systemsDir.replace(/\\/g, '/');
+	}
 
 	for (let _sys in systems) {
 		let _syst = systems[_sys];
@@ -63,9 +64,7 @@ module.exports = async function (defaults) {
 	if (semver.gte(ver, '1.16.4')) return;
 
 	if (linux) {
-		emus.mame.appDirs.linux = [
-			"$home/.mame"
-		];
+		emus.mame.appDirs.linux = ['$home/.mame'];
 	}
 
 	if (semver.gte(ver, '1.13.5')) return;
@@ -97,10 +96,7 @@ module.exports = async function (defaults) {
 		if (!files.length) {
 			await fs.remove(ps3Games);
 			try {
-				await fs.symlink(
-					`${systemsDir}/${sys}/rpcs3/dev_hdd0/game`,
-					ps3Games, 'dir'
-				);
+				await fs.symlink(`${systemsDir}/${sys}/rpcs3/dev_hdd0/game`, ps3Games, 'dir');
 			} catch (ror) {
 				er(ror);
 			}
@@ -181,22 +177,28 @@ module.exports = async function (defaults) {
 		let _syst = systems[_sys];
 		if (!_syst.emus) continue;
 		let _emu = _syst.emus[0];
-		let moveDirs = [{
-			src: `${systemsDir}/${emus[_emu].name}`,
-			dest: `${systemsDir}/${_sys}`
-		}, {
-			src: `${systemsDir}/nostlan/${_sys}`,
-			dest: `${systemsDir}/${_sys}/images`
-		}, {
-			src: `${systemsDir}/${_sys}/BIN`,
-			dest: `${systemsDir}/${_sys}/${_emu}`
-		}, {
-			src: `${systemsDir}/${_sys}/GAMES`, // make lowercase
-			dest: `${systemsDir}/${_sys}/_games` // temp folder
-		}, {
-			src: `${systemsDir}/${_sys}/_games`,
-			dest: `${systemsDir}/${_sys}/games`
-		}];
+		let moveDirs = [
+			{
+				src: `${systemsDir}/${emus[_emu].name}`,
+				dest: `${systemsDir}/${_sys}`
+			},
+			{
+				src: `${systemsDir}/nostlan/${_sys}`,
+				dest: `${systemsDir}/${_sys}/images`
+			},
+			{
+				src: `${systemsDir}/${_sys}/BIN`,
+				dest: `${systemsDir}/${_sys}/${_emu}`
+			},
+			{
+				src: `${systemsDir}/${_sys}/GAMES`, // make lowercase
+				dest: `${systemsDir}/${_sys}/_games` // temp folder
+			},
+			{
+				src: `${systemsDir}/${_sys}/_games`,
+				dest: `${systemsDir}/${_sys}/games`
+			}
+		];
 		// remove old game lib files, rescanning must be done
 		await fs.remove(`${usrDir}/_usr/${_sys}Games.json`);
 
@@ -223,8 +225,7 @@ module.exports = async function (defaults) {
 
 		if (prefs[_emu].app) {
 			let emuApp = util.absPath(prefs[_emu].app);
-			if (emuApp &&
-				!(await fs.exists(emuApp))) {
+			if (emuApp && !(await fs.exists(emuApp))) {
 				delete prefs[_emu].app;
 			}
 		}
@@ -233,10 +234,16 @@ module.exports = async function (defaults) {
 	await this.save();
 
 	if (errCount > 0) {
-		await cui.err(md('failed to automatically move some game library folders ' +
-				'to conform to the new template structure (introduced in v1.8.x). ' + 'You must change them manually.  Read the ' +
-				'[update log](https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v1.8.x) ' +
-				' on Nostlan\'s Github wiki to find out why these changes were made.'),
-			400, 'quit');
+		await cui.err(
+			md(
+				'failed to automatically move some game library folders ' +
+					'to conform to the new template structure (introduced in v1.8.x). ' +
+					'You must change them manually.  Read the ' +
+					'[update log](https://github.com/quinton-ashley/nostlan/wiki/Update-Log-v1.8.x) ' +
+					" on Nostlan's Github wiki to find out why these changes were made."
+			),
+			400,
+			'quit'
+		);
 	}
 };

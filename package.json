@@ -60,7 +60,7 @@
 		"byte-base64": "^1.1.0",
 		"chrome-finder": "^1.0.7",
 		"circletype": "^2.3.0",
-		"contro-ui": "^3.3.5",
+		"contro-ui": "^3.3.7",
 		"crc": "^3.8.0",
 		"deep-extend": "^0.6.0",
 		"delay": "^5.0.0",
@@ -139,5 +139,5 @@
 		"postversion": "git push",
 		"V": "npm version minor --force"
 	},
-	"version": "1.21.23"
+	"version": "1.22.0"
 }

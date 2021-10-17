@@ -1,7 +1,6 @@
 /*================gba Cover====================*/
 @font-face {
 	font-family: 'GameCube Basic 045';
-	size-adjust: 60%;
 	src: url('../fonts/GameCube Basic 045.ttf');
 }
 
@@ -12,7 +11,8 @@
 
 .gba .navPanel .text {
 	font-family: 'GameCube Basic 045', sans-serif;
-	font-variant: all-small-caps;
+	text-transform: uppercase;
+	transform: translate(0, -9%);
 }
 
 .gba #nav1Btn {

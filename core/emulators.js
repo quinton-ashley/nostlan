@@ -1,6 +1,7 @@
 module.exports = (() => {
 	let emus = {
-		bsnes: { // RIP Near 6/27/2021 :(
+		bsnes: {
+			// RIP Near 6/27/2021 :(
 			name: 'bsnes',
 			sys: 'snes',
 			appRegex: {
@@ -60,10 +61,7 @@ module.exports = (() => {
 				linux: 'org.citra_emu.citra'
 			},
 			appDirs: {
-				mac: [
-					'/Applications/Citra/nightly',
-					'/Applications/Citra/canary'
-				],
+				mac: ['/Applications/Citra/nightly', '/Applications/Citra/canary'],
 				win: [
 					'$home/AppData/Local/Citra/nightly-mingw',
 					'$home/AppData/Local/Citra/canary-mingw',
@@ -129,7 +127,8 @@ module.exports = (() => {
 					standalone: 'https://drive.google.com/uc?export=download&id=1XGf24WNHTkewXGD9_U7kH49nsjdYDrcK .zip'
 				},
 				'win-x64': {
-					standalone: 'https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe'
+					standalone:
+						'https://ci.appveyor.com/api/buildjobs/yk4i2mh53wukiy4d/artifacts/desmume%2Fsrc%2Ffrontend%2Fwindows%2F__bins%2FDeSmuME-VS2019-x64-Release.exe'
 				}
 			}
 		},
@@ -172,18 +171,13 @@ module.exports = (() => {
 			app: '$emu/launch.js',
 			jsEmu: true,
 			install: {
-				jsEmu: [
-					'https://unpkg.com/em-fceux/dist/fceux.js',
-					'https://unpkg.com/em-fceux/dist/fceux.wasm'
-				]
+				jsEmu: ['https://unpkg.com/em-fceux/dist/fceux.js', 'https://unpkg.com/em-fceux/dist/fceux.wasm']
 			},
 			latestVersion: '1.1.0',
 			dev: false,
 			mute: false,
 			volume: 20,
-			keyboard: [{},
-				{}
-			]
+			keyboard: [{}, {}]
 		},
 		iodine: {
 			name: 'IodineGBA',
@@ -198,9 +192,7 @@ module.exports = (() => {
 			dev: false,
 			mute: false,
 			volume: 20,
-			keyboard: [{},
-				{}
-			]
+			keyboard: [{}, {}]
 		},
 		mame: {
 			name: 'MAME',
@@ -222,24 +214,28 @@ module.exports = (() => {
 				mac: ['${app}', '-inipath', '${cwd}', '${game.id}'],
 				win: ['${app}', '-inipath', '${cwd}', '${game.id}']
 			},
-			site: "https://www.mamedev.org/",
+			site: 'https://www.mamedev.org/',
 			install: {
 				'mac-x64': {
-					prereqs: [{
-						installer: {
-							url: 'http://www.libsdl.org/release/SDL2-2.0.14.dmg',
-							dest: '/Library/Frameworks'
+					prereqs: [
+						{
+							installer: {
+								url: 'http://www.libsdl.org/release/SDL2-2.0.14.dmg',
+								dest: '/Library/Frameworks'
+							}
 						}
-					}],
+					],
 					portable: 'https://sdlmame.lngn.net/mame0233-x86.zip'
 				},
 				'mac-arm64': {
-					prereqs: [{
-						installer: {
-							url: 'http://www.libsdl.org/release/SDL2-2.0.14.dmg',
-							dest: '/Library/Frameworks'
+					prereqs: [
+						{
+							installer: {
+								url: 'http://www.libsdl.org/release/SDL2-2.0.14.dmg',
+								dest: '/Library/Frameworks'
+							}
 						}
-					}],
+					],
 					portable: 'https://sdlmame.lngn.net/mame0233-arm64.zip'
 				},
 				'win-x64': {
@@ -260,8 +256,8 @@ module.exports = (() => {
 				mac: ['${app}', '${game}'],
 				win: ['${app}', '${game}']
 			},
-			site: "http://melonds.kuribo64.net/",
-			patreon: "https://www.patreon.com/staplebutter",
+			site: 'http://melonds.kuribo64.net/',
+			patreon: 'https://www.patreon.com/staplebutter',
 			install: {
 				'linux-x64': {
 					pkgManager_flatpak: [
@@ -389,7 +385,8 @@ module.exports = (() => {
 					]
 				},
 				'win-x64': {
-					portable: 'https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_win64.7z'
+					portable:
+						'https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-264df11132f222ba7c2dcdada79909ece21f1316/rpcs3-v0.0.12-10950-264df111_win64.7z'
 				}
 			}
 		},
@@ -486,20 +483,19 @@ module.exports = (() => {
 			},
 			install: {
 				'linux-x64': {
-					pkgManager_arch: [
-						'pacman',
-						'-S',
-						'${app}'
-					]
+					pkgManager_arch: ['pacman', '-S', '${app}']
 				},
 				'mac-x64': {
-					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
+					standalone:
+						'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
 				},
 				'mac-arm64': {
-					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
+					standalone:
+						'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Mac-64bit.zip'
 				},
 				'win-x64': {
-					standalone: 'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip'
+					standalone:
+						'https://github.com/visualboyadvance-m/visualboyadvance-m/releases/latest/download/visualboyadvance-m-Win-64bit.zip'
 				}
 			}
 		},
@@ -510,10 +506,7 @@ module.exports = (() => {
 				linux: 'org.yuzu_emu.yuzu'
 			},
 			appDirs: {
-				win: [
-					'$home/AppData/Local/yuzu/yuzu-windows-msvc',
-					'$home/AppData/Local/yuzu/yuzu-windows-msvc-early-access'
-				]
+				win: ['$home/AppData/Local/yuzu/yuzu-windows-msvc', '$home/AppData/Local/yuzu/yuzu-windows-msvc-early-access']
 			},
 			appRegex: {
 				win: 'yuzu\\.exe'
@@ -532,17 +525,16 @@ module.exports = (() => {
 					]
 				},
 				'win-x64': {
-					prereqs: [{
-						installer: 'https://aka.ms/vs/16/release/vc_redist.x64.exe'
-					}],
+					prereqs: [
+						{
+							installer: 'https://aka.ms/vs/16/release/vc_redist.x64.exe'
+						}
+					],
 					installer: 'https://github.com/yuzu-emu/liftinstall/releases/download/1.8/yuzu_install.exe'
 				}
 			},
 			update: {
-				win: [
-					'$home/AppData/Local/yuzu/maintenancetool.exe',
-					'--launcher', '${app}'
-				]
+				win: ['$home/AppData/Local/yuzu/maintenancetool.exe', '--launcher', '${app}']
 			}
 		},
 		xenia: {
@@ -554,12 +546,7 @@ module.exports = (() => {
 				win: 'Xenia\\.exe'
 			},
 			cmd: {
-				win: [
-					'${app}',
-					'${game}',
-					'--draw_resolution_scale=2',
-					'--fullscreen'
-				]
+				win: ['${app}', '${game}', '--draw_resolution_scale=2', '--fullscreen']
 			},
 			install: {
 				'win-x64': {
@@ -576,7 +563,6 @@ module.exports = (() => {
 
 	// only keeps the info necessary for the current os + chip arch
 	for (let _emu in emus) {
-
 		let props = ['app', 'appDirs', 'appRegex', 'cmd', 'install', 'update'];
 
 		for (let prop of props) {
@@ -584,10 +570,12 @@ module.exports = (() => {
 			let type = osType;
 			if (prop == 'install') type += '-' + prefs.arch;
 
-			if (emus[_emu][prop][type]) {
-				emus[_emu][prop] = emus[_emu][prop][type];
-			} else {
-				delete emus[_emu][prop];
+			if (typeof emus[_emu][prop] != 'string') {
+				if (emus[_emu][prop][type]) {
+					emus[_emu][prop] = emus[_emu][prop][type];
+				} else {
+					delete emus[_emu][prop];
+				}
 			}
 		}
 		delete emus[_emu].fullscreenKeyCombo;

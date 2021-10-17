@@ -1,12 +1,13 @@
 /*================snes Cover====================*/
 @font-face {
 	font-family: SNES_Italic;
-	src: url("../fonts/SNES_Italic.ttf");
+	size-adjust: 130%;
+	src: url('../fonts/SNES_Italic.ttf');
 }
 
 @font-face {
 	font-family: Nintender;
-	src: url("../fonts/Nintender.ttf");
+	src: url('../fonts/Nintender.ttf');
 }
 
 .snes .menu .cui,
@@ -15,9 +16,9 @@
 }
 
 .snes .navPanel .text {
-	font-family: "SNES_Italic", "SNES_Italic", SNES_Italic;
+	font-family: 'SNES_Italic', sans-serif;
 	font-weight: 1000;
-	letter-spacing: 1px;
+	letter-spacing: 0.2vw;
 }
 
 .snes.box .menu .cursor,
@@ -73,13 +74,13 @@ game.snes .crop.cover {
 game.snes img.cover {
 	width: 100%;
 	height: 100%;
-	transform: translate(.3%, 0%);
+	transform: translate(0.3%, 0%);
 }
 
 game.snes img.coverFull {
 	width: 100%;
 	height: 100%;
-	transform: rotateZ(-90deg) translate(-41.27%, .3%) scale(1.52, 1.45);
+	transform: rotateZ(-90deg) translate(-41.27%, 0.3%) scale(1.52, 1.45);
 }
 
 game.snes.flip .crop.cover {
@@ -109,15 +110,15 @@ game.snes .box {
 	border-radius: 1.6%;
 }
 
-game .title.label,
-game .title.label-input {
+game.snes .title.label,
+game.snes .title.label-input {
 	top: 6%;
 	left: 3%;
 	right: 20%;
 }
 
-game .file.label,
-game .file.label-input {
+game.snes .file.label,
+game.snes .file.label-input {
 	top: 72%;
 	left: 3%;
 	right: 20%;

@@ -715,7 +715,7 @@ button:focus {
 .navPanel .nav-link {
 	font-size: 2.5vw;
 	font-weight: bold;
-	border-width: 0.27vw;
+	border-width: 0.22vw;
 	border-style: solid;
 	border-color: var(--navBtns-border-color);
 	border-radius: 50%;

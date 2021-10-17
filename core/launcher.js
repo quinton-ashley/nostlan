@@ -29,12 +29,7 @@ class Launcher {
 		macExec += '/Contents/MacOS/';
 
 		let name = emus[emu].name.replace(/ /g, '');
-		let execNames = [
-			file.name,
-			name,
-			name.toLowerCase(),
-			name.toUpperCase()
-		];
+		let execNames = [file.name, name, name.toLowerCase(), name.toUpperCase()];
 
 		for (let execName of execNames) {
 			if (await fs.exists(macExec + execName)) {
@@ -50,8 +45,7 @@ class Launcher {
 		let emuApp = util.absPath(prefs[emu].app);
 		if (emuApp) {
 			let isCmd = !/\//.test(emuApp);
-			if ((linux && isCmd) ||
-				((!linux || !isCmd) && await fs.exists(emuApp))) {
+			if ((linux && isCmd) || ((!linux || !isCmd) && (await fs.exists(emuApp)))) {
 				return emuApp;
 			}
 		}
@@ -80,7 +74,7 @@ class Launcher {
 				if (regex.test(f.base)) {
 					emuApp = file;
 					if (mac) emuApp = await this.getMacExec(emuApp);
-					if (emuApp && await fs.exists(emuApp)) {
+					if (emuApp && (await fs.exists(emuApp))) {
 						prefs[emu].app = emuApp;
 						return emuApp;
 					}
@@ -127,8 +121,10 @@ class Launcher {
 			let dir = `${systemsDir}/${sys}/${emu}`;
 			let jsEmuDir = `${__root}/jsEmu/${sys}/${emu}`;
 
-			if (!prefs[emu].dev && (!(await fs.exists(dir + '/launch.js')) ||
-					prefs[emu].version != prefs[emu].latestVersion)) {
+			if (
+				!prefs[emu].dev &&
+				(!(await fs.exists(dir + '/launch.js')) || prefs[emu].version != prefs[emu].latestVersion)
+			) {
 				await fs.copy(jsEmuDir, dir, {
 					overwrite: true
 				});
@@ -175,29 +171,29 @@ class Launcher {
 
 			cui.setUISub('jsEmu', true);
 
-			if (cfg.keyboard && Array.isArray(cfg.keyboard)) {
-				for (let port in cfg.keyboard) {
-					let board = {};
-					// default keyboard controls
+			for (let port in prefs.jsEmu.keyboard) {
+				let board = {};
+				// default keyboard controls
+				Object.assign(board, prefs.jsEmu.keyboard[port]);
+				if (cfg.keyboard) {
+					// overridden by keyboard control settings
+					// in the preferences for the emu (stored in cfg)
 					Object.assign(board, cfg.keyboard[port]);
-					if (prefs.jsEmu.keyboard[port]) {
-						// overridden by keyboard control settings
-						// in the preferences for the emu
-						Object.assign(board, prefs.jsEmu.keyboard[port]);
-					}
-					for (let btn in board) {
-						cui.keyPress(board[btn], {
-							state: 'jsEmu',
-							act: btn,
-							port: port
-						});
-					}
+				}
+				for (let btn in board) {
+					cui.keyPress(board[btn], {
+						state: 'jsEmu',
+						act: btn,
+						port: port
+					});
 				}
 			}
 
 			let fileHtml = `${dir}/launch.html`;
 			let preloadJS = __root + '/jsEmu/preload.js';
-			$('body').prepend(`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}" preload="${preloadJS}"></webview>`);
+			$('body').prepend(
+				`<webview id="jsEmu" enableremotemodule="false" src="${fileHtml}" preload="${preloadJS}"></webview>`
+			);
 
 			let jsEmu = $('#jsEmu').eq(0)[0];
 			await new Promise((resolve) => {
@@ -213,11 +209,7 @@ class Launcher {
 				log(ping);
 
 				if (ping.saveState) {
-					let {
-						slot,
-						data,
-						ext
-					} = ping.saveState;
+					let { slot, data, ext } = ping.saveState;
 					data = base64.bytesToBase64(data);
 					let g = path.parse(_this.game.file);
 					let file = dir + '/states/' + g.name + ext;
@@ -237,9 +229,7 @@ class Launcher {
 				}
 			});
 			await delay(1500);
-			jsEmu.executeJavaScript(
-				`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`
-			);
+			jsEmu.executeJavaScript(`jsEmu.launch(${JSON.stringify(game)}, ${JSON.stringify(cfg)})`);
 			this.cfg = cfg;
 			this.jsEmu = jsEmu;
 			await cui.change('playing_4');
@@ -264,8 +254,7 @@ class Launcher {
 		if (this.emuAppDir == '.') {
 			this.emuAppDir = `${systemsDir}/${sys}/${emu}`;
 		}
-		if (emu == 'mame' &&
-			!(await fs.exists(this.emuAppDir + '/mame.ini'))) {
+		if (emu == 'mame' && !(await fs.exists(this.emuAppDir + '/mame.ini'))) {
 			let defaultIni = '~/Library/Application Support/mame/mame.ini';
 			if (linux) defaultIni = '~/.mame/mame.ini';
 			let ini;
@@ -347,7 +336,7 @@ class Launcher {
 			}
 		}
 
-		if (game && game.id || emu == 'mame') {
+		if ((game && game.id) || emu == 'mame') {
 			await cui.change('playing_4');
 			$('#libMain').hide();
 			$('#boxOpenMenu_2').hide();
@@ -355,9 +344,14 @@ class Launcher {
 			$('#loadDialog0').text(`${lang.playing.msg1} ${emus[emu].name}`);
 			// `To close the emulator, press and hold the
 			// ${btn} button for ${time} seconds`
-			$('#loadDialog1').text(lang.playing.msg2_0 +
-				` "${prefs.inGame.quit.hold}" ` + lang.playing.msg2_1 + ' ' + (prefs.inGame.quit.time / 1000).toFixed(0) +
-				' ' + lang.playing.msg2_2
+			$('#loadDialog1').text(
+				lang.playing.msg2_0 +
+					` "${prefs.inGame.quit.hold}" ` +
+					lang.playing.msg2_1 +
+					' ' +
+					(prefs.inGame.quit.time / 1000).toFixed(0) +
+					' ' +
+					lang.playing.msg2_2
 			);
 			if (game) $('#loadDialog2').text(game.title);
 		}
@@ -388,11 +382,7 @@ class Launcher {
 		if (emu == 'ryujinx' || emu == 'ryujinx-ldn') {
 			delete spawnOpt.detached;
 		}
-		this.child = child.spawn(
-			this.cmdArgs[0],
-			this.cmdArgs.slice(1) || [],
-			spawnOpt
-		);
+		this.child = child.spawn(this.cmdArgs[0], this.cmdArgs.slice(1) || [], spawnOpt);
 
 		this.state = 'running';
 		cui.disableSticks = true;
@@ -437,24 +427,21 @@ class Launcher {
 				let idGame = () => {
 					if (finished) return;
 					let m;
-					if (emu == 'yuzu' &&
-						(m = /title_id=(\w{16})/.exec(out))) {
-
+					if (emu == 'yuzu' && (m = /title_id=(\w{16})/.exec(out))) {
 						game.tid = m[1];
-
 					} else {
 						return;
 					}
 					finished = true;
 					this.close();
 					resolve(game);
-				}
+				};
 
 				let parseData = (data) => {
 					if (this.state == 'closing' || finished) return;
 					out += data.toString();
 					idGame();
-				}
+				};
 
 				this.child.stdout.on('data', parseData);
 				this.child.stderr.on('data', parseData);
@@ -558,9 +545,7 @@ class Launcher {
 			// other files not included with the emulator.
 			// Search the internet for instructions on how to
 			// fully setup ${app}`
-			let erMsg = '<p>' + emus[emu].name + ' ' +
-				lang.playing.err2 + ' ' +
-				`${emus[emu].name}.</p>\n`;
+			let erMsg = '<p>' + emus[emu].name + ' ' + lang.playing.err2 + ' ' + `${emus[emu].name}.</p>\n`;
 			erMsg += '<textarea rows=8>';
 			for (let i in this.cmdArgs) {
 				if (i == 0) erMsg += '$ ';
@@ -573,8 +558,7 @@ class Launcher {
 		}
 		if (!identify) {
 			electron.getCurrentWindow().focus();
-			electron.getCurrentWindow().setFullScreen(
-				prefs.ui.launchFullScreen);
+			electron.getCurrentWindow().setFullScreen(prefs.ui.launchFullScreen);
 		}
 		this.state = 'closed';
 		identify = false;

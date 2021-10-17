@@ -166,9 +166,6 @@ module.exports = async function (arg) {
 	Mousetrap.bind('space', function () {
 		return false;
 	});
-	Mousetrap.bind('escape', function () {
-		electron.getCurrentWindow().minimize();
-	});
 
 	global.cui = require('contro-ui');
 

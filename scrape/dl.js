@@ -12,7 +12,7 @@ async function dlWithExt(url, file, opt) {
 						.catch((ror) => reject(ror));
 				}),
 				new Promise((resolve, reject) => {
-					delay(opt.timeout || 2000).then(() => {
+					delay(opt.timeout || 5000).then(() => {
 						reject('request timed out');
 					});
 				})
@@ -50,10 +50,10 @@ async function dlNoExt(url, file, opt) {
 	return;
 }
 
-module.exports = async function(url, file, opt) {
+module.exports = async function (url, file, opt) {
 	opt = opt || {};
 	if (opt.unknownExt) {
 		return await dlNoExt(url, file, opt);
 	}
 	return await dlWithExt(url, file, opt);
-}
+};

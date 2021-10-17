@@ -33,6 +33,8 @@ module.exports = function () {
 				}
 			}
 			return;
+		} else if (act == 'escape') {
+			electron.getCurrentWindow().minimize();
 		}
 		if (/^(x|start|y|b)/.test(act)) {
 			let $btn;

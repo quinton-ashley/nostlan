@@ -69,7 +69,7 @@ module.exports = {
 		fullName: 'Sony PlayStation 3',
 		emus: ['rpcs3'],
 		mediaType: 'disc',
-		gameExts: ['iso']
+		gameFolders: true
 	},
 	// smd: {
 	// 	name: 'SMD',
@@ -104,7 +104,8 @@ module.exports = {
 		fullName: 'Nintendo Wii U',
 		emus: ['cemu'],
 		mediaType: 'disc',
-		gameExts: ['rpx', 'rpl', 'wud', 'wux']
+		gameExts: ['rpx', 'rpl', 'wud', 'wux'],
+		gameFolders: true
 	},
 	xbox360: {
 		name: 'Xbox 360',

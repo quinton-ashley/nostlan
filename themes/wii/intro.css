@@ -2,6 +2,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
+	background: #000;
 }
 
 .ring {
@@ -30,7 +31,7 @@ body {
 	width: 10vh;
 	height: 10vh;
 	border-radius: 100%;
-	background: radial-gradient(circle at 50%, #fff 0%, #4282B3 60%);
+	background: radial-gradient(circle at 50%, #fff 0%, #4282b3 60%);
 	box-shadow: 0 0 100px #4b9cdb;
 	transform: translate(-50%, -70%);
 }

@@ -4,9 +4,7 @@ module.exports = function () {
 	cui.passthrough = (contro) => {
 		if (!nostlan.launcher.jsEmu) return;
 
-		nostlan.launcher.jsEmu.executeJavaScript(
-			`jsEmu.controIn(${JSON.stringify(contro)})`
-		);
+		nostlan.launcher.jsEmu.executeJavaScript(`jsEmu.controIn(${JSON.stringify(contro)})`);
 	};
 
 	cui.onResize = (adjust) => {};
@@ -35,6 +33,8 @@ module.exports = function () {
 				}
 			}
 			return;
+		} else if (act == 'escape') {
+			electron.getCurrentWindow().minimize();
 		}
 		if (/^(x|start|y|b)/.test(act)) {
 			let $btn;
@@ -99,22 +99,12 @@ module.exports = function () {
 		}
 		// log(act + ' held for ' + timeHeld);
 		if (nostlan.launcher.state == 'running') {
-			if (
-				nostlan.launcher.jsEmu &&
-				act == prefs.inGame.pause.hold &&
-				timeHeld > prefs.inGame.pause.time
-			) {
+			if (nostlan.launcher.jsEmu && act == prefs.inGame.pause.hold && timeHeld > prefs.inGame.pause.time) {
 				cui.doAction('pause');
-			} else if (
-				act == prefs.inGame.quit.hold &&
-				timeHeld > prefs.inGame.quit.time
-			) {
+			} else if (act == prefs.inGame.quit.hold && timeHeld > prefs.inGame.quit.time) {
 				log('shutting down emulator');
 				nostlan.launcher.close();
-			} else if (
-				act == prefs.inGame.reset.hold &&
-				timeHeld > prefs.inGame.reset.time
-			) {
+			} else if (act == prefs.inGame.reset.hold && timeHeld > prefs.inGame.reset.time) {
 				log('resetting emulator');
 				nostlan.launcher.reset();
 			}
@@ -126,6 +116,7 @@ module.exports = function () {
 			cui.clearDialogs();
 			return;
 		}
+		// init nav labels to empty string by default
 		let labels = [' ', ' ', ' '];
 		if (/(game|menu)/i.test(state)) {
 			labels[2] = lang.nostlanMenu.msg0;
@@ -133,8 +124,6 @@ module.exports = function () {
 		$('#nav0Lbl').text(labels[0]);
 		$('#nav2Lbl').text(labels[1]);
 		$('#nav3Lbl').text(labels[2]);
-
-		// TODO UI translation, english ui /lang/en.js
 
 		for (let elem in lang[state]) {
 			let txt = lang[state][elem];
@@ -145,47 +134,53 @@ module.exports = function () {
 			$elem.text(txt);
 		}
 
-		let lbls = ['#nav0Lbl', '#nav2Lbl', '#nav3Lbl'];
-		for (let lbl of lbls) {
-			let $lbl = $(lbl);
-			let $parent = $lbl.parent();
-			let txt = $lbl.text();
-			if (txt.includes(' ')) {
-				$lbl.addClass('twoLines');
-				$parent.addClass('twoLines');
-			} else {
-				$lbl.removeClass('twoLines');
-				$parent.removeClass('twoLines');
+		for (let i = 0; i < 4; i++) {
+			let $lbl = $(`#nav${i}Lbl`);
+			let words = $lbl.text().split(' ');
+			let maxLength = 0;
+			for (let word of words) {
+				if (word.length > maxLength) maxLength = word.length;
 			}
-		}
+			let fontSize = maxLength.map(6, 13, 3, 1.7);
+			if (maxLength <= 6) fontSize = maxLength.map(3, 6, 4.3, 3.9);
+			$lbl.css('font-size', fontSize + 'vw');
 
-		$('nav .text').textfill();
+			// let $parent = $lbl.parent();
+			// let txt = $lbl.text();
+			// if (txt.includes(' ')) {
+			// 	$lbl.addClass('twoLines');
+			// 	$parent.addClass('twoLines');
+			// } else {
+			// 	$lbl.removeClass('twoLines');
+			// 	$parent.removeClass('twoLines');
+			// }
+		}
 
 		function adjust(flip) {
 			if (flip && $('nav.fixed-top').find('#nav1Btn').length) {
 				$('#nav3')
 					.css({
 						'border-radius': '0 0 0 32px',
-						'border-width': '0 0 8px 0',
+						'border-width': '0 0 8px 0'
 					})
 					.appendTo('nav.fixed-top');
 				$('#nav1')
 					.css({
 						'border-radius': '32px 0 0 0',
-						'border-width': '8px 0 0 0',
+						'border-width': '8px 0 0 0'
 					})
 					.appendTo('nav.fixed-bottom');
 			} else if (!flip && $('nav.fixed-top').find('#nav3Btn').length) {
 				$('#nav3')
 					.css({
 						'border-radius': '32px 0 0 0',
-						'border-width': '8px 0 0 0',
+						'border-width': '8px 0 0 0'
 					})
 					.appendTo('nav.fixed-bottom');
 				$('#nav1')
 					.css({
 						'border-radius': '0 0 0 32px',
-						'border-width': '0 0 8px 0',
+						'border-width': '0 0 8px 0'
 					})
 					.appendTo('nav.fixed-top');
 			}

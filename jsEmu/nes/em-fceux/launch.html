@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Nostlan + em-fceux</title>
+		<style>
+			html,
+			body {
+				overflow: hidden;
+				background: #000;
+			}
 
-<head>
-	<meta charset="utf-8">
-	<title>Nostlan + em-fceux</title>
-	<style>
-		html,
-		body {
-			overflow: hidden;
-		}
+			*::-webkit-scrollbar {
+				display: none;
+			}
 
-		*::-webkit-scrollbar {
-			display: none;
-		}
+			* {
+				scrollbar-width: none !important;
+			}
 
-		* {
-			scrollbar-width: none !important;
-		}
+			.tube {
+				height: 100vh;
+				text-align: center;
+			}
+		</style>
+	</head>
 
-		.tube {
-			height: 100vh;
-			text-align: center;
-		}
-
-	</style>
-</head>
-
-<body>
-	<script type="text/javascript" src="./fceux.js"></script>
-	<div class="tube">
-		<canvas id="screen0"></canvas>
-	</div>
-	<script type="text/javascript" src="./launch.js"></script>
-</body>
-
+	<body>
+		<script type="text/javascript" src="./fceux.js"></script>
+		<div class="tube">
+			<canvas id="screen0"></canvas>
+		</div>
+		<script type="text/javascript" src="./launch.js"></script>
+	</body>
 </html>

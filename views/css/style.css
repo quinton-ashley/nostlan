@@ -30,9 +30,9 @@ html {
 :root {
 	--nav-color: rgb(130, 130, 130);
 	--nav-text-color: rgb(70, 70, 70);
-	--nav-text-shadow-color: rgba(255, 255, 255, .5);
+	--nav-text-shadow-color: rgba(255, 255, 255, 0.5);
 	--navBtns-color: rgb(70, 70, 70);
-	--navBtns-text-color: rgba(0, 0, 0, .5);
+	--navBtns-text-color: rgba(0, 0, 0, 0.5);
 	--navBtns-border-color: #000;
 	--box-bg-color: #000;
 	font-size: 1vh;
@@ -40,32 +40,32 @@ html {
 
 @font-face {
 	font-family: handwriting0;
-	src: url("../../themes/fonts/edosz.ttf");
+	src: url('../../themes/fonts/edosz.ttf');
 }
 
 @font-face {
 	font-family: handwriting1;
-	src: url("../../themes/fonts/fawn.ttf");
+	src: url('../../themes/fonts/fawn.ttf');
 }
 
 @font-face {
 	font-family: handwriting2;
-	src: url("../../themes/fonts/maxine.ttf");
+	src: url('../../themes/fonts/maxine.ttf');
 }
 
 @font-face {
 	font-family: handwriting3;
-	src: url("../../themes/fonts/TrashHand.ttf");
+	src: url('../../themes/fonts/TrashHand.ttf');
 }
 
 @font-face {
 	font-family: handwriting4;
-	src: url("../../themes/fonts/Yellowtail.ttf");
+	src: url('../../themes/fonts/Yellowtail.ttf');
 }
 
 @font-face {
 	font-family: handwriting5;
-	src: url("../../themes/fonts/Tahu.ttf");
+	src: url('../../themes/fonts/Tahu.ttf');
 }
 
 /*================General====================*/
@@ -252,7 +252,7 @@ game {
 .menu {
 	background-color: var(--nav-color);
 	color: var(--nav-text-color);
-	border-color: var(--nav-text-color);
+	border-color: var(--nav-border-color, var(--nav-text-color));
 	border-radius: 32px;
 	border-width: 8px 0 8px 0;
 	border-style: solid;
@@ -265,19 +265,27 @@ game {
 }
 
 .menu * {
-	text-shadow: .5px 1px 0 rgba(255, 255, 255, .5);
+	text-shadow: 0.5px 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .menu code,
 .menu li,
 .menu p,
 .menu pre {
-	color: rgba(0, 0, 0, .6);
+	color: rgba(0, 0, 0, 0.6);
 	text-shadow: none;
 }
 
+.menu pre {
+	padding-bottom: 1vh;
+}
+
+.menu code {
+	margin: 0;
+}
+
 .menu a {
-	color: rgba(2555, 255, 255, .6);
+	color: rgba(2555, 255, 255, 0.6);
 	text-shadow: none;
 }
 
@@ -297,10 +305,6 @@ game {
 
 .menu .cursor {
 	background-color: var(--nav-color);
-}
-
-nav {
-	font-size: 48px;
 }
 
 img {
@@ -324,7 +328,7 @@ img {
 	width: 100%;
 	z-index: 1;
 	left: 0;
-	transform: scale(.96);
+	transform: scale(0.96);
 	line-height: 0;
 	font-size: 0;
 }
@@ -437,7 +441,7 @@ game .shade {
 .sticker.md.s2 {
 	top: 80%;
 	left: 60%;
-	width: 30%
+	width: 30%;
 }
 
 .sticker.md.s4 {
@@ -565,7 +569,7 @@ game .title.label-input {
 	right: 5%;
 	line-height: initial;
 	font-size: 3.2vh;
-	height: 12vh;
+	height: 7vw;
 }
 
 game .id.label,
@@ -619,7 +623,6 @@ game.flip img.coverFull {
 
 /*================Cover====================*/
 nav {
-	display: flex;
 	background-color: transparent;
 	pointer-events: none;
 }
@@ -629,48 +632,19 @@ nav * {
 }
 
 .navbar {
-	height: 12vh;
+	height: 6vw;
 }
 
 .navPanel {
 	width: 19%;
 	height: 100%;
 	border-style: solid;
-	margin-left: 30px;
-}
-
-.navPanel * {
-	margin-top: auto;
-	margin-bottom: auto;
+	line-height: 1;
 }
 
 #nav1Btn,
 .text {
-	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-}
-
-.navPanel .text {
-	overflow: hidden;
-	text-overflow: clip;
-	/* white-space: nowrap; */
-	width: 60%;
-	height: 100%;
-}
-
-.navPanel .text span {
-	/* vertical-align: text-top; */
-	line-height: 1;
-	/* top: 6vh; */
-	text-align: right;
-}
-
-.navPanel .text.twoLines {
-	line-height: 1vh;
-	transform: scaleY(1) !important;
-}
-
-.navPanel .text .twoLines {
-	line-height: 1;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 #nav0 {
@@ -733,46 +707,21 @@ nav * {
 	border-color: var(--nav3Btn-border-color, var(--navBtns-border-color));
 }
 
-#nav0 *,
-#nav2 * {
-	position: relative;
-}
-
-#nav0 .text,
-#nav2 .text {
-	margin-right: 5%;
-}
-
-#nav0 .nav-item,
-#nav2 .nav-item,
-#nav3 .nav-item {
-	position: relative;
-}
-
-#nav1 *,
-#nav3 * {
-	position: relative;
-}
-
-#nav3 .text {
-	margin-left: 5%;
-}
-
-#nav3 .nav-item {
-	margin-left: 4%;
-}
-
-img.logoNav {
-	height: 32px;
-}
-
-#nav1 li {
-	margin: auto;
-}
-
 button:active,
 button:focus {
 	outline: none;
+}
+
+.navPanel .nav-link {
+	font-size: 2.5vw;
+	font-weight: bold;
+	border-width: 0.22vw;
+	border-style: solid;
+	border-color: var(--navBtns-border-color);
+	border-radius: 50%;
+	box-shadow: none;
+	width: 4.5vw;
+	height: 4.5vw;
 }
 
 .navPanel:hover .nav-link {
@@ -786,23 +735,39 @@ button:focus {
 	outline: none;
 }
 
-.navPanel .nav-link {
-	font-size: 3vw;
-	font-weight: bold;
-	border-width: 0.27vw;
-	border-style: solid;
-	border-color: var(--navBtns-border-color);
-	border-radius: 50%;
-	box-shadow: none;
-	padding: 0;
-	margin: 0;
-	width: 5vw;
-	height: 5vw;
+.navPanel ul {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
 }
 
-ul.nav {
-	height: 100%;
+.navPanel .text {
+	flex: 1;
+	margin: auto;
+	overflow: visible;
 }
+
+#nav0 li,
+#nav2 li {
+	margin: auto;
+	margin-right: 4%;
+}
+
+#nav3 li {
+	margin: auto;
+	margin-left: 4%;
+}
+
+/* #nav0 li,
+#nav2 li {
+	margin-left: auto;
+	margin-right: 4%;
+}
+
+#nav3 li {
+	margin-right: auto;
+	margin-left: 4%;
+} */
 
 /*================Misc====================*/
 .hide,
@@ -893,30 +858,22 @@ ul.nav {
 @keyframes pressMenuBtn {
 	from {
 		transform: scale(1) translate(0);
-		box-shadow: 2px 2px 0 2px var(--nav-border-color, var(--nav-text-color)) inset,
-			0 0 0px 3px rgba(0, 0, 0, .6),
-			3px 3px 4px 3px rgba(0, 0, 0, .7),
-			0 0 50px -10px rgba(0, 0, 0, -0.05);
+		box-shadow: 2px 2px 0 2px var(--nav-border-color, var(--nav-text-color)) inset, 0 0 0px 3px rgba(0, 0, 0, 0.6),
+			3px 3px 4px 3px rgba(0, 0, 0, 0.7), 0 0 50px -10px rgba(0, 0, 0, -0.05);
 	}
 
 	to {
-		transform: scale(.99) translate(-2px, -.5px);
-		box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, .4) inset,
-			0 0 0px 3px rgba(0, 0, 0, .8),
-			3px 3px 4px 0px rgba(0, 0, 0, .8),
-			0 0 50px -10px rgba(0, 0, 0, -0.05);
+		transform: scale(0.99) translate(-2px, -0.5px);
+		box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.4) inset, 0 0 0px 3px rgba(0, 0, 0, 0.8),
+			3px 3px 4px 0px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(0, 0, 0, -0.05);
 	}
 }
 
-
 @keyframes springMenuBtn {
-
 	33% {
-		transform: scale(.9975) translate(-.25px, -.125px);
-		box-shadow: 2px 2px 0 1px var(--nav-border-color, var(--nav-text-color)) inset,
-			0 0 0px 3px rgba(0, 0, 0, .6),
-			3px 3px 4px 1px rgba(0, 0, 0, .7),
-			0 0 50px -10px rgba(0, 0, 0, -0.05);
+		transform: scale(0.9975) translate(-0.25px, -0.125px);
+		box-shadow: 2px 2px 0 1px var(--nav-border-color, var(--nav-text-color)) inset, 0 0 0px 3px rgba(0, 0, 0, 0.6),
+			3px 3px 4px 1px rgba(0, 0, 0, 0.7), 0 0 50px -10px rgba(0, 0, 0, -0.05);
 	}
 }
 
@@ -925,19 +882,15 @@ ul.nav {
 	margin-bottom: 16px;
 	padding-top: 4px;
 	padding-left: 2px;
-	box-shadow: 2px 2px 0 2px var(--nav-border-color, var(--nav-text-color)) inset,
-		0 0 0px 3px rgba(0, 0, 0, .6),
-		3px 3px 4px 3px rgba(0, 0, 0, .7),
-		0 0 50px -10px rgba(0, 0, 0, -0.05);
+	box-shadow: 2px 2px 0 2px var(--nav-border-color, var(--nav-text-color)) inset, 0 0 0px 3px rgba(0, 0, 0, 0.6),
+		3px 3px 4px 3px rgba(0, 0, 0, 0.7), 0 0 50px -10px rgba(0, 0, 0, -0.05);
 }
 
 .menu .cui:active,
 .menu .cui.active {
-	transform: scale(.99) translate(-2px, -.5px);
-	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, .4) inset,
-		0 0 0px 3px rgba(0, 0, 0, .8),
-		3px 3px 4px 0px rgba(0, 0, 0, .8),
-		0 0 50px -10px rgba(0, 0, 0, -0.05);
+	transform: scale(0.99) translate(-2px, -0.5px);
+	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.4) inset, 0 0 0px 3px rgba(0, 0, 0, 0.8),
+		3px 3px 4px 0px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(0, 0, 0, -0.05);
 	animation-name: pressMenuBtn;
 	animation-duration: 48ms;
 	animation-iteration-count: 1;

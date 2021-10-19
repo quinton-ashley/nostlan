@@ -1,5 +1,4 @@
 class CuiState extends cui.State {
-
 	async onAction(act) {
 		if (cui.isButton(act)) return;
 		prefs.ui.lang = act;
@@ -16,7 +15,11 @@ class CuiState extends cui.State {
 			x = path.parse(x).base;
 			if (x == 'en' || !iso_639_1[x]) continue;
 			elems += `.cui(name='${x}') `;
-			elems += iso_639_1[x].name + '\n';
+			if (x == 'he') {
+				elems += 'Hebrew\n';
+			} else {
+				elems += iso_639_1[x].name + '\n';
+			}
 		}
 		log(elems);
 		this.$elem.empty();

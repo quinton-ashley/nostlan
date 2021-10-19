@@ -16,7 +16,7 @@ class CuiState extends cui.State {
 			'manual',
 			'memory',
 			'memoryBack',
-			'promo',
+			'promo'
 		];
 		this.imgNames = [
 			'front cover',
@@ -33,7 +33,7 @@ class CuiState extends cui.State {
 			'manual',
 			'memory',
 			'back memory',
-			'promo',
+			'promo'
 		];
 	}
 

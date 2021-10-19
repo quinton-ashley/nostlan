@@ -17,7 +17,7 @@ const idRegex = {
 	switch: /(?:^|[\[\(])([0-9A-F]{16})(?:[\]\)]|$)/,
 	wii: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
 	wiiu: /(?:^|[\[\(])([A-Z0-9]{3}[A-Z](?:|[A-Z0-9]{2}))(?:[\]\)]|$)/,
-	xbox360: /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/,
+	xbox360: /(?:^|[\[\(])([0-9A-FGLZ]{8})(?:[\]\)]|$)/
 };
 
 let searcharg = {
@@ -27,10 +27,7 @@ let searcharg = {
 	distance: 5,
 	maxPatternLength: 64,
 	minMatchCharLength: 1,
-	keys: [
-		'id',
-		'title'
-	]
+	keys: ['id', 'title']
 };
 
 class Scanner {
@@ -65,7 +62,7 @@ class Scanner {
 			if (!fullRescan) {
 				for (let game of games) {
 					let file = util.absPath(game.file);
-					files = files.filter(x => x != file);
+					files = files.filter((x) => x != file);
 				}
 			}
 
@@ -73,7 +70,7 @@ class Scanner {
 			// a lot of pruning is required to get good search results
 			for (let i = 0; i < files.length; i++) {
 				let id;
-				$('#loadDialog2').text(`${i+1}/${files.length + 1} files matched`);
+				$('#loadDialog2').text(`${i + 1}/${files.length + 1} files matched`);
 				file = files[i];
 				let term = path.parse(file);
 				// if it's a hidden file like '.DS_STORE' on macOS, skip it
@@ -82,7 +79,11 @@ class Scanner {
 				if (term.base == 'dir.txt') continue;
 				// if the file is not a game file, skip it
 				if (term.ext == '.sav') continue;
-				if (syst.gameExts) {
+				// fixes an issue where folder names were split by periods
+				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
+				let isDir = (await fs.stat(file)).isDirectory();
+
+				if (syst.gameExts && !isDir) {
 					let isGame = false;
 					for (let ext of syst.gameExts) {
 						if ('.' + ext == term.ext) {
@@ -91,10 +92,8 @@ class Scanner {
 					}
 					if (!isGame) continue;
 				}
-				// fixes an issue where folder names were split by periods
-				// wiiu and ps3 store games in folders not single file .iso, .nso, etc.
-				let isDir = (await fs.stat(file)).isDirectory();
-				if (sys != 'wiiu' && sys != 'ps3' && !isDir) {
+
+				if (!syst.gameFolders && !isDir) {
 					term = term.name;
 				} else {
 					term = term.base;
@@ -109,19 +108,18 @@ class Scanner {
 					let game, hash;
 					if (sys == 'nes') {
 						hash = crc32(data).toString(16);
-						game = gameDB.find(x => x.id.split('-')[0] == hash);
+						game = gameDB.find((x) => x.id.split('-')[0] == hash);
 					} else if (sys == 'snes') {
 						hash = cryptog.createHash('sha256').update(data).digest('hex');
-						game = gameDB.find(x => x.sha256 == hash);
+						game = gameDB.find((x) => x.sha256 == hash);
 					} else if (sys == 'n64') {
 						hash = cryptog.createHash('sha1').update(data).digest('hex').toUpperCase();
-						game = gameDB.find(x => x.sha1 == hash);
+						game = gameDB.find((x) => x.sha1 == hash);
 					}
 					if (game) {
 						this.olog(`exact match:  ${game.title}\r\n`);
 						log(game);
-						game.file = '$' + h + '/' +
-							path.relative(prefs[sys].libs[h], file);
+						game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 						games.push(game);
 						continue;
 					} else if (hash) {
@@ -136,7 +134,7 @@ class Scanner {
 				term = term.replace(/[\[\(]*(NTSC)+(-U)*[\]\)]*/gi, '');
 				term = term.replace(/[\[\(]*(N64|GCN)[,]*[\]\)]*/gi, '');
 				term = term.replace(/[\[\(] *Torrent[^\]\)]*[\]\)]/gi, '');
-				if ((/Disc *[^1A ]/gi).test(term)) {
+				if (/Disc *[^1A ]/gi.test(term)) {
 					log('additional disc: ' + term);
 					continue;
 				}
@@ -159,13 +157,13 @@ class Scanner {
 					log('id: ' + id);
 					let game;
 					if (sys != 'switch') {
-						game = gameDB.find(x => x.id === id);
+						game = gameDB.find((x) => x.id === id);
 					} else {
-						game = gameDB.find(x => x.tid === id);
+						game = gameDB.find((x) => x.tid === id);
 					}
 					if (game) {
 						if (sys == 'ps3') {
-							let dup = games.find(x => x.title === game.title);
+							let dup = games.find((x) => x.title === game.title);
 							if (dup) continue;
 						}
 						this.olog(`exact match:  ${game.title}\r\n`);
@@ -190,17 +188,16 @@ class Scanner {
 						let res;
 						if (sys != 'switch') {
 							log('id: ' + game.id);
-							res = gameDB.find(x => x.id === game.id);
+							res = gameDB.find((x) => x.id === game.id);
 						} else {
 							log('id: ' + game.tid);
-							res = gameDB.find(x => x.tid === game.tid);
+							res = gameDB.find((x) => x.tid === game.tid);
 						}
 						if (res) {
 							game = res;
 							this.olog(`exact match:  ${game.title}\r\n`);
 							log(game);
-							game.file = '$' + h + '/' +
-								path.relative(prefs[sys].libs[h], file);
+							game.file = '$' + h + '/' + path.relative(prefs[sys].libs[h], file);
 							games.push(game);
 							continue;
 						}
@@ -318,7 +315,7 @@ class Scanner {
 				if (gRegion == 'C' && (region == 'E' || region == 'P')) continue;
 			}
 			// skip if it's already in the games array
-			if (games.find(x => x.id == game.id)) continue;
+			if (games.find((x) => x.id == game.id)) continue;
 			return game;
 		}
 		return;
@@ -335,9 +332,16 @@ class Scanner {
 		log('game library saved to: ');
 		log(gamesPath);
 		try {
-			await fs.outputFile(gamesPath, JSON.stringify({
-				games: games
-			}, null, '\t'));
+			await fs.outputFile(
+				gamesPath,
+				JSON.stringify(
+					{
+						games: games
+					},
+					null,
+					'\t'
+				)
+			);
 		} catch (ror) {
 			er(ror);
 		}
@@ -345,7 +349,6 @@ class Scanner {
 }
 
 module.exports = new Scanner();
-
 
 // // TODO exact match indexing for wii games with Dolphin using kb
 // // if (sys == 'wii' && kb) {

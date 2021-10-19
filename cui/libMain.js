@@ -13,7 +13,6 @@ let games = []; // array of current games from the systems' db
 let gameDB = [];
 
 class CuiState extends cui.State {
-
 	async onAction(act, $cur) {
 		let $cursor = cui.$cursor;
 		let isBtn = cui.isButton(act);
@@ -39,7 +38,7 @@ class CuiState extends cui.State {
 	getCurGame() {
 		let id = cui.getCursor('libMain').attr('id');
 		if (/^_TEMPLATE/.test(id)) return;
-		let game = games.find(x => x.id === id);
+		let game = games.find((x) => x.id === id);
 		if (game && game.file) {
 			return game;
 		}
@@ -65,23 +64,16 @@ class CuiState extends cui.State {
 
 		if (prefs.args.testIntro) return;
 
+		prefs[sys] ??= {};
+
 		let dbPath = `${__root}/db/${sys}DB.json`;
 		gameDB = JSON.parse(await fs.readFile(dbPath)).games;
 
 		let gamesPath = `${systemsDir}/${sys}/${sys}Games.json`;
 		// if prefs exist load them if not copy the default prefs
 		games = [];
-		if (await fs.exists(gamesPath)) {
+		if ((await fs.exists(gamesPath)) && prefs[sys]?.libs) {
 			games = JSON.parse(await fs.readFile(gamesPath)).games || [];
-
-			// user possibly has a fresh prefs.json file
-			// if prefs[sys] doesn't exist but a
-			// gameLib file does
-			if (!prefs[sys] || !prefs[sys].libs) {
-				prefs[sys] = {
-					libs: []
-				};
-			}
 		}
 		if (games.length == 0) {
 			if (!systemsDir) {
@@ -90,38 +82,23 @@ class CuiState extends cui.State {
 				return;
 			}
 
-			gameLibDir = gameLibDir ||
-				`${systemsDir}/${sys}/games`;
+			gameLibDir = gameLibDir || `${systemsDir}/${sys}/games`;
 			log('searching for games in: ' + gameLibDir);
 
-			if (!(await fs.exists(gameLibDir))) {
-				await cui.loading.removeIntro(0);
-				await cui.change('sysMenu');
-				// 'game library does not exist: '
-				cui.err(syst.name + ' ' +
-					lang.sysMenu.msg0 + ': ' +
-					gameLibDir, 404, 'emptyGameLibMenu');
-				return;
-			}
-			let files = await klaw(gameLibDir);
-			if (!files.length || (
-					files.length == 1 &&
-					(['.DS_Store', 'dir.txt'].includes(
-						path.parse(files[0]).base))
-				)) {
-				await cui.loading.removeIntro(0);
-				await cui.change('sysMenu');
-				// 'game library has no game files'
-				cui.err(syst.name + ' ' +
-					lang.sysMenu.msg1 + ': ' +
-					gameLibDir, 404, 'emptyGameLibMenu');
-				return;
-			}
-			if (!prefs[sys]) prefs[sys] = {};
-			if (!prefs[sys].libs) prefs[sys].libs = [];
+			prefs[sys].libs ??= [];
 			if (!prefs[sys].libs.includes(gameLibDir)) {
 				prefs[sys].libs.push(gameLibDir);
 			}
+
+			// let files = await klaw(gameLibDir);
+			// if (!files.length || (files.length == 1 && ['.DS_Store', 'dir.txt'].includes(path.parse(files[0]).base))) {
+			// 	await cui.loading.removeIntro(0);
+			// 	await cui.change('sysMenu');
+			// 	// 'game library has no game files'
+			// 	cui.err(syst.name + ' ' + lang.sysMenu.msg1 + ': ' + gameLibDir, 404, 'emptyGameLibMenu');
+			// 	return;
+			// }
+
 			games = await nostlan.scan.gameLib(gameDB);
 			if (!games.length) {
 				await cui.loading.removeIntro(0);
@@ -161,12 +138,10 @@ class CuiState extends cui.State {
 			// TODO check if user has the emulator
 			// if they do add the configure and update buttons
 			// else add a button to install
-			emuMenu += `.col.cui(name="${_emu}_config") ` +
-				`${lang.emuMenu.msg0} ${emus[_emu].name}\n`;
+			emuMenu += `.col.cui(name="${_emu}_config") ` + `${lang.emuMenu.msg0} ${emus[_emu].name}\n`;
 
 			if (emus[_emu].update) {
-				emuMenu += `.col.cui(name="${_emu}_update") ` +
-					`${lang.emuMenu.msg1} ${emus[_emu].name}\n`;
+				emuMenu += `.col.cui(name="${_emu}_update") ` + `${lang.emuMenu.msg1} ${emus[_emu].name}\n`;
 			}
 		}
 		$('#playMenu_5').append(pug(playMenu));
@@ -189,7 +164,7 @@ class CuiState extends cui.State {
 		log('search for: ' + searchTerm);
 		for (let game of games) {
 			let titleSlice = game.title.slice(0, searchTerm.length);
-			let matched = (searchTerm == titleSlice.toLowerCase());
+			let matched = searchTerm == titleSlice.toLowerCase();
 			if (game.keywords) {
 				for (let keyword of game.keywords) {
 					if (searchTerm == keyword.toLowerCase()) matched = true;
@@ -209,8 +184,7 @@ class CuiState extends cui.State {
 	async addTemplateBoxes(cols) {
 		for (let i = 0; i < cols; i++) {
 			for (let j = 0; j < 4; j++) {
-				let $box = await this.makeGameBox(
-					nostlan.themes[sysStyle].template);
+				let $box = await this.makeGameBox(nostlan.themes[sysStyle].template);
 				$('.reel.r' + i).append($box);
 			}
 		}
@@ -221,8 +195,7 @@ class CuiState extends cui.State {
 		// default layout is alphabetical order by column
 		// altReelsScrolling places games alphabetical order by row
 		for (let i = 0, col = 0; i < games.length; i++) {
-			if (prefs.ui.altReelsScrolling &&
-				i >= games.length * (col + 1) / cols) {
+			if (prefs.ui.altReelsScrolling && i >= (games.length * (col + 1)) / cols) {
 				col++;
 			}
 			if (!prefs.ui.altReelsScrolling && col == cols) {
@@ -233,14 +206,13 @@ class CuiState extends cui.State {
 			// aka "sets" will be added in the future
 			if (sys == 'arcade') {
 				if (mameSetRegex.test(games[i].title)) continue;
-				if (i != 0 && games[i - 1].img && games[i].img &&
-					games[i - 1].img.box == games[i].img.box) continue;
+				if (i != 0 && games[i - 1].img && games[i].img && games[i - 1].img.box == games[i].img.box) continue;
 			}
 
 			try {
 				let $box = await this.makeGameBox(games[i]);
 				$('.reel.r' + col).append($box);
-				$('#loadDialog2').text(`${i+1}/${games.length} ${lang.loading.msg4}`);
+				$('#loadDialog2').text(`${i + 1}/${games.length} ${lang.loading.msg4}`);
 				if (!prefs.ui.altReelsScrolling) col++;
 			} catch (ror) {
 				er(ror);
@@ -251,8 +223,8 @@ class CuiState extends cui.State {
 	async makeGameBox(game) {
 		$('#loadDialog1').text(game.title);
 		let _sys = game.sys || sys;
-		let isTemplate = (game.id.slice(1, 9) == 'TEMPLATE');
-		let isUnidentified = (game.id.slice(1, 13) == 'UNIDENTIFIED');
+		let isTemplate = game.id.slice(1, 9) == 'TEMPLATE';
+		let isUnidentified = game.id.slice(1, 13) == 'UNIDENTIFIED';
 		game.hasNoImages = false;
 
 		let noBox;
@@ -263,7 +235,7 @@ class CuiState extends cui.State {
 		async function getBoxImg() {
 			boxImg = await nostlan.scraper.imgExists(game, 'box');
 			// if box img is not found
-			noBox = (!boxImg);
+			noBox = !boxImg;
 			if (noBox) {
 				boxImg = await nostlan.scraper.getImg(nostlan.themes[_sys].template, 'box');
 			}
@@ -356,7 +328,7 @@ class CuiState extends cui.State {
 		let stkSml = `${stksDir}/small/stk${idx}.png`;
 		lbls += `img.sticker.sm.s${idx}(src="${stkSml}")\n`;
 
-		if (Math.random() > .5) {
+		if (Math.random() > 0.5) {
 			idx = Math.floor(Math.random() * 7);
 			let stkMed = `${stksDir}/medium/stk${idx}.png`;
 			lbls += `img.sticker.md.s${idx}(src="${stkMed}")\n`;
@@ -366,14 +338,16 @@ class CuiState extends cui.State {
 			lbls += `img.sticker.lg.s${idx}(src="${stkLrg}")\n`;
 		}
 		lbls += `.title.label-input\n`;
-		let fontSize = title.length.map(1, 80, 100, 50);
-		let padding = title.length.map(1, 40, 15, 0);
+		let fontSize = title.length.map(1, 80, 2, 0.5);
+		if (title.length <= 7) fontSize = 2.5;
+		let padding = title.length.map(1, 40, 2, 0);
+		if (padding < 0.5) padding = 0.5;
 		let titleLblImg = prefs.nlaDir + '/images/labels/large/lbl0.png';
 		lbls += `  img(src="${titleLblImg}" style="filter: brightness(0.8) sepia(1) saturate(300%) hue-rotate(${game.lblColor}deg);")\n`;
-		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}%; padding-top:${padding}%;") ${title}\n`;
+		lbls += `  textarea(game_id="${game.id}" style="font-size:${fontSize}vw; padding-top:${padding}vw;") ${title}\n`;
 
 		lbls += `.id.label-input\n`;
-		let unidentified = game.id.includes("UNIDENTIFIED");
+		let unidentified = game.id.includes('UNIDENTIFIED');
 		let idLblImg = prefs.nlaDir + '/images/labels/medium/lbl0.png';
 		if (unidentified) idLblImg = prefs.nlaDir + '/images/labels/long/lbl1.png';
 		lbls += `  img(src="${idLblImg}")\n`;
@@ -394,8 +368,7 @@ class CuiState extends cui.State {
 	async viewerLoad(recheckImgs) {
 		cui.resize(true);
 		if (!prefs.ui.mouse.delta) {
-			prefs.ui.mouse.delta =
-				100 * prefs.ui.mouse.wheel.multi;
+			prefs.ui.mouse.delta = 100 * prefs.ui.mouse.wheel.multi;
 		}
 		cui.mouse = prefs.ui.mouse;
 		games = await nostlan.scraper.loadImages(games, recheckImgs);
@@ -410,18 +383,15 @@ class CuiState extends cui.State {
 		$('style.gameViewerColsStyle').remove();
 		let $glv = $('#libMain');
 		// the column style must change based on the number of columns
-		let dynColStyle = '<style class="gameViewerColsStyle" type="text/css">' +
-			`.reel {width: ${1 / cols * 100}%;}`
+		let dynColStyle = '<style class="gameViewerColsStyle" type="text/css">' + `.reel {width: ${(1 / cols) * 100}%;}`;
 		for (let i = 0; i < cols; i++) {
-			$glv.append(pug(
-				`.reel.r${i}.row-y.${((prefs.ui.altReelsScrolling && i % 2 == 0)?'reverse':'normal')}`
-			));
-			dynColStyle += `.reel.r${i} {left:  ${i / cols * 100}%;}`;
+			$glv.append(pug(`.reel.r${i}.row-y.${prefs.ui.altReelsScrolling && i % 2 == 0 ? 'reverse' : 'normal'}`));
+			dynColStyle += `.reel.r${i} {left:  ${(i / cols) * 100}%;}`;
 		}
 		dynColStyle += `
 .reel .cui.cursor {
-	outline: ${Math.abs(7-cols)}px dashed white;
-	outline-offset: ${ 9-cols}px;
+	outline: ${Math.abs(7 - cols)}px dashed white;
+	outline-offset: ${9 - cols}px;
 }`;
 		dynColStyle += '</style>';
 		$('body').append(dynColStyle);
@@ -461,7 +431,8 @@ class CuiState extends cui.State {
 
 	addAutocomplete($el) {
 		let _this = this;
-		$el.autocomplete({
+		$el
+			.autocomplete({
 				minLength: 1,
 				source: _this.ac_gameDB,
 				focus: (event, ui) => {
@@ -489,7 +460,7 @@ class CuiState extends cui.State {
 						games[i] = sel;
 						games[i].file = file;
 						$game.find('.id.label-input input').val(games[i].id);
-						let unidentified = games[i].id.includes("UNIDENTIFIED");
+						let unidentified = games[i].id.includes('UNIDENTIFIED');
 						let idLblImg = prefs.nlaDir + '/images/labels/medium/lbl0.png';
 						if (unidentified) idLblImg = prefs.nlaDir + '/images/labels/long/lbl1.png';
 						$game.find('.id.label-input img').prop('src', idLblImg);
@@ -512,10 +483,10 @@ class CuiState extends cui.State {
 				}
 			})
 			.autocomplete('instance')._renderItem = (ul, item) => {
-				return $('<li>')
-					.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
-					.appendTo(ul);
-			};
+			return $('<li>')
+				.append('<div>' + (item.title || '') + '<br>' + (item.id || '') + '</div>')
+				.appendTo(ul);
+		};
 
 		// $el.on('keydown', function(e) {
 		// 	if (e.key == 'Enter') {

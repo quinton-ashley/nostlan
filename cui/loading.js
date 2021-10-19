@@ -1,5 +1,4 @@
 class CuiState extends cui.State {
-
 	async intro() {
 		$('#dialogs').show();
 		await nostlan.themes.loadFrame('intro');
@@ -26,10 +25,9 @@ class CuiState extends cui.State {
 		if (!prefs.nlaDir) return;
 		let dir = prefs.nlaDir + '/images';
 
-		let assetPacks = ['discSleeve', 'labels', 'plastic', 'stickers', 'wraps'];
+		let assetPacks = specificAssets || [('discSleeve', 'labels', 'plastic', 'stickers', 'wraps')];
 
 		for (let pack of assetPacks) {
-			if (specificAssets && !specificAssets.includes(pack)) continue;
 			$('#loadDialog2').text(pack);
 			let url = gh + `/${pack}.zip`;
 			let file = dir + `/${pack}.zip`;

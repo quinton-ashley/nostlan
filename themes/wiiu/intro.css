@@ -1,15 +1,15 @@
 body {
-	background-color: #000;
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
+	background: #000;
 }
 
 img {
 	position: absolute;
 	width: 66vw;
 	top: 40%;
-	left:50%;
-	filter: invert(1) brightness(.7) hue-rotate(180deg);
+	left: 50%;
+	filter: invert(1) brightness(0.7) hue-rotate(180deg);
 	transform: translate(-50%, -50%);
 }

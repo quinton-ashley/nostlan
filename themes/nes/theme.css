@@ -1,12 +1,13 @@
 /*================nes Cover====================*/
 @font-face {
 	font-family: NeedEverySoundBold-11yv;
-	src: url("../fonts/NeedEverySoundBold-11yv.ttf");
+	size-adjust: 70%;
+	src: url('../fonts/NeedEverySoundBold-11yv.ttf');
 }
 
 @font-face {
 	font-family: Nintender;
-	src: url("../fonts/Nintender.ttf");
+	src: url('../fonts/Nintender.ttf');
 }
 
 .nes .navPanel .text {

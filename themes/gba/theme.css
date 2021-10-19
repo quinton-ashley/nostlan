@@ -1,19 +1,18 @@
 /*================gba Cover====================*/
 @font-face {
-	font-family: Gamecuben;
-	src: url("../fonts/Gamecuben.ttf");
+	font-family: 'GameCube Basic 045';
+	src: url('../fonts/GameCube Basic 045.ttf');
 }
 
 @font-face {
 	font-family: Nintender;
-	src: url("../fonts/Nintender.ttf");
+	src: url('../fonts/Nintender.ttf');
 }
 
 .gba .navPanel .text {
-	font-family: Gamecuben;
-	font-weight: 900;
-	letter-spacing: -.2vw;
-	font-variant: all-small-caps;
+	font-family: 'GameCube Basic 045', sans-serif;
+	text-transform: uppercase;
+	transform: translate(0, -9%);
 }
 
 .gba #nav1Btn {

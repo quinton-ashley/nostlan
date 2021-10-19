@@ -8,14 +8,13 @@ Windows users should not store emulator apps or games in `Program Files` or any 
 
 ```
 📁 ~/Documents/emu
-└─┬ 📁 ds (system folder)
-  ├─┬ 📁 desmume (emulator folder)
-  │ └── 🎮 desmume.exe
+└─┬ 📁 switch (system folder)
+  ├─┬ 📁 ryujinx (emulator folder)
+  │ └── 🎮 Ryujinx.exe
   ├─┬ 📁 games
-  │ ├── 💿 Mario & Luigi - Partners in Time.nds
-  │ └── 💿 Mario & Luigi - Partners in Time.sav
+  │ └── 💿 Super Mario Odyssey.nsp
   └─┬ 📁 images
-    └──┬ 📁  A58E (the game id)
+    └──┬ 📁  AAACA (the game id)
 		   ├── 🖼 cover.png (front cover)
        └── 🖼 cart.png (cartridge)
 ```
@@ -32,12 +31,11 @@ On Linux, Nostlan will look for emulator apps in their default install locations
 
 ```
 📁 ~/Documents/emu
-└─┬ 📁 ds (system folder)
-  ├── 📁 desmume (emulator folder)
+└─┬ 📁 switch (system folder)
+  ├── 📁 ryujinx (emulator folder)
   ├─┬ 📁 games
-  │ ├── 💿 Mario & Luigi - Partners in Time.nds
-  │ └── 💿 Mario & Luigi - Partners in Time.sav
+  │ └── 💿 Super Mario Odyssey.nsp
   └─┬ 📁 images
-    └──┬ 📁  A58E (the game id)
+    └──┬ 📁  AAACA (the game id)
        └── 🖼 box.png (front of the box)
 ```

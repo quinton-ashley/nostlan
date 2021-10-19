@@ -21,7 +21,7 @@ module.exports = {
 		fullName: 'Nintendo DS',
 		emus: ['melonds', 'desmume'],
 		mediaType: 'cart',
-		gameExts: ['nds']
+		gameExts: ['nds', 'tad', 'srl']
 	},
 	gba: {
 		name: 'GBA',
@@ -34,55 +34,63 @@ module.exports = {
 		name: 'GameCube',
 		fullName: 'Nintendo GameCube',
 		mediaType: 'disc'
+		// same extensions as wii
 	},
 	n3ds: {
 		name: '3DS',
 		fullName: 'Nintendo 3DS',
 		emus: ['citra'],
-		mediaType: 'cart'
+		mediaType: 'cart',
+		gameExts: ['3ds', 'cci', 'cxi', 'cfa']
 	},
 	n64: {
 		name: 'N64',
 		fullName: 'Nintendo 64',
 		emus: ['mupen64plus'],
-		mediaType: 'cart'
+		mediaType: 'cart',
+		gameExts: ['n64', 'rom', 'bin', 'jap', 'pal', 'usa', 'eur', 'u64', 'v64', 'z64', 'd64']
 	},
 	nes: {
 		name: 'NES',
 		fullName: 'Nintendo Entertainment System',
 		emus: ['mesen', 'em-fceux'],
-		mediaType: 'cart'
+		mediaType: 'cart',
+		gameExts: ['nes', 'fds']
 	},
 	ps2: {
 		name: 'PS2',
 		fullName: 'Sony PlayStation 2',
 		emus: ['pcsx2'],
-		mediaType: 'disc'
+		mediaType: 'disc',
+		gameExts: ['iso']
 	},
 	ps3: {
 		name: 'PS3',
 		fullName: 'Sony PlayStation 3',
 		emus: ['rpcs3'],
-		mediaType: 'disc'
+		mediaType: 'disc',
+		gameFolders: true
 	},
 	// smd: {
 	// 	name: 'SMD',
 	// 	fullName: 'SEGA Genesis',
 	// 	emus: ['emulatrix-sega-genesis'],
-	// 	mediaType: 'cart'
+	// 	mediaType: 'cart',
+	//	gameExts: ['smd', 'gen', '32x', 'bin', 'rom']
 	// },
 	snes: {
 		name: 'SNES',
 		fullName: 'Super Nintendo',
 		emus: ['bsnes', 'snes9x'],
 		mediaType: 'cart',
-		gameExts: ['smc', 'sfc']
+		gameExts: ['snes', 'smc', 'sfc']
 	},
 	switch: {
 		name: 'Switch',
 		fullName: 'Nintendo Switch',
 		emus: ['ryujinx', 'ryujinx-ldn', 'yuzu'],
-		mediaType: 'cart'
+		mediaType: 'cart',
+		gameExts: ['nsp', 'xci', 'nca', 'nso']
 	},
 	wii: {
 		name: 'Wii',
@@ -95,12 +103,15 @@ module.exports = {
 		name: 'Wii U',
 		fullName: 'Nintendo Wii U',
 		emus: ['cemu'],
-		mediaType: 'disc'
+		mediaType: 'disc',
+		gameExts: ['rpx', 'rpl', 'wud', 'wux'],
+		gameFolders: true
 	},
 	xbox360: {
 		name: 'Xbox 360',
 		fullName: 'Microsoft Xbox 360',
 		emus: ['xenia'],
-		mediaType: 'disc'
+		mediaType: 'disc',
+		gameExts: ['iso']
 	}
 };

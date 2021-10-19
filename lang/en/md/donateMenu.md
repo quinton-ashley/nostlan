@@ -6,4 +6,4 @@ Nostlan will always be open source and free to use, but Patreon supporters can g
 - unlocks more nostalgic themes to choose from
 - full customization of themes and loading screens
 
-This app is the result of 3 years of active development! If you appreciate my work so far and will continue to use the app please become a Patreon supporter. The continued development of Nostlan is made possible by our ULTRA tier members. Thank you!
+I've been working on Nostlan for 3 years so if you appreciate my work so far and will continue to use Nostlan please become a Patreon supporter! Huge thanks to:

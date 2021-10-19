@@ -1,19 +1,18 @@
 /*================ Gamecube Cover ====================*/
 @font-face {
-	font-family: Gamecuben;
-	src: url("../fonts/Gamecuben.ttf");
+	font-family: 'GameCube Basic 045';
+	src: url('../fonts/GameCube Basic 045.ttf');
 }
 
 @font-face {
 	font-family: Nintender;
-	src: url("../fonts/Nintender.ttf");
+	src: url('../fonts/Nintender.ttf');
 }
 
 .gcn .navPanel .text {
-	font-family: Gamecuben;
-	font-weight: 900;
-	letter-spacing: -.2vw;
-	font-variant: all-small-caps;
+	font-family: 'GameCube Basic 045', sans-serif;
+	text-transform: uppercase;
+	transform: translate(0, -9%);
 }
 
 .gcn #nav1Btn {
@@ -70,12 +69,12 @@ game.wii.flip .crop.coverFull {
 }
 
 game.gcn.flip img.coverFull {
-	transform: translate(1.2%, .4%);
+	transform: translate(1.2%, 0.4%);
 }
 
 game.wii.flip img.coverFull {
 	width: 200.6%;
-	transform: translate(2%, .8%);
+	transform: translate(2%, 0.8%);
 }
 
 game.gcn .shade,

@@ -1,7 +1,8 @@
 body {
 	overflow: hidden;
+	background: #000;
 }
 
 #intro {
-	transform: translate(0%, -25%) scale(.4);
+	transform: translate(0%, -25%) scale(0.4);
 }

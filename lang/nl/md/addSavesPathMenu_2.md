@@ -1,3 +1,3 @@
 # Synchronisatiemap
 
-This Patreon supporter feature lets you sync game saves between your computer and a folder in the cloud or on a local storage device. Choose the location of your Dropbox, OneDrive, etc. that you want to use to sync your emulator game saves and save states. Play across multiple devices without losing in-game progress! Backup history amount specifies the maximum number of backups to keep.
+Deze functie voor Patreon-sponsoren stelt je in staat opgeslagen spellen te synchroniseren tussen je computer en een map in de cloud of een lokaal opslagapparaat. Kies de locatie van je Dropbox, OneDrive, etc. je wilt gebruiken om te synchroniseren. Zo kun je op meerdere apparaten spelen zonder je voortgang kwijt te raken! Het aantal back-ups bepaalt hoeveel er moeten worden bewaard.

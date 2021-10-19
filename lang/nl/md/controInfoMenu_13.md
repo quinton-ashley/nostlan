@@ -1,7 +1,7 @@
-# Wat is context-afhankelijke knoptoewijzing?
+# What is Context Adaptive Button Mapping?
 
-    Xbox/PS context-afhankelijke knoptoewijzing voor              Playstation: ongewijzigd
-    een Xbox One-controller met verschillende       	functioneel dezelfde indeling
+    Xbox/PS adaptive mapping for              Playstation: not remapped
+    an Xbox One controller in different       	functionally similar layout
     game library browsing contexts:             Y B  ->  △ ○
                                                X A  ->  □ X
 

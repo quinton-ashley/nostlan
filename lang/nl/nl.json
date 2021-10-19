@@ -1,0 +1,219 @@
+{
+	"languageMenu": {
+		"title0": "Taalmenu"
+	},
+	"welcomeMenu": {
+		"title0": "Welkom bij Nostlan!",
+		"opt0": "Instelhulp starten"
+	},
+	"donateMenu": {
+		"opt0": "Toegang tot premium-functies",
+		"opt1": "Patreon-pagina openen",
+		"opt2": "Later herinneren",
+		"err0": "Onjuist wachtwoord",
+		"msg0": "Alleen Patreon-sponsoren hebben toegang tot deze functie. Herstart Nostlan en voer je verificatiewachtwoord in."
+	},
+	"checkDonationMenu": {
+		"title0": "Bedankt!",
+		"msg0": "Voer het verificatiewachtwoord van deze maand in:",
+		"opt0": "Wachtwoord verifiëren",
+		"opt1": "Ik ben nog geen sponsor"
+	},
+	"setupMenu": {
+		"opt0": "Installeren in ~\/Documents\/emu",
+		"opt1": "Kies een installatielocatie",
+		"opt2": "Instelhulp afronden",
+		"err0": "Kies een installatielocatie!",
+		"msg0": "Kies de map waarin het sjabloon dient te worden geplaatst",
+		"err1": "Deze map is niet beschrijfbaar!",
+		"err2": "Deze map is alleen-lezen! Rechtsklik op de map, kies ‘Openen als administrator’, rechtsklik opnieuw, kies ‘Bestandsrechten bewerken’. Pas aan naar lezen/schrijven en maken/verwijderen voor alle gebruikersgroepen, of stel prefs.load.readOnlyFS in op ‘true’ in prefs.json."
+	},
+	"libMain": {
+		"nav0Lbl": "Spelen",
+		"nav2Lbl": "Emu",
+		"nav3Lbl": "Sys",
+		"err0": "Het spel is niet aangetroffen"
+	},
+	"boxSelect": {
+		"nav0Lbl": "Spelen",
+		"nav2Lbl": "Bewerken",
+		"nav3Lbl": "Terug"
+	},
+	"editSelect": {
+		"nav0Lbl": "Afbeeldingsmap",
+		"nav2Lbl": "Afbeelding",
+		"nav3Lbl": "Terug"
+	},
+	"boxOpenMenu": {
+		"nav0Lbl": "Handmatig",
+		"nav2Lbl": "Geheugen",
+		"nav3Lbl": "Terug"
+	},
+	"gameMediaSelect": {
+		"nav0Lbl": "Bestand",
+		"nav2Lbl": "Bewerken",
+		"nav3Lbl": "Terug"
+	},
+	"nostlanMenu": {
+		"title0": "Hoofdmenu",
+		"nav0Lbl": "Afsluiten",
+		"nav2Lbl": "Mini",
+		"nav3Lbl": "Terug",
+		"msg0": "Terug",
+		"opt0": "Mini",
+		"opt1": "Volledig",
+		"opt2": "Afsluiten",
+		"opt3": "Spelverzameling bewerken",
+		"opt4": "Back-uppen",
+		"opt5": "Synchroniseren",
+		"opt6": "Patreon",
+		"opt7": "Hulp",
+		"opt8": "Instellingenmenu"
+	},
+	"settingsMenu": {
+		"title0": "Instellingenmenu",
+		"opt0": "Vormgeving aanpassen",
+		"opt1": "Controller-instellingen",
+		"opt2": ["Console tonen", "Console verbergen"],
+		"opt3": "Instellingen aanpassen",
+		"opt4": "Taalmenu"
+	},
+	"gameLibMenu": {
+		"title0": "Spelverzamelingsmenu",
+		"opt0": "Spellen toevoegen",
+		"opt1": "Alle spellen opnieuw scannen",
+		"opt2": "Zoeken naar afbeeldingen",
+		"opt3": "Spellenmap openen"
+	},
+	"gameLibInfoMenu": {
+		"opt0": "Terug"
+	},
+	"controllerMenu": {
+		"title0": "Controller-instellingen",
+		"opt0": "Informatie",
+		"opt1": ["Trillen uitschakelen", "Trillen inschakelen"],
+		"prof2Lbl": "Overig"
+	},
+	"controInfoMenu": {
+		"opt0": "Terug"
+	},
+	"addSavesPathMenu": {
+		"opt0": "Toevoegen",
+		"err0": "Voer een naam en het aantal back-ups in",
+		"err1": "1 opgeslagen back-up vereist",
+		"err2": "Deze map is ongeldig",
+		"msg0": "Kies een synchronisatielocatie"
+	},
+	"interfaceMenu": {
+		"title0": "Vormgeving aanpassen",
+		"opt0": "Thema wijzigen",
+		"opt1": ["Zwevende knoppen verbergen", "Zwevende knoppen tonen"]
+	},
+	"themeMenu": {
+		"title0": "Thema wijzigen"
+	},
+	"sysMenu": {
+		"title0": "Kies een systeem",
+		"msg0": "De spelverzameling bestaat niet",
+		"msg1": "De spelverzameling bevat geen spelbestanden"
+	},
+	"playMenu": {
+		"title0": "Spel spelen met"
+	},
+	"emuMenu": {
+		"title0": "Emulatormenu",
+		"msg0": "Instellen",
+		"msg1": "Bijwerken",
+		"msg2": "Installeren"
+	},
+	"loading": {
+		"msg0_0": "Bezig met laden van",
+		"msg0_1": "spelverzameling…",
+		"msg1": "Bezig met laden van afbeeldingen…",
+		"msg2": "Alles is geladen!",
+		"msg3": "Bezig met starten van Nostlan…",
+		"msg4": "spellen…",
+		"msg5": "Bezig met indexeren van spelverzameling…",
+		"msg6": "Bezig met indexeren van nieuwe spellen…",
+		"msg7_0": "Bezig met zoeken naar",
+		"msg7_1": "afbeelding voor"
+	},
+	"playing": {
+		"err0": "De locatie van de emulator-app is onjuist. Bewerk of verwijder het instellingenbestand.",
+		"err1": "De emulator-app is niet aangetroffen in ",
+		"err2": "Gecrasht! Als het spel niet gestart is, kan het zijn de emulator systeemfirmware, bios-bestanden, toegangssleutels of overige niet-meegeleverde bestanden nodig heeft. Zoek op internet naar instelinstructies.",
+		"err3": "Deze emulator vereist (een) systeembiosbestand(en)",
+		"msg0": "Kies een emulatorprogramma",
+		"msg1": "Bezig met starten…",
+		"msg2_0": "Emulator afsluiten: houd de",
+		"msg2_1": "knop",
+		"msg2_2": "ingedrukt",
+		"msg3": "Helaas kan er slechts één spel tegelijk gekoppeld zijn aan je Gamecube-controlleradapter. Nostlan wordt afgesloten.",
+		"msg4": "Bezig met starten…"
+	},
+	"emuAppMenu": {
+		"opt0": "Installeren",
+		"opt1": "Bladeren naar",
+		"err0": "Deze emulator is niet beschikbaar op je besturingssysteem",
+		"err1": "Deze emulator kan niet automatisch worden geïnstalleerd.",
+		"err2": "Het programma kan niet worden gedownload van",
+		"err3": "Geen installatieprogramma aangetroffen in pakket",
+		"err4": "Geen installatieschijf anagetroffen - rond de installatie handmatig af",
+		"err5": "Het installeren is mislukt - voer de installatie handmatig uit",
+		"msg0": "Bezig met installeren…",
+		"msg1": "Bezig met voorbereiden…",
+		"msg2": "Bezig met uitvoeren van installatiescript…",
+		"msg3": "Bezig met downloaden…",
+		"msg4": "Het downloaden is voltooid - bezig met uitpakken…",
+		"msg5": "Bezig met verifiëren…",
+		"msg6": "Bezig met verplaatsen naar",
+		"msg7": "Bezig met uitvoeren van instelhulp…",
+		"msg8": "Bezig met verplaatsen naar",
+		"msg9": "Bezig met afronden en uitwerpen van installatieschijven…",
+		"msg10": "Bezig met afronden en verwijderen van pakketbestand…",
+		"msg11": "De installatie is voltooid",
+		"msg12": "Het downloaden is afgerond",
+		"msg13": "Bezig met openen van macOS .dmg-bestand…",
+		"msg14": "Bezig met openen van installatieprogramma…",
+		"msg15": "Bijna klaar - rond de installatie handmatig af"
+	},
+	"emptyGameLibMenu": {
+		"title0": "Geen spellen aangetroffen",
+		"opt0": "Kies een spellenmap",
+		"opt1": "Installeren",
+		"msg0_0": "Selecteren",
+		"msg0_1": "Spellenmap",
+		"msg1_0": "De spelbestanden moeten een bestandsextensie hebben",
+		"msg1_1": "of",
+		"msg1_2": "Als je nog geen",
+		"msg1_3": "spellen hebt, dan kun je ook eerst de",
+		"msg1_4": "emulator installeren.",
+		"err0": "Deze emulator is al geïnstalleerd.",
+		"err1": "Als je dit programma nog niet hebt, installeer het dan middels je Linux-pakketbeheerder."
+	},
+	"alertMenu": {
+		"title0": "Voltooid!",
+		"title1": "Mislukt",
+		"title2": "Foutcode",
+		"title3": "Foutmelding",
+		"title4": "Niet-geïmplementeerd",
+		"title5": "Waarschuwing",
+		"msg0": "Deze optie is nog niet beschikbaar!",
+		"opt0": "Oké"
+	},
+	"pauseMenu": {
+		"title0": "Pauzemenu",
+		"err0": "Nostlan's hoofdmenu is niet beschikbaar als er emulators actief zijn",
+		"opt0": "Emulatie hervatten",
+		"opt1": "Laden",
+		"opt2": "Opslaan",
+		"opt3": "Emulatie stoppen",
+		"opt4": ["Dempen", "Ontdempen"]
+	},
+	"imgMenu": {
+		"title0": "Kies het soort afbeelding"
+	},
+	"imageSearchMenu": {
+		"opt0": "Afbeelding downloaden"
+	}
+}

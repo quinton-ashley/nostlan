@@ -51,8 +51,6 @@
 		"name": "Yuzu",
 		"sys": "switch",
 		"site": "https://yuzu-emu.org/",
-		"patreon": "https://www.patreon.com/yuzuteam",
-		"discord": "https://discord.gg/u77vRWY",
 		"app": {
 			"linux": "org.yuzu_emu.yuzu"
 		},
@@ -65,25 +63,6 @@
 		"cmd": {
 			"linux": ["flatpak", "run", "${app}", "-g", "${game}", "-f"],
 			"win": ["${app}", "-g", "${game}", "-f"]
-		},
-		"install": {
-			"linux-x64": {
-				"pkgManager_flatpak": [
-					["flatpak", "remote-add", "--if-not-exists", "flathub", "https://flathub.org/repo/flathub.flatpakrepo"],
-					["flatpak", "install", "flathub", "org.yuzu_emu.yuzu"]
-				]
-			},
-			"win-x64": {
-				"prereqs": [
-					{
-						"installer": "https://aka.ms/vs/16/release/vc_redist.x64.exe"
-					}
-				],
-				"installer": "https://github.com/yuzu-emu/liftinstall/releases/download/1.9/yuzu_install.exe"
-			}
-		},
-		"update": {
-			"win": ["$home/AppData/Local/yuzu/maintenancetool.exe", "--launcher", "${app}"]
 		}
 	}
 }

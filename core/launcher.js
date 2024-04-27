@@ -112,10 +112,6 @@ class Launcher {
 			this.game = game;
 		}
 
-		if (identify && sys == 'switch') {
-			emu = 'yuzu';
-		}
-
 		let emuApp = await this.getEmuApp();
 		if (!emuApp) {
 			cui.change('emuAppMenu');
@@ -471,23 +467,28 @@ class Launcher {
 			new Promise((resolve, reject) => {
 				let out = '';
 
-				let idGame = () => {
-					if (finished) return;
-					let m;
-					if (emu == 'yuzu' && (m = /title_id=(\w{16})/.exec(out))) {
-						game.tid = m[1];
-					} else {
-						return;
-					}
-					finished = true;
-					this.close();
-					resolve(game);
-				};
+				/*
+				 * Since Yuzu will no longer be updated, nostlan should
+				 * not rely on Yuzu to identify nintendo switch games.
+				 */
+
+				// let idGame = () => {
+				// 	if (finished) return;
+				// 	let m;
+				// 	if (emu == 'yuzu' && (m = /title_id=(\w{16})/.exec(out))) {
+				// 		game.tid = m[1];
+				// 	} else {
+				// 		return;
+				// 	}
+				// 	finished = true;
+				// 	this.close();
+				// 	resolve(game);
+				// };
 
 				let parseData = (data) => {
 					if (this.state == 'closing' || finished) return;
 					out += data.toString();
-					idGame();
+					// idGame();
 				};
 
 				this.child.stdout.on('data', parseData);
@@ -495,7 +496,7 @@ class Launcher {
 
 				this.child.on('close', (code) => {
 					this._close(code);
-					if (!finished) idGame();
+					// if (!finished) idGame();
 					if (!finished) reject();
 				});
 			}),

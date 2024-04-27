@@ -52,13 +52,6 @@ class Themes {
 		};
 		this.gcn.getWiki = this.wii.getWiki;
 
-		// Error 403 website is down
-		// this.switch.getWiki = (game) => {
-		// 	let title = game.title.toLowerCase().replace(/ /g, '-');
-		// 	title = title.replace(/:/g, '');
-		// 	return `https://yuzu-emu.org/game/${title}/`;
-		// };
-
 		this.n3ds.getWiki = (game) => {
 			let title = game.title.toLowerCase().replace(/ /g, '-');
 			title = title.replace(/:/g, '');

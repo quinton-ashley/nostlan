@@ -32,7 +32,7 @@ Nostlan can do it all!
 
 _Systems supported: Arcade, DS, 3DS, GBA, N64, PS2, PS3, PSP, SNES, SEGA Mega Drive/Genesis, **Nintendo Switch**, Wii, Wii U, Xbox, and Xbox 360._
 
-_Emulators supported: bsnes, Cemu, Citra, Cxbx-Reloaded, Dolphin, DeSmuME, DS Player, em-fceux, MAME, melonDS, mesen, mupen64plus, mGBA, PCSX2, PPSSPP, RPCS3, Ryujinx, Ryujinx-LDN, snes9x, VBA, webretro, xemu, Xenia, and **Yuzu**._
+_Emulators supported: bsnes, Cemu, Citra, Cxbx-Reloaded, Dolphin, DeSmuME, DS Player, em-fceux, MAME, melonDS, mesen, mupen64plus, mGBA, PCSX2, PPSSPP, RPCS3, **Ryujinx**, Ryujinx-LDN, snes9x, VBA, webretro, xemu, Xenia, and Yuzu._
 
 ## Exclusive Features
 
@@ -62,7 +62,7 @@ _Emulators supported: bsnes, Cemu, Citra, Cxbx-Reloaded, Dolphin, DeSmuME, DS Pl
 
 Click on an image to see it in full quality 4K resolution.
 
-### Switch [Yuzu, Ryujinx]
+### Switch [Ryujinx, Yuzu]
 
 <p><a href="https://quinton-ashley.github.io/nostlan-screenshots/switch.png">
 <img src="https://quinton-ashley.github.io/nostlan-screenshots/switch_LQ.png">
@@ -199,6 +199,4 @@ Nostlan is not affiliated with Nintendo, Sony, SEGA, or Microsoft. All trademark
 
 MAME and the MAME Logo are Copyright © 1997-2024 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
 
-Nostlan was created by Quinton Ashley Copyright © 2019-2024. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images under the Public Domain License CC0. The Nostlan software itself is open sourced and licensed under the copyleft [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License).
-
-![GNU GPLv3 logo](https://www.gnu.org/graphics/gpl-v3-logo.svg)
+Nostlan was created by Quinton Ashley Copyright © 2019-2024. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images under the Public Domain License CC0. The Nostlan software itself is open sourced and licensed under the [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License), which prohibits closed source commercial use.

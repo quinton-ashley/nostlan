@@ -9,7 +9,7 @@
 	"build": {
 		"appId": "com.qashto.nostlan",
 		"copyright": "Copyright © 2018-2024 Quinton Ashley",
-		"electronVersion": "27.0.2",
+		"electronVersion": "30.0.3",
 		"asarUnpack": "jsEmu",
 		"mac": {
 			"category": "public.app-category.game",
@@ -152,5 +152,5 @@
 		"postversion": "git push",
 		"V": "npm version minor --force"
 	},
-	"version": "2.5.0"
+	"version": "2.5.1"
 }

@@ -1,4 +1,4 @@
-# <a href="https://www.patreon.com/nostlan"><img src="https://raw.githubusercontent.com/quinton-ashley/nostlan/main/views/img/icon-sm.png" width=24px height=24px></a> Nostlan : a game launcher for emulators!
+# Nostlan : the nostalgia launcher
 
 <a href="https://quinton-ashley.github.io/nostlan-web">
 <img src="https://quinton-ashley.github.io/nostlan-screenshots/nostlan_ad_banner.png">
@@ -51,13 +51,13 @@ _Emulators supported: bsnes, Cemu, Citra, Cxbx-Reloaded, Dolphin, DeSmuME, DS Pl
 - advanced customization: edit launch commands
 - **_[PREMIUM FEATURE]_** backup/sync all your save data to the cloud, local storage device, or between your PC and laptop
 
-## Nostlan is open source
+## Join the fun!
 
 **[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases)** and join the [Nostlan community Discord](https://discord.gg/cT2yNC6). 😄
 
-**Support the development of Nostlan on [Patreon](https://www.patreon.com/nostlan) to gain access to subscriber features!** ✨
+**Support the development of Nostlan on [Patreon](https://www.patreon.com/nostlan) to unlock exclusive features!** ✨
 
-## Supported Systems and Emulators
+## Systems and Emulators
 
 Click on an image to see it in full quality 4K resolution.
 

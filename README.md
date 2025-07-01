@@ -1,7 +1,7 @@
 # Nostlan : the nostalgia launcher
 
 <a href="https://quinton-ashley.github.io/nostlan-web">
-<img src="https://nostlan.github.io/nostlan-screenshots/nostlan_ad_banner.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/nostlan_ad_banner.avif">
 </a>
 
 [Download Nostlan from the official website](https://quinton-ashley.github.io/nostlan-web) 🤝

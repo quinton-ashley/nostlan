@@ -1,0 +1,118 @@
+{
+	"author": "quinton-ashley",
+	"bin": {
+		"nostlan": "app.js"
+	},
+	"bugs": {
+		"url": "https://github.com/nostlan/nostlan/issues"
+	},
+	"contributors": [
+		{
+			"name": "Quinton Ashley",
+			"email": "qashto@gmail.com"
+		}
+	],
+	"dependencies": {
+		"@electron/remote": "^2.0.12",
+		"@mapbox/node-pre-gyp": "^1.0.9",
+		"@popperjs/core": "^2.11.5",
+		"7zip-bin": "^5.2.0",
+		"acorn": "^8.7.1",
+		"await-spawn": "^4.0.2",
+		"bootstrap": "^5.1.3",
+		"chrome-finder": "^1.0.7",
+		"circletype": "^2.3.0",
+		"contro-ui": "^3.4.0",
+		"crc": "^4.1.0",
+		"deep-extend": "^0.6.0",
+		"delay": "^5.0.0",
+		"diacritics": "^1.3.0",
+		"electron-pug": "^2.0.0",
+		"electron-shutdown-command": "^2.0.1",
+		"extract-zip": "^2.0.1",
+		"fs-extra": "^11.0.0",
+		"fuse.js": "^6.6.2",
+		"gooder": "^1.0.4",
+		"iso-639": "^0.2.2",
+		"jimp": "^0.16.1",
+		"jquery": "*",
+		"jquery-ui-dist": "^1.13.0",
+		"klaw": "^4.0.1",
+		"linux-distro": "^4.0.1",
+		"lodash": "*",
+		"markdown-it": "^13.0.0",
+		"material-design-icons-iconfont": "^6.7.0",
+		"minimist": "^1.2.6",
+		"moment": "^2.29.3",
+		"mousetrap": "^1.6.5",
+		"node-7z": "^3.0.0",
+		"node-abi": "^3.22.0",
+		"node-fetch": "2.6.2",
+		"open": "^8.4.0",
+		"popper.js": "^1.16.1",
+		"probe-image-size": "^7.2.2",
+		"pug": "*",
+		"puppeteer-core": "^13.7.0",
+		"semver": "^7.3.7",
+		"sharp": "0.27.2",
+		"tabletojson": "2.0.6",
+		"tether": "*",
+		"yauzl-promise": "^2.1.3"
+	},
+	"devDependencies": {
+		"puppeteer-core": "^13.7.0"
+	},
+	"description": "Nostlan is a nostlagia launcher for retro and current gen video game emulators!",
+	"entry point": "app.js",
+	"funding": [
+		{
+			"type": "paypal",
+			"url": "http://paypal.me/qastho"
+		},
+		{
+			"type": "patreon",
+			"url": "https://www.patreon.com/nostlan"
+		}
+	],
+	"keywords": [
+		"emulation",
+		"emulator",
+		"launcher",
+		"app",
+		"video game"
+	],
+	"license": "UNLICENSED",
+	"main": "app.js",
+	"maintainers": [
+		{
+			"name": "Quinton Ashley",
+			"email": "qashto@gmail.com"
+		}
+	],
+	"name": "nostlan",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nostlan/nostlan.git"
+	},
+	"scripts": {
+		"start": "electron . --dev",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"clean": "sudo chmod -R 777 .",
+		"rebuild-l": "rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=27.0.2 --disturl=https://electronjs.org/headers ",
+		"rebuild-mi": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=27.0.2 --disturl=https://electronjs.org/headers ",
+		"rebuild-m": "SHARP_IGNORE_GLOBAL_LIBVIPS=true rm -rf ./node_modules/sharp/vendor | npm rebuild --build-from-source --runtime=electron --target=27.0.2 --host_arch=arm64 --target_arch=arm64 --arch=arm64 --disturl=https://electronjs.org/headers ",
+		"rebuild-w": "npm rebuild --build-from-source --runtime=electron --target=27.0.2 --disturl=https://electronjs.org/headers ",
+		"relink": "npm link ../../pkg/contro-ui",
+		"dist-l": "electron-builder -l",
+		"dist-m": "electron-builder -m -c.npmRebuild=false",
+		"dist-w": "electron-builder -w",
+		"verify-m": "codesign -dv --verbose=4 dist/nostlan.app",
+		"delete-tags": "git tag | xargs git tag -d",
+		"delete-tags-remote": "git tag -l | xargs -n 1 git push --delete origin",
+		"v": "npm version patch --force",
+		"version": "git add -A",
+		"postversion": "git push",
+		"V": "npm version minor --force"
+	},
+	"version": "2.7.0"
+}

@@ -1,7 +1,7 @@
 # Nostlan : the nostalgia launcher
 
 <a href="https://quinton-ashley.github.io/nostlan-web">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/nostlan_ad_banner.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/nostlan_ad_banner.png">
 </a>
 
 [Download Nostlan from the official website](https://quinton-ashley.github.io/nostlan-web) 🤝
@@ -18,7 +18,7 @@ With Nostlan you can install new emulators with a single click. It's never been 
 
 A big bookshelf of game boxes is an impressive conversation starter. Having X amount of games on a hard drive? Not so much.
 
-But with Nostlan you can show off your virtual game collection with high quality box assets. Nostlan is [unlike any other game launcher](https://github.com/quinton-ashley/nostlan/wiki/How-is-Nostlan-different-from-other-front-ends%3F) because it has a minimal, [skeuomorphic](https://en.wikipedia.org/wiki/Skeuomorph) UI design that prioritizes box art. It's like a virtual game room!
+But with Nostlan you can show off your virtual game collection with high quality box assets. Nostlan is [unlike any other game launcher](https://github.com/nostlan/nostlan/wiki/How-is-Nostlan-different-from-other-front-ends%3F) because it has a minimal, [skeuomorphic](https://en.wikipedia.org/wiki/Skeuomorph) UI design that prioritizes box art. It's like a virtual game room!
 
 Check out the screenshots below. 👇
 
@@ -49,11 +49,10 @@ _Emulators supported: bsnes, Cemu, Citra, Cxbx-Reloaded, Dolphin, DeSmuME, DS Pl
 - can launch games using standalone emulator apps or JavaScript/WASM based emulator cores
 - browser-based features are completely isolated from the main process in accordance with the latest [Electron](https://electronjs.org/) app security standards
 - advanced customization: edit launch commands
-- **_[PREMIUM FEATURE]_** backup/sync all your save data to the cloud, local storage device, or between your PC and laptop
 
 ## Join the fun!
 
-**[Download Nostlan](https://github.com/quinton-ashley/nostlan/releases)** and join the [Nostlan community Discord](https://discord.gg/cT2yNC6). 😄
+**[Download Nostlan](https://github.com/nostlan/nostlan/releases)** and join the [Nostlan community Discord](https://discord.gg/cT2yNC6). 😄
 
 **Support the development of Nostlan on [Patreon](https://www.patreon.com/nostlan) to unlock exclusive features!** ✨
 
@@ -63,103 +62,83 @@ Click on an image to see it in full quality 4K resolution.
 
 ### Switch [Ryujinx, Yuzu]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/switch.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/switch_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/switch.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/switch_LQ.png">
 </a></p>
 
 ### Wii U [Cemu]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/wiiu.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/wiiu_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/wiiu.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/wiiu_LQ.png">
 </a></p>
 
 ### Wii, Gamecube, Virtual Console [Dolphin]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/wii.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/wii_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/wii.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/wii_LQ.png">
 </a></p>
 
 ### PS3 [RPCS3]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/ps3.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/ps3_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/ps3.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/ps3_LQ.png">
 </a></p>
 
 ### PS2 [PCSX2]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/ps2.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/ps2_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/ps2.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/ps2_LQ.png">
 </a></p>
 
 ### SNES [bsnes, snes9x]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/snes.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/snes_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/snes.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/snes_LQ.png">
 </a></p>
 
 ### Arcade Machines [MAME]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/mame.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/mame_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/mame.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/mame_LQ.png">
 </a></p>
 
 ### NES [Mesen, em-fceux]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/nes.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/nes_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/nes.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/nes_LQ.png">
 </a></p>
 
 ### DS [melonDS, DeSmuME]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/ds.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/ds_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/ds.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/ds_LQ.png">
 </a></p>
 
 ### GBA [mGBA, Visual Boy Advance]
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/gba.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/gba_LQ.png">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/gba.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/gba_LQ.png">
 </a></p>
 
 ## Xbox, SEGA Genesis, N64, Nintendo 3DS, and more!
 
-<p><a href="https://quinton-ashley.github.io/nostlan-screenshots/more_systems.png">
-<img src="https://quinton-ashley.github.io/nostlan-screenshots/more_systems_LQ.jpg">
+<p><a href="https://nostlan.github.io/nostlan-screenshots/more_systems.png">
+<img src="https://nostlan.github.io/nostlan-screenshots/more_systems_LQ.jpg">
 </a></p>
 
 ## Subscription Features
 
 Nostlan includes tons of great features, but [Patreon](https://www.patreon.com/nostlan) support unlocks:
 
-- [backup/sync game saves to the cloud or local storage device](https://github.com/quinton-ashley/nostlan/wiki/Backup-Saves-and-Cloud-Save-Syncing)
-- [unlock alternate UI theme color palettes](https://github.com/quinton-ashley/nostlan/wiki/Change-Theme)
-- [custom UI theming, lets you change the intro loading screens and make your own color palettes](https://github.com/quinton-ashley/nostlan/wiki/Custom-Themes)
-
-## How to access Subscription Features
+- [backup/sync game saves to the cloud or local storage device](https://github.com/nostlan/nostlan/wiki/Backup-Saves-and-Cloud-Save-Syncing)
+- [unlock alternate UI theme color palettes](https://github.com/nostlan/nostlan/wiki/Change-Theme)
+- [custom UI theming, lets you change the intro loading screens and make your own color palettes](https://github.com/nostlan/nostlan/wiki/Custom-Themes)
 
 Every month, Patreon supporters will be able to see an exclusive post with the monthly donor password unique to that month. When you start Nostlan it will show a donation menu. Select "access subscription features" from the donation menu. Copy the monthly donor password from Patreon and paste it into the donor password input. Select "verify password", if the password is correct you will have access to subscription features! Passwords are automatically posted each month.
 
-## Learn more about Nostlan on the wiki
+## Documentation
 
-<https://github.com/quinton-ashley/nostlan/wiki>
-
-I've put a lot of effort into documenting Nostlan on the wiki. I hope you find it helpful! Go to the wiki to find out more info on these topics:
-
-Adaptive Button Mapping  
-Credits  
-Config File Editing Guide  
-Custom Themes  
-Development Info  
-Features  
-Game Identification  
-Hardware Compatibility  
-Image Names to use for Game Art  
-Premium Features  
-Progress Reports  
-Screenshots  
-Setting up Nostlan  
-Supported Systems and Emulators  
-Using Nostlan
+Learn more about Nostlan by reading the [wiki pages](https://github.com/nostlan/nostlan/wiki).
 
 ## Contact
 
@@ -175,12 +154,6 @@ I created Nostlan for fun and also to learn more about app development. Since No
 
 I also put a LOT of effort into following the latest Electron security standards. All the 3rd party emulator cores that Nostlan uses are sandboxed, meaning they run in isolation from the main process.
 
-## Development
-
-In 2018 I started developing Nostlan. I was still learning a lot about JavaScript and Electron was brand new. But Electron has been upgraded significantly over the years and the new paradigms for developing Electron apps are completely different than how things used to be done. Nostlan relies heavily on the `electron-remote` package, a backwards compatibility layer that allows Nostlan to run with the latest versions of Electron. There are definitely some things I would do differently if I were to start over. But I'm never going to rewrite the whole app to use module imports or context bridging, I'll just be adding new features and fixing bugs.
-
-Information on how to build the app, update a database, and change the Electron version can be found in the <DEV_INFO.md> file.
-
 ## Legal Disclaimer
 
 Although [emulation is legal](https://en.wikipedia.org/wiki/Bleem!), pirating games you do not own is illegal. Nostlan does not condone piracy. Nostlan is open source software that does not infringe on any copyrights of publishers, developers, artists, or texture packers. Anyone asking for or sharing information related to digital piracy on Nostlan's Discord server or GitHub page will be blocked and have their comments removed and flagged.
@@ -191,4 +164,4 @@ Nostlan is not affiliated with Nintendo, Sony, SEGA, or Microsoft. All trademark
 
 MAME and the MAME Logo are Copyright © 1997-2025 MAMEDev and contributors. MAME® is a registered trademark of Gregory Ember. Use of the MAME name and logo is done so with the expressed written permission from the trademark owner. For more information, please visit <https://www.mamedev.org>.
 
-Nostlan was created by Quinton Ashley Copyright © 2019-2025. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/quinton-ashley/nostlan-img) are public domain images under the Public Domain License CC0. The Nostlan software itself is open sourced and licensed under the [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License), which prohibits closed source commercial use.
+Nostlan was created by Quinton Ashley Copyright © 2019-2025. The Nostlan logo images are licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/). The template images found in the [nostlan-img repository](https://github.com/nostlan/nostlan-img) are public domain images under the Public Domain License CC0. The Nostlan software itself is open sourced and licensed under the [GNU GPLv3 license](https://en.wikipedia.org/wiki/GNU_General_Public_License), which prohibits closed source commercial use.

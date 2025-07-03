@@ -4,7 +4,7 @@
 <img src="https://nostlan.github.io/nostlan-screenshots/nostlan_ad_banner.avif">
 </a>
 
-[Download Nostlan from the official website](https://quinton-ashley.github.io/nostlan-web) 🤝
+[Download Nostlan from itch.io](https://quinton-ashley.github.io/nostlan-web) 🤝
 
 ## What's a "game launcher"?
 
@@ -16,9 +16,9 @@ With Nostlan you can install new emulators with a single click. It's never been 
 
 ### Hardcore collector?
 
-A big bookshelf of game boxes is an impressive conversation starter. Having X amount of games on a hard drive? Not so much.
+A big bookshelf of game boxes is an impressive feat. A list of games displayed by a file explorer? Pretty lame.
 
-But with Nostlan you can show off your virtual game collection with high quality box assets. Nostlan is [unlike any other game launcher](https://github.com/nostlan/nostlan/wiki/How-is-Nostlan-different-from-other-front-ends%3F) because it has a minimal, [skeuomorphic](https://en.wikipedia.org/wiki/Skeuomorph) UI design that prioritizes box art. It's like a virtual game room!
+Use Nostlan to show off your virtual game collection with high quality box assets. Nostlan is [unlike any other game launcher](https://github.com/nostlan/nostlan/wiki/How-is-Nostlan-different-from-other-front-ends%3F) because it has a minimal, [skeuomorphic](https://en.wikipedia.org/wiki/Skeuomorph) UI design that prioritizes box art. It's like a virtual game room!
 
 Check out the screenshots below. 👇
 
@@ -37,24 +37,25 @@ _Emulators supported: bsnes, Cemu, Citra, Cxbx-Reloaded, Dolphin, DeSmuME, DS Pl
 ## Exclusive Features
 
 - browse the entire app with your mouse, keyboard, or game controller
-- automated install of any emulator
-- no nonsense setup and configuration
+- cloud backup and sync of game saves
+- automated install of many emulators
+- no nonsense setup with sensible defaults
 - checks multiple database sites for the highest quality box art
 - nostalgic UI themes for each supported console
 - designed for big UHD displays and projectors
 - most controllers connect to Nostlan automatically, no setup required
-- menu translations for Spanish, German, Hebrew, Russian, and Dutch
 - cross-platform support for Linux, macOS, and Windows
+- menu translations for Spanish, German, Hebrew, Russian, and Dutch
 - box edit mode provides an in-app image search on the web (no need to download and manually place image files in the right folder)
 - can launch games using standalone emulator apps or JavaScript/WASM based emulator cores
 - browser-based features are completely isolated from the main process in accordance with the latest [Electron](https://electronjs.org/) app security standards
-- advanced customization: edit launch commands
+- advanced customization: edit launch commands and change themes
 
 ## Join the fun!
 
 **[Download Nostlan](https://github.com/nostlan/nostlan/releases)** and join the [Nostlan community Discord](https://discord.gg/cT2yNC6). 😄
 
-**Support the development of Nostlan on [Patreon](https://www.patreon.com/nostlan) to unlock exclusive features!** ✨
+**Big fan? Support the development of Nostlan on [Patreon](https://www.patreon.com/nostlan)!** ✨
 
 ## Systems and Emulators
 
@@ -125,16 +126,6 @@ Click on an image to see it in full quality 4K resolution.
 <p><a href="https://nostlan.github.io/nostlan-screenshots/more_systems.png">
 <img src="https://nostlan.github.io/nostlan-screenshots/more_systems_LQ.jpg">
 </a></p>
-
-## Subscription Features
-
-Nostlan includes tons of great features, but [Patreon](https://www.patreon.com/nostlan) support unlocks:
-
-- [backup/sync game saves to the cloud or local storage device](https://github.com/nostlan/nostlan/wiki/Backup-Saves-and-Cloud-Save-Syncing)
-- [unlock alternate UI theme color palettes](https://github.com/nostlan/nostlan/wiki/Change-Theme)
-- [custom UI theming, lets you change the intro loading screens and make your own color palettes](https://github.com/nostlan/nostlan/wiki/Custom-Themes)
-
-Every month, Patreon supporters will be able to see an exclusive post with the monthly donor password unique to that month. When you start Nostlan it will show a donation menu. Select "access subscription features" from the donation menu. Copy the monthly donor password from Patreon and paste it into the donor password input. Select "verify password", if the password is correct you will have access to subscription features! Passwords are automatically posted each month.
 
 ## Documentation
 
